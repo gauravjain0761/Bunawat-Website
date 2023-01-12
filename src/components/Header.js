@@ -991,9 +991,9 @@ export default function Header() {
                             <button className="resend_btn">
                                 <span>3rd July 2022</span>
                                 <svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g clip-path="url(#clip0_2146_6797)">
-                                        <path d="M0.599609 1.43018H7.98961V8.82018" stroke="#2A3592" stroke-width="1.7" stroke-miterlimit="10" />
-                                        <path d="M0.599609 8.82018L7.98961 1.43018" stroke="#2A3592" stroke-width="1.7" stroke-miterlimit="10" />
+                                    <g clipPath="url(#clip0_2146_6797)">
+                                        <path d="M0.599609 1.43018H7.98961V8.82018" stroke="#2A3592" strokeWidth="1.7" strokeMiterlimit="10" />
+                                        <path d="M0.599609 8.82018L7.98961 1.43018" stroke="#2A3592" strokeWidth="1.7" strokeMiterlimit="10" />
                                     </g>
                                     <defs>
                                         <clipPath id="clip0_2146_6797">
@@ -1005,11 +1005,11 @@ export default function Header() {
                             <button className="resend_btn">
                                 <span>Sync Calendar</span>
                                 <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g clip-path="url(#clip0_2146_6803)">
-                                        <path d="M15.1499 0.5V7.03H8.62988" stroke="#2A3990" stroke-width="1.7" stroke-miterlimit="10" />
-                                        <path d="M15.1507 7.02988L9.76074 1.62988H8.79074C6.45074 1.62988 4.36074 2.72988 3.01074 4.43988" stroke="#2A3990" stroke-width="1.7" stroke-linejoin="round" />
-                                        <path d="M1.45996 17.5V10.97H7.98996" stroke="#2A3990" stroke-width="1.7" stroke-miterlimit="10" />
-                                        <path d="M1.45996 10.97L6.84996 16.36H7.81996C10.16 16.36 12.25 15.26 13.6 13.55" stroke="#2A3990" stroke-width="1.7" stroke-linejoin="round" />
+                                    <g clipPath="url(#clip0_2146_6803)">
+                                        <path d="M15.1499 0.5V7.03H8.62988" stroke="#2A3990" strokeWidth="1.7" strokeMiterlimit="10" />
+                                        <path d="M15.1507 7.02988L9.76074 1.62988H8.79074C6.45074 1.62988 4.36074 2.72988 3.01074 4.43988" stroke="#2A3990" strokeWidth="1.7" strokeLinejoin="round" />
+                                        <path d="M1.45996 17.5V10.97H7.98996" stroke="#2A3990" strokeWidth="1.7" strokeMiterlimit="10" />
+                                        <path d="M1.45996 10.97L6.84996 16.36H7.81996C10.16 16.36 12.25 15.26 13.6 13.55" stroke="#2A3990" strokeWidth="1.7" strokeLinejoin="round" />
                                     </g>
                                     <defs>
                                         <clipPath id="clip0_2146_6803">
@@ -1040,9 +1040,9 @@ export default function Header() {
                                     <button type="button" onClick={() => setOtpverify(true)}>
                                         <span>Send OTP</span>
                                         <svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_2143_4306)">
-                                                <path d="M3.75977 0.955078L7.79977 4.99508L3.75977 9.04508" stroke="white" stroke-width="1.7" stroke-miterlimit="10" />
-                                                <path d="M0.410156 5.00488H7.80016" stroke="white" stroke-width="1.7" stroke-miterlimit="10" />
+                                            <g clipPath="url(#clip0_2143_4306)">
+                                                <path d="M3.75977 0.955078L7.79977 4.99508L3.75977 9.04508" stroke="white" strokeWidth="1.7" strokeMiterlimit="10" />
+                                                <path d="M0.410156 5.00488H7.80016" stroke="white" strokeWidth="1.7" strokeMiterlimit="10" />
                                             </g>
                                             <defs>
                                                 <clipPath id="clip0_2143_4306">
@@ -1073,10 +1073,10 @@ export default function Header() {
                                     <button type="button" onClick={handleClose}>
                                         <span>Login</span>
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_2143_4277)">
-                                                <path d="M11.9996 23.1501C18.1576 23.1501 23.1496 18.1581 23.1496 12.0001C23.1496 5.84212 18.1576 0.850098 11.9996 0.850098C5.84163 0.850098 0.849609 5.84212 0.849609 12.0001C0.849609 18.1581 5.84163 23.1501 11.9996 23.1501Z" stroke="white" stroke-width="1.7" stroke-miterlimit="10" />
-                                                <path d="M12.0003 13.86C14.1708 13.86 15.9303 12.1005 15.9303 9.93C15.9303 7.75952 14.1708 6 12.0003 6C9.82983 6 8.07031 7.75952 8.07031 9.93C8.07031 12.1005 9.82983 13.86 12.0003 13.86Z" stroke="white" stroke-width="1.7" stroke-miterlimit="10" />
-                                                <path d="M17.7498 21.5401C17.9098 21.0101 17.9898 20.4401 17.9898 19.8601C17.9898 16.5501 15.3098 13.8701 11.9998 13.8701C8.68977 13.8701 6.00977 16.5501 6.00977 19.8601C6.00977 20.4401 6.09977 21.0101 6.24977 21.5401" stroke="white" stroke-width="1.7" stroke-miterlimit="10" />
+                                            <g clipPath="url(#clip0_2143_4277)">
+                                                <path d="M11.9996 23.1501C18.1576 23.1501 23.1496 18.1581 23.1496 12.0001C23.1496 5.84212 18.1576 0.850098 11.9996 0.850098C5.84163 0.850098 0.849609 5.84212 0.849609 12.0001C0.849609 18.1581 5.84163 23.1501 11.9996 23.1501Z" stroke="white" strokeWidth="1.7" strokeMiterlimit="10" />
+                                                <path d="M12.0003 13.86C14.1708 13.86 15.9303 12.1005 15.9303 9.93C15.9303 7.75952 14.1708 6 12.0003 6C9.82983 6 8.07031 7.75952 8.07031 9.93C8.07031 12.1005 9.82983 13.86 12.0003 13.86Z" stroke="white" strokeWidth="1.7" strokeMiterlimit="10" />
+                                                <path d="M17.7498 21.5401C17.9098 21.0101 17.9898 20.4401 17.9898 19.8601C17.9898 16.5501 15.3098 13.8701 11.9998 13.8701C8.68977 13.8701 6.00977 16.5501 6.00977 19.8601C6.00977 20.4401 6.09977 21.0101 6.24977 21.5401" stroke="white" strokeWidth="1.7" strokeMiterlimit="10" />
                                             </g>
                                             <defs>
                                                 <clipPath id="clip0_2143_4277">
@@ -1089,9 +1089,9 @@ export default function Header() {
                                 <div className="resend_otp_wrap">
                                     <button className="change_num_btn" onClick={() => setOtpverify(false)}>
                                         <svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_2143_4283)">
-                                                <path d="M5.24023 9.04492L1.20023 5.00492L5.24023 0.954923" stroke="#2A3592" stroke-width="1.7" stroke-miterlimit="10" />
-                                                <path d="M8.58984 4.99512L1.19984 4.99512" stroke="#2A3592" stroke-width="1.7" stroke-miterlimit="10" />
+                                            <g clipPath="url(#clip0_2143_4283)">
+                                                <path d="M5.24023 9.04492L1.20023 5.00492L5.24023 0.954923" stroke="#2A3592" strokeWidth="1.7" strokeMiterlimit="10" />
+                                                <path d="M8.58984 4.99512L1.19984 4.99512" stroke="#2A3592" strokeWidth="1.7" strokeMiterlimit="10" />
                                             </g>
                                             <defs>
                                                 <clipPath id="clip0_2143_4283">
@@ -1104,9 +1104,9 @@ export default function Header() {
                                     <button className="resend_btn">
                                         <span>Resend OTP</span>
                                         <svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_2143_4289)">
-                                                <path d="M8.15039 0.514893V4.51489H4.15039" stroke="#2A3592" stroke-width="1.7" stroke-miterlimit="10" />
-                                                <path d="M8.15016 4.51501L5.02016 1.38501H4.54016C2.53016 1.38501 0.910156 3.00501 0.910156 5.00501C0.910156 7.00501 2.53016 8.63501 4.54016 8.63501C5.54016 8.63501 6.45016 8.22501 7.10016 7.57501" stroke="#2A3592" stroke-width="1.7" stroke-linejoin="round" />
+                                            <g clipPath="url(#clip0_2143_4289)">
+                                                <path d="M8.15039 0.514893V4.51489H4.15039" stroke="#2A3592" strokeWidth="1.7" strokeMiterlimit="10" />
+                                                <path d="M8.15016 4.51501L5.02016 1.38501H4.54016C2.53016 1.38501 0.910156 3.00501 0.910156 5.00501C0.910156 7.00501 2.53016 8.63501 4.54016 8.63501C5.54016 8.63501 6.45016 8.22501 7.10016 7.57501" stroke="#2A3592" strokeWidth="1.7" strokeLinejoin="round" />
                                             </g>
                                             <defs>
                                                 <clipPath id="clip0_2143_4289">
