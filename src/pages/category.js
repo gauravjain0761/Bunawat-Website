@@ -19,6 +19,7 @@ import category_13 from "../assets/img/category/category_13.png"
 import category_14 from "../assets/img/category/category_14.png"
 import Footer from '../components/footer';
 import ProductFilters from '../components/category/productFilters';
+import { Nav, Tab } from 'react-bootstrap';
 
 const Category = () => {
     const [age, setAge] = React.useState('');
@@ -29,6 +30,7 @@ const Category = () => {
 
     return (
         <div className='category_page_wrapper'>
+        <Tab.Container id="left-tabs-example" defaultActiveKey="designerWear">
             <div className='cloth_wrap pt-0'>
                 <div className='container'>
                     <div className="cloth_inner">
@@ -36,14 +38,47 @@ const Category = () => {
                             <h2><p>Limited Edition</p>&nbsp; pieces by adept designers</h2>
                         </div>
                         <div className='design_filter'>
-                            <button type='button' className='active'>Designer Wear</button>
-                            <button type='button'>The Bride</button>
-                            <button type='button'>Roka Exhibit</button>
-                            <button type='button'>Haldi Gallery</button>
-                            <button type='button'>Mehendi</button>
-                            <button type='button'>Sangeet</button>
-                            <button type='button'>All Bridal</button>
+                            <Nav>
+                               <Nav.Item>
+                                  <Nav.Link eventKey="designerWear">
+                                    <button type='button' className='categoryMenu'>Designer Wear</button>
+                                  </Nav.Link>
+                               </Nav.Item>
+                               <Nav.Item>
+                                  <Nav.Link eventKey="TheBride">
+                                       <button type='button'>The Bride</button>
+                                  </Nav.Link>
+                               </Nav.Item>
+                               <Nav.Item>
+                                  <Nav.Link eventKey="RokaExhibit">
+                                      <button type='button'>Roka Exhibit</button>
+                                  </Nav.Link>
+                               </Nav.Item>
+                               <Nav.Item>
+                                  <Nav.Link eventKey="HaldiGallery">
+                                     <button type='button'>Haldi Gallery</button>
+                                  </Nav.Link>
+                               </Nav.Item>
+                               <Nav.Item>
+                                  <Nav.Link eventKey="Mehendi">
+                                    <button type='button'>Mehendi</button>
+                                  </Nav.Link>
+                               </Nav.Item>
+                               <Nav.Item>
+                                  <Nav.Link eventKey="Sangeet">
+                                     <button type='button'>Sangeet</button>
+                                  </Nav.Link>
+                               </Nav.Item>
+                               <Nav.Item>
+                                  <Nav.Link eventKey="AllBridal">
+                                    <button type='button'>All Bridal</button>
+                                  </Nav.Link>
+                               </Nav.Item>
+                            </Nav>
+                            
                         </div>
+                        <Tab.Content>
+                        <Tab.Pane eventKey="designerWear">
                         <div className='row'>
                             <div className="col-md-8">
                                 <div className='cloth_deatils_wrap'>
@@ -601,10 +636,12 @@ const Category = () => {
                                 </div>
                             </div>
                         </div>
+                        </Tab.Pane>
+                        </Tab.Content>
                     </div>
                 </div>
             </div>
-
+            </Tab.Container>
             <Footer />
 
             <ProductFilters />

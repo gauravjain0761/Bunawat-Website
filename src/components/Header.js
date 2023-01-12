@@ -35,7 +35,7 @@ export default function Header() {
 
     const onChagewalletbar = () => {
         const current_loction = window.location.pathname;
-        var mypath = ["/category", "/product"].includes(current_loction)
+        var mypath = ["/category", "/product", "/checkout", "/orderConfirmation", "/userProfile", "/reviews", ].includes(current_loction)
         if (mypath) {
             setHeaderColor(true);
         }
@@ -676,10 +676,12 @@ export default function Header() {
                                     </div>
                                 </div>
                             </div>
+                            <Link to="/checkout" onClick={() => setCartOpen(false)}>
                             <button type="button" className="checkout_btn">
                                 <span>Checkout</span>
                                 <span><s>₹25,600</s>₹21,600</span>
                             </button>
+                            </Link>
                         </Tab>
                         <Tab eventKey="saved" title="Saved">
                             <div className='saved_wrapper'>

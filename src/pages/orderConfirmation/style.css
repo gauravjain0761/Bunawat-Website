@@ -1,0 +1,136 @@
+#ordercConfirmation{
+    background-color: #E5E5E5;
+    /* height: 100vh; */
+    padding: 8rem 0 0 0;
+}
+.ordercConfirmation_top h3{
+    font-family: NewScript-2;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #000000;
+}
+.ordercConfirmation_top p{
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #70758A;
+}
+.ordercConfirmation_top_help{
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ordercConfirmation_top_help p{
+    margin-right: 4px;
+    color: #2A3592;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+.orderConfirmation_box_second{
+    padding-top: 2rem;
+    width: 60%;
+    margin: auto;
+}
+
+.orderConfirmation_box{
+    width: 60%;
+    margin: auto;
+    background: #FFFFFF;
+    box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+}
+@media (max-width: 767px) {
+    .orderConfirmation_box{
+        width: 80%;
+        margin: auto;
+    }
+    .orderConfirmation_box_second{
+        width: 80%;
+        margin: auto;
+    }
+}
+.orderConfirmation_box_heading{
+    display: flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 2rem 1rem 2rem;
+}
+.orderConfirmation_box_heading h6{
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 16px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.orderConfirmation_box_heading span{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.02em;
+    color: #9A9EB0;
+}
+
+.orderConfirmation_box_list{
+    padding: 0.6rem 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+.orderConfirmation_box_list h3{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: -0.02em;
+    color: #000000;
+}
+.orderConfirmation_box_list span{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: -0.02em;
+    color: #9A9EB0;
+}
+.orderConfirmation_box_data{
+    padding: 0.6rem 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+.orderConfirmation_box_data h3{
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    color: #000000;
+    margin-bottom: 6px;
+}
+.orderConfirmation_box_data h6{
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    color: #000000;
+    margin-bottom: 6px;
+}
+.orderConfirmation_box_data span{
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #2A3592;
+}
+.orderConfirmation_box_data h4{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 14px;
+    letter-spacing: -0.02em;
+    color: #2A3592;
+    margin-bottom: 2rem;
+}

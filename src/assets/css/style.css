@@ -2183,5 +2183,18 @@ li.common_option_wrap {
     color: #9A9EB0;
 }
 
+.footer_strip {
+    background: #fff;
+    padding: 1.6rem;
+}
+
+
+.categoryMenu{
+    color: #000;
+}
+.categoryMenu:hover{
+    color: #2a3592
+}
+
 
 

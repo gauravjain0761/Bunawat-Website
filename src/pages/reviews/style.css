@@ -1,0 +1,81 @@
+#reviews{
+    background-color: #E5E5E5;
+    padding: 8rem 0;
+}
+.reviewspage_heading{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.reviewspage_heading h3{
+    font-family: NewScript-2;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #000000;
+}
+.reviewspage_heading p{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #70758A;
+    margin-top: 6px;
+}
+.reviewspage_box{
+    background: #FFFFFF;
+    border-radius: 4px;
+    padding-bottom: 1rem;
+    margin-top: 6px;
+}
+.reviewspage_box_top{
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+.reviewspage_box_top h6{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    color: #000000;
+}
+.reviewspage_box_top p{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.02em;
+    color: #9A9EB0;
+}
+.reviewspage_box_top_link{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.02em;
+    color: #2A3592;
+}
+.reviewspage_box_text{
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    color: #000000;
+    padding: 2rem;
+    border-top: 1px solid rgb(231, 231, 231);
+}
+.reviewspage_box_audio{
+    background: #EDF0FF;
+    border-radius: 4px;
+    padding: 1rem;
+    margin: 0 1rem;
+}
+.reviewspage_box_whatsapp p{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.02em;
+    color: #9A9EB0;
+    padding: 0.6rem 1rem;
+}
