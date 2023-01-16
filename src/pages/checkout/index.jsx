@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Container, Row, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./style.css";
+import "./checkout.css";
 
 const Checkout = () => {
   return (

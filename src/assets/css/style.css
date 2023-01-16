@@ -12,10 +12,22 @@
     font-family: Newhero;
     src: url(../fonts/newHero/new-hero-10.otf);
 }
+@font-face {
+    font-family: Newhero6;
+    src: url(../fonts/newHero/new-hero-6.otf);
+}
+@font-face {
+    font-family: Newhero8;
+    src: url(../fonts/newHero/new-hero-8.otf);
+}
+@font-face {
+    font-family: Newhero9;
+    src: url(../fonts/newHero/new-hero-9.otf);
+}
 
 body {
     /* font-family: 'Montserrat', sans-serif; */
-    font-family: Newhero;
+    font-family: Newhero6;
     margin: 0;
     line-height: 1.5;
     font-size: 18px;
@@ -2194,6 +2206,11 @@ li.common_option_wrap {
 }
 .categoryMenu:hover{
     color: #2a3592
+}
+
+.footer_header_wrap_srip{
+    background-color: #fff;
+    padding: 2rem;
 }
 
 

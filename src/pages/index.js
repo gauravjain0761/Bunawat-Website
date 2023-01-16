@@ -9,6 +9,9 @@ import Checkout from "./checkout/index";
 import OrderConfirmation from "./orderConfirmation/index";
 import UserProfile from "./userProfile/index";
 import Reviews from "./reviews/index";
+import ClubHome from "./clubHome/index";
+import ErrorPage from "./404/index";
+import Returns from "./returns/index";
 
 
 export default function index({ socket }) {
@@ -43,13 +46,19 @@ export default function index({ socket }) {
                     <Route exact path={BASE_URL.BASE_URL + `reviews`}>
                         <Reviews />
                     </Route>
+                    
+                    <Route exact path={BASE_URL.BASE_URL + `clubHome`}>
+                        <ClubHome />
+                    </Route>
+                    
+                    <Route exact path={BASE_URL.BASE_URL + "404"}>
+                        <ErrorPage />
+                    </Route>
 
-                    {/* <Route exact path={BASE_URL.BASE_URL + "notfound"}>
-            <Notfound />
-          </Route>
-          <Route path="*">
-            <Notfound />
-          </Route> */}
+                    <Route exact path={BASE_URL.BASE_URL + "returns"}>
+                        <Returns />
+                    </Route>
+                    
                 </Switch>
             </Layout>
         </>
