@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
 import Index from "./pages";
 import { io } from "socket.io-client";
+import './App.css';
 
 const App = () => {
   const [state, setState] = useState({ theme: "dark" });
