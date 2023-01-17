@@ -1884,6 +1884,7 @@ li.common_option_wrap {
 
 .login_input_inner{
     position: relative;
+    margin-top: 10px;
 }
 .login_input_inner input{
     width: 100%;
@@ -1902,6 +1903,14 @@ li.common_option_wrap {
 .login_input_inner span{
     position: absolute;
     left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #9A9EB0;
+}
+.login_input_inner a {
+    position: absolute;
+    right: 15px;
     top: 50%;
     transform: translateY(-50%);
     font-size: 14px;
@@ -2210,7 +2219,7 @@ li.common_option_wrap {
 
 .footer_header_wrap_srip{
     background-color: #fff;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 

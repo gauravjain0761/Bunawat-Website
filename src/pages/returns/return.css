@@ -1,5 +1,5 @@
 .returns_page{
-    padding: 12rem 0;
+    padding: 12rem 0 6rem 0;
     background: #E5E5E5;
 }
 .returns_page_top{
@@ -61,6 +61,17 @@
 .returns_page_packing_img{
     text-align: end;
 }
+@media only screen and (max-width: 668px) {
+    .returns_page_packing_img{
+        text-align: center;
+    }
+    .returns_page_packing_text{
+        margin-top: 3rem;
+    }
+}
+.returns_page_packing_text{
+    margin-top: 6rem;
+}
 .returns_page_packing_text h6{
     font-weight: 700;
     font-size: 12px;
@@ -75,4 +86,136 @@
     line-height: 24px;
     letter-spacing: -0.02em;
     color: #70758A;
+    margin-top: 8px;
 }
+.returns_page_schedule_section{
+    margin: 3rem 0;
+    background: #1C1F2D;
+    box-shadow: 0px 32px 64px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+}
+.returns_page_schedule_section .schedule_section1_text{
+    padding: 6rem;
+}
+.returns_page_schedule_section .schedule_section1_text h6{
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+.returns_page_schedule_section .schedule_section1_text p{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    color: #99A2CB;
+    margin-top: 10px;
+}
+.returns_page_schedule_section .schedule_section1_text .btn{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    background: #384BEB;
+    backdrop-filter: blur(10px);
+    border-radius: 4px;
+    border: none;
+    padding: 1.6rem 3rem;
+    margin-top: 20px;
+}
+.returns_page_schedule_section .schedule_section2{
+    background-image: url(../../assets/img/return/orderConfirmation.png);
+    background-repeat: no-repeat;
+    padding: 1rem 4rem 4rem 4rem; 
+}
+.returns_page_schedule_section .schedule_section2 .schedule_section2_text .checkout_box_heading2{
+    font-weight: 400;
+    font-size: 10.9636px;
+    line-height: 19px;
+    letter-spacing: -0.02em;
+    color: #70758A;
+    padding: 0 2rem;
+    margin-bottom: 1rem;
+}
+.returns_page_schedule_section .schedule_section2 .schedule_section2_text span{
+    color: #2A3592;
+}
+.returns_page_schedule_section .schedule_section2 .schedule_section2_text .checkout_box{
+    width: 300px;
+}
+.returns_page_schedule_section .schedule_section2 .schedule_section2_text .checkout_box .checkout_box_heading {
+    padding: 1rem 1rem 0rem 1rem;
+}
+.returns_page_schedule_section .schedule_section2 .schedule_section2_text .checkout_box .checkout_box_heading2 {
+    padding: 0 1rem;
+}
+.returns_page_schedule_section .schedule_section2 .schedule_section2_text .checkout_box .checkout_box_list {
+    padding: 0.6rem 1rem;
+}
+.returns_page_schedule_section .schedule_section2 .schedule_section2_text .checkout_box .checkout_box_list h3{
+    font-size: 14px;
+    line-height: 16px;
+}
+.returns_page_schedule_section .schedule_section2 .schedule_section2_text .checkout_box .checkout_box_list span{
+    font-size: 10px;
+}
+
+.returns_page_getscore_section{
+    width: 40%;
+    margin: auto;
+    text-align: center;
+    padding: 2rem;
+}
+@media only screen and (max-width: 668px) {
+    .returns_page_getscore_section{
+        width: 90%;
+    }
+}
+
+.returns_page_getscore_section .returns_page_getscore_section_text h6{
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #000000;
+    margin-top: 20px;
+}
+.returns_page_getscore_section .returns_page_getscore_section_text p{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #70758A;
+    margin-top: 10px;
+}
+.returns_page_unfortunately_section{
+    width: 60%;
+    margin: 1rem auto;
+}
+@media only screen and (max-width: 668px) {
+    .returns_page_unfortunately_section{
+        width: 90%;
+    }
+}
+.returns_page_unfortunately_section .returns_page_unfortunately_section_box{
+    background: #F7F8FF;
+    box-shadow: 0px 8px 16px #E5E7EE;
+    border-radius: 4px;
+    padding: 2rem;
+    text-align: center;
+    /* width: fit-content; */
+}
+.returns_page_unfortunately_section .returns_page_unfortunately_section_box h6{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #2A3592;
+}
+

@@ -1,24 +1,24 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import "./category.css";
 
 
-
-import category_1 from "../assets/img/category/category_1.png"
-import category_2 from "../assets/img/category/category_2.png"
-import category_3 from "../assets/img/category/category_3.png"
-import category_4 from "../assets/img/category/category_4.png"
-import category_5 from "../assets/img/category/category_5.png"
-import category_6 from "../assets/img/category/category_6.png"
-import category_7 from "../assets/img/category/category_7.png"
-import category_8 from "../assets/img/category/category_8.png"
-import category_9 from "../assets/img/category/category_9.png"
-import category_10 from "../assets/img/category/category_10.png"
-import category_11 from "../assets/img/category/category_11.png"
-import category_12 from "../assets/img/category/category_12.png"
-import category_13 from "../assets/img/category/category_13.png"
-import category_14 from "../assets/img/category/category_14.png"
-import Footer from '../components/footer';
-import ProductFilters from '../components/category/productFilters';
+import category_1 from "../../assets/img/category/category_1.png"
+import category_2 from "../../assets/img/category/category_2.png"
+import category_3 from "../../assets/img/category/category_3.png"
+import category_4 from "../../assets/img/category/category_4.png"
+import category_5 from "../../assets/img/category/category_5.png"
+import category_6 from "../../assets/img/category/category_6.png"
+import category_7 from "../../assets/img/category/category_7.png"
+import category_8 from "../../assets/img/category/category_8.png"
+import category_9 from "../../assets/img/category/category_9.png"
+import category_10 from "../../assets/img/category/category_10.png"
+import category_11 from "../../assets/img/category/category_11.png"
+import category_12 from "../../assets/img/category/category_12.png"
+import category_13 from "../../assets/img/category/category_13.png"
+import category_14 from "../../assets/img/category/category_14.png"
+import Footer from '../../components/footer/index';
+import ProductFilters from '../../components/category/productFilters';
 import { Nav, Tab } from 'react-bootstrap';
 
 const Category = () => {

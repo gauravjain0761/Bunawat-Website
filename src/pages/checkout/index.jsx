@@ -2,9 +2,11 @@ import React from "react";
 import { Col, Container, Row, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./checkout.css";
+import FooterStrip from "../../components/footer/footerStrip";
 
 const Checkout = () => {
   return (
+    <>
     <div id="checkout">
       <Container>
         <div className="checkout_great">
@@ -281,6 +283,8 @@ const Checkout = () => {
         </Row>
       </Container>
     </div>
+      <FooterStrip />
+      </>
   );
 };
 

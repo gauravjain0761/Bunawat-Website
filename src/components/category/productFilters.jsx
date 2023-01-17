@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Radio from '@mui/material/Radio';
@@ -6,9 +6,12 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import { Box } from '@mui/system';
+import { Button, ButtonGroup, TextField } from '@mui/material';
 
 function ProductFilters () {
-    const [age, setAge] = React.useState('');
+    const [age, setAge] = useState('');
+    const [showColor, setShowColor] = useState(false);
+    const [showPrice, setShowPrice] = useState(false);
 
     const handleChange = (event) => {
         setAge(event.target.value);
@@ -171,7 +174,36 @@ function ProductFilters () {
                         </FormControl>
                     </div>
 
-                    <div className='color_wrapper common_select_wrap'>
+
+                    {showColor && (
+                        <div className='color_wrapper_box'>
+                        <div className='color_wrapper_box_child'>
+                            <h6>Colour</h6>
+                            <span>Clear</span>
+                        </div>
+                        <ButtonGroup variant="contained" aria-label="outlined primary button group" className='color_wrapper_box_child_colorbtn'>
+                            <Button style={{background: "#E76666", border: "none"}}>.</Button>
+                            <Button style={{background: "#FAA652", border: "none"}}></Button>
+                            <Button style={{background: "#F2F243", border: "none"}}></Button>
+                            <Button style={{background: "#83E46B", border: "none"}}></Button>
+                            <Button style={{background: "#39C9C9", border: "none"}}></Button>
+                            <Button style={{background: "#4B73EA", border: "none"}}></Button>
+                            <Button style={{background: "#7A2ACB", border: "none"}}></Button>
+                            <Button style={{background: "#F249C8", border: "none"}}></Button>
+                        </ButtonGroup>
+                        <div className='color_wrapper_box_child'>
+                            <h6>Shade</h6>
+                            <span>Clear</span>
+                        </div>
+                        <div className='color_wrapper_box_child'>
+                            <Button variant="contained" className='shade_btn' style={{background: "#CCCCCC"}}>Light</Button>
+                            <Button variant="contained" className='shade_btn' style={{background: "#AAAAAA"}}>Medium</Button>
+                            <Button variant="contained" className='shade_btn' style={{background: "#333333"}}>Dark</Button>
+                        </div>
+                    </div>
+                    )}
+
+                    <div className='color_wrapper common_select_wrap' onClick={() => setShowColor(true)} style={{cursor: "pointer"}}>
                         <p>Colour</p>
                         <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="2.08008" y="2" width="36" height="36" rx="18" fill="url(#paint0_angular_1310_4720)" stroke="white" strokeWidth="4" />
@@ -189,6 +221,7 @@ function ProductFilters () {
                             </defs>
                         </svg>
                     </div>
+
                     <div className="common_select_wrap">
                         <FormControl>
                             <Select
@@ -430,9 +463,21 @@ function ProductFilters () {
                         </FormControl>
                     </div>
 
-                    <div className='common_select_wrap'>
+                    {showPrice && (
+                    <div className='price_select_wrap_box'>
+                       <div className='price_select_wrap_box_child'>
+                        <h6>From</h6>
+                        <TextField id="standard-basic" label="₹1000" variant="standard" />
+                       </div>
+                       <div className='price_select_wrap_box_child'>
+                        <h6>To</h6>
+                        <TextField id="standard-basic" label="₹3500" variant="standard" />
+                       </div>
+                    </div>
+                    )}
+                    <div className='common_select_wrap' onClick={() => setShowPrice(true)} style={{cursor: "pointer"}}>
                             <div className='color_wrapper'>
-                                <p>price</p>
+                                <p>Price</p>
                                 <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1.51318 1L5.33436 5L9.16024 1" stroke="#2A3592" strokeWidth="1.7" strokeMiterlimit="10" />
                                 </svg>

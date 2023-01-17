@@ -35,7 +35,7 @@ export default function Header() {
 
     const onChagewalletbar = () => {
         const current_loction = window.location.pathname;
-        var mypath = ["/category", "/product", "/checkout", "/orderConfirmation", "/userProfile", "/reviews", "/404", "/returns" ].includes(current_loction)
+        var mypath = ["/category", "/product", "/checkout", "/orderConfirmation", "/userProfile", "/reviews", "/404", "/returns", "/sizeGuide" ].includes(current_loction)
         if (mypath) {
             setHeaderColor(true);
         }

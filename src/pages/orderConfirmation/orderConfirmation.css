@@ -134,3 +134,84 @@
     color: #2A3592;
     margin-bottom: 2rem;
 }
+
+.shiping_status_box{
+    background: #FFFFFF;
+    border-radius: 4px;
+    padding: 2rem;
+    width: 40%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+@media (max-width: 767px) {
+    .shiping_status_box{
+        width: 80%;
+        margin: auto;
+    }
+}
+.shiping_status_box h6{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    color: #000000;
+}
+.shiping_status_box span{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.02em;
+    color: #9A9EB0;
+}
+.shiping_status_box .ordercConfirmation_top_help{
+    margin: 0rem 0;
+    justify-content: end;
+}
+
+.return_status_box{
+    background: #FFFFFF;
+    border-radius: 4px;
+    width: 40%;
+    margin: auto;
+    padding-top: 1rem;
+}
+@media (max-width: 767px) {
+    .return_status_box{
+        width: 80%;
+        margin: auto;
+    }
+}
+.return_status_box .return_status_box_list{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+}
+.return_status_box h6{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    color: #000000;
+}
+.return_status_box span{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 10px;
+    letter-spacing: -0.02em;
+    color: #9A9EB0;
+}
+.return_status_box .shiping_status_box_footer{
+    background: #2A3592;
+    border-radius: 0 0 4px 4px;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+.return_status_box .shiping_status_box_footer h6{
+    color: #fff;
+}
+.return_status_box .shiping_status_box_footer span{
+    color: #fff;
+}

@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import TrackOrder from "../trackOrder";
 
 const FooterStrip = () => {
+  const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
   return (
     <>
       <div className="footer_header_wrap_srip">
@@ -20,7 +25,7 @@ const FooterStrip = () => {
               </Link>
             </li>
             <li>
-              <Link to="/">
+              <Link to="/returns">
                 <p>Returns</p>
               </Link>
             </li>
@@ -35,9 +40,9 @@ const FooterStrip = () => {
               </Link>
             </li>
             <li>
-              <Link to="/">
+              <div onClick={handleShow} style={{cursor: "pointer"}}>
                 <p>Track Order</p>
-              </Link>
+              </div>
             </li>
           </ul>
 
@@ -64,6 +69,7 @@ const FooterStrip = () => {
           </div>
         </div>
       </div>
+      <TrackOrder show={show} handleClose={handleClose} />
     </>
   );
 };

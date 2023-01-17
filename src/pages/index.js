@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, Router } from "react-router-dom";
 import Layout from "../components/Layout";
 import Home from "./home";
-import Category from "./category";
+import Category from "./category/category";
 import Product from "./product";
 import BASE_URL from "../_constant/index";
 import Checkout from "./checkout/index";
@@ -12,6 +12,7 @@ import Reviews from "./reviews/index";
 import ClubHome from "./clubHome/index";
 import ErrorPage from "./404/index";
 import Returns from "./returns/index";
+import SizeGuide from "./sizeGuide";
 
 
 export default function index({ socket }) {
@@ -57,6 +58,10 @@ export default function index({ socket }) {
 
                     <Route exact path={BASE_URL.BASE_URL + "returns"}>
                         <Returns />
+                    </Route>
+
+                    <Route exact path={BASE_URL.BASE_URL + "sizeGuide"}>
+                        <SizeGuide />
                     </Route>
                     
                 </Switch>

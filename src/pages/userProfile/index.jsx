@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import EventsClubModule from '../../components/userProfile/eventsClubModule';
 import SavedAddressModule from '../../components/userProfile/savedAddressModule';
 import UserProfileModule from '../../components/userProfile/userProfileModule';
-import "./style.css";
+import "./userProfile.css";
 
 const UserProfile = () => {
   return (
