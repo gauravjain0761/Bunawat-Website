@@ -124,3 +124,35 @@
     letter-spacing: -0.02em;
     color: #2A3592;
 }
+
+/* mobile responsive */
+@media only screen and (max-width: 668px) {
+    .table-bordered thead td{
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 24px;
+        text-align: center;
+        letter-spacing: -0.02em;
+        color: #2A3592;
+    }
+     .table-bordered thead th{
+        font-weight: 800;
+        font-size: 10px;
+        line-height: 16px;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        color: #2A3592;
+     }
+     .table-bordered td{
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 24px;
+        text-align: center;
+        letter-spacing: -0.02em;
+        color: #2A3592;
+     }
+     .sigeGuide_page_measure_text .sigeGuide_page_measure_text_list p{
+        font-size: 12px;
+        color: #2A3592;
+    }
+  }

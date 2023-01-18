@@ -327,3 +327,50 @@
 .professionals_section_footer_join .btn:hover{
     border: 2px solid #fff;
 }
+
+
+@media only screen and (max-width: 668px) {
+    .clubHome_top_text{
+        display: none;
+     }
+     .clubHome_top_text_mobile{
+        display: block;
+     }
+     .clubHome_top_text_mobile .clubHome_top_text_btn {
+        margin-top: 18px;
+        border-top: 1px solid #fff;
+        padding-top: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .clubHome_top_text h3 {
+        font-size: 36px;
+    }
+    .clubHome_menu .btn {
+        font-size: 9px;
+        padding: 0;
+    }
+    .eventsClubBox_first_workshop {
+        padding: 1rem !important;
+    }
+    .eventsClubBox_second {
+        padding: 1rem 0rem !important;
+    }
+    .eventsClubBox_second_bottom {
+        align-items: center;
+    }
+    .professionals_section_footer_join {
+        padding: 1rem;
+    }
+    .professionals_section_footer_join .btn {
+        margin-top: 10px;
+        padding: 0.6rem 1.3rem;
+    }
+    .professionals_section_footer_join .professionals_section_footer_join_text h6 {
+        font-size: 9px;
+    }
+    .professionals_section_footer_join .professionals_section_footer_join_text p {
+        font-size: 8px;
+    }
+  }

@@ -70,3 +70,16 @@
   color: #9A9EB0;
   border: none;
 }
+
+.mobile_view{
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .desktop_view{
+        display: none;
+    }
+    .mobile_view{
+        display: block;
+    }
+  }

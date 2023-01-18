@@ -98,6 +98,68 @@ const Returns = () => {
       </Row>
     </div>
 
+    <div className='returns_page_schedule_section returns_page_schedule_section_mobile'>
+      <Row>
+        <Col md={6}>
+          <div className='schedule_section2'>
+            <div className='schedule_section2_text'>
+            <div className="checkout_box">
+              <div className="checkout_box_heading"> 
+              <img src="../img/returnpolicy.png" alt="reviewyourorder" width="22" style={{marginRight: "8px"}} /> Schedule a Return
+              </div>
+              <div className='checkout_box_heading2'>Select the items you would like to return. A pickup will be scheduled for 19th June, 7am—7pm.</div>
+              <div className="checkout_box_list">
+                <div style={{display: "flex"}}>
+                  <FormControlLabel value="female" control={<Radio />} style={{marginRight: "0"}} />
+                  <div>
+                    <h3>Synthetic Floral Print Sari</h3>
+                    <span>Lemon Yellow • Medium • 1 unit</span>
+                  </div>
+                </div>
+                <div>
+                  <h3>₹4,500</h3>
+                </div>
+              </div>
+              <div className="checkout_box_list">
+              <div style={{display: "flex"}}>
+                  <FormControlLabel value="female" control={<Radio />} style={{marginRight: "0"}}/>
+                  <div>
+                    <h3>Pink Floral Sari & Jacket</h3>
+                    <span>Medium • 2 units</span>
+                  </div>
+                </div>
+                <div>
+                  <h3>
+                    ₹10,200
+                  </h3>
+                </div>
+              </div>
+              <div className="checkout_box_footer">
+                <div className="checkout_box_list">
+                  <div>
+                    <h3>Return</h3>
+                  </div>
+                  <div>
+                    <h3>
+                      Get ₹4,500 Store Credit
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </Col>
+        <Col md={6}>
+          <div className='schedule_section1_text'>
+            <h6>Schedule a return</h6>
+            <p>Go to your order page from your email, or by using your order number. If it’s within the return window, you’ll see a return button. Select the clothes you want to send back, and we’ll pick them up within the next 3 days.</p>
+            <Button>Track Order</Button>
+          </div>
+        </Col>
+      </Row>
+    </div>
+
     <div className='returns_page_getscore_section'>
       <div className='returns_page_getscore_section_text'>
         <img src='../img/Get-store-credit.png' alt="Store Credit" />

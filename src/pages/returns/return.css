@@ -6,12 +6,7 @@
     width: 40%;
     margin: auto;
 }
-@media only screen and (max-width: 668px) {
-    .returns_page_top{
-        width: 90%;
-        margin: auto;
-    }
-  }
+
 .returns_page_top h3{
     font-family: NewScript-2;
     font-weight: 600;
@@ -218,4 +213,29 @@
     letter-spacing: -0.02em;
     color: #2A3592;
 }
+
+.returns_page_schedule_section_mobile{
+    display: none;
+}
+
+@media only screen and (max-width: 668px) {
+    .returns_page_top{
+        width: 90%;
+        margin: auto;
+    }
+    .returns_page_schedule_section{
+        display: none;
+    }
+    .returns_page_schedule_section_mobile{
+        display: block;
+    }
+    .returns_page_schedule_section .schedule_section2 {
+        background-position: center;
+        padding: 1rem 1rem 6rem 2.6rem;
+    }
+    .returns_page_schedule_section .schedule_section1_text {
+        padding: 3rem;
+        text-align: center;
+    }
+  }
 

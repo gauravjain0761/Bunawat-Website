@@ -1246,7 +1246,8 @@ const ProductBottomData = ({ product, width }) => {
                 </div>
             </div>
 
-            <div className="product_filters product_filters_wrap">
+            <div className="product_filters">
+                <div className='product_filters_wrap'>
                 <div className="product_filters_wrap product_page_filtter">
                     <div
                         className={
@@ -1402,6 +1403,7 @@ const ProductBottomData = ({ product, width }) => {
                         ></li>
                         <li style={{ backgroundColor: "#037A44" }}></li>
                     </ul>
+                </div>
                 </div>
             </div>
 

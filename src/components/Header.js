@@ -29,6 +29,7 @@ export default function Header() {
     const [calanderOpen, setCalanderOpen] = useState(false);
 
     const [show, setShow] = useState(false);
+    
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -40,13 +41,13 @@ export default function Header() {
             setHeaderColor(true);
         }
         else {
-            setHeaderColor(false)
+            setHeaderColor(false);
         }
     }
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
-            setScroll(window.scrollY > 50);
+            setScroll(window.scrollY > 10);
         });
     }, []);
     useEffect(() => {

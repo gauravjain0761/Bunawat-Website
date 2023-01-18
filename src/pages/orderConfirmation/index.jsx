@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import "./orderConfirmation.css";
 import FooterStrip from "../../components/footer/footerStrip";
@@ -124,7 +124,8 @@ const OrderConfirmation = () => {
                     </h6>
                 </div>
               </div>
-              <div className="orderConfirmation_box_data">
+
+              <div className="orderConfirmation_box_data orderConfirmation_box_data_desktopView">
                 <div>
                   <h3>Jemma Bunawati</h3>
                   <h6>65/1, Mantri Lawns, Fountain Road, <br />Hadapsar, Pune 411028 MH</h6>
@@ -152,6 +153,44 @@ const OrderConfirmation = () => {
                   </Link>
                 </div>
               </div>
+              
+              {/* For mobile View start */}
+              <div className="orderConfirmation_box_data orderConfirmation_box_data_mobileView">
+                <Row>
+                  <Col xs={12}>
+                    <div>
+                      <h3>Jemma Bunawati</h3>
+                      <h6>65/1, Mantri Lawns, Fountain Road, <br />Hadapsar, Pune 411028 MH</h6>
+                      <h6><i>+91 97631 12781</i></h6>
+                      <span>Delivers 17—20th June</span>
+                    </div>
+                  </Col>
+                  <Col xs={12}>
+                    <div style={{marginTop: "2rem"}}>
+                    <Link to="/userProfile">
+                    <h4>
+                    <img src="../img/allorders.png" alt="allorders" width="22" style={{marginRight: "8px"}} /> 
+                    All Orders
+                    </h4>
+                    </Link>
+                    <Link to="/orderConfirmation">
+                    <h4>
+                    <img src="../img/reportaproblem.png" alt="reportaproblem" width="22" style={{marginRight: "8px"}} /> 
+                    Report a Problem
+                    </h4>
+                    </Link>
+                    <Link to="/orderConfirmation">
+                    <h4>
+                    <img src="../img/returnpolicy.png" alt="returnpolicy" width="22" style={{marginRight: "8px"}} /> 
+                    Return Policy
+                    </h4>
+                    </Link>
+                  </div>
+                  </Col>
+                </Row>
+              </div>
+              {/* For mobile View end */}
+
             </div>
     </Container>
     <ShippingStatus />

@@ -71,3 +71,20 @@
     letter-spacing: -0.02em;
     color: #2A3592;
 }
+
+/* mobile responsive */
+
+@media only screen and (max-width: 668px) {
+    .cloth_title_wrap h2 {
+      text-align: start !important;
+      margin-left: 0.6rem;
+      margin-bottom: 1rem !important;
+    }
+    .cloth_title_wrap h2 .limited_edition {
+        font-size: 36px !important;
+    }
+    .cloth_title_wrap h2 {
+        font-size: 36px !important;
+        line-height: 50px !important;
+    }
+  }

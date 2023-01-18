@@ -941,7 +941,6 @@ const ProductCard = ({ product, setSwipeableDisable, productBottomData, index, w
                     </div>
                 }
             </div>
-
         </>
     )
 }

@@ -2,8 +2,44 @@ import React from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { GoPrimitiveDot } from "react-icons/go";
 import { FiInstagram } from "react-icons/fi";
+import Slider from "react-slick";
 
 const ClubModule = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 700,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
   return (
     <>
       <div className="clubModule">
@@ -42,7 +78,7 @@ const ClubModule = () => {
                 <div className="eventsClubBox">
                   <Container>
                     <Row>
-                      <Col sm={3} className="eventsClubBox_first_workshop">
+                      <Col sm={3} xs={3} className="eventsClubBox_first_workshop">
                         <div>
                           <span>June</span>
                           <h4>30</h4>
@@ -51,7 +87,7 @@ const ClubModule = () => {
                           <span>Free</span>
                         </div>
                       </Col>
-                      <Col sm={9}>
+                      <Col sm={9} xs={9}>
                         <div className="eventsClubBox_second">
                           <div className="eventsClubBox_second_top">
                             <span style={{ color: "#FF6C6C" }}>
@@ -90,7 +126,7 @@ const ClubModule = () => {
                   <Container>
                     <Row>
                       <Col
-                        sm={3}
+                        sm={3} xs={3}
                         className="eventsClubBox_first_workshop"
                         style={{ background: "#F2C34B" }}
                       >
@@ -102,7 +138,7 @@ const ClubModule = () => {
                           <span>Free</span>
                         </div>
                       </Col>
-                      <Col sm={9}>
+                      <Col sm={9} xs={9}>
                         <div className="eventsClubBox_second">
                           <div className="eventsClubBox_second_top">
                             <span style={{ color: "#F2C34B" }}>
@@ -143,7 +179,7 @@ const ClubModule = () => {
                   <Container>
                     <Row>
                       <Col
-                        sm={3}
+                        sm={3} xs={3}
                         className="eventsClubBox_first_workshop"
                         style={{ background: "#4B84F2" }}
                       >
@@ -155,7 +191,7 @@ const ClubModule = () => {
                           <span>Free</span>
                         </div>
                       </Col>
-                      <Col sm={9}>
+                      <Col sm={9} xs={9}>
                         <div className="eventsClubBox_second">
                           <div className="eventsClubBox_second_top">
                             <span style={{ color: "#4B84F2" }}>
@@ -195,7 +231,7 @@ const ClubModule = () => {
                 <div className="eventsClubBox">
                   <Container>
                     <Row>
-                      <Col sm={3} className="eventsClubBox_first">
+                      <Col sm={3} xs={3} className="eventsClubBox_first">
                         <div>
                           <span>July</span>
                           <h4>6</h4>
@@ -204,7 +240,7 @@ const ClubModule = () => {
                           <span>Free</span>
                         </div>
                       </Col>
-                      <Col sm={9}>
+                      <Col sm={9} xs={9}>
                         <div className="eventsClubBox_second">
                           <div className="eventsClubBox_second_top">
                             <span>
@@ -237,7 +273,7 @@ const ClubModule = () => {
                 <div className="eventsClubBox" style={{ marginTop: "1rem" }}>
                   <Container>
                     <Row>
-                      <Col sm={3} className="eventsClubBox_first_premium">
+                      <Col sm={3} xs={3} className="eventsClubBox_first_premium">
                         <div>
                           <span>July</span>
                           <h4>13</h4>
@@ -246,7 +282,7 @@ const ClubModule = () => {
                           <span>₹3,200</span>
                         </div>
                       </Col>
-                      <Col sm={9} className="eventsClubBox_second_premium">
+                      <Col sm={9} xs={9} className="eventsClubBox_second_premium">
                         <div className="eventsClubBox_second_top_premium">
                           <span className="eventsClubBox_second_top_premium_btn">
                             <GoPrimitiveDot /> Premium Event
@@ -273,10 +309,10 @@ const ClubModule = () => {
                 <div className="clubModule_whatsapp">
                   <Container>
                     <Row>
-                      <Col sm={2}>
+                      <Col sm={2} xs={2}>
                         <img src="./img/whatsapp-icon.png" alt="whatsapp" />
                       </Col>
-                      <Col sm={10}>
+                      <Col sm={10} xs={10}>
                         <div className="clubModule_whatsapp_text">
                           <h6>Get instant updates</h6>
                           <p>
@@ -335,8 +371,7 @@ const ClubModule = () => {
                 Introducing—this <br /> month’s professionals
               </h3>
             </div>
-            <Row>
-              <Col md={3}>
+              <Slider {...settings}>
                 <div className="professionals_section_card1">
                   <div className="professionals_section_card_text">
                     <h6>Divya Sancheti</h6>
@@ -349,8 +384,7 @@ const ClubModule = () => {
                     </span>
                   </div>
                 </div>
-              </Col>
-              <Col md={3}>
+              
                 <div className="professionals_section_card1">
                   <div className="professionals_section_card_text">
                     <h6>Divya Sancheti</h6>
@@ -363,8 +397,7 @@ const ClubModule = () => {
                     </span>
                   </div>
                 </div>
-              </Col>
-              <Col md={3}>
+              
                 <div className="professionals_section_card1">
                   <div className="professionals_section_card_text">
                     <h6>Divya Sancheti</h6>
@@ -377,8 +410,7 @@ const ClubModule = () => {
                     </span>
                   </div>
                 </div>
-              </Col>
-              <Col md={3}>
+              
                 <div className="professionals_section_card1">
                   <div className="professionals_section_card_text">
                     <h6>Divya Sancheti</h6>
@@ -391,8 +423,33 @@ const ClubModule = () => {
                     </span>
                   </div>
                 </div>
-              </Col>
-            </Row>
+
+                <div className="professionals_section_card1">
+                  <div className="professionals_section_card_text">
+                    <h6>Divya Sancheti</h6>
+                    <p>
+                      An established makeup artist from our hometown, Pune.
+                      She’s equally comfortable working with models and brides.
+                    </p>
+                    <span>
+                      <FiInstagram /> @divyasancheti
+                    </span>
+                  </div>
+                </div>
+
+                <div className="professionals_section_card1">
+                  <div className="professionals_section_card_text">
+                    <h6>Divya Sancheti</h6>
+                    <p>
+                      An established makeup artist from our hometown, Pune.
+                      She’s equally comfortable working with models and brides.
+                    </p>
+                    <span>
+                      <FiInstagram /> @divyasancheti
+                    </span>
+                  </div>
+                </div>
+                </Slider>
 
             <div className="professionals_section_footer">
               <p>
@@ -441,7 +498,7 @@ const ClubModule = () => {
 
               <div className="professionals_section_footer_join">
                 <Row>
-                  <Col sm={8}>
+                  <Col sm={8} xs={8}>
                     <div className="professionals_section_footer_join_text">
                       <img src="./img/club-join.png" alt="club-join" />
                       <div>
@@ -450,7 +507,7 @@ const ClubModule = () => {
                       </div>
                     </div>
                   </Col>
-                  <Col sm={4}>
+                  <Col sm={4} xs={4}>
                     <Button variant="outline-primary">Join</Button>
                   </Col>
                 </Row>

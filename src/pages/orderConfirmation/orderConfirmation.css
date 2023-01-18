@@ -148,7 +148,7 @@
 @media (max-width: 767px) {
     .shiping_status_box{
         width: 80%;
-        margin: auto;
+        margin: 2rem auto;
     }
 }
 .shiping_status_box h6{
@@ -208,6 +208,7 @@
     padding: 2rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .return_status_box .shiping_status_box_footer h6{
     color: #fff;
@@ -215,3 +216,36 @@
 .return_status_box .shiping_status_box_footer span{
     color: #fff;
 }
+.orderConfirmation_box_data_mobileView{
+    display: none;
+}
+@media only screen and (max-width: 600px) {
+    .orderConfirmation_box_data_mobileView{
+        display: block;
+    }
+    .orderConfirmation_box_data_desktopView{
+        display: none;
+    }
+    .orderConfirmation_box_list h3 {
+        font-size: 12px;
+    }
+    .orderConfirmation_box_list span {
+        font-size: 10px;
+    }
+    .shiping_status_box h6 {
+        font-size: 12px;
+    }
+    .shiping_status_box span {
+        font-size: 10px;
+    }
+    .return_status_box .shiping_status_box_footer {
+        padding: 1rem;
+        align-items: center;
+    }
+    .shiping_status_box {
+        padding: 1rem;
+    }
+    .return_status_box .return_status_box_list {
+        padding: 0 1rem 1rem 1rem;
+    }
+  }

@@ -8,6 +8,7 @@ import Slider from "@mui/material/Slider";
 import VolumeDown from "@mui/icons-material/VolumeDown";
 import VolumeUp from "@mui/icons-material/VolumeUp";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
+import FooterStrip from "../../components/footer/footerStrip";
 
 const Reviews = () => {
   const [value, setValue] = React.useState(2);
@@ -65,6 +66,7 @@ const Reviews = () => {
     },
   ];
   return (
+    <>
     <div id="reviews">
       <Container>
         <div className="reviewspage_heading">
@@ -172,6 +174,8 @@ const Reviews = () => {
         </Row>
       </Container>
     </div>
+      <FooterStrip />
+    </>
   );
 };
 

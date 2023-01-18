@@ -5,6 +5,7 @@ import { TiDelete } from 'react-icons/ti';
 import { FaPercentage } from 'react-icons/fa';
 import { BsTag } from 'react-icons/bs';
 import { FormControlLabel, Radio } from '@mui/material';
+import { Col, Row } from 'react-bootstrap';
 
 const ReturnStatus = () => {
   return (
@@ -65,13 +66,18 @@ const ReturnStatus = () => {
           </div>
 
           <div className='return_status_box_list' style={{background: "#F7F8FF", border: "1px solid #EAEBF0"}}>
-                  <div>
-                    <h6><BsTag /> Please keep tags & packaging intact</h6>
-                  </div>
-                  <div>
-                    <h6><FaPercentage /> Coupon amount will be deducted from refund</h6>
-                  </div>
-                
+                  <Row>
+                    <Col sm={6} xs={12}>
+                      <div style={{paddingTop: "0.6rem"}}>
+                        <h6><BsTag /> Please keep tags & packaging intact</h6>
+                      </div>
+                    </Col>
+                    <Col sm={6} xs={12}>
+                      <div style={{paddingTop: "0.6rem"}}>
+                        <h6><FaPercentage /> Coupon amount will be deducted from refund</h6>
+                      </div>
+                    </Col>
+                  </Row>
           </div>
 
           <div className='shiping_status_box_footer'>
