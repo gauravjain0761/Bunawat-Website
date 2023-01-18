@@ -26,16 +26,16 @@ const ClubModule = () => {
       {
         breakpoint: 700,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
         }
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
+          slidesToShow: 2,
+          slidesToScroll: 2
         }
       }
     ]
@@ -372,6 +372,7 @@ const ClubModule = () => {
               </h3>
             </div>
               <Slider {...settings}>
+               <div>
                 <div className="professionals_section_card1">
                   <div className="professionals_section_card_text">
                     <h6>Divya Sancheti</h6>
@@ -383,6 +384,7 @@ const ClubModule = () => {
                       <FiInstagram /> @divyasancheti
                     </span>
                   </div>
+                </div>
                 </div>
               
                 <div className="professionals_section_card1">

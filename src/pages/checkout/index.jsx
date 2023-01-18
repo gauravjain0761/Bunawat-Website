@@ -1,10 +1,15 @@
-import React from "react";
+import React,{ useState } from "react";
 import { Col, Container, Row, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./checkout.css";
 import FooterStrip from "../../components/footer/footerStrip";
 
 const Checkout = () => {
+  const [showCoupon, setShowCoupon] = useState(false);
+
+  const handleClose = () => setShowCoupon(false);
+  const handleShow = () => setShowCoupon(true);
+
   return (
     <>
     <div id="checkout">
