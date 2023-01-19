@@ -3,9 +3,16 @@ import { Col, Container, Row, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./checkout.css";
 import FooterStrip from "../../components/footer/footerStrip";
+import ApplyCouponModal from "../../components/checkout/ApplyCouponModal";
+import { FormControlLabel, Radio } from "@mui/material";
+import CodConfirmationModal from "../../components/checkout/CodConfirmationModal";
 
 const Checkout = () => {
   const [showCoupon, setShowCoupon] = useState(false);
+  const [showCodModal, setShowCodModal] = useState(false);
+
+  const handleCloseCodModal = () => setShowCodModal(false);
+  const handleShowCodModal = () => setShowCodModal(true);
 
   const handleClose = () => setShowCoupon(false);
   const handleShow = () => setShowCoupon(true);
@@ -71,7 +78,7 @@ const Checkout = () => {
                   </h3>
                 </div>
               </div>
-              <Link to="/orderConfirmation">
+              <Link to="/paymentOptions">
               <div className="checkout_box_footer">
                 <div className="checkout_box_list">
                   <div>
@@ -96,7 +103,7 @@ const Checkout = () => {
               </Link>
             </div>
 
-            <div className="checkout_box" style={{ marginTop: "2rem" }}>
+            <div className="checkout_box" style={{ marginTop: "2rem" }} onClick={handleShow}>
               <div
                 className="checkout_box_heading"
                 style={{ paddingBottom: "2rem", cursor: "pointer" }}
@@ -117,7 +124,7 @@ const Checkout = () => {
                 }}
               >
                 <div>
-                <img src="../img/usestorecredit.png" alt="usestorecredit" width="22" style={{marginRight: "8px"}} />
+                <FormControlLabel value="male" control={<Radio />} style={{margin: "0", padding: "0", height: "10px"}} />
                 Use Store credit
                 </div>
                 <span style={{ fontWeight: "600", fontSize: "14px" }}>
@@ -256,7 +263,7 @@ const Checkout = () => {
               <img src="../img/shipping-options.png" alt="shipping-options" width="22" style={{marginRight: "8px"}} />
                  Shipping Options
               </div>
-              <div className="checkout_box_list" style={{ background: "#EDF0FF", borderRadius: "4px", paddingTop: "1rem" }}>
+              <div className="checkout_box_list" style={{ background: "#EDF0FF", borderRadius: "4px", paddingTop: "1rem", cursor: "pointer" }}>
                 <div>
                   <h3 style={{ color: "#2A3592" }}>Regular Shipping</h3>
                   <span style={{ color: "#2A3592" }}>Delivers 17—20th June</span>
@@ -265,7 +272,8 @@ const Checkout = () => {
                   <h3 style={{ color: "#2A3592" }}>Free </h3>
                 </div>
               </div>
-              <div className="checkout_box_list">
+
+              <div className="checkout_box_list" onClick={handleShowCodModal} style={{cursor: "pointer"}}>
                 <div>
                   <h3>Cash on Delivery</h3>
                   <span>Delivers 17—20th June</span>
@@ -274,7 +282,8 @@ const Checkout = () => {
                   <h3>₹100 </h3>
                 </div>
               </div>
-              <div className="checkout_box_list">
+
+              <div className="checkout_box_list" style={{cursor: "pointer"}}>
                 <div>
                   <h3>Expedited Shipping</h3>
                   <span>Delivers Monday</span>
@@ -424,7 +433,7 @@ const Checkout = () => {
               <img src="../img/shipping-options.png" alt="shipping-options" width="22" style={{marginRight: "8px"}} />
                  Shipping Options
               </div>
-              <div className="checkout_box_list" style={{ background: "#EDF0FF", borderRadius: "4px", paddingTop: "1rem" }}>
+              <div className="checkout_box_list" style={{ background: "#EDF0FF", borderRadius: "4px", paddingTop: "1rem", cursor: "pointer" }}>
                 <div>
                   <h3 style={{ color: "#2A3592" }}>Regular Shipping</h3>
                   <span style={{ color: "#2A3592" }}>Delivers 17—20th June</span>
@@ -433,7 +442,7 @@ const Checkout = () => {
                   <h3 style={{ color: "#2A3592" }}>Free </h3>
                 </div>
               </div>
-              <div className="checkout_box_list">
+              <div className="checkout_box_list" onClick={handleShowCodModal} style={{cursor: "pointer"}}>
                 <div>
                   <h3>Cash on Delivery</h3>
                   <span>Delivers 17—20th June</span>
@@ -442,7 +451,7 @@ const Checkout = () => {
                   <h3>₹100 </h3>
                 </div>
               </div>
-              <div className="checkout_box_list">
+              <div className="checkout_box_list" style={{cursor: "pointer"}}>
                 <div>
                   <h3>Expedited Shipping</h3>
                   <span>Delivers Monday</span>
@@ -454,7 +463,7 @@ const Checkout = () => {
             </div>
           </Col>
           <Col xs={12} md={5}>
-          <div className="checkout_box" style={{ marginTop: "2rem" }}>
+          <div className="checkout_box" style={{ marginTop: "2rem" }} onClick={handleShow}>
               <div
                 className="checkout_box_heading"
                 style={{ paddingBottom: "2rem", cursor: "pointer" }}
@@ -475,7 +484,7 @@ const Checkout = () => {
                 }}
               >
                 <div>
-                <img src="../img/usestorecredit.png" alt="usestorecredit" width="22" style={{marginRight: "8px"}} />
+                <FormControlLabel value="male" control={<Radio />} style={{margin: "0", padding: "0", height: "10px"}} />
                 Use Store credit
                 </div>
                 <span style={{ fontWeight: "600", fontSize: "14px" }}>
@@ -535,7 +544,7 @@ const Checkout = () => {
                   </h3>
                 </div>
               </div>
-              <Link to="/orderConfirmation">
+              <Link to="/paymentOptions">
               <div className="checkout_box_footer">
                 <div className="checkout_box_list">
                   <div>
@@ -564,7 +573,8 @@ const Checkout = () => {
         </Row>
       </Container>
     </div>
-
+      <ApplyCouponModal showCoupon={showCoupon} handleClose={handleClose} />
+      <CodConfirmationModal showCodModal={showCodModal} handleCloseCodModal={handleCloseCodModal} />
       <FooterStrip />
       </>
   );

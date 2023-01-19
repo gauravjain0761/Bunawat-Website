@@ -7,18 +7,18 @@ import Tabs from 'react-bootstrap/Tabs';
 import ReactInputVerificationCode from "react-input-verification-code";
 import { DayPicker } from 'react-day-picker';
 
-import cart_1 from '../assets/img/cart/cart_1.png';
-import cart_2 from '../assets/img/cart/cart_2.png';
-import cart_3 from '../assets/img/cart/cart_3.png';
+import cart_1 from '../../assets/img/cart/cart_1.png';
+import cart_2 from '../../assets/img/cart/cart_2.png';
+import cart_3 from '../../assets/img/cart/cart_3.png';
 
-import saved_1 from '../assets/img/saved/saved_1.png';
-import saved_2 from '../assets/img/saved/saved_2.png';
-import saved_3 from '../assets/img/saved/saved_3.png';
-import saved_4 from '../assets/img/saved/saved_4.png';
-import saved_5 from '../assets/img/saved/saved_5.png';
-import saved_6 from '../assets/img/saved/saved_6.png';
-import saved_7 from '../assets/img/saved/saved_7.png';
-import saved_8 from '../assets/img/saved/saved_8.png';
+import saved_1 from '../../assets/img/saved/saved_1.png';
+import saved_2 from '../../assets/img/saved/saved_2.png';
+import saved_3 from '../../assets/img/saved/saved_3.png';
+import saved_4 from '../../assets/img/saved/saved_4.png';
+import saved_5 from '../../assets/img/saved/saved_5.png';
+import saved_6 from '../../assets/img/saved/saved_6.png';
+import saved_7 from '../../assets/img/saved/saved_7.png';
+import saved_8 from '../../assets/img/saved/saved_8.png';
 
 export default function Header() {
     const changeloction = window.location.pathname;
@@ -29,14 +29,13 @@ export default function Header() {
     const [calanderOpen, setCalanderOpen] = useState(false);
 
     const [show, setShow] = useState(false);
-    
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     const onChagewalletbar = () => {
         const current_loction = window.location.pathname;
-        var mypath = ["/category", "/product", "/checkout", "/orderConfirmation", "/userProfile", "/reviews", "/404", "/returns", "/sizeGuide" ].includes(current_loction)
+        var mypath = ["/category", "/product", "/checkout", "/orderConfirmation", "/userProfile", "/reviews", "/404", "/returns", "/sizeGuide", "/paymentOptions" ].includes(current_loction)
         if (mypath) {
             setHeaderColor(true);
         }

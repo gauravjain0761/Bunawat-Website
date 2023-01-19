@@ -27,14 +27,15 @@ import recent_view_3 from "../../assets/img/product/recent/recent_view_3.png";
 import recent_view_4 from "../../assets/img/product/recent/recent_view_4.png";
 import recent_view_5 from "../../assets/img/product/recent/recent_view_5.png";
 import recent_view_6 from "../../assets/img/product/recent/recent_view_6.png";
+import WriteAReviews from '../reviews/WriteAReviews';
 
 const ProductBottomData = ({ product, width }) => {
 
     const [age, setAge] = useState("size");
-    const [show, setShow] = useState(false);
+    const [showReviewsWrite, setShowReviewsWrite] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleClose = () => setShowReviewsWrite(false);
+    const handleShow = () => setShowReviewsWrite(true);
 
     const handleChange = (event) => {
         setAge(event.target.value);
@@ -1408,7 +1409,7 @@ const ProductBottomData = ({ product, width }) => {
             </div>
 
 
-            <Modal
+            {/* <Modal
                 show={show}
                 onHide={handleClose}
                 aria-labelledby="contained-modal-title-vcenter"
@@ -1538,7 +1539,8 @@ const ProductBottomData = ({ product, width }) => {
                         </div>
                     </div>
                 </Modal.Body>
-            </Modal>
+            </Modal> */}
+            <WriteAReviews showReviewsWrite={showReviewsWrite} handleClose={handleClose} />
         </div>
     )
 }

@@ -13,6 +13,7 @@ import ClubHome from "./clubHome/index";
 import ErrorPage from "./404/index";
 import Returns from "./returns/index";
 import SizeGuide from "./sizeGuide";
+import PaymentOptions from "../components/checkout/PaymentOptions";
 
 
 export default function index({ socket }) {
@@ -62,6 +63,10 @@ export default function index({ socket }) {
 
                     <Route exact path={BASE_URL.BASE_URL + "sizeGuide"}>
                         <SizeGuide />
+                    </Route>
+
+                    <Route exact path={BASE_URL.BASE_URL + "paymentOptions"}>
+                        <PaymentOptions />
                     </Route>
                     
                 </Switch>
