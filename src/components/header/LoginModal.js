@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import { Modal } from "react-bootstrap";
+import ReactInputVerificationCode from "react-input-verification-code";
 
-const LoginModal = () => {
+const LoginModal = ({showLogIn, handleClose}) => {
+  const [otpverify, setOtpverify] = useState(false);
+
   return (
     <>
       <Modal
