@@ -4,7 +4,7 @@ import '../assets/scss/module/_loader.scss'
 const Loader = () => {
     return (
         <div className="circle-loader"></div>
-    )
+    );
 }
 
-export default Loader
+export default Loader;

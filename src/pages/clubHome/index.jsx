@@ -228,6 +228,7 @@ const ClubHome = () => {
           </Container>
         </div>
       </Tab.Container>
+      
       <ClubModule />
       <FooterStrip />
     </>
