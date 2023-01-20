@@ -34,7 +34,7 @@ function ProductFilters () {
                                         <span className='common_option_span'>fanciest first</span>
                                     </div>
                                 </MenuItem>
-                                <MenuItem value={20} className="common_option_wrap">
+                                <MenuItem value="" className="common_option_wrap">
                                     <div className='common_option'>
                                         <p className='common_option_p'>Newest</p>
                                         <span className='common_option_span'>minimal first</span>
