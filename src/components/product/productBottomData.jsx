@@ -7,8 +7,11 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import { BottomSheet } from 'react-spring-bottom-sheet'
-import 'react-spring-bottom-sheet/dist/style.css'
+import { BottomSheet } from 'react-spring-bottom-sheet';
+import 'react-spring-bottom-sheet/dist/style.css';
+import { FiArrowUpRight } from "react-icons/fi";
+import { MdOutlineKeyboardArrowUp } from "react-icons/md";
+
 
 import product_1 from "../../assets/img/product/product_1.png";
 import product_2 from "../../assets/img/product/product_2.png";
@@ -28,6 +31,7 @@ import recent_view_4 from "../../assets/img/product/recent/recent_view_4.png";
 import recent_view_5 from "../../assets/img/product/recent/recent_view_5.png";
 import recent_view_6 from "../../assets/img/product/recent/recent_view_6.png";
 import WriteAReviews from '../reviews/WriteAReviews';
+import FooterStrip from '../footer/footerStrip';
 
 const ProductBottomData = ({ product, width }) => {
 
@@ -215,7 +219,7 @@ const ProductBottomData = ({ product, width }) => {
                                         </li>
                                         <li>
                                             <div className="pin_code_weap">
-                                                <input type="text" placeholder="Pin Code" />
+                                                <input type="text" placeholder="PIN Code" />
                                                 <div className="edit_icon">
                                                     <svg
                                                         width="9"
@@ -1060,7 +1064,7 @@ const ProductBottomData = ({ product, width }) => {
                         <div className="sell_wrap">
                             <h3>Recently Seen</h3>
                             <Link className="sell_link">
-                                <span>see all recents</span>
+                                <span style={{textTransform: "uppercase"}}>see all recents </span>
                                 <svg
                                     width="7"
                                     height="8"
@@ -1182,6 +1186,10 @@ const ProductBottomData = ({ product, width }) => {
                     </div>
                 </div>
             </div>
+ 
+           <div className="container">
+             <FooterStrip />
+           </div>
 
             <div className="footer_blog_section">
                 <div className="container">
@@ -1287,7 +1295,7 @@ const ProductBottomData = ({ product, width }) => {
                                                 </div>
                                             </div>
                                         </p>
-                                        <div className="chet_size">
+                                        <div className="chet_size chet_size_number">
                                             <span>30</span>
                                             <span>26</span>
                                             <span>30</span>
@@ -1303,7 +1311,7 @@ const ProductBottomData = ({ product, width }) => {
                                                 </div>
                                             </div>
                                         </p>
-                                        <div className="chet_size">
+                                        <div className="chet_size chet_size_number">
                                             <span>30</span>
                                             <span>26</span>
                                             <span>30</span>
@@ -1319,7 +1327,7 @@ const ProductBottomData = ({ product, width }) => {
                                                 </div>
                                             </div>
                                         </p>
-                                        <div className="chet_size">
+                                        <div className="chet_size chet_size_number">
                                             <span>30</span>
                                             <span>26</span>
                                             <span>30</span>
@@ -1335,7 +1343,7 @@ const ProductBottomData = ({ product, width }) => {
                                                 </div>
                                             </div>
                                         </p>
-                                        <div className="chet_size">
+                                        <div className="chet_size chet_size_number">
                                             <span>30</span>
                                             <span>26</span>
                                             <span>30</span>
@@ -1351,11 +1359,30 @@ const ProductBottomData = ({ product, width }) => {
                                                 </div>
                                             </div>
                                         </p>
-                                        <div className="chet_size">
+                                        <div className="chet_size chet_size_number">
                                             <span>30</span>
                                             <span>26</span>
                                             <span>30</span>
                                         </div>
+                                    </div>
+                                </MenuItem>
+
+                                <MenuItem value="" className="common_option_wrap">
+                                    <div className="common_option">
+                                        <p>
+                                            <div className="common_option">
+                                                <div className="d-flex align-items-center common_radio_btn">
+                                                    <span>Size: Select</span>
+                                                </div>
+                                            </div>
+                                        </p>
+                                        <Link to="/sizeGuide" style={{color: "#2A3592"}}>
+                                            <div className="chet_size chet_size_number">
+                                                <span>
+                                                check the Size guide <FiArrowUpRight /> 
+                                                </span>
+                                            </div>
+                                        </Link>
                                     </div>
                                 </MenuItem>
                             </Select>

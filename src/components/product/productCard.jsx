@@ -193,7 +193,7 @@ const ProductCard = ({ product, setSwipeableDisable, productBottomData, index, w
                                         </li>
                                         <li>
                                             <div className="pin_code_weap">
-                                                <input type="text" placeholder="Pin Code" />
+                                                <input type="text" placeholder="PIN Code" />
                                                 <div className="edit_icon">
                                                     <svg
                                                         width="9"
@@ -624,7 +624,7 @@ const ProductCard = ({ product, setSwipeableDisable, productBottomData, index, w
                                         </li>
                                         <li>
                                             <div className="pin_code_weap">
-                                                <input type="text" placeholder="Pin Code" />
+                                                <input type="text" placeholder="PIN Code" />
                                                 <div className="edit_icon">
                                                     <svg
                                                         width="9"

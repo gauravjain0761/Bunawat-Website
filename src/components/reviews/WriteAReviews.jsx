@@ -49,7 +49,7 @@ const WriteAReviews = ({ showReviewsWrite, handleClose }) => {
                   </clipPath>
                 </defs>
               </svg>
-              <span style={{ marginLeft: "22px" }}>Write a Review</span>
+              <span style={{ marginLeft: "22px", fontSize: "16px", fontWeight: "600" }}>Write a Review</span>
               <span className="review_title_wrap_proName">Brocade Kurta</span>
             </div>
             <div className="review_input_wrap">
@@ -69,7 +69,6 @@ const WriteAReviews = ({ showReviewsWrite, handleClose }) => {
               >
                 <div
                   className="review_input_stars"
-                  style={{ display: "flex", justifyContent: "space-between" }}
                 >
                   <Rating
                     name="simple-controlled"
@@ -79,7 +78,9 @@ const WriteAReviews = ({ showReviewsWrite, handleClose }) => {
                     }}
                     style={{
                       display: "flex",
-                      justifyContent: "flex-end",
+                      justifyContent: "space-between",
+                      width: "200px",
+                      fontSize: "30px",
                     }}
                   />
                 </div>

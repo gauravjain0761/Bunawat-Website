@@ -452,8 +452,11 @@ button {
 }
 
 .shop_hald_info p {
-    font-size: 14px;
     color: rgba(0, 0, 0, 0.5);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 6px;
 }
 
 .best_sallying_wrap.common_home_banner {
@@ -1097,6 +1100,10 @@ li.common_option_wrap {
     margin-left: 35px;
     min-width: 30px;
     display: inline-block;
+    text-transform: uppercase;
+}
+.chet_size_number span {
+    margin-left: 50px !important;
 }
 
 .common_select_wrap {
@@ -1199,13 +1206,14 @@ li.common_option_wrap {
 }
 
 .cart_information {
-    padding: 25px 30px;
+    padding: 25px 12px 25px 30px;
     display: flex;
     align-items: center;
 }
 
 .cart_product_info {
     margin-left: 25px;
+    width: 60%;
 }
 
 .card_img {
@@ -1545,6 +1553,7 @@ li.common_option_wrap {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
 .product_info_section {
@@ -1597,6 +1606,7 @@ li.common_option_wrap {
     padding: 3px 6px;
     background-color: #FFF5DA;
     margin-left: 15px;
+    margin-top: 10px;
 }
 
 .product_link svg {
@@ -1609,9 +1619,10 @@ li.common_option_wrap {
 }
 
 .stock_info h3 {
-    font-size: 14px;
+    font-size: 13px;
     color: #2A3592;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 .stock_info p {
@@ -2072,6 +2083,8 @@ li.common_option_wrap {
     font-weight: 600;
     font-size: 18px;
     line-height: 1.44;
+    font-family: NewScript-2;
+    margin-bottom: 10px;
 }
 .workshop_title p{
     font-weight: 400;
@@ -2129,6 +2142,7 @@ li.common_option_wrap {
     left: 0px;
     bottom: 0px;
     width: 100%;
+    border: none;
     background-color: #2A3592;
     height: 56px;
     display: flex;
@@ -2221,7 +2235,13 @@ li.common_option_wrap {
 
 .footer_header_wrap_srip{
     background-color: #fff;
-    padding: 1rem;
+    padding: 1rem 0;
+}
+
+
+.footer_blog_inner .blog_details_wrap {
+    border-top: 1px solid #e7e7e7;
+    margin-top: 1rem;
 }
 
 

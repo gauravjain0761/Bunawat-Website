@@ -112,11 +112,12 @@
     background: #2A3592;
     padding: 1rem;
     width: 100%;
-    border-radius: 0;
+    border-radius: 0 0 0.8rem 0.8rem;
 }
 .reviews_modal .btn:active{
-    background: #2A3592;
+    background: #2A3592 !important;
 }
+
 .reviews_modal .btn span{
     font-weight: 600;
     font-size: 14px;
@@ -124,4 +125,14 @@
     text-align: center;
     letter-spacing: -0.02em;
     color: #FFFFFF;
+}
+
+
+/* modal css  */
+.modal-content {
+    border-radius: 0.8rem !important;
+    border: none;
+}
+.modal-body {
+    border-radius: 0.8rem;
 }

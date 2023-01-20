@@ -130,11 +130,11 @@ const HomeBannerTabs = () => {
               <div className="common_home_banner bespoke_studio_wrap">
                 <div className="container">
                   <div className="home_banner_title">
-                    <h1 className="common_title">Summer Haldi Collection</h1>
+                    <h1 className="common_title">Designed & Tailored to Fit</h1>
                     <div className="summer_list">
                       <div className="summer_list_link_wrap">
                         <div className="summer_list_link">
-                          <p>Turmeric Yellow Cotton Dress</p>
+                          <p>Flowing Icewater Suit Dress</p>
                           <span>
                             <svg
                               width="9"
@@ -174,7 +174,7 @@ const HomeBannerTabs = () => {
                       </div>
                       <div className="summer_list_link_wrap">
                         <div className="summer_list_link">
-                          <p>Turmeric Yellow Cotton Dress</p>
+                          <p>Shop Bespoke Studio</p>
                           <span>
                             <svg
                               width="9"
@@ -224,11 +224,11 @@ const HomeBannerTabs = () => {
               <div className="common_home_banner roka_exhibit_wrap">
                 <div className="container">
                   <div className="home_banner_title">
-                    <h1 className="common_title">Summer Haldi Collection</h1>
+                    <h1 className="common_title">Impressively Humble</h1>
                     <div className="summer_list">
                       <div className="summer_list_link_wrap">
                         <div className="summer_list_link">
-                          <p>Turmeric Yellow Cotton Dress</p>
+                          <p>Eastern Red Shimmer Sari</p>
                           <span>
                             <svg
                               width="9"
@@ -268,7 +268,7 @@ const HomeBannerTabs = () => {
                       </div>
                       <div className="summer_list_link_wrap">
                         <div className="summer_list_link">
-                          <p>Turmeric Yellow Cotton Dress</p>
+                          <p>Shop the Roka Exhibit</p>
                           <span>
                             <svg
                               width="9"
@@ -317,11 +317,11 @@ const HomeBannerTabs = () => {
               <div className="common_home_banner the_bride_wrap">
                 <div className="container">
                   <div className="home_banner_title">
-                    <h1 className="common_title">Summer Haldi Collection</h1>
+                    <h1 className="common_title">Specially Selected Tones of Red</h1>
                     <div className="summer_list">
                       <div className="summer_list_link_wrap">
                         <div className="summer_list_link">
-                          <p>Turmeric Yellow Cotton Dress</p>
+                          <p>Heavy Red Bridal Sari</p>
                           <span>
                             <svg
                               width="9"
@@ -361,7 +361,7 @@ const HomeBannerTabs = () => {
                       </div>
                       <div className="summer_list_link_wrap">
                         <div className="summer_list_link">
-                          <p>Turmeric Yellow Cotton Dress</p>
+                          <p>Shop the Roka Exhibit</p>
                           <span>
                             <svg
                               width="9"
@@ -1131,7 +1131,7 @@ const HomeBannerTabs = () => {
                   </div>
                 </div>
               </Tab>
-              <Tab eventKey="roka_exhibit" title="Contact">
+              <Tab eventKey="roka_exhibit" title="Roka Exhibit">
                 <div className="tab_common_contain">
                   <div className="row">
                     <div className="col-6">
@@ -1761,7 +1761,7 @@ const HomeBannerTabs = () => {
                   </div>
                 </div>
               </Tab>
-              <Tab eventKey="gujarati_cholis" title="gujarati_cholis">
+              <Tab eventKey="gujarati_cholis" title="Gujarati Cholis">
                 <div className="tab_common_contain">
                   <div className="row">
                     <div className="col-6">

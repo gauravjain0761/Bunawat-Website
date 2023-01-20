@@ -144,11 +144,11 @@ function Footer() {
 
                 <div className="blog_info">
                   <h3>KEEP IN MIND WHILE SHOPPING ONLINE</h3>
-                  <ul>
-                    <li>
+                    <p>
                       Here are some amazing tips for you to keep in mind while
                       shopping online:
-                    </li>
+                    </p>
+                  <ul>
                     <li>
                       Before you make a purchasing decision just make sure you
                       check your current wardrobe and identify your
@@ -167,12 +167,12 @@ function Footer() {
 
                 <div className="blog_info">
                   <h3>FREQUENTLY ASKED QUESTIONS</h3>
-                  <ul>
-                    <li>
+                    <p>
                       As weddings are lined up, we need a lot of Indian wedding
                       dresses to go with the occasions. Here are some amazing
                       tips to know your personal style –{" "}
-                    </li>
+                    </p>
+                  <ul>
                     <li>
                       A good quality fabric is the most important factor to
                       consider while selecting an ethnic wear, so always choose

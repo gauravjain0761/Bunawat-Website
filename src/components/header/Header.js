@@ -5,6 +5,8 @@ import Modal from 'react-bootstrap/Modal';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { DayPicker } from 'react-day-picker';
+import { FaRegStar } from "react-icons/fa";
+
 
 import cart_1 from '../../assets/img/cart/cart_1.png';
 import cart_2 from '../../assets/img/cart/cart_2.png';
@@ -21,6 +23,7 @@ import saved_8 from '../../assets/img/saved/saved_8.png';
 import LoginModal from "./LoginModal";
 
 export default function Header() {
+    const [selectedDay, setSelectedDay] = useState();
     const changeloction = window.location.pathname;
     const [headerColor, setHeaderColor] = useState(false);
     const [scroll, setScroll] = useState(false);
@@ -82,6 +85,7 @@ export default function Header() {
     const dark_sidebar = (classs) => {
         document.body.removeAttribute("main-sidebar", classs)
     }
+
 
 
     return (
@@ -554,8 +558,8 @@ export default function Header() {
                                         </Link>
                                     </div>
                                     <div className="cart_product_info">
-                                        <h3>Synthetic Floral Print Sari</h3>
-                                        <p>Lemon Yellow  •  Medium</p>
+                                        <h3>Pink Floral Sari & Jacket</h3>
+                                        <p>Medium</p>
 
                                         <div className='quantiy_wrapper'>
                                             <p>Qty</p>
@@ -590,7 +594,7 @@ export default function Header() {
                                             </div>
                                         </div>
                                         <div className='remove_cart_block'>
-                                            <p>₹4,500 </p>
+                                            <p>₹10,200 <span style={{fontSize: "12px", marginLeft: "12px"}}><del>₹14,200</del></span> </p>
                                             <button type='button' className='remove_btn'>
                                                 <svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <g clipPath="url(#clip0_160_1450)">
@@ -618,8 +622,8 @@ export default function Header() {
                                         </Link>
                                     </div>
                                     <div className="cart_product_info">
-                                        <h3>Synthetic Floral Print Sari</h3>
-                                        <p>Lemon Yellow  •  Medium</p>
+                                        <h3>Trenchcoat Suit</h3>
+                                        <p>Maroon  •  Medium</p>
 
                                         <div className='quantiy_wrapper'>
                                             <p>Qty</p>
@@ -654,7 +658,7 @@ export default function Header() {
                                             </div>
                                         </div>
                                         <div className='remove_cart_block'>
-                                            <p>₹4,500 </p>
+                                            <p>₹6,900 </p>
                                             <button type='button' className='remove_btn'>
                                                 <svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <g clipPath="url(#clip0_160_1450)">
@@ -922,7 +926,7 @@ export default function Header() {
             <div className={calanderOpen ? "cart_wrap active" : "cart_wrap"}>
                 <div className="cart_dark" onClick={() => setCalanderOpen(false)}></div>
                 <div className="cart_inner calander_wrap position-relative">
-                    <div className="date_wrap"><DayPicker showOutsideDays fixedWeeks /></div>
+                    <div className="date_wrap"><DayPicker showOutsideDays fixedWeeks mode="single" onSelect={setSelectedDay} selected={selectedDay} /></div>
                     <div className="cal_news_wrap">
                         <div className="cal_news">
                             <div className="cla_news_title">
@@ -948,13 +952,13 @@ export default function Header() {
                         <div className="cal_news">
                             <div className="cla_news_title">
                                 <div className="cla_news_left">
-                                    <span style={{ backgroundColor: "#FF6C6C" }}></span>
-                                    <p style={{ color: "#FF6C6C" }}>Workshop</p>
+                                    <span style={{ backgroundColor: "#F2C34B" }}></span>
+                                    <p style={{ color: "#F2C34B" }}>Tutorial</p>
                                 </div>
                                 <span>12:45 pm</span>
                             </div>
                             <div className="workshop_title">
-                                <h3>Everyday Makeup</h3>
+                                <h3>Personal Styling for Festivals</h3>
                                 <p>Learn how to apply subtle make up in under 10 minutes. Follow this routine every day.</p>
                             </div>
                             <div className="join_wrap">
