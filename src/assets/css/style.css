@@ -17,8 +17,8 @@
     src: url(../fonts/newHero/new-hero-6.otf);
 }
 @font-face {
-    font-family: Newhero8;
-    src: url(../fonts/newHero/new-hero-8.otf);
+    font-family: Newhero10;
+    src: url(../fonts/newHero/new-hero-10.otf);
 }
 @font-face {
     font-family: Newhero9;
@@ -34,6 +34,7 @@ body {
     overflow-x: hidden;
     font-weight: 400;
     color: #000000;
+    font-smooth: always;
 }
 
 .anim {
@@ -102,9 +103,15 @@ li {
 body h1,
 body h2,
 body h3,
-body h4,
-body h5,
-body h6,
+body h4{
+    font-family: Newhero10;
+}
+body h5{
+    font-family: Newhero10;
+}
+body h6 {
+    font-family: Newhero10;
+}
 p {
     margin: 0;
     font-size: 16px;

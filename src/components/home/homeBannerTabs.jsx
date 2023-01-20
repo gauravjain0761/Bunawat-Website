@@ -1,28 +1,27 @@
-import React,{ useState } from "react";
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
+import React, { useState } from "react";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
 import { Link } from "react-router-dom";
 
 import haldi_gallery_1 from "../../assets/img/home/haldi_gallery_1.png";
-import haldi_gallery_2 from "../../assets/img/home/haldi_gallery_2.png"
-import haldi_gallery_3 from "../../assets/img/home/haldi_gallery_3.png"
-import haldi_gallery_4 from "../../assets/img/home/haldi_gallery_4.png"
+import haldi_gallery_2 from "../../assets/img/home/haldi_gallery_2.png";
+import haldi_gallery_3 from "../../assets/img/home/haldi_gallery_3.png";
+import haldi_gallery_4 from "../../assets/img/home/haldi_gallery_4.png";
 import bespoke_studio_1 from "../../assets/img/home/bespoke_studio_1.png";
-import bespoke_studio_2 from "../../assets/img/home/bespoke_studio_2.png"
-import bespoke_studio_3 from "../../assets/img/home/bespoke_studio_3.png"
-import bespoke_studio_4 from "../../assets/img/home/bespoke_studio_4.png"
+import bespoke_studio_2 from "../../assets/img/home/bespoke_studio_2.png";
+import bespoke_studio_3 from "../../assets/img/home/bespoke_studio_3.png";
+import bespoke_studio_4 from "../../assets/img/home/bespoke_studio_4.png";
 import the_bride_1 from "../../assets/img/home/the_bride_1.png";
-import the_bride_2 from "../../assets/img/home/the_bride_2.png"
-import the_bride_3 from "../../assets/img/home/the_bride_3.png"
-import the_bride_4 from "../../assets/img/home/the_bride_4.png"
+import the_bride_2 from "../../assets/img/home/the_bride_2.png";
+import the_bride_3 from "../../assets/img/home/the_bride_3.png";
+import the_bride_4 from "../../assets/img/home/the_bride_4.png";
 import roka_exhibit_1 from "../../assets/img/home/roka_exhibit_1.png";
-import roka_exhibit_2 from "../../assets/img/home/roka_exhibit_2.png"
-import roka_exhibit_3 from "../../assets/img/home/roka_exhibit_3.png"
-import roka_exhibit_4 from "../../assets/img/home/roka_exhibit_4.png"
-
+import roka_exhibit_2 from "../../assets/img/home/roka_exhibit_2.png";
+import roka_exhibit_3 from "../../assets/img/home/roka_exhibit_3.png";
+import roka_exhibit_4 from "../../assets/img/home/roka_exhibit_4.png";
 
 const HomeBannerTabs = () => {
-    const [key, setKey] = useState('haldi_gallery');
+  const [key, setKey] = useState("haldi_gallery");
   return (
     <>
       <div className="home_banner_wrap">
@@ -317,7 +316,9 @@ const HomeBannerTabs = () => {
               <div className="common_home_banner the_bride_wrap">
                 <div className="container">
                   <div className="home_banner_title">
-                    <h1 className="common_title">Specially Selected Tones of Red</h1>
+                    <h1 className="common_title">
+                      Specially Selected Tones of Red
+                    </h1>
                     <div className="summer_list">
                       <div className="summer_list_link_wrap">
                         <div className="summer_list_link">
@@ -920,6 +921,89 @@ const HomeBannerTabs = () => {
                     </div>
                   </div>
                 </div>
+
+                <div className="shop_hald_wrap">
+                  <div className="shop_hald_inner">
+                    <div className="shop_hald_info">
+                      <Link to="/" className="d-flex align-items-center">
+                        <h3>Shop Haldi Gallery</h3>
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.09082 1.81824H17.1817V14.9091"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.875 17.1786L16.2375 2.81604"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </Link>
+                      <p>64 Designs • Updated Monthly</p>
+                    </div>
+                    <div className="shop_hald_info">
+                      <Link to="/" className="d-flex align-items-center">
+                        <h3>Most Loved</h3>
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.09082 1.81824H17.1817V14.9091"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.875 17.1786L16.2375 2.81604"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </Link>
+                      <p>Our Favourite 100 Designs</p>
+                    </div>
+                    <div className="shop_hald_info">
+                      <Link to="/" className="d-flex align-items-center">
+                        <h3>Shop All</h3>
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.09082 1.81824H17.1817V14.9091"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.875 17.1786L16.2375 2.81604"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </Link>
+                      <p>1,600+ Designs</p>
+                    </div>
+                  </div>
+                </div>
               </Tab>
               <Tab eventKey="bespoke_studio" title="Bespoke Studio">
                 <div className="tab_common_contain">
@@ -1127,6 +1211,89 @@ const HomeBannerTabs = () => {
                           </div>
                         </div>
                       </Link>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="shop_hald_wrap">
+                  <div className="shop_hald_inner">
+                    <div className="shop_hald_info">
+                      <Link to="/" className="d-flex align-items-center">
+                        <h3>Shop Bespoke Studio</h3>
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.09082 1.81824H17.1817V14.9091"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.875 17.1786L16.2375 2.81604"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </Link>
+                      <p>36 Designs • Updated Monthly</p>
+                    </div>
+                    <div className="shop_hald_info">
+                      <Link to="/" className="d-flex align-items-center">
+                        <h3>Most Loved</h3>
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.09082 1.81824H17.1817V14.9091"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.875 17.1786L16.2375 2.81604"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </Link>
+                      <p>Our Favourite 100 Designs</p>
+                    </div>
+                    <div className="shop_hald_info">
+                      <Link to="/" className="d-flex align-items-center">
+                        <h3>Shop All</h3>
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.09082 1.81824H17.1817V14.9091"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.875 17.1786L16.2375 2.81604"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </Link>
+                      <p>1,600+ Designs</p>
                     </div>
                   </div>
                 </div>
@@ -1340,6 +1507,89 @@ const HomeBannerTabs = () => {
                     </div>
                   </div>
                 </div>
+
+                <div className="shop_hald_wrap">
+                  <div className="shop_hald_inner">
+                    <div className="shop_hald_info">
+                      <Link to="/" className="d-flex align-items-center">
+                        <h3>Shop Roka Exhibit</h3>
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.09082 1.81824H17.1817V14.9091"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.875 17.1786L16.2375 2.81604"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </Link>
+                      <p>72 Designs • Updated Monthly</p>
+                    </div>
+                    <div className="shop_hald_info">
+                      <Link to="/" className="d-flex align-items-center">
+                        <h3>Most Loved</h3>
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.09082 1.81824H17.1817V14.9091"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.875 17.1786L16.2375 2.81604"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </Link>
+                      <p>Our Favourite 100 Designs</p>
+                    </div>
+                    <div className="shop_hald_info">
+                      <Link to="/" className="d-flex align-items-center">
+                        <h3>Shop All</h3>
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.09082 1.81824H17.1817V14.9091"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.875 17.1786L16.2375 2.81604"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </Link>
+                      <p>1,600+ Designs</p>
+                    </div>
+                  </div>
+                </div>
               </Tab>
               <Tab eventKey="the_bride" title="The Bride">
                 <div className="tab_common_contain">
@@ -1547,6 +1797,89 @@ const HomeBannerTabs = () => {
                           </div>
                         </div>
                       </Link>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="shop_hald_wrap">
+                  <div className="shop_hald_inner">
+                    <div className="shop_hald_info">
+                      <Link to="/" className="d-flex align-items-center">
+                        <h3>Shop Roka Exhibit</h3>
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.09082 1.81824H17.1817V14.9091"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.875 17.1786L16.2375 2.81604"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </Link>
+                      <p>48 Designs • Updated Monthly</p>
+                    </div>
+                    <div className="shop_hald_info">
+                      <Link to="/" className="d-flex align-items-center">
+                        <h3>Most Loved</h3>
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.09082 1.81824H17.1817V14.9091"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.875 17.1786L16.2375 2.81604"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </Link>
+                      <p>Our Favourite 100 Designs</p>
+                    </div>
+                    <div className="shop_hald_info">
+                      <Link to="/" className="d-flex align-items-center">
+                        <h3>Shop All</h3>
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.09082 1.81824H17.1817V14.9091"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.875 17.1786L16.2375 2.81604"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </Link>
+                      <p>1,600+ Designs</p>
                     </div>
                   </div>
                 </div>
@@ -1760,6 +2093,89 @@ const HomeBannerTabs = () => {
                     </div>
                   </div>
                 </div>
+
+                <div className="shop_hald_wrap">
+                  <div className="shop_hald_inner">
+                    <div className="shop_hald_info">
+                      <Link to="/" className="d-flex align-items-center">
+                        <h3>Shop Haldi Gallery</h3>
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.09082 1.81824H17.1817V14.9091"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.875 17.1786L16.2375 2.81604"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </Link>
+                      <p>64 Designs • Updated Monthly</p>
+                    </div>
+                    <div className="shop_hald_info">
+                      <Link to="/" className="d-flex align-items-center">
+                        <h3>Most Loved</h3>
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.09082 1.81824H17.1817V14.9091"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.875 17.1786L16.2375 2.81604"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </Link>
+                      <p>Our Favourite 100 Designs</p>
+                    </div>
+                    <div className="shop_hald_info">
+                      <Link to="/" className="d-flex align-items-center">
+                        <h3>Shop All</h3>
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.09082 1.81824H17.1817V14.9091"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.875 17.1786L16.2375 2.81604"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </Link>
+                      <p>1,600+ Designs</p>
+                    </div>
+                  </div>
+                </div>
               </Tab>
               <Tab eventKey="gujarati_cholis" title="Gujarati Cholis">
                 <div className="tab_common_contain">
@@ -1967,6 +2383,88 @@ const HomeBannerTabs = () => {
                           </div>
                         </div>
                       </Link>
+                    </div>
+                  </div>
+                </div>
+                <div className="shop_hald_wrap">
+                  <div className="shop_hald_inner">
+                    <div className="shop_hald_info">
+                      <Link to="/" className="d-flex align-items-center">
+                        <h3>Shop Haldi Gallery</h3>
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.09082 1.81824H17.1817V14.9091"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.875 17.1786L16.2375 2.81604"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </Link>
+                      <p>64 Designs • Updated Monthly</p>
+                    </div>
+                    <div className="shop_hald_info">
+                      <Link to="/" className="d-flex align-items-center">
+                        <h3>Most Loved</h3>
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.09082 1.81824H17.1817V14.9091"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.875 17.1786L16.2375 2.81604"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </Link>
+                      <p>Our Favourite 100 Designs</p>
+                    </div>
+                    <div className="shop_hald_info">
+                      <Link to="/" className="d-flex align-items-center">
+                        <h3>Shop All</h3>
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.09082 1.81824H17.1817V14.9091"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.875 17.1786L16.2375 2.81604"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </Link>
+                      <p>1,600+ Designs</p>
                     </div>
                   </div>
                 </div>
@@ -2180,6 +2678,89 @@ const HomeBannerTabs = () => {
                     </div>
                   </div>
                 </div>
+
+                <div className="shop_hald_wrap">
+                  <div className="shop_hald_inner">
+                    <div className="shop_hald_info">
+                      <Link to="/" className="d-flex align-items-center">
+                        <h3>Shop Haldi Gallery</h3>
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.09082 1.81824H17.1817V14.9091"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.875 17.1786L16.2375 2.81604"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </Link>
+                      <p>64 Designs • Updated Monthly</p>
+                    </div>
+                    <div className="shop_hald_info">
+                      <Link to="/" className="d-flex align-items-center">
+                        <h3>Most Loved</h3>
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.09082 1.81824H17.1817V14.9091"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.875 17.1786L16.2375 2.81604"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </Link>
+                      <p>Our Favourite 100 Designs</p>
+                    </div>
+                    <div className="shop_hald_info">
+                      <Link to="/" className="d-flex align-items-center">
+                        <h3>Shop All</h3>
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.09082 1.81824H17.1817V14.9091"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.875 17.1786L16.2375 2.81604"
+                            stroke="black"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </Link>
+                      <p>1,600+ Designs</p>
+                    </div>
+                  </div>
+                </div>
               </Tab>
             </Tabs>
             <Link to="/" className="see_all_link">
@@ -2217,89 +2798,6 @@ const HomeBannerTabs = () => {
                 </defs>
               </svg>
             </Link>
-
-            <div className="shop_hald_wrap">
-              <div className="shop_hald_inner">
-                <div className="shop_hald_info">
-                  <Link to="/" className="d-flex align-items-center">
-                    <h3>Shop Haldi Gallery</h3>
-                    <svg
-                      width="19"
-                      height="19"
-                      viewBox="0 0 19 19"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M4.09082 1.81824H17.1817V14.9091"
-                        stroke="black"
-                        strokeWidth="3"
-                        strokeMiterlimit="10"
-                      />
-                      <path
-                        d="M1.875 17.1786L16.2375 2.81604"
-                        stroke="black"
-                        strokeWidth="3"
-                        strokeMiterlimit="10"
-                      />
-                    </svg>
-                  </Link>
-                  <p>64 Designs • Updated Monthly</p>
-                </div>
-                <div className="shop_hald_info">
-                  <Link to="/" className="d-flex align-items-center">
-                    <h3>Most Loved</h3>
-                    <svg
-                      width="19"
-                      height="19"
-                      viewBox="0 0 19 19"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M4.09082 1.81824H17.1817V14.9091"
-                        stroke="black"
-                        strokeWidth="3"
-                        strokeMiterlimit="10"
-                      />
-                      <path
-                        d="M1.875 17.1786L16.2375 2.81604"
-                        stroke="black"
-                        strokeWidth="3"
-                        strokeMiterlimit="10"
-                      />
-                    </svg>
-                  </Link>
-                  <p>Our Favourite 100 Designs</p>
-                </div>
-                <div className="shop_hald_info">
-                  <Link to="/" className="d-flex align-items-center">
-                    <h3>Shop All</h3>
-                    <svg
-                      width="19"
-                      height="19"
-                      viewBox="0 0 19 19"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M4.09082 1.81824H17.1817V14.9091"
-                        stroke="black"
-                        strokeWidth="3"
-                        strokeMiterlimit="10"
-                      />
-                      <path
-                        d="M1.875 17.1786L16.2375 2.81604"
-                        stroke="black"
-                        strokeWidth="3"
-                        strokeMiterlimit="10"
-                      />
-                    </svg>
-                  </Link>
-                  <p>1,600+ Designs</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

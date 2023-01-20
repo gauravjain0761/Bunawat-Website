@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SwipeableViews from "react-swipeable-views";
-import ProductCard from "../components/product/productCard";
+import ProductCard from "../../components/product/productCard";
 
 const Product = () => {
   const [swipeableIndex, setSwipeableIndex] = useState(0);

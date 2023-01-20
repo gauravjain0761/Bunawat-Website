@@ -6,7 +6,8 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import { Box } from '@mui/system';
-import { Button, ButtonGroup, TextField } from '@mui/material';
+import { Button, ButtonGroup } from '@mui/material';
+import { TiDeleteOutline } from "react-icons/ti";
 
 function ProductFilters () {
     const [age, setAge] = useState('');
@@ -29,37 +30,39 @@ function ProductFilters () {
                             >
                                 <MenuItem value="" className="common_option_wrap">
                                     <div className='common_option'>
-                                        <p>Most Popular</p>
-                                        <span>minimal first</span>
-                                    </div>
-                                </MenuItem>
-                                <MenuItem value={10} className="common_option_wrap">
-                                    <div className='common_option'>
-                                        <p>Heavy Embroidery</p>
-                                        <span>fanciest first</span>
+                                        <p className='common_option_p'>Heavy Embroidery</p>
+                                        <span className='common_option_span'>fanciest first</span>
                                     </div>
                                 </MenuItem>
                                 <MenuItem value={20} className="common_option_wrap">
                                     <div className='common_option'>
-                                        <p>Newest</p>
-                                        <span>minimal first</span>
+                                        <p className='common_option_p'>Newest</p>
+                                        <span className='common_option_span'>minimal first</span>
                                     </div>
                                 </MenuItem>
-                                <MenuItem value={30} className="common_option_wrap">
+                                <MenuItem value="" className="common_option_wrap">
                                     <div className='common_option'>
-                                        <p>Most Popular</p>
+                                        <p className='common_option_p'>Most Popular</p>
                                     </div>
                                 </MenuItem>
-                                <MenuItem value={30} className="common_option_wrap">
+                                <MenuItem value="" className="common_option_wrap">
                                     <div className='common_option'>
-                                        <p>Affordable</p>
-                                        <span>Lowest Price First</span>
+                                        <p className='common_option_p'>Affordable</p>
+                                        <span className='common_option_span'>Lowest Price First</span>
                                     </div>
                                 </MenuItem>
-                                <MenuItem value={30} className="common_option_wrap">
+                                <MenuItem value="" className="common_option_wrap">
                                     <div className='common_option'>
-                                        <p>Luxurious</p>
-                                        <span>Highest Price first</span>
+                                        <p className='common_option_p'>Luxurious</p>
+                                        <span className='common_option_span'> Highest Price first</span>
+                                    </div>
+                                </MenuItem>
+                                <MenuItem value="" className="common_option_wrap">
+                                    <div className='common_option'>
+                                        <p className='common_option_p'>Most Popular</p>
+                                        <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1.51318 1L5.33436 5L9.16024 1" stroke="#2A3592" strokeWidth="1.7" strokeMiterlimit="10" />
+                                        </svg>
                                     </div>
                                 </MenuItem>
                             </Select>
@@ -74,6 +77,7 @@ function ProductFilters () {
                                 displayEmpty
                                 inputProps={{ 'aria-label': 'Without label' }}
                             >
+                                
                                 <MenuItem value="" className="common_option_wrap">
                                     <div className='common_option'>
                                         <div className='d-flex align-items-center common_radio_btn'>
@@ -170,6 +174,16 @@ function ProductFilters () {
                                         </div>
                                     </div>
                                 </MenuItem>
+                                <MenuItem value="" className="common_option_wrap">
+                                    <div className='common_option'>
+                                        <div className='d-flex align-items-center common_radio_btn'>
+                                            <span style={{marginRight: "3rem"}}>Kind of Garment</span>
+                                        </div>
+                                            <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1.51318 1L5.33436 5L9.16024 1" stroke="#2A3592" strokeWidth="1.7" strokeMiterlimit="10" />
+                                            </svg>
+                                    </div>
+                                </MenuItem>
                             </Select>
                         </FormControl>
                     </div>
@@ -181,8 +195,8 @@ function ProductFilters () {
                             <h6>Colour</h6>
                             <span>Clear</span>
                         </div>
-                        <ButtonGroup variant="contained" aria-label="outlined primary button group" className='color_wrapper_box_child_colorbtn'>
-                            <Button style={{background: "#E76666", border: "none"}}>.</Button>
+                        <ButtonGroup variant="contained" aria-label="outlined primary button group" className='color_wrapper_box_child_colorbtn' onClick={() => setShowColor(false)}>
+                            <Button style={{background: "#E76666", border: "none", padding: "1rem"}}></Button>
                             <Button style={{background: "#FAA652", border: "none"}}></Button>
                             <Button style={{background: "#F2F243", border: "none"}}></Button>
                             <Button style={{background: "#83E46B", border: "none"}}></Button>
@@ -191,11 +205,11 @@ function ProductFilters () {
                             <Button style={{background: "#7A2ACB", border: "none"}}></Button>
                             <Button style={{background: "#F249C8", border: "none"}}></Button>
                         </ButtonGroup>
-                        <div className='color_wrapper_box_child'>
+                        <div className='color_wrapper_box_child' style={{marginTop: "16px"}}>
                             <h6>Shade</h6>
                             <span>Clear</span>
                         </div>
-                        <div className='color_wrapper_box_child'>
+                        <div className='color_wrapper_box_child' onClick={() => setShowColor(false)}>
                             <Button variant="contained" className='shade_btn' style={{background: "#CCCCCC"}}>Light</Button>
                             <Button variant="contained" className='shade_btn' style={{background: "#AAAAAA"}}>Medium</Button>
                             <Button variant="contained" className='shade_btn' style={{background: "#333333"}}>Dark</Button>
@@ -234,7 +248,7 @@ function ProductFilters () {
                                     <div className='common_option'>
                                         <p>
                                             <div className='common_option'>
-                                                <span>Size — inches</span>
+                                                <span>SIZE - INCHES</span>
                                             </div>
                                         </p>
                                         <div className='chet_size'>
@@ -262,7 +276,7 @@ function ProductFilters () {
                                                 </div>
                                             </div>
                                         </p>
-                                        <div className='chet_size'>
+                                        <div className='chet_size chet_size_number'>
                                             <span>30</span>
                                             <span>26</span>
                                             <span>30</span>
@@ -287,7 +301,7 @@ function ProductFilters () {
                                                 </div>
                                             </div>
                                         </p>
-                                        <div className='chet_size'>
+                                        <div className='chet_size chet_size_number'>
                                             <span>30</span>
                                             <span>26</span>
                                             <span>30</span>
@@ -312,10 +326,24 @@ function ProductFilters () {
                                                 </div>
                                             </div>
                                         </p>
-                                        <div className='chet_size'>
+                                        <div className='chet_size chet_size_number'>
                                             <span>30</span>
                                             <span>26</span>
                                             <span>30</span>
+                                        </div>
+                                    </div>
+                                </MenuItem>
+                                <MenuItem value="" className="common_option_wrap">
+                                    <div className='common_option'>
+                                        <p>
+                                            <div className='common_option'>
+                                                <div className='d-flex align-items-center common_radio_btn'>
+                                                    <span>Size</span>
+                                                </div>
+                                            </div>
+                                        </p>
+                                        <div className='chet_size'>
+                                             Any
                                         </div>
                                     </div>
                                 </MenuItem>
@@ -459,6 +487,14 @@ function ProductFilters () {
                                         </div>
                                     </div>
                                 </MenuItem>
+                                <MenuItem value="" className="common_option_wrap">
+                                    <div className='common_option'>
+                                        <div className='d-flex align-items-center common_radio_btn'>
+                                            <span>Materials</span>
+                                        </div>
+                                            <span>Any</span>
+                                    </div>
+                                </MenuItem>
                             </Select>
                         </FormControl>
                     </div>
@@ -467,11 +503,17 @@ function ProductFilters () {
                     <div className='price_select_wrap_box'>
                        <div className='price_select_wrap_box_child'>
                         <h6>From</h6>
-                        <TextField id="standard-basic" label="₹1000" variant="standard" />
+                        <div className='price_select_wrap_box_child_data'>
+                            <input type="text" placeholder='₹1000' />
+                            <span onClick={() => setShowPrice(false)}><TiDeleteOutline /></span>
+                        </div>
                        </div>
                        <div className='price_select_wrap_box_child'>
                         <h6>To</h6>
-                        <TextField id="standard-basic" label="₹3500" variant="standard" />
+                        <div className='price_select_wrap_box_child_data'>
+                            <input type="text" placeholder="₹3500" />
+                            <span onClick={() => setShowPrice(false)}><TiDeleteOutline /></span>
+                        </div>
                        </div>
                     </div>
                     )}

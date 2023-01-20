@@ -1,9 +1,9 @@
 import React from "react";
 import { Switch, Route, Router } from "react-router-dom";
 import Layout from "../components/Layout";
-import Home from "./home";
+import Home from "./home/home";
 import Category from "./category/category";
-import Product from "./product";
+import Product from "./product/product";
 import BASE_URL from "../_constant/index";
 import Checkout from "./checkout/index";
 import OrderConfirmation from "./orderConfirmation/index";

@@ -1,3 +1,11 @@
+ .tab_section_wrap .cloth_inner .nav-tabs {
+    border: unset;
+    padding-right: 0px !important;
+}
+.cloth_inner .nav {
+    justify-content: center;
+}
+
 .color_wrapper_box{
     position: absolute;
     left: 412px;
@@ -20,7 +28,7 @@
 }
 .color_wrapper_box .color_wrapper_box_child span{
     font-weight: 800;
-    font-size: 10px;
+    font-size: 12px;
     line-height: 24px;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -54,6 +62,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 1rem;
 }
 .price_select_wrap_box .price_select_wrap_box_child h6{
     font-weight: 600;
@@ -67,9 +76,16 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 24px;
-    text-align: center;
+    border: none;
     letter-spacing: -0.02em;
     color: #2A3592;
+}
+.price_select_wrap_box .price_select_wrap_box_child .price_select_wrap_box_child_data{
+    border-bottom: 1px solid #2A3592;
+    color: #2A3592;
+}
+.price_select_wrap_box .price_select_wrap_box_child .price_select_wrap_box_child_data span{
+    cursor: pointer;
 }
 
 /* mobile responsive */
@@ -88,3 +104,32 @@
         line-height: 50px !important;
     }
   }
+
+
+.common_option .common_option_span {
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 16px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #2A3592;
+    margin-left: 13px;
+}  
+.common_option .common_option_p {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #2A3592;
+}  
+
+
+.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+    font-family: Newhero10 !important;
+}
+
+.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+    top: auto !important;
+    bottom: 80px !important;
+}
