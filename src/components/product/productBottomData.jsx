@@ -1276,7 +1276,7 @@ const ProductBottomData = ({ product, width }) => {
                                     <div className="common_option">
                                         <p>
                                             <div className="common_option">
-                                                <span>Size : Select</span>
+                                                <span style={{textTransform: "uppercase"}}>size — inches</span>
                                             </div>
                                         </p>
                                         <div className="chet_size">

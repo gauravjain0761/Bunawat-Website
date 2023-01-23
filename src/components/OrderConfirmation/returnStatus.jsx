@@ -43,12 +43,12 @@ const ReturnStatus = () => {
           <div style={{display: "flex"}}>
                   <FormControlLabel value="female" control={<Radio />} style={{marginRight: "0"}} />
                   <div>
-                    <h6>Synthetic Floral Print Sari</h6>
+                    <h6 style={{marginBottom: "0px"}}>Synthetic Floral Print Sari</h6>
                     <span>Lemon Yellow  •  Medium  •  1 unit</span>
                   </div>
                 </div>
                 <div>
-                <span>₹4,500 </span>
+                <span><strong>₹4,500</strong></span>
             </div>
           </div>
 
@@ -56,12 +56,12 @@ const ReturnStatus = () => {
           <div style={{display: "flex"}}>
                   <FormControlLabel value="female" control={<Radio />} style={{marginRight: "0"}} />
                   <div>
-                    <h6>Pink Floral Sari & Jacket</h6>
+                    <h6 style={{marginBottom: "0px"}}>Pink Floral Sari & Jacket</h6>
                     <span>Medium  •  2 units</span>
                   </div>
                 </div>
                 <div>
-                <span>₹10,200 </span>
+                <span><strong>₹10,200</strong> </span>
             </div>
           </div>
 

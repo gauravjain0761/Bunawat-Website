@@ -213,7 +213,7 @@ const ShippingStatus = () => {
           </div>
           <h3>Out for Delivery</h3>
           <p>
-           Call the delivery partner Siddhesh Sutar at<br /> <a href="tel:+919187261520">+91 91872 61520</a> for more details
+           Call the delivery partner Siddhesh Sutar at<br /> <a href="tel:+919187261520" className="shippingStatusLink">+91 91872 61520</a> for more details
           </p>
           <Link to="/orderConfirmation">
             <div className="ordercConfirmation_top_help">
@@ -313,7 +313,7 @@ const ShippingStatus = () => {
           <h3>Delivered</h3>
           <p>
           We’ve delivered your order. Hope you love it! <br />
-          <a href="#">Write a Review</a>
+          <a href="#" className="shippingStatusLink">Write a Review</a>
           </p>
           <Link to="/orderConfirmation">
             <div className="ordercConfirmation_top_help">

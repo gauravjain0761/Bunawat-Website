@@ -27,7 +27,8 @@
 
 body {
     /* font-family: 'Montserrat', sans-serif; */
-    font-family: Newhero6;
+    /* font-family: Newhero6; */
+    font-family: Newhero10;
     margin: 0;
     line-height: 1.5;
     font-size: 18px;
@@ -1630,6 +1631,7 @@ li.common_option_wrap {
     color: #2A3592;
     font-weight: bold;
     text-transform: uppercase;
+    margin-bottom: 4px;
 }
 
 .stock_info p {
@@ -1657,6 +1659,7 @@ li.common_option_wrap {
 }
 
 .pin_code_weap input {
+    font-family: Newhero10;
     width: 100%;
     height: 40px;
     border: 2px solid #2A3592;
