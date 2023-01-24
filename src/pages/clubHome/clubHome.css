@@ -47,20 +47,23 @@
     font-size: 14px;
     line-height: 16px;
     color: #FFFFFF;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-top: 14px;
 }
 .clubHome_top_text_btn{
     margin-top: 14px;
 }
 .clubHome_top_text_btn .btn{
     font-family: Newhero6;
-    padding: 1rem 2rem;
-    font-weight: 700;
+    padding: 1rem 1.4rem;
+    font-weight: 700; 
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: #FFFFFF;
+    border-radius: 2px;
+    border: 1px solid #fff;
 }
 .clubHome_top_text_btn span{
     margin-left: 20px;
@@ -159,7 +162,7 @@
 .clubModule_whatsapp{ 
     background: #363A4F;
     border-radius: 4px;
-    padding: 3rem 2rem;
+    padding: 4rem 2rem;
     margin-top: 1rem;
 }
 
@@ -224,6 +227,7 @@
 }
 .professionals_section_card_text{
     margin-top: 14rem;
+    width: 14rem;
     text-shadow: 0px 0px 64px #000000;
 }
 .professionals_section_card_text h6{
@@ -258,6 +262,9 @@
         width: 90%;
         margin: auto;
      }
+     .professionals_section_card_text{
+        width: auto;
+    }
   }
 .professionals_section_footer p{
     font-weight: 400;
@@ -268,20 +275,23 @@
     color: #FFF3D2;
  }
  .professionals_section_footer .reviewspage_box_top_link{
-    font-weight: 600;
+    font-weight: 500;
     font-size: 16px;
     line-height: 24px;
     text-align: center;
     letter-spacing: -0.02em;
     color: #FFF3D2;
-    margin-top: 2rem;
+    margin: 2rem auto;
+    width: fit-content;
+    cursor: pointer;
+    border-bottom: 2px solid #fff;
  }
 
  .professionals_section_footer_join{
     background: #0E111D;
     border-radius: 16px;
     padding: 4rem;
-    margin: 2rem 0;
+    margin: 7rem 0 2rem 0;
  }
  .professionals_section_footer_join .professionals_section_footer_join_text {
     padding-top: 1rem;
@@ -299,8 +309,9 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    margin-bottom: 1px;
 }
-.professionals_section_footer_join .professionals_section_footer_join_text p{
+.professionals_section_footer_join .professionals_section_footer_join_text span{
     font-weight: 400;
     font-size: 14px;
     line-height: 18px;
@@ -322,11 +333,11 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     padding: 1rem 3rem;
-    border: 2px solid #fff;
+    border: 2px solid #ffed4f;
     border-radius: 0;
 }
 .professionals_section_footer_join .btn:hover{
-    border: 2px solid #fff;
+    border: 2px solid #ffed4f;
 }
 
 .clubHome_top_text_mobile{

@@ -6,6 +6,9 @@ import FooterStrip from "../../components/footer/footerStrip";
 import ApplyCouponModal from "../../components/checkout/ApplyCouponModal";
 import { FormControlLabel, Radio } from "@mui/material";
 import CodConfirmationModal from "../../components/checkout/CodConfirmationModal";
+import CheckoutForm from "../../components/checkout/CheckoutForm";
+import MakePayment from "../../components/checkout/MakePayment";
+import { Box } from "@mui/system";
 
 const Checkout = () => {
   const [showCoupon, setShowCoupon] = useState(false);
@@ -27,81 +30,8 @@ const Checkout = () => {
         </div>
         <Row>
           <Col xs={12} md={5}>
-            <div className="checkout_box">
-              <div className="checkout_box_heading"> <img src="../img/reviewyourorder.png" alt="reviewyourorder" width="22" style={{marginRight: "8px"}} /> Review your order</div>
-              <div className="checkout_box_list">
-                <div>
-                  <h3>Synthetic Floral Print Sari</h3>
-                  <span>Lemon Yellow • Medium • 1 unit</span>
-                </div>
-                <div>
-                  <h3>₹4,500</h3>
-                </div>
-              </div>
-              <div className="checkout_box_list">
-                <div>
-                  <h3>Pink Floral Sari & Jacket</h3>
-                  <span>Medium • 2 units</span>
-                </div>
-                <div>
-                  <h3>
-                    <del
-                      style={{
-                        fontWeight: "300",
-                        color: "#999896",
-                        marginRight: "8px",
-                      }}
-                    >
-                      ₹14,200
-                    </del>
-                    ₹10,200{" "}
-                  </h3>
-                </div>
-              </div>
-              <div className="checkout_box_list">
-                <div>
-                  <h3>Regular Shipping</h3>
-                  <span>Delivers 17—20th June</span>
-                </div>
-                <div>
-                  <h3>Free </h3>
-                </div>
-              </div>
-              <div className="checkout_box_list">
-                <div>
-                  <h3>Coupon: BCLUB</h3>
-                  <span>Get 10% off on all orders</span>
-                </div>
-                <div>
-                  <h3>
-                    <i>-₹1,470</i>
-                  </h3>
-                </div>
-              </div>
-              <Link to="/paymentOptions">
-              <div className="checkout_box_footer">
-                <div className="checkout_box_list">
-                  <div>
-                    <h3>Make Payment</h3>
-                  </div>
-                  <div>
-                    <h3>
-                      <del
-                        style={{
-                          fontWeight: "300",
-                          color: "#999896",
-                          marginRight: "8px",
-                        }}
-                      >
-                        ₹18,700{" "}
-                      </del>
-                      ₹13,230{" "}
-                    </h3>
-                  </div>
-                </div>
-              </div>
-              </Link>
-            </div>
+
+            <MakePayment />
 
             <div className="checkout_box" style={{ marginTop: "2rem" }} onClick={handleShow}>
               <div
@@ -134,129 +64,8 @@ const Checkout = () => {
             </div>
           </Col>
           <Col xs={12} md={7}>
-            <Row>
-              <Col>
-                <Form className="checkout_form">
-                  <Row>
-                    <Col>
-                      <Form.Group controlId="validationFormik01">
-                        <Form.Control
-                          type="text"
-                          name="name"
-                          placeholder="Name"
-                        />
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Form.Group controlId="validationFormik01">
-                        <Form.Control
-                          type="text"
-                          name="number"
-                          placeholder="Phone Number"
-                        />
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Form.Group controlId="validationFormik01">
-                        <Form.Control
-                          type="email"
-                          name="name"
-                          placeholder="Email"
-                        />
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Form.Group controlId="validationFormik01">
-                        <Form.Control
-                          type="text"
-                          name="compony"
-                          placeholder="Compony"
-                        />
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Form.Group controlId="validationFormik01">
-                        <Form.Control
-                          type="text"
-                          name="flatNoBuilding"
-                          placeholder="Flat No. & Building"
-                        />
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Form.Group controlId="validationFormik01">
-                        <Form.Control
-                          type="text"
-                          name="streetAddress"
-                          placeholder="Street Address"
-                        />
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Form.Group controlId="validationFormik01">
-                        <Form.Control
-                          type="text"
-                          name="PINCode"
-                          placeholder="PIN Code"
-                        />
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Form.Group controlId="validationFormik01">
-                        <Form.Control
-                          type="text"
-                          name="city"
-                          placeholder="City"
-                        />
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                    <Col>
-                      <Form.Group controlId="validationFormik01">
-                        <Form.Control
-                          type="text"
-                          name="state"
-                          placeholder="State"
-                        />
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
 
-                  {/* <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <Button type="submit" className="input_file_button">
-                    Publish
-                  </Button>
-                </div> */}
-                </Form>
-              </Col>
-            </Row>
+            <CheckoutForm />
 
             <div className="checkout_box" style={{ marginTop: "1rem", padding: "0 1rem 1rem 1rem"}}>
               <div className="checkout_box_heading">
@@ -297,6 +106,8 @@ const Checkout = () => {
         </Row>
       </Container>
 
+
+      {/* Mobile view code start */}
       <Container className="mobile_view">
         <div className="checkout_great">
           <h3>Great Picks 👌</h3>
@@ -304,129 +115,8 @@ const Checkout = () => {
         </div>
         <Row>
           <Col xs={12} md={7}>
-            <Row>
-              <Col>
-                <Form className="checkout_form">
-                  <Row>
-                    <Col>
-                      <Form.Group controlId="validationFormik01">
-                        <Form.Control
-                          type="text"
-                          name="name"
-                          placeholder="Name"
-                        />
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Form.Group controlId="validationFormik01">
-                        <Form.Control
-                          type="text"
-                          name="number"
-                          placeholder="Phone Number"
-                        />
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Form.Group controlId="validationFormik01">
-                        <Form.Control
-                          type="email"
-                          name="name"
-                          placeholder="Email"
-                        />
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Form.Group controlId="validationFormik01">
-                        <Form.Control
-                          type="text"
-                          name="compony"
-                          placeholder="Compony"
-                        />
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Form.Group controlId="validationFormik01">
-                        <Form.Control
-                          type="text"
-                          name="flatNoBuilding"
-                          placeholder="Flat No. & Building"
-                        />
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Form.Group controlId="validationFormik01">
-                        <Form.Control
-                          type="text"
-                          name="streetAddress"
-                          placeholder="Street Address"
-                        />
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Form.Group controlId="validationFormik01">
-                        <Form.Control
-                          type="text"
-                          name="PINCode"
-                          placeholder="PIN Code"
-                        />
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Form.Group controlId="validationFormik01">
-                        <Form.Control
-                          type="text"
-                          name="city"
-                          placeholder="City"
-                        />
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                    <Col>
-                      <Form.Group controlId="validationFormik01">
-                        <Form.Control
-                          type="text"
-                          name="state"
-                          placeholder="State"
-                        />
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
 
-                  {/* <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <Button type="submit" className="input_file_button">
-                    Publish
-                  </Button>
-                </div> */}
-                </Form>
-              </Col>
-            </Row>
+          <CheckoutForm />
 
             <div className="checkout_box" style={{ marginTop: "1rem", padding: "0 1rem 1rem 1rem"}}>
               <div className="checkout_box_heading">
@@ -461,6 +151,7 @@ const Checkout = () => {
                 </div>
               </div>
             </div>
+            
           </Col>
           <Col xs={12} md={5}>
           <div className="checkout_box" style={{ marginTop: "2rem" }} onClick={handleShow}>
@@ -493,81 +184,9 @@ const Checkout = () => {
               </div>
             </div>
 
-            <div className="checkout_box" style={{ marginTop: "2rem" }}>
-              <div className="checkout_box_heading"> <img src="../img/reviewyourorder.png" alt="reviewyourorder" width="22" style={{marginRight: "8px"}} /> Review your order</div>
-              <div className="checkout_box_list">
-                <div>
-                  <h3>Synthetic Floral Print Sari</h3>
-                  <span>Lemon Yellow • Medium • 1 unit</span>
-                </div>
-                <div>
-                  <h3>₹4,500</h3>
-                </div>
-              </div>
-              <div className="checkout_box_list">
-                <div>
-                  <h3>Pink Floral Sari & Jacket</h3>
-                  <span>Medium • 2 units</span>
-                </div>
-                <div>
-                  <h3>
-                    <del
-                      style={{
-                        fontWeight: "300",
-                        color: "#999896",
-                        marginRight: "8px",
-                      }}
-                    >
-                      ₹14,200
-                    </del>
-                    ₹10,200{" "}
-                  </h3>
-                </div>
-              </div>
-              <div className="checkout_box_list">
-                <div>
-                  <h3>Regular Shipping</h3>
-                  <span>Delivers 17—20th June</span>
-                </div>
-                <div>
-                  <h3>Free </h3>
-                </div>
-              </div>
-              <div className="checkout_box_list">
-                <div>
-                  <h3>Coupon: BCLUB</h3>
-                  <span>Get 10% off on all orders</span>
-                </div>
-                <div>
-                  <h3>
-                    <i>-₹1,470</i>
-                  </h3>
-                </div>
-              </div>
-              <Link to="/paymentOptions">
-              <div className="checkout_box_footer">
-                <div className="checkout_box_list">
-                  <div>
-                    <h3>Make Payment</h3>
-                  </div>
-                  <div>
-                    <h3>
-                      <del
-                        style={{
-                          fontWeight: "300",
-                          color: "#999896",
-                          marginRight: "8px",
-                        }}
-                      >
-                        ₹18,700{" "}
-                      </del>
-                      ₹13,230{" "}
-                    </h3>
-                  </div>
-                </div>
-              </div>
-              </Link>
-            </div>
+            <Box sx={{marginTop: "1rem"}}>
+              <MakePayment />
+            </Box>
 
           </Col>
         </Row>

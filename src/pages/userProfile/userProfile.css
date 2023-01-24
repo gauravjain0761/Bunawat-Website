@@ -113,6 +113,7 @@
     line-height: 18px;
     letter-spacing: -0.02em;
     color: #000000;
+    margin-bottom: 0;
 }
 .userProfileModule_box_list span{
     font-weight: 400;
@@ -126,6 +127,14 @@
     display: flex;
     justify-content: space-between;
     background-color: #EAEBF0;
+}
+.userProfileModule_box_list_last h6{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -0.02em;
+    color: #000000;
+    margin: 0px;
 }
 .userProfileModule_box_list_last span{
     font-weight: 400;
@@ -177,7 +186,7 @@
 }
 .eventsClubBox_first{
     background: #37CE73;
-    padding: 2rem !important;
+    padding: 3rem !important;
     border-radius: 4px 0 0 4px;
     text-align: center;
 }

@@ -25,15 +25,6 @@ const Reviews = () => {
 
   const reviewsData = [
     {
-      name: "Priya M.",
-      city: "from Indore",
-      product_name: "Synthetic Floral Print Sari",
-      product_image: "../img/reviews.png",
-      message:
-        "Super soft and comfortable. My order was delivered well within time. Looking forward to order more from you.",
-      audio: "audio",
-    },
-    {
       name: "Aishwarya J.",
       city: "from Mumbai",
       product_name: "Minimal Jumpsuit",
@@ -41,6 +32,15 @@ const Reviews = () => {
       message:
         "I ordered Bunawat for the first time and all my queries about the dress were solved so gracefully! Dispatched in time and I got it two days later.",
       audio: "",
+    },
+    {
+      name: "Priya M.",
+      city: "from Indore",
+      product_name: "Synthetic Floral Print Sari",
+      product_image: "../img/reviews.png",
+      message:
+        "Super soft and comfortable. My order was delivered well within time. Looking forward to order more from you.",
+      audio: "audio",
     },
     {
       name: "Nidhi U.",

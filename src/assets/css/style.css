@@ -560,9 +560,9 @@ button {
 }
 
 .join_the_club_inner p {
-    font-size: 20px;
-    line-height: 1.6;
-    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 300;
     color: #fff;
     max-width: 550px;
     margin: 20px 0 25px;

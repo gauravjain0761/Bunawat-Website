@@ -40,7 +40,7 @@ const UserProfileModule = () => {
               />
             </div>
             <div>
-              <h3>Order Confirmed</h3>
+              <h6>Order Confirmed</h6>
               <span>We’ll send you tracking details when it ships</span>
             </div>
           </div>
@@ -82,12 +82,12 @@ const UserProfileModule = () => {
         </div>
         <div className="userProfileModule_box_list_last">
             <div>
-              <h3>Bluedart</h3>
+              <h6>Bluedart</h6>
               <span>Now in Amravati, MH</span>
             </div>
             <div>
-              <h3>AWB—91286431928456</h3>
-              <div className='userProfileModule_box_list_last_track'>
+              <h6>AWB—91286431928456</h6>
+              <div className='userProfileModule_box_list_last_track'  style={{marginTop: "8px"}}>
                 <p>Track</p>
                 <span><svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg"><g clipPath="url(#clip0_2_1592)"><path d="M0.600098 1.43018H7.9901V8.82018" stroke="#2A3592" strokeWidth="1.7" strokeMiterlimit="10"></path><path d="M0.600098 8.82018L7.9901 1.43018" stroke="#2A3592" strokeWidth="1.7" strokeMiterlimit="10"></path></g><defs><clipPath id="clip0_2_1592"><rect width="8.84" height="8.84" fill="white" transform="translate(0 0.580078)"></rect></clipPath></defs></svg></span>
               </div>
@@ -130,7 +130,7 @@ const UserProfileModule = () => {
               />
             </div>
             <div>
-              <h3>Return Scheduled</h3>
+              <h6>Return Scheduled</h6>
               <span>19th June  •  7am—7pm</span>
             </div>
           </div>

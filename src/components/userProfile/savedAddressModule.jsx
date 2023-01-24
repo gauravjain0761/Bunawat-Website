@@ -20,11 +20,15 @@ const SavedAddressModule = () => {
               <Row>
                 <Col>
                   <Form.Group controlId="validationFormik01">
+                    <div style={{position: "relative"}}>
                     <Form.Control
                       type="text"
                       name="number"
                       placeholder="Phone Number"
+                      style={{paddingLeft: "3rem"}}
                     />
+                    <span style={{position: "absolute", top: "16px", left: "12px", color: "#737576", fontSize: "16px"}}>+91</span>
+                    </div>
                     <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                   </Form.Group>
                 </Col>
@@ -44,11 +48,14 @@ const SavedAddressModule = () => {
               <Row>
                 <Col>
                   <Form.Group controlId="validationFormik01">
+                  <div style={{position: "relative"}}>
                     <Form.Control
                       type="text"
                       name="compony"
                       placeholder="Compony"
                     />
+                    <span style={{position: "absolute", top: "16px", right: "24px", color: "#2A3592", fontSize: "16px"}}>Optional</span>
+                    </div>
                     <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                   </Form.Group>
                 </Col>

@@ -79,6 +79,7 @@ const UserProfile = () => {
         </Tab.Container>
       </Container>
 
+     {/* for mobile view start */}
       <Container className='userProfile_mobile'>
       <Tab.Container id="left-tabs-example" defaultActiveKey="userProfile">
         <Row>
