@@ -503,14 +503,14 @@ const ClubModule = () => {
                   <Col sm={8} xs={8}>
                     <div className="professionals_section_footer_join_text">
                       <img src="./img/club-join.png" alt="club-join" />
-                      <div>
+                      <div style={{paddingLeft: "1rem"}}>
                         <h6>Looking for club discounts?</h6>
-                        <p>Get 10% off everything on the store</p>
+                        <span>Get 10% off everything on the store</span>
                       </div>
                     </div>
                   </Col>
                   <Col sm={4} xs={4}>
-                    <Button variant="outline-primary">Join</Button>
+                    <Button variant="">Join</Button>
                   </Col>
                 </Row>
               </div>

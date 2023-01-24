@@ -50,7 +50,24 @@
     color: #FFFFFF;
     background: #2A3592;
 }
+.errorPage_box .btn:active{
+    color: #FFFFFF !important;
+    background: #2A3592 !important;
+}
+.errorPage_box .btn:focus{
+    color: #FFFFFF !important;
+    background: #2A3592 !important;
+}
 .errorPage_box a{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: -0.02em;
+    text-decoration-line: underline;
+    color: #2A3592;
+    margin-top: 20px;
+}
+.errorPage_box a:hover{
     font-weight: 400;
     font-size: 12px;
     line-height: 20px;

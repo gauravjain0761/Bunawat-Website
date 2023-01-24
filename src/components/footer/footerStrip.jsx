@@ -12,7 +12,7 @@ const FooterStrip = () => {
     <>
       <div className="footer_header_wrap_srip">
         <div className="footer_header_wrap">
-          <ul style={{marginLeft: "10px"}}>
+          <ul style={{marginLeft: "1rem"}}>
             <li>
               <Link to="/" className="d-flex align-items-center">
                 <p>Blog</p>
@@ -46,7 +46,7 @@ const FooterStrip = () => {
             </li>
           </ul>
 
-          <div className="social_media_wrap" style={{marginRight: "10px"}}>
+          <div className="social_media_wrap" style={{marginRight: "1rem"}}>
             <Link to="/">
               <p>Follow us on Instagram</p>
               <span>

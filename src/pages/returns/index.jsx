@@ -177,7 +177,7 @@ const Returns = () => {
     <div className='returns_page_getscore_section'>
       <div className='returns_page_getscore_section_text'>
         <p>Still have a question about returns?</p>
-        <Link to="/returns" style={{ fontSize: "14px", color: "#2A3592", }}>Talk to us on Whatsapp</Link>
+        <Link to="/returns" style={{ fontSize: "14px", color: "#2A3592", textDecoration: "revert" }}>Talk to us on Whatsapp</Link>
       </div>
     </div>
     </Container>

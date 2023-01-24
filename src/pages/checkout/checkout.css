@@ -169,7 +169,7 @@
     border-radius: 4px;
 }
 .payment_options_page .payment_options_page_data .payment_options_page_box .payment_options_page_box_list{
-    padding: 2rem;
+    padding: 1.4rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -213,7 +213,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem;
+    padding: 1.4rem 2rem;
     border-radius: 0 0px 4px 4px;
     cursor: pointer;
 } 

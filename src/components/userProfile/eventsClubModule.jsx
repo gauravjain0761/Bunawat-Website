@@ -33,7 +33,7 @@ const EventsClubModule = () => {
                   </p>
                 </div>
                 <div className="eventsClubBox_second_bottom">
-                  <span style={{ color: "#9A9EB0" }}>with Various Artists</span>
+                  <span style={{ color: "#9A9EB0", textTransform: "none" }}>with Various Artists</span>
                   <Button variant="outline-primary">More info</Button>
                 </div>
               </div>
@@ -66,7 +66,7 @@ const EventsClubModule = () => {
                   </p>
                 </div>
                 <div className="eventsClubBox_second_bottom_premium">
-                  <span style={{ color: "#fff" }}>with Our Styling Team</span>
+                  <span style={{ color: "#fff", textTransform: "none" }}>with Our Styling Team</span>
                   <Button variant="outline-primary">register</Button>
                 </div>
             </Col>
@@ -105,7 +105,7 @@ const EventsClubModule = () => {
       <div className="eventsClubBox">
         <Container>
           <Row>
-            <Col sm={3} xs={3} className="eventsClubBox_first" style={{ background: "#F2C34B"}}>
+            <Col sm={3} xs={3} className="eventsClubBox_first" style={{ background: "#F2C34B", padding: "3rem !important"}}>
               <div>
                 <span>July</span>
                 <h4>2</h4>
