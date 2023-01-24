@@ -21,6 +21,9 @@ import saved_6 from '../../assets/img/saved/saved_6.png';
 import saved_7 from '../../assets/img/saved/saved_7.png';
 import saved_8 from '../../assets/img/saved/saved_8.png';
 import LoginModal from "./LoginModal";
+import { apiConfig } from "../../utils/api";
+import { CardHeader, Menu, MenuItem, MenuList, Paper, Stack, Typography } from "@mui/material";
+import DemoHeader from "./demoHeader";
 
 export default function Header() {
     const [selectedDay, setSelectedDay] = useState();
@@ -29,16 +32,150 @@ export default function Header() {
     const [scroll, setScroll] = useState(false);
     const [cartOpen, setCartOpen] = useState(false);
     const [calanderOpen, setCalanderOpen] = useState(false);
-
     const [showLogIn, setShowLogIn] = useState(false);
+    const [submenu, setSubMenu] = React.useState(null)
+    // const [collection, setCollection] = React.useState([]);
 
+    // const getCollection = async () => {
+    //     await apiConfig.get('get_shopby_collection').then((response) => {
+    //         if (response?.data?.status) {
+    //             setCollection(response?.data?.data)
+    //         }
+    //     }).catch((error) => {
+    //         console.log("getCollectionError", error)
+    //     })
+    // }
+
+    // React.useEffect(() => {
+    //     getCollection();
+    // }, []);
+    // console.log("get_shopby_collection", collection)
+
+    const collection = [
+        {
+            "_id": "63c935441ab6214bf9488b94",
+            "name": "Most Loved",
+            "home_visibilty": true
+        },
+        {
+            "_id": "63c950c267c312e7abf3e5e7",
+            "name": "Newest",
+            "home_visibilty": false
+        },
+        {
+            "_id": "63ca315a04cc045d66a8ba4b",
+            "name": "sdfdsf12312",
+            "home_visibilty": true
+        },
+        {
+            "_id": "63ca323604cc045d66a8ba6f",
+            "name": "nameqwe",
+            "home_visibilty": false
+        }
+    ]
+
+    const categories = [
+        {
+            "_id": "63c9349f1ab6214bf9488b87",
+            "name": "Kind",
+            "home_visibilty": false,
+            "type": "PARENT_CATEGORY",
+            "sub_cateogries": [
+                {
+                    "_id": "63c94fbe67c312e7abf3e59c",
+                    "name": "Ethnic Sets",
+                    "home_visibilty": false,
+                    "type": "SUB_CATEGORY",
+                    "categories": []
+                },
+                {
+                    "_id": "63c94fe867c312e7abf3e5aa",
+                    "name": "Floor Length Designs",
+                    "home_visibilty": false,
+                    "type": "SUB_CATEGORY",
+                    "categories": []
+                },
+                {
+                    "_id": "63c9503267c312e7abf3e5c0",
+                    "name": "Lehengas",
+                    "home_visibilty": false,
+                    "type": "SUB_CATEGORY",
+                    "categories": []
+                },
+                {
+                    "_id": "63c9505f67c312e7abf3e5ce",
+                    "name": "Shararas",
+                    "home_visibilty": false,
+                    "type": "SUB_CATEGORY",
+                    "categories": []
+                },
+                {
+                    "_id": "63c9509d67c312e7abf3e5dc",
+                    "name": "Stylised Drapes",
+                    "home_visibilty": false,
+                    "type": "SUB_CATEGORY",
+                    "categories": []
+                }
+            ]
+        },
+        {
+            "_id": "63c94eb667c312e7abf3e550",
+            "name": "Bridal",
+            "home_visibilty": false,
+            "type": "PARENT_CATEGORY",
+            "sub_cateogries": [
+                {
+                    "_id": "63c94ef867c312e7abf3e564",
+                    "name": "Roka Exhibit",
+                    "home_visibilty": false,
+                    "type": "SUB_CATEGORY",
+                    "categories": []
+                },
+                {
+                    "_id": "63c94f2367c312e7abf3e572",
+                    "name": "Haldi Gallery",
+                    "home_visibilty": false,
+                    "type": "SUB_CATEGORY",
+                    "categories": []
+                },
+                {
+                    "_id": "63c94f4567c312e7abf3e580",
+                    "name": "Mehendi",
+                    "home_visibilty": false,
+                    "type": "SUB_CATEGORY",
+                    "categories": []
+                },
+                {
+                    "_id": "63c94f8d67c312e7abf3e58e",
+                    "name": "Sangeet",
+                    "home_visibilty": false,
+                    "type": "SUB_CATEGORY",
+                    "categories": [
+                        {
+                            "_id": "63ca12d075b045799e205555",
+                            "name": "demo12",
+                            "home_visibilty": true,
+                            "type": "CATEGORY"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "_id": "63ca33c104cc045d66a8baa3",
+            "name": "sdfdsf1231",
+            "home_visibilty": true,
+            "type": "PARENT_CATEGORY",
+            "sub_cateogries": []
+        }
+    ]
 
     const handleClose = () => setShowLogIn(false);
     const handleShow = () => setShowLogIn(true);
 
     const onChagewalletbar = () => {
         const current_loction = window.location.pathname;
-        var mypath = ["/category", "/product", "/checkout", "/orderConfirmation", "/userProfile", "/reviews", "/404", "/returns", "/sizeGuide", "/paymentOptions" ].includes(current_loction)
+        var mypath = ["/category", "/product", "/checkout", "/orderConfirmation", "/userProfile", "/reviews", "/404", "/returns", "/sizeGuide", "/paymentOptions"].includes(current_loction)
         if (mypath) {
             setHeaderColor(true);
         }
@@ -66,6 +203,7 @@ export default function Header() {
     }
 
     const mainsidebarOpen = (classs) => {
+
         if ((document.body.getAttribute("main-sidebar") == classs) || document.body.getAttribute("") == classs) {
             document.body.removeAttribute("main-sidebar", classs)
         }
@@ -87,23 +225,153 @@ export default function Header() {
         document.body.removeAttribute("main-sidebar", classs)
     }
 
-
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleabClose = () => {
+        setAnchorEl(null);
+    };
 
     return (
         <>
-            <header className={scroll || headerColor ? "bunavat_wrapper active" : "bunavat_wrapper"}>
+            <div>
+                <DemoHeader />
+            </div>
+            {/* <header className={scroll || headerColor ? "bunavat_wrapper active" : "bunavat_wrapper"}>
                 <div className="bunavat_nav_link_wrap">
                     <div className="container">
                         <div className="bunavat_nav_link_inner">
                             <ul className="bunavat_nav_link_inner_list">
                                 <li>
-                                    <div className="bunavat_nav_wrap" onClick={() => { mainsidebarOpen("shopsidebar") }}>
-                                        <p>Shop</p>
-                                        <span>
-                                            <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1 0.840088L4.82118 4.84009L8.64706 0.840088" stroke="white" strokeWidth="1.7" strokeMiterlimit="10" />
-                                            </svg>
-                                        </span>
+                                    <div>
+                                        <div className="bunavat_nav_wrap"
+                                            // onClick={() => { mainsidebarOpen("shopsidebar") }}
+                                            id="basic-button"
+                                            aria-controls={open ? 'basic-menu' : undefined}
+                                            aria-haspopup="true"
+                                            aria-expanded={open ? 'true' : undefined}
+                                            onClick={handleClick}
+                                        >
+                                            <p>Shop</p>
+                                            <span>
+                                                <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1 0.840088L4.82118 4.84009L8.64706 0.840088" stroke="white" strokeWidth="1.7" strokeMiterlimit="10" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <Menu
+                                            id="basic-menu"
+                                            anchorEl={anchorEl}
+                                            open={open}
+                                            onClose={handleabClose}
+                                            MenuListProps={{
+                                                'aria-labelledby': 'basic-button',
+                                            }}
+                                            anchorOrigin={{
+                                                vertical: 'bottom',
+                                                horizontal: 'right',
+                                            }}
+                                            transformOrigin={{
+                                                vertical: 'bottom',
+                                                horizontal: 'right',
+                                            }}
+                                            // components={Paper}
+                                            sx={{
+                                                '& .MuiPopover-paper': {
+                                                    // maxHeight: submenu == 0 || submenu ? "calc(100% - 330px)" : "calc(100% - 160px)",
+                                                    top: "75px !important"
+                                                },
+                                            }}
+                                            PaperProps={{
+                                                style: {
+                                                    maxHeight: 48 * 4.5,
+                                                    width: '20ch',
+                                                },
+                                            }}
+                                        >
+                                            <div className="sidebar_menu_list">
+                                                <div className="top_search_wrap">
+                                                    {!submenu && submenu != 0 && <div className="search_input">
+                                                        <span>
+                                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <g clipPath="url(#clip0_6210_1168)">
+                                                                    <path d="M9.4201 17.9901C14.1532 17.9901 17.9901 14.1532 17.9901 9.4201C17.9901 4.68702 14.1532 0.850098 9.4201 0.850098C4.68702 0.850098 0.850098 4.68702 0.850098 9.4201C0.850098 14.1532 4.68702 17.9901 9.4201 17.9901Z" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
+                                                                    <path d="M15 15L22.56 22.56" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
+                                                                </g>
+                                                                <defs>
+                                                                    <clipPath id="clip0_6210_1168">
+                                                                        <rect width="23.16" height="23.16" fill="white" />
+                                                                    </clipPath>
+                                                                </defs>
+                                                            </svg>
+                                                        </span>
+                                                        <input type="text" placeholder="Search" />
+                                                        <button type="button" className="addvanced_btn">Advanced</button>
+                                                    </div>}
+                                                    <div className="">
+                                                        <ul className="common_link_wrap">
+                                                            {!submenu && submenu != 0 && collection && collection.length > 0 && collection.map((item, index) => {
+                                                                if (index > 3) {
+                                                                    return ""
+                                                                }
+                                                                return (
+                                                                    <li>
+                                                                        <Link to="/" className="common_sidebar_link">
+                                                                            <span>{item?.name}</span>
+                                                                        </Link>
+                                                                    </li>
+                                                                )
+                                                            })}
+                                                            {categories && categories.length > 0 && categories.map((item, index) => {
+                                                                if (index > 1) {
+                                                                    return ""
+                                                                }
+                                                                return (
+                                                                    <li key={`categoriesparent-${index}`}>
+                                                                        <div className="inner_menu kind_menu">
+                                                                            {!submenu && submenu != 0 && <button to="/" className="common_arrow_btn common_sidebar_link " onClick={() => setSubMenu(index)}>
+                                                                                <span>{item?.name}</span>
+                                                                                <span>
+                                                                                    <svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                                        <path d="M9.80005 2.13184L20.147 12.4788L9.80005 22.8513" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
+                                                                                        <path d="M0.800049 12.5044H19.7267" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
+                                                                                    </svg>
+                                                                                </span>
+                                                                            </button>}
+                                                                            {submenu === index &&
+                                                                                <div className="">
+                                                                                    <ul className="">
+                                                                                        <li>
+                                                                                            <Link to="/" className="">
+                                                                                                <span>
+                                                                                                    Back
+                                                                                                </span>
+                                                                                            </Link>
+                                                                                        </li>
+                                                                                        {item && item?.sub_cateogries.length > 0 && item?.sub_cateogries.map((subCategory, subIndex) => {
+                                                                                            return (
+                                                                                                <li key={`sub_cateogriesList-${subIndex}`}>
+                                                                                                    <Link to="/" className="">
+                                                                                                        <span>{subCategory?.name}</span>
+                                                                                                    </Link>
+                                                                                                </li>
+                                                                                            )
+                                                                                        })}
+                                                                                    </ul>
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                    </li>
+                                                                )
+                                                            })}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </Menu>
+
                                     </div>
                                 </li>
                                 <li>
@@ -139,7 +407,7 @@ export default function Header() {
 
                             <ul className="account_info">
                                 <li>
-                                    <button onClick={() => {handleShow(); setCartOpen(false); setCalanderOpen(false)}}>
+                                    <button onClick={() => { handleShow(); setCartOpen(false); setCalanderOpen(false) }}>
                                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <g clipPath="url(#clip0_6128_2675)">
                                                 <path d="M12.52 23.9902C18.678 23.9902 23.67 18.9982 23.67 12.8402C23.67 6.68221 18.678 1.69019 12.52 1.69019C6.36202 1.69019 1.37 6.68221 1.37 12.8402C1.37 18.9982 6.36202 23.9902 12.52 23.9902Z" stroke="white" strokeWidth="1.7" strokeMiterlimit="10" />
@@ -156,7 +424,7 @@ export default function Header() {
                                     </button>
                                 </li>
                                 <li>
-                                    <button onClick={() => {setCalanderOpen(!calanderOpen); setCartOpen(false)}}>
+                                    <button onClick={() => { setCalanderOpen(!calanderOpen); setCartOpen(false) }}>
                                         <svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <g clipPath="url(#clip0_6112_2679)">
                                                 <path d="M22.15 3.33496H1.37V22.185H22.15V3.33496Z" stroke="white" strokeWidth="1.7" strokeMiterlimit="10" />
@@ -176,7 +444,7 @@ export default function Header() {
                                     </button>
                                 </li>
                                 <li>
-                                    <button className="cart_items" onClick={() => {setCartOpen(!cartOpen); setCalanderOpen(false)}}>
+                                    <button className="cart_items" onClick={() => { setCartOpen(!cartOpen); setCalanderOpen(false) }}>
                                         <svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <g clipPath="url(#clip0_6112_2688)">
                                                 <path d="M20.1199 9.34985H3.14993L1.23993 22.7399H22.0199L20.1199 9.34985Z" stroke="white" strokeWidth="1.7" strokeMiterlimit="10" />
@@ -205,280 +473,9 @@ export default function Header() {
                         </div>
                     </div>
                 </div>
+            </header> */}
 
-                <div className="sidebar_menu_wrapper shop_sidebar">
-                    <div className="dark_bg" onClick={() => { dark_sidebar("shopsidebar") }}></div>
-                    <div className="sidebar_menu_list">
-                        <div className="top_search_wrap">
-                            <div className="search_input">
-                                <span>
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <g clipPath="url(#clip0_6210_1168)">
-                                            <path d="M9.4201 17.9901C14.1532 17.9901 17.9901 14.1532 17.9901 9.4201C17.9901 4.68702 14.1532 0.850098 9.4201 0.850098C4.68702 0.850098 0.850098 4.68702 0.850098 9.4201C0.850098 14.1532 4.68702 17.9901 9.4201 17.9901Z" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
-                                            <path d="M15 15L22.56 22.56" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_6210_1168">
-                                                <rect width="23.16" height="23.16" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </span>
-                                <input type="text" placeholder="Search" />
-                                <button type="button" className="addvanced_btn">Advanced</button>
-                            </div>
-                            <div className="sidebar_wrapper">
-                                <ul className="common_link_wrap">
-                                    <li>
-                                        <Link to="/" className="common_sidebar_link" onClick={() => sidebarOpen('')}>
-                                            <span>Most Loved</span>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/" className="common_sidebar_link" onClick={() => sidebarOpen('')}>
-                                            <span>Newest</span>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <div className="inner_menu kind_menu">
-                                            <button to="/" className="common_arrow_btn common_sidebar_link " onClick={() => sidebarOpen('kind_menu')}>
-                                                <span>Kind</span>
-                                                <span>
-                                                    <svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M9.80005 2.13184L20.147 12.4788L9.80005 22.8513" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
-                                                        <path d="M0.800049 12.5044H19.7267" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
-                                                    </svg>
-                                                </span>
-                                            </button>
-
-                                            <div className="inner_menu_wrap">
-                                                <ul className="common_link_wrap">
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Sari</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Kurta & Churidar</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Ready to Wear</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Dresses</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Lehenga</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Salwar Suit</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Ghagra Choli</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Everyday Casuals</span>
-                                                        </Link>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className="inner_menu bridal_menu">
-                                            <button to="/" className="common_arrow_btn common_sidebar_link" onClick={() => sidebarOpen('bridal_menu')}>
-                                                <span>Bridal</span>
-                                                <span>
-                                                    <svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M9.80005 2.13184L20.147 12.4788L9.80005 22.8513" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
-                                                        <path d="M0.800049 12.5044H19.7267" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
-                                                    </svg>
-                                                </span>
-                                            </button>
-
-                                            <div className="inner_menu_wrap">
-                                                <ul className="common_link_wrap">
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Designer Wear</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>The Bride</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Roka Exhibit</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Haldi Gallery</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Mehendi</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Sangeet</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Ghagra Choli</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Everyday Casuals</span>
-                                                        </Link>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className="inner_menu festive_menu">
-                                            <button to="/" className="common_arrow_btn common_sidebar_link" onClick={() => sidebarOpen('festive_menu')}>
-                                                <span>Festive</span>
-                                                <span>
-                                                    <svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M9.80005 2.13184L20.147 12.4788L9.80005 22.8513" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
-                                                        <path d="M0.800049 12.5044H19.7267" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
-                                                    </svg>
-                                                </span>
-                                            </button>
-
-                                            <div className="inner_menu_wrap">
-                                                <ul className="common_link_wrap">
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>All Festive Wear</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Diwali</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Eid</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Dussehra</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Holi</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Onam</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Raksha Bandhan</span>
-                                                        </Link>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className="inner_menu regional_menu">
-                                            <button to="/" className="common_arrow_btn common_sidebar_link" onClick={() => sidebarOpen('regional_menu')}>
-                                                <span>Regional</span>
-                                                <span>
-                                                    <svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M9.80005 2.13184L20.147 12.4788L9.80005 22.8513" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
-                                                        <path d="M0.800049 12.5044H19.7267" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
-                                                    </svg>
-                                                </span>
-                                            </button>
-
-                                            <div className="inner_menu_wrap">
-                                                <ul className="common_link_wrap">
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Gujarat</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Maharashtra</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>West Bengal</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Rajasthan</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Kerala</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Assam</span>
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="/" className="common_sidebar_link">
-                                                            <span>Orissa</span>
-                                                        </Link>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <Link to="/" className="common_sidebar_link" onClick={() => sidebarOpen('')}>
-                                            <span>By Designers</span>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/" className="common_sidebar_link" onClick={() => sidebarOpen('')}>
-                                            <span>Clearance</span>
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-
-            <div className={cartOpen ? "cart_wrap active" : "cart_wrap"}>
+            {/* <div className={cartOpen ? "cart_wrap active" : "cart_wrap"}>
                 <div className="cart_dark" onClick={() => setCartOpen(false)}></div>
                 <div className="cart_inner">
                     <Tabs
@@ -595,7 +592,7 @@ export default function Header() {
                                             </div>
                                         </div>
                                         <div className='remove_cart_block'>
-                                            <p>₹10,200 <span style={{fontSize: "12px", marginLeft: "12px"}}><del>₹14,200</del></span> </p>
+                                            <p>₹10,200 <span style={{ fontSize: "12px", marginLeft: "12px" }}><del>₹14,200</del></span> </p>
                                             <button type='button' className='remove_btn'>
                                                 <svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <g clipPath="url(#clip0_160_1450)">
@@ -681,10 +678,10 @@ export default function Header() {
                                 </div>
                             </div>
                             <Link to="/checkout" onClick={() => setCartOpen(false)}>
-                            <button type="button" className="checkout_btn">
-                                <span>Checkout</span>
-                                <span><s>₹25,600</s>₹21,600</span>
-                            </button>
+                                <button type="button" className="checkout_btn">
+                                    <span>Checkout</span>
+                                    <span><s>₹25,600</s>₹21,600</span>
+                                </button>
                             </Link>
                         </Tab>
                         <Tab eventKey="saved" title="Saved">
@@ -922,9 +919,9 @@ export default function Header() {
                         </Tab>
                     </Tabs>
                 </div>
-            </div>
+            </div> */}
 
-            <div className={calanderOpen ? "cart_wrap active" : "cart_wrap"}>
+            {/* <div className={calanderOpen ? "cart_wrap active" : "cart_wrap"}>
                 <div className="cart_dark" onClick={() => setCalanderOpen(false)}></div>
                 <div className="cart_inner calander_wrap position-relative">
                     <div className="date_wrap"><DayPicker showOutsideDays fixedWeeks mode="single" onSelect={setSelectedDay} selected={selectedDay} /></div>
@@ -1028,7 +1025,7 @@ export default function Header() {
                     </div>
                 </div>
             </div>
-            <LoginModal showLogIn={showLogIn} handleClose={handleClose} />
+            <LoginModal showLogIn={showLogIn} handleClose={handleClose} /> */}
         </>
     );
     // }

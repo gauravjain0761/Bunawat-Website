@@ -558,6 +558,7 @@
         max-width: 100%;
         flex-wrap: wrap;
         padding: 15px 0 5px;
+        overflow-y: scroll;
         border-bottom: 1px solid #e3e3e3;
     }
     .common_link_wrap li {
