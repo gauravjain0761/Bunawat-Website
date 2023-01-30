@@ -12,12 +12,12 @@ const Home = () => {
     return (
         <div className='home_page_wrap'>
 
-            <HomeBannerTabs />
+            {/* <HomeBannerTabs /> */}
 
-            <BestSellingSection /> 
+            <BestSellingSection />
 
             <ProductSection />
-            
+
             <JoinTheClubSection />
 
             <Footer />
