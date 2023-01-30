@@ -26,6 +26,7 @@ import saved_5 from '../../assets/img/saved/saved_5.png';
 import saved_6 from '../../assets/img/saved/saved_6.png';
 import saved_7 from '../../assets/img/saved/saved_7.png';
 import saved_8 from '../../assets/img/saved/saved_8.png';
+import { useGetPokemonByNameQuery, useGetShopMenuDataQuery } from '../../services/api';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -42,11 +43,62 @@ function ResponsiveAppBar() {
     const [accountPopup, setAccountPopup] = React.useState(null);
     const [calendarPopup, setCalendarPopup] = React.useState(null);
     const [cartPopup, setCartPopup] = React.useState(null);
+    const [menuData, setMenuData] = React.useState({
+        collection: [],
+        categories: [],
+        level: '1',
+        selectedCategoriesIndex: -1,
+        selectedSubCategoriesIndex: -1
+    });
 
     const [isActive, setIsActive] = React.useState({
         active: false,
         index: ""
     })
+    const { data, error, isLoading } = useGetShopMenuDataQuery()
+
+    const getCateogries = (categories) => {
+        if (categories.length > 0) {
+            return categories
+        } else {
+            return []
+        }
+    }
+
+    const getSubCateogries = (sub_cateogries) => {
+        if (sub_cateogries.length > 0) {
+            return sub_cateogries.map(list => {
+                return {
+                    ...list,
+                    categories: getCateogries(list?.categories ?? [])
+                }
+            })
+        } else {
+            return []
+        }
+    }
+
+    React.useEffect(() => {
+        let tempData = {
+            collection: data?.collections ?? [],
+            categories: data?.categories ?? []
+        }
+        let tempCollection = [...tempData.collection]
+        let tempCategories = [...tempData.categories]
+        tempCollection = tempCollection.slice(0, 4)
+        tempCategories = tempCategories.slice(0, 2).map(list => {
+            return {
+                ...list,
+                sub_cateogries: getSubCateogries(list?.sub_cateogries ?? [])
+            }
+        })
+        tempData = {
+            collection: tempCollection,
+            categories: tempCategories,
+            level: '1'
+        }
+        setMenuData(tempData)
+    }, [data]);
 
     const getActiveHeader = (scroll, hover) => {
         if (scroll) {
@@ -89,8 +141,15 @@ function ResponsiveAppBar() {
         setAnchorEl(null);
         setIsActive({ active: false, index: "" });
     };
-    const handleActive = (index, active) => {
-        setIsActive({ active: active, index: active ? index : "" });
+    const handleActive = (index, level, change = true, sub = false) => {
+        if (change) {
+            setMenuData({
+                ...menuData,
+                selectedCategoriesIndex: sub ? menuData.selectedCategoriesIndex : index,
+                selectedSubCategoriesIndex: sub ? index : -1,
+                level
+            })
+        }
     }
 
     const handleAccountClick = (event) => {
@@ -128,126 +187,6 @@ function ResponsiveAppBar() {
 
     const cart = Boolean(cartPopup);
     const cartId = cart ? 'simple-popover' : undefined;
-
-    const collection = [
-        {
-            "_id": "63c935441ab6214bf9488b94",
-            "name": "Most Loved",
-            "home_visibilty": true
-        },
-        {
-            "_id": "63c950c267c312e7abf3e5e7",
-            "name": "Newest",
-            "home_visibilty": false
-        },
-        {
-            "_id": "63ca315a04cc045d66a8ba4b",
-            "name": "sdfdsf12312",
-            "home_visibilty": true
-        },
-        {
-            "_id": "63ca323604cc045d66a8ba6f",
-            "name": "nameqwe",
-            "home_visibilty": false
-        }
-    ]
-
-    const categories = [
-        {
-            "_id": "63c9349f1ab6214bf9488b87",
-            "name": "Kind",
-            "home_visibilty": false,
-            "type": "PARENT_CATEGORY",
-            "sub_cateogries": [
-                {
-                    "_id": "63c94fbe67c312e7abf3e59c",
-                    "name": "Ethnic Sets",
-                    "home_visibilty": false,
-                    "type": "SUB_CATEGORY",
-                    "categories": []
-                },
-                {
-                    "_id": "63c94fe867c312e7abf3e5aa",
-                    "name": "Floor Length Designs",
-                    "home_visibilty": false,
-                    "type": "SUB_CATEGORY",
-                    "categories": []
-                },
-                {
-                    "_id": "63c9503267c312e7abf3e5c0",
-                    "name": "Lehengas",
-                    "home_visibilty": false,
-                    "type": "SUB_CATEGORY",
-                    "categories": []
-                },
-                {
-                    "_id": "63c9505f67c312e7abf3e5ce",
-                    "name": "Shararas",
-                    "home_visibilty": false,
-                    "type": "SUB_CATEGORY",
-                    "categories": []
-                },
-                {
-                    "_id": "63c9509d67c312e7abf3e5dc",
-                    "name": "Stylised Drapes",
-                    "home_visibilty": false,
-                    "type": "SUB_CATEGORY",
-                    "categories": []
-                }
-            ]
-        },
-        {
-            "_id": "63c94eb667c312e7abf3e550",
-            "name": "Bridal",
-            "home_visibilty": false,
-            "type": "PARENT_CATEGORY",
-            "sub_cateogries": [
-                {
-                    "_id": "63c94ef867c312e7abf3e564",
-                    "name": "Roka Exhibit",
-                    "home_visibilty": false,
-                    "type": "SUB_CATEGORY",
-                    "categories": []
-                },
-                {
-                    "_id": "63c94f2367c312e7abf3e572",
-                    "name": "Haldi Gallery",
-                    "home_visibilty": false,
-                    "type": "SUB_CATEGORY",
-                    "categories": []
-                },
-                {
-                    "_id": "63c94f4567c312e7abf3e580",
-                    "name": "Mehendi",
-                    "home_visibilty": false,
-                    "type": "SUB_CATEGORY",
-                    "categories": []
-                },
-                {
-                    "_id": "63c94f8d67c312e7abf3e58e",
-                    "name": "Sangeet",
-                    "home_visibilty": false,
-                    "type": "SUB_CATEGORY",
-                    "categories": [
-                        {
-                            "_id": "63ca12d075b045799e205555",
-                            "name": "demo12",
-                            "home_visibilty": true,
-                            "type": "CATEGORY"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "_id": "63ca33c104cc045d66a8baa3",
-            "name": "sdfdsf1231",
-            "home_visibilty": true,
-            "type": "PARENT_CATEGORY",
-            "sub_cateogries": []
-        }
-    ]
-
 
     return (
         <Box sx={{
@@ -307,10 +246,7 @@ function ResponsiveAppBar() {
                                     }}
                                 >
                                     <Box sx={{ width: { md: "380px", sm: "100%" }, px: 2 }}>
-                                        {!isActive?.active && collection && collection.map((item, index) => {
-                                            if (index > 3) {
-                                                return ""
-                                            }
+                                        {menuData.level == '1' && menuData.collection.map((item, index) => {
                                             return (
                                                 <React.Fragment key={`collection-${index}`}>
                                                     <Typography sx={{ py: 2, fontSize: "24px", fontWeight: 600, letterSpacing: "-.02em", fontFamily: "Imported", cursor: "pointer" }}>
@@ -322,34 +258,34 @@ function ResponsiveAppBar() {
                                         })}
                                     </Box>
                                     <Box sx={{ width: { md: "380px", sm: "100%" }, px: 2 }}>
-                                        {categories && categories.map((item, index) => {
-                                            if (index > 1) {
-                                                return ""
-                                            }
+                                        {menuData.categories.map((item, index) => {
                                             return (
                                                 <React.Fragment key={`categories-${index}`}>
-                                                    {!isActive?.active ?
+                                                    {menuData.level == '1' &&
                                                         <>
-                                                            <Stack sx={{ cursor: "pointer" }} direction="row" alignItems="center" justifyContent="space-between" onClick={() => handleActive(index, true)}>
+                                                            <Stack sx={{ cursor: "pointer" }} direction="row" alignItems="center" justifyContent="space-between" onClick={() => handleActive(index, '2', item.sub_cateogries.length > 0)}>
                                                                 <Typography sx={{ py: 1.5, fontSize: "24px", fontWeight: 600, letterSpacing: "-.02em", fontFamily: "Imported" }}>
                                                                     {item.name}
                                                                 </Typography>
-                                                                <Typography>
-                                                                    <svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path d="M9.80005 2.13184L20.147 12.4788L9.80005 22.8513" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
-                                                                        <path d="M0.800049 12.5044H19.7267" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
-                                                                    </svg>
-                                                                </Typography>
+                                                                {item.sub_cateogries.length > 0 &&
+                                                                    <Typography>
+                                                                        <svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M9.80005 2.13184L20.147 12.4788L9.80005 22.8513" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
+                                                                            <path d="M0.800049 12.5044H19.7267" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
+                                                                        </svg>
+                                                                    </Typography>
+                                                                }
                                                             </Stack>
                                                             <Divider sx={{ borderWidth: "1px" }} />
                                                         </>
-                                                        :
+                                                    }
+                                                    {(menuData.level == '2' || menuData.level == '3') &&
                                                         <>
-                                                            {isActive.index === index &&
+                                                            {(index == menuData.selectedCategoriesIndex && menuData.level == '2') &&
                                                                 <>
                                                                     <Stack direction="row" justifyContent="space-between" pb={0.5} pt={2}>
-                                                                        <Button sx={{ fontSize: "14px !important", textTransform: "capitalize", fontWeight: 600 }} onClick={() => setIsActive({ active: false, index: "" })} color="inherit" startIcon={<KeyboardBackspaceIcon />}>
-                                                                            Back
+                                                                        <Button sx={{ fontSize: "14px !important", textTransform: "capitalize", fontWeight: 600 }} onClick={() => handleActive(-1, '1')} color="inherit" startIcon={<KeyboardBackspaceIcon />}>
+                                                                            Back2
                                                                         </Button>
                                                                         <Button sx={{ fontSize: "14px !important", textTransform: "capitalize", fontWeight: 600 }} color="inherit" startIcon={<NorthEastIcon />}>
                                                                             Shop Kind
@@ -358,14 +294,51 @@ function ResponsiveAppBar() {
                                                                     <Divider sx={{ borderWidth: "1px" }} />
                                                                 </>
                                                             }
-                                                            {isActive.index === index && item && item.sub_cateogries.length > 0 && item.sub_cateogries.map((subcategory, subIndex) => {
+                                                            {index == menuData.selectedCategoriesIndex && item.sub_cateogries.map((subcategory, subIndex) => {
                                                                 return (
-                                                                    <Box sx={{ cursor: "pointer" }} key={`itemsub-${subIndex}`}>
-                                                                        <Typography sx={{ py: 1.5, fontSize: "24px", fontWeight: 600, letterSpacing: "-.02em", fontFamily: "Imported" }}>
-                                                                            {subcategory.name}
-                                                                        </Typography>
-                                                                        <Divider sx={{ borderWidth: "1px" }} />
-                                                                    </Box>
+                                                                    <>
+                                                                        {menuData.level == '2' &&
+                                                                            <Box sx={{ cursor: "pointer" }} key={`itemsub-${subIndex}`}>
+                                                                                <Stack sx={{ cursor: "pointer" }} direction="row" alignItems="center" justifyContent="space-between" onClick={() => handleActive(subIndex, '3', subcategory.categories.length > 0, true)}>
+                                                                                    <Typography sx={{ py: 1.5, fontSize: "24px", fontWeight: 600, letterSpacing: "-.02em", fontFamily: "Imported" }}>
+                                                                                        {subcategory.name}
+                                                                                    </Typography>
+                                                                                    {subcategory.categories.length > 0 &&
+                                                                                        <Typography>
+                                                                                            <svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                                                <path d="M9.80005 2.13184L20.147 12.4788L9.80005 22.8513" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
+                                                                                                <path d="M0.800049 12.5044H19.7267" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
+                                                                                            </svg>
+                                                                                        </Typography>
+                                                                                    }
+                                                                                </Stack>
+                                                                                <Divider sx={{ borderWidth: "1px" }} />
+                                                                            </Box>
+                                                                        }
+                                                                        {(subIndex == menuData.selectedSubCategoriesIndex && menuData.level == '3') &&
+                                                                            <>
+                                                                                <Stack direction="row" justifyContent="space-between" pb={0.5} pt={2}>
+                                                                                    <Button sx={{ fontSize: "14px !important", textTransform: "capitalize", fontWeight: 600 }} onClick={() => handleActive(menuData.selectedCategoriesIndex, '2')} color="inherit" startIcon={<KeyboardBackspaceIcon />}>
+                                                                                        Back3
+                                                                                    </Button>
+                                                                                    <Button sx={{ fontSize: "14px !important", textTransform: "capitalize", fontWeight: 600 }} color="inherit" startIcon={<NorthEastIcon />}>
+                                                                                        Shop Kind
+                                                                                    </Button>
+                                                                                </Stack>
+                                                                                <Divider sx={{ borderWidth: "1px" }} />
+                                                                                {subcategory.categories.map((category, catIndex) => {
+                                                                                    return (
+                                                                                        <Box sx={{ cursor: "pointer" }} key={`itemsub-${catIndex}`}>
+                                                                                            <Typography sx={{ py: 1.5, fontSize: "24px", fontWeight: 600, letterSpacing: "-.02em", fontFamily: "Imported" }}>
+                                                                                                {category.name}
+                                                                                            </Typography>
+                                                                                            <Divider sx={{ borderWidth: "1px" }} />
+                                                                                        </Box>
+                                                                                    )
+                                                                                })}
+                                                                            </>
+                                                                        }
+                                                                    </>
                                                                 )
                                                             })}
                                                         </>
@@ -462,6 +435,7 @@ function ResponsiveAppBar() {
                                         vertical: 'top',
                                         horizontal: 'center',
                                     }}
+                                    sx={{ width: '1000px' }}
                                 >
                                     <Box sx={{ p: 4 }} className="body_width login_body">
                                         {otpverify ? null : (
