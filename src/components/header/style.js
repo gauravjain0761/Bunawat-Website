@@ -11,5 +11,6 @@ export const CustomPopOver = styled(Popover)(({ theme }) => ({
             bottom: "0px",
             maxWidth: "100%",
         }
-    }
+    },
+    borderRadius: '16px !important'
 }));
