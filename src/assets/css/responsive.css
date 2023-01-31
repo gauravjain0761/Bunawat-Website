@@ -36,23 +36,28 @@
         font-size: 30px;
     }
 
-    .common_product_details>div{
+    .common_product_details>div {
         font-size: 17px;
         margin-top: 5px;
     }
-    .product_title_wrap h2{
+
+    .product_title_wrap h2 {
         font-size: 22px;
     }
-    .product_filters{
+
+    .product_filters {
         padding: 8px 15px;
     }
+
     .structured_fabric_wrapper {
         padding: 55px 0;
     }
-    .might_like_wrap.cloth_wrap{
+
+    .might_like_wrap.cloth_wrap {
         padding: 50px 0;
     }
-    .star_content{
+
+    .star_content {
         padding: 60px 0 0px;
     }
 }
@@ -93,19 +98,22 @@
     }
 
     .cloth_title_wrap h2,
-    .cloth_title_wrap h2 p{
+    .cloth_title_wrap h2 p {
         font-size: 44px;
     }
-    .recently_col_wrap .row{
+
+    .recently_col_wrap .row {
         flex-wrap: unset;
         padding-bottom: 15px;
         overflow-x: auto;
     }
-    .recently_col_wrap .row .col{
+
+    .recently_col_wrap .row .col {
         flex: 0 0 125px;
         max-width: 125px;
     }
-    .product_info_section_wrap{
+
+    .product_info_section_wrap {
         padding: 0 100px;
     }
 }
@@ -131,64 +139,80 @@
         height: 17px;
     }
 
-    .join_the_club_inner p{
+    .join_the_club_inner p {
         font-size: 18px;
     }
 
-    .tel_number{
+    .tel_number {
         margin-bottom: 40px;
     }
 
-    .join_the_club_inner p{
+    .join_the_club_inner p {
         margin: 15px 0 20px;
     }
-    .tel_number_wrap input{
+
+    .tel_number_wrap input {
         font-size: 16px;
     }
+
     .cloth_title_wrap h2,
     .cloth_title_wrap h2 p {
         font-size: 38px;
     }
-    .product_page .product_info_section_wrap{
+
+    .product_page .product_info_section_wrap {
         padding: 100px 70px;
     }
+
     .product_title_wrap h2 {
         font-size: 20px;
     }
+
     .common_product_details>div {
         font-size: 16px;
         margin-top: 5px;
     }
-    .stock_info h3{
+
+    .stock_info h3 {
         font-size: 12px;
     }
+
     .stock_title_wrap {
         margin-right: 10px;
     }
-    .star_content>p{
+
+    .star_content>p {
         font-size: 18px;
     }
+
     .star_content {
         padding: 50px 0 0px;
     }
+
     .might_like_wrap.cloth_wrap {
         padding: 0px 0 50px;
     }
+
     .product_left_details {
         padding: 20px 30px;
     }
-    .product_left_details p{
+
+    .product_left_details p {
         font-size: 18px;
     }
-    .product_left_details span{
+
+    .product_left_details span {
         font-size: 12px;
     }
-    .know_inner{
+
+    .know_inner {
         padding: 20px 0;
     }
+
     .structured_fabric_wrapper {
         padding: 50px 0;
     }
+
     .product_left_details p {
         font-size: 16px;
     }
@@ -198,6 +222,7 @@
     .structured_fabric_wrapper {
         padding: 20px 0;
     }
+
     #toggle {
         display: flex;
         flex-direction: column;
@@ -298,7 +323,7 @@
 
     .common_title,
     .home_banner_title h2,
-    .join_the_club_inner h2{
+    .join_the_club_inner h2 {
         font-size: 34px;
     }
 
@@ -406,7 +431,7 @@
         margin-left: 0;
     }
 
-    .social_media_wrap{
+    .social_media_wrap {
         width: 100%;
         margin-top: 20px;
         padding: 25px 0;
@@ -414,7 +439,7 @@
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 
-    .social_media_wrap a{
+    .social_media_wrap a {
         display: flex;
         justify-content: space-between;
     }
@@ -422,46 +447,60 @@
     .join_the_club_inner p {
         font-size: 14px;
     }
-    .cloth_title_wrap h2, .cloth_title_wrap h2 p {
+
+    .cloth_title_wrap h2,
+    .cloth_title_wrap h2 p {
         font-size: 30px;
     }
+
     .design_filter button {
         font-size: 12px;
         white-space: nowrap;
     }
+
     .design_filter {
         padding: 20px 0 45px;
     }
+
     .category_page_wrapper {
         padding: 150px 0 100px;
     }
-    .design_filter{
+
+    .design_filter {
         overflow-x: auto;
         justify-content: flex-start;
         padding: 15px 0 20px;
         margin-bottom: 30px;
     }
-    .cloth_title_wrap h2{
+
+    .cloth_title_wrap h2 {
         flex-direction: column;
     }
+
     .product_page .product_info_section_wrap {
         padding: 100px 50px 50px;
     }
-    .product_info_right_section_wrap{
+
+    .product_info_right_section_wrap {
         align-items: center;
     }
-    .product_info_right_section_wrap > div{
+
+    .product_info_right_section_wrap>div {
         padding: 100px 0;
     }
-    .structured_fabric_inner .row > div:nth-child(n+3){
+
+    .structured_fabric_inner .row>div:nth-child(n+3) {
         margin-top: 30px;
     }
+
     .might_like_wrap .cloth_inner .row>div:nth-child(n+3) {
         margin-top: 24px;
     }
+
     .common_select_wrap {
         max-width: 220px;
     }
+
     .product_filters_wrap.product_page_filtter {
         max-width: 440px;
     }
@@ -471,7 +510,7 @@
 
     .common_title,
     .home_banner_title h2,
-    .join_the_club_inner h2{
+    .join_the_club_inner h2 {
         font-size: 30px;
     }
 
@@ -535,7 +574,7 @@
         display: flex;
     }
 
-    .footer_blog_inner{
+    .footer_blog_inner {
         padding: 0px 0 80px;
     }
 
@@ -543,17 +582,21 @@
         right: 50%;
         transform: translateX(50%);
     }
+
     .join_the_club_wrap {
         padding: 400px 0 50px;
     }
+
     .tel_number_wrap input,
     .join_btn {
         height: 50px;
     }
+
     .tel_number {
         margin-bottom: 20px;
     }
-    .sidebar_wrapper > .common_link_wrap > li {
+
+    .sidebar_wrapper>.common_link_wrap>li {
         height: auto;
         max-width: 100%;
         flex-wrap: wrap;
@@ -561,14 +604,17 @@
         overflow-y: scroll;
         border-bottom: 1px solid #e3e3e3;
     }
+
     .common_link_wrap li {
         height: 50px;
         max-width: 100%;
         border: unset;
     }
-    .inner_menu_wrap{
+
+    .inner_menu_wrap {
         margin-top: 15px;
     }
+
     .inner_menu {
         display: flex;
         justify-content: space-between;
@@ -576,20 +622,24 @@
         width: 100%;
         flex-wrap: wrap;
     }
+
     .common_arrow_btn {
         width: 100%;
         margin-bottom: 10px;
     }
-    .inner_menu .inner_menu_wrap{
+
+    .inner_menu .inner_menu_wrap {
         height: 0px;
         position: unset;
         transform: unset;
         transition: all 0.5s ease 0s;
         margin-top: unset;
     }
-    .sidebar_menu_list{
+
+    .sidebar_menu_list {
         max-width: 100%;
     }
+
     body[menu-class="kind_menu"] .kind_menu.inner_menu .inner_menu_wrap,
     body[menu-class="bridal_menu"] .bridal_menu.inner_menu .inner_menu_wrap,
     body[menu-class="festive_menu"] .festive_menu.inner_menu .inner_menu_wrap,
@@ -599,61 +649,80 @@
         visibility: visible;
         height: auto;
     }
-    .common_sidebar_link span{
+
+    .common_sidebar_link span {
         font-size: 20px;
     }
-    .sidebar_menu_list{
+
+    .sidebar_menu_list {
         padding: 20px;
     }
-    .common_home_banner{
+
+    .common_home_banner {
         padding: 50px 0;
     }
+
     .category_page_wrapper {
         padding: 130px 0 50px;
     }
-    .cloth_title_wrap h2, .cloth_title_wrap h2 p {
+
+    .cloth_title_wrap h2,
+    .cloth_title_wrap h2 p {
         font-size: 26px;
         text-align: center;
     }
+
     .cloth_wrap {
         padding: 50px 0;
     }
-    .cloth_title_wrap h2 p{
+
+    .cloth_title_wrap h2 p {
         margin-bottom: 10px;
     }
-    .design_filter{
+
+    .design_filter {
         margin-bottom: 15px;
     }
-    .product_slider_section .row{
+
+    .product_slider_section .row {
         flex-direction: column-reverse;
     }
-    .product_slider .slick-dots{
+
+    .product_slider .slick-dots {
         align-items: flex-end;
     }
-    .product_info_right_section_wrap > div {
+
+    .product_info_right_section_wrap>div {
         padding: 15px 0;
     }
+
     .product_page .product_info_section_wrap {
         padding: 50px 15px 50px;
     }
-    .cloth_deatils_wrap a::after{
+
+    .cloth_deatils_wrap a::after {
         height: 150px;
     }
-    .product_info_right_section_wrap .slaman_link{
-        display:flex;
+
+    .product_info_right_section_wrap .slaman_link {
+        display: flex;
         width: 100%;
         justify-content: space-between;
-        padding:  15px;
+        padding: 15px;
     }
-    .product_filters .slaman_link{
+
+    .product_filters .slaman_link {
         display: none;
     }
+
     .common_select_wrap {
         max-width: 50%;
     }
+
     .product_filters_wrap.product_page_filtter {
         max-width: 100%;
     }
+
     .recemtly_wrap {
         padding: 32px 0 0;
     }
@@ -663,7 +732,7 @@
 
     .common_title,
     .home_banner_title h2,
-    .join_the_club_inner h2{
+    .join_the_club_inner h2 {
         font-size: 26px;
     }
 
@@ -693,37 +762,46 @@
         padding: 15px 10px 15px;
     }
 
-    .social_media_wrap{
+    .social_media_wrap {
         padding: 20px 0;
     }
+
     .cloth_wrap .cloth_inner .row>div {
         height: 300px;
     }
-    .cart_inner{
-        margin-left: 8px;
+
+    .cart_inner {
         max-width: 100%;
     }
-    .cart_information{
+
+    .cart_information {
         padding: 20px 15px;
     }
+
     .card_img {
         width: 100px;
     }
+
     .quantiy_wrapper {
         margin: 20px 0;
     }
+
     .cart_product_info {
         margin-left: 15px;
     }
+
     .product_page .product_info_section_wrap {
         padding: 16px 30px 20px;
     }
-    .structured_fabric_inner .row > div:nth-child(n+2) {
+
+    .structured_fabric_inner .row>div:nth-child(n+2) {
         margin-top: 20px;
     }
-    .know_inner p{
+
+    .know_inner p {
         font-size: 14px;
     }
+
     .recently_col_wrap {
         margin-top: 25px;
     }
@@ -734,31 +812,41 @@
         width: 50%;
         margin-bottom: 10px;
     }
+
     .account_info li+li {
         margin-left: 12px;
     }
-    .cart_items p{
+
+    .cart_items p {
         width: 15px;
         height: 15px;
         font-size: 8px;
     }
-    .common_title, .home_banner_title h2, .join_the_club_inner h2 {
+
+    .common_title,
+    .home_banner_title h2,
+    .join_the_club_inner h2 {
         font-size: 22px;
     }
+
     .cart_information {
         padding: 12px 15px;
     }
+
     .cloth_wrap .cloth_inner .row>div {
         height: 240px;
     }
-    .common_product_details>div{
-        flex-direction:column;
-        align-items:flex-start;
+
+    .common_product_details>div {
+        flex-direction: column;
+        align-items: flex-start;
     }
-    .produt_time_wrap p{
-        margin-left:0px;
-        margin-top:10px;
+
+    .produt_time_wrap p {
+        margin-left: 0px;
+        margin-top: 10px;
     }
+
     .product_page .product_info_section_wrap {
         padding: 40px 30px 40px;
     }

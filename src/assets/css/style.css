@@ -1188,7 +1188,6 @@ li.common_option_wrap {
     width: 100%;
     z-index: 1;
     margin-left: auto;
-    margin-right: 8px;
     overflow-y: auto;
     position: relative;
 }
@@ -1317,24 +1316,6 @@ li.common_option_wrap {
     overflow-y: auto;
     display: block;
     overflow-x: hidden;
-}
-
-.cart_inner .tab-content .cart_inner::-webkit-scrollbar-track,
-.cart_inner .tab-content .cart_inner .tab-content::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: #F5F5F5;
-}
-
-.cart_inner::-webkit-scrollbar,
-.cart_inner .tab-content::-webkit-scrollbar {
-    width: 5px;
-    background-color: #F5F5F5;
-}
-
-.cart_inner::-webkit-scrollbar-thumb,
-.cart_inner .tab-content::-webkit-scrollbar-thumb {
-    background-color: #2A3592;
-    border: 2px solid #555555;
 }
 
 .saved_wrapper .row {
