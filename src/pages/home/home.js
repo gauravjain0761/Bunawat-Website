@@ -11,10 +11,11 @@ import HomeTab from '../../components/home/homeTab';
 
 const Home = () => {
     const { data, error, isLoading } = useGetShopMenuDataQuery()
-
+    const collections = data?.collections.filter(list => list?.home_visibilty) ?? []
+    const categories = data?.categories.filter(list => list?.home_visibilty) ?? []
     return (
         <div className='home_page_wrap'>
-            <HomeTab collectionData={data?.collections.filter(list => list?.home_visibilty)} />
+            <HomeTab menuData={[...categories, ...collections]} />
         </div>
     )
 }

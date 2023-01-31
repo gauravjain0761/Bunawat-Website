@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import cloth_3 from "../../assets/img/home/cloth_3.png"
 import { getNumberWithComma } from "../../utils/utils";
 
-const BestSellingSection = ({ collectionData }) => {
-  const [singleCollection, setSingleCollection] = React.useState(collectionData ?? [])
+const BestSellingSection = ({ singleData }) => {
+  const [singleList, setSingleList] = React.useState(singleData ?? [])
 
   useEffect(() => {
-    setSingleCollection(collectionData ?? []);
-  }, [collectionData]);
+    setSingleList(singleData ?? []);
+  }, [singleData]);
 
   const getWidthData = (length) => {
     let temp = []
@@ -55,11 +55,55 @@ const BestSellingSection = ({ collectionData }) => {
       <div className="best_sallying_wrap common_home_banner haldi_gallery_wrao">
         <div className="container">
           <div className="home_banner_title">
-            <h2 className="common_title">{singleCollection?.title}</h2>
+            <h2 className="common_title">{singleList?.title}</h2>
             <div className="summer_list">
+              {singleList?.linked_product?.length > 0 &&
+                singleList?.linked_product.map(list => (
+                  <div className="summer_list_link_wrap" key={list?._id}>
+                    <div className="summer_list_link">
+                      <p>{list?.name}</p>
+                      <span>
+                        <svg
+                          width="9"
+                          height="10"
+                          viewBox="0 0 9 10"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g clipPath="url(#clip0_2_1592)">
+                            <path
+                              d="M0.600098 1.43018H7.9901V8.82018"
+                              stroke="white"
+                              strokeWidth="1.7"
+                              strokeMiterlimit="10"
+                            />
+                            <path
+                              d="M0.600098 8.82018L7.9901 1.43018"
+                              stroke="white"
+                              strokeWidth="1.7"
+                              strokeMiterlimit="10"
+                            />
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_2_1592">
+                              <rect
+                                width="8.84"
+                                height="8.84"
+                                fill="white"
+                                transform="translate(0 0.580078)"
+                              />
+                            </clipPath>
+                          </defs>
+                        </svg>
+                      </span>
+                    </div>
+                    <p>{getNumberWithComma(list?.sale_price ?? 0)}</p>
+                  </div>
+                ))
+              }
               <div className="summer_list_link_wrap">
                 <div className="summer_list_link">
-                  <p>Casual White Tee & Blue Denim</p>
+                  <p>Shop all {singleList?.title}</p>
                   <span>
                     <svg
                       width="9"
@@ -95,53 +139,13 @@ const BestSellingSection = ({ collectionData }) => {
                     </svg>
                   </span>
                 </div>
-                <p>₹2,950 </p>
-              </div>
-              <div className="summer_list_link_wrap">
-                <div className="summer_list_link">
-                  <p>Shop all Best Sellers</p>
-                  <span>
-                    <svg
-                      width="9"
-                      height="10"
-                      viewBox="0 0 9 10"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g clipPath="url(#clip0_2_1592)">
-                        <path
-                          d="M0.600098 1.43018H7.9901V8.82018"
-                          stroke="white"
-                          strokeWidth="1.7"
-                          strokeMiterlimit="10"
-                        />
-                        <path
-                          d="M0.600098 8.82018L7.9901 1.43018"
-                          stroke="white"
-                          strokeWidth="1.7"
-                          strokeMiterlimit="10"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_2_1592">
-                          <rect
-                            width="8.84"
-                            height="8.84"
-                            fill="white"
-                            transform="translate(0 0.580078)"
-                          />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </span>
-                </div>
-                <p>128 options </p>
+                <p>{singleList?.products?.length ?? 0} options </p>
               </div>
             </div>
           </div>
         </div>
         <div className="best_sale_video">
-          <img src={singleCollection?.image} alt="hero_image" style={{ width: '100%', height: '100%' }} />
+          <img src={singleList?.image} alt="hero_image" style={{ width: '100%', height: '100%' }} />
           {/* <video loop autoPlay muted>
             <source src={best_selling_video} type="video/mp4" />
           </video> */}
@@ -152,13 +156,13 @@ const BestSellingSection = ({ collectionData }) => {
         <div className="container">
           <div className="cloth_inner">
             <div className="row">
-              {singleCollection?.products?.map((list, index) => {
+              {singleList?.products?.map((list, index) => {
                 return (
                   <>
-                    <div className={getClassWidth(index, singleCollection?.products?.length)}>
+                    <div className={getClassWidth(index, singleList?.products?.length)}>
                       <div className="cloth_deatils_wrap">
                         {/* <Link to="/" className="cloth_deatils_link"> */}
-                        <img src={list?.image ?? cloth_3} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleCollection?.products?.length).includes(index) ? "640px" : "560px"} />
+                        <img src={list?.image ?? cloth_3} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "640px" : "560px"} />
                         {/* </Link> */}
                         <div className="cloth_info_title">
                           <div className="summer_list_link_wrap">

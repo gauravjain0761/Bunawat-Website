@@ -7,15 +7,15 @@ import { getNumberWithComma } from "../../utils/utils";
 import BestSellingSection from "./bestSellingSection";
 
 
-const HomeBannerTabs = ({ collectionData, singleData, setCollectionId }) => {
+const HomeBannerTabs = ({ data, singleData, setSelectedId }) => {
   const [key, setKey] = useState(0);
-  const [collection, setCollection] = React.useState(collectionData ?? [])
-  const [singleCollection, setSingleCollection] = React.useState(collectionData ?? [])
+  const [menuList, setMenuList] = React.useState(data ?? [])
+  const [singleCollection, setSingleCollection] = React.useState(singleData ?? [])
 
   useEffect(() => {
-    setCollection(collectionData ?? []);
+    setMenuList(data ?? []);
     setSingleCollection(singleData)
-  }, [collectionData, singleData]);
+  }, [data, singleData]);
 
   return (
     <>
@@ -27,7 +27,7 @@ const HomeBannerTabs = ({ collectionData, singleData, setCollectionId }) => {
             onSelect={(k) => setKey(k)}
             className="tab_section"
           >
-            {collection.map((item, index) => {
+            {menuList.map((item, index) => {
               return (
                 <Tab eventKey={index} key={item?._id} title="">
                   <div className="common_home_banner">
@@ -83,7 +83,7 @@ const HomeBannerTabs = ({ collectionData, singleData, setCollectionId }) => {
                           }
                           <div className="summer_list_link_wrap">
                             <div className="summer_list_link">
-                              <p>{singleCollection?.title}</p>
+                              <p>Shop all  {singleCollection?.title}</p>
                               <span>
                                 <svg
                                   width="9"
@@ -155,11 +155,14 @@ const HomeBannerTabs = ({ collectionData, singleData, setCollectionId }) => {
               activeKey={key}
               onSelect={(k) => {
                 setKey(k)
-                setCollectionId(collectionData?.[k]?._id ?? "")
+                setSelectedId({
+                  id: menuList?.[k]?._id ?? "",
+                  type: menuList?.[k]?.type ?? ""
+                })
               }}
               className="tab_section"
             >
-              {collection.map((item, index) => {
+              {menuList.map((item, index) => {
                 return (
                   <Tab eventKey={index} key={item?._id} title={item?.name}>
                     <div className="tab_common_contain">
