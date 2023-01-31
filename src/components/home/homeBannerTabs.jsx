@@ -25,9 +25,9 @@ const HomeBannerTabs = () => {
   const [key, setKey] = useState(0);
   const [collection, setCollection] = React.useState([])
   const getCollection = async () => {
-    await apiConfig.get('get_shopby_collection').then((response) => {
+    await apiConfig.get('get_shop_menu').then((response) => {
       if (response?.data?.status) {
-        setCollection(response?.data?.data)
+        setCollection(response?.data?.collections)
       }
     }).catch((error) => {
       console.log("getCollectionError", error)
@@ -59,7 +59,7 @@ const HomeBannerTabs = () => {
                       <div className="home_banner_title">
                         <h1 className="common_title">{item?.title}</h1>
                         <div className="summer_list">
-                          {item && item.linked_product.length > 0 && item?.linked_product.map((linked, linkedIndex) => {
+                          {/* {item && item.linked_product.length > 0 && item?.linked_product.map((linked, linkedIndex) => {
                             return (
                               <div className="summer_list_link_wrap" key={`linked_product-${linkedIndex}`}>
                                 <div className="summer_list_link">
@@ -102,7 +102,7 @@ const HomeBannerTabs = () => {
                                 <p>₹{linked?.mrp}</p>
                               </div>
                             )
-                          })}
+                          })} */}
 
                           <div className="summer_list_link_wrap">
                             <div className="summer_list_link">
