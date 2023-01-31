@@ -32,6 +32,7 @@ const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
+    const { data, error, isLoading } = useGetShopMenuDataQuery()
     const [scroll, setScroll] = React.useState(false);
     const [hover, setHover] = React.useState(false);
     const changeloction = window.location.pathname;
@@ -55,7 +56,6 @@ function ResponsiveAppBar() {
         active: false,
         index: ""
     })
-    const { data, error, isLoading } = useGetShopMenuDataQuery()
 
     const getCateogries = (categories) => {
         if (categories.length > 0) {

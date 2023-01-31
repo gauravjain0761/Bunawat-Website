@@ -12,7 +12,10 @@ export const AllApiData = createApi({
         getShopMenuData: builder.query({
             query: () => `get_shop_menu`,
         }),
+        getDatabyId: builder.query({
+            query: ({ id, type }) => `get_data_by_id/${id}?type=${type}`,
+        }),
     }),
 })
 
-export const { useGetShopMenuDataQuery } = AllApiData
+export const { useGetShopMenuDataQuery, useGetDatabyIdQuery } = AllApiData
