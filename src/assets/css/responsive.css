@@ -219,6 +219,14 @@
 }
 
 @media (max-width: 991px) {
+    .product_below_image {
+        height: 320px !important;
+    }
+
+    .product_above_image {
+        height: 400px !important;
+    }
+
     .structured_fabric_wrapper {
         padding: 20px 0;
     }
@@ -334,6 +342,10 @@
 
     .common_home_banner {
         height: 650px;
+    }
+
+    .common_home_banner img {
+        height: 100%;
     }
 
     .tab_section_wrap .nav-tabs {

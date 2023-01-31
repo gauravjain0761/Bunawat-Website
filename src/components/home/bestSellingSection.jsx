@@ -23,6 +23,25 @@ const BestSellingSection = ({ collectionData }) => {
     return temp
   }
 
+  const getHeightData = (length) => {
+    let temp = []
+    for (let i = 0; i < length; i++) {
+      if (i % 10 == 0) {
+        temp.push(i)
+      }
+      if (i % 10 == 1) {
+        temp.push(i)
+      }
+      if (i % 10 == 5) {
+        temp.push(i)
+      }
+      if (i % 10 == 6) {
+        temp.push(i)
+      }
+    }
+    return temp
+  }
+
   const getClassWidth = (index, length) => {
     const data = getWidthData(length)
     if (data.includes(index)) {
@@ -139,7 +158,7 @@ const BestSellingSection = ({ collectionData }) => {
                     <div className={getClassWidth(index, singleCollection?.products?.length)}>
                       <div className="cloth_deatils_wrap">
                         {/* <Link to="/" className="cloth_deatils_link"> */}
-                        <img src={list?.image ?? cloth_3} alt="cloth" />
+                        <img src={list?.image ?? cloth_3} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleCollection?.products?.length).includes(index) ? "640px" : "560px"} />
                         {/* </Link> */}
                         <div className="cloth_info_title">
                           <div className="summer_list_link_wrap">

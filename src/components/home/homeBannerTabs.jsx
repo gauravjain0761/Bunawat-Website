@@ -170,7 +170,7 @@ const HomeBannerTabs = ({ collectionData, singleData, setCollectionId }) => {
                               {/* <Link to="/product"> */}
                               <div className="common_tab_info">
                                 <div className="common_tab_img">
-                                  <img src={list?.image} alt="image" />
+                                  <img src={list?.image} alt="image" className="product_above_image" width="100%" height="640px" />
                                 </div>
                                 <div className="common_tab_title">
                                   <div className="summer_list_link_wrap">
