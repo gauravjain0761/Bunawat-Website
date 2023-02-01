@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import cloth_3 from "../../assets/img/home/cloth_3.png"
 import { getNumberWithComma } from "../../utils/utils";
 
 const BestSellingSection = ({ singleData }) => {
@@ -162,7 +161,7 @@ const BestSellingSection = ({ singleData }) => {
                     <div className={getClassWidth(index, singleList?.products?.length)}>
                       <div className="cloth_deatils_wrap">
                         {/* <Link to="/" className="cloth_deatils_link"> */}
-                        <img src={list?.image ?? cloth_3} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "640px" : "560px"} />
+                        <img src={list?.image} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "640px" : "560px"} />
                         {/* </Link> */}
                         <div className="cloth_info_title">
                           <div className="summer_list_link_wrap">
