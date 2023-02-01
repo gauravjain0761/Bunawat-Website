@@ -18,6 +18,15 @@ export const AllApiData = createApi({
                 }
             },
         }),
+        otpMatch: builder.mutation({
+            query(body) {
+                return {
+                    url: `otp_match`,
+                    method: 'POST',
+                    body,
+                }
+            },
+        }),
         getDatabyId: builder.query({
             query: ({ id, type }) => `get_data_by_id/${id}?type=${type}`,
         }),
@@ -30,4 +39,4 @@ export const AllApiData = createApi({
     }),
 })
 
-export const { useSendOtpMutation, useGetShopMenuDataQuery, useGetDatabyIdQuery } = AllApiData
+export const { useSendOtpMutation, useOtpMatchMutation, useGetShopMenuDataQuery, useGetDatabyIdQuery } = AllApiData

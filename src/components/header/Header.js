@@ -15,6 +15,7 @@ import NorthEastIcon from '@mui/icons-material/NorthEast';
 import ReactInputVerificationCode from "react-input-verification-code";
 import { DayPicker } from 'react-day-picker';
 import { Tab, Tabs } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 import cart_1 from '../../assets/img/cart/cart_1.png';
 import cart_2 from '../../assets/img/cart/cart_2.png';
 import cart_3 from '../../assets/img/cart/cart_3.png';
@@ -26,14 +27,15 @@ import saved_5 from '../../assets/img/saved/saved_5.png';
 import saved_6 from '../../assets/img/saved/saved_6.png';
 import saved_7 from '../../assets/img/saved/saved_7.png';
 import saved_8 from '../../assets/img/saved/saved_8.png';
-import { useGetPokemonByNameQuery, useGetShopMenuDataQuery, useSendOtpMutation } from '../../services/api';
+import { useGetPokemonByNameQuery, useGetShopMenuDataQuery, useOtpMatchMutation, useSendOtpMutation } from '../../services/api';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Header() {
     const { data } = useGetShopMenuDataQuery()
-    const [sendOtp, { isLoading }] = useSendOtpMutation(undefined, {})
+    const [sendOtp] = useSendOtpMutation(undefined, {})
+    const [otpMatch, { isLoading, isError, error }] = useOtpMatchMutation(undefined, {})
 
     const [scroll, setScroll] = React.useState(false);
     const [hover, setHover] = React.useState(false);
@@ -202,7 +204,15 @@ function Header() {
     };
 
     const handleSendOtp = async () => {
-        await sendOtp({ phone: loginData?.phone ?? "" }).unwrap()
+        await sendOtp({ phone: loginData?.phone ?? "" }).unwrap().then(() => {
+            setOtpverify(true)
+        }).catch((error) => toast.error(error?.data?.message))
+    };
+
+    const handleLogin = async () => {
+        await otpMatch(loginData).unwrap().then(() => {
+
+        }).catch((error) => toast.error(error?.data?.message))
     };
 
     const open = Boolean(anchorEl);
@@ -480,7 +490,10 @@ function Header() {
                                                 </div>
                                                 <div className="login_input_wrap">
                                                     <div className="login_input_inner">
-                                                        <input type="text" value={loginData?.phone} onChange={(e) => setLoginData({ ...loginData, phone: e.target.value })} placeholder="Phone Number" />
+                                                        <input type="text" value={loginData?.phone} onChange={(e) => {
+                                                            const onlyNums = e.target.value.replace(/[^0-9]/g, '');
+                                                            setLoginData({ ...loginData, phone: onlyNums })
+                                                        }} placeholder="Phone Number" />
                                                         <span>+91</span>
                                                     </div>
                                                     <button type="button" onClick={handleSendOtp}>
@@ -535,9 +548,11 @@ function Header() {
                                                 </div>
                                                 <div className="login_input_wrap">
                                                     <div className="login_input_inner_otp">
-                                                        <ReactInputVerificationCode onChange={console.log} />
+                                                        <ReactInputVerificationCode value={loginData?.otp} onChange={(e) => {
+                                                            setLoginData({ ...loginData, otp: e })
+                                                        }} />
                                                     </div>
-                                                    <button type="button" onClick={handleClose}>
+                                                    <button type="button" onClick={handleLogin}>
                                                         <span>Login</span>
                                                         <svg
                                                             width="24"

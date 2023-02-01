@@ -2,6 +2,8 @@ import React, { Component, useEffect, useState } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
 import Index from "./pages";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { io } from "socket.io-client";
 import './App.css';
 
@@ -23,6 +25,10 @@ const App = () => {
           }}
         >
           <Index />
+          <ToastContainer
+            position="top-right"
+            autoClose={1000}
+            theme="colored" />
         </ThemeProvider>
       </BrowserRouter>
     </>
