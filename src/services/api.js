@@ -9,6 +9,18 @@ export const AllApiData = createApi({
     reducerPath: 'apiData',
     baseQuery: fetchBaseQuery({ baseUrl: API_BASE_URL }),
     endpoints: (builder) => ({
+        sendOtp: builder.mutation({
+            query(body) {
+                return {
+                    url: `send_otp`,
+                    method: 'POST',
+                    body,
+                }
+            },
+        }),
+        getDatabyId: builder.query({
+            query: ({ id, type }) => `get_data_by_id/${id}?type=${type}`,
+        }),
         getShopMenuData: builder.query({
             query: () => `get_shop_menu`,
         }),
@@ -18,4 +30,4 @@ export const AllApiData = createApi({
     }),
 })
 
-export const { useGetShopMenuDataQuery, useGetDatabyIdQuery } = AllApiData
+export const { useSendOtpMutation, useGetShopMenuDataQuery, useGetDatabyIdQuery } = AllApiData

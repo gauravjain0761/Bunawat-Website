@@ -59,85 +59,89 @@ const BestSellingSection = ({ singleData }) => {
               {singleList?.linked_product?.length > 0 &&
                 singleList?.linked_product.map(list => (
                   <div className="summer_list_link_wrap" key={list?._id}>
-                    <div className="summer_list_link">
-                      <p>{list?.name}</p>
-                      <span>
-                        <svg
-                          width="9"
-                          height="10"
-                          viewBox="0 0 9 10"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g clipPath="url(#clip0_2_1592)">
-                            <path
-                              d="M0.600098 1.43018H7.9901V8.82018"
-                              stroke="white"
-                              strokeWidth="1.7"
-                              strokeMiterlimit="10"
-                            />
-                            <path
-                              d="M0.600098 8.82018L7.9901 1.43018"
-                              stroke="white"
-                              strokeWidth="1.7"
-                              strokeMiterlimit="10"
-                            />
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_2_1592">
-                              <rect
-                                width="8.84"
-                                height="8.84"
-                                fill="white"
-                                transform="translate(0 0.580078)"
+                    <Link to="/product">
+                      <div className="summer_list_link">
+                        <p>{list?.name}</p>
+                        <span>
+                          <svg
+                            width="9"
+                            height="10"
+                            viewBox="0 0 9 10"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <g clipPath="url(#clip0_2_1592)">
+                              <path
+                                d="M0.600098 1.43018H7.9901V8.82018"
+                                stroke="white"
+                                strokeWidth="1.7"
+                                strokeMiterlimit="10"
                               />
-                            </clipPath>
-                          </defs>
-                        </svg>
-                      </span>
-                    </div>
+                              <path
+                                d="M0.600098 8.82018L7.9901 1.43018"
+                                stroke="white"
+                                strokeWidth="1.7"
+                                strokeMiterlimit="10"
+                              />
+                            </g>
+                            <defs>
+                              <clipPath id="clip0_2_1592">
+                                <rect
+                                  width="8.84"
+                                  height="8.84"
+                                  fill="white"
+                                  transform="translate(0 0.580078)"
+                                />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                        </span>
+                      </div>
+                    </Link>
                     <p>{getNumberWithComma(list?.sale_price ?? 0)}</p>
                   </div>
                 ))
               }
               <div className="summer_list_link_wrap">
-                <div className="summer_list_link">
-                  <p>Shop all {singleList?.title}</p>
-                  <span>
-                    <svg
-                      width="9"
-                      height="10"
-                      viewBox="0 0 9 10"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g clipPath="url(#clip0_2_1592)">
-                        <path
-                          d="M0.600098 1.43018H7.9901V8.82018"
-                          stroke="white"
-                          strokeWidth="1.7"
-                          strokeMiterlimit="10"
-                        />
-                        <path
-                          d="M0.600098 8.82018L7.9901 1.43018"
-                          stroke="white"
-                          strokeWidth="1.7"
-                          strokeMiterlimit="10"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_2_1592">
-                          <rect
-                            width="8.84"
-                            height="8.84"
-                            fill="white"
-                            transform="translate(0 0.580078)"
+                <Link to={`/allProduct`}>
+                  <div className="summer_list_link">
+                    <p>Shop all {singleList?.title}</p>
+                    <span>
+                      <svg
+                        width="9"
+                        height="10"
+                        viewBox="0 0 9 10"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g clipPath="url(#clip0_2_1592)">
+                          <path
+                            d="M0.600098 1.43018H7.9901V8.82018"
+                            stroke="white"
+                            strokeWidth="1.7"
+                            strokeMiterlimit="10"
                           />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </span>
-                </div>
+                          <path
+                            d="M0.600098 8.82018L7.9901 1.43018"
+                            stroke="white"
+                            strokeWidth="1.7"
+                            strokeMiterlimit="10"
+                          />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_2_1592">
+                            <rect
+                              width="8.84"
+                              height="8.84"
+                              fill="white"
+                              transform="translate(0 0.580078)"
+                            />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </span>
+                  </div>
+                </Link>
                 <p>{singleList?.products?.length ?? 0} options </p>
               </div>
             </div>
@@ -160,9 +164,9 @@ const BestSellingSection = ({ singleData }) => {
                   <>
                     <div className={getClassWidth(index, singleList?.products?.length)}>
                       <div className="cloth_deatils_wrap">
-                        {/* <Link to="/" className="cloth_deatils_link"> */}
-                        <img src={list?.image} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "640px" : "560px"} />
-                        {/* </Link> */}
+                        <Link to="/product" className="cloth_deatils_link">
+                          <img src={list?.image} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "640px" : "560px"} />
+                        </Link>
                         <div className="cloth_info_title">
                           <div className="summer_list_link_wrap">
                             <div className="summer_list_link">

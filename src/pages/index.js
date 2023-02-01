@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, Router } from "react-router-dom";
 import Layout from "../components/Layout";
 import Home from "./home/home";
-import Category from "./category/category";
+import AllProduct from "./allProduct/allProduct";
 import Product from "./product/product";
 import BASE_URL from "../_constant/index";
 import Checkout from "./checkout/index";
@@ -25,8 +25,12 @@ export default function index({ socket }) {
                         <Home />
                     </Route>
 
-                    <Route exact path={BASE_URL.BASE_URL + `category`}>
-                        <Category />
+                    <Route exact path={BASE_URL.BASE_URL + `allProduct`}>
+                        <AllProduct />
+                    </Route>
+
+                    <Route exact path={BASE_URL.BASE_URL + `allProduct/:id`}>
+                        <AllProduct />
                     </Route>
 
                     <Route exact path={BASE_URL.BASE_URL + `product`}>
@@ -38,7 +42,7 @@ export default function index({ socket }) {
                     </Route>
 
                     <Route exact path={BASE_URL.BASE_URL + `orderConfirmation`}>
-                         <OrderConfirmation />
+                        <OrderConfirmation />
                     </Route>
 
                     <Route exact path={BASE_URL.BASE_URL + `userProfile`}>
@@ -48,11 +52,11 @@ export default function index({ socket }) {
                     <Route exact path={BASE_URL.BASE_URL + `reviews`}>
                         <Reviews />
                     </Route>
-                    
+
                     <Route exact path={BASE_URL.BASE_URL + `clubHome`}>
                         <ClubHome />
                     </Route>
-                    
+
                     <Route exact path={BASE_URL.BASE_URL + "404"}>
                         <ErrorPage />
                     </Route>
@@ -68,7 +72,7 @@ export default function index({ socket }) {
                     <Route exact path={BASE_URL.BASE_URL + "paymentOptions"}>
                         <PaymentOptions />
                     </Route>
-                    
+
                 </Switch>
             </Layout>
         </>
