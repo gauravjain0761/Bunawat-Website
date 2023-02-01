@@ -17,13 +17,13 @@
 }
 
 @media (max-width: 1680px) {
-    .product_above_image {
+    /* .product_above_image {
         height: 380px !important;
     }
 
     .product_below_image {
         height: 450px !important;
-    }
+    } */
 
     .common_title,
     .home_banner_title h2,
