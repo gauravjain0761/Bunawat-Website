@@ -45,7 +45,7 @@ const Home = () => {
     }, [data]);
     return (
         <div className='home_page_wrap'>
-            <HomeTab menuData={[...categories, ...collections]} />
+            <HomeTab menuData={[...collections, ...categories]} />
         </div>
     )
 }
