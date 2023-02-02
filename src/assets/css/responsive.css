@@ -231,7 +231,7 @@
     }
 
     .product_above_image {
-        height: 400px !important;
+        height: 310px !important;
     }
 
     .structured_fabric_wrapper {
@@ -368,7 +368,7 @@
     }
 
     .see_all_link {
-        top: 50px;
+        top: 74px;
     }
 
     .tab_common_contain {
@@ -465,7 +465,7 @@
     }
 
     .join_the_club_inner p {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .cloth_title_wrap h2,
@@ -583,10 +583,6 @@
     }
 
     .cloth_info_title {
-        flex-direction: column;
-    }
-
-    .common_tab_flex {
         flex-direction: column;
     }
 

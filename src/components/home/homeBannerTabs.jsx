@@ -179,7 +179,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId }) => {
                                   <div className="common_tab_img">
                                     <img src={list?.image} alt="image" className="product_above_image" width="100%" height="640px" />
                                   </div>
-                                  <div className="common_tab_flex common_tab_title">
+                                  <div className=" common_tab_title">
                                     <div className="summer_list_link_wrap">
                                       <div className="summer_list_link">
                                         <p>{list?.name}</p>
