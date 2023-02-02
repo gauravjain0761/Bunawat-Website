@@ -37,6 +37,7 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function Header() {
     const { data } = useGetShopMenuDataQuery()
 
+    const [cartCount, setCartCount] = React.useState(0);
     const [scroll, setScroll] = React.useState(false);
     const [hover, setHover] = React.useState(false);
     const location = useLocation()
@@ -376,46 +377,46 @@ function Header() {
                                 </CustomPopOver>
                             </Box>
                             <Link to="/clubHome">
-                            <Button
-                                aria-describedby={id}
-                                // onClick={handleClick}
-                                sx={{
-                                    '&.MuiButton-root': {
-                                        color: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : '#fff',
-                                        fontWeight: 600,
-                                        textTransform: "capitalize",
-                                        fontSize: "14px",
-                                        marginLeft: "13px",
-                                        marginRight: "13px",
-                                    },
-                                    '@media (max-width: 1200px)': {
-                                        display: 'none'
-                                    }
-                                }}
-                            >
-                                Club
-                            </Button>
+                                <Button
+                                    aria-describedby={id}
+                                    // onClick={handleClick}
+                                    sx={{
+                                        '&.MuiButton-root': {
+                                            color: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : '#fff',
+                                            fontWeight: 600,
+                                            textTransform: "capitalize",
+                                            fontSize: "14px",
+                                            marginLeft: "13px",
+                                            marginRight: "13px",
+                                        },
+                                        '@media (max-width: 1200px)': {
+                                            display: 'none'
+                                        }
+                                    }}
+                                >
+                                    Club
+                                </Button>
                             </Link>
                             <Link to="/reviews">
-                            <Button
-                                aria-describedby={id}
-                                // onClick={handleClick}
-                                sx={{
-                                    '&.MuiButton-root': {
-                                        color: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : '#fff',
-                                        fontWeight: 600,
-                                        textTransform: "capitalize",
-                                        fontSize: "14px",
-                                        marginLeft: "13px",
-                                        marginRight: "13px",
-                                    },
-                                    '@media (max-width: 1200px)': {
-                                        display: 'none'
-                                    }
-                                }}
-                            >
-                                Reviews
-                            </Button>
+                                <Button
+                                    aria-describedby={id}
+                                    // onClick={handleClick}
+                                    sx={{
+                                        '&.MuiButton-root': {
+                                            color: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : '#fff',
+                                            fontWeight: 600,
+                                            textTransform: "capitalize",
+                                            fontSize: "14px",
+                                            marginLeft: "13px",
+                                            marginRight: "13px",
+                                        },
+                                        '@media (max-width: 1200px)': {
+                                            display: 'none'
+                                        }
+                                    }}
+                                >
+                                    Reviews
+                                </Button>
                             </Link>
                         </Box>
                         <Box>
@@ -631,7 +632,7 @@ function Header() {
                                     }}
                                     endIcon={
                                         <Box sx={{ borderRadius: "50%", width: "20px", height: "20px", background: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                                            <Typography sx={{ fontSize: "10px", fontWeight: 700, color: getActiveHeader(scroll, hover, headerColor) ? "#fff" : "#000000" }}>3</Typography>
+                                            <Typography sx={{ fontSize: "10px", fontWeight: 700, color: getActiveHeader(scroll, hover, headerColor) ? "#fff" : "#000000" }}>0</Typography>
                                         </Box>
                                     }>
                                     <svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">

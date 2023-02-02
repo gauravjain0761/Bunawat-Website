@@ -586,6 +586,10 @@
         flex-direction: column;
     }
 
+    .common_tab_flex {
+        flex-direction: column;
+    }
+
     .summer_list_link_wrap {
         margin-bottom: 7px;
     }

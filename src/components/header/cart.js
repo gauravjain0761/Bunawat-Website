@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Tab, Tabs } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import cart_1 from '../../assets/img/cart/cart_1.png';
@@ -12,27 +12,74 @@ import saved_5 from '../../assets/img/saved/saved_5.png';
 import saved_6 from '../../assets/img/saved/saved_6.png';
 import saved_7 from '../../assets/img/saved/saved_7.png';
 import saved_8 from '../../assets/img/saved/saved_8.png';
+import { useGetAllCartQuery } from '../../services/api';
 import { getNumberWithComma } from '../../utils/utils';
 
 const Cart = ({ activeHeader, handleCartClose }) => {
+    const { data, error, isLoading } = useGetAllCartQuery()
     const [cartList, setCartList] = useState([{
         name: 'Synthetic Floral Print Sari',
         color: 'Lemon Yellow',
         size: 'Medium',
-        sale_price: '4500'
+        sale_price: '500',
+        qty: 1
+    }, {
+        name: 'Synthetic Floral Print Sari',
+        color: 'Lemon Yellow',
+        size: 'Medium',
+        sale_price: '1000',
+        qty: 1
     }]);
+
     const [cartPrice, setCartPrice] = useState({
         total: 0,
         price: 0
     });
+
+    const handleDecrement = (index) => {
+        let temp = [...cartList]
+        if (temp[index].qty > 0) {
+            temp[index] = { ...temp[index], qty: temp[index].qty - 1 }
+            setCartList(temp)
+        }
+    }
+
+    const handleIncrement = (index) => {
+        let temp = [...cartList]
+        temp[index] = { ...temp[index], qty: temp[index].qty + 1 }
+        setCartList(temp)
+    }
+
+    const handleRemove = (index) => {
+        let temp = [...cartList]
+        temp = temp.filter((_, i) => i !== index)
+        setCartList(temp)
+    }
+
+    useEffect(() => {
+        console.log(data)
+    }, [data])
+
+    useEffect(() => {
+        let temp = [...cartList]
+        let countPrice = 0
+        if (temp.length > 0) {
+            countPrice = temp.reduce((total, list) => {
+                return total + (Number(list?.qty) * Number(list?.sale_price))
+            }, 0)
+            setCartPrice({
+                ...cartPrice,
+                price: countPrice
+            })
+        }
+    }, [cartList])
 
     return (
         <div className="cart_inner">
             <Tabs
                 defaultActiveKey="cart"
                 id="uncontrolled-tab-example"
-                className=""
-            >
+                className="">
                 <Tab eventKey="cart" title="Cart">
                     <div className='cart_wrapper'>
                         {cartList?.map((cart, index) => {
@@ -49,7 +96,7 @@ const Cart = ({ activeHeader, handleCartClose }) => {
                                         <div className='quantiy_wrapper'>
                                             <p>Qty</p>
                                             <div className='quantiy_inner'>
-                                                <button type='button' className='common_btn'>
+                                                <button type='button' className='common_btn' onClick={() => handleDecrement(index)}>
                                                     <svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <g clipPath="url(#clip0_160_1440)">
                                                             <path d="M8.14 5H0" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
@@ -61,8 +108,8 @@ const Cart = ({ activeHeader, handleCartClose }) => {
                                                         </defs>
                                                     </svg>
                                                 </button>
-                                                <input type="text" placeholder='1' defaultValue={1} />
-                                                <button type='button' className='common_btn'>
+                                                <input type="text" placeholder='1' value={cart?.qty} />
+                                                <button type='button' className='common_btn' onClick={() => handleIncrement(index)}>
                                                     <svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <g clipPath="url(#clip0_160_1444)">
                                                             <path d="M4.20966 0.929932V9.06993" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
@@ -79,7 +126,7 @@ const Cart = ({ activeHeader, handleCartClose }) => {
                                         </div>
                                         <div className='remove_cart_block'>
                                             <p>{getNumberWithComma(cart?.sale_price)} </p>
-                                            <button type='button' className='remove_btn'>
+                                            <button type='button' className='remove_btn' onClick={() => handleRemove(index)}>
                                                 <svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <g clipPath="url(#clip0_160_1450)">
                                                         <path d="M3.35999 1.0249L7.39999 5.0649L3.35999 9.1149" stroke="#DA4949" strokeWidth="1.7" strokeMiterlimit="10" />
