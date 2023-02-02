@@ -219,10 +219,10 @@ function Header() {
                     boxShadow: 'none',
                     backgroundColor: getActiveHeader(scroll, hover, headerColor) || headerColor ? 'hsla(0,0%,100%,.7)' : "transparent",
                     backdropFilter: getActiveHeader(scroll, hover, headerColor) || headerColor ? 'blur(100px)' : 'none',
-                    borderRadius: getActiveHeader(scroll, hover, headerColor) ? "10px" : "0px",
-                    top: getActiveHeader(scroll, hover, headerColor) ? "8px" : "0px",
-                    right: getActiveHeader(scroll, hover, headerColor) ? "6px" : "0px",
-                    width: getActiveHeader(scroll, hover, headerColor) ? "99%" : "100%",
+                    borderRadius: getActiveHeader(scroll, hover, headerColor) ? "4px" : "0px",
+                    top: getActiveHeader(scroll, hover, headerColor) ? "8px" : "8px",
+                    right: getActiveHeader(scroll, hover, headerColor) ? "6px" : "6px",
+                    width: getActiveHeader(scroll, hover, headerColor) ? "99%" : "99%",
                     marginLeft: "auto",
                     marginRight: "auto",
                     // left: getActiveHeader(scroll, hover,headerColor) ? "8px" : "0px",
@@ -244,7 +244,7 @@ function Header() {
                                     sx={{
                                         '&.MuiButton-root': {
                                             color: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : '#fff',
-                                            fontWeight: 700,
+                                            fontWeight: 600,
                                             textTransform: "capitalize",
                                             fontSize: "14px"
                                         },
@@ -382,9 +382,11 @@ function Header() {
                                 sx={{
                                     '&.MuiButton-root': {
                                         color: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : '#fff',
-                                        fontWeight: 700,
+                                        fontWeight: 600,
                                         textTransform: "capitalize",
                                         fontSize: "14px",
+                                        marginLeft: "13px",
+                                        marginRight: "13px",
                                     },
                                     '@media (max-width: 1200px)': {
                                         display: 'none'
@@ -401,9 +403,11 @@ function Header() {
                                 sx={{
                                     '&.MuiButton-root': {
                                         color: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : '#fff',
-                                        fontWeight: 700,
+                                        fontWeight: 600,
                                         textTransform: "capitalize",
-                                        fontSize: "14px"
+                                        fontSize: "14px",
+                                        marginLeft: "13px",
+                                        marginRight: "13px",
                                     },
                                     '@media (max-width: 1200px)': {
                                         display: 'none'
@@ -434,6 +438,8 @@ function Header() {
                                 <IconButton
                                     aria-describedby={accountId}
                                     sx={{
+                                        marginLeft: '10px',
+                                        marginRight: '10px',
                                         '@media (max-width: 768px)': {
                                             display: 'none'
                                         }
@@ -473,6 +479,8 @@ function Header() {
                             <IconButton
                                 aria-describedby={calendarId}
                                 sx={{
+                                    marginLeft: '10px',
+                                    marginRight: '10px',
                                     '@media (max-width: 768px)': {
                                         display: 'none'
                                     }
@@ -618,6 +626,9 @@ function Header() {
                                 <Button
                                     aria-describedby={cart}
                                     onClick={handleCartClick}
+                                    sx={{
+                                        marginLeft: '10px',
+                                    }}
                                     endIcon={
                                         <Box sx={{ borderRadius: "50%", width: "20px", height: "20px", background: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
                                             <Typography sx={{ fontSize: "10px", fontWeight: 700, color: getActiveHeader(scroll, hover, headerColor) ? "#fff" : "#000000" }}>3</Typography>

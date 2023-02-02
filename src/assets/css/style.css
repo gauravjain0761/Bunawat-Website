@@ -372,6 +372,9 @@ button {
     color: #000000;
     font-weight: 600;
     margin-top: 2px;
+    line-height: 0px;
+    font-family: Newhero10;
+    letter-spacing: -0.02em;
 }
 
 .common_tab_info {
@@ -722,6 +725,7 @@ button {
     color: #000;
     line-height: 1.5;
     font-weight: 600;
+    font-family: Newhero10;
 }
 
 .new_text {
