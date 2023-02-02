@@ -639,6 +639,7 @@ button {
     padding: 16px 16px 16px 50px;
     color: #fff;
     font-weight: 400;
+    font-size: 16px;
 }
 
 .tel_number_wrap input::placeholder {
