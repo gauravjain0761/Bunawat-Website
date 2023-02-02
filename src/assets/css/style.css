@@ -228,7 +228,7 @@ button {
 .common_home_banner .container {
     position: relative;
     z-index: 1;
-    padding: 65px 0;
+    padding: 65px 20px;
 }
 
 .common_home_banner::after {
@@ -656,6 +656,7 @@ button {
     border-radius: 4px;
     color: #fff;
     margin-left: 8px;
+    font-size: 16px;
 }
 
 .join_btn:hover {

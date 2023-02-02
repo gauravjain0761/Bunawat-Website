@@ -227,7 +227,7 @@
 
 @media (max-width: 991px) {
     .product_below_image {
-        height: 320px !important;
+        height: 240px !important;
     }
 
     .product_above_image {
