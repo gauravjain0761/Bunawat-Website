@@ -393,6 +393,7 @@ function Header() {
                                     </Box>
                                 </CustomPopOver>
                             </Box>
+                            <Link to="/clubHome">
                             <Button
                                 aria-describedby={id}
                                 // onClick={handleClick}
@@ -410,6 +411,8 @@ function Header() {
                             >
                                 Club
                             </Button>
+                            </Link>
+                            <Link to="/reviews">
                             <Button
                                 aria-describedby={id}
                                 // onClick={handleClick}
@@ -427,6 +430,7 @@ function Header() {
                             >
                                 Reviews
                             </Button>
+                            </Link>
                         </Box>
                         <Box>
                             <Link to="/" >
