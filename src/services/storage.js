@@ -1,4 +1,4 @@
-import { STORAGE_KEY } from "app/constant/storage";
+import { STORAGE_KEY } from "../constant/storage";
 
 class Storage {
     static set(key, data) {
