@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import FooterStrip from '../../components/footer/footerStrip';
 import "./errorPage.css";
 
@@ -12,7 +13,9 @@ const ErrorPage = () => {
         <img src='./img/errorPage.png' alt='Error Page'/>
         <h3>We couldn’t find that</h3>
         <p>We couldn’t find that</p>
-        <Button>See our Best Sellers</Button>
+        <Link to="/">
+          <Button>See our Best Sellers</Button>
+        </Link>
         <div>
           <a href='#'>Or report a problem</a>
         </div>

@@ -344,7 +344,7 @@ button {
     font-family: Newhero10;
     color: #000000;
     border: unset;
-    padding: 10px 0;
+    padding: 10px 0 6px 0;
     border-bottom: 2px solid transparent;
     margin-right: 30px;
 }
@@ -399,6 +399,11 @@ button {
     width: 100%;
     padding: 65px 30px 30px;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    display: flex;
+    justify-content: space-between;
+}
+.common_tab_title_save_warp p{
+    color: #ffffff !important;
 }
 
 .tab_common_contain {
@@ -1423,6 +1428,7 @@ li.common_option_wrap {
     font-size: 20px;
     color: #F2E7CB;
     font-weight: 400;
+    letter-spacing: -0.02em;
 }
 
 .product_left_details span {
@@ -1472,20 +1478,27 @@ li.common_option_wrap {
     color: #000000;
     text-align: center;
     margin: 30px 0;
+    letter-spacing: -0.02em;
+    line-height: 32px;
 }
-
+.female_details{
+    text-align: center;
+}
 .female_details h3 {
     font-size: 14px;
     color: #000;
     font-weight: 700;
     margin-bottom: 0px;
     text-align: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
 }
 
 .female_details span {
     color: #000000;
     font-size: 14px;
     text-align: center;
+    letter-spacing: 0.02em;
 }
 
 .review_wrap {
@@ -1512,16 +1525,20 @@ li.common_option_wrap {
     color: #000;
     font-weight: 600;
     font-size: 14px;
+    font-family: Newhero10;
+    letter-spacing: -0.02em;
 }
 
 .might_like_inner a {
     color: #2A3592;
     font-weight: 700;
-    font-size: 10px;
+    font-size: 11px;
     line-height: 1.6;
     text-transform: uppercase;
     display: flex;
     align-items: center;
+    font-family: Newhero10;
+    letter-spacing: -0.02em;
 }
 
 .might_like_inner a svg {
@@ -1579,6 +1596,8 @@ li.common_option_wrap {
     font-size: 24px;
     font-weight: 600;
     color: #2A3592;
+    font-family: NewScript-2;
+    letter-spacing: -0.02em;
 }
 
 .product_title_wrap {
@@ -1605,6 +1624,7 @@ li.common_option_wrap {
     font-size: 20px;
     font-weight: 400;
     margin-top: 15px;
+    letter-spacing: -0.02em;
 }
 
 .common_product_details>div span {
@@ -1765,13 +1785,17 @@ li.common_option_wrap {
 .sell_wrap h3 {
     font-size: 14px;
     font-weight: 600;
+    font-family: Newhero10;
+    letter-spacing: -0.02em;
 }
 
 .sell_wrap a span {
     color: #2A3592;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     margin-right: 5px;
+    font-family: Newhero10;
+    letter-spacing: -0.02em;
 }
 
 .recently_col_wrap {

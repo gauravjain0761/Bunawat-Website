@@ -57,9 +57,6 @@ export default function index({ socket }) {
                         <ClubHome />
                     </Route>
 
-                    <Route exact path={BASE_URL.BASE_URL + "404"}>
-                        <ErrorPage />
-                    </Route>
 
                     <Route exact path={BASE_URL.BASE_URL + "returns"}>
                         <Returns />
@@ -71,6 +68,10 @@ export default function index({ socket }) {
 
                     <Route exact path={BASE_URL.BASE_URL + "paymentOptions"}>
                         <PaymentOptions />
+                    </Route>
+                    
+                    <Route exact path={BASE_URL.BASE_URL + "*"}>
+                        <ErrorPage />
                     </Route>
 
                 </Switch>

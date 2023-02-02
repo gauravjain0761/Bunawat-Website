@@ -45,7 +45,7 @@
 
     .common_product_details>div {
         font-size: 17px;
-        margin-top: 5px;
+        margin-top: 10px;
     }
 
     .product_title_wrap h2 {
@@ -377,6 +377,7 @@
 
     .common_tab_title {
         padding: 30px 20px 20px;
+        flex-direction: column;
     }
 
     .summer_list_link p,

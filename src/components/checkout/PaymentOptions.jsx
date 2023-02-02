@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Col, Form, Row } from "react-bootstrap";
 import { RxArrowTopRight } from "react-icons/rx";
+import { Link } from "react-router-dom";
 
 
 const PaymentOptions = () => {
@@ -64,10 +65,12 @@ const PaymentOptions = () => {
                 </Col>
               </Row>
               </div>
-              <div className="payment_options_page_box_hidden_footer" onClick={() => setCardOpen(false)}>
-                <span>Pay</span>
-                <span>₹13,230 </span>
-              </div>
+              <Link to='/orderConfirmation'>
+                <div className="payment_options_page_box_hidden_footer" onClick={() => setCardOpen(false)}>
+                  <span>Pay</span>
+                  <span>₹13,230 </span>
+                </div>
+              </Link>
             </div>
             )}
 

@@ -127,6 +127,7 @@
     display: flex;
     justify-content: space-between;
     background-color: #EAEBF0;
+    border-radius: 0 0 4px 4px;
 }
 .userProfileModule_box_list_last h6{
     font-weight: 600;
