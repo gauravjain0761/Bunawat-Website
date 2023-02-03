@@ -402,7 +402,8 @@ button {
     display: flex;
     justify-content: space-between;
 }
-.common_tab_title_save_warp p{
+
+.common_tab_title_save_warp p {
     color: #ffffff !important;
 }
 
@@ -539,7 +540,8 @@ button {
     width: 100%;
     height: 100%;
 }
-.cloth_deatils_wrap img{
+
+.cloth_deatils_wrap img {
     border-radius: 4px;
 }
 
@@ -1482,9 +1484,11 @@ li.common_option_wrap {
     letter-spacing: -0.02em;
     line-height: 32px;
 }
-.female_details{
+
+.female_details {
     text-align: center;
 }
+
 .female_details h3 {
     font-size: 14px;
     color: #000;
@@ -1817,7 +1821,7 @@ li.common_option_wrap {
 }
 
 .product_filters_wrap.product_page_filtter {
-    max-width: 630px;
+    max-width: 700px;
 }
 
 .chet_size_1 {
@@ -2297,6 +2301,9 @@ li.common_option_wrap {
     width: 100%;
 }
 
+.structured_fabric_img video {
+    width: 100%;
+}
 
 .review_body {
     background: #ffffff;

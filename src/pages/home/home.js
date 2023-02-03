@@ -13,7 +13,7 @@ const Home = () => {
     const { data, error, isLoading } = useGetShopMenuDataQuery()
 
     const collections = useMemo(() => {
-        return data?.collections.filter(list => list?.home_visibilty) ?? []
+        return data?.collections?.filter(list => list?.home_visibilty) ?? []
     }, [data]);
 
     const categories = useMemo(() => {

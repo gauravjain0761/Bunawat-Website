@@ -37,6 +37,14 @@ export default function index({ socket }) {
                         <Product />
                     </Route>
 
+                    <Route exact path={BASE_URL.BASE_URL + `product/:id`}>
+                        <Product />
+                    </Route>
+
+                    <Route exact path={BASE_URL.BASE_URL + `product/:id/:type`}>
+                        <Product />
+                    </Route>
+
                     <Route exact path={BASE_URL.BASE_URL + `checkout`}>
                         <Checkout />
                     </Route>
@@ -69,7 +77,7 @@ export default function index({ socket }) {
                     <Route exact path={BASE_URL.BASE_URL + "paymentOptions"}>
                         <PaymentOptions />
                     </Route>
-                    
+
                     <Route exact path={BASE_URL.BASE_URL + "*"}>
                         <ErrorPage />
                     </Route>

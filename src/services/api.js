@@ -36,7 +36,10 @@ export const AllApiData = createApi({
         getDatabyId: builder.query({
             query: ({ id, type }) => `get_data_by_id/${id}?type=${type}`,
         }),
+        getProduct: builder.query({
+            query: ({ id }) => `get_product/${id}`,
+        }),
     }),
 })
 
-export const { useSendOtpMutation, useOtpMatchMutation, useGetShopMenuDataQuery, useGetDatabyIdQuery } = AllApiData
+export const { useSendOtpMutation, useOtpMatchMutation, useGetShopMenuDataQuery, useGetDatabyIdQuery, useGetProductQuery } = AllApiData
