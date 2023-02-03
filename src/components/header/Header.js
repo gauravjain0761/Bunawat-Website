@@ -339,7 +339,9 @@ function Header() {
                                         marginLeft: '10px',
                                         marginRight: '10px',
                                         '@media (max-width: 768px)': {
-                                            display: 'none'
+                                            // display: 'none'
+                                            marginLeft: '0px',
+                                            marginRight: '0px',
                                         }
                                     }}
                                     onClick={handleAccountClick}>
@@ -426,6 +428,9 @@ function Header() {
                                     onClick={handleCartClick}
                                     sx={{
                                         marginLeft: '10px',
+                                        '@media (max-width: 768px)': {
+                                           marginLeft: '0px',
+                                        }
                                     }}
                                     endIcon={
                                         <Box sx={{ borderRadius: "50%", width: "20px", height: "20px", background: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
