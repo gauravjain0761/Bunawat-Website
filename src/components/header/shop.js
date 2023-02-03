@@ -120,7 +120,7 @@ const Shop = ({menuData, handleClose, handleActive}) => {
                             color="inherit"
                             startIcon={<KeyboardBackspaceIcon />}
                           >
-                            Back2
+                            Back
                           </Button>
                           <Button
                             sx={{
@@ -225,7 +225,7 @@ const Shop = ({menuData, handleClose, handleActive}) => {
                                     color="inherit"
                                     startIcon={<KeyboardBackspaceIcon />}
                                   >
-                                    Back3
+                                    Back
                                   </Button>
                                   <Button
                                     sx={{
