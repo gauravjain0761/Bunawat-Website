@@ -93,7 +93,7 @@ const AllProductMenu = ({ data, singleData, setSelectedId }) => {
                                                     <>
                                                         <div className={getClassWidth(index, singleList?.products?.length)}>
                                                             <div className="cloth_deatils_wrap">
-                                                                <Link to="/product" className="cloth_deatils_link">
+                                                                <Link to={`/product/${list?._id}/${data?.[key]?.type ?? ""}`} className="cloth_deatils_link">
                                                                     <img src={list?.image} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "640px" : "560px"} />
                                                                 </Link>
                                                                 <div className="cloth_info_title">

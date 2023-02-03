@@ -13,6 +13,10 @@ class Storage {
         return localStorage.getItem(key);
     }
 
+    static remove(key) {
+        localStorage.removeItem(key);
+    }
+
     static getJson(key) {
         const data = localStorage.getItem(key);
         return JSON.parse(data);

@@ -29,7 +29,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                             <div className="product_title_wrap">
                                 <h2>{product?.name}</h2>
                                 <div className="saved_wrap">
-                                    <span>Save</span>
+                                    <span style={{ color: '#2A3592', fontWeight: '900' }}>Save</span>
                                     <svg
                                         width="19"
                                         height="18"
@@ -48,7 +48,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                             </div>
                             <div className="common_product_details">
                                 <div>{parse(product?.description)}</div>
-                                <div>
+                                <div style={{ marginTop: '25px' }}>
                                     Club members get <span>10% off. </span>
                                     <Link to="" className="product_link">
                                         Join

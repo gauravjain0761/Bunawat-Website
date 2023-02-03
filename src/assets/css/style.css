@@ -1939,6 +1939,12 @@ li.common_option_wrap {
     box-shadow: rgb(145 158 171 / 24%) 0px 0px 2px 0px, rgb(145 158 171 / 24%) -20px 20px 40px -4px;
 }
 
+.after_login {
+    padding: 72px;
+    background: #fff;
+    box-shadow: rgb(145 158 171 / 24%) 0px 0px 2px 0px, rgb(145 158 171 / 24%) -20px 20px 40px -4px;
+}
+
 .login_title_wrap {
     text-align: center;
 }
