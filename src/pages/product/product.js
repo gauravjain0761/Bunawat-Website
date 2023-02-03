@@ -43,6 +43,7 @@ const Product = () => {
         category_product = category_product.filter(list => list._id != id)
         category_product = [product, ...category_product]
         setProductList(category_product)
+        setSwipeableIndex(0)
         setProductBottomData(category_product?.map((x, index) => {
           if (index == 0) {
             return true
@@ -57,6 +58,7 @@ const Product = () => {
         collection_product = collection_product.filter(list => list._id != id)
         collection_product = [product, ...collection_product]
         setProductList(collection_product)
+        setSwipeableIndex(0)
         setProductBottomData(collection_product?.map((x, index) => {
           if (index == 0) {
             return true
