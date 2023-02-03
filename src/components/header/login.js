@@ -1,9 +1,10 @@
 import React from 'react'
 import { toast } from 'react-toastify';
 import ReactInputVerificationCode from "react-input-verification-code";
-import { Box } from '@mui/material';
+import { Box, Menu, MenuItem, MenuList } from '@mui/material';
 import { useOtpMatchMutation, useSendOtpMutation } from '../../services/api';
 import { STORAGE_KEY } from '../../constant/storage';
+import { Link } from 'react-router-dom';
 
 const Login = ({ activeHeader, handleAccountClose }) => {
     const [sendOtp] = useSendOtpMutation(undefined, {})
@@ -13,6 +14,7 @@ const Login = ({ activeHeader, handleAccountClose }) => {
         phone: '9782649915',
         otp: ''
     });
+
 
     const handleSendOtp = async () => {
         await sendOtp({ phone: loginData?.phone ?? "" }).unwrap().then((data) => {
@@ -214,6 +216,29 @@ const Login = ({ activeHeader, handleAccountClose }) => {
                     </div>
                 </div>
             ) : null}
+
+           
+            <MenuList>
+                <Link to="/userProfile">
+                  <MenuItem sx={{
+                        fontSize: "20px",
+                        color: "#000",
+                        fontWeight: "600",
+                        background: "#dfe3e8",
+                        }}>
+                        My account
+                    </MenuItem>
+                </Link>
+                    <MenuItem sx={{
+                        fontSize: "20px",
+                        color: "#000",
+                        fontWeight: "600",
+                        background: "#dfe3e8",
+                        }}>
+                        Logout
+                    </MenuItem>
+            </MenuList>
+            
         </Box>
     )
 }

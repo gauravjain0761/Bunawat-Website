@@ -30,6 +30,8 @@ import Storage from '../../services/storage';
 import { STORAGE_KEY } from '../../constant/storage';
 import Login from './login';
 import Cart from './cart';
+import Calendar from './calendar';
+import Shop from './shop';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -266,113 +268,9 @@ function Header() {
                                         horizontal: 'left',
                                     }}
                                 >
-                                    <Box sx={{ width: { md: "380px", sm: "100%" }, px: 2 }}>
-                                        {menuData.level == '1' && menuData.collection.map((item, index) => {
-                                            return (
-                                                <React.Fragment key={`collection-${index}`} >
-                                                    <Typography onClick={() => {
-                                                        history.push("/allProduct");
-                                                        handleClose();
-                                                    }} sx={{ py: 2, fontSize: "24px", fontWeight: 600, letterSpacing: "-.02em", fontFamily: "Imported", cursor: "pointer" }}>
-                                                        {item.name}
-                                                    </Typography>
-                                                    <Divider sx={{ borderWidth: "1px" }} />
-                                                </React.Fragment>
-                                            )
-                                        })}
-                                    </Box>
-                                    <Box sx={{ width: { md: "380px", sm: "100%" }, px: 2 }}>
-                                        {menuData.categories.map((item, index) => {
-                                            return (
-                                                <React.Fragment key={`categories-${index}`}>
-                                                    {menuData.level == '1' &&
-                                                        <>
-                                                            <Stack sx={{ cursor: "pointer" }} direction="row" alignItems="center" justifyContent="space-between" onClick={() => handleActive(item?.parentId, index, '2', item.sub_cateogries.length > 0)}>
-                                                                <Typography sx={{ py: 1.5, fontSize: "24px", fontWeight: 600, letterSpacing: "-.02em", fontFamily: "Imported" }}>
-                                                                    {item.name}
-                                                                </Typography>
-                                                                {item.sub_cateogries.length > 0 &&
-                                                                    <Typography>
-                                                                        <svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                            <path d="M9.80005 2.13184L20.147 12.4788L9.80005 22.8513" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
-                                                                            <path d="M0.800049 12.5044H19.7267" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
-                                                                        </svg>
-                                                                    </Typography>
-                                                                }
-                                                            </Stack>
-                                                            <Divider sx={{ borderWidth: "1px" }} />
-                                                        </>
-                                                    }
-                                                    {(menuData.level == '2' || menuData.level == '3') &&
-                                                        <>
-                                                            {(index == menuData.selectedCategoriesIndex && menuData.level == '2') &&
-                                                                <>
-                                                                    <Stack direction="row" justifyContent="space-between" pb={0.5} pt={2}>
-                                                                        <Button sx={{ fontSize: "14px !important", textTransform: "capitalize", fontWeight: 600 }} onClick={() => handleActive(item?.parentId, -1, '1')} color="inherit" startIcon={<KeyboardBackspaceIcon />}>
-                                                                            Back2
-                                                                        </Button>
-                                                                        <Button sx={{ fontSize: "14px !important", textTransform: "capitalize", fontWeight: 600 }} color="inherit" startIcon={<NorthEastIcon />}>
-                                                                            Shop Kind
-                                                                        </Button>
-                                                                    </Stack>
-                                                                    <Divider sx={{ borderWidth: "1px" }} />
-                                                                </>
-                                                            }
-                                                            {index == menuData.selectedCategoriesIndex && item.sub_cateogries.map((subcategory, subIndex) => {
-                                                                return (
-                                                                    <>
-                                                                        {menuData.level == '2' &&
-                                                                            <Box sx={{ cursor: "pointer" }} key={`itemsub-${subIndex}`}>
-                                                                                <Stack sx={{ cursor: "pointer" }} direction="row" alignItems="center" justifyContent="space-between" onClick={() => handleActive(subcategory?.parentId, subIndex, '3', subcategory.categories.length > 0, true)}>
-                                                                                    <Typography sx={{ py: 1.5, fontSize: "24px", fontWeight: 600, letterSpacing: "-.02em", fontFamily: "Imported" }}>
-                                                                                        {subcategory.name}
-                                                                                    </Typography>
-                                                                                    {subcategory.categories.length > 0 &&
-                                                                                        <Typography>
-                                                                                            <svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                                                <path d="M9.80005 2.13184L20.147 12.4788L9.80005 22.8513" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
-                                                                                                <path d="M0.800049 12.5044H19.7267" stroke="black" strokeWidth="1.7" strokeMiterlimit="10" />
-                                                                                            </svg>
-                                                                                        </Typography>
-                                                                                    }
-                                                                                </Stack>
-                                                                                <Divider sx={{ borderWidth: "1px" }} />
-                                                                            </Box>
-                                                                        }
-                                                                        {(subIndex == menuData.selectedSubCategoriesIndex && menuData.level == '3') &&
-                                                                            <>
-                                                                                <Stack direction="row" justifyContent="space-between" pb={0.5} pt={2}>
-                                                                                    <Button sx={{ fontSize: "14px !important", textTransform: "capitalize", fontWeight: 600 }} onClick={() => handleActive(subcategory?.parentId, menuData.selectedCategoriesIndex, '2')} color="inherit" startIcon={<KeyboardBackspaceIcon />}>
-                                                                                        Back3
-                                                                                    </Button>
-                                                                                    <Button sx={{ fontSize: "14px !important", textTransform: "capitalize", fontWeight: 600 }} color="inherit" startIcon={<NorthEastIcon />}>
-                                                                                        Shop Kind
-                                                                                    </Button>
-                                                                                </Stack>
-                                                                                <Divider sx={{ borderWidth: "1px" }} />
-                                                                                {subcategory.categories.map((category, catIndex) => {
-                                                                                    return (
-                                                                                        <Box sx={{ cursor: "pointer" }} key={`itemsub-${catIndex}`}>
-                                                                                            <Typography onClick={() => {
-                                                                                                handleActive(category?.parentId, menuData.selectedCategoriesIndex, '3', false)
-                                                                                            }} sx={{ py: 1.5, fontSize: "24px", fontWeight: 600, letterSpacing: "-.02em", fontFamily: "Imported" }}>
-                                                                                                {category.name}
-                                                                                            </Typography>
-                                                                                            <Divider sx={{ borderWidth: "1px" }} />
-                                                                                        </Box>
-                                                                                    )
-                                                                                })}
-                                                                            </>
-                                                                        }
-                                                                    </>
-                                                                )
-                                                            })}
-                                                        </>
-                                                    }
-                                                </React.Fragment>
-                                            )
-                                        })}
-                                    </Box>
+                                    
+                                    <Shop menuData={menuData} handleClose={handleClose} handleActive={handleActive} />
+
                                 </CustomPopOver>
                             </Box>
                             <Link to="/clubHome">
@@ -520,107 +418,7 @@ function Header() {
                                     height: { lg: '700px', md: 'auto' },
                                 }}
                             >
-                                <div className="cart_inner calander_wrap position-relative">
-                                    <div className="date_wrap"><DayPicker showOutsideDays fixedWeeks mode="single" onSelect={setSelectedDay} selected={selectedDay} /></div>
-                                    <div className="cal_news_wrap">
-                                        <div className="cal_news">
-                                            <div className="cla_news_title">
-                                                <div className="cla_news_left">
-                                                    <span style={{ backgroundColor: "#FF6C6C" }}></span>
-                                                    <p style={{ color: "#FF6C6C" }}>Workshop</p>
-                                                </div>
-                                                <span>12:45 pm</span>
-                                            </div>
-                                            <div className="workshop_title">
-                                                <h3>Everyday Makeup</h3>
-                                                <p>Learn how to apply subtle make up in under 10 minutes. Follow this routine every day.</p>
-                                            </div>
-                                            <div className="join_wrap">
-                                                <p>with Divya Sancheti</p>
-                                                <div className="join_btn_wrap">
-                                                    <p>2 hrs</p>
-                                                    <button className="join_btn">Join</button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="cal_news">
-                                            <div className="cla_news_title">
-                                                <div className="cla_news_left">
-                                                    <span style={{ backgroundColor: "#F2C34B" }}></span>
-                                                    <p style={{ color: "#F2C34B" }}>Tutorial</p>
-                                                </div>
-                                                <span>12:45 pm</span>
-                                            </div>
-                                            <div className="workshop_title">
-                                                <h3>Personal Styling for Festivals</h3>
-                                                <p>Learn how to apply subtle make up in under 10 minutes. Follow this routine every day.</p>
-                                            </div>
-                                            <div className="join_wrap">
-                                                <p>with Divya Sancheti</p>
-                                                <div className="join_btn_wrap">
-                                                    <p>2 hrs</p>
-                                                    <button className="join_btn">Join</button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="cal_news">
-                                            <div className="cla_news_title">
-                                                <div className="cla_news_left">
-                                                    <span style={{ backgroundColor: "#FF6C6C" }}></span>
-                                                    <p style={{ color: "#FF6C6C" }}>Workshop</p>
-                                                </div>
-                                                <span>12:45 pm</span>
-                                            </div>
-                                            <div className="workshop_title">
-                                                <h3>Everyday Makeup</h3>
-                                                <p>Learn how to apply subtle make up in under 10 minutes. Follow this routine every day.</p>
-                                            </div>
-                                            <div className="join_wrap">
-                                                <p>with Divya Sancheti</p>
-                                                <div className="join_btn_wrap">
-                                                    <p>2 hrs</p>
-                                                    <button className="join_btn">Join</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="date_sync">
-                                        <div className="resend_otp_wrap">
-                                            <button className="resend_btn">
-                                                <span>3rd July 2022</span>
-                                                <svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <g clipPath="url(#clip0_2146_6797)">
-                                                        <path d="M0.599609 1.43018H7.98961V8.82018" stroke="#2A3592" strokeWidth="1.7" strokeMiterlimit="10" />
-                                                        <path d="M0.599609 8.82018L7.98961 1.43018" stroke="#2A3592" strokeWidth="1.7" strokeMiterlimit="10" />
-                                                    </g>
-                                                    <defs>
-                                                        <clipPath id="clip0_2146_6797">
-                                                            <rect width="8.84" height="8.84" fill={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} transform="translate(0 0.580078)" />
-                                                        </clipPath>
-                                                    </defs>
-                                                </svg>
-                                            </button>
-                                            <button className="resend_btn">
-                                                <span>Sync Calendar</span>
-                                                <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <g clipPath="url(#clip0_2146_6803)">
-                                                        <path d="M15.1499 0.5V7.03H8.62988" stroke="#2A3990" strokeWidth="1.7" strokeMiterlimit="10" />
-                                                        <path d="M15.1507 7.02988L9.76074 1.62988H8.79074C6.45074 1.62988 4.36074 2.72988 3.01074 4.43988" stroke="#2A3990" strokeWidth="1.7" strokeLinejoin="round" />
-                                                        <path d="M1.45996 17.5V10.97H7.98996" stroke="#2A3990" strokeWidth="1.7" strokeMiterlimit="10" />
-                                                        <path d="M1.45996 10.97L6.84996 16.36H7.81996C10.16 16.36 12.25 15.26 13.6 13.55" stroke="#2A3990" strokeWidth="1.7" strokeLinejoin="round" />
-                                                    </g>
-                                                    <defs>
-                                                        <clipPath id="clip0_2146_6803">
-                                                            <rect width="15.39" height="17" fill={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} transform="translate(0.610352 0.5)" />
-                                                        </clipPath>
-                                                    </defs>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                                <Calendar getActiveHeader={getActiveHeader} scroll={scroll} hover={hover} headerColor={headerColor} />
                             </CustomPopOver>
                             <Box>
                                 <Button
