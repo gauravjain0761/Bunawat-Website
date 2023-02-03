@@ -373,6 +373,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId }) => {
         </div>
       </div>
 
+      <BestSellingSection data={data} singleData={singleData?.link_with_category_collection} keyVal={key} />
     </>
   );
 };

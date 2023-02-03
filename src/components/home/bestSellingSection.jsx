@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getNumberWithComma } from "../../utils/utils";
 
-const BestSellingSection = ({ singleData }) => {
+const BestSellingSection = ({ singleData, keyVal, data }) => {
   const [singleList, setSingleList] = React.useState(singleData ?? [])
 
+  { console.log("data?.[key]?.type", data, data?.[keyVal]?.type, keyVal) }
   useEffect(() => {
     setSingleList(singleData ?? []);
   }, [singleData]);
@@ -59,7 +60,7 @@ const BestSellingSection = ({ singleData }) => {
               {singleList?.linked_product?.length > 0 &&
                 singleList?.linked_product.map(list => (
                   <div className="summer_list_link_wrap" key={list?._id}>
-                    <Link to="/product">
+                    <Link to={`/product/${list?._id}/${data?.[keyVal]?.type ?? ""}`}>
                       <div className="summer_list_link">
                         <p>{list?.name}</p>
                         <span>
@@ -164,7 +165,7 @@ const BestSellingSection = ({ singleData }) => {
                   <>
                     <div className={getClassWidth(index, singleList?.products?.length)}>
                       <div className="cloth_deatils_wrap">
-                        <Link to="/product" className="cloth_deatils_link">
+                        <Link to={`/product/${list?._id}/${data?.[keyVal]?.type ?? ""}`} className="cloth_deatils_link">
                           <img src={list?.image} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "640px" : "560px"} />
                         </Link>
                         <div className="cloth_info_title">
@@ -236,6 +237,7 @@ const BestSellingSection = ({ singleData }) => {
           </div>
         </div>
       </div>
+
     </>
   );
 };

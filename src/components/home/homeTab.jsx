@@ -26,7 +26,6 @@ const HomeTab = ({ menuData }) => {
     return (
         <>
             <HomeBannerTabs data={data} singleData={singleData?.data} setSelectedId={setSelectedId} />
-            <BestSellingSection singleData={singleData?.data?.link_with_category_collection} />
             <JoinTheClubSection />
             <Footer />
         </>
