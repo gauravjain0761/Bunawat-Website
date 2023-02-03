@@ -32,35 +32,43 @@ const Login = ({ activeHeader, handleAccountClose }) => {
     };
 
     return (
-        <Box sx={{ p: 4 }} className="body_width login_body after_login">
+        <>
             {Storage.get(STORAGE_KEY.token) ?
                 <>
-                    <MenuList>
+                    <MenuList sx={{
+                        width: '180px',
+                    }}>
                         <Link to="/userProfile">
-                            <MenuItem sx={{
-                                fontSize: "20px",
+                            <MenuItem onClick={() => { handleAccountClose() }}
+                            sx={{
+                                fontSize: "18px",
                                 color: "#000",
                                 fontWeight: "600",
                                 background: "#fff",
+                                fontFamily: 'Newhero10',
+                                borderBottom: "1px solid #c5c5c5",
                             }}>
-                                My account
+                                My Account
                             </MenuItem>
                         </Link>
                         <MenuItem onClick={() => {
                             Storage.remove(STORAGE_KEY.token)
                             handleAccountClose()
                         }} sx={{
-                            fontSize: "20px",
+                            fontSize: "18px",
                             color: "#000",
                             fontWeight: "600",
-                            background: "#fff",
+                            backgroundColor: "#fff !important",
+                            fontFamily: 'Newhero10',
                         }}>
                             Logout
                         </MenuItem>
                     </MenuList>
+                
                 </>
                 :
-                <>
+                <>  
+                    <Box sx={{ p: 4.3 }} className="body_width login_body after_login"> 
                     {otpverify ? null : (
                         <div className="login_wrap">
                             <div className="login_title_wrap">
@@ -116,7 +124,7 @@ const Login = ({ activeHeader, handleAccountClose }) => {
                             </div>
                         </div>
                     )}
-
+                    
                     {otpverify ? (
                         <div className="login_wrap">
                             <div className="login_title_wrap">
@@ -245,9 +253,10 @@ const Login = ({ activeHeader, handleAccountClose }) => {
                             </div>
                         </div>
                     ) : null}
+                    </Box>
                 </>
             }
-        </Box>
+        </>
     )
 }
 

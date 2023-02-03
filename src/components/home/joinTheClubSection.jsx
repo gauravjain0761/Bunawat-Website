@@ -9,7 +9,7 @@ const JoinTheClubSection = () => {
           <div className="join_the_club_inner">
             <h2 className="common_title">Join the Club</h2>
             <p>
-              Professional Tutorials. Beauty Workshops. Special Deals.<br /> Be a part
+              Professional Tutorials. Beauty Workshops. Special Deals. Be a part
               of Bunawat Club to get it all, free.
             </p>
             <div className="tel_number">
