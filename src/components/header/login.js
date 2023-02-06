@@ -37,6 +37,10 @@ const Login = ({ activeHeader, handleAccountClose }) => {
                 <>
                     <MenuList sx={{
                         width: '180px',
+                        '@media (max-width: 768px)': {
+                           textAlign: "center",
+                           width: '100%',
+                        }
                     }}>
                         <Link to="/userProfile">
                             <MenuItem onClick={() => { handleAccountClose() }}

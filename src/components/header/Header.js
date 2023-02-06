@@ -382,7 +382,9 @@ function Header() {
                                     marginLeft: '10px',
                                     marginRight: '10px',
                                     '@media (max-width: 768px)': {
-                                        display: 'none'
+                                        // display: 'none'
+                                        marginRight: '0px',
+                                        marginLeft: '0px',
                                     }
                                 }}
                                 onClick={handleCalendarClick}>

@@ -31,7 +31,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId }) => {
               return (
                 <Tab eventKey={index} key={item?._id} title="">
                   <div className="common_home_banner">
-                    <img src={singleCollection?.image} alt="hero_image" style={{ position: 'absolute', width: '100%', height: '100vh' }} />
+                    <img src={singleCollection?.image} alt="hero_image" style={{ position: 'absolute', width: '100%'}} />
                     <div className="container">
                       <div className="home_banner_title">
                         <h1 className="common_title">{singleCollection?.title}</h1>
