@@ -88,7 +88,7 @@ const Product = () => {
 
   return (
     <>
-      {console.log(productList, similarList)}
+      {console.log("productList, similarList", productList, swipeableIndex)}
       <SwipeableViews containerStyle={{ height: '100%' }} enableMouseEvents index={swipeableIndex} disabled={swipeableDisable} onChangeIndex={(index) => getCurrentBottomData(index)} >
         {productList?.map((data, index) => {
           return (
@@ -96,6 +96,7 @@ const Product = () => {
           )
         })}
       </SwipeableViews>
+      <ProductPageFilter filters={productList?.[swipeableIndex]?.skus ?? []} swipeableIndex={swipeableIndex ?? 0} />
     </>
   );
 };

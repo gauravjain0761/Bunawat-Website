@@ -934,11 +934,11 @@ const ProductBottomData = ({ product, productIndex, width, similarList }) => {
                 </div>
             </div>
 
-            <div className="container">
+            <div className="container" style={{ paddingBottom: '80px' }}>
                 <FooterStrip />
             </div>
 
-            <ProductPageFilter />
+            <ProductPageFilter filters={product?.skus} />
 
             <WriteAReviews showReviewsWrite={showReviewsWrite} handleClose={handleClose} />
         </div>

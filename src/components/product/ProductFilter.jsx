@@ -1,155 +1,117 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import { FiArrowUpRight } from "react-icons/fi";
+import _ from 'lodash';
+import { getNumberWithComma } from '../../utils/utils';
 
-const ProductPageFilter = () => {
-    const [age, setAge] = useState("size");
+const ProductPageFilter = ({ filters, swipeableIndex }) => {
+    const [filterList, setFilterList] = useState([]);
+    const [attributeList, setAttributeList] = useState([]);
+    const [attributeData, setAttributeData] = useState({});
 
-    const handleChange = (event) => {
-        setAge(event.target.value);
-    };
+    useEffect(() => {
+        let temp = [...filters] ?? []
+        let uniqKey = _.uniq(temp.map((list) => Object.keys(list.varients))?.flat()).map((list, index) => list)
+        let tempAttributeList = {};
+        let tempAttributeData = {};
+        uniqKey.filter(list => list != 'qty').map(val => {
+            filters.map((list) => {
+                let value = tempAttributeList?.[val] ?? []
+                tempAttributeList = { ...tempAttributeList, [val]: [...value, { value: list?._id, label: list?.varients?.[val] }] }
+            })
+            tempAttributeData = { ...tempAttributeData, [val]: 'defaultValue' }
+        })
+        setAttributeData(tempAttributeData);
+        setAttributeList(tempAttributeList);
+        setFilterList(temp)
+    }, [filters, swipeableIndex])
 
     return (
         <>
             <div className="product_filters">
                 <div className='product_filters_wrap'>
                     <div className="product_filters_wrap product_page_filtter">
-                        <div
-                            className={
-                                age == "size"
-                                    ? "common_select_wrap first_option"
-                                    : "common_select_wrap"
-                            }
-                        >
-                            <FormControl>
-                                <Select
-                                    value={age}
-                                    onChange={handleChange}
-                                    displayEmpty
-                                    inputProps={{ "aria-label": "Without label" }}
-                                >
-                                    <MenuItem value="size" className="common_option_wrap">
-                                        <div className="common_option">
-                                            <p>
-                                                <div className="common_option">
-                                                    <span style={{ textTransform: "uppercase" }}>size — inches</span>
-                                                </div>
-                                            </p>
-                                            <div className="chet_size">
-                                                <span>Chest</span>
-                                                <span>Waist</span>
-                                                <span>Length</span>
-                                            </div>
-                                        </div>
-                                    </MenuItem>
-                                    <MenuItem value="" className="common_option_wrap">
-                                        <div className="common_option">
-                                            <p>
-                                                <div className="common_option">
-                                                    <div className="d-flex align-items-center common_radio_btn">
-                                                        <span>XS - 30</span>
+                        {Object.keys(attributeList)?.map((item, index) => {
+                            return (
+                                <>
+                                    <div
+                                        className="common_select_wrap first_option">
+                                        <FormControl>
+                                            <Select
+                                                defaultValue='defaultValue'
+                                                value={attributeData?.[item]}
+                                                onChange={(e) => {
+                                                    let newData = {}
+                                                    Object.entries({ ...attributeData, [item]: e.target.value }).forEach(([key, value], i) => {
+                                                        if (index >= i) {
+                                                            newData = { ...newData, [key]: value }
+                                                        } else {
+                                                            newData = { ...newData, [key]: 'defaultValue' }
+                                                        }
+                                                    });
+                                                    setAttributeData(newData)
+                                                }}
+                                                inputProps={{ "aria-label": "Without label" }}>
+                                                <MenuItem value="defaultValue" className="common_option_wrap">
+                                                    <div className="common_option">
+                                                        <p>
+                                                            <div className="common_option">
+                                                                <span style={{ textTransform: "uppercase" }}>{item}</span>
+                                                            </div>
+                                                        </p>
                                                     </div>
-                                                </div>
-                                            </p>
-                                            <div className="chet_size chet_size_number">
-                                                <span>30</span>
-                                                <span>26</span>
-                                                <span>30</span>
-                                            </div>
-                                        </div>
-                                    </MenuItem>
-                                    <MenuItem value="" className="common_option_wrap">
-                                        <div className="common_option">
-                                            <p>
-                                                <div className="common_option">
-                                                    <div className="d-flex align-items-center common_radio_btn">
-                                                        <span>S - 30</span>
-                                                    </div>
-                                                </div>
-                                            </p>
-                                            <div className="chet_size chet_size_number">
-                                                <span>30</span>
-                                                <span>26</span>
-                                                <span>30</span>
-                                            </div>
-                                        </div>
-                                    </MenuItem>
-                                    <MenuItem value="" className="common_option_wrap">
-                                        <div className="common_option">
-                                            <p>
-                                                <div className="common_option">
-                                                    <div className="d-flex align-items-center common_radio_btn">
-                                                        <span>M - 30</span>
-                                                    </div>
-                                                </div>
-                                            </p>
-                                            <div className="chet_size chet_size_number">
-                                                <span>30</span>
-                                                <span>26</span>
-                                                <span>30</span>
-                                            </div>
-                                        </div>
-                                    </MenuItem>
-                                    <MenuItem value="" className="common_option_wrap">
-                                        <div className="common_option">
-                                            <p>
-                                                <div className="common_option">
-                                                    <div className="d-flex align-items-center common_radio_btn">
-                                                        <span>L - 30</span>
-                                                    </div>
-                                                </div>
-                                            </p>
-                                            <div className="chet_size chet_size_number">
-                                                <span>30</span>
-                                                <span>26</span>
-                                                <span>30</span>
-                                            </div>
-                                        </div>
-                                    </MenuItem>
-                                    <MenuItem value="" className="common_option_wrap">
-                                        <div className="common_option">
-                                            <p>
-                                                <div className="common_option">
-                                                    <div className="d-flex align-items-center common_radio_btn">
-                                                        <span>XL - 30</span>
-                                                    </div>
-                                                </div>
-                                            </p>
-                                            <div className="chet_size chet_size_number">
-                                                <span>30</span>
-                                                <span>26</span>
-                                                <span>30</span>
-                                            </div>
-                                        </div>
-                                    </MenuItem>
-
-                                    <MenuItem value="" className="common_option_wrap">
-                                        <div className="common_option">
-                                            <p>
-                                                <div className="common_option">
-                                                    <div className="d-flex align-items-center common_radio_btn">
-                                                        <span>Size: Select</span>
-                                                    </div>
-                                                </div>
-                                            </p>
-                                            <Link to="/sizeGuide" style={{ color: "#2A3592" }}>
-                                                <div className="chet_size chet_size_number">
-                                                    <span>
-                                                        check the Size guide <FiArrowUpRight />
-                                                    </span>
-                                                </div>
-                                            </Link>
-                                        </div>
-                                    </MenuItem>
-                                </Select>
-                            </FormControl>
+                                                </MenuItem>
+                                                {index == 0 ?
+                                                    attributeList?.[item]?.map((list) => {
+                                                        return (
+                                                            <MenuItem value={list?.value} className="common_option_wrap">
+                                                                <div className="common_option">
+                                                                    <p>
+                                                                        <div className="common_option">
+                                                                            <div className="d-flex align-items-center common_radio_btn">
+                                                                                <span>{list?.label}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </p>
+                                                                </div>
+                                                            </MenuItem>
+                                                        )
+                                                    })
+                                                    :
+                                                    attributeList?.[item]?.filter(list => list?.value == attributeData?.[Object.keys(attributeList)?.[index - 1]])?.map((list) => {
+                                                        return (
+                                                            <MenuItem value={list?.value} className="common_option_wrap">
+                                                                <div className="common_option">
+                                                                    <p>
+                                                                        <div className="common_option">
+                                                                            <div className="d-flex align-items-center common_radio_btn">
+                                                                                <span>{list?.label}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </p>
+                                                                </div>
+                                                            </MenuItem>
+                                                        )
+                                                    })
+                                                }
+                                            </Select>
+                                        </FormControl>
+                                    </div>
+                                </>
+                            )
+                        })}
+                        <div style={{
+                            margin: '0 10px 0 10px'
+                        }}>
+                            <input type="text" placeholder='Qty' defaultValue="1" style={{
+                                maxWidth: '100px'
+                            }} />
                         </div>
-
                         <div className="add_btn_wrap">
-                            <button className="clear_btn add_btn right_btn">
+                            <button className="clear_btn add_btn">
                                 <span>Added to Cart</span>
                                 <span>
                                     <svg
@@ -171,24 +133,24 @@ const ProductPageFilter = () => {
                             <button className="clear_btn add_btn">
                                 <span>Add</span>
                                 <span>
-                                    <s>₹5,200</s> ₹4,500
+                                    {/* <s>₹5,200</s> ₹4,500 */}
+                                    <s>{getNumberWithComma(filterList?.find(list => list?._id == Object.values(attributeData)?.filter(list => list != 'defaultValue')?.slice(-1))?.cost_price ?? 0)}</s> {getNumberWithComma(filterList?.find(list => list?._id == Object.values(attributeData)?.filter(list => list != 'defaultValue')?.slice(-1))?.sale_price ?? 0)}
                                 </span>
                             </button>
                         </div>
                     </div>
-
                     <div className="slaman_link">
                         <p>Salmon Pink</p>
                         <ul className="color_list">
                             <li
                                 className="active"
-                                style={{ backgroundColor: "#F7DACE" }}
+                                style={{ border: "1px solid #000", backgroundColor: filterList?.find(list => list?._id == Object.values(attributeData)?.filter(list => list != 'defaultValue')?.slice(-1))?.swatch }}
                             ></li>
-                            <li style={{ backgroundColor: "#BEF3E0" }}></li>
+                            {/* <li style={{ backgroundColor: "#BEF3E0" }}></li>
                             <li
                                 style={{ backgroundColor: "#fff", border: "1px solid #d2d2d2" }}
                             ></li>
-                            <li style={{ backgroundColor: "#037A44" }}></li>
+                            <li style={{ backgroundColor: "#037A44" }}></li> */}
                         </ul>
                     </div>
                 </div>
