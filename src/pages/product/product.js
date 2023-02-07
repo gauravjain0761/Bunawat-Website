@@ -96,7 +96,7 @@ const Product = () => {
           )
         })}
       </SwipeableViews>
-      <ProductPageFilter filters={productList?.[swipeableIndex]?.skus ?? []} swipeableIndex={swipeableIndex ?? 0} />
+      <ProductPageFilter selectedProduct={productList?.[swipeableIndex] ?? {}} filters={productList?.[swipeableIndex]?.skus ?? []} swipeableIndex={swipeableIndex ?? 0} />
     </>
   );
 };

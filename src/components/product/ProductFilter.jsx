@@ -4,13 +4,16 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import { FiArrowUpRight } from "react-icons/fi";
+import { toast } from 'react-toastify';
 import _ from 'lodash';
 import { getNumberWithComma } from '../../utils/utils';
+import { useAddToCartMutation } from '../../services/api';
 
-const ProductPageFilter = ({ filters, swipeableIndex }) => {
+const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct }) => {
     const [filterList, setFilterList] = useState([]);
     const [attributeList, setAttributeList] = useState([]);
     const [attributeData, setAttributeData] = useState({});
+    const [addToCart, { isLoading }] = useAddToCartMutation()
 
     useEffect(() => {
         let temp = [...filters] ?? []
@@ -18,7 +21,7 @@ const ProductPageFilter = ({ filters, swipeableIndex }) => {
         let tempAttributeList = {};
         let tempAttributeData = {};
         uniqKey.filter(list => list != 'qty').map(val => {
-            filters.map((list) => {
+            temp.map((list) => {
                 let value = tempAttributeList?.[val] ?? []
                 tempAttributeList = { ...tempAttributeList, [val]: [...value, { value: list?._id, label: list?.varients?.[val] }] }
             })
@@ -28,6 +31,19 @@ const ProductPageFilter = ({ filters, swipeableIndex }) => {
         setAttributeList(tempAttributeList);
         setFilterList(temp)
     }, [filters, swipeableIndex])
+
+    const handleAdd = async () => {
+        const selectedData = filterList?.find(list => list?._id == Object.values(attributeData)?.filter(list => list != 'defaultValue')?.slice(-1)?.[0]) ?? {}
+        await addToCart({
+            cart: [{
+                sku: selectedData?._id,
+                product: selectedData?.product_id,
+                qty: 1,
+                amount: selectedProduct?.sale_price
+            }]
+        }).unwrap().then((data) => {
+        }).catch((error) => toast.error(error?.data?.message))
+    }
 
     return (
         <>
@@ -111,7 +127,7 @@ const ProductPageFilter = ({ filters, swipeableIndex }) => {
                             }} />
                         </div>
                         <div className="add_btn_wrap">
-                            <button className="clear_btn add_btn">
+                            {/* <button className="clear_btn add_btn">
                                 <span>Added to Cart</span>
                                 <span>
                                     <svg
@@ -129,12 +145,12 @@ const ProductPageFilter = ({ filters, swipeableIndex }) => {
                                         />
                                     </svg>
                                 </span>
-                            </button>
-                            <button className="clear_btn add_btn">
+                            </button> */}
+                            <button className={`clear_btn add_btn ${Object.values(attributeData)?.some(list => list == 'defaultValue') ? 'disabled-btn' : ''}`} disabled={Object.values(attributeData)?.some(list => list == 'defaultValue')} onClick={handleAdd}>
                                 <span>Add</span>
                                 <span>
                                     {/* <s>₹5,200</s> ₹4,500 */}
-                                    <s>{getNumberWithComma(filterList?.find(list => list?._id == Object.values(attributeData)?.filter(list => list != 'defaultValue')?.slice(-1))?.cost_price ?? 0)}</s> {getNumberWithComma(filterList?.find(list => list?._id == Object.values(attributeData)?.filter(list => list != 'defaultValue')?.slice(-1))?.sale_price ?? 0)}
+                                    <s>{getNumberWithComma(selectedProduct?.cost_price ?? 0)}</s> {getNumberWithComma(selectedProduct?.sale_price ?? 0)}
                                 </span>
                             </button>
                         </div>
@@ -144,7 +160,7 @@ const ProductPageFilter = ({ filters, swipeableIndex }) => {
                         <ul className="color_list">
                             <li
                                 className="active"
-                                style={{ border: "1px solid #000", backgroundColor: filterList?.find(list => list?._id == Object.values(attributeData)?.filter(list => list != 'defaultValue')?.slice(-1))?.swatch }}
+                                style={{ border: "1px solid #000", backgroundColor: filterList?.find(list => list?._id == Object.values(attributeData)?.filter(list => list != 'defaultValue')?.slice(-1)?.[0])?.swatch }}
                             ></li>
                             {/* <li style={{ backgroundColor: "#BEF3E0" }}></li>
                             <li

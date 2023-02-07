@@ -1,13 +1,25 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { API_ROUTES } from '../constant/api'
 import url from 'url'
+import Storage from './storage';
 
 const { BASE_URL, API_VERSION } = API_ROUTES;
 const API_BASE_URL = url.format(BASE_URL + API_VERSION);
 
 export const AllApiData = createApi({
     reducerPath: 'apiData',
-    baseQuery: fetchBaseQuery({ baseUrl: API_BASE_URL }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: API_BASE_URL,
+        // credentials: 'include',
+        prepareHeaders: (headers, { getState }) => {
+            const token = Storage.isUserAuthenticated()
+            if (token) {
+                headers.set('Authorization', Storage.getToken());
+            }
+            return headers;
+        },
+    }),
+    tagTypes: ['Cart'],
     endpoints: (builder) => ({
         sendOtp: builder.mutation({
             query(body) {
@@ -39,7 +51,21 @@ export const AllApiData = createApi({
         getProduct: builder.query({
             query: ({ id }) => `get_product/${id}`,
         }),
+        getAllCart: builder.query({
+            query: () => `get_all_cart`,
+            providesTags: ['Cart'],
+        }),
+        addToCart: builder.mutation({
+            query(body) {
+                return {
+                    url: `add_to_cart`,
+                    method: 'POST',
+                    body,
+                }
+            },
+            invalidatesTags: ['Cart'],
+        }),
     }),
 })
 
-export const { useSendOtpMutation, useOtpMatchMutation, useGetShopMenuDataQuery, useGetDatabyIdQuery, useGetProductQuery } = AllApiData
+export const { useSendOtpMutation, useOtpMatchMutation, useGetShopMenuDataQuery, useGetDatabyIdQuery, useGetProductQuery, useAddToCartMutation, useGetAllCartQuery } = AllApiData

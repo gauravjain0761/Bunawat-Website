@@ -1177,6 +1177,10 @@ li.common_option_wrap {
     font-weight: 600;
 }
 
+.disabled-btn {
+    background-color: #2A359250;
+}
+
 .clear_btn span {
     margin-right: 10px;
 }
