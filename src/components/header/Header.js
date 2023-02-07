@@ -25,22 +25,26 @@ import saved_5 from '../../assets/img/saved/saved_5.png';
 import saved_6 from '../../assets/img/saved/saved_6.png';
 import saved_7 from '../../assets/img/saved/saved_7.png';
 import saved_8 from '../../assets/img/saved/saved_8.png';
-import { useGetPokemonByNameQuery, useGetShopMenuDataQuery, useOtpMatchMutation, useSendOtpMutation } from '../../services/api';
+import { useGetAllCartQuery, useGetPokemonByNameQuery, useGetShopMenuDataQuery, useOtpMatchMutation, useSendOtpMutation } from '../../services/api';
 import Storage from '../../services/storage';
 import { STORAGE_KEY } from '../../constant/storage';
 import Login from './login';
 import Cart from './cart';
 import Calendar from './calendar';
 import Shop from './shop';
+import { useSelector } from 'react-redux';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Header() {
     const { data } = useGetShopMenuDataQuery()
+    const { data: cartData, error, isLoading } = useGetAllCartQuery(undefined, { skip: !Storage.isUserAuthenticated() })
 
     const [scroll, setScroll] = React.useState(false);
+    const cartCount = useSelector(state => state?.cart?.count)
     const [hover, setHover] = React.useState(false);
+    const [countData, setCountData] = React.useState(0);
     const location = useLocation()
     const history = useHistory();
     const [headerColor, setHeaderColor] = React.useState(false);
@@ -142,6 +146,10 @@ function Header() {
             setScroll(window.scrollY > 10);
         });
     }, []);
+
+    React.useEffect(() => {
+        setCountData(Storage.isUserAuthenticated() ? cartData?.data?.length ?? 0 : cartCount ?? 0)
+    }, [cartData, cartCount]);
 
     React.useEffect(() => {
         onChagewalletbar(location.pathname);
@@ -270,59 +278,59 @@ function Header() {
                                         horizontal: 'left',
                                     }}
                                 >
-                                    
+
                                     <Shop menuData={menuData} handleClose={handleClose} handleActive={handleActive} />
 
                                 </CustomPopOver>
                             </Box>
                             <Link to="/clubHome">
-                            <Button
-                                aria-describedby={id}
-                                // onClick={handleClick}
-                                sx={{
-                                    '&.MuiButton-root': {
-                                        color: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : '#fff',
-                                        fontWeight: 600,
-                                        textTransform: "capitalize",
-                                        fontSize: "14px",
-                                        marginLeft: "13px",
-                                        marginRight: "13px",
-                                        lineHeight: "24px",
-                                        letterSpacing: "-0.02em",
-                                    },
-                                    '@media (max-width: 1200px)': {
-                                        display: 'none'
-                                    }
-                                }}
-                            >
-                                Club
-                            </Button>
+                                <Button
+                                    aria-describedby={id}
+                                    // onClick={handleClick}
+                                    sx={{
+                                        '&.MuiButton-root': {
+                                            color: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : '#fff',
+                                            fontWeight: 600,
+                                            textTransform: "capitalize",
+                                            fontSize: "14px",
+                                            marginLeft: "13px",
+                                            marginRight: "13px",
+                                            lineHeight: "24px",
+                                            letterSpacing: "-0.02em",
+                                        },
+                                        '@media (max-width: 1200px)': {
+                                            display: 'none'
+                                        }
+                                    }}
+                                >
+                                    Club
+                                </Button>
                             </Link>
                             <Link to="/reviews">
-                            <Button
-                                aria-describedby={id}
-                                // onClick={handleClick}
-                                sx={{
-                                    '&.MuiButton-root': {
-                                        color: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : '#fff',
-                                        fontWeight: 600,
-                                        textTransform: "capitalize",
-                                        fontSize: "14px",
-                                        marginLeft: "13px",
-                                        marginRight: "13px",
-                                        lineHeight: "24px",
-                                        letterSpacing: "-0.02em",
-                                    },
-                                    '@media (max-width: 1200px)': {
-                                        display: 'none'
-                                    }
-                                }}
-                            >
-                                Reviews
-                            </Button>
+                                <Button
+                                    aria-describedby={id}
+                                    // onClick={handleClick}
+                                    sx={{
+                                        '&.MuiButton-root': {
+                                            color: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : '#fff',
+                                            fontWeight: 600,
+                                            textTransform: "capitalize",
+                                            fontSize: "14px",
+                                            marginLeft: "13px",
+                                            marginRight: "13px",
+                                            lineHeight: "24px",
+                                            letterSpacing: "-0.02em",
+                                        },
+                                        '@media (max-width: 1200px)': {
+                                            display: 'none'
+                                        }
+                                    }}
+                                >
+                                    Reviews
+                                </Button>
                             </Link>
                         </Box>
-                        <Box sx={{textAlign:"center"}}>
+                        <Box sx={{ textAlign: "center" }}>
                             <Link to="/">
                                 <svg width="84" height="36" viewBox="0 0 84 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_6112_2670)">
@@ -437,12 +445,12 @@ function Header() {
                                     sx={{
                                         marginLeft: '10px',
                                         '@media (max-width: 768px)': {
-                                           marginLeft: '0px',
+                                            marginLeft: '0px',
                                         }
                                     }}
                                     endIcon={
                                         <Box sx={{ borderRadius: "50%", width: "20px", height: "20px", background: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                                            <Typography sx={{ fontSize: "10px", fontWeight: 700, color: getActiveHeader(scroll, hover, headerColor) ? "#fff" : "#000000" }}>3</Typography>
+                                            <Typography sx={{ fontSize: "10px", fontWeight: 700, color: getActiveHeader(scroll, hover, headerColor) ? "#fff" : "#000000" }}>{countData}</Typography>
                                         </Box>
                                     }>
                                     <svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -476,7 +484,7 @@ function Header() {
                                         horizontal: 'center',
                                     }}
                                 >
-                                    <Cart activeHeader={getActiveHeader(scroll, hover, headerColor)} handleCartClose={handleCartClose} />
+                                    <Cart data={cartData} activeHeader={getActiveHeader(scroll, hover, headerColor)} handleCartClose={handleCartClose} />
                                 </CustomPopOver>
                             </Box>
                         </Stack>

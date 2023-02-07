@@ -65,7 +65,24 @@ export const AllApiData = createApi({
             },
             invalidatesTags: ['Cart'],
         }),
+        editCart: builder.mutation({
+            query({ id, ...body }) {
+                return {
+                    url: `edit_cart/${id}`,
+                    method: 'PUT',
+                    body,
+                }
+            },
+            invalidatesTags: ['Cart'],
+        }),
+        removeCartItem: builder.mutation({
+            query: (id) => ({
+                url: `/remove_cartitem/${id}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: ['Cart'],
+        }),
     }),
 })
 
-export const { useSendOtpMutation, useOtpMatchMutation, useGetShopMenuDataQuery, useGetDatabyIdQuery, useGetProductQuery, useAddToCartMutation, useGetAllCartQuery } = AllApiData
+export const { useSendOtpMutation, useOtpMatchMutation, useGetShopMenuDataQuery, useGetDatabyIdQuery, useGetProductQuery, useAddToCartMutation, useGetAllCartQuery, useRemoveCartItemMutation, useEditCartMutation } = AllApiData

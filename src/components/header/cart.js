@@ -11,46 +11,73 @@ import saved_4 from '../../assets/img/saved/saved_4.png';
 import saved_5 from '../../assets/img/saved/saved_5.png';
 import saved_6 from '../../assets/img/saved/saved_6.png';
 import saved_7 from '../../assets/img/saved/saved_7.png';
+import { toast } from 'react-toastify';
 import saved_8 from '../../assets/img/saved/saved_8.png';
-import { useGetAllCartQuery } from '../../services/api';
+import { useEditCartMutation, useGetAllCartQuery, useRemoveCartItemMutation } from '../../services/api';
 import { getNumberWithComma } from '../../utils/utils';
+import Storage from '../../services/storage';
+import { setCartCount } from '../../redux/reducers/cart';
+import { useDispatch } from 'react-redux';
 
-const Cart = ({ activeHeader, handleCartClose }) => {
-    const { data, error, isLoading } = useGetAllCartQuery()
-    console.log("data", data)
+const Cart = ({ data, activeHeader, handleCartClose }) => {
     const [cartList, setCartList] = useState([]);
+    const [removeCartItem] = useRemoveCartItemMutation()
+    const [editCart] = useEditCartMutation()
+    const dispatch = useDispatch()
     const [cartPrice, setCartPrice] = useState({
         total: 0,
         price: 0
     });
 
     useEffect(() => {
-        setCartList(data?.data ?? [])
+        const cartData = JSON.parse(Storage.get("cartData")) ?? []
+        if (Storage.isUserAuthenticated()) {
+            setCartList(data?.data ?? [])
+        } else {
+            setCartList(cartData ?? [])
+        }
     }, [data])
 
-    const handleDecrement = (index) => {
+    const handleDecrement = async (index) => {
         let temp = [...cartList]
         if (temp[index].qty > 1) {
-            temp[index] = { ...temp[index], qty: temp[index].qty - 1 }
+            if (Storage.isUserAuthenticated()) {
+                await editCart({ id: temp[index]?._id, qty: temp[index].qty - 1 }).unwrap().then((data) => {
+                }).catch((error) => toast.error(error?.data?.message))
+            } else {
+                temp[index] = { ...temp[index], qty: temp[index].qty - 1 }
+                Storage.set('cartData', JSON.stringify(temp))
+                dispatch(setCartCount(temp?.length))
+                setCartList(temp)
+            }
+        }
+    }
+
+    const handleIncrement = async (index) => {
+        let temp = [...cartList]
+        if (Storage.isUserAuthenticated()) {
+            await editCart({ id: temp[index]?._id, qty: temp[index].qty + 1 }).unwrap().then((data) => {
+            }).catch((error) => toast.error(error?.data?.message))
+        } else {
+            temp[index] = { ...temp[index], qty: temp[index].qty + 1 }
+            Storage.set('cartData', JSON.stringify(temp))
+            dispatch(setCartCount(temp?.length))
             setCartList(temp)
         }
     }
 
-    const handleIncrement = (index) => {
-        let temp = [...cartList]
-        temp[index] = { ...temp[index], qty: temp[index].qty + 1 }
-        setCartList(temp)
+    const handleRemove = async (index, id) => {
+        if (Storage.isUserAuthenticated()) {
+            await removeCartItem(id).unwrap().then((data) => {
+            }).catch((error) => toast.error(error?.data?.message))
+        } else {
+            let temp = [...cartList]
+            temp = temp.filter((_, i) => i !== index)
+            Storage.set('cartData', JSON.stringify(temp))
+            dispatch(setCartCount(temp?.length))
+            setCartList(temp)
+        }
     }
-
-    const handleRemove = (index) => {
-        let temp = [...cartList]
-        temp = temp.filter((_, i) => i !== index)
-        setCartList(temp)
-    }
-
-    useEffect(() => {
-        console.log(data)
-    }, [data])
 
     useEffect(() => {
         let temp = [...cartList]
@@ -75,7 +102,7 @@ const Cart = ({ activeHeader, handleCartClose }) => {
             >
                 <Tab eventKey="cart" title="Cart">
                     <div className='cart_wrapper'>
-                        {cartList?.map((cart, index) => {
+                        {cartList?.length > 0 ? cartList?.map((cart, index) => {
                             return (
                                 <div className='cart_information'>
                                     <div className="card_img">
@@ -85,7 +112,7 @@ const Cart = ({ activeHeader, handleCartClose }) => {
                                     </div>
                                     <div className="cart_product_info">
                                         <h3>{cart?.sku?.product_name}</h3>
-                                        <p>{`${Object.values(cart?.sku?.varients)?.join(" • ")}`}</p>
+                                        <p>{`${Object.values(cart?.sku?.varients ?? {})?.join(" • ")}`}</p>
                                         <div className='quantiy_wrapper'>
                                             <p>Qty</p>
                                             <div className='quantiy_inner'>
@@ -119,7 +146,7 @@ const Cart = ({ activeHeader, handleCartClose }) => {
                                         </div>
                                         <div className='remove_cart_block'>
                                             <p>{getNumberWithComma(cart?.amount)} </p>
-                                            <button type='button' className='remove_btn' onClick={() => handleRemove(index)}>
+                                            <button type='button' className='remove_btn' onClick={() => handleRemove(index, cart?._id)}>
                                                 <svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <g clipPath="url(#clip0_160_1450)">
                                                         <path d="M3.35999 1.0249L7.39999 5.0649L3.35999 9.1149" stroke="#DA4949" strokeWidth="1.7" strokeMiterlimit="10" />
@@ -138,7 +165,18 @@ const Cart = ({ activeHeader, handleCartClose }) => {
                                     </div>
                                 </div>
                             )
-                        })}
+                        })
+                            :
+                            <div style={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                width: '320px',
+                                height: '100px'
+                            }}>
+                                <h3>Cart Empty</h3>
+                            </div>
+                        }
 
                     </div>
                     <Link to="/checkout" onClick={handleCartClose}>

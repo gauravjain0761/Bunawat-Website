@@ -8,12 +8,16 @@ import { toast } from 'react-toastify';
 import _ from 'lodash';
 import { getNumberWithComma } from '../../utils/utils';
 import { useAddToCartMutation } from '../../services/api';
+import Storage from '../../services/storage';
+import { useDispatch } from 'react-redux';
+import { setCartCount } from '../../redux/reducers/cart';
 
 const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct }) => {
     const [filterList, setFilterList] = useState([]);
     const [attributeList, setAttributeList] = useState([]);
     const [attributeData, setAttributeData] = useState({});
     const [addToCart, { isLoading }] = useAddToCartMutation()
+    const dispatch = useDispatch()
 
     useEffect(() => {
         let temp = [...filters] ?? []
@@ -34,15 +38,27 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct }) => {
 
     const handleAdd = async () => {
         const selectedData = filterList?.find(list => list?._id == Object.values(attributeData)?.filter(list => list != 'defaultValue')?.slice(-1)?.[0]) ?? {}
-        await addToCart({
-            cart: [{
+        const cartData = JSON.parse(Storage.get("cartData")) ?? []
+        if (Storage.isUserAuthenticated()) {
+            await addToCart({
+                cart: [{
+                    sku: selectedData?._id,
+                    product: selectedData?.product_id,
+                    qty: 1,
+                    amount: selectedProduct?.sale_price
+                }]
+            }).unwrap().then((data) => {
+            }).catch((error) => toast.error(error?.data?.message))
+        } else {
+            const finalData = [...cartData, {
                 sku: selectedData?._id,
                 product: selectedData?.product_id,
                 qty: 1,
                 amount: selectedProduct?.sale_price
             }]
-        }).unwrap().then((data) => {
-        }).catch((error) => toast.error(error?.data?.message))
+            Storage.set("cartData", JSON.stringify(finalData))
+            dispatch(setCartCount(finalData?.length))
+        }
     }
 
     return (
