@@ -98,6 +98,7 @@
     }
     .cloth_title_wrap h2 .limited_edition {
         font-size: 36px !important;
+        margin-left: -8px;
     }
     .cloth_title_wrap h2 {
         font-size: 36px !important;
@@ -130,6 +131,9 @@
 }
 .MuiSelect-root{
     font-family: Newhero10 !important;
+}
+.category_cloth_deatils_wrap a::after {
+    filter: none !important;
 }
 /* 
 .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {

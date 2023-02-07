@@ -91,13 +91,13 @@ const AllProductMenu = ({ data, singleData, setSelectedId }) => {
                                             {singleList?.products?.map((list, index) => {
                                                 return (
                                                     <>
-                                                        <div className={getClassWidth(index, singleList?.products?.length)}>
-                                                            <div className="cloth_deatils_wrap">
+                                                        <div className={getClassWidth(index, singleList?.products?.length)} style={{paddingRight: "6px", paddingLeft: "6px"}}>
+                                                            <div className="cloth_deatils_wrap category_cloth_deatils_wrap">
                                                                 <Link to={`/product/${list?._id}/${data?.[key]?.type ?? ""}`} className="cloth_deatils_link">
                                                                     <img src={list?.image} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "640px" : "560px"} />
                                                                 </Link>
                                                                 <div className="cloth_info_title">
-                                                                    <div className="summer_list_link_wrap">
+                                                                    <div className="summer_list_link_wrap mobile_summer_list_link_wrap">
                                                                         <div className="summer_list_link">
                                                                             <p>{list?.name}</p>
                                                                             <span>
@@ -137,7 +137,7 @@ const AllProductMenu = ({ data, singleData, setSelectedId }) => {
                                                                         </div>
                                                                         <p>{getNumberWithComma(list?.sale_price ?? 0)}</p>
                                                                     </div>
-                                                                    <div className="save_wrap">
+                                                                    <div className="save_wrap mobile_save_wrap">
                                                                         <p>Save</p>
                                                                         <svg
                                                                             width="20"

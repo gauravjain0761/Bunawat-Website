@@ -219,7 +219,7 @@ function Header() {
             <AppBar component="nav" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
                 position='fixed' sx={{
                     boxShadow: 'none',
-                    backgroundColor: getActiveHeader(scroll, hover, headerColor) || headerColor ? 'hsla(0,0%,100%,.7)' : "transparent",
+                    backgroundColor: getActiveHeader(scroll, hover, headerColor) || headerColor ? 'hsla(0,0%,100%,98%)' : "transparent",
                     backdropFilter: getActiveHeader(scroll, hover, headerColor) || headerColor ? 'blur(100px)' : 'none',
                     borderRadius: getActiveHeader(scroll, hover, headerColor) ? "4px" : "0px",
                     top: getActiveHeader(scroll, hover, headerColor) ? "8px" : "8px",
@@ -248,7 +248,9 @@ function Header() {
                                             color: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : '#fff',
                                             fontWeight: 600,
                                             textTransform: "capitalize",
-                                            fontSize: "14px"
+                                            fontSize: "14px",
+                                            lineHeight: "24px",
+                                            letterSpacing: "-0.02em",
                                         },
                                         '& .MuiButton-endIcon': {
                                             marginLeft: "0px !important"
@@ -285,6 +287,8 @@ function Header() {
                                         fontSize: "14px",
                                         marginLeft: "13px",
                                         marginRight: "13px",
+                                        lineHeight: "24px",
+                                        letterSpacing: "-0.02em",
                                     },
                                     '@media (max-width: 1200px)': {
                                         display: 'none'
@@ -306,6 +310,8 @@ function Header() {
                                         fontSize: "14px",
                                         marginLeft: "13px",
                                         marginRight: "13px",
+                                        lineHeight: "24px",
+                                        letterSpacing: "-0.02em",
                                     },
                                     '@media (max-width: 1200px)': {
                                         display: 'none'
@@ -316,8 +322,8 @@ function Header() {
                             </Button>
                             </Link>
                         </Box>
-                        <Box>
-                            <Link to="/" >
+                        <Box sx={{textAlign:"center"}}>
+                            <Link to="/">
                                 <svg width="84" height="36" viewBox="0 0 84 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_6112_2670)">
                                         <path d="M21.95 26.27L17.58 21.9V12.57C17.58 9.43 15.02 6.87 11.88 6.87C9.35997 6.87 7.20997 8.52 6.46997 10.79L3.89997 8.22L4.90997 7.21L3.69997 6L0.469971 9.23L1.67997 10.44L2.68997 9.43L6.18997 12.93V22.27C6.18997 25.41 8.74997 27.97 11.89 27.97C14.41 27.97 16.56 26.32 17.3 24.05L20.74 27.49L21.95 26.28V26.27ZM11.89 8.58C14.09 8.58 15.88 10.37 15.88 12.57V20.2L7.90997 12.23C8.07997 10.19 9.79997 8.58 11.89 8.58ZM11.89 26.25C9.68997 26.25 7.89997 24.46 7.89997 22.26V14.63L15.87 22.6C15.7 24.64 13.98 26.25 11.89 26.25Z" fill={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} />
@@ -382,7 +388,7 @@ function Header() {
                                     marginLeft: '10px',
                                     marginRight: '10px',
                                     '@media (max-width: 768px)': {
-                                        // display: 'none'
+                                        display: 'none',
                                         marginRight: '0px',
                                         marginLeft: '0px',
                                     }

@@ -169,7 +169,7 @@ const BestSellingSection = ({ singleData, keyVal, data }) => {
                           <img src={list?.image} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "640px" : "560px"} />
                         </Link>
                         <div className="cloth_info_title">
-                          <div className="summer_list_link_wrap">
+                          <div className="summer_list_link_wrap mobile_summer_list_link_wrap">
                             <div className="summer_list_link">
                               <p className="textEllipsis">{list?.name}</p>
                               <span>
@@ -209,7 +209,7 @@ const BestSellingSection = ({ singleData, keyVal, data }) => {
                             </div>
                             <p>{getNumberWithComma(list?.sale_price ?? 0)} </p>
                           </div>
-                          <div className="save_wrap">
+                          <div className="save_wrap mobile_save_wrap">
                             <p>Save</p>
                             <svg
                               width="20"

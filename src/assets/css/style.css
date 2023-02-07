@@ -289,9 +289,10 @@ button {
     font-size: 48px;
     font-family: Imported;
     font-style: normal;
-    line-height: 1.1;
+    line-height: 56px;
     font-weight: 600;
     color: #fff;
+    letter-spacing: -0.02em;
 }
 
 .summer_list_link {
@@ -311,9 +312,10 @@ button {
 .summer_list_link_wrap p {
     font-size: 14px;
     font-weight: 600;
-    line-height: 1.1;
     color: #fff;
     margin-right: 10px;
+    line-height: 16px;
+    letter-spacing: -0.02em;
 
 }
 
@@ -343,6 +345,8 @@ button {
     font-weight: 600;
     font-family: Newhero10;
     color: #000000;
+    letter-spacing: -0.02em;
+    line-height: 24px;
     border: unset;
     padding: 10px 0 6px 0;
     border-bottom: 2px solid transparent;
@@ -490,14 +494,17 @@ button {
     color: #000000;
     margin-right: 10px;
     margin-bottom: 0px;
+    line-height: 56px;
+    letter-spacing: -0.02em;
 }
 
 .shop_hald_info p {
-    color: rgba(0, 0, 0, 0.5);
+    color: #00000080;
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
     margin-top: 6px;
+    letter-spacing: -0.02em;
 }
 
 .best_sallying_wrap.common_home_banner {
@@ -538,7 +545,7 @@ button {
 .cloth_deatils_wrap {
     position: relative;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
 }
 
 .cloth_deatils_wrap img {
@@ -551,10 +558,14 @@ button {
 }
 
 .save_wrap p {
-    font-size: 14px;
-    color: #2A3592;
     margin-right: 10px;
     margin-top: 5px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: -0.02em;
+    color: #2A3592;
+    opacity: 0.2;
 }
 
 .cloth_info_title .summer_list_link p,
@@ -578,6 +589,7 @@ button {
     bottom: 0px;
     background: linear-gradient(180deg, rgba(247, 247, 247, 0) 0%, rgba(247, 247, 247, 0.9) 80.21%);
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 4px;
 }
 
 .cloth_wrap {
@@ -585,7 +597,7 @@ button {
 }
 
 .cloth_inner .row>div:nth-child(n+3) {
-    margin-top: 24px;
+    margin-top: 12px;
 }
 
 .join_the_club_wrap {
@@ -603,9 +615,9 @@ button {
 }
 
 .join_the_club_inner p {
-    font-size: 16px;
-    line-height: 28px;
-    font-weight: 300;
+    font-size: 20px;
+    line-height: 32px;
+    font-weight: 400;
     color: #fff;
     max-width: 550px;
     margin: 20px 0 25px;
@@ -638,6 +650,7 @@ button {
     z-index: 1;
     pointer-events: none;
     font-weight: 400;
+    letter-spacing: -0.02em;
 }
 
 .tel_number_wrap input {
@@ -650,7 +663,9 @@ button {
     padding: 16px 16px 16px 50px;
     color: #fff;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    border-radius: 4px;
 }
 
 .tel_number_wrap input::placeholder {
@@ -667,7 +682,9 @@ button {
     border-radius: 4px;
     color: #fff;
     margin-left: 8px;
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
 }
 
 .join_btn:hover {
@@ -696,7 +713,7 @@ button {
     color: #F2E7CB;
     font-size: 14px;
     font-weight: 600;
-    margin-right: 15px;
+    margin-right: 10px;
 }
 
 .common_link:hover span {
@@ -731,7 +748,8 @@ button {
 .social_media_wrap p {
     font-size: 14px;
     color: #000;
-    line-height: 1.5;
+    line-height: 24px;
+    letter-spacing: -0.02em;
     font-weight: 600;
     font-family: Newhero10;
 }
@@ -1442,6 +1460,7 @@ li.common_option_wrap {
 .product_left_details span {
     font-size: 14px;
     color: #F2E7CB;
+    letter-spacing: -0.02em;
 }
 
 .product_price_wrap {
@@ -1464,8 +1483,12 @@ li.common_option_wrap {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 100%);
 }
 
+.structured_fabric_img video {
+    border-radius: 4px;
+}
+
 .star_content {
-    padding: 95px 0 30px;
+    padding: 98px 0 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1523,12 +1546,17 @@ li.common_option_wrap {
     font-size: 14px;
     font-weight: 600;
     margin-left: 8px;
+    letter-spacing: -0.02em;
+}
+.might_like_wrap.cloth_wrap {
+    padding: 66px 0;
+    background: #F4F4F4;
 }
 
 .might_like_inner {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 
 .might_like_inner p {
@@ -1617,6 +1645,21 @@ li.common_option_wrap {
     margin-bottom: 1rem;
 }
 
+.common_product_details p{
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 16px;
+    letter-spacing: -0.02em;
+    color: #2A3592;
+}
+.common_product_details div{
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 16px;
+    letter-spacing: -0.02em;
+    color: #2A3592;
+}
+
 .product_info_section {
     max-width: 495px;
     width: 100%;
@@ -1681,16 +1724,19 @@ li.common_option_wrap {
 }
 
 .stock_info h3 {
-    font-size: 13px;
+    font-size: 10px;
     color: #2A3592;
     font-weight: bold;
     text-transform: uppercase;
-    margin-bottom: 4px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    margin-bottom: 0px;
 }
 
 .stock_info p {
     font-size: 10px;
-    margin-top: 2px;
+    margin-top: 0px;
+    line-height: 16px;
     color: #2A3592;
 }
 
@@ -1760,6 +1806,7 @@ li.common_option_wrap {
     color: #fff;
     font-size: 16px;
     margin-left: 20px;
+    letter-spacing: -0.02em;
 }
 
 .know_link {
@@ -1789,7 +1836,7 @@ li.common_option_wrap {
 }
 
 .recemtly_wrap {
-    padding: 32px 0;
+    padding: 40px 0;
 }
 
 .sell_wrap h3 {
@@ -1809,7 +1856,7 @@ li.common_option_wrap {
 }
 
 .recently_col_wrap {
-    margin-top: 32px;
+    margin-top: 16px;
 }
 
 .recent_view_product {

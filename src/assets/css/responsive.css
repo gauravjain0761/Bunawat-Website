@@ -3,6 +3,11 @@
         max-width: 530px;
     }
 }
+@media (min-width: 1200px){
+.container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 1300px;
+}
+}
 
 @media (min-width: 1400px) {
 
@@ -11,7 +16,7 @@
     .container-md,
     .container-sm,
     .container-xl {
-        max-width: 1320px;
+        max-width: 1420px;
     }
 
 }
@@ -28,7 +33,7 @@
     .common_title,
     .home_banner_title h2,
     .join_the_club_inner h2 {
-        font-size: 44px;
+        font-size: 48px;
     }
 
     .summer_list {
@@ -40,12 +45,12 @@
     }
 
     .shop_hald_info h3 {
-        font-size: 30px;
+        font-size: 32px;
     }
 
     .common_product_details>div {
-        font-size: 17px;
-        margin-top: 10px;
+        font-size: 20px;
+        margin-top: 14px;
     }
 
     .product_title_wrap h2 {
@@ -61,11 +66,11 @@
     }
 
     .might_like_wrap.cloth_wrap {
-        padding: 50px 0;
+        padding: 66px 0;
     }
 
     .star_content {
-        padding: 60px 0 0px;
+        padding: 98px 0 40px
     }
 }
 
@@ -74,7 +79,7 @@
     .common_title,
     .home_banner_title h2,
     .join_the_club_inner h2 {
-        font-size: 40px;
+        font-size: 48px;
     }
 
     .summer_list {
@@ -86,7 +91,7 @@
     }
 
     .shop_hald_info h3 {
-        font-size: 28px;
+        font-size: 32px;
     }
 
     .cloth_info_title {
@@ -100,8 +105,8 @@
     }
 
     .save_wrap svg {
-        width: 12px;
-        height: 12px;
+        width: 18px;
+        height: 18px;
     }
 
     .cloth_title_wrap h2,
@@ -176,9 +181,10 @@
     }
 
     .common_product_details>div {
-        font-size: 16px;
-        margin-top: 5px;
+        font-size: 20px;
+        margin-top: 22px;
     }
+    
 
     .stock_info h3 {
         font-size: 12px;
@@ -227,11 +233,11 @@
 
 @media (max-width: 991px) {
     .product_below_image {
-        height: 240px !important;
+        height: 266px !important;
     }
 
     .product_above_image {
-        height: 310px !important;
+        height: 266px !important;
     }
 
     .structured_fabric_wrapper {
@@ -348,7 +354,7 @@
     }
 
     .common_home_banner {
-        height: 650px;
+        height: 600px;
     }
 
     .common_home_banner img {
@@ -365,10 +371,12 @@
     .tab_section_wrap .nav-tabs .nav-link {
         white-space: nowrap;
         padding: 10px 0 5px;
+        font-size: 12px;
     }
 
     .see_all_link {
         top: 74px;
+        display: none;
     }
 
     .tab_common_contain {
@@ -385,12 +393,17 @@
         font-size: 13px;
     }
 
+    .cloth_info_title .summer_list_link {
+        margin-bottom: 5px;
+        display: none;
+    }
     .summer_list_link {
         margin-bottom: 5px;
     }
 
     .shop_hald_info h3 {
         font-size: 22px;
+        line-height: 28px;
     }
 
     .shop_hald_info svg {
@@ -425,7 +438,7 @@
     }
 
     .cloth_inner .row>div:nth-child(n+3) {
-        margin-top: 20px;
+        margin-top: 38px;
     }
 
     .cloth_wrap .cloth_inner .row>div {
@@ -434,6 +447,7 @@
 
     .cloth_info_title {
         padding: 12px;
+        align-items: center;
     }
 
     .footer_header_wrap,
@@ -465,7 +479,7 @@
     }
 
     .join_the_club_inner p {
-        font-size: 12px;
+        font-size: 16px;
     }
 
     .cloth_title_wrap h2,
@@ -499,6 +513,7 @@
 
     .product_page .product_info_section_wrap {
         padding: 100px 50px 50px;
+        background-color: #fff;
     }
 
     .product_info_right_section_wrap {
@@ -528,10 +543,30 @@
 
 @media (max-width: 767px) {
 
+    .product_filters {
+        padding: 0px 0px;
+    }
+
+    .star_content {
+        padding: 50px;
+        align-items: flex-start;
+    }
+    .star_content>p {
+        text-align: left;
+    }
+    .female_details {
+        text-align: left;
+    }
+
+    .might_like_wrap.cloth_wrap {
+        padding: 32px 0 80px 0;
+    }
+
     .common_title,
     .home_banner_title h2,
     .join_the_club_inner h2 {
         font-size: 32px;
+        line-height: 40px;
     }
 
     .summer_list {
@@ -558,7 +593,7 @@
 
     .shop_hald_inner {
         flex-wrap: wrap;
-        margin-top: 20px;
+        margin-top: 0px;
     }
 
     .shop_hald_inner>div:first-child {
@@ -582,13 +617,17 @@
         padding: 30px 0;
     }
 
-    .cloth_info_title {
-        flex-direction: column;
-    }
 
     .summer_list_link_wrap {
         margin-bottom: 7px;
     }
+    .mobile_summer_list_link_wrap{
+        margin-bottom: 0px !important;
+    }
+    
+    /* .mobile_save_wrap{
+       margin-bottom: 10px;
+    } */
 
     .summer_list_link span {
         display: flex;
@@ -718,6 +757,7 @@
 
     .product_page .product_info_section_wrap {
         padding: 50px 15px 50px;
+        background-color: #fff;
     }
 
     .cloth_deatils_wrap a::after {
@@ -754,6 +794,7 @@
     .home_banner_title h2,
     .join_the_club_inner h2 {
         font-size: 32px;
+        line-height: 40px;
     }
 
     .summer_list_link p,
@@ -812,6 +853,7 @@
 
     .product_page .product_info_section_wrap {
         padding: 16px 30px 20px;
+        background-color: #fff;
     }
 
     .structured_fabric_inner .row>div:nth-child(n+2) {
@@ -847,6 +889,7 @@
     .home_banner_title h2,
     .join_the_club_inner h2 {
         font-size: 32px;
+        line-height: 40px;
     }
 
     .cart_information {
@@ -869,6 +912,7 @@
 
     .product_page .product_info_section_wrap {
         padding: 40px 30px 40px;
+        background-color: #fff;
     }
 }
 
