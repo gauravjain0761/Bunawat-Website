@@ -39,6 +39,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
     const handleAdd = async () => {
         const selectedData = filterList?.find(list => list?._id == Object.values(attributeData)?.filter(list => list != 'defaultValue')?.slice(-1)?.[0]) ?? {}
         const cartData = JSON.parse(Storage.get("cartData")) ?? []
+        console.log("selectedData", selectedData)
         if (Storage.isUserAuthenticated()) {
             await addToCart({
                 cart: [{
@@ -52,6 +53,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
         } else {
             const finalData = [...cartData, {
                 sku: {
+                    _id: selectedData?._id,
                     product_name: selectedData?.product_name,
                     sku: selectedData?.sku,
                     varients: selectedData?.varients,

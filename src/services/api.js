@@ -91,7 +91,7 @@ export const AllApiData = createApi({
                     body,
                 }
             },
-            invalidatesTags: ['Order'],
+            invalidatesTags: ['Cart', 'Order'],
         }),
         orderList: builder.query({
             query: () => `order_list`,
