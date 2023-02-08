@@ -30,8 +30,8 @@ const UserProfileModule = () => {
           {list?.items?.map(item => (
             <div className="userProfileModule_box_list">
               <div>
-                <h3>Minimal Jumpsuit</h3>
-                <span>Forest Green • Medium • 1 unit</span>
+                <h3>{item?.product_name}</h3>
+                <span>{`${Object.values(item?.varients ?? {})?.join(" • ")}`}</span>
               </div>
               <div>
                 <h3>{getNumberWithComma(Number(item?.amount) * Number(item?.qty))} </h3>

@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { Link } from "react-router-dom";
-import { useGetDatabyIdQuery } from "../../services/api";
+import { useAddToWishlistMutation, useGetDatabyIdQuery } from "../../services/api";
 import { getNumberWithComma } from "../../utils/utils";
 import BestSellingSection from "./bestSellingSection";
-
+import { toast } from 'react-toastify';
 
 const HomeBannerTabs = ({ data, singleData, setSelectedId }) => {
   const [key, setKey] = useState(0);
+  const [addToWishlist] = useAddToWishlistMutation(undefined, {})
   const [menuList, setMenuList] = React.useState(data ?? [])
   const [singleCollection, setSingleCollection] = React.useState(singleData ?? [])
 
@@ -16,6 +17,11 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId }) => {
     setMenuList(data ?? []);
     setSingleCollection(singleData)
   }, [data, singleData]);
+
+  const addWishlist = async () => {
+    await addToWishlist().unwrap().then((data) => {
+    }).catch((error) => toast.error(error?.data?.message))
+  };
 
   return (
     <>
@@ -31,7 +37,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId }) => {
               return (
                 <Tab eventKey={index} key={item?._id} title="">
                   <div className="common_home_banner">
-                    <img src={singleCollection?.image} alt="hero_image" style={{ position: 'absolute', width: '100%'}} />
+                    <img src={singleCollection?.image} alt="hero_image" style={{ position: 'absolute', width: '100%' }} />
                     <div className="container">
                       <div className="home_banner_title">
                         <h1 className="common_title">{singleCollection?.title}</h1>
