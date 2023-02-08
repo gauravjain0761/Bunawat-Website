@@ -142,7 +142,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                 </>
                             )
                         })}
-                        <div style={{
+                        <div className='display_none_in_mobile' style={{
                             margin: '0 10px 0 10px'
                         }}>
                             <input type="text" placeholder='Qty' defaultValue="1" style={{
@@ -178,7 +178,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                             </button>
                         </div>
                     </div>
-                    <div className="slaman_link">
+                    <div className="slaman_link display_none_in_mobile">
                         <p>Salmon Pink</p>
                         <ul className="color_list">
                             <li

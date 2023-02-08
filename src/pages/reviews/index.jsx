@@ -220,9 +220,9 @@ const Reviews = () => {
             </div>
           </div>
           <WriteAReviews showReviewsWrite={showReviewsWrite} handleClose={handleClose}/>
-          <div style={{textAlign: "center"}}>
+          <div style={{textAlign: "center", fontSize: "14px", lineHeight: "20px"}}>
            Have questions about a product? <br />
-           <a href="#" style={{color: "#2A3592"}}>Talk to us on Whatsapp</a>
+           <a href="#" style={{color: "#2A3592", borderBottom: "1px solid #2a3592"}}>Talk to us on Whatsapp</a>
           </div>
         </Container>
       </div>

@@ -165,9 +165,11 @@ const BestSellingSection = ({ singleData, keyVal, data }) => {
                   <>
                     <div className={getClassWidth(index, singleList?.products?.length)}>
                       <div className="cloth_deatils_wrap">
-                        <Link to={`/product/${list?._id}/${data?.[keyVal]?.type ?? ""}`} className="cloth_deatils_link">
-                          <img src={list?.image} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "640px" : "560px"} />
-                        </Link>
+                        <div style={{textAlign: "center"}}>
+                          <Link to={`/product/${list?._id}/${data?.[keyVal]?.type ?? ""}`} className="cloth_deatils_link">
+                            <img src={list?.image} alt="cloth" className="product_below_image"  width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "640px" : "560px"} />
+                          </Link>
+                        </div>
                         <div className="cloth_info_title">
                           <div className="summer_list_link_wrap mobile_summer_list_link_wrap">
                             <div className="summer_list_link">

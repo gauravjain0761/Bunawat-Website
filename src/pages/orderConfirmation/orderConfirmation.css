@@ -87,12 +87,12 @@
     justify-content: space-between;
 }
 .orderConfirmation_box_list h3{
-    margin-bottom: 2px;
     font-weight: 600;
-    font-size: 16px;
-    line-height: 18px;
+    font-size: 14px;
+    line-height: 20px;
     letter-spacing: -0.02em;
     color: #000000;
+    margin-bottom: 0px;
 }
 .orderConfirmation_box_list span{
     font-weight: 400;
@@ -108,12 +108,13 @@
 }
 .orderConfirmation_box_data h3{
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 24px;
     letter-spacing: 0.02em;
     color: #000000;
     margin-bottom: 6px;
 }
-.orderConfirmation_box_data h6{
+.orderConfirmation_box_data p{
     font-weight: 300;
     font-size: 14px;
     line-height: 24px;
@@ -124,7 +125,7 @@
 .orderConfirmation_box_data span{
     font-weight: 300;
     font-size: 12px;
-    line-height: 16px;
+    line-height: 50px;
     letter-spacing: 0.02em;
     color: #2A3592;
 }

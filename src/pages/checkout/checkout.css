@@ -11,6 +11,7 @@
     font-size: 24px;
     font-weight: 600;
     line-height: 30px;
+    letter-spacing: -0.02em;
 }
 .checkout_great span{
     margin-top: 6px;
@@ -18,6 +19,7 @@
     font-weight: 300;
     line-height: 24px;
     color: #70758A;
+    letter-spacing: -0.02em;
 }
 .checkout_box{
     background-color: #fff;
@@ -40,10 +42,11 @@
 }
 .checkout_box_list h3{
     font-weight: 600;
-    font-size: 16px;
-    line-height: 18px;
+    font-size: 14px;
+    line-height: 20px;
     letter-spacing: -0.02em;
     color: #000000;
+    margin-bottom: 0px;
 }
 .checkout_box_list span{
     font-weight: 400;

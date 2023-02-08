@@ -354,7 +354,7 @@
     }
 
     .common_home_banner {
-        height: 86vh;
+        height: 80vh;
     }
 
     .common_home_banner img {
@@ -622,7 +622,7 @@
         margin-bottom: 7px;
     }
     .mobile_summer_list_link_wrap{
-        margin-bottom: 0px !important;
+        margin-bottom: -8px !important;
     }
     
     /* .mobile_save_wrap{
@@ -900,13 +900,8 @@
         height: 240px;
     }
 
-    .common_product_details>div {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
     .produt_time_wrap p {
-        margin-left: 0px;
+        margin-left: 10px;
         margin-top: 10px;
     }
 
@@ -919,5 +914,11 @@
 @media (max-width: 367px) {
     .cloth_wrap .cloth_inner .row>div {
         height: 200px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .display_none_in_mobile{
+        display: none;
     }
 }

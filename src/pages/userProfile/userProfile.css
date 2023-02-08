@@ -174,7 +174,7 @@
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 0.02em;
-    text-transform: uppercase;
+    text-transform: uppercase; 
     color: #9A9EB0;
     margin: 3rem 0;
 }
@@ -222,7 +222,7 @@
 .eventsClubBox_second h3{
     font-family: NewScript-2;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 26px;
     letter-spacing: -0.02em;
     color: #000000;
@@ -302,7 +302,7 @@
 .eventsClubBox_second_premium h3{
     font-family: NewScript-2;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 26px;
     letter-spacing: -0.02em;
     color: #fff;

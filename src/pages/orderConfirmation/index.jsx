@@ -128,8 +128,8 @@ const OrderConfirmation = () => {
               <div className="orderConfirmation_box_data orderConfirmation_box_data_desktopView">
                 <div>
                   <h3>Jemma Bunawati</h3>
-                  <h6>65/1, Mantri Lawns, Fountain Road, <br />Hadapsar, Pune 411028 MH</h6>
-                  <h6><i>+91 97631 12781</i></h6>
+                  <p>65/1, Mantri Lawns, Fountain Road, <br />Hadapsar, Pune 411028 MH</p>
+                  <p><i>+91 97631 12781</i></p>
                   <span>Delivers 17—20th June</span>
                 </div>
                 <div>

@@ -546,6 +546,8 @@ button {
     position: relative;
     width: 100%;
     /* height: 100%; */
+    background-color: #dededf;
+    border-radius: 4px;
 }
 
 .cloth_deatils_wrap img {
@@ -2444,6 +2446,12 @@ li.common_option_wrap {
 
 .mobile_footer_strip_menu{
     display: none;
+}
+
+.common_tab_img {
+    background-color: #d0cfd4;
+    text-align: center;
+    border-radius: 4px;
 }
 
 @media screen and (max-width: 768px){
