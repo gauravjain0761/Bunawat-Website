@@ -6,6 +6,7 @@ import EventsClubModule from '../../components/userProfile/eventsClubModule';
 import SavedAddressModule from '../../components/userProfile/savedAddressModule';
 import UserProfileModule from '../../components/userProfile/userProfileModule';
 import FooterStrip from "../../components/footer/footerStrip";
+import { Box } from '@mui/material';
 
 const UserProfile = () => {
   return (
@@ -90,8 +91,9 @@ const UserProfile = () => {
                </div>
                <div className='userProfile_menu'>
                  <Nav variant="pills" className="flex-column">
-               <Row>
-                <Col xs={6}>
+               {/* <Row>
+                <Col xs={6}> */}
+                  <Box sx={{display: "flex", justifyContent: "space-between", marginBottom: "10px"}}>
                   <Nav.Item>
                     <Link to="/userProfile">
                       <Nav.Link eventKey="userProfile" className='userProfile_menu_list'>
@@ -100,8 +102,7 @@ const UserProfile = () => {
                       </Nav.Link>
                     </Link>
                   </Nav.Item>
-                </Col>
-                <Col xs={6}>
+
                   <Nav.Item>
                     <Link to="/userProfile" style={{background: "#E1E3EC"}}>
                       <Nav.Link eventKey="eventsClub" className='userProfile_menu_list'>
@@ -110,8 +111,11 @@ const UserProfile = () => {
                       </Nav.Link>
                     </Link>
                   </Nav.Item>
-                </Col>
-               </Row>
+                  </Box>
+                {/* </Col> */}
+                {/* <Col xs={6}> */}
+                {/* </Col> */}
+               {/* </Row> */}
 
                 <div className='userProfile_menu_list_third'>
                     <h6>
@@ -137,19 +141,13 @@ const UserProfile = () => {
             <Col xs={12} md={7}>
                 <Tab.Content>
                   <Tab.Pane eventKey="userProfile">
-                    <Container>
                       <UserProfileModule />
-                    </Container>
                   </Tab.Pane>
                   <Tab.Pane eventKey="eventsClub">
-                    <Container>
                       <EventsClubModule />
-                    </Container>
                   </Tab.Pane>
                   <Tab.Pane eventKey="savedAddress">
-                    <Container>
                       <SavedAddressModule />
-                    </Container>
                   </Tab.Pane>
                 </Tab.Content>
             </Col>

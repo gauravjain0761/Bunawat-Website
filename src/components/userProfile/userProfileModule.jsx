@@ -1,6 +1,7 @@
 import { Divider } from "@mui/material";
 import React from "react";
 import { AiOutlineCheck } from 'react-icons/ai';
+import { GoPrimitiveDot } from 'react-icons/go';
 
 const UserProfileModule = () => {
   return (
@@ -36,7 +37,7 @@ const UserProfileModule = () => {
                 src="../img/orderconfirmed.png"
                 alt="orderconfirmed"
                 width="22"
-                style={{ marginRight: "8px" }}
+                // style={{ marginRight: "8px" }}
               />
             </div>
             <div>
@@ -47,7 +48,7 @@ const UserProfileModule = () => {
         </div>
       </div>
 
-      <div className="userProfileModule_box" style={{ marginTop: "2rem" }}>
+      <div className="userProfileModule_box" style={{ marginTop: "1rem" }}>
         <div className="userProfileModule_box_heading">
           <div>
             <h6>
@@ -83,7 +84,7 @@ const UserProfileModule = () => {
         <div className="userProfileModule_box_list_last">
             <div>
               <h6>Bluedart</h6>
-              <span>Now in Amravati, MH</span>
+              <span><GoPrimitiveDot style={{ color: "#83E46B" }} />Now in Amravati, MH</span>
             </div>
             <div>
               <h6>AWB—91286431928456</h6>
@@ -95,7 +96,7 @@ const UserProfileModule = () => {
         </div>
       </div>
 
-      <div className="userProfileModule_box" style={{ marginTop: "2rem" }}>
+      <div className="userProfileModule_box" style={{ marginTop: "1rem" }}>
         <div className="userProfileModule_box_heading">
           <div>
             <h6>
@@ -126,7 +127,7 @@ const UserProfileModule = () => {
                 src="../img/returnpolicy.png"
                 alt="return policy"
                 width="22"
-                style={{ marginRight: "8px" }}
+                // style={{ marginRight: "8px" }}
               />
             </div>
             <div>
@@ -143,7 +144,7 @@ const UserProfileModule = () => {
 
       {[...Array(2)].map((index)=>{
         return(
-            <div key={`item-${index}`} className="userProfileModule_box" style={{ marginTop: "2rem" }}>
+            <div key={`item-${index}`} className="userProfileModule_box" style={{ marginTop: "1rem" }}>
         <div className="userProfileModule_box_heading">
           <div>
             <h6>

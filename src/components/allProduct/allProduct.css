@@ -146,3 +146,24 @@
     bottom: 80px !important;
     font-family: Newhero10 !important;
 } */
+
+.product_margin{
+    margin-top: 46px;
+}
+.product_filters_for_desktop{
+    display: block !important;
+}
+.product_filters_for_mobile{
+    display: none !important;
+}
+@media screen and (max-width: 768px) {
+    .product_margin{
+        margin-top: 15px !important;
+    }
+    .product_filters_for_desktop{
+        display: none !important;
+    }
+    .product_filters_for_mobile{
+        display: block !important;
+    }
+}

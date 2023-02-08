@@ -12,11 +12,21 @@ const FooterStrip = () => {
     <>
       <div className="footer_header_wrap_srip">
         <div className="footer_header_wrap">
-          <ul style={{marginLeft: "1rem"}}>
+          <ul>
+            <li className="mobile_footer_strip_menu">
+              <Link to="/allProduct" className="d-flex align-items-center">
+                <p>Shop All</p>
+              </Link>
+            </li>
+            <li className="mobile_footer_strip_menu">
+              <Link to="/clubHome" className="d-flex align-items-center">
+                <p>Bunawat Club</p>
+              </Link>
+            </li>
             <li>
               <Link to="/" className="d-flex align-items-center">
                 <p>Blog</p>
-                <span className="new_text">New</span>
+                <span className="new_text">NEW</span>
               </Link>
             </li>
             <li>
