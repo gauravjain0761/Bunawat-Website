@@ -7,6 +7,7 @@ import { STORAGE_KEY } from '../../constant/storage';
 import { Link, useHistory } from 'react-router-dom';
 import Storage from '../../services/storage';
 import { useDispatch } from 'react-redux';
+import { logout, setUserData } from '../../redux/reducers/user';
 
 const Login = ({ activeHeader, handleAccountClose }) => {
     const [sendOtp] = useSendOtpMutation(undefined, {})
@@ -32,10 +33,19 @@ const Login = ({ activeHeader, handleAccountClose }) => {
             handleAccountClose()
             toast.success(data?.message)
             Storage.set(STORAGE_KEY.token, data?.data?.auth_token)
+            dispatch(setUserData(data?.data));
             const cartData = JSON.parse(Storage.get("cartData")) ?? []
             if (cartData?.length > 0) {
                 await addToCart({
-                    cart: cartData ?? []
+                    cart: cartData?.map(list => {
+                        const { sku, product, qty, amount, ...payload } = list;
+                        return {
+                            sku: sku?._id,
+                            product,
+                            qty,
+                            amount
+                        }
+                    }) ?? []
                 }).unwrap().then((data) => {
                     Storage.remove("cartData")
                 }).catch((error) => toast.error(error?.data?.message))
@@ -68,10 +78,11 @@ const Login = ({ activeHeader, handleAccountClose }) => {
                             </MenuItem>
                         </Link>
                         <MenuItem onClick={() => {
-                            Storage.remove(STORAGE_KEY.token)
-                            dispatch(AllApiData.util.invalidateTags(['Cart']));
-                            history.push("/")
                             handleAccountClose()
+                            dispatch(logout());
+                            dispatch(AllApiData.util.invalidateTags(['Cart']));
+                            Storage.remove(STORAGE_KEY.token)
+                            history.push("/")
                         }} sx={{
                             fontSize: "18px",
                             color: "#000",
@@ -97,7 +108,11 @@ const Login = ({ activeHeader, handleAccountClose }) => {
                                     <div className="login_input_inner">
                                         <input type="text" value={loginData?.phone} onChange={(e) => {
                                             const onlyNums = e.target.value.replace(/[^0-9]/g, '');
-                                            setLoginData({ ...loginData, phone: onlyNums })
+                                            if (onlyNums.length < 10) {
+                                                setLoginData({ ...loginData, phone: onlyNums });
+                                            } else if (onlyNums.length === 10) {
+                                                setLoginData({ ...loginData, phone: onlyNums });
+                                            }
                                         }} placeholder="Phone Number" />
                                         <span>+91</span>
                                     </div>

@@ -38,6 +38,7 @@ export const AllApiData = createApi({
                     body,
                 }
             },
+            invalidatesTags: ['Cart'],
         }),
         getDatabyId: builder.query({
             query: ({ id, type }) => `get_data_by_id/${id}?type=${type}`,
@@ -82,7 +83,16 @@ export const AllApiData = createApi({
             }),
             invalidatesTags: ['Cart'],
         }),
+        addOrder: builder.mutation({
+            query(body) {
+                return {
+                    url: `order/add`,
+                    method: 'POST',
+                    body,
+                }
+            },
+        }),
     }),
 })
 
-export const { useSendOtpMutation, useOtpMatchMutation, useGetShopMenuDataQuery, useGetDatabyIdQuery, useGetProductQuery, useAddToCartMutation, useGetAllCartQuery, useRemoveCartItemMutation, useEditCartMutation } = AllApiData
+export const { useSendOtpMutation, useOtpMatchMutation, useGetShopMenuDataQuery, useGetDatabyIdQuery, useGetProductQuery, useAddToCartMutation, useGetAllCartQuery, useRemoveCartItemMutation, useEditCartMutation, useAddOrderMutation } = AllApiData

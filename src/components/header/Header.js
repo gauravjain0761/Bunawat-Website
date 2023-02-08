@@ -10,32 +10,14 @@ import { CssBaseline, Divider, Stack } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { CustomPopOver } from './style';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
-import NorthEastIcon from '@mui/icons-material/NorthEast';
-import { DayPicker } from 'react-day-picker';
-import { Tab, Tabs } from 'react-bootstrap';
-import cart_1 from '../../assets/img/cart/cart_1.png';
-import cart_2 from '../../assets/img/cart/cart_2.png';
-import cart_3 from '../../assets/img/cart/cart_3.png';
-import saved_1 from '../../assets/img/saved/saved_1.png';
-import saved_2 from '../../assets/img/saved/saved_2.png';
-import saved_3 from '../../assets/img/saved/saved_3.png';
-import saved_4 from '../../assets/img/saved/saved_4.png';
-import saved_5 from '../../assets/img/saved/saved_5.png';
-import saved_6 from '../../assets/img/saved/saved_6.png';
-import saved_7 from '../../assets/img/saved/saved_7.png';
-import saved_8 from '../../assets/img/saved/saved_8.png';
 import { useGetAllCartQuery, useGetPokemonByNameQuery, useGetShopMenuDataQuery, useOtpMatchMutation, useSendOtpMutation } from '../../services/api';
 import Storage from '../../services/storage';
-import { STORAGE_KEY } from '../../constant/storage';
+import { toast } from 'react-toastify';
 import Login from './login';
 import Cart from './cart';
 import Calendar from './calendar';
 import Shop from './shop';
 import { useSelector } from 'react-redux';
-
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Header() {
     const { data } = useGetShopMenuDataQuery()
@@ -48,7 +30,6 @@ function Header() {
     const location = useLocation()
     const history = useHistory();
     const [headerColor, setHeaderColor] = React.useState(false);
-    const [selectedDay, setSelectedDay] = React.useState();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [accountPopup, setAccountPopup] = React.useState(null);
     const [calendarPopup, setCalendarPopup] = React.useState(null);
@@ -205,6 +186,14 @@ function Header() {
 
     const handleCartClose = () => {
         setCartPopup(null);
+    };
+    const handleCheckout = () => {
+        if (Storage.isUserAuthenticated()) {
+            history.push(`/checkout`);
+            setCartPopup(null);
+        } else {
+            toast.error("Login required!")
+        }
     };
 
     const open = Boolean(anchorEl);
@@ -484,7 +473,7 @@ function Header() {
                                         horizontal: 'center',
                                     }}
                                 >
-                                    <Cart data={cartData} activeHeader={getActiveHeader(scroll, hover, headerColor)} handleCartClose={handleCartClose} />
+                                    <Cart data={cartData} activeHeader={getActiveHeader(scroll, hover, headerColor)} handleCartClose={handleCartClose} handleCheckout={handleCheckout} />
                                 </CustomPopOver>
                             </Box>
                         </Stack>

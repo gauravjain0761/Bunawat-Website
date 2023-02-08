@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { getNumberWithComma } from "../../utils/utils";
 
-const MakePayment = () => {
+const MakePayment = ({ handleMakeOrder, cartData }) => {
   return (
     <>
       <div className="checkout_box">
@@ -15,35 +15,19 @@ const MakePayment = () => {
           />{" "}
           Review your order
         </div>
-        <div className="checkout_box_list">
-          <div>
-            <h3>Synthetic Floral Print Sari</h3>
-            <span>Lemon Yellow • Medium • 1 unit</span>
-          </div>
-          <div>
-            <h3>₹4,500</h3>
-          </div>
-        </div>
-        <div className="checkout_box_list">
-          <div>
-            <h3>Pink Floral Sari & Jacket</h3>
-            <span>Medium • 2 units</span>
-          </div>
-          <div>
-            <h3>
-              <del
-                style={{
-                  fontWeight: "300",
-                  color: "#999896",
-                  marginRight: "8px",
-                }}
-              >
-                ₹14,200
-              </del>
-              ₹10,200{" "}
-            </h3>
-          </div>
-        </div>
+        {cartData?.data?.length > 0 ? cartData?.data?.map((cart, index) => {
+          return (
+            <div className="checkout_box_list">
+              <div>
+                <h3>{cart?.sku?.product_name}</h3>
+                <span>{`${Object.values(cart?.sku?.varients ?? {})?.join(" • ")}`}</span>
+              </div>
+              <div>
+                <h3>{getNumberWithComma(Number(cart?.amount) * Number(cart?.qty))}</h3>
+              </div>
+            </div>
+          )
+        }) : null}
         <div className="checkout_box_list">
           <div>
             <h3>Regular Shipping</h3>
@@ -64,29 +48,29 @@ const MakePayment = () => {
             </h3>
           </div>
         </div>
-        <Link to="/paymentOptions">
-          <div className="checkout_box_footer">
-            <div className="checkout_box_list">
-              <div>
-                <h3>Make Payment</h3>
-              </div>
-              <div>
-                <h3>
-                  <del
-                    style={{
-                      fontWeight: "300",
-                      color: "#999896",
-                      marginRight: "8px",
-                    }}
-                  >
-                    ₹18,700{" "}
-                  </del>
-                  ₹13,230{" "}
-                </h3>
-              </div>
+        <div className="checkout_box_footer" onClick={handleMakeOrder}>
+          <div className="checkout_box_list">
+            <div>
+              <h3>Make Payment</h3>
+            </div>
+            <div>
+              <h3>
+                <del
+                  style={{
+                    fontWeight: "300",
+                    color: "#999896",
+                    marginRight: "8px",
+                  }}
+                >
+                  {/* ₹18,700{" "} */}
+                </del>
+                {getNumberWithComma(Number(cartData?.data?.reduce((total, list) => {
+                  return total + (Number(list?.qty) * Number(list?.amount))
+                }, 0)))}
+              </h3>
             </div>
           </div>
-        </Link>
+        </div>
       </div>
     </>
   );

@@ -12,7 +12,7 @@ import Storage from '../../services/storage';
 import { useDispatch } from 'react-redux';
 import { setCartCount } from '../../redux/reducers/cart';
 
-const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct }) => {
+const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedImage }) => {
     const [filterList, setFilterList] = useState([]);
     const [attributeList, setAttributeList] = useState([]);
     const [attributeData, setAttributeData] = useState({});
@@ -51,7 +51,12 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct }) => {
             }).catch((error) => toast.error(error?.data?.message))
         } else {
             const finalData = [...cartData, {
-                sku: selectedData?._id,
+                sku: {
+                    product_name: selectedData?.product_name,
+                    sku: selectedData?.sku,
+                    varients: selectedData?.varients,
+                },
+                image: selectedImage ?? '',
                 product: selectedData?.product_id,
                 qty: 1,
                 amount: selectedProduct?.sale_price

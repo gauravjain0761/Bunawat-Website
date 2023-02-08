@@ -1,16 +1,31 @@
 import React from "react";
 import { Col, Form, Row } from "react-bootstrap";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ formData, setFormData }) => {
+
+  const handleChange = (event) => {
+    if (event.target.name == "phone") {
+      const onlyNums = event.target.value.replace(/[^0-9]/g, '');
+      if (onlyNums.length < 10) {
+        setFormData({ ...formData, [event.target.name]: onlyNums });
+      } else if (onlyNums.length === 10) {
+        setFormData({ ...formData, [event.target.name]: onlyNums });
+      }
+    } else {
+      setFormData({ ...formData, [event.target.name]: event.target.value })
+    }
+  }
+
   return (
     <>
+      {console.log("formData", formData)}
       <Row>
         <Col>
           <Form className="checkout_form">
             <Row>
               <Col>
                 <Form.Group controlId="validationFormik01">
-                  <Form.Control type="text" name="name" placeholder="Name" />
+                  <Form.Control type="text" name="name" placeholder="Name" value={formData?.name ?? ''} onChange={handleChange} />
                   <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                 </Form.Group>
               </Col>
@@ -21,7 +36,8 @@ const CheckoutForm = () => {
                   <div style={{ position: "relative" }}>
                     <Form.Control
                       type="text"
-                      name="number"
+                      name="phone"
+                      value={formData?.phone ?? ''} onChange={handleChange}
                       placeholder="Phone Number"
                       style={{ paddingLeft: "3rem" }}
                     />
@@ -44,7 +60,7 @@ const CheckoutForm = () => {
             <Row>
               <Col>
                 <Form.Group controlId="validationFormik01">
-                  <Form.Control type="email" name="name" placeholder="Email" />
+                  <Form.Control type="email" name="email" placeholder="Email" value={formData?.email ?? ''} onChange={handleChange} />
                   <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                 </Form.Group>
               </Col>
@@ -79,7 +95,8 @@ const CheckoutForm = () => {
                 <Form.Group controlId="validationFormik01">
                   <Form.Control
                     type="text"
-                    name="flatNoBuilding"
+                    value={formData?.address_1 ?? ''} onChange={handleChange}
+                    name="address_1"
                     placeholder="Flat No. & Building"
                   />
                   <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
@@ -91,7 +108,8 @@ const CheckoutForm = () => {
                 <Form.Group controlId="validationFormik01">
                   <Form.Control
                     type="text"
-                    name="streetAddress"
+                    value={formData?.address_2 ?? ''} onChange={handleChange}
+                    name="address_2"
                     placeholder="Street Address"
                   />
                   <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
@@ -103,7 +121,8 @@ const CheckoutForm = () => {
                 <Form.Group controlId="validationFormik01">
                   <Form.Control
                     type="text"
-                    name="PINCode"
+                    value={formData?.pincode ?? ''} onChange={handleChange}
+                    name="pincode"
                     placeholder="PIN Code"
                   />
                   <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
@@ -113,13 +132,13 @@ const CheckoutForm = () => {
             <Row>
               <Col>
                 <Form.Group controlId="validationFormik01">
-                  <Form.Control type="text" name="city" placeholder="City" />
+                  <Form.Control type="text" name="city" placeholder="City" value={formData?.city ?? ''} onChange={handleChange} />
                   <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                 </Form.Group>
               </Col>
               <Col>
                 <Form.Group controlId="validationFormik01">
-                  <Form.Control type="text" name="state" placeholder="State" />
+                  <Form.Control type="text" name="state" placeholder="State" value={formData?.state ?? ''} onChange={handleChange} />
                   <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                 </Form.Group>
               </Col>

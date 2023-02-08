@@ -19,7 +19,7 @@ import Storage from '../../services/storage';
 import { setCartCount } from '../../redux/reducers/cart';
 import { useDispatch } from 'react-redux';
 
-const Cart = ({ data, activeHeader, handleCartClose }) => {
+const Cart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
     const [cartList, setCartList] = useState([]);
     const [removeCartItem] = useRemoveCartItemMutation()
     const [editCart] = useEditCartMutation()
@@ -107,7 +107,7 @@ const Cart = ({ data, activeHeader, handleCartClose }) => {
                                 <div className='cart_information'>
                                     <div className="card_img">
                                         <Link to="/product" onClick={handleCartClose} >
-                                            <img src={cart_1} alt="cart" />
+                                            <img src={cart?.image} alt="cart" height='180px' />
                                         </Link>
                                     </div>
                                     <div className="cart_product_info">
@@ -179,14 +179,14 @@ const Cart = ({ data, activeHeader, handleCartClose }) => {
                         }
 
                     </div>
-                    <Link to="/checkout" onClick={handleCartClose}>
-                        <button type="button" className="checkout_btn">
+                    {cartList?.length > 0 ?
+                        <button type="button" className="checkout_btn" onClick={handleCheckout}>
                             <span>Checkout</span>
                             <span>
                                 {/* <s>{getNumberWithComma(cartPrice?.total)}</s> */}
                                 {getNumberWithComma(cartPrice?.price)}</span>
                         </button>
-                    </Link>
+                        : null}
                 </Tab>
                 <Tab eventKey="saved" title="Saved">
                     <div className='saved_wrapper'>
