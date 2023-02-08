@@ -74,36 +74,35 @@ const Checkout = () => {
     if (tempError?.name || tempError?.email || tempError?.phone || tempError?.address_1 || tempError?.address_2 || tempError?.pincode || tempError?.city || tempError?.state) {
       setFormError(tempError)
     } else {
-      toast.error("click")
-      // await addOrder({
-      //   member: "63d0f81846f463e3757f19b6",
-      //   user_type: userData?.user_type,
-      //   user: userData?._id,
-      //   billing_address: formData ?? {},
-      //   isSame: true,
-      //   shipping_address: {},
-      //   payment_mode: "COD",
-      //   total_items: cartData?.data?.length,
-      //   total_qty: cartData?.data?.reduce((total, list) => {
-      //     return total + Number(list?.qty)
-      //   }, 0),
-      //   total_amount: cartData?.data?.reduce((total, list) => {
-      //     return total + (Number(list?.qty) * Number(list?.amount))
-      //   }, 0),
-      //   items: cartData?.data?.map(list => ({
-      //     product: list?.product,
-      //     sku_id: list?.sku?._id,
-      //     sku: list?.sku?.sku,
-      //     price: list?.amount,
-      //     qty: list?.qty,
-      //     amount: list?.amount
-      //   })) ?? [],
-      //   gst_amount: 0,
-      //   discount_amount: 0,
-      //   discount_coupon: null
-      // }).unwrap().then((data) => {
-      //   history.push("/userProfile")
-      // }).catch((error) => toast.error(error?.data?.message))
+      await addOrder({
+        member: "63d0f81846f463e3757f19b6",
+        user_type: userData?.user_type,
+        user: userData?._id,
+        billing_address: formData ?? {},
+        isSame: true,
+        shipping_address: {},
+        payment_mode: "COD",
+        total_items: cartData?.data?.length,
+        total_qty: cartData?.data?.reduce((total, list) => {
+          return total + Number(list?.qty)
+        }, 0),
+        total_amount: cartData?.data?.reduce((total, list) => {
+          return total + (Number(list?.qty) * Number(list?.amount))
+        }, 0),
+        items: cartData?.data?.map(list => ({
+          product: list?.product,
+          sku_id: list?.sku?._id,
+          sku: list?.sku?.sku,
+          price: list?.amount,
+          qty: list?.qty,
+          amount: list?.amount
+        })) ?? [],
+        gst_amount: 0,
+        discount_amount: 0,
+        discount_coupon: null
+      }).unwrap().then((data) => {
+        history.push("/userProfile")
+      }).catch((error) => toast.error(error?.data?.message))
     }
   }
 
