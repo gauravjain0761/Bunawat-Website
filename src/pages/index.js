@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Switch, Route, Router } from "react-router-dom";
 import Layout from "../components/Layout";
 import Home from "./home/home";
@@ -14,9 +14,18 @@ import ErrorPage from "./404/index";
 import Returns from "./returns/index";
 import SizeGuide from "./sizeGuide";
 import PaymentOptions from "../components/checkout/PaymentOptions";
+import Storage from "../services/storage";
+import { setUserData } from "../redux/reducers/user";
+import { useDispatch } from "react-redux";
 
 
-export default function index({ socket }) {
+export default function Index() {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(setUserData(JSON.parse(Storage.get("userData")) ?? {}));
+    }, [])
+
     return (
         <>
             <Layout>

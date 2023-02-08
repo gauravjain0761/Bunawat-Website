@@ -19,7 +19,7 @@ export const AllApiData = createApi({
             return headers;
         },
     }),
-    tagTypes: ['Cart'],
+    tagTypes: ['Cart', 'Order'],
     endpoints: (builder) => ({
         sendOtp: builder.mutation({
             query(body) {
@@ -91,8 +91,13 @@ export const AllApiData = createApi({
                     body,
                 }
             },
+            invalidatesTags: ['Order'],
+        }),
+        orderList: builder.query({
+            query: () => `order_list`,
+            providesTags: ['Order'],
         }),
     }),
 })
 
-export const { useSendOtpMutation, useOtpMatchMutation, useGetShopMenuDataQuery, useGetDatabyIdQuery, useGetProductQuery, useAddToCartMutation, useGetAllCartQuery, useRemoveCartItemMutation, useEditCartMutation, useAddOrderMutation } = AllApiData
+export const { useSendOtpMutation, useOtpMatchMutation, useGetShopMenuDataQuery, useGetDatabyIdQuery, useGetProductQuery, useAddToCartMutation, useGetAllCartQuery, useRemoveCartItemMutation, useEditCartMutation, useAddOrderMutation, useOrderListQuery } = AllApiData

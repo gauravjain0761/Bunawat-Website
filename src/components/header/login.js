@@ -34,6 +34,7 @@ const Login = ({ activeHeader, handleAccountClose }) => {
             toast.success(data?.message)
             Storage.set(STORAGE_KEY.token, data?.data?.auth_token)
             dispatch(setUserData(data?.data));
+            Storage.set("userData", JSON.stringify(data?.data))
             const cartData = JSON.parse(Storage.get("cartData")) ?? []
             if (cartData?.length > 0) {
                 await addToCart({

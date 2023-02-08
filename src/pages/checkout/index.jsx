@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row, Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./checkout.css";
 import FooterStrip from "../../components/footer/footerStrip";
 import ApplyCouponModal from "../../components/checkout/ApplyCouponModal";
@@ -18,6 +18,7 @@ const Checkout = () => {
   const [addOrder] = useAddOrderMutation(undefined, {})
   const { data: cartData, error, isLoading } = useGetAllCartQuery(undefined, { skip: !Storage.isUserAuthenticated() })
   const [showCoupon, setShowCoupon] = useState(false);
+  const history = useHistory()
   const [showCodModal, setShowCodModal] = useState(false);
   const [formData, setFormData] = useState([]);
   const [formError, setFormError] = useState([]);
@@ -72,6 +73,7 @@ const Checkout = () => {
       discount_amount: 0,
       discount_coupon: null
     }).unwrap().then((data) => {
+      history.push("/userProfile")
     }).catch((error) => toast.error(error?.data?.message))
   }
 
