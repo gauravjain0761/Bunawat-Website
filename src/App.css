@@ -20,3 +20,10 @@
 ::-webkit-scrollbar-thumb:hover {
     background: grey;
 }
+
+.error-text {
+    margin-top: 0.25rem;
+    font-size: .875em;
+    color: #dc3545;
+
+}

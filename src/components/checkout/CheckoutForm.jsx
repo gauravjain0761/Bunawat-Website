@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Form, Row } from "react-bootstrap";
 
-const CheckoutForm = ({ formData, setFormData }) => {
+const CheckoutForm = ({ formData, setFormData, formError, setFormError }) => {
 
   const handleChange = (event) => {
     if (event.target.name == "phone") {
@@ -14,19 +14,19 @@ const CheckoutForm = ({ formData, setFormData }) => {
     } else {
       setFormData({ ...formData, [event.target.name]: event.target.value })
     }
+    setFormError({ ...formError, [event.target.name]: false })
   }
 
   return (
     <>
-      {console.log("formData", formData)}
       <Row>
         <Col>
           <Form className="checkout_form">
             <Row>
               <Col>
-                <Form.Group controlId="validationFormik01">
+                <Form.Group controlId="validationCustom03">
                   <Form.Control type="text" name="name" placeholder="Name" value={formData?.name ?? ''} onChange={handleChange} />
-                  <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+                  {formError?.name ? <p className="error-text">name is required!</p> : null}
                 </Form.Group>
               </Col>
             </Row>
@@ -53,7 +53,7 @@ const CheckoutForm = ({ formData, setFormData }) => {
                       +91
                     </span>
                   </div>
-                  <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+                  {formError?.phone ? <p className="error-text">phone is required!</p> : null}
                 </Form.Group>
               </Col>
             </Row>
@@ -61,7 +61,7 @@ const CheckoutForm = ({ formData, setFormData }) => {
               <Col>
                 <Form.Group controlId="validationFormik01">
                   <Form.Control type="email" name="email" placeholder="Email" value={formData?.email ?? ''} onChange={handleChange} />
-                  <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+                  {formError?.email ? <p className="error-text">email is required!</p> : null}
                 </Form.Group>
               </Col>
             </Row>
@@ -86,7 +86,6 @@ const CheckoutForm = ({ formData, setFormData }) => {
                       Optional
                     </span>
                   </div>
-                  <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                 </Form.Group>
               </Col>
             </Row>
@@ -99,7 +98,7 @@ const CheckoutForm = ({ formData, setFormData }) => {
                     name="address_1"
                     placeholder="Flat No. & Building"
                   />
-                  <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+                  {formError?.address_1 ? <p className="error-text">address is required!</p> : null}
                 </Form.Group>
               </Col>
             </Row>
@@ -112,7 +111,7 @@ const CheckoutForm = ({ formData, setFormData }) => {
                     name="address_2"
                     placeholder="Street Address"
                   />
-                  <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+                  {formError?.address_2 ? <p className="error-text">address is required!</p> : null}
                 </Form.Group>
               </Col>
             </Row>
@@ -125,7 +124,7 @@ const CheckoutForm = ({ formData, setFormData }) => {
                     name="pincode"
                     placeholder="PIN Code"
                   />
-                  <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+                  {formError?.pincode ? <p className="error-text">pincode is required!</p> : null}
                 </Form.Group>
               </Col>
             </Row>
@@ -133,13 +132,13 @@ const CheckoutForm = ({ formData, setFormData }) => {
               <Col>
                 <Form.Group controlId="validationFormik01">
                   <Form.Control type="text" name="city" placeholder="City" value={formData?.city ?? ''} onChange={handleChange} />
-                  <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+                  {formError?.city ? <p className="error-text">city is required!</p> : null}
                 </Form.Group>
               </Col>
               <Col>
                 <Form.Group controlId="validationFormik01">
                   <Form.Control type="text" name="state" placeholder="State" value={formData?.state ?? ''} onChange={handleChange} />
-                  <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+                  {formError?.state ? <p className="error-text">state is required!</p> : null}
                 </Form.Group>
               </Col>
             </Row>

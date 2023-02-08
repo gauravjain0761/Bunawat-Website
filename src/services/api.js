@@ -19,7 +19,7 @@ export const AllApiData = createApi({
             return headers;
         },
     }),
-    tagTypes: ['Cart', 'Order'],
+    tagTypes: ['Cart', 'Order', 'Wishlist'],
     endpoints: (builder) => ({
         sendOtp: builder.mutation({
             query(body) {
@@ -97,7 +97,28 @@ export const AllApiData = createApi({
             query: () => `order_list`,
             providesTags: ['Order'],
         }),
+        addToWishlist: builder.mutation({
+            query(body) {
+                return {
+                    url: `add_to_wishlist`,
+                    method: 'POST',
+                    body,
+                }
+            },
+            invalidatesTags: ['Wishlist'],
+        }),
+        getAllWishlist: builder.query({
+            query: () => `get_all_wishlist`,
+            providesTags: ['Wishlist'],
+        }),
+        removeWishlist: builder.mutation({
+            query: (id) => ({
+                url: `/remove_wishlist/${id}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: ['Wishlist'],
+        }),
     }),
 })
 
-export const { useSendOtpMutation, useOtpMatchMutation, useGetShopMenuDataQuery, useGetDatabyIdQuery, useGetProductQuery, useAddToCartMutation, useGetAllCartQuery, useRemoveCartItemMutation, useEditCartMutation, useAddOrderMutation, useOrderListQuery } = AllApiData
+export const { useSendOtpMutation, useOtpMatchMutation, useGetShopMenuDataQuery, useGetDatabyIdQuery, useGetProductQuery, useAddToCartMutation, useGetAllCartQuery, useRemoveCartItemMutation, useEditCartMutation, useAddOrderMutation, useOrderListQuery, useAddToWishlistMutation, useGetAllWishlistQuery, useRemoveWishlistMutation } = AllApiData

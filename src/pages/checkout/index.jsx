@@ -46,35 +46,65 @@ const Checkout = () => {
   }, [userData])
 
   const handleMakeOrder = async () => {
-    await addOrder({
-      member: "63d0f81846f463e3757f19b6",
-      user_type: userData?.user_type,
-      user: userData?._id,
-      billing_address: formData ?? {},
-      isSame: true,
-      shipping_address: {},
-      payment_mode: "COD",
-      total_items: cartData?.data?.length,
-      total_qty: cartData?.data?.reduce((total, list) => {
-        return total + Number(list?.qty)
-      }, 0),
-      total_amount: cartData?.data?.reduce((total, list) => {
-        return total + (Number(list?.qty) * Number(list?.amount))
-      }, 0),
-      items: cartData?.data?.map(list => ({
-        product: list?.product,
-        sku_id: list?.sku?._id,
-        sku: list?.sku?.sku,
-        price: list?.amount,
-        qty: list?.qty,
-        amount: list?.amount
-      })) ?? [],
-      gst_amount: 0,
-      discount_amount: 0,
-      discount_coupon: null
-    }).unwrap().then((data) => {
-      history.push("/userProfile")
-    }).catch((error) => toast.error(error?.data?.message))
+    let tempError = { ...formError }
+    if (formData?.name == "") {
+      tempError = { ...tempError, name: true }
+    }
+    if (formData?.email == "") {
+      tempError = { ...tempError, email: true }
+    }
+    if (formData?.phone == "") {
+      tempError = { ...tempError, phone: true }
+    }
+    if (formData?.address_1 == "") {
+      tempError = { ...tempError, address_1: true }
+    }
+    if (formData?.address_2 == "") {
+      tempError = { ...tempError, address_2: true }
+    }
+    if (formData?.pincode == "") {
+      tempError = { ...tempError, pincode: true }
+    }
+    if (formData?.city == "") {
+      tempError = { ...tempError, city: true }
+    }
+    if (formData?.state == "") {
+      tempError = { ...tempError, state: true }
+    }
+    if (tempError?.name || tempError?.email || tempError?.phone || tempError?.address_1 || tempError?.address_2 || tempError?.pincode || tempError?.city || tempError?.state) {
+      setFormError(tempError)
+    } else {
+      toast.error("click")
+      // await addOrder({
+      //   member: "63d0f81846f463e3757f19b6",
+      //   user_type: userData?.user_type,
+      //   user: userData?._id,
+      //   billing_address: formData ?? {},
+      //   isSame: true,
+      //   shipping_address: {},
+      //   payment_mode: "COD",
+      //   total_items: cartData?.data?.length,
+      //   total_qty: cartData?.data?.reduce((total, list) => {
+      //     return total + Number(list?.qty)
+      //   }, 0),
+      //   total_amount: cartData?.data?.reduce((total, list) => {
+      //     return total + (Number(list?.qty) * Number(list?.amount))
+      //   }, 0),
+      //   items: cartData?.data?.map(list => ({
+      //     product: list?.product,
+      //     sku_id: list?.sku?._id,
+      //     sku: list?.sku?.sku,
+      //     price: list?.amount,
+      //     qty: list?.qty,
+      //     amount: list?.amount
+      //   })) ?? [],
+      //   gst_amount: 0,
+      //   discount_amount: 0,
+      //   discount_coupon: null
+      // }).unwrap().then((data) => {
+      //   history.push("/userProfile")
+      // }).catch((error) => toast.error(error?.data?.message))
+    }
   }
 
   return (
@@ -122,7 +152,7 @@ const Checkout = () => {
             </Col>
             <Col xs={12} md={7}>
 
-              <CheckoutForm formData={formData ?? {}} setFormData={setFormData} />
+              <CheckoutForm formData={formData ?? {}} setFormData={setFormData} formError={formError} setFormError={setFormError} />
 
               <div className="checkout_box" style={{ marginTop: "1rem", padding: "0 1rem 1rem 1rem" }}>
                 <div className="checkout_box_heading">
