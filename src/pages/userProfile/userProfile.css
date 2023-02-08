@@ -52,11 +52,12 @@
     color: #000000 !important;
 }
 .userProfile_menu_list_third{
-    padding: 2rem;
+    padding: 2rem 2rem 1.4rem 2rem;
     background: #d6d8e1;
     border-radius: 4px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .userProfile_menu_list_third h6{
     font-weight: 600;
@@ -109,8 +110,8 @@
 }
 .userProfileModule_box_list h3{
     font-weight: 600;
-    font-size: 16px;
-    line-height: 18px;
+    font-size: 14px;
+    line-height: 20px;
     letter-spacing: -0.02em;
     color: #000000;
     margin-bottom: 0;
@@ -126,7 +127,7 @@
     padding: 2rem;
     display: flex;
     justify-content: space-between;
-    background-color: #EAEBF0;
+    background-color: #F7F8FF;
     border-radius: 0 0 4px 4px;
 }
 .userProfileModule_box_list_last h6{
@@ -175,7 +176,7 @@
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: #9A9EB0;
-    margin: 2rem 0;
+    margin: 3rem 0;
 }
 
 /* eventsClubBox css */
@@ -382,7 +383,7 @@
         background: #d7d8db;
     }
     .userProfile_mobile .userProfile_menu_list_third {
-        padding: 2rem;
+        padding: 2rem 2rem 1.6rem 2rem;
         background: #2A3592;
         border-radius: 4px;
         display: flex;

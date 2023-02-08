@@ -5,7 +5,7 @@ import { AiOutlineCheck } from 'react-icons/ai';
 const SavedAddressModule = () => {
   return (
     <>
-      <Container>
+      {/* <Container> */}
         <Row>
           <Col>
             <Form className="checkout_form">
@@ -131,7 +131,7 @@ const SavedAddressModule = () => {
             </div>
           </Col>
         </Row>
-      </Container>
+      {/* </Container> */}
     </>
   );
 };

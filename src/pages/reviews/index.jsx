@@ -74,6 +74,22 @@ const Reviews = () => {
                         <Rating
                           name="simple-controlled"
                           value={value}
+                          sx={{
+                            '& .MuiRating-icon': {
+                              color: '#2A3592',
+                              fontSize: "20px",
+                            },
+                            '& .MuiRating-iconFilled': {
+                              color: '#2A3592',
+                              fontSize: "20px",
+                            },
+                            '& .MuiRating-iconFocus': {
+                              fontSize: "20px",
+                            },
+                            '& .MuiRating-iconHover': {
+                              fontSize: "20px",
+                            },
+                          }}
                           onChange={(event, newValue) => {
                             setValue(newValue);
                           }}

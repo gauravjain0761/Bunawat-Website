@@ -87,7 +87,7 @@ const AllProductMenu = ({ data, singleData, setSelectedId }) => {
                             {menuList.map((item, index) => {
                                 return (
                                     <Tab eventKey={index} key={item?._id} title={item?.name}>
-                                        <div className="row" style={{ marginTop: "46px" }}>
+                                        <div className="row product_margin">
                                             {singleList?.products?.map((list, index) => {
                                                 return (
                                                     <>
