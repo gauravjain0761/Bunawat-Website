@@ -44,9 +44,6 @@ export const AllApiData = createApi({
             },
             invalidatesTags: ['Cart', 'HomeData'],
         }),
-        getDatabyId: builder.query({
-            query: ({ id, type }) => `get_data_by_id/${id}?type=${type}`,
-        }),
         getShopMenuData: builder.query({
             query: () => `get_shop_menu`,
         }),

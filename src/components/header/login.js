@@ -51,6 +51,7 @@ const Login = ({ activeHeader, handleAccountClose }) => {
                     Storage.remove("cartData")
                 }).catch((error) => toast.error(error?.data?.message))
             }
+            window.location.reload(true)
         }).catch((error) => toast.error(error?.data?.message))
     };
 
