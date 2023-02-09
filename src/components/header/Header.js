@@ -18,6 +18,7 @@ import Cart from './cart';
 import Calendar from './calendar';
 import Shop from './shop';
 import { useSelector } from 'react-redux';
+import LoginModal from './LoginModal';
 
 function Header() {
     const { data } = useGetShopMenuDataQuery()

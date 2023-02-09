@@ -141,11 +141,11 @@
     bottom: 80px !important;
 } */
 
-/* .MuiPopover-paper{
-    top: auto !important;
-    bottom: 80px !important;
+.MuiPopover-paper{
+    /* top: auto !important; */
+    /* bottom: 80px !important; */
     font-family: Newhero10 !important;
-} */
+}
 
 .product_margin{
     margin-top: 46px;
