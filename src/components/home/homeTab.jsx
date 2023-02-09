@@ -11,7 +11,7 @@ const HomeTab = ({ menuData }) => {
         id: "",
         type: ""
     });
-    const { data: singleData, error, isLoading } = useGetDatabyIdQuery(selectedId, {
+    const { data: singleData, error, isLoading, refetch } = useGetDatabyIdQuery(selectedId, {
         skip: selectedId?.id === ""
     })
 
@@ -25,7 +25,7 @@ const HomeTab = ({ menuData }) => {
 
     return (
         <>
-            <HomeBannerTabs data={data} singleData={singleData?.data} setSelectedId={setSelectedId} />
+            <HomeBannerTabs data={data} singleData={singleData?.data} setSelectedId={setSelectedId} refetch={refetch} />
             <JoinTheClubSection />
             <Footer />
         </>

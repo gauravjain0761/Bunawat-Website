@@ -7,8 +7,9 @@ import parse from 'html-react-parser';
 
 import product_slider from "../../assets/img/product/slider_img.png";
 import ProductBottomData from './productBottomData';
+import SaveButton from '../common/save';
 
-const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, productBottomData, width }) => {
+const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, productBottomData, width, refetch }) => {
     const settings = {
         dots: true,
         infinite: false,
@@ -28,23 +29,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                         <div className="product_info_section">
                             <div className="product_title_wrap">
                                 <h2>{product?.name}</h2>
-                                <div className="saved_wrap">
-                                    <span style={{ color: '#2A3592', fontWeight: '900' }}>Save</span>
-                                    <svg
-                                        width="19"
-                                        height="18"
-                                        viewBox="0 0 19 18"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            d="M8.77149 14.6606L6.27724 16.6776C5.15329 17.586 3.54435 16.4235 4.06783 15.0686L5.21488 12.074C5.45353 11.4504 5.22258 10.7422 4.6683 10.3804L1.98159 8.63286C0.765261 7.84764 1.38113 5.95386 2.82841 6.03084L6.0309 6.2002C6.70065 6.23869 7.30112 5.79989 7.47048 5.15323L8.3019 2.05082C8.67911 0.649727 10.6576 0.649727 11.0348 2.05082L11.8662 5.15323C12.0356 5.79989 12.636 6.231 13.3058 6.2002L16.5083 6.03084C17.9556 5.95386 18.5637 7.83994 17.3551 8.63286L14.6684 10.3804C14.1064 10.7422 13.8755 11.4504 14.1218 12.074L15.2689 15.0686C15.7846 16.4235 14.1834 17.586 13.0594 16.6776L10.5652 14.6606C10.0494 14.2372 9.30268 14.2372 8.78689 14.6606H8.77149Z"
-                                            stroke="#2A3990"
-                                            strokeWidth="1.7"
-                                            strokeMiterlimit="10"
-                                        />
-                                    </svg>
-                                </div>
+                                <SaveButton id={product?._id} isWishlist={product?.isWishlist} isBlue={true} refetch={refetch} />
                             </div>
                             <div className="common_product_details">
                                 <div>{parse(product?.description)}</div>
@@ -497,13 +482,13 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                 expandOnContentDrag
                 open={productBottomData[productIndex]}>
                 <div onMouseEnter={() => setSwipeableDisable(true)} onTouchStart={() => setSwipeableDisable(true)}>
-                    <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} />
+                    <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} />
                 </div>
             </BottomSheet>
                 :
                 <div style={{ position: 'relative' }}>
                     <div onMouseEnter={() => setSwipeableDisable(true)} onTouchStart={() => setSwipeableDisable(true)}>
-                        <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} />
+                        <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} />
                     </div>
                 </div>
             }

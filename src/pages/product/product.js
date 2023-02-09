@@ -7,7 +7,7 @@ import { useGetProductQuery } from "../../services/api";
 
 const Product = () => {
   const { id, type } = useParams()
-  const { data, error, isLoading } = useGetProductQuery({ id })
+  const { data, error, isLoading, refetch } = useGetProductQuery({ id })
   const [swipeableIndex, setSwipeableIndex] = useState(0);
   const [swipeableDisable, setSwipeableDisable] = useState(true);
   const [productList, setProductList] = useState([]);
@@ -91,7 +91,7 @@ const Product = () => {
       <SwipeableViews containerStyle={{ height: '100%' }} enableMouseEvents index={swipeableIndex} disabled={swipeableDisable} onChangeIndex={(index) => getCurrentBottomData(index)} >
         {productList?.map((data, index) => {
           return (
-            <ProductCard key={data?._id} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} width={width} />
+            <ProductCard key={data?._id} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} width={width} refetch={refetch} />
           )
         })}
       </SwipeableViews>

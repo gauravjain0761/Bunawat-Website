@@ -18,7 +18,7 @@ const AllProductList = ({ menuData }) => {
         id: "",
         type: ""
     });
-    const { data: singleData, error, isLoading } = useGetDatabyIdQuery(selectedId, {
+    const { data: singleData, error, isLoading, refetch } = useGetDatabyIdQuery(selectedId, {
         skip: selectedId?.id === ""
     })
 
@@ -32,7 +32,7 @@ const AllProductList = ({ menuData }) => {
 
     return (
         <>
-            <AllProductMenu data={data} singleData={singleData?.data} setSelectedId={setSelectedId} />
+            <AllProductMenu data={data} singleData={singleData?.data} setSelectedId={setSelectedId} refetch={refetch} />
         </>
     )
 }

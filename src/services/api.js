@@ -19,8 +19,12 @@ export const AllApiData = createApi({
             return headers;
         },
     }),
-    tagTypes: ['Cart', 'Order', 'Wishlist'],
+    tagTypes: ['Cart', 'Order', 'Wishlist', 'HomeData'],
     endpoints: (builder) => ({
+        getDatabyId: builder.query({
+            query: ({ id, type }) => `get_data_by_id/${id}?type=${type}`,
+            providesTags: ['HomeData'],
+        }),
         sendOtp: builder.mutation({
             query(body) {
                 return {
@@ -38,16 +42,13 @@ export const AllApiData = createApi({
                     body,
                 }
             },
-            invalidatesTags: ['Cart'],
+            invalidatesTags: ['Cart', 'HomeData'],
         }),
         getDatabyId: builder.query({
             query: ({ id, type }) => `get_data_by_id/${id}?type=${type}`,
         }),
         getShopMenuData: builder.query({
             query: () => `get_shop_menu`,
-        }),
-        getDatabyId: builder.query({
-            query: ({ id, type }) => `get_data_by_id/${id}?type=${type}`,
         }),
         getProduct: builder.query({
             query: ({ id }) => `get_product/${id}`,
@@ -78,7 +79,7 @@ export const AllApiData = createApi({
         }),
         removeCartItem: builder.mutation({
             query: (id) => ({
-                url: `/remove_cartitem/${id}`,
+                url: `remove_cartitem/${id}`,
                 method: 'DELETE',
             }),
             invalidatesTags: ['Cart'],
@@ -97,6 +98,10 @@ export const AllApiData = createApi({
             query: () => `order_list`,
             providesTags: ['Order'],
         }),
+        getAllWishlist: builder.query({
+            query: () => `get_all_wishlist`,
+            providesTags: ['Wishlist'],
+        }),
         addToWishlist: builder.mutation({
             query(body) {
                 return {
@@ -107,13 +112,9 @@ export const AllApiData = createApi({
             },
             invalidatesTags: ['Wishlist'],
         }),
-        getAllWishlist: builder.query({
-            query: () => `get_all_wishlist`,
-            providesTags: ['Wishlist'],
-        }),
         removeWishlist: builder.mutation({
             query: (id) => ({
-                url: `/remove_wishlist/${id}`,
+                url: `remove_wishlist/${id}`,
                 method: 'DELETE',
             }),
             invalidatesTags: ['Wishlist'],

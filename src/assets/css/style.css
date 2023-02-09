@@ -537,7 +537,7 @@ button {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    pointer-events: none;
+    /* pointer-events: none; */
     background: linear-gradient(180deg, rgba(247, 247, 247, 0) 0%, rgba(247, 247, 247, 0.9) 80.21%);
     border-radius: 4px;
 }
@@ -557,6 +557,7 @@ button {
 .save_wrap {
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .save_wrap p {
@@ -568,6 +569,22 @@ button {
     letter-spacing: -0.02em;
     color: #2A3592;
     opacity: 0.2;
+}
+
+.save_wrap_active p {
+    opacity: 1;
+}
+
+.save_wrap_active svg {
+    fill: #fff;
+}
+
+.save_wrap_blue_active p {
+    opacity: 1;
+}
+
+.save_wrap_blue_active svg {
+    fill: #2A3990;
 }
 
 .cloth_info_title .summer_list_link p,
@@ -1551,6 +1568,7 @@ li.common_option_wrap {
     margin-left: 8px;
     letter-spacing: -0.02em;
 }
+
 .might_like_wrap.cloth_wrap {
     padding: 66px 0;
     background: #F4F4F4;
@@ -1648,14 +1666,15 @@ li.common_option_wrap {
     margin-bottom: 1rem;
 }
 
-.common_product_details p{
+.common_product_details p {
     font-weight: 400;
     font-size: 20px;
     line-height: 16px;
     letter-spacing: -0.02em;
     color: #2A3592;
 }
-.common_product_details div{
+
+.common_product_details div {
     font-weight: 400;
     font-size: 20px;
     line-height: 16px;
@@ -2445,7 +2464,7 @@ li.common_option_wrap {
     margin-top: 1rem;
 }
 
-.mobile_footer_strip_menu{
+.mobile_footer_strip_menu {
     display: none;
 }
 
@@ -2455,8 +2474,8 @@ li.common_option_wrap {
     border-radius: 4px;
 }
 
-@media screen and (max-width: 768px){
-    .mobile_footer_strip_menu{
+@media screen and (max-width: 768px) {
+    .mobile_footer_strip_menu {
         display: block;
     }
 }

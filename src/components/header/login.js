@@ -4,7 +4,7 @@ import ReactInputVerificationCode from "react-input-verification-code";
 import { Box, Menu, MenuItem, MenuList } from '@mui/material';
 import { AllApiData, useAddToCartMutation, useOtpMatchMutation, useSendOtpMutation } from '../../services/api';
 import { STORAGE_KEY } from '../../constant/storage';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import Storage from '../../services/storage';
 import { useDispatch } from 'react-redux';
 import { logout, setUserData } from '../../redux/reducers/user';
@@ -13,6 +13,7 @@ const Login = ({ activeHeader, handleAccountClose }) => {
     const [sendOtp] = useSendOtpMutation(undefined, {})
     const history = useHistory();
     const dispatch = useDispatch();
+    const location = useLocation()
     const [otpMatch, { isLoading, isError, error }] = useOtpMatchMutation(undefined, {})
     const [addToCart] = useAddToCartMutation()
     const [otpverify, setOtpverify] = React.useState(false);
@@ -20,7 +21,6 @@ const Login = ({ activeHeader, handleAccountClose }) => {
         phone: '9782649915',
         otp: ''
     });
-
 
     const handleSendOtp = async () => {
         await sendOtp({ phone: loginData?.phone ?? "" }).unwrap().then((data) => {
@@ -81,9 +81,13 @@ const Login = ({ activeHeader, handleAccountClose }) => {
                         <MenuItem onClick={() => {
                             handleAccountClose()
                             dispatch(logout());
-                            dispatch(AllApiData.util.invalidateTags(['Cart']));
+                            dispatch(AllApiData.util.resetApiState());
                             Storage.remove(STORAGE_KEY.token)
-                            history.push("/")
+                            if (location?.pathname == "/") {
+                                window.location.reload(true)
+                            } else {
+                                history.push("/")
+                            }
                         }} sx={{
                             fontSize: "18px",
                             color: "#000",
@@ -94,7 +98,6 @@ const Login = ({ activeHeader, handleAccountClose }) => {
                             Logout
                         </MenuItem>
                     </MenuList>
-
                 </>
                 :
                 <>
