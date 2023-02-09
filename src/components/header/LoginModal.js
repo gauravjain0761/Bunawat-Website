@@ -10,7 +10,7 @@ import Storage from '../../services/storage';
 import { useDispatch } from 'react-redux';
 import { logout, setUserData } from '../../redux/reducers/user';
 
-const LoginModal = ({showLogIn, handleClose}) => {
+const LoginModal = ({showLogIn, handleClose, activeHeader, handleAccountClose}) => {
   const [sendOtp] = useSendOtpMutation(undefined, {})
     const history = useHistory();
     const dispatch = useDispatch();

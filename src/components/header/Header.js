@@ -379,6 +379,7 @@ function Header() {
                                 >
                                     <Login activeHeader={getActiveHeader(scroll, hover, headerColor)} handleAccountClose={handleAccountClose} />
                                 </CustomPopOver>
+                                <LoginModal activeHeader={getActiveHeader(scroll, hover, headerColor)} handleAccountClose={handleAccountClose} />
                             </Box>
                             <IconButton
                                 aria-describedby={calendarId}
