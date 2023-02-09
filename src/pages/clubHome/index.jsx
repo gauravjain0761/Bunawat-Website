@@ -4,6 +4,7 @@ import { GoPrimitiveDot } from "react-icons/go";
 import ClubModule from "../../components/clubHome/clubModule";
 import "./clubHome.css";
 import FooterStrip from "../../components/footer/footerStrip";
+import { Box } from "@mui/material";
 
 const ClubHome = () => {
   return (
@@ -198,29 +199,29 @@ const ClubHome = () => {
           <Container>
           <Nav>
             <Nav.Item>
-              <Nav.Link eventKey="liveNow">
+              <Nav.Link eventKey="liveNow" style={{padding: "0px 8px"}}>
                 <button type="button" className="btn">
                   <GoPrimitiveDot color="#00D22E" /> Live Now
                 </button>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="workshops">
+              <Nav.Link eventKey="workshops" style={{padding: "0px 8px"}}>
                 <button type="button" className="btn">Workshops</button>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="events">
+              <Nav.Link eventKey="events" style={{padding: "0px 8px"}}>
                 <button type="button" className="btn">Events</button>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="hangouts">
+              <Nav.Link eventKey="hangouts" style={{padding: "0px 8px"}}>
                 <button type="button" className="btn">Hangouts</button>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="deals">
+              <Nav.Link eventKey="deals" style={{padding: "0px 8px"}}>
                 <button type="button" className="btn">% Deals</button>
               </Nav.Link>
             </Nav.Item>
@@ -230,7 +231,14 @@ const ClubHome = () => {
       </Tab.Container>
       
       <ClubModule />
-      <FooterStrip />
+      <Box sx={{ 
+        padding: "0rem 2rem",
+        '@media (max-width: 768px)': {
+        padding: "1rem 2rem"
+        } 
+      }}>
+        <FooterStrip />
+      </Box>
     </>
   );
 };

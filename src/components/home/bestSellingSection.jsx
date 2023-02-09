@@ -164,7 +164,7 @@ const BestSellingSection = ({ singleData, keyVal, data, refetch }) => {
               {singleList?.products?.map((list, index) => {
                 return (
                   <>
-                    <div className={getClassWidth(index, singleList?.products?.length)}>
+                    <div className={getClassWidth(index, singleList?.products?.length)} style={{paddingRight: "5px", paddingLeft: "5px"}}>
                       <div className="cloth_deatils_wrap">
                         <div style={{textAlign: "center"}}>
                           <Link to={`/product/${list?._id}/${data?.[keyVal]?.type ?? ""}`} className="cloth_deatils_link">

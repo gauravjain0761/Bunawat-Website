@@ -23,7 +23,7 @@ const FooterStrip = () => {
                 <p>Bunawat Club</p>
               </Link>
             </li>
-            <li>
+            <li style={{marginLeft: "0px"}}>
               <Link to="/" className="d-flex align-items-center">
                 <p>Blog</p>
                 <span className="new_text">NEW</span>
@@ -56,7 +56,7 @@ const FooterStrip = () => {
             </li>
           </ul>
 
-          <div className="social_media_wrap" style={{marginRight: "1rem"}}>
+          <div className="social_media_wrap">
             <Link to="/">
               <p>Follow us on Instagram</p>
               <span>

@@ -261,7 +261,11 @@
     .professionals_section_footer{
         width: 90%;
         margin: auto;
+        padding: 3rem 0rem 0rem 0rem;
      }
+     .professionals_section {
+        padding: 4rem 0 0 0;
+    }
      .professionals_section_card_text{
         width: auto;
     }
@@ -348,6 +352,10 @@
     .clubHome_top_text{
         display: none;
      }
+     .clubModule_top_text p {
+        font-size: 14px;
+        line-height: 24px;
+     }
      .clubHome_top_text_mobile{
         display: block;
      }
@@ -360,10 +368,13 @@
         justify-content: space-between;
     }
     .clubHome_top_text h3 {
-        font-size: 36px;
+        font-size: 32px;
+    }
+    .clubHome_top_text p {
+        font-size: 14px;
     }
     .clubHome_menu .btn {
-        font-size: 9px;
+        font-size: 12px;
         padding: 0;
     }
     .eventsClubBox_first_workshop {
@@ -376,16 +387,18 @@
         align-items: center;
     }
     .professionals_section_footer_join {
-        padding: 1rem;
+        padding: 2.6rem 0.4rem 3.6rem 0.8rem;
+        border-radius: 0px;
+        margin: 7rem -32px 0rem -30px;
     }
     .professionals_section_footer_join .btn {
         margin-top: 10px;
         padding: 0.6rem 1.3rem;
     }
     .professionals_section_footer_join .professionals_section_footer_join_text h6 {
-        font-size: 9px;
+        font-size: 10px;
     }
-    .professionals_section_footer_join .professionals_section_footer_join_text p {
-        font-size: 8px;
+    .professionals_section_footer_join .professionals_section_footer_join_text span {
+        font-size: 12px;
     }
   }

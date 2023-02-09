@@ -1,4 +1,4 @@
-import { FormControlLabel, Radio } from '@mui/material';
+import { Box, FormControlLabel, Radio } from '@mui/material';
 import React from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import "./return.css";
@@ -182,7 +182,16 @@ const Returns = () => {
     </div>
     </Container>
     </div>
-    <FooterStrip />
+    
+    <Box sx={{
+      padding: "0rem 2rem", 
+      background: "#fff",
+      '@media (max-width: 768px)': {
+        padding: "1rem 2rem"
+      }
+    }}>
+      <FooterStrip />
+    </Box>
     </>
   );
 }

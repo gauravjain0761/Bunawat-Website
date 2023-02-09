@@ -155,7 +155,15 @@ const UserProfile = () => {
         </Tab.Container>
       </Container>
     </div>
-    <FooterStrip />
+    <Box sx={{
+      padding: "0rem 2rem", 
+      background: "#fff",
+      '@media (max-width: 768px)': {
+        padding: "1rem 2rem"
+      }
+      }}>
+      <FooterStrip />
+    </Box>
     </>
   );
 }

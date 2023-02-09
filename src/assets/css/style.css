@@ -1109,6 +1109,8 @@ body[main-sidebar="shopsidebar"] .shop_sidebar {
 
 .product_info_right_section_wrap {
     background-color: #EBEAED;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .product_filters {
@@ -1172,6 +1174,7 @@ li.common_option_wrap {
     color: #2A3592;
     font-weight: 600;
     font-family: Newhero10;
+    letter-spacing: -0.02em;
 }
 
 .product_filters_wrap {
@@ -1933,9 +1936,11 @@ li.common_option_wrap {
 .slaman_link p {
     font-size: 14px;
     color: #2A3592;
-    font-weight: 500;
     margin-right: 30px;
     font-weight: 600;
+    letter-spacing: -0.02em;
+    text-transform: capitalize;
+    font-family: Newhero10;
 }
 
 .color_list {

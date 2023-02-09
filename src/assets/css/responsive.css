@@ -350,7 +350,7 @@
 
     .summer_list_link p,
     .summer_list_link_wrap p {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .common_home_banner {
@@ -366,6 +366,9 @@
         overflow-x: auto;
         overflow-y: hidden;
         padding-bottom: 15px;
+        padding-left: 12px;
+        margin-left: -12px;
+        margin-right: -14px;
     }
 
     .tab_section_wrap .nav-tabs .nav-link {
@@ -390,7 +393,7 @@
 
     .summer_list_link p,
     .summer_list_link_wrap p {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .cloth_info_title .summer_list_link {
@@ -624,6 +627,9 @@
     .mobile_summer_list_link_wrap{
         margin-bottom: -8px !important;
     }
+    .mobile_summer_list_link_wrap p{
+        font-family: Newhero10;
+    }
     
     /* .mobile_save_wrap{
        margin-bottom: 10px;
@@ -799,7 +805,7 @@
 
     .summer_list_link p,
     .summer_list_link_wrap p {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .tab_common_contain .row {
@@ -816,7 +822,7 @@
 
     .summer_list_link p,
     .summer_list_link_wrap p {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .common_tab_title {
@@ -824,7 +830,7 @@
     }
 
     .social_media_wrap {
-        padding: 20px 0;
+        padding: 20px 20px 20px 0;
     }
 
     .cloth_wrap .cloth_inner .row>div {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Rating } from "@mui/material";
+import { Box, Rating } from "@mui/material";
 import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./reviews.css";
@@ -226,7 +226,15 @@ const Reviews = () => {
           </div>
         </Container>
       </div>
+    <Box sx={{
+      padding: "0rem 2rem", 
+      background: "#fff",
+      '@media (max-width: 768px)': {
+        padding: "1rem 2rem"
+      }
+      }}>
       <FooterStrip />
+    </Box>
     </>
   );
 };

@@ -280,7 +280,15 @@ const Checkout = () => {
       </div>
       <ApplyCouponModal showCoupon={showCoupon} handleClose={handleClose} />
       <CodConfirmationModal showCodModal={showCodModal} handleCloseCodModal={handleCloseCodModal} />
-      <FooterStrip />
+      
+      <Box sx={{ 
+        padding: "0rem 2rem",
+        '@media (max-width: 768px)': {
+        padding: "1rem 2rem"
+        } 
+      }}>
+        <FooterStrip />
+      </Box>
     </>
   );
 };

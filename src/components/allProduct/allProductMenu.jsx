@@ -154,7 +154,7 @@ const AllProductMenu = ({ data, singleData, setSelectedId, refetch }) => {
                     </div>
                 </div>
             </div>
-            <div style={{ padding: "0rem 1rem" }}>
+            <div style={{ padding: "0rem 2rem" }}>
                 <FooterStrip />
             </div>
             <ProductFilters />

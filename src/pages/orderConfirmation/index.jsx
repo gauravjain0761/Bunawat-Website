@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import "./orderConfirmation.css";
 import FooterStrip from "../../components/footer/footerStrip";
 import ShippingStatus from '../../components/OrderConfirmation/shippingStatus';
+import { Box } from '@mui/material';
 
 const OrderConfirmation = () => {
   return (
@@ -194,7 +195,15 @@ const OrderConfirmation = () => {
             </div>
     </Container>
     <ShippingStatus />
-    <FooterStrip />
+    <Box style={{
+      padding: "0rem 2rem", 
+      background: "#fff",
+      '@media (max-width: 768px)': {
+        padding: "1rem 2rem"
+      }
+    }}>
+       <FooterStrip />
+    </Box>
     </div>
     
   );

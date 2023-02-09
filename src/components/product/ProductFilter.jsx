@@ -98,7 +98,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                                     <div className="common_option">
                                                         <p>
                                                             <div className="common_option">
-                                                                <span style={{ textTransform: "uppercase" }}>Select {item}</span>
+                                                                <span style={{ textTransform: "capitalize" }}>Select {item}</span>
                                                             </div>
                                                         </p>
                                                     </div>

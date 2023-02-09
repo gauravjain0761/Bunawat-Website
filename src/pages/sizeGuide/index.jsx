@@ -3,6 +3,7 @@ import { Col, Container, Row, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import "./sizeguide.css";
 import FooterStrip from "../../components/footer/footerStrip";
+import { Box } from '@mui/material';
 
 const SizeGuide = () => {
     const size = [
@@ -131,7 +132,16 @@ const SizeGuide = () => {
             </Container>
         </div>
       </div>
-        <FooterStrip />
+
+    <Box sx={{
+        padding: "0rem 2rem", 
+        background: "#fff",
+        '@media (max-width: 768px)': {
+        padding: "1rem 2rem"
+        }
+    }}>
+      <FooterStrip />
+    </Box>
     </>
   );
 }

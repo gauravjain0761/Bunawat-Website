@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import React from 'react';
 import { Button, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -22,7 +23,14 @@ const ErrorPage = () => {
       </div>
     </Container>
     </div>
-    <FooterStrip />
+      <Box sx={{ 
+        padding: "0rem 2rem",
+        '@media (max-width: 768px)': {
+        padding: "1rem 2rem"
+        } 
+      }}>
+        <FooterStrip />
+      </Box>
     </>
   );
 }
