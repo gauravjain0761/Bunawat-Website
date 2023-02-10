@@ -22,10 +22,13 @@ const UserProfileModule = () => {
                   width="22"
                   style={{ marginRight: "8px" }}
                 />
-                order #{list?.order_num}
+                order #{list?.order_num} <br /> <br />
+                <span style={{ paddingTop: '5px' }}>{moment(list?.createdAt).format("Do MMM YYYY")}</span>
               </h6>
             </div>
-            <span>{moment(list?.createdAt).format("Do MMM YYYY")}</span>
+            <h5 style={{ fontSize: '16px' }}>Total : {getNumberWithComma(Number(list?.items?.reduce((total, price) => {
+              return total + (Number(price?.qty) * Number(price?.amount))
+            }, 0)))}</h5>
           </div>
           {list?.items?.map(item => (
             <div className="userProfileModule_box_list">
@@ -49,7 +52,7 @@ const UserProfileModule = () => {
                 />
               </div>
               <div>
-                <h6>Order Confirmed</h6>
+                <h6>Order {list?.order_status}</h6>
                 <span>We’ll send you tracking details when it ships</span>
               </div>
             </div>

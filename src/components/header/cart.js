@@ -95,7 +95,7 @@ const Cart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
     }, [cartList])
 
     return (
-        <div className="cart_inner">
+        <div className="cart_inner card_fixed">
             <Tabs
                 defaultActiveKey="cart"
                 id="uncontrolled-tab-example"

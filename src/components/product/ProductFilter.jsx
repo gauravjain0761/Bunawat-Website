@@ -227,7 +227,8 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                     <span>Add</span>
                                     <span>
                                         {/* <s>₹5,200</s> ₹4,500 */}
-                                        <s>{getNumberWithComma(selectedProduct?.cost_price ?? 0)}</s> {getNumberWithComma(selectedProduct?.sale_price ?? 0)}
+                                        {/* <s>{getNumberWithComma(selectedProduct?.cost_price ?? 0)}</s>  */}
+                                        {getNumberWithComma(selectedProduct?.sale_price ?? 0)}
                                     </span>
                                 </button>
                             }

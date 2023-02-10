@@ -7,57 +7,59 @@ import SavedAddressModule from '../../components/userProfile/savedAddressModule'
 import UserProfileModule from '../../components/userProfile/userProfileModule';
 import FooterStrip from "../../components/footer/footerStrip";
 import { Box } from '@mui/material';
+import { useSelector } from 'react-redux';
 
 const UserProfile = () => {
+  const userData = useSelector(state => state?.user?.userData)
   return (
     <>
-    <div id='userProfile'>
-      <Container className='userProfile_desktop'>
-      <Tab.Container id="left-tabs-example" defaultActiveKey="userProfile">
-        <Row>
-            <Col xs={12} md={5}>
-               <div className='userProfile_man'>
-                <h3>Hello Jemma</h3>
-                <p>This is your space. Track events & orders and update your saved details from here.</p>
-               </div>
-               <div className='userProfile_menu'>
-                 <Nav variant="pills" className="flex-column">
-                  <Nav.Item>
-                    <Link to="/userProfile">
-                      <Nav.Link eventKey="userProfile" className='userProfile_menu_list'>
-                            <img src="../img/ordersshop.png" alt='ordersshop' height="20" style={{marginRight: "8px"}} />
-                            Orders & Shop
-                      </Nav.Link>
-                    </Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Link to="/userProfile">
-                      <Nav.Link eventKey="eventsClub" className='userProfile_menu_list'>
-                            <img src="../img/eventsclub.png" alt='eventsclub' height="20" style={{marginRight: "8px"}} />
-                            Events & Club
-                      </Nav.Link>
-                    </Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Link to="/userProfile">
-                      <Nav.Link eventKey="savedAddress" className='userProfile_menu_list'>
-                        <img src="../img/shippingto.png" alt='Saved Address' height="20" style={{marginRight: "8px"}} />
-                        Saved Address
-                      </Nav.Link>
-                    </Link>
-                  </Nav.Item>
-                 </Nav>
-                 
-                 <div className='userProfile_menu_list_third'>
+      <div id='userProfile'>
+        <Container className='userProfile_desktop'>
+          <Tab.Container id="left-tabs-example" defaultActiveKey="userProfile">
+            <Row>
+              <Col xs={12} md={5}>
+                <div className='userProfile_man'>
+                  <h3>Hello {userData?.fname ?? "" + userData?.lname ?? ""}</h3>
+                  <p>This is your space. Track events & orders and update your saved details from here.</p>
+                </div>
+                <div className='userProfile_menu'>
+                  <Nav variant="pills" className="flex-column">
+                    <Nav.Item>
+                      <Link to="/userProfile">
+                        <Nav.Link eventKey="userProfile" className='userProfile_menu_list'>
+                          <img src="../img/ordersshop.png" alt='ordersshop' height="20" style={{ marginRight: "8px" }} />
+                          Orders & Shop
+                        </Nav.Link>
+                      </Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Link to="/userProfile">
+                        <Nav.Link eventKey="eventsClub" className='userProfile_menu_list'>
+                          <img src="../img/eventsclub.png" alt='eventsclub' height="20" style={{ marginRight: "8px" }} />
+                          Events & Club
+                        </Nav.Link>
+                      </Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Link to="/userProfile">
+                        <Nav.Link eventKey="savedAddress" className='userProfile_menu_list'>
+                          <img src="../img/shippingto.png" alt='Saved Address' height="20" style={{ marginRight: "8px" }} />
+                          Saved Address
+                        </Nav.Link>
+                      </Link>
+                    </Nav.Item>
+                  </Nav>
+
+                  <div className='userProfile_menu_list_third'>
                     <h6>
-                    <img src="../img/storecredit.png" alt='Store credit' height="20" style={{marginRight: "8px"}} />
-                    Store credit
+                      <img src="../img/storecredit.png" alt='Store credit' height="20" style={{ marginRight: "8px" }} />
+                      Store credit
                     </h6>
                     <h4>₹3,500 </h4>
-                 </div>
-               </div>
-            </Col>
-            <Col xs={12} md={7}>
+                  </div>
+                </div>
+              </Col>
+              <Col xs={12} md={7}>
                 <Tab.Content>
                   <Tab.Pane eventKey="userProfile">
                     <Container>
@@ -75,95 +77,95 @@ const UserProfile = () => {
                     </Container>
                   </Tab.Pane>
                 </Tab.Content>
-            </Col>
-        </Row>
-        </Tab.Container>
-      </Container>
+              </Col>
+            </Row>
+          </Tab.Container>
+        </Container>
 
-     {/* for mobile view start */}
-      <Container className='userProfile_mobile'>
-      <Tab.Container id="left-tabs-example" defaultActiveKey="userProfile">
-        <Row>
-            <Col xs={12} md={5}>
-               <div className='userProfile_man'>
-                <h3>Hello Jemma</h3>
-                <p>This is your space. Track events & orders and update your saved details from here.</p>
-               </div>
-               <div className='userProfile_menu'>
-                 <Nav variant="pills" className="flex-column">
-               {/* <Row>
+        {/* for mobile view start */}
+        <Container className='userProfile_mobile'>
+          <Tab.Container id="left-tabs-example" defaultActiveKey="userProfile">
+            <Row>
+              <Col xs={12} md={5}>
+                <div className='userProfile_man'>
+                  <h3>Hello Jemma</h3>
+                  <p>This is your space. Track events & orders and update your saved details from here.</p>
+                </div>
+                <div className='userProfile_menu'>
+                  <Nav variant="pills" className="flex-column">
+                    {/* <Row>
                 <Col xs={6}> */}
-                  <Box sx={{display: "flex", justifyContent: "space-between", marginBottom: "10px"}}>
-                  <Nav.Item>
-                    <Link to="/userProfile">
-                      <Nav.Link eventKey="userProfile" className='userProfile_menu_list'>
-                            <img src="../img/ordersshop.png" alt='ordersshop' height="20" style={{marginRight: "8px"}} />
+                    <Box sx={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
+                      <Nav.Item>
+                        <Link to="/userProfile">
+                          <Nav.Link eventKey="userProfile" className='userProfile_menu_list'>
+                            <img src="../img/ordersshop.png" alt='ordersshop' height="20" style={{ marginRight: "8px" }} />
                             Orders & Shop
-                      </Nav.Link>
-                    </Link>
-                  </Nav.Item>
+                          </Nav.Link>
+                        </Link>
+                      </Nav.Item>
 
-                  <Nav.Item>
-                    <Link to="/userProfile" style={{background: "#E1E3EC"}}>
-                      <Nav.Link eventKey="eventsClub" className='userProfile_menu_list'>
-                            <img src="../img/eventsclub.png" alt='eventsclub' height="20" style={{marginRight: "8px"}} />
+                      <Nav.Item>
+                        <Link to="/userProfile" style={{ background: "#E1E3EC" }}>
+                          <Nav.Link eventKey="eventsClub" className='userProfile_menu_list'>
+                            <img src="../img/eventsclub.png" alt='eventsclub' height="20" style={{ marginRight: "8px" }} />
                             Events & Club
-                      </Nav.Link>
-                    </Link>
-                  </Nav.Item>
-                  </Box>
-                {/* </Col> */}
-                {/* <Col xs={6}> */}
-                {/* </Col> */}
-               {/* </Row> */}
+                          </Nav.Link>
+                        </Link>
+                      </Nav.Item>
+                    </Box>
+                    {/* </Col> */}
+                    {/* <Col xs={6}> */}
+                    {/* </Col> */}
+                    {/* </Row> */}
 
-                <div className='userProfile_menu_list_third'>
-                    <h6>
-                    <img src="../img/storecredit.png" alt='Store credit' height="20" style={{marginRight: "8px"}} />
-                    Store credit
-                    </h6>
-                    <h4>₹3,500 </h4>
-                 </div>
+                    <div className='userProfile_menu_list_third'>
+                      <h6>
+                        <img src="../img/storecredit.png" alt='Store credit' height="20" style={{ marginRight: "8px" }} />
+                        Store credit
+                      </h6>
+                      <h4>₹3,500 </h4>
+                    </div>
 
-                  <Nav.Item style={{marginBottom: "1rem"}}>
-                    <Link to="/userProfile">
-                      <Nav.Link eventKey="savedAddress" className='userProfile_menu_list'>
-                        <img src="../img/shippingto.png" alt='Saved Address' height="20" style={{marginRight: "8px"}} />
-                        Saved Address
-                      </Nav.Link>
-                    </Link>
-                  </Nav.Item>
-                 </Nav>
-                 
-                 
-               </div>
-            </Col>
-            <Col xs={12} md={7}>
+                    <Nav.Item style={{ marginBottom: "1rem" }}>
+                      <Link to="/userProfile">
+                        <Nav.Link eventKey="savedAddress" className='userProfile_menu_list'>
+                          <img src="../img/shippingto.png" alt='Saved Address' height="20" style={{ marginRight: "8px" }} />
+                          Saved Address
+                        </Nav.Link>
+                      </Link>
+                    </Nav.Item>
+                  </Nav>
+
+
+                </div>
+              </Col>
+              <Col xs={12} md={7}>
                 <Tab.Content>
                   <Tab.Pane eventKey="userProfile">
-                      <UserProfileModule />
+                    <UserProfileModule />
                   </Tab.Pane>
                   <Tab.Pane eventKey="eventsClub">
-                      <EventsClubModule />
+                    <EventsClubModule />
                   </Tab.Pane>
                   <Tab.Pane eventKey="savedAddress">
-                      <SavedAddressModule />
+                    <SavedAddressModule />
                   </Tab.Pane>
                 </Tab.Content>
-            </Col>
-        </Row>
-        </Tab.Container>
-      </Container>
-    </div>
-    <Box sx={{
-      padding: "0rem 2rem", 
-      background: "#fff",
-      '@media (max-width: 768px)': {
-        padding: "1rem 2rem"
-      }
+              </Col>
+            </Row>
+          </Tab.Container>
+        </Container>
+      </div>
+      <Box sx={{
+        padding: "0rem 2rem",
+        background: "#fff",
+        '@media (max-width: 768px)': {
+          padding: "1rem 2rem"
+        }
       }}>
-      <FooterStrip />
-    </Box>
+        <FooterStrip />
+      </Box>
     </>
   );
 }
