@@ -17,6 +17,7 @@ import PaymentOptions from "../components/checkout/PaymentOptions";
 import Storage from "../services/storage";
 import { setUserData } from "../redux/reducers/user";
 import { useDispatch } from "react-redux";
+import { setCartCount } from "../redux/reducers/cart";
 
 
 export default function Index() {
@@ -24,6 +25,7 @@ export default function Index() {
 
     useEffect(() => {
         dispatch(setUserData(JSON.parse(Storage.get("userData")) ?? {}));
+        dispatch(setCartCount(JSON.parse(Storage.get("cartData"))?.length ?? 0));
     }, [])
 
     return (
