@@ -31,7 +31,13 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, refetch }) => {
               return (
                 <Tab eventKey={index} key={item?._id} title="">
                   <div className="common_home_banner">
-                    <img src={singleCollection?.image} alt="hero_image" style={{ position: 'absolute', width: '100%' }} />
+                    {singleCollection?.mediaType == "VIDEO" ?
+                      <video loop autoPlay muted style={{ position: 'absolute', width: '100%' }}>
+                        <source src={singleCollection?.video} type="video/mp4" />
+                      </video>
+                      :
+                      <img src={singleCollection?.image} alt="hero_image" style={{ position: 'absolute', width: '100%' }} />
+                    }
                     <div className="container">
                       <div className="home_banner_title">
                         <h1 className="common_title">{singleCollection?.title}</h1>

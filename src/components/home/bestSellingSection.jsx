@@ -150,10 +150,13 @@ const BestSellingSection = ({ singleData, keyVal, data, refetch }) => {
           </div>
         </div>
         <div className="best_sale_video">
-          <img src={singleList?.image} alt="hero_image" style={{ width: '100%', height: '100%' }} />
-          {/* <video loop autoPlay muted>
-            <source src={best_selling_video} type="video/mp4" />
-          </video> */}
+          {singleList?.mediaType == "VIDEO" ?
+            <video loop autoPlay muted style={{ width: '100%', height: '100%' }}>
+              <source src={singleList?.video} type="video/mp4" />
+            </video>
+            :
+            <img src={singleList?.image} alt="hero_image" style={{ width: '100%', height: '100%' }} />
+          }
         </div>
       </div>
 
@@ -164,11 +167,11 @@ const BestSellingSection = ({ singleData, keyVal, data, refetch }) => {
               {singleList?.products?.map((list, index) => {
                 return (
                   <>
-                    <div className={getClassWidth(index, singleList?.products?.length)} style={{paddingRight: "5px", paddingLeft: "5px"}}>
+                    <div className={getClassWidth(index, singleList?.products?.length)} style={{ paddingRight: "5px", paddingLeft: "5px" }}>
                       <div className="cloth_deatils_wrap">
-                        <div style={{textAlign: "center"}}>
+                        <div style={{ textAlign: "center" }}>
                           <Link to={`/product/${list?._id}/${data?.[keyVal]?.type ?? ""}`} className="cloth_deatils_link">
-                            <img src={list?.image} alt="cloth" className="product_below_image"  width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "640px" : "560px"} />
+                            <img src={list?.image} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "640px" : "560px"} />
                           </Link>
                         </div>
                         <div className="cloth_info_title">
