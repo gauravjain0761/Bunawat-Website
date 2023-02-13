@@ -854,7 +854,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch 
                         </div>
                         <div className="recently_col_wrap">
                             <div className="row">
-                                <div className="col">
+                                <div className="col" style={{ paddingLeft: '2px', paddingRight: '2px'}}>
                                     <div className="recent_view_product">
                                         <img src={recent_view_1} alt="recent_view_img" />
                                         <div className="recent_price">
@@ -862,7 +862,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch 
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col">
+                                <div className="col" style={{ paddingLeft: '2px', paddingRight: '2px'}}>
                                     <div className="recent_view_product">
                                         <img src={recent_view_2} alt="recent_view_img" />
                                         <div className="recent_price">
@@ -870,7 +870,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch 
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col">
+                                <div className="col" style={{ paddingLeft: '2px', paddingRight: '2px'}}>
                                     <div className="recent_view_product">
                                         <img src={recent_view_3} alt="recent_view_img" />
                                         <div className="recent_price">
@@ -878,7 +878,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch 
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col">
+                                <div className="col" style={{ paddingLeft: '2px', paddingRight: '2px'}}>
                                     <div className="recent_view_product">
                                         <img src={recent_view_4} alt="recent_view_img" />
                                         <div className="recent_price">
@@ -886,7 +886,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch 
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col">
+                                <div className="col" style={{ paddingLeft: '2px', paddingRight: '2px'}}>
                                     <div className="recent_view_product">
                                         <img src={recent_view_5} alt="recent_view_img" />
                                         <div className="recent_price">
@@ -894,7 +894,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch 
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col">
+                                <div className="col" style={{ paddingLeft: '2px', paddingRight: '2px'}}>
                                     <div className="recent_view_product">
                                         <img src={recent_view_6} alt="recent_view_img" />
                                         <div className="recent_price">
@@ -902,7 +902,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch 
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col">
+                                <div className="col" style={{ paddingLeft: '2px', paddingRight: '2px'}}>
                                     <div className="recent_view_product">
                                         <img src={recent_view_1} alt="recent_view_img" />
                                         <div className="recent_price">
@@ -910,7 +910,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch 
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col">
+                                <div className="col" style={{ paddingLeft: '2px', paddingRight: '2px'}}>
                                     <div className="recent_view_product">
                                         <img src={recent_view_2} alt="recent_view_img" />
                                         <div className="recent_price">
@@ -918,7 +918,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch 
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col">
+                                <div className="col" style={{ paddingLeft: '2px', paddingRight: '2px'}}>
                                     <div className="recent_view_product">
                                         <img src={recent_view_3} alt="recent_view_img" />
                                         <div className="recent_price">
@@ -926,7 +926,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch 
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col">
+                                <div className="col" style={{ paddingLeft: '2px', paddingRight: '2px'}}>
                                     <div className="recent_view_product">
                                         <img src={recent_view_4} alt="recent_view_img" />
                                         <div className="recent_price">

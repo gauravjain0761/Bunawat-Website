@@ -143,6 +143,10 @@
  .price_select_wrap_box .price_select_wrap_box_child .price_select_wrap_box_child_data {
      border-bottom: 1px solid #2A3592;
      color: #2A3592;
+     display: flex;
+     margin-left: 16px;
+     margin-bottom: 10px;
+     justify-content: space-between;
  }
 
  .price_select_wrap_box .price_select_wrap_box_child .price_select_wrap_box_child_data span {
@@ -239,3 +243,11 @@
          display: block !important;
      }
  }
+
+/* This is extra css for radio opacity isuse */
+ input[type=checkbox], input[type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+    opacity: 100%;
+}
+ 

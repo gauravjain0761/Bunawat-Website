@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./product.css";
 import { useParams } from "react-router-dom";
 import SwipeableViews from "react-swipeable-views";
 import ProductCard from "../../components/product/productCard";
@@ -88,7 +89,7 @@ const Product = () => {
 
   return (
     <>
-      <SwipeableViews containerStyle={{ height: '100%' }} enableMouseEvents index={swipeableIndex} disabled={swipeableDisable} onChangeIndex={(index) => getCurrentBottomData(index)} >
+      <SwipeableViews containerStyle={{ height: '100%'}} enableMouseEvents index={swipeableIndex} disabled={swipeableDisable} onChangeIndex={(index) => getCurrentBottomData(index)} >
         {productList?.map((data, index) => {
           return (
             <ProductCard key={data?._id} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} width={width} refetch={refetch} />

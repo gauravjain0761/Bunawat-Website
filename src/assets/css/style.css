@@ -1131,7 +1131,7 @@ body[main-sidebar="shopsidebar"] .shop_sidebar {
     right: 0px;
     margin-left: auto;
     margin-right: auto;
-    bottom: 10px;
+    bottom: 0px;
     width: 99%;
 }
 
@@ -1185,6 +1185,9 @@ li.common_option_wrap {
     font-weight: 600;
     font-family: Newhero10;
     letter-spacing: -0.02em;
+}
+.common_radio_btn input[type=radio]{
+    color: #2A3592;
 }
 
 .product_filters_wrap {
@@ -1900,6 +1903,7 @@ li.common_option_wrap {
 
 .recent_view_product {
     position: relative;
+    height: 145px;
 }
 
 .recent_price p {

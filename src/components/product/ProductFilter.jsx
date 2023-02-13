@@ -11,6 +11,8 @@ import { useAddToCartMutation } from '../../services/api';
 import Storage from '../../services/storage';
 import { useDispatch } from 'react-redux';
 import { setCartCount } from '../../redux/reducers/cart';
+import SelectModal from './selectModal';
+import { Box } from '@mui/material';
 
 const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedImage }) => {
     const [filterList, setFilterList] = useState([]);
@@ -20,6 +22,10 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
     const [isCartAdd, setIsCartAdd] = useState(false);
     const [addToCart, { isLoading }] = useAddToCartMutation()
     const dispatch = useDispatch()
+    const [showSelect, setShowSelect] = useState(false);
+
+    const handleClose = () => setShowSelect(false);
+    const handleShow = () => setShowSelect(true);
 
     useEffect(() => {
         let temp = [...filters] ?? []
@@ -98,12 +104,39 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
             <div className="product_filters">
                 <div className='product_filters_wrap'>
                     <div className="product_filters_wrap product_page_filtter">
+                        <Box 
+                            className='common_select_wrap' 
+                            onClick={handleShow}
+                            sx={{
+                                display: "none",
+                                '@media (max-width: 768px)':{
+                                    display: "block",
+                                }
+                            }}
+                            >
+                            <MenuItem value="defaultValue" className="common_option_wrap">
+                                <div className="common_option">
+                                    <p>
+                                        <div className="common_option">
+                                            <span style={{ textTransform: "capitalize" }}>Size: Select </span>
+                                        </div>
+                                    </p>
+                                </div>
+                            </MenuItem>
+                        </Box>
+
                         {Object.keys(attributeList)?.map((item, index) => {
                             console.log(attributeList, "attributeList", attributeData)
                             return (
                                 <>
-                                    <div
-                                        className="common_select_wrap first_option">
+                                    <Box
+                                        className="common_select_wrap first_option"
+                                        sx={{
+                                            '@media (max-width: 768px)':{
+                                                display: 'none',
+                                            }
+                                        }}
+                                        >
                                         <FormControl>
                                             <Select
                                                 defaultValue='defaultValue'
@@ -164,7 +197,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                                 }
                                             </Select>
                                         </FormControl>
-                                    </div>
+                                    </Box>
                                 </>
                             )
                         })}
@@ -250,6 +283,8 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                     </div>
                 </div>
             </div>
+
+            <SelectModal showSelect={showSelect} handleClose={handleClose} />
         </>
     );
 }
