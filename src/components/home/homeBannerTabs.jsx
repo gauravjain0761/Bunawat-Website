@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { getNumberWithComma } from "../../utils/utils";
 import BestSellingSection from "./bestSellingSection";
 import SaveButton from "../common/save";
+import { Box } from "@mui/material";
 
 const HomeBannerTabs = ({ data, singleData, setSelectedId, refetch }) => {
   const [key, setKey] = useState(0);
@@ -225,9 +226,36 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, refetch }) => {
                                           </svg>
                                         </span>
                                       </div>
-                                      <p>{getNumberWithComma(list?.sale_price ?? 0)} </p>
+                                      <p style={{
+                                        display: "flex", 
+                                        justifyContent: "space-between",
+                                        alignItems: "center",
+                                        }}>
+                                      <Box sx={{
+                                        '@media (max-width: 768px)':{
+                                          marginTop: "8px"
+                                        },
+                                      }}>
+                                        {getNumberWithComma(list?.sale_price ?? 0)} 
+                                      </Box>  
+                                      <Box sx={{
+                                        display: "none",
+                                        '@media (max-width: 768px)':{
+                                          display: "block",
+                                        }
+                                        }}>
+                                      <SaveButton id={list?._id} isWishlist={list?.isWishlist} refetch={refetch} />
+                                      </Box>
+                                      </p>
                                     </div>
-                                    <SaveButton id={list?._id} isWishlist={list?.isWishlist} refetch={refetch} />
+                                    <Box sx={{
+                                      display: "block",
+                                        '@media (max-width: 768px)':{
+                                          display: "none",
+                                        }
+                                      }}>
+                                      <SaveButton id={list?._id} isWishlist={list?.isWishlist} refetch={refetch} />
+                                    </Box>
                                   </div>
                                 </div>
                               </Link>

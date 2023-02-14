@@ -10,6 +10,7 @@ export const CustomPopOver = styled(Popover)(({ theme }) => ({
             right: "0px",
             bottom: "0px",
             maxWidth: "100%",
+            maxHeight: "fit-content",
         }
     },
     borderRadius: '16px !important'

@@ -22,8 +22,9 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Body className="login_body">
-          <Box sx={{width: "320px"}}>
+        <Modal.Body style={{padding: "2rem 1rem"}}>
+          <Box sx={{width: "100%"}}>
+          <Box sx={{display: "flex"}}>
           <div className="common_select_wrap">
             <FormControl>
               {showMostPopular &&
@@ -76,7 +77,7 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
                   setShowMaterials(false)
                 }
               }}
-               sx={{backgroundColor: "#fff", marginBottom: "10px"}}
+               sx={{backgroundColor: "#f2f4ff", marginBottom: "10px"}}
                className="common_option_wrap">
                 <div className="common_option">
                   <p className="common_option_p">Most Popular</p>
@@ -238,7 +239,7 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
                   setShowMaterials(false)
                 }
               }}
-               sx={{backgroundColor: "#fff", marginBottom: "10px"}}
+               sx={{backgroundColor: "#f2f4ff", marginBottom: "10px"}}
                className="common_option_wrap">
                 <div className="common_option">
                   <div className="d-flex align-items-center common_radio_btn">
@@ -264,8 +265,9 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
               </MenuItem>
             </FormControl>
           </div>
+          </Box>
 
-
+          <Box sx={{display: "flex"}}>
           <div className="common_select_wrap">
             <FormControl>
               {showColor && (
@@ -357,7 +359,7 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
                   setShowMaterials(false)
                 }
               }} 
-              sx={{backgroundColor: "#fff", marginBottom: "10px"}}
+              sx={{backgroundColor: "#f2f4ff", marginBottom: "10px"}}
               className="common_option_wrap">
                 <div className="common_option">
                   <div className="d-flex align-items-center common_radio_btn">
@@ -523,7 +525,7 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
                   setShowMaterials(false)
                 }
               }} 
-              sx={{backgroundColor: "#fff", marginBottom: "10px"}}
+              sx={{backgroundColor: "#f2f4ff", marginBottom: "10px"}}
               className="common_option_wrap">
                 <div className="common_option">
                   <p>
@@ -538,7 +540,9 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
               </MenuItem>
             </FormControl>
           </div>
+          </Box>
 
+          <Box sx={{display: "flex"}}>
           <div className="common_select_wrap">
             <FormControl>
               {showMaterials &&
@@ -714,7 +718,7 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
                   setShowMaterials(true)
                 }
               }} 
-              sx={{backgroundColor: "#fff", marginBottom: "10px"}}
+              sx={{backgroundColor: "#f2f4ff", marginBottom: "10px"}}
               className="common_option_wrap">
                 <div className="common_option">
                   <div className="d-flex align-items-center common_radio_btn">
@@ -763,7 +767,7 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
                   setShowMaterials(false)
                 }
               }} 
-              sx={{backgroundColor: "#fff", marginBottom: "10px"}}
+              sx={{backgroundColor: "#f2f4ff", marginBottom: "10px"}}
               className="common_option_wrap">
                 <div className="common_option">
                   <div className="d-flex align-items-center common_radio_btn">
@@ -789,8 +793,9 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
               </MenuItem>
             </FormControl>
           </div>
+          </Box>
 
-          <button className="clear_btn">
+          <button className="clear_btn" style={{marginRight: "20px"}}>
             <span>Clear</span>
             <svg
               width="8"
@@ -824,6 +829,9 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
                 </clipPath>
               </defs>
             </svg>
+          </button>
+          <button className="clear_btn" onClick={handleClose}>
+            <span>Apply</span>
           </button>
           </Box>
         </Modal.Body>

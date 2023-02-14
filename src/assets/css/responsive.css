@@ -402,6 +402,7 @@
     }
     .summer_list_link {
         margin-bottom: 5px;
+        justify-content: space-between;
     }
 
     .shop_hald_info h3 {

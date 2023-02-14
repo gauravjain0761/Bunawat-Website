@@ -12,7 +12,7 @@ import Storage from '../../services/storage';
 import { useDispatch } from 'react-redux';
 import { setCartCount } from '../../redux/reducers/cart';
 import { Modal } from "react-bootstrap";
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 
                                                     
 export const SelectModal = ({showSelect, handleClose, attributeList, attributeData, setAttributeData}) => {
@@ -24,18 +24,18 @@ export const SelectModal = ({showSelect, handleClose, attributeList, attributeDa
           aria-labelledby="contained-modal-title-vcenter"
           centered
         >
-          <Modal.Body className="login_body">
+          <Modal.Body style={{padding: "2rem 1rem"}}>
           {Object.keys(attributeList)?.map((item, index) => {
                             console.log(attributeList, "attributeList", attributeData)
                             return (
                                 <>
                                     <Box
                                         className="common_select_wrap first_option"
-                                        sx={{width: '400px'}}
+                                        sx={{maxWidth: '100%'}}
                                         >
                                         <FormControl>
                                             <Select
-                                                sx={{backgroundColor: "#fff", width: "200px", marginBottom: "10px"}}
+                                                sx={{backgroundColor: "#F2F4FF", width: "100%", marginBottom: "10px"}}
                                                 defaultValue='defaultValue'
                                                 value={attributeData?.[item]}
                                                 onChange={(e) => {
@@ -98,6 +98,9 @@ export const SelectModal = ({showSelect, handleClose, attributeList, attributeDa
                                 </>
                             )
                         })}
+                        <button className="clear_btn" onClick={handleClose}>
+                            <span>Apply</span>
+                        </button>
           </Modal.Body>
         </Modal>
       </>
