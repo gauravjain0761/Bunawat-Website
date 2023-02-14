@@ -242,6 +242,10 @@
      .product_filters_for_mobile {
          display: block !important;
      }
+     
+     .cloth_inner .nav {
+        justify-content: flex-start;
+    }
  }
 
 /* This is extra css for radio opacity isuse */

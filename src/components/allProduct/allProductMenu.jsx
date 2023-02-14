@@ -75,7 +75,7 @@ const AllProductMenu = ({ data, singleData, setSelectedId, refetch }) => {
                             <h2><sapn className="limited_edition">Limited Edition</sapn>&nbsp; pieces by adept designers</h2>
                         </div>
                         <Tabs
-                            id="justify-tab-example"
+                            id="controlled-tab-example"
                             activeKey={key}
                             onSelect={(k) => {
                                 setKey(k)
