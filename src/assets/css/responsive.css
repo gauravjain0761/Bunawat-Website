@@ -858,6 +858,7 @@
 
     .cart_product_info {
         margin-left: 15px;
+        width: 66%;
     }
 
     .product_page .product_info_section_wrap {
@@ -929,5 +930,8 @@
 @media screen and (max-width: 768px) {
     .display_none_in_mobile{
         display: none;
+    }
+    .card_fixed .tab-content {
+        height: calc(86vh - 10px);
     }
 }

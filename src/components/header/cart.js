@@ -18,6 +18,7 @@ import { getNumberWithComma } from '../../utils/utils';
 import Storage from '../../services/storage';
 import { setCartCount } from '../../redux/reducers/cart';
 import { useDispatch } from 'react-redux';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 const Cart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
     const [cartList, setCartList] = useState([]);
@@ -189,7 +190,7 @@ const Cart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
                         </button>
                         : null}
                 </Tab>
-                <Tab eventKey="saved" title="Saved">
+                <Tab eventKey="saved" title={`Saved`}>
                     <div className='saved_wrapper'>
                         {console.log("wishlistData", wishlistData)}
                         {wishlistData?.data?.length > 0 ?
@@ -207,7 +208,7 @@ const Cart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
                                                     <span>₹2,000 </span>
                                                     <s>₹2,600</s>
                                                 </div>
-                                                {/* <button className='plus_cart'>
+                                                <button className='plus_cart'>
                                             <svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <g clipPath="url(#clip0_422_3736)">
                                                     <path d="M4.92999 0.930054V9.07005" stroke="#2A3592" strokeWidth="1.7" strokeMiterlimit="10" />
@@ -220,7 +221,7 @@ const Cart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
                                                 </defs>
                                             </svg>
                                             <span>Cart</span>
-                                        </button> */}
+                                        </button>
                                             </div>
                                         </div>
                                     </div>
