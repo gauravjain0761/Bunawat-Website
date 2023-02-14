@@ -11,8 +11,99 @@ import { useAddToCartMutation } from '../../services/api';
 import Storage from '../../services/storage';
 import { useDispatch } from 'react-redux';
 import { setCartCount } from '../../redux/reducers/cart';
-import SelectModal from './selectModal';
+import { Modal } from "react-bootstrap";
 import { Box } from '@mui/material';
+
+                                                    
+export const SelectModal = ({showSelect, handleClose, attributeList, attributeData, setAttributeData}) => {
+    return (
+      <>
+        <Modal
+          show={showSelect}
+          onHide={handleClose}
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <Modal.Body className="login_body">
+          {Object.keys(attributeList)?.map((item, index) => {
+                            console.log(attributeList, "attributeList", attributeData)
+                            return (
+                                <>
+                                    <Box
+                                        className="common_select_wrap first_option"
+                                        sx={{width: '400px'}}
+                                        >
+                                        <FormControl>
+                                            <Select
+                                                sx={{backgroundColor: "#fff", width: "200px", marginBottom: "10px"}}
+                                                defaultValue='defaultValue'
+                                                value={attributeData?.[item]}
+                                                onChange={(e) => {
+                                                    let newData = {}
+                                                    Object.entries({ ...attributeData, [item]: e.target.value }).forEach(([key, value], i) => {
+                                                        if (index >= i) {
+                                                            newData = { ...newData, [key]: value }
+                                                        } else {
+                                                            newData = { ...newData, [key]: 'defaultValue' }
+                                                        }
+                                                    });
+                                                    setAttributeData(newData)
+                                                }}
+                                                inputProps={{ "aria-label": "Without label" }}>
+                                                <MenuItem value="defaultValue" className="common_option_wrap">
+                                                    <div className="common_option">
+                                                        <p>
+                                                            <div className="common_option">
+                                                                <span style={{ textTransform: "capitalize" }}>Select {item}</span>
+                                                            </div>
+                                                        </p>
+                                                    </div>
+                                                </MenuItem>
+                                                {index == 0 ?
+                                                    _.uniqBy(attributeList?.[item], x => x?.label)?.map((list) => {
+                                                        return (
+                                                            <MenuItem value={list?.value} className="common_option_wrap">
+                                                                <div className="common_option">
+                                                                    <p>
+                                                                        <div className="common_option">
+                                                                            <div className="d-flex align-items-center common_radio_btn">
+                                                                                <span>{list?.label}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </p>
+                                                                </div>
+                                                            </MenuItem>
+                                                        )
+                                                    })
+                                                    :
+                                                    attributeList?.[item]?.filter(list => Object.values(attributeList)?.[index - 1]?.filter(x => x?.label == Object.values(attributeList)?.[index - 1]?.find(list => list?.value == attributeData[Object.keys(attributeList)?.[index - 1]])?.label)?.map(x => x?.value)?.includes(list?.value))?.map((list) => {
+                                                        return (
+                                                            <MenuItem value={list?.value} className="common_option_wrap">
+                                                                <div className="common_option">
+                                                                    <p>
+                                                                        <div className="common_option">
+                                                                            <div className="d-flex align-items-center common_radio_btn">
+                                                                                <span>{list?.label}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </p>
+                                                                </div>
+                                                            </MenuItem>
+                                                        )
+                                                    })
+                                                }
+                                            </Select>
+                                        </FormControl>
+                                    </Box>
+                                </>
+                            )
+                        })}
+          </Modal.Body>
+        </Modal>
+      </>
+    );
+}
+  
 
 const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedImage }) => {
     const [filterList, setFilterList] = useState([]);
@@ -284,7 +375,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                 </div>
             </div>
 
-            <SelectModal showSelect={showSelect} handleClose={handleClose} />
+            <SelectModal showSelect={showSelect} handleClose={handleClose} attributeList={attributeList} attributeData={attributeData} setAttributeData={setAttributeData} />
         </>
     );
 }

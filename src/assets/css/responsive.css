@@ -774,7 +774,10 @@
         display: flex;
         width: 100%;
         justify-content: space-between;
-        padding: 15px;
+        padding: 16px 30px;
+        position: absolute;
+        bottom: 188px;
+        z-index: 999;
     }
 
     .product_filters .slaman_link {

@@ -8,6 +8,7 @@ import parse from 'html-react-parser';
 import product_slider from "../../assets/img/product/slider_img.png";
 import ProductBottomData from './productBottomData';
 import SaveButton from '../common/save';
+import { Box } from '@mui/material';
 
 const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, productBottomData, width, refetch }) => {
     const settings = {
@@ -439,24 +440,13 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                         null
                     }
 
-                    <div className="col-md-6 product_info_right_section_wrap" onMouseEnter={() => setSwipeableDisable(false)} onTouchStart={() => setSwipeableDisable(false)}>
-                        <div>
-                            <Slider {...settings} className="product_slider">
-                                {[...product?.images, ...product?.videos?.slice(3, 4)]?.map(list => (
-                                    <div>
-                                        {list?.type == "VIDEO" ?
-                                            <video loop autoPlay muted height='800px'>
-                                                <source src={list?.url} type="video/mp4" />
-                                            </video>
-                                            :
-                                            <img src={list?.url} alt="slider" width='100%' height='800px' />
-                                        }
-                                    </div>
-                                ))}
-                            </Slider>
-                        </div>
-
-                        <div className="slaman_link">
+                    <Box 
+                     className="col-md-6 product_info_right_section_wrap" 
+                     onMouseEnter={() => setSwipeableDisable(false)} 
+                     onTouchStart={() => setSwipeableDisable(false)}
+                     sx={{position: "relative"}}
+                     >
+                        <Box className="slaman_link">
                             <p>Salmon Pink</p>
                             <ul className="color_list">
                                 <li
@@ -472,8 +462,23 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                 ></li>
                                 <li style={{ backgroundColor: "#037A44" }}></li>
                             </ul>
+                        </Box>
+                        <div>
+                            <Slider {...settings} className="product_slider">
+                                {[...product?.images, ...product?.videos?.slice(3, 4)]?.map(list => (
+                                    <div>
+                                        {list?.type == "VIDEO" ?
+                                            <video loop autoPlay muted height='800px'>
+                                                <source src={list?.url} type="video/mp4" />
+                                            </video>
+                                            :
+                                            <img src={list?.url} alt="slider" width='100%' height='800px' />
+                                        }
+                                    </div>
+                                ))}
+                            </Slider>
                         </div>
-                    </div>
+                    </Box>
                 </div>
             </div>
             {(width < 768) ? <BottomSheet
