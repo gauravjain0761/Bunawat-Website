@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -21,6 +22,11 @@ const JoinTheClubSection = () => {
                 Join
               </button>
             </div>
+            <Box sx={{
+              '@media (max-width: 768px)':{
+                marginTop: "46px",
+              }
+            }}>
             <Link to="/" className="common_link">
               <span>How it Works</span>
               <svg
@@ -56,6 +62,7 @@ const JoinTheClubSection = () => {
                 </defs>
               </svg>
             </Link>
+            </Box>
           </div>
         </div>
       </div>
