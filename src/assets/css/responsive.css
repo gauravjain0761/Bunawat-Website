@@ -932,6 +932,6 @@
         display: none;
     }
     .card_fixed .tab-content {
-        height: calc(86vh - 36px);
+        height: calc(86vh - 40px);
     }
 }
