@@ -935,4 +935,10 @@
     .card_fixed .tab-content {
         height: calc(80vh - 10px);
     }
+    .footer_header_wrap ul li p {
+        margin-bottom: 12px;
+    }
+    .social_media_wrap p {
+        margin-left: 0rem;
+    }
 }
