@@ -762,7 +762,7 @@
     }
 
     .product_page .product_info_section_wrap {
-        padding: 50px 15px 50px;
+        padding: 16px 30px 40px;
         background-color: #fff;
     }
 
@@ -863,7 +863,7 @@
     }
 
     .product_page .product_info_section_wrap {
-        padding: 16px 30px 20px;
+        padding: 16px 30px 40px;
         background-color: #fff;
     }
 
@@ -917,7 +917,7 @@
     }
 
     .product_page .product_info_section_wrap {
-        padding: 40px 30px 40px;
+        padding: 16px 30px 40px;
         background-color: #fff;
     }
 }
