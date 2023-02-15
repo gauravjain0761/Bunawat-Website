@@ -2,13 +2,9 @@ import { Box } from "@mui/material";
 import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import TrackOrder from "../trackOrder";
 
 const FooterStrip = () => {
-  const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+  
   return (
     <>
       <Box 
@@ -55,8 +51,10 @@ const FooterStrip = () => {
               </Link>
             </li>
             <li>
-              <div onClick={handleShow} style={{cursor: "pointer"}}>
-                <p>Track Order</p>
+              <div>
+                <Link to="/trackOrder">
+                  <p>Track Order</p>
+                </Link>
               </div>
             </li>
           </ul>
@@ -84,7 +82,6 @@ const FooterStrip = () => {
           </div>
         </div>
       </Box>
-      <TrackOrder show={show} handleClose={handleClose} />
     </>
   );
 };

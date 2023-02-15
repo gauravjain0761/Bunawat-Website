@@ -18,6 +18,7 @@ import Storage from "../services/storage";
 import { setUserData } from "../redux/reducers/user";
 import { useDispatch } from "react-redux";
 import { setCartCount } from "../redux/reducers/cart";
+import TrackOrder from "./trackOrder";
 
 
 export default function Index() {
@@ -87,6 +88,10 @@ export default function Index() {
 
                     <Route exact path={BASE_URL.BASE_URL + "paymentOptions"}>
                         <PaymentOptions />
+                    </Route>
+
+                    <Route exact path={BASE_URL.BASE_URL + "trackOrder"}>
+                       <TrackOrder />
                     </Route>
 
                     <Route exact path={BASE_URL.BASE_URL + "*"}>

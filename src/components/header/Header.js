@@ -121,7 +121,7 @@ function Header() {
     }
 
     const onChagewalletbar = (pathname) => {
-        var mypath = ["/allProduct", "/product", "/checkout", "/orderConfirmation", "/userProfile", "/reviews", "/404", "/returns", "/sizeGuide", "/paymentOptions"].some(x => pathname.startsWith(x))
+        var mypath = ["/allProduct", "/product", "/checkout", "/orderConfirmation", "/userProfile", "/reviews", "/404", "/returns", "/sizeGuide", "/paymentOptions", "/trackOrder"].some(x => pathname.startsWith(x))
         if (mypath) {
             setHeaderColor(true);
         }
