@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -10,7 +11,11 @@ const FooterStrip = () => {
     const handleShow = () => setShow(true);
   return (
     <>
-      <div className="footer_header_wrap_srip">
+      <Box 
+        className="footer_header_wrap_srip" 
+        sx={{'@media (max-width: 768px)':{
+              marginTop: "30px",
+            }}}>
         <div className="footer_header_wrap">
           <ul>
             <li className="mobile_footer_strip_menu">
@@ -78,7 +83,7 @@ const FooterStrip = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </Box>
       <TrackOrder show={show} handleClose={handleClose} />
     </>
   );

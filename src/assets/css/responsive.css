@@ -948,4 +948,10 @@
         width: 26px;
         height: 26px;
     }
+    .footer_blog_section {
+        padding: 0px 0;
+    }
+    .eventsClubBox_second_top_premium_btn {
+        padding: 6px;
+    }
 }

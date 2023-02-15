@@ -941,7 +941,11 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch 
                 </div>
             </div>
 
-            <Box className="container" sx={{paddingBottom: '80px'}} >
+            <Box 
+             className="container" 
+             sx={{
+                paddingBottom: '80px',
+                }} >
                 <FooterStrip />
             </Box>
 
