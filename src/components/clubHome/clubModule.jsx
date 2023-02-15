@@ -26,16 +26,16 @@ const ClubModule = () => {
       {
         breakpoint: 700,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
+          slidesToShow: 1.5,
+          slidesToScroll: 1.5,
+          initialSlide: 1.5
         }
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2
+          slidesToShow: 1.5,
+          slidesToScroll: 1.5
         }
       }
     ]
@@ -500,7 +500,7 @@ const ClubModule = () => {
 
               <div className="professionals_section_footer_join">
                 <Row>
-                  <Col sm={8} xs={8}>
+                  <Col sm={8} xs={9}>
                     <div className="professionals_section_footer_join_text">
                       <img src="./img/club-join.png" alt="club-join" />
                       <div style={{paddingLeft: "1rem"}}>
@@ -509,7 +509,7 @@ const ClubModule = () => {
                       </div>
                     </div>
                   </Col>
-                  <Col sm={4} xs={4}>
+                  <Col sm={4} xs={3} style={{paddingLeft: '6px'}}>
                     <Button variant="">Join</Button>
                   </Col>
                 </Row>
