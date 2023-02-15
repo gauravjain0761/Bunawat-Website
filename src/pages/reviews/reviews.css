@@ -86,7 +86,7 @@
 }
 @media only screen and (max-width: 668px) {
     .reviewspage_writeReviews{
-        width: 90%;
+        width: 100%;
         margin: 3rem auto;
     }
   }
