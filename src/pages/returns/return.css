@@ -56,12 +56,16 @@
 .returns_page_packing_img{
     text-align: end;
 }
-@media only screen and (max-width: 668px) {
+@media only screen and (max-width: 768px) {
     .returns_page_packing_img{
         text-align: center;
     }
     .returns_page_packing_text{
-        margin-top: 3rem;
+        margin-top: 3rem !important;
+        text-align: center;
+    }
+    .returns_page {
+        padding: 8rem 0 6rem 0;
     }
 }
 .returns_page_packing_text{
@@ -164,7 +168,7 @@
     text-align: center;
     padding: 2rem;
 }
-@media only screen and (max-width: 668px) {
+@media only screen and (max-width: 768px) {
     .returns_page_getscore_section{
         width: 90%;
     }
@@ -192,7 +196,7 @@
     width: 60%;
     margin: 1rem auto;
 }
-@media only screen and (max-width: 668px) {
+@media only screen and (max-width: 768px) {
     .returns_page_unfortunately_section{
         width: 90%;
     }
@@ -218,7 +222,7 @@
     display: none;
 }
 
-@media only screen and (max-width: 668px) {
+@media only screen and (max-width: 768px) {
     .returns_page_top{
         width: 90%;
         margin: auto;
@@ -231,10 +235,10 @@
     }
     .returns_page_schedule_section .schedule_section2 {
         background-position: center;
-        padding: 1rem 1rem 6rem 2.6rem;
+        padding: 1rem 1rem 6rem 1.9rem;
     }
     .returns_page_schedule_section .schedule_section1_text {
-        padding: 3rem;
+        padding: 3rem !important;
         text-align: center;
     }
   }

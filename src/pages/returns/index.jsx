@@ -5,6 +5,7 @@ import "./return.css";
 import { VscDeviceCamera } from 'react-icons/vsc';
 import { Link } from 'react-router-dom';
 import FooterStrip from '../../components/footer/footerStrip';
+import ClearIcon from '@mui/icons-material/Clear';
 
 
 const Returns = () => {
@@ -49,13 +50,30 @@ const Returns = () => {
           <div className='schedule_section2'>
             <div className='schedule_section2_text'>
             <div className="checkout_box">
-              <div className="checkout_box_heading"> 
-              <img src="../img/returnpolicy.png" alt="reviewyourorder" width="22" style={{marginRight: "8px"}} /> Schedule a Return
-              </div>
+              <Box 
+                className="checkout_box_heading" 
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginBottom: "10px",
+                }}> 
+                <Box>
+                <img src="../img/returnpolicy.png" alt="reviewyourorder" width="22" style={{marginRight: "8px"}} /> 
+                Schedule a Return
+                </Box>
+              <ClearIcon />
+              </Box>
               <div className='checkout_box_heading2'>Select the items you would like to return. A pickup will be scheduled for 19th June, 7am—7pm.</div>
               <div className="checkout_box_list">
                 <div style={{display: "flex"}}>
-                  <FormControlLabel value="female" control={<Radio />} style={{marginRight: "0"}} />
+                <Box sx={{marginRight: "8px"}}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="0.85" y="0.85" width="22.3" height="22.3" rx="11.15" fill="white"/>
+                  <path d="M16.0502 9.26001L10.5702 14.74L7.9502 12.12" stroke="white" stroke-width="1.7" stroke-miterlimit="10"/>
+                  <rect x="0.85" y="0.85" width="22.3" height="22.3" rx="11.15" stroke="#2A3592" stroke-width="1.7"/>
+                  </svg>
+                </Box>
                   <div>
                     <h3>Synthetic Floral Print Sari</h3>
                     <span>Lemon Yellow • Medium • 1 unit</span>
@@ -67,7 +85,13 @@ const Returns = () => {
               </div>
               <div className="checkout_box_list">
               <div style={{display: "flex"}}>
-                  <FormControlLabel value="female" control={<Radio />} style={{marginRight: "0"}}/>
+              <Box sx={{marginRight: "8px"}}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="0.85" y="0.85" width="22.3" height="22.3" rx="11.15" fill="white"/>
+                  <path d="M16.0502 9.26001L10.5702 14.74L7.9502 12.12" stroke="white" stroke-width="1.7" stroke-miterlimit="10"/>
+                  <rect x="0.85" y="0.85" width="22.3" height="22.3" rx="11.15" stroke="#2A3592" stroke-width="1.7"/>
+                  </svg>
+                </Box>
                   <div>
                     <h3>Pink Floral Sari & Jacket</h3>
                     <span>Medium • 2 units</span>
@@ -104,13 +128,30 @@ const Returns = () => {
           <div className='schedule_section2'>
             <div className='schedule_section2_text'>
             <div className="checkout_box">
-              <div className="checkout_box_heading"> 
-              <img src="../img/returnpolicy.png" alt="reviewyourorder" width="22" style={{marginRight: "8px"}} /> Schedule a Return
-              </div>
+              <Box 
+                className="checkout_box_heading" 
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginBottom: "10px",
+                }}> 
+                <Box>
+                <img src="../img/returnpolicy.png" alt="reviewyourorder" width="22" style={{marginRight: "8px"}} /> 
+                Schedule a Return
+                </Box>
+              <ClearIcon />
+              </Box>
               <div className='checkout_box_heading2'>Select the items you would like to return. A pickup will be scheduled for 19th June, 7am—7pm.</div>
               <div className="checkout_box_list">
                 <div style={{display: "flex"}}>
-                  <FormControlLabel value="female" control={<Radio />} style={{marginRight: "0"}} />
+                <Box sx={{marginRight: "8px"}}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="0.85" y="0.85" width="22.3" height="22.3" rx="11.15" fill="white"/>
+                  <path d="M16.0502 9.26001L10.5702 14.74L7.9502 12.12" stroke="white" stroke-width="1.7" stroke-miterlimit="10"/>
+                  <rect x="0.85" y="0.85" width="22.3" height="22.3" rx="11.15" stroke="#2A3592" stroke-width="1.7"/>
+                  </svg>
+                </Box>
                   <div>
                     <h3>Synthetic Floral Print Sari</h3>
                     <span>Lemon Yellow • Medium • 1 unit</span>
@@ -122,7 +163,13 @@ const Returns = () => {
               </div>
               <div className="checkout_box_list">
               <div style={{display: "flex"}}>
-                  <FormControlLabel value="female" control={<Radio />} style={{marginRight: "0"}}/>
+                <Box sx={{marginRight: "8px"}}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="0.85" y="0.85" width="22.3" height="22.3" rx="11.15" fill="white"/>
+                  <path d="M16.0502 9.26001L10.5702 14.74L7.9502 12.12" stroke="white" stroke-width="1.7" stroke-miterlimit="10"/>
+                  <rect x="0.85" y="0.85" width="22.3" height="22.3" rx="11.15" stroke="#2A3592" stroke-width="1.7"/>
+                  </svg>
+                </Box>
                   <div>
                     <h3>Pink Floral Sari & Jacket</h3>
                     <span>Medium • 2 units</span>
