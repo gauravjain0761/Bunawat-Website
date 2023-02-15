@@ -15,7 +15,7 @@ import { Modal } from "react-bootstrap";
 import { Box, Button } from '@mui/material';
 
                                                     
-export const SelectModal = ({showSelect, handleClose, attributeList, attributeData, setAttributeData}) => {
+export const SelectModal = ({showSelect, handleClose, attributeList, attributeData, setAttributeData, filterList}) => {
     return (
       <>
         <Modal
@@ -31,7 +31,7 @@ export const SelectModal = ({showSelect, handleClose, attributeList, attributeDa
                                 <>
                                     <Box
                                         className="common_select_wrap first_option"
-                                        sx={{maxWidth: '100%'}}
+                                        sx={{maxWidth: '100%', borderRight: 'none'}}
                                         >
                                         <FormControl>
                                             <Select
@@ -98,7 +98,21 @@ export const SelectModal = ({showSelect, handleClose, attributeList, attributeDa
                                 </>
                             )
                         })}
-                        <button className="clear_btn" onClick={handleClose}>
+                        <div className="slaman_link" style={{marginTop: "2px", backgroundColor: "#F2F4FF", padding: "1rem"}}>
+                            <p>Salmon Pink</p>
+                            <ul className="color_list">
+                                <li
+                                    className="active"
+                                    style={{ border: "1px solid #000", backgroundColor: filterList?.find(list => list?._id == Object.values(attributeData)?.filter(list => list != 'defaultValue')?.slice(-1)?.[0])?.swatch }}
+                                ></li>
+                                {/* <li style={{ backgroundColor: "#BEF3E0" }}></li>
+                                <li
+                                    style={{ backgroundColor: "#fff", border: "1px solid #d2d2d2" }}
+                                ></li>
+                                <li style={{ backgroundColor: "#037A44" }}></li> */}
+                            </ul>
+                        </div>
+                        <button className="clear_btn" style={{marginTop: "10px"}} onClick={handleClose}>
                             <span>Apply</span>
                         </button>
           </Modal.Body>
@@ -212,7 +226,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                 <div className="common_option">
                                     <p>
                                         <div className="common_option">
-                                            <span style={{ textTransform: "capitalize" }}>Size: Select </span>
+                                            <span style={{ textTransform: "capitalize" }}>Size Variant</span>
                                         </div>
                                     </p>
                                 </div>
@@ -378,7 +392,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                 </div>
             </div>
 
-            <SelectModal showSelect={showSelect} handleClose={handleClose} attributeList={attributeList} attributeData={attributeData} setAttributeData={setAttributeData} />
+            <SelectModal showSelect={showSelect} handleClose={handleClose} attributeList={attributeList} attributeData={attributeData} setAttributeData={setAttributeData} filterList={filterList} />
         </>
     );
 }

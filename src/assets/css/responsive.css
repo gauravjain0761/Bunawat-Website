@@ -769,7 +769,7 @@
     .cloth_deatils_wrap a::after {
         height: 150px;
     }
-
+     
     .product_info_right_section_wrap .slaman_link {
         display: flex;
         width: 100%;
@@ -778,6 +778,7 @@
         position: absolute;
         bottom: 188px;
         z-index: 999;
+        display: none !important;
     }
 
     .product_filters .slaman_link {
@@ -937,7 +938,14 @@
     .footer_header_wrap ul li p {
         margin-bottom: 12px;
     }
+    .footer_header_wrap ul li span {
+        margin-bottom: 12px;
+    }
     .social_media_wrap p {
         margin-left: 0rem;
+    }
+    .color_list li {
+        width: 26px;
+        height: 26px;
     }
 }

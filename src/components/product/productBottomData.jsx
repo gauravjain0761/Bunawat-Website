@@ -24,6 +24,7 @@ import WriteAReviews from '../reviews/WriteAReviews';
 import FooterStrip from '../footer/footerStrip';
 import ProductPageFilter from './ProductFilter';
 import SaveButton from '../common/save';
+import { Box } from '@mui/material';
 
 
 const ProductBottomData = ({ product, productIndex, width, similarList, refetch }) => {
@@ -940,9 +941,9 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch 
                 </div>
             </div>
 
-            <div className="container" style={{ paddingBottom: '80px' }}>
+            <Box className="container" sx={{paddingBottom: '80px'}} >
                 <FooterStrip />
-            </div>
+            </Box>
 
             <ProductPageFilter filters={product?.skus} />
 

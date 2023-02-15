@@ -122,17 +122,20 @@ const Shop = ({menuData, handleClose, handleActive}) => {
                           >
                             Back
                           </Button>
+                          <Link to="/allProduct" sx={{color: "#000"}}>
                           <Button
                             sx={{
                               fontSize: "14px !important",
                               textTransform: "capitalize",
                               fontWeight: 600,
+                              color: "#000",
                             }}
-                            color="inherit"
+                            // color="inherit"
                             startIcon={<NorthEastIcon />}
                           >
-                            Shop Kind
+                            Shop All
                           </Button>
+                          </Link>
                         </Stack>
                         <Divider sx={{ borderWidth: "1px" }} />
                       </>
@@ -227,17 +230,20 @@ const Shop = ({menuData, handleClose, handleActive}) => {
                                   >
                                     Back
                                   </Button>
-                                  <Button
-                                    sx={{
-                                      fontSize: "14px !important",
-                                      textTransform: "capitalize",
-                                      fontWeight: 600,
-                                    }}
-                                    color="inherit"
-                                    startIcon={<NorthEastIcon />}
-                                  >
-                                    Shop Kind
-                                  </Button>
+                                  <Link to="/allProduct" sx={{color: "#000"}}>
+                                    <Button
+                                      sx={{
+                                        fontSize: "14px !important",
+                                        textTransform: "capitalize",
+                                        fontWeight: 600,
+                                        color: "#000",
+                                      }}
+                                      // color="inherit"
+                                      startIcon={<NorthEastIcon />}
+                                    >
+                                      Shop All
+                                    </Button>
+                                  </Link>
                                 </Stack>
                                 <Divider sx={{ borderWidth: "1px" }} />
                                 {subcategory.categories.map(

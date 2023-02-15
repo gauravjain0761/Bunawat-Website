@@ -25,7 +25,7 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
         <Modal.Body style={{padding: "2rem 1rem"}}>
           <Box sx={{width: "100%"}}>
           <Box sx={{display: "flex"}}>
-          <div className="common_select_wrap">
+          <div className="common_select_wrap" style={{ borderRight: "none", marginRight: "4px"}}>
             <FormControl>
               {showMostPopular &&
                 <div className="most_popular_wrapper_box">
@@ -100,7 +100,7 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
             </FormControl>
           </div>
 
-          <div className="common_select_wrap">
+          <div className="common_select_wrap" style={{ borderRight: "none", marginRight: "4px"}}>
             <FormControl>
               {showKindGarment &&
                 <div className="kind_garment_wrapper_box">
@@ -268,7 +268,7 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
           </Box>
 
           <Box sx={{display: "flex"}}>
-          <div className="common_select_wrap">
+          <div className="common_select_wrap" style={{ borderRight: "none", marginRight: "4px"}}>
             <FormControl>
               {showColor && (
                 <div className="color_wrapper_box">
@@ -362,54 +362,18 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
               sx={{backgroundColor: "#f2f4ff", marginBottom: "10px"}}
               className="common_option_wrap">
                 <div className="common_option">
-                  <div className="d-flex align-items-center common_radio_btn">
-                    <span style={{ marginRight: "3rem" }}>
+                  <div className="d-flex align-items-center">
+                    <span>
                       Colour
                     </span>
                   </div>
-                  <svg
-                    width="41"
-                    height="40"
-                    viewBox="0 0 41 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="2.08008"
-                      y="2"
-                      width="36"
-                      height="36"
-                      rx="18"
-                      fill="url(#paint0_angular_1310_4720)"
-                      stroke="white"
-                      strokeWidth="4"
-                    />
-                    <defs>
-                      <radialGradient
-                        id="paint0_angular_1310_4720"
-                        cx="0"
-                        cy="0"
-                        r="1"
-                        gradientUnits="userSpaceOnUse"
-                        gradientTransform="translate(20.0801 20) rotate(90) scale(16)"
-                      >
-                        <stop stop-color="#E76666" />
-                        <stop offset="0.135417" stop-color="#FAA652" />
-                        <stop offset="0.291667" stop-color="#F2F243" />
-                        <stop offset="0.442708" stop-color="#83E46B" />
-                        <stop offset="0.588542" stop-color="#6ADEDE" />
-                        <stop offset="0.713542" stop-color="#4B73EA" />
-                        <stop offset="0.84375" stop-color="#8840D1" />
-                        <stop offset="1" stop-color="#F249C8" />
-                      </radialGradient>
-                    </defs>
-                  </svg>
+                    
                 </div>
               </MenuItem>
             </FormControl>
           </div>
 
-          <div className="common_select_wrap">
+          <div className="common_select_wrap" style={{ borderRight: "none", marginRight: "4px"}}>
             <FormControl>
               {showSize &&
                 <div className="size_wrapper_box">
@@ -543,7 +507,7 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
           </Box>
 
           <Box sx={{display: "flex"}}>
-          <div className="common_select_wrap">
+          <div className="common_select_wrap" style={{ borderRight: "none", marginRight: "4px"}}>
             <FormControl>
               {showMaterials &&
                 <div className="material_wrapper_box">
@@ -730,7 +694,7 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
             </FormControl>
           </div>
 
-          <div className="common_select_wrap">
+          <div className="common_select_wrap" style={{ borderRight: "none", marginRight: "4px"}}>
             <FormControl>
               {showPrice && (
                 <div className="price_select_wrap_box"> 
