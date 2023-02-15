@@ -207,10 +207,10 @@ const Checkout = () => {
           <Row>
             <Col xs={12} md={7}>
 
-              <CheckoutForm />
+              <CheckoutForm formData={formData ?? {}} setFormData={setFormData} formError={formError} setFormError={setFormError} />
 
               <div className="checkout_box" style={{ marginTop: "1rem", padding: "0 1rem 1rem 1rem" }}>
-                <div className="checkout_box_heading">
+                <div className="checkout_box_heading" style={{padding: '2rem 2rem 1rem 1rem'}}>
                   <img src="../img/shipping-options.png" alt="shipping-options" width="22" style={{ marginRight: "8px" }} />
                   Shipping Options
                 </div>
@@ -265,10 +265,15 @@ const Checkout = () => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <div>
-                    <FormControlLabel value="male" control={<Radio />} style={{ margin: "0", padding: "0", height: "10px" }} />
+                  <Box sx={{display: "flex", alignItems: 'center'}}>
+                    <Box sx={{marginRight: "10px"}}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="24" height="24" rx="12" fill="#2A3592"/>
+                    <path d="M16.0502 9.26001L10.5702 14.74L7.9502 12.12" stroke="white" stroke-width="1.7" stroke-miterlimit="10"/>
+                    </svg>
+                    </Box>
                     Use Store credit
-                  </div>
+                  </Box>
                   <span style={{ fontWeight: "600", fontSize: "14px" }}>
                     ₹500{" "}
                   </span>
@@ -276,7 +281,7 @@ const Checkout = () => {
               </div>
 
               <Box sx={{ marginTop: "1rem" }}>
-                <MakePayment />
+                <MakePayment handleMakeOrder={handleMakeOrder} cartData={cartData ?? []} />
               </Box>
 
             </Col>

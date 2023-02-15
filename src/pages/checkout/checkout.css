@@ -78,12 +78,15 @@
     display: none;
 }
 
-@media only screen and (max-width: 668px) {
+@media only screen and (max-width: 768px) {
     .desktop_view{
         display: none;
     }
     .mobile_view{
         display: block;
+    }
+    .checkout_box_list {
+        padding: 0.6rem 1rem
     }
   }
 
