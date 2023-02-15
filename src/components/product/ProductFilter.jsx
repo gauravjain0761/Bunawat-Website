@@ -226,7 +226,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                 <div className="common_option">
                                     <p>
                                         <div className="common_option">
-                                            <span style={{ textTransform: "capitalize" }}>Size Variant</span>
+                                            <span style={{ textTransform: "capitalize" }}>Select Variant</span>
                                         </div>
                                     </p>
                                 </div>
