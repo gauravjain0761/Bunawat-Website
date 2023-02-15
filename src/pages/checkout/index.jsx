@@ -140,7 +140,7 @@ const Checkout = () => {
                   }}
                 >
                   <div>
-                    <FormControlLabel value="male" control={<Radio />} style={{ margin: "0", padding: "0", height: "10px" }} />
+                    <FormControlLabel value="male" control={<Radio />} style={{ margin: "0", padding: "0", height: "10px", opacity: '100%' }} />
                     Use Store credit
                   </div>
                   <span style={{ fontWeight: "600", fontSize: "14px" }}>
