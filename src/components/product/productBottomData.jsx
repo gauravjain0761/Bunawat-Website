@@ -851,7 +851,6 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch 
                     <path d="M70.7501 47.42C70.7501 43.311 67.4191 39.98 63.3101 39.98C59.2011 39.98 55.8701 43.311 55.8701 47.42V62.31C55.8701 66.419 59.2011 69.75 63.3101 69.75C67.4191 69.75 70.7501 66.419 70.7501 62.31V47.42Z" stroke="white" stroke-width="3.4" stroke-miterlimit="10"/>
                     <path d="M47.5297 68.97V39.98L33.9297 62.3H50.2897" stroke="white" stroke-width="3.4" stroke-linecap="square" stroke-linejoin="round"/>
                     </svg>
-
                             <p>
                             Estd. 1977<br /> Bunawat is curated by the team at our legacy store,
                             Aradhana. <br />
