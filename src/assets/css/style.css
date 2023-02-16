@@ -1416,9 +1416,8 @@ li.common_option_wrap {
 }
 
 .card_fixed .tab-content {
-    height: calc(46vh - 20px);
+    height: calc(70vh - 20px);
 }
-
 
 .saved_wrapper .row {
     margin: 0 -2.5px;
