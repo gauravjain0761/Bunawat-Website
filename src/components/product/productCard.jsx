@@ -10,7 +10,7 @@ import ProductBottomData from './productBottomData';
 import SaveButton from '../common/save';
 import { Box } from '@mui/material';
 
-const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, productBottomData, width, refetch }) => {
+const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, productBottomData, width, refetch, swipeableIndex, productList }) => {
     const settings = {
         dots: true,
         infinite: false,
@@ -440,12 +440,12 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                         null
                     }
 
-                    <Box 
-                     className="col-md-6 product_info_right_section_wrap" 
-                     onMouseEnter={() => setSwipeableDisable(false)} 
-                     onTouchStart={() => setSwipeableDisable(false)}
-                     sx={{position: "relative"}}
-                     >
+                    <Box
+                        className="col-md-6 product_info_right_section_wrap"
+                        onMouseEnter={() => setSwipeableDisable(false)}
+                        onTouchStart={() => setSwipeableDisable(false)}
+                        sx={{ position: "relative" }}
+                    >
                         <Box className="slaman_link">
                             <p>Salmon Pink</p>
                             <ul className="color_list">
@@ -483,11 +483,11 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
             </div>
             {(width < 768) ? <BottomSheet
                 blocking={false}
-                snapPoints={({ minHeight, maxHeight }) => [200, maxHeight - 80]}
+                snapPoints={({ minHeight, maxHeight }) => [200, maxHeight - 44]}
                 expandOnContentDrag
                 open={productBottomData[productIndex]}>
                 <div onMouseEnter={() => setSwipeableDisable(true)} onTouchStart={() => setSwipeableDisable(true)}>
-                    <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} />
+                    <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} productList={productList} swipeableIndex={swipeableIndex} />
                 </div>
             </BottomSheet>
                 :

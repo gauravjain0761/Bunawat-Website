@@ -21,15 +21,15 @@ function ProductFilters() {
 
   const [showFilter, setShowFilter] = useState(false);
 
-    const handleClose = () => setShowFilter(false);
-    const handleShow = () => setShowFilter(true);
+  const handleClose = () => setShowFilter(false);
+  const handleShow = () => setShowFilter(true);
 
   const handleChange = (event) => {
     setAge(event.target.value);
   };
   return (
     <>
-      <div className="product_filters product_filters_for_mobile">
+      {/* <div className="product_filters product_filters_for_mobile">
         <div className="product_filters_wrap">
           <div className="common_select_wrap">
             <FormControl>
@@ -77,6 +77,7 @@ function ProductFilters() {
                   <div className="common_option">
                     <p className="common_option_p">Most Popular</p>
                     <svg
+                      style={{rotate:}}
                       width="10"
                       height="7"
                       viewBox="0 0 10 7"
@@ -115,7 +116,7 @@ function ProductFilters() {
         </div>
       </div>
 
-      <FilterModalForMobile showFilter={showFilter} handleClose={handleClose} />
+      <FilterModalForMobile showFilter={showFilter} handleClose={handleClose} /> */}
 
       <div className="product_filters product_filters_for_desktop product_filters_change">
         <div className="product_filters_wrap">
@@ -174,6 +175,7 @@ function ProductFilters() {
                 <div className="common_option">
                   <p className="common_option_p">Most Popular</p>
                   <svg
+                    style={{ rotate: showMostPopular ? "0deg" : "180deg" }}
                     width="10"
                     height="7"
                     viewBox="0 0 10 7"
@@ -196,7 +198,7 @@ function ProductFilters() {
             <FormControl>
               {showKindGarment &&
                 <div className="kind_garment_wrapper_box">
-                  <MenuItem value="" className="common_option_wrap kind_common_option_wrap" sx={{paddingLeft: "26px"}}>
+                  <MenuItem value="" className="common_option_wrap kind_common_option_wrap" sx={{ paddingLeft: "26px" }}>
                     <div className="common_option">
                       <div className="d-flex align-items-center common_radio_btn">
                         <FormControl>
@@ -207,7 +209,7 @@ function ProductFilters() {
                           >
                             <FormControlLabel
                               value="female"
-                              control={<Radio 
+                              control={<Radio
                                 sx={{
                                   color: "#2a3592",
                                   '&.Mui-checked': {
@@ -222,7 +224,7 @@ function ProductFilters() {
                       </div>
                     </div>
                   </MenuItem>
-                  <MenuItem value="" className="common_option_wrap" sx={{paddingLeft: "26px"}}>
+                  <MenuItem value="" className="common_option_wrap" sx={{ paddingLeft: "26px" }}>
                     <div className="common_option">
                       <div className="d-flex align-items-center common_radio_btn">
                         <FormControl>
@@ -241,7 +243,7 @@ function ProductFilters() {
                       </div>
                     </div>
                   </MenuItem>
-                  <MenuItem value="" className="common_option_wrap kind_common_option_wrap" sx={{paddingLeft: "26px"}}>
+                  <MenuItem value="" className="common_option_wrap kind_common_option_wrap" sx={{ paddingLeft: "26px" }}>
                     <div className="common_option">
                       <div className="d-flex align-items-center common_radio_btn">
                         <FormControl>
@@ -260,7 +262,7 @@ function ProductFilters() {
                       </div>
                     </div>
                   </MenuItem>
-                  <MenuItem value="" className="common_option_wrap" sx={{paddingLeft: "26px"}}>
+                  <MenuItem value="" className="common_option_wrap" sx={{ paddingLeft: "26px" }}>
                     <div className="common_option">
                       <div className="d-flex align-items-center common_radio_btn">
                         <FormControl>
@@ -279,7 +281,7 @@ function ProductFilters() {
                       </div>
                     </div>
                   </MenuItem>
-                  <MenuItem value="" className="common_option_wrap kind_common_option_wrap" sx={{paddingLeft: "26px"}}>
+                  <MenuItem value="" className="common_option_wrap kind_common_option_wrap" sx={{ paddingLeft: "26px" }}>
                     <div className="common_option">
                       <div className="d-flex align-items-center common_radio_btn">
                         <FormControl>
@@ -298,7 +300,7 @@ function ProductFilters() {
                       </div>
                     </div>
                   </MenuItem>
-                  <MenuItem value="" className="common_option_wrap" sx={{paddingLeft: "26px"}}>
+                  <MenuItem value="" className="common_option_wrap" sx={{ paddingLeft: "26px" }}>
                     <div className="common_option">
                       <div className="d-flex align-items-center common_radio_btn">
                         <FormControl>
@@ -338,6 +340,7 @@ function ProductFilters() {
                     </span>
                   </div>
                   <svg
+                    style={{ rotate: showKindGarment ? "0deg" : "180deg" }}
                     width="10"
                     height="7"
                     viewBox="0 0 10 7"
@@ -500,7 +503,7 @@ function ProductFilters() {
             <FormControl>
               {showSize &&
                 <div className="size_wrapper_box">
-                  <MenuItem value="" className="common_option_wrap size_common_option_wrap" sx={{padding: "1rem 2rem"}}>
+                  <MenuItem value="" className="common_option_wrap size_common_option_wrap" sx={{ padding: "1rem 2rem" }}>
                     <div className="common_option">
                       <p>
                         <div className="common_option">
@@ -514,7 +517,7 @@ function ProductFilters() {
                       </div>
                     </div>
                   </MenuItem>
-                  <MenuItem value="" className="common_option_wrap" sx={{padding: "1rem 2rem"}}>
+                  <MenuItem value="" className="common_option_wrap" sx={{ padding: "1rem 2rem" }}>
                     <div className="common_option">
                       <p>
                         <div className="common_option">
@@ -542,7 +545,7 @@ function ProductFilters() {
                       </div>
                     </div>
                   </MenuItem>
-                  <MenuItem value="" className="common_option_wrap size_common_option_wrap" sx={{padding: "1rem 2rem"}}>
+                  <MenuItem value="" className="common_option_wrap size_common_option_wrap" sx={{ padding: "1rem 2rem" }}>
                     <div className="common_option">
                       <p>
                         <div className="common_option">
@@ -570,7 +573,7 @@ function ProductFilters() {
                       </div>
                     </div>
                   </MenuItem>
-                  <MenuItem value="" className="common_option_wrap" sx={{padding: "1rem 2rem"}}>
+                  <MenuItem value="" className="common_option_wrap" sx={{ padding: "1rem 2rem" }}>
                     <div className="common_option">
                       <p>
                         <div className="common_option">
@@ -630,7 +633,7 @@ function ProductFilters() {
             <FormControl>
               {showMaterials &&
                 <div className="material_wrapper_box">
-                  <MenuItem value="" className="common_option_wrap common_option_wrap_item material_common_option_wrap" sx={{paddingLeft: "2rem"}}>
+                  <MenuItem value="" className="common_option_wrap common_option_wrap_item material_common_option_wrap" sx={{ paddingLeft: "2rem" }}>
                     <div className="common_option">
                       <div className="d-flex align-items-center common_radio_btn">
                         <FormControl>
@@ -642,11 +645,11 @@ function ProductFilters() {
                             <FormControlLabel
                               value="cotton"
                               control={<Radio sx={{
-                              color: "#000 !important",
-                              '&.Mui-checked': {
                                 color: "#000 !important",
-                              },
-                            }}/>}
+                                '&.Mui-checked': {
+                                  color: "#000 !important",
+                                },
+                              }} />}
                             />
                           </RadioGroup>
                         </FormControl>
@@ -654,7 +657,7 @@ function ProductFilters() {
                       </div>
                     </div>
                   </MenuItem>
-                  <MenuItem value="" className="common_option_wrap" sx={{paddingLeft: "2rem"}}>
+                  <MenuItem value="" className="common_option_wrap" sx={{ paddingLeft: "2rem" }}>
                     <div className="common_option">
                       <div className="d-flex align-items-center common_radio_btn">
                         <FormControl>
@@ -673,7 +676,7 @@ function ProductFilters() {
                       </div>
                     </div>
                   </MenuItem>
-                  <MenuItem value="" className="common_option_wrap material_common_option_wrap" sx={{paddingLeft: "2rem"}}>
+                  <MenuItem value="" className="common_option_wrap material_common_option_wrap" sx={{ paddingLeft: "2rem" }}>
                     <div className="common_option">
                       <div className="d-flex align-items-center common_radio_btn">
                         <FormControl>
@@ -692,7 +695,7 @@ function ProductFilters() {
                       </div>
                     </div>
                   </MenuItem>
-                  <MenuItem value="" className="common_option_wrap" sx={{paddingLeft: "2rem"}}>
+                  <MenuItem value="" className="common_option_wrap" sx={{ paddingLeft: "2rem" }}>
                     <div className="common_option">
                       <div className="d-flex align-items-center common_radio_btn">
                         <FormControl>
@@ -711,7 +714,7 @@ function ProductFilters() {
                       </div>
                     </div>
                   </MenuItem>
-                  <MenuItem value="" className="common_option_wrap material_common_option_wrap" sx={{paddingLeft: "2rem"}}>
+                  <MenuItem value="" className="common_option_wrap material_common_option_wrap" sx={{ paddingLeft: "2rem" }}>
                     <div className="common_option">
                       <div className="d-flex align-items-center common_radio_btn">
                         <FormControl>
@@ -730,7 +733,7 @@ function ProductFilters() {
                       </div>
                     </div>
                   </MenuItem>
-                  <MenuItem value="" className="common_option_wrap" sx={{paddingLeft: "2rem"}}>
+                  <MenuItem value="" className="common_option_wrap" sx={{ paddingLeft: "2rem" }}>
                     <div className="common_option">
                       <div className="d-flex align-items-center common_radio_btn">
                         <FormControl>
@@ -749,7 +752,7 @@ function ProductFilters() {
                       </div>
                     </div>
                   </MenuItem>
-                  <MenuItem value="" className="common_option_wrap material_common_option_wrap" sx={{paddingLeft: "2rem"}}>
+                  <MenuItem value="" className="common_option_wrap material_common_option_wrap" sx={{ paddingLeft: "2rem" }}>
                     <div className="common_option">
                       <div className="d-flex align-items-center common_radio_btn">
                         <FormControl>
@@ -768,7 +771,7 @@ function ProductFilters() {
                       </div>
                     </div>
                   </MenuItem>
-                  <MenuItem value="" className="common_option_wrap" sx={{paddingLeft: "2rem"}}>
+                  <MenuItem value="" className="common_option_wrap" sx={{ paddingLeft: "2rem" }}>
                     <div className="common_option">
                       <div className="d-flex align-items-center common_radio_btn">
                         <FormControl>
@@ -814,11 +817,11 @@ function ProductFilters() {
           <div className="common_select_wrap">
             <FormControl>
               {showPrice && (
-                <div className="price_select_wrap_box"> 
-                  <Box className="price_select_wrap_box_child" sx={{background: "#F2F4FF"}}>
+                <div className="price_select_wrap_box">
+                  <Box className="price_select_wrap_box_child" sx={{ background: "#F2F4FF" }}>
                     <h6>From</h6>
                     <div className="price_select_wrap_box_child_data">
-                      <input type="text" placeholder="₹1000" style={{backgroundColor: "#f2f4ff"}} />
+                      <input type="text" placeholder="₹1000" style={{ backgroundColor: "#f2f4ff" }} />
                       <span onClick={() => setShowPrice(false)}>
                         <TiDeleteOutline />
                       </span>
@@ -855,6 +858,7 @@ function ProductFilters() {
                     </span>
                   </div>
                   <svg
+                    style={{ rotate: showPrice ? "0deg" : "180deg" }}
                     width="10"
                     height="7"
                     viewBox="0 0 10 7"

@@ -1,11 +1,11 @@
 import React from "react";
 import { DayPicker } from 'react-day-picker';
 
-const Calendar = ({getActiveHeader, scroll, hover, headerColor}) => {
-    const [selectedDay, setSelectedDay] = React.useState();
+const Calendar = ({ getActiveHeader, scroll, hover, headerColor }) => {
+  const [selectedDay, setSelectedDay] = React.useState();
   return (
     <>
-      <div className="cart_inner calander_wrap position-relative">
+      <div className="cart_inner calander_wrap position-relative calander_fixed">
         <div className="date_wrap">
           <DayPicker
             showOutsideDays

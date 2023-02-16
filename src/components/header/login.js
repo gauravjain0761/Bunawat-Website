@@ -31,7 +31,6 @@ const Login = ({ activeHeader, handleAccountClose }) => {
     const handleLogin = async () => {
         await otpMatch({ ...loginData, otp: Number(loginData.otp) }).unwrap().then(async (data) => {
             handleAccountClose()
-            toast.success(data?.message)
             Storage.set(STORAGE_KEY.token, data?.data?.auth_token)
             dispatch(setUserData(data?.data));
             Storage.set("userData", JSON.stringify(data?.data))
@@ -51,6 +50,7 @@ const Login = ({ activeHeader, handleAccountClose }) => {
                     Storage.remove("cartData")
                 }).catch((error) => toast.error(error?.data?.message))
             }
+            history.push("/userProfile")
             window.location.reload(true)
         }).catch((error) => toast.error(error?.data?.message))
     };

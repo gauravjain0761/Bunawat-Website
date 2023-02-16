@@ -339,6 +339,10 @@ button {
     position: relative;
 }
 
+.card_fixed .nav-tabs .nav-item {
+    width: 150px;
+}
+
 .tab_section_wrap .nav-tabs .nav-link {
     background-color: unset;
     font-size: 14px;
@@ -1186,7 +1190,8 @@ li.common_option_wrap {
     font-family: Newhero10;
     letter-spacing: -0.02em;
 }
-.common_radio_btn input[type=radio]{
+
+.common_radio_btn input[type=radio] {
     color: #2A3592;
 }
 
@@ -1413,6 +1418,10 @@ li.common_option_wrap {
     overflow-y: auto;
     display: block;
     overflow-x: hidden;
+}
+
+.calander_fixed {
+    height: 80vh;
 }
 
 .card_fixed .tab-content {

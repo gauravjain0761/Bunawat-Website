@@ -49,6 +49,17 @@ function Header() {
         selectedCategoriesIndex: -1,
         selectedSubCategoriesIndex: -1
     });
+    const [width, setWidth] = React.useState(window.innerWidth);
+    const handleWindowResize = () => {
+        setWidth(window.innerWidth);
+    }
+
+    React.useEffect(() => {
+        window.addEventListener('resize', handleWindowResize);
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        }
+    }, []);
 
     const [isActive, setIsActive] = React.useState({
         active: false,
@@ -369,11 +380,66 @@ function Header() {
                                         </defs>
                                     </svg>
                                 </IconButton>
+                                {(width < 768) ?
+                                    <LoginModal showLogIn={account} activeHeader={getActiveHeader(scroll, hover, headerColor)} handleAccountClose={handleAccountClose} />
+                                    :
+                                    <CustomPopOver
+                                        id={accountId}
+                                        open={account}
+                                        anchorEl={accountPopup}
+                                        onClose={handleAccountClose}
+                                        anchorOrigin={{
+                                            vertical: 'center',
+                                            horizontal: 'left',
+                                        }}
+                                        transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'center',
+                                        }}
+                                        sx={{ width: '1000px' }}
+                                    >
+                                        <Login activeHeader={getActiveHeader(scroll, hover, headerColor)} handleAccountClose={handleAccountClose} />
+                                    </CustomPopOver>
+                                }
+                            </Box>
+                            <Box>
+                                <IconButton
+                                    aria-describedby={calendarId}
+                                    sx={{
+                                        marginLeft: '10px',
+                                        marginRight: '10px',
+                                        '@media (max-width: 768px)': {
+                                            // display: 'none'
+                                            marginLeft: '0px',
+                                            marginRight: '0px',
+                                        }
+                                    }}
+                                    onClick={handleCalendarClick}>
+                                    <svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g clipPath="url(#clip0_6112_2679)">
+                                            <path d="M22.15 3.33496H1.37V22.185H22.15V3.33496Z" stroke={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} strokeWidth="1.7" strokeMiterlimit="10" />
+                                            <path d="M15.23 8.33496V22.185" stroke={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} strokeWidth="1.7" strokeMiterlimit="10" />
+                                            <path d="M8.30005 8.33496V22.185" stroke={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} strokeWidth="1.7" strokeMiterlimit="10" />
+                                            <path d="M22.15 15.2651H1.38" stroke={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} strokeWidth="1.7" strokeMiterlimit="10" />
+                                            <path d="M22.15 8.33496H1.38" stroke={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} strokeWidth="1.7" strokeMiterlimit="10" />
+                                            <path d="M5.76001 6.13502V0.64502" stroke={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} strokeWidth="1.7" strokeMiterlimit="10" />
+                                            <path d="M17.76 6.13502V0.64502" stroke={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} strokeWidth="1.7" strokeMiterlimit="10" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_6112_2679">
+                                                <rect width="22.48" height="22.39" fill={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} transform="translate(0.52002 0.64502)" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </IconButton>
                                 <CustomPopOver
-                                    id={accountId}
-                                    open={account}
-                                    anchorEl={accountPopup}
-                                    onClose={handleAccountClose}
+                                    id={calendarId}
+                                    open={calendar}
+                                    anchorEl={calendarPopup}
+                                    onClose={handleCalendarClose}
+                                    sx={{
+                                        height: { lg: '700px', md: 'auto' },
+                                    }}
                                     anchorOrigin={{
                                         vertical: 'center',
                                         horizontal: 'left',
@@ -382,60 +448,10 @@ function Header() {
                                         vertical: 'top',
                                         horizontal: 'center',
                                     }}
-                                    sx={{ width: '1000px' }}
                                 >
-                                    <Login activeHeader={getActiveHeader(scroll, hover, headerColor)} handleAccountClose={handleAccountClose} />
+                                    <Calendar getActiveHeader={getActiveHeader} scroll={scroll} hover={hover} headerColor={headerColor} />
                                 </CustomPopOver>
-                                <LoginModal activeHeader={getActiveHeader(scroll, hover, headerColor)} handleAccountClose={handleAccountClose} />
                             </Box>
-                            <IconButton
-                                aria-describedby={calendarId}
-                                sx={{
-                                    marginLeft: '10px',
-                                    marginRight: '10px',
-                                    '@media (max-width: 768px)': {
-                                        display: 'none',
-                                        marginRight: '0px',
-                                        marginLeft: '0px',
-                                    }
-                                }}
-                                onClick={handleCalendarClick}>
-                                <svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g clipPath="url(#clip0_6112_2679)">
-                                        <path d="M22.15 3.33496H1.37V22.185H22.15V3.33496Z" stroke={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} strokeWidth="1.7" strokeMiterlimit="10" />
-                                        <path d="M15.23 8.33496V22.185" stroke={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} strokeWidth="1.7" strokeMiterlimit="10" />
-                                        <path d="M8.30005 8.33496V22.185" stroke={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} strokeWidth="1.7" strokeMiterlimit="10" />
-                                        <path d="M22.15 15.2651H1.38" stroke={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} strokeWidth="1.7" strokeMiterlimit="10" />
-                                        <path d="M22.15 8.33496H1.38" stroke={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} strokeWidth="1.7" strokeMiterlimit="10" />
-                                        <path d="M5.76001 6.13502V0.64502" stroke={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} strokeWidth="1.7" strokeMiterlimit="10" />
-                                        <path d="M17.76 6.13502V0.64502" stroke={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} strokeWidth="1.7" strokeMiterlimit="10" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_6112_2679">
-                                            <rect width="22.48" height="22.39" fill={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} transform="translate(0.52002 0.64502)" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </IconButton>
-                            <CustomPopOver
-                                id={calendarId}
-                                open={calendar}
-                                anchorEl={calendarPopup}
-                                onClose={handleCalendarClose}
-                                anchorOrigin={{
-                                    vertical: 'center',
-                                    horizontal: 'left',
-                                }}
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'center',
-                                }}
-                                sx={{
-                                    height: { lg: '700px', md: 'auto' },
-                                }}
-                            >
-                                <Calendar getActiveHeader={getActiveHeader} scroll={scroll} hover={hover} headerColor={headerColor} />
-                            </CustomPopOver>
                             <Box>
                                 <Button
                                     aria-describedby={cart}
