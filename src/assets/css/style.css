@@ -1409,14 +1409,14 @@ li.common_option_wrap {
 }
 
 .cart_inner .tab-content {
-    height: calc(100% - 10px);
+    height: calc(100% - 20px);
     overflow-y: auto;
     display: block;
     overflow-x: hidden;
 }
 
 .card_fixed .tab-content {
-    height: calc(76vh - 10px);
+    height: calc(46vh - 20px);
 }
 
 

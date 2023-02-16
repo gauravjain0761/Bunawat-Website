@@ -47,7 +47,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '20ch',
+      width: '100%',
     },
   },
 }));
@@ -57,7 +57,11 @@ const Shop = ({menuData, handleClose, handleActive}) => {
   return (
     <>
       <Box sx={{ width: { md: "380px", sm: "100%" }, px: 2 }}>
-        <Box sx={{padding: '14px 0 0 0', borderBottom: "2px solid #000000", position: "relative"}}>
+        <Box sx={{
+          padding: '14px 0 0 0', 
+          borderBottom: "2px solid #000000", 
+          // position: "relative"
+          }}>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -67,7 +71,7 @@ const Shop = ({menuData, handleClose, handleActive}) => {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-          <Typography 
+          {/* <Typography 
            sx={{
             fontWeight: '800',
             fontSize: '10px',
@@ -80,7 +84,7 @@ const Shop = ({menuData, handleClose, handleActive}) => {
             top: '20px',
            }}>
            Advanced
-           </Typography>
+           </Typography> */}
         </Box>
             <Box sx={{
               display: "none",
