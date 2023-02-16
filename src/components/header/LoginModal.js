@@ -64,7 +64,7 @@ const LoginModal = ({ showLogIn, handleClose, activeHeader, handleAccountClose }
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
             >
-                <Modal.Body className="login_body">
+                <Modal.Body>
                     {Storage.get(STORAGE_KEY.token) ?
                         <>
                             <MenuList sx={{

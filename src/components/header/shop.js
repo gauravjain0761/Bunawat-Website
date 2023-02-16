@@ -441,7 +441,7 @@ const Shop = ({menuData, handleClose, handleActive}) => {
             </Typography>
           </Box>
           </Link>
-          <Box onClick={() => handleClose()}>
+          <Box onClick={() => {handleClose(); history.push("/login");}}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_7644_583)">
             <path d="M12.0001 23.1501C18.1581 23.1501 23.1501 18.158 23.1501 12.0001C23.1501 5.84209 18.1581 0.850067 12.0001 0.850067C5.84212 0.850067 0.850098 5.84209 0.850098 12.0001C0.850098 18.158 5.84212 23.1501 12.0001 23.1501Z" stroke="black" stroke-width="1.7" stroke-miterlimit="10"/>

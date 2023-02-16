@@ -132,7 +132,7 @@ function Header() {
     }
 
     const onChagewalletbar = (pathname) => {
-        var mypath = ["/allProduct", "/product", "/checkout", "/orderConfirmation", "/userProfile", "/reviews", "/404", "/returns", "/sizeGuide", "/paymentOptions", "/trackOrder"].some(x => pathname.startsWith(x))
+        var mypath = ["/allProduct", "/product", "/checkout", "/orderConfirmation", "/userProfile", "/reviews", "/404", "/returns", "/sizeGuide", "/paymentOptions", "/trackOrder", "/login"].some(x => pathname.startsWith(x))
         if (mypath) {
             setHeaderColor(true);
         }
@@ -361,7 +361,7 @@ function Header() {
                                         marginLeft: '10px',
                                         marginRight: '10px',
                                         '@media (max-width: 768px)': {
-                                            // display: 'none'
+                                            display: 'none',
                                             marginLeft: '0px',
                                             marginRight: '0px',
                                         }
@@ -409,7 +409,7 @@ function Header() {
                                         marginLeft: '10px',
                                         marginRight: '10px',
                                         '@media (max-width: 768px)': {
-                                            // display: 'none'
+                                            display: 'none',
                                             marginLeft: '0px',
                                             marginRight: '0px',
                                         }
