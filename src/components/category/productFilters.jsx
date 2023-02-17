@@ -12,7 +12,8 @@ import FilterModalForMobile from "./filterModalForMobile";
 import { useGetAttributeDataQuery } from "../../services/api";
 
 function ProductFilters() {
-  const { data: attributeData, error, isLoading, refetch } = useGetAttributeDataQuery()
+  const { data, error, isLoading, refetch } = useGetAttributeDataQuery()
+  const [attributeData, setAttributeData] = useState([]);
   const [showPrice, setShowPrice] = useState(false);
   const [showMostPopular, setShowMostPopular] = useState(false);
   const [showKindGarment, setShowKindGarment] = useState(false);
@@ -20,8 +21,10 @@ function ProductFilters() {
   const [selectedAttribute, setSelectedAttribute] = useState({});
 
   useEffect(() => {
-    setAttributeOpen(attributeOpen?.data?.map(x => false) ?? [])
-  }, [attributeData])
+    const finalData = data?.data?.filter(x => x?.isActive) ?? []
+    setAttributeOpen(finalData?.map(x => false) ?? [])
+    setAttributeData(finalData ?? [])
+  }, [data])
 
   const handleSelectedAttribute = (name, index, itemName, itemIndex) => {
     let selectedAttributeList = { ...selectedAttribute }
@@ -208,7 +211,7 @@ function ProductFilters() {
             </FormControl>
           </div>
 
-          {attributeData?.data?.map((list, index) => (
+          {attributeData?.map((list, index) => (
             <div className="common_select_wrap">
               <FormControl>
                 {attributeOpen[index] &&
