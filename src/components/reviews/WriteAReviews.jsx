@@ -4,7 +4,18 @@ import { Col, Modal, Row } from "react-bootstrap";
 import { AiOutlineInstagram } from "react-icons/ai";
 
 const WriteAReviews = ({ showReviewsWrite, handleClose }) => {
-  const [value, setValue] = useState(2);
+  const [formData, setFormData] = useState({
+    review: "",
+    rating: 0,
+    image: []
+  });
+
+  const handleSubmit = () => {
+    if (formData?.review != "" && formData?.rating != 0) {
+
+      handleClose();
+    }
+  }
 
   return (
     <>
@@ -50,13 +61,17 @@ const WriteAReviews = ({ showReviewsWrite, handleClose }) => {
                 </defs>
               </svg>
               <span style={{ marginLeft: "22px", fontSize: "16px", fontWeight: "600" }}>Write a Review</span>
-              <span className="review_title_wrap_proName">Brocade Kurta</span>
+              {/* <span className="review_title_wrap_proName">Brocade Kurta</span> */}
             </div>
             <div className="review_input_wrap">
               <div className="review_input_inner">
                 <textarea
                   rows="4"
                   cols="50"
+                  value={formData?.review}
+                  onChange={(e) => {
+                    setFormData({ ...formData, review: e.target.value })
+                  }}
                   placeholder="What did you think of it?"
                 ></textarea>
               </div>
@@ -72,9 +87,9 @@ const WriteAReviews = ({ showReviewsWrite, handleClose }) => {
                 >
                   <Rating
                     name="simple-controlled"
-                    value={value}
+                    value={formData?.rating}
                     onChange={(event, newValue) => {
-                      setValue(newValue);
+                      setFormData({ ...formData, rating: newValue })
                     }}
                     style={{
                       display: "flex",
@@ -84,10 +99,25 @@ const WriteAReviews = ({ showReviewsWrite, handleClose }) => {
                     }}
                   />
                 </div>
-                <AiOutlineInstagram style={{ fontSize: "30px" }} />
+                <div>
+                  {formData?.image?.map(list => (
+                    <img src={list} style={{ padding: '10px' }} alt='image' width="60px" height="60px" />
+                  ))}
+                  <label style={{ cursor: 'pointer' }}>
+                    <AiOutlineInstagram style={{ fontSize: "30px" }} />
+                    <input
+                      type="file"
+                      accept="image/png, image/gif, image/jpeg"
+                      hidden
+                      onClick={(event) => { event.target.value = '' }}
+                      onChange={(e) => {
+                        setFormData({ ...formData, image: [...formData.image, URL.createObjectURL(e.target.files[0])] })
+                      }} />
+                  </label>
+                </div>
               </div>
             </div>
-            <button className="btn" type="button" onClick={handleClose}>
+            <button className="btn focus_clear" type="button" onClick={handleSubmit}>
               <span>Submit Review</span>
             </button>
           </div>
