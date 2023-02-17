@@ -1,18 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
-import { Box, FormControl, FormControlLabel, MenuItem, Radio, RadioGroup } from "@mui/material";
+import { Box, FormControl, FormControlLabel, MenuItem, NativeSelect, Radio, RadioGroup } from "@mui/material";
 import { Button, ButtonGroup, Typography } from "@mui/material";
 import { TiDeleteOutline } from "react-icons/ti";
+import { useGetAttributeDataQuery } from "../../services/api";
 
 
 const FilterModalForMobile = ({showFilter, handleClose}) => {
-  const [age, setAge] = useState("");
-  const [showColor, setShowColor] = useState(false);
+  const { data, error, isLoading, refetch } = useGetAttributeDataQuery()
+  const [attributeData, setAttributeData] = useState([]);
   const [showPrice, setShowPrice] = useState(false);
   const [showMostPopular, setShowMostPopular] = useState(false);
   const [showKindGarment, setShowKindGarment] = useState(false);
-  const [showSize, setShowSize] = useState(false);
-  const [showMaterials, setShowMaterials] = useState(false);
+  const [attributeOpen, setAttributeOpen] = useState([]);
+  const [selectedAttribute, setSelectedAttribute] = useState({});
+
+  useEffect(() => {
+    const finalData = data?.data?.filter(x => x?.isActive) ?? []
+    setAttributeOpen(finalData?.map(x => false) ?? [])
+    setAttributeData(finalData ?? [])
+  }, [data])
+
+  const handleSelectedAttribute = (name, index, itemName, itemIndex) => {
+    let selectedAttributeList = { ...selectedAttribute }
+    if (selectedAttributeList[name]) {
+      if (selectedAttributeList[name]?.includes(itemName)) {
+        let filterData = selectedAttributeList[name]?.filter(x => x != itemName)
+        selectedAttributeList = { ...selectedAttributeList, [name]: filterData }
+      } else {
+        selectedAttributeList = { ...selectedAttributeList, [name]: [...selectedAttributeList[name], itemName] }
+      }
+    } else {
+      selectedAttributeList = { ...selectedAttributeList, [name]: [itemName] }
+    }
+    setSelectedAttribute(selectedAttributeList)
+  }
 
   return (
     <>
@@ -25,7 +47,7 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
         <Modal.Body style={{padding: "2rem 1rem"}}>
           <Box sx={{width: "100%"}}>
           <Box sx={{display: "flex"}}>
-          <div className="common_select_wrap" style={{ borderRight: "none", marginRight: "4px"}}>
+          <div className="common_select_wrap">
             <FormControl>
               {showMostPopular &&
                 <div className="most_popular_wrapper_box">
@@ -71,17 +93,15 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
                 } else {
                   setShowMostPopular(true)
                   setShowPrice(false)
-                  setShowColor(false)
-                  setShowKindGarment(false)
-                  setShowSize(false)
-                  setShowMaterials(false)
+                  let attributeOpenList = [...attributeOpen];
+                  attributeOpenList = attributeOpenList?.map(x => false)
+                  setAttributeOpen(attributeOpenList)
                 }
-              }}
-               sx={{backgroundColor: "#f2f4ff", marginBottom: "10px"}}
-               className="common_option_wrap">
+              }} className="common_option_wrap">
                 <div className="common_option">
                   <p className="common_option_p">Most Popular</p>
                   <svg
+                    style={{ rotate: showMostPopular ? "0deg" : "180deg" }}
                     width="10"
                     height="7"
                     viewBox="0 0 10 7"
@@ -99,609 +119,113 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
               </MenuItem>
             </FormControl>
           </div>
+          </Box>
 
-          <div className="common_select_wrap" style={{ borderRight: "none", marginRight: "4px"}}>
-            <FormControl>
-              {showKindGarment &&
-                <div className="kind_garment_wrapper_box">
-                  <MenuItem value="" className="common_option_wrap kind_common_option_wrap" sx={{paddingLeft: "26px"}}>
-                    <div className="common_option">
-                      <div className="d-flex align-items-center common_radio_btn">
-                        <FormControl>
-                          <RadioGroup
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue=""
-                            name="radio-buttons-group"
-                          >
-                            <FormControlLabel
-                              value="female"
-                              control={<Radio 
-                                sx={{
-                                  color: "#2a3592",
-                                  '&.Mui-checked': {
+          {attributeData?.map((list, index) => (
+            <Box sx={{display: "flex"}}>
+            <Box className="common_select_wrap">
+              <FormControl>
+                {attributeOpen[index] &&
+                  <div className="kind_garment_wrapper_box">
+                    {list?.variants?.map((item, itemIndex) => (
+                      <MenuItem className="common_option_wrap kind_common_option_wrap" sx={{ paddingLeft: "26px" }} onClick={() => handleSelectedAttribute(list?.name, index, item?.name, itemIndex)}>
+                        <div className="common_option">
+                          <div className="d-flex align-items-center common_radio_btn">
+                            <FormControl>
+                              <FormControlLabel
+                                control={<Radio
+                                  checked={selectedAttribute[list?.name]?.includes(item?.name)}
+                                  sx={{
                                     color: "#2a3592",
-                                  },
-                                }}
-                              />}
-                            />
-                          </RadioGroup>
-                        </FormControl>
-                        <span>Lehenga</span>
-                      </div>
-                    </div>
-                  </MenuItem>
-                  <MenuItem value="" className="common_option_wrap" sx={{paddingLeft: "26px"}}>
-                    <div className="common_option">
-                      <div className="d-flex align-items-center common_radio_btn">
-                        <FormControl>
-                          <RadioGroup
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue=""
-                            name="radio-buttons-group"
-                          >
-                            <FormControlLabel
-                              value="female"
-                              control={<Radio />}
-                            />
-                          </RadioGroup>
-                        </FormControl>
-                        <span>Kurta</span>
-                      </div>
-                    </div>
-                  </MenuItem>
-                  <MenuItem value="" className="common_option_wrap kind_common_option_wrap" sx={{paddingLeft: "26px"}}>
-                    <div className="common_option">
-                      <div className="d-flex align-items-center common_radio_btn">
-                        <FormControl>
-                          <RadioGroup
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue=""
-                            name="radio-buttons-group"
-                          >
-                            <FormControlLabel
-                              value="female"
-                              control={<Radio />}
-                            />
-                          </RadioGroup>
-                        </FormControl>
-                        <span>Sari</span>
-                      </div>
-                    </div>
-                  </MenuItem>
-                  <MenuItem value="" className="common_option_wrap" sx={{paddingLeft: "26px"}}>
-                    <div className="common_option">
-                      <div className="d-flex align-items-center common_radio_btn">
-                        <FormControl>
-                          <RadioGroup
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue=""
-                            name="radio-buttons-group"
-                          >
-                            <FormControlLabel
-                              value="female"
-                              control={<Radio />}
-                            />
-                          </RadioGroup>
-                        </FormControl>
-                        <span>Churidar</span>
-                      </div>
-                    </div>
-                  </MenuItem>
-                  <MenuItem value="" className="common_option_wrap kind_common_option_wrap" sx={{paddingLeft: "26px"}}>
-                    <div className="common_option">
-                      <div className="d-flex align-items-center common_radio_btn">
-                        <FormControl>
-                          <RadioGroup
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue=""
-                            name="radio-buttons-group"
-                          >
-                            <FormControlLabel
-                              value="female"
-                              control={<Radio />}
-                            />
-                          </RadioGroup>
-                        </FormControl>
-                        <span>Ready to Wear</span>
-                      </div>
-                    </div>
-                  </MenuItem>
-                  <MenuItem value="" className="common_option_wrap" sx={{paddingLeft: "26px"}}>
-                    <div className="common_option">
-                      <div className="d-flex align-items-center common_radio_btn">
-                        <FormControl>
-                          <RadioGroup
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue=""
-                            name="radio-buttons-group"
-                          >
-                            <FormControlLabel
-                              value="female"
-                              control={<Radio />}
-                            />
-                          </RadioGroup>
-                        </FormControl>
-                        <span>Dress</span>
-                      </div>
-                    </div>
-                  </MenuItem>
-                </div>
-              }
-              <MenuItem onClick={() => {
-                if (showKindGarment) {
-                  setShowKindGarment(false)
-                } else {
-                  setShowMostPopular(false)
-                  setShowPrice(false)
-                  setShowColor(false)
-                  setShowKindGarment(true)
-                  setShowSize(false)
-                  setShowMaterials(false)
+                                    '&.Mui-checked': {
+                                      color: "#2a3592",
+                                    },
+                                  }}
+                                />}
+                              />
+                            </FormControl>
+                            <span>{item?.name}</span>
+                          </div>
+                        </div>
+                      </MenuItem>
+                    ))}
+                  </div>
                 }
-              }}
-               sx={{backgroundColor: "#f2f4ff", marginBottom: "10px"}}
-               className="common_option_wrap">
-                <div className="common_option">
-                  <div className="d-flex align-items-center common_radio_btn">
-                    <span style={{ marginRight: "3rem" }}>
-                      Kind of Garment
-                    </span>
+                <MenuItem onClick={() => {
+                  let attributeOpenList = [...attributeOpen];
+                  if (attributeOpenList[index]) {
+                    attributeOpenList[index] = false
+                    setAttributeOpen(attributeOpenList)
+                  } else {
+                    attributeOpenList = attributeOpenList?.map(x => false)
+                    attributeOpenList[index] = true
+                    setAttributeOpen(attributeOpenList)
+                    setShowMostPopular(false)
+                    setShowPrice(false)
+                  }
+                }} className="common_option_wrap">
+                  <div className="common_option">
+                    <div className="d-flex align-items-center common_radio_btn">
+                      <span style={{ marginRight: "3rem" }}>
+                        {list?.name}
+                      </span>
+                    </div>
+                    <svg
+                      style={{ rotate: attributeOpen[index] ? "0deg" : "180deg" }}
+                      width="10"
+                      height="7"
+                      viewBox="0 0 10 7"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1.51318 1L5.33436 5L9.16024 1"
+                        stroke="#2A3592"
+                        strokeWidth="1.7"
+                        strokeMiterlimit="10"
+                      />
+                    </svg>
                   </div>
-                  <svg
-                    width="10"
-                    height="7"
-                    viewBox="0 0 10 7"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M1.51318 1L5.33436 5L9.16024 1"
-                      stroke="#2A3592"
-                      strokeWidth="1.7"
-                      strokeMiterlimit="10"
-                    />
-                  </svg>
-                </div>
-              </MenuItem>
-            </FormControl>
-          </div>
-          </Box>
+                </MenuItem>
+              </FormControl>
+            </Box>
+            </Box>
+          ))}
 
-          <Box sx={{display: "flex"}}>
-          <div className="common_select_wrap" style={{ borderRight: "none", marginRight: "4px"}}>
-            <FormControl>
-              {showColor && (
-                <div className="color_wrapper_box">
-                  <div className="color_wrapper_box_child">
-                    <h6>Colour</h6>
-                    <span>Clear</span>
-                  </div>
-                  <ButtonGroup
-                    variant="contained"
-                    aria-label="outlined primary button group"
-                    className="color_wrapper_box_child_colorbtn"
-                    onClick={() => setShowColor(false)}
-                  >
-                    <Button
-                      style={{
-                        background: "#E76666",
-                        border: "none",
-                        padding: "1rem",
+          {/* <Box sx={{display: "flex"}}>
+          <Box className="price_select_wrap_box_child" sx={{ background: "#F2F4FF" }}>
+                    <h6>From</h6>
+                    <NativeSelect
+                      defaultValue={30}
+                      inputProps={{
+                        name: 'age',
+                        id: 'uncontrolled-native',
                       }}
-                    ></Button>
-                    <Button
-                      style={{ background: "#FAA652", border: "none" }}
-                    ></Button>
-                    <Button
-                      style={{ background: "#F2F243", border: "none" }}
-                    ></Button>
-                    <Button
-                      style={{ background: "#83E46B", border: "none" }}
-                    ></Button>
-                    <Button
-                      style={{ background: "#39C9C9", border: "none" }}
-                    ></Button>
-                    <Button
-                      style={{ background: "#4B73EA", border: "none" }}
-                    ></Button>
-                    <Button
-                      style={{ background: "#7A2ACB", border: "none" }}
-                    ></Button>
-                    <Button
-                      style={{ background: "#F249C8", border: "none" }}
-                    ></Button>
-                  </ButtonGroup>
-                  <div
-                    className="color_wrapper_box_child"
-                    style={{ marginTop: "16px" }}
-                  >
-                    <h6>Shade</h6>
-                    <span>Clear</span>
-                  </div>
-                  <div
-                    className="color_wrapper_box_child"
-                    onClick={() => setShowColor(false)}
-                  >
-                    <Button
-                      variant="contained"
-                      className="shade_btn"
-                      style={{ background: "#CCCCCC" }}
                     >
-                      Light
-                    </Button>
-                    <Button
-                      variant="contained"
-                      className="shade_btn"
-                      style={{ background: "#AAAAAA" }}
-                    >
-                      Medium
-                    </Button>
-                    <Button
-                      variant="contained"
-                      className="shade_btn"
-                      style={{ background: "#333333" }}
-                    >
-                      Dark
-                    </Button>
-                  </div>
-                </div>
-              )}
+                      <option value={10}>Ten</option>
+                      <option value={20}>Twenty</option>
+                      <option value={30}>Thirty</option>
+                    </NativeSelect>
+                  </Box>
+                  <Box className="price_select_wrap_box_child">
+                    <h6>To</h6>
+                    <div className="price_select_wrap_box_child_data">
+                      <input type="text" placeholder="₹3500" />
+                      <span onClick={() => setShowPrice(false)}>
+                        <TiDeleteOutline />
+                      </span>
+                    </div>
+                  </Box>
+          </Box> */}
 
-              <MenuItem onClick={() => {
-                if (showColor) {
-                  setShowColor(false)
-                } else {
-                  setShowMostPopular(false)
-                  setShowPrice(false)
-                  setShowColor(true)
-                  setShowKindGarment(false)
-                  setShowSize(false)
-                  setShowMaterials(false)
-                }
-              }} 
-              sx={{backgroundColor: "#f2f4ff", marginBottom: "10px"}}
-              className="common_option_wrap">
-                <div className="common_option">
-                  <div className="d-flex align-items-center">
-                    <span>
-                      Colour
-                    </span>
-                  </div>
-                    
-                </div>
-              </MenuItem>
-            </FormControl>
-          </div>
-
-          <div className="common_select_wrap" style={{ borderRight: "none", marginRight: "4px"}}>
-            <FormControl>
-              {showSize &&
-                <div className="size_wrapper_box">
-                  <MenuItem value="" className="common_option_wrap size_common_option_wrap" sx={{padding: "1rem 2rem"}}>
-                    <div className="common_option">
-                      <p>
-                        <div className="common_option">
-                          <span>SIZE - INCHES</span>
-                        </div>
-                      </p>
-                      <div className="chet_size">
-                        <span>Chest</span>
-                        <span>Waist</span>
-                        <span>Length</span>
-                      </div>
-                    </div>
-                  </MenuItem>
-                  <MenuItem value="" className="common_option_wrap" sx={{padding: "1rem 2rem"}}>
-                    <div className="common_option">
-                      <p>
-                        <div className="common_option">
-                          <div className="d-flex align-items-center common_radio_btn">
-                            <FormControl>
-                              <RadioGroup
-                                aria-labelledby="demo-radio-buttons-group-label"
-                                defaultValue=""
-                                name="radio-buttons-group"
-                              >
-                                <FormControlLabel
-                                  value="female"
-                                  control={<Radio />}
-                                />
-                              </RadioGroup>
-                            </FormControl>
-                            <span>Lehenga</span>
-                          </div>
-                        </div>
-                      </p>
-                      <div className="chet_size chet_size_number">
-                        <span>30</span>
-                        <span>26</span>
-                        <span>30</span>
-                      </div>
-                    </div>
-                  </MenuItem>
-                  <MenuItem value="" className="common_option_wrap size_common_option_wrap" sx={{padding: "1rem 2rem"}}>
-                    <div className="common_option">
-                      <p>
-                        <div className="common_option">
-                          <div className="d-flex align-items-center common_radio_btn">
-                            <FormControl>
-                              <RadioGroup
-                                aria-labelledby="demo-radio-buttons-group-label"
-                                defaultValue=""
-                                name="radio-buttons-group"
-                              >
-                                <FormControlLabel
-                                  value="female"
-                                  control={<Radio />}
-                                />
-                              </RadioGroup>
-                            </FormControl>
-                            <span>Lehenga</span>
-                          </div>
-                        </div>
-                      </p>
-                      <div className="chet_size chet_size_number">
-                        <span>30</span>
-                        <span>26</span>
-                        <span>30</span>
-                      </div>
-                    </div>
-                  </MenuItem>
-                  <MenuItem value="" className="common_option_wrap" sx={{padding: "1rem 2rem"}}>
-                    <div className="common_option">
-                      <p>
-                        <div className="common_option">
-                          <div className="d-flex align-items-center common_radio_btn">
-                            <FormControl>
-                              <RadioGroup
-                                aria-labelledby="demo-radio-buttons-group-label"
-                                defaultValue=""
-                                name="radio-buttons-group"
-                              >
-                                <FormControlLabel
-                                  value="female"
-                                  control={<Radio />}
-                                />
-                              </RadioGroup>
-                            </FormControl>
-                            <span>Lehenga</span>
-                          </div>
-                        </div>
-                      </p>
-                      <div className="chet_size chet_size_number">
-                        <span>30</span>
-                        <span>26</span>
-                        <span>30</span>
-                      </div>
-                    </div>
-                  </MenuItem>
-                </div>
-              }
-              <MenuItem onClick={() => {
-                if (showSize) {
-                  setShowSize(false)
-                } else {
-                  setShowMostPopular(false)
-                  setShowPrice(false)
-                  setShowColor(false)
-                  setShowKindGarment(false)
-                  setShowSize(true)
-                  setShowMaterials(false)
-                }
-              }} 
-              sx={{backgroundColor: "#f2f4ff", marginBottom: "10px"}}
-              className="common_option_wrap">
-                <div className="common_option">
-                  <p>
-                    <div className="common_option">
-                      <div className="d-flex align-items-center common_radio_btn">
-                        <span>Size</span>
-                      </div>
-                    </div>
-                  </p>
-                  <div className="chet_size">Any</div>
-                </div>
-              </MenuItem>
-            </FormControl>
-          </div>
-          </Box>
-
-          <Box sx={{display: "flex"}}>
-          <div className="common_select_wrap" style={{ borderRight: "none", marginRight: "4px"}}>
-            <FormControl>
-              {showMaterials &&
-                <div className="material_wrapper_box">
-                  <MenuItem value="" className="common_option_wrap common_option_wrap_item material_common_option_wrap" sx={{paddingLeft: "2rem"}}>
-                    <div className="common_option">
-                      <div className="d-flex align-items-center common_radio_btn">
-                        <FormControl>
-                          <RadioGroup
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue=""
-                            name="radio-buttons-group"
-                          >
-                            <FormControlLabel
-                              value="cotton"
-                              control={<Radio sx={{
-                              color: "#000 !important",
-                              '&.Mui-checked': {
-                                color: "#000 !important",
-                              },
-                            }}/>}
-                            />
-                          </RadioGroup>
-                        </FormControl>
-                        <span>Cotton</span>
-                      </div>
-                    </div>
-                  </MenuItem>
-                  <MenuItem value="" className="common_option_wrap" sx={{paddingLeft: "2rem"}}>
-                    <div className="common_option">
-                      <div className="d-flex align-items-center common_radio_btn">
-                        <FormControl>
-                          <RadioGroup
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue=""
-                            name="radio-buttons-group"
-                          >
-                            <FormControlLabel
-                              value="polyester"
-                              control={<Radio />}
-                            />
-                          </RadioGroup>
-                        </FormControl>
-                        <span>Polyester</span>
-                      </div>
-                    </div>
-                  </MenuItem>
-                  <MenuItem value="" className="common_option_wrap material_common_option_wrap" sx={{paddingLeft: "2rem"}}>
-                    <div className="common_option">
-                      <div className="d-flex align-items-center common_radio_btn">
-                        <FormControl>
-                          <RadioGroup
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue=""
-                            name="radio-buttons-group"
-                          >
-                            <FormControlLabel
-                              value="chiffon"
-                              control={<Radio />}
-                            />
-                          </RadioGroup>
-                        </FormControl>
-                        <span>Chiffon</span>
-                      </div>
-                    </div>
-                  </MenuItem>
-                  <MenuItem value="" className="common_option_wrap" sx={{paddingLeft: "2rem"}}>
-                    <div className="common_option">
-                      <div className="d-flex align-items-center common_radio_btn">
-                        <FormControl>
-                          <RadioGroup
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue=""
-                            name="radio-buttons-group"
-                          >
-                            <FormControlLabel
-                              value="female"
-                              control={<Radio />}
-                            />
-                          </RadioGroup>
-                        </FormControl>
-                        <span>Lycra</span>
-                      </div>
-                    </div>
-                  </MenuItem>
-                  <MenuItem value="" className="common_option_wrap material_common_option_wrap" sx={{paddingLeft: "2rem"}}>
-                    <div className="common_option">
-                      <div className="d-flex align-items-center common_radio_btn">
-                        <FormControl>
-                          <RadioGroup
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue=""
-                            name="radio-buttons-group"
-                          >
-                            <FormControlLabel
-                              value="female"
-                              control={<Radio />}
-                            />
-                          </RadioGroup>
-                        </FormControl>
-                        <span>Viscose</span>
-                      </div>
-                    </div>
-                  </MenuItem>
-                  <MenuItem value="" className="common_option_wrap" sx={{paddingLeft: "2rem"}}>
-                    <div className="common_option">
-                      <div className="d-flex align-items-center common_radio_btn">
-                        <FormControl>
-                          <RadioGroup
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue=""
-                            name="radio-buttons-group"
-                          >
-                            <FormControlLabel
-                              value="female"
-                              control={<Radio />}
-                            />
-                          </RadioGroup>
-                        </FormControl>
-                        <span>Wool </span>
-                      </div>
-                    </div>
-                  </MenuItem>
-                  <MenuItem value="" className="common_option_wrap material_common_option_wrap" sx={{paddingLeft: "2rem"}}>
-                    <div className="common_option">
-                      <div className="d-flex align-items-center common_radio_btn">
-                        <FormControl>
-                          <RadioGroup
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue=""
-                            name="radio-buttons-group"
-                          >
-                            <FormControlLabel
-                              value="female"
-                              control={<Radio />}
-                            />
-                          </RadioGroup>
-                        </FormControl>
-                        <span>Silk </span>
-                      </div>
-                    </div>
-                  </MenuItem>
-                  <MenuItem value="" className="common_option_wrap" sx={{paddingLeft: "2rem"}}>
-                    <div className="common_option">
-                      <div className="d-flex align-items-center common_radio_btn">
-                        <FormControl>
-                          <RadioGroup
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue=""
-                            name="radio-buttons-group"
-                          >
-                            <FormControlLabel
-                              value="female"
-                              control={<Radio />}
-                            />
-                          </RadioGroup>
-                        </FormControl>
-                        <span>Rayon</span>
-                      </div>
-                    </div>
-                  </MenuItem>
-                </div>
-              }
-              <MenuItem onClick={() => {
-                if (showMaterials) {
-                  setShowMaterials(false)
-                } else {
-                  setShowMostPopular(false)
-                  setShowPrice(false)
-                  setShowColor(false)
-                  setShowKindGarment(false)
-                  setShowSize(false)
-                  setShowMaterials(true)
-                }
-              }} 
-              sx={{backgroundColor: "#f2f4ff", marginBottom: "10px"}}
-              className="common_option_wrap">
-                <div className="common_option">
-                  <div className="d-flex align-items-center common_radio_btn">
-                    <span>Materials</span>
-                  </div>
-                  <span>Any</span>
-                </div>
-              </MenuItem>
-            </FormControl>
-          </div>
-
-          <div className="common_select_wrap" style={{ borderRight: "none", marginRight: "4px"}}>
+          <div className="common_select_wrap">
             <FormControl>
               {showPrice && (
-                <div className="price_select_wrap_box"> 
-                  <Box className="price_select_wrap_box_child" sx={{background: "#F2F4FF"}}>
+                <div className="price_select_wrap_box">
+                  <Box className="price_select_wrap_box_child" sx={{ background: "#F2F4FF" }}>
                     <h6>From</h6>
                     <div className="price_select_wrap_box_child_data">
-                      <input type="text" placeholder="₹1000" style={{backgroundColor: "#f2f4ff"}} />
+                      <input type="text" placeholder="₹1000" style={{ backgroundColor: "#f2f4ff" }} />
                       <span onClick={() => setShowPrice(false)}>
                         <TiDeleteOutline />
                       </span>
@@ -725,14 +249,11 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
                 } else {
                   setShowMostPopular(false)
                   setShowPrice(true)
-                  setShowColor(false)
-                  setShowKindGarment(false)
-                  setShowSize(false)
-                  setShowMaterials(false)
+                  let attributeOpenList = [...attributeOpen];
+                  attributeOpenList = attributeOpenList?.map(x => false)
+                  setAttributeOpen(attributeOpenList)
                 }
-              }} 
-              sx={{backgroundColor: "#f2f4ff", marginBottom: "10px"}}
-              className="common_option_wrap">
+              }} className="common_option_wrap">
                 <div className="common_option">
                   <div className="d-flex align-items-center common_radio_btn">
                     <span style={{ marginRight: "3rem" }}>
@@ -740,6 +261,7 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
                     </span>
                   </div>
                   <svg
+                    style={{ rotate: showPrice ? "0deg" : "180deg" }}
                     width="10"
                     height="7"
                     viewBox="0 0 10 7"
@@ -757,9 +279,11 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
               </MenuItem>
             </FormControl>
           </div>
-          </Box>
 
-          <button className="clear_btn" style={{marginRight: "20px"}}>
+          <button className="apply_btn" onClick={handleClose}>
+            <span>Apply</span>
+          </button>
+          <button className="clear_btn" onClick={handleClose}>
             <span>Clear</span>
             <svg
               width="8"
@@ -793,9 +317,6 @@ const FilterModalForMobile = ({showFilter, handleClose}) => {
                 </clipPath>
               </defs>
             </svg>
-          </button>
-          <button className="clear_btn" onClick={handleClose}>
-            <span>Apply</span>
           </button>
           </Box>
         </Modal.Body>

@@ -19,6 +19,10 @@ function ProductFilters() {
   const [showKindGarment, setShowKindGarment] = useState(false);
   const [attributeOpen, setAttributeOpen] = useState([]);
   const [selectedAttribute, setSelectedAttribute] = useState({});
+  const [showFilter, setShowFilter] = useState(false);
+
+  const handleClose = () => setShowFilter(false);
+  const handleShow = () => setShowFilter(true);
 
   useEffect(() => {
     const finalData = data?.data?.filter(x => x?.isActive) ?? []
@@ -118,12 +122,14 @@ function ProductFilters() {
             </FormControl>
           </div>
           <div className="common_select_wrap">
-            <Box sx={{
+            <Box onClick={handleShow}
+             sx={{
               backgroundColor: "#2A3592",
               padding: "10px 20px",
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
+              cursor: "pointer",
             }}>
               <Typography variant="h6" sx={{ color: "#fff" }}>Filters</Typography>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -132,6 +138,7 @@ function ProductFilters() {
               </svg>
             </Box>
           </div>
+          <FilterModalForMobile showFilter={showFilter} handleClose={handleClose} />
         </div>
       </div>
 
