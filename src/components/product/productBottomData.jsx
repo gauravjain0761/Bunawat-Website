@@ -885,46 +885,11 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                 </div>
             </Box>
 
-            <div className="recemtly_wrap">
+            {recentlyProduct?.slice(1)?.length > 0 ? <div className="recemtly_wrap">
                 <div className="container">
                     <div className="recemtly_inner">
                         <div className="sell_wrap">
                             <h3>Recently Seen</h3>
-                            {/* <Link className="sell_link">
-                                <span style={{ textTransform: "uppercase" }}>see all recents </span>
-                                <svg
-                                    width="7"
-                                    height="8"
-                                    viewBox="0 0 7 8"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <g clipPath="url(#clip0_1201_3245)">
-                                        <path
-                                            d="M0.475098 1.19312H6.32691V7.04493"
-                                            stroke="#2A3592"
-                                            strokeWidth="1.7"
-                                            strokeMiterlimit="10"
-                                        />
-                                        <path
-                                            d="M0.475098 7.04493L6.32691 1.19312"
-                                            stroke="#2A3592"
-                                            strokeWidth="1.7"
-                                            strokeMiterlimit="10"
-                                        />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_1201_3245">
-                                            <rect
-                                                width="7"
-                                                height="7"
-                                                fill="white"
-                                                transform="translate(0 0.52002)"
-                                            />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </Link> */}
                         </div>
 
                         <div className="recently_col_wrap">
@@ -949,6 +914,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                     </div>
                 </div>
             </div>
+                : null}
 
             <Box
                 className="container"
