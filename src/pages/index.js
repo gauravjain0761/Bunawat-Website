@@ -38,11 +38,15 @@ export default function Index() {
                         <Home />
                     </Route>
 
-                    <Route exact path={BASE_URL.BASE_URL + `allProduct`}>
+                    <Route exact path={BASE_URL.BASE_URL + `allProductList/:selected`}>
                         <AllProduct />
                     </Route>
 
                     <Route exact path={BASE_URL.BASE_URL + `allProduct/:id`}>
+                        <AllProduct />
+                    </Route>
+
+                    <Route exact path={BASE_URL.BASE_URL + `allProduct/:id/:selected`}>
                         <AllProduct />
                     </Route>
 
@@ -92,11 +96,11 @@ export default function Index() {
                     </Route>
 
                     <Route exact path={BASE_URL.BASE_URL + "trackOrder"}>
-                       <TrackOrder />
+                        <TrackOrder />
                     </Route>
 
                     <Route exact path={BASE_URL.BASE_URL + "login"}>
-                       <Login />
+                        <Login />
                     </Route>
 
                     <Route exact path={BASE_URL.BASE_URL + "*"}>

@@ -163,7 +163,7 @@ function Header() {
         setAnchorEl(null);
         setIsActive({ active: false, index: "" });
     };
-    const handleActive = (id, index, level, change = true, sub = false) => {
+    const handleActive = (id, index, level, change = true, sub = false, name) => {
         if (change) {
             setMenuData({
                 ...menuData,
@@ -179,7 +179,7 @@ function Header() {
                 selectedSubCategoriesIndex: -1,
                 level: '1'
             })
-            history.push(`/allProduct/${id}`)
+            history.push(`/allProduct/${id}/${name}`)
         }
     }
 

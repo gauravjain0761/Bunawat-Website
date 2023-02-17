@@ -6,7 +6,6 @@ import SaveButton from "../common/save";
 const BestSellingSection = ({ singleData, keyVal, data, refetch }) => {
   const [singleList, setSingleList] = React.useState(singleData ?? [])
 
-  { console.log("data?.[key]?.type", data, data?.[keyVal]?.type, keyVal) }
   useEffect(() => {
     setSingleList(singleData ?? []);
   }, [singleData]);

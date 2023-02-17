@@ -8,7 +8,6 @@ import { toast } from 'react-toastify';
 const SavedAddressModule = () => {
   const [customerUpdate] = useCustomerUpdateMutation(undefined, {})
   const userItem = useSelector(state => state?.user?.userData)
-  console.log("userItem", userItem)
   const { data: userData, error, isLoading } = useGetCustomerDataQuery(userItem?._id, { skip: !userItem?._id })
   const [formData, setFormData] = useState([]);
   const [formError, setFormError] = useState([]);

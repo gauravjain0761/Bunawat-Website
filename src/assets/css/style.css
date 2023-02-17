@@ -1226,6 +1226,17 @@ li.common_option_wrap {
     border-right: 1px solid #EBEAED;
 }
 
+.apply_btn {
+    min-width: 100px;
+    height: 100%;
+    background-color: #2A3592;
+    height: 56px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
 .clear_btn {
     min-width: 100px;
     height: 100%;
@@ -1238,6 +1249,10 @@ li.common_option_wrap {
 
 .disabled-btn {
     background-color: #2A359250;
+}
+
+.apply_btn span {
+    margin-right: 10px;
 }
 
 .clear_btn span {

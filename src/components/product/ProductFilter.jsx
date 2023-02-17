@@ -14,113 +14,112 @@ import { setCartCount } from '../../redux/reducers/cart';
 import { Modal } from "react-bootstrap";
 import { Box, Button } from '@mui/material';
 
-                                                    
-export const SelectModal = ({showSelect, handleClose, attributeList, attributeData, setAttributeData, filterList}) => {
+
+export const SelectModal = ({ showSelect, handleClose, attributeList, attributeData, setAttributeData, filterList }) => {
     return (
-      <>
-        <Modal
-          show={showSelect}
-          onHide={handleClose}
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
-        >
-          <Modal.Body style={{padding: "2rem 1rem"}}>
-          {Object.keys(attributeList)?.map((item, index) => {
-                            console.log(attributeList, "attributeList", attributeData)
-                            return (
-                                <>
-                                    <Box
-                                        className="common_select_wrap first_option"
-                                        sx={{maxWidth: '100%', borderRight: 'none'}}
-                                        >
-                                        <FormControl>
-                                            <Select
-                                                sx={{backgroundColor: "#F2F4FF", width: "100%", marginBottom: "10px"}}
-                                                defaultValue='defaultValue'
-                                                value={attributeData?.[item]}
-                                                onChange={(e) => {
-                                                    let newData = {}
-                                                    Object.entries({ ...attributeData, [item]: e.target.value }).forEach(([key, value], i) => {
-                                                        if (index >= i) {
-                                                            newData = { ...newData, [key]: value }
-                                                        } else {
-                                                            newData = { ...newData, [key]: 'defaultValue' }
-                                                        }
-                                                    });
-                                                    setAttributeData(newData)
-                                                }}
-                                                inputProps={{ "aria-label": "Without label" }}>
-                                                <MenuItem value="defaultValue" className="common_option_wrap">
-                                                    <div className="common_option">
-                                                        <p>
+        <>
+            <Modal
+                show={showSelect}
+                onHide={handleClose}
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
+                <Modal.Body style={{ padding: "2rem 1rem" }}>
+                    {Object.keys(attributeList)?.map((item, index) => {
+                        return (
+                            <>
+                                <Box
+                                    className="common_select_wrap first_option"
+                                    sx={{ maxWidth: '100%', borderRight: 'none' }}
+                                >
+                                    <FormControl>
+                                        <Select
+                                            sx={{ backgroundColor: "#F2F4FF", width: "100%", marginBottom: "10px" }}
+                                            defaultValue='defaultValue'
+                                            value={attributeData?.[item]}
+                                            onChange={(e) => {
+                                                let newData = {}
+                                                Object.entries({ ...attributeData, [item]: e.target.value }).forEach(([key, value], i) => {
+                                                    if (index >= i) {
+                                                        newData = { ...newData, [key]: value }
+                                                    } else {
+                                                        newData = { ...newData, [key]: 'defaultValue' }
+                                                    }
+                                                });
+                                                setAttributeData(newData)
+                                            }}
+                                            inputProps={{ "aria-label": "Without label" }}>
+                                            <MenuItem value="defaultValue" className="common_option_wrap">
+                                                <div className="common_option">
+                                                    <p>
+                                                        <div className="common_option">
+                                                            <span style={{ textTransform: "capitalize" }}>Select {item}</span>
+                                                        </div>
+                                                    </p>
+                                                </div>
+                                            </MenuItem>
+                                            {index == 0 ?
+                                                _.uniqBy(attributeList?.[item], x => x?.label)?.map((list) => {
+                                                    return (
+                                                        <MenuItem value={list?.value} className="common_option_wrap">
                                                             <div className="common_option">
-                                                                <span style={{ textTransform: "capitalize" }}>Select {item}</span>
+                                                                <p>
+                                                                    <div className="common_option">
+                                                                        <div className="d-flex align-items-center common_radio_btn">
+                                                                            <span>{list?.label}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </p>
                                                             </div>
-                                                        </p>
-                                                    </div>
-                                                </MenuItem>
-                                                {index == 0 ?
-                                                    _.uniqBy(attributeList?.[item], x => x?.label)?.map((list) => {
-                                                        return (
-                                                            <MenuItem value={list?.value} className="common_option_wrap">
-                                                                <div className="common_option">
-                                                                    <p>
-                                                                        <div className="common_option">
-                                                                            <div className="d-flex align-items-center common_radio_btn">
-                                                                                <span>{list?.label}</span>
-                                                                            </div>
+                                                        </MenuItem>
+                                                    )
+                                                })
+                                                :
+                                                attributeList?.[item]?.filter(list => Object.values(attributeList)?.[index - 1]?.filter(x => x?.label == Object.values(attributeList)?.[index - 1]?.find(list => list?.value == attributeData[Object.keys(attributeList)?.[index - 1]])?.label)?.map(x => x?.value)?.includes(list?.value))?.map((list) => {
+                                                    return (
+                                                        <MenuItem value={list?.value} className="common_option_wrap">
+                                                            <div className="common_option">
+                                                                <p>
+                                                                    <div className="common_option">
+                                                                        <div className="d-flex align-items-center common_radio_btn">
+                                                                            <span>{list?.label}</span>
                                                                         </div>
-                                                                    </p>
-                                                                </div>
-                                                            </MenuItem>
-                                                        )
-                                                    })
-                                                    :
-                                                    attributeList?.[item]?.filter(list => Object.values(attributeList)?.[index - 1]?.filter(x => x?.label == Object.values(attributeList)?.[index - 1]?.find(list => list?.value == attributeData[Object.keys(attributeList)?.[index - 1]])?.label)?.map(x => x?.value)?.includes(list?.value))?.map((list) => {
-                                                        return (
-                                                            <MenuItem value={list?.value} className="common_option_wrap">
-                                                                <div className="common_option">
-                                                                    <p>
-                                                                        <div className="common_option">
-                                                                            <div className="d-flex align-items-center common_radio_btn">
-                                                                                <span>{list?.label}</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </p>
-                                                                </div>
-                                                            </MenuItem>
-                                                        )
-                                                    })
-                                                }
-                                            </Select>
-                                        </FormControl>
-                                    </Box>
-                                </>
-                            )
-                        })}
-                        <div className="slaman_link" style={{marginTop: "2px", backgroundColor: "#F2F4FF", padding: "1rem"}}>
-                            <p>Salmon Pink</p>
-                            <ul className="color_list">
-                                <li
-                                    className="active"
-                                    style={{ border: "1px solid #000", backgroundColor: filterList?.find(list => list?._id == Object.values(attributeData)?.filter(list => list != 'defaultValue')?.slice(-1)?.[0])?.swatch }}
-                                ></li>
-                                {/* <li style={{ backgroundColor: "#BEF3E0" }}></li>
+                                                                    </div>
+                                                                </p>
+                                                            </div>
+                                                        </MenuItem>
+                                                    )
+                                                })
+                                            }
+                                        </Select>
+                                    </FormControl>
+                                </Box>
+                            </>
+                        )
+                    })}
+                    <div className="slaman_link" style={{ marginTop: "2px", backgroundColor: "#F2F4FF", padding: "1rem" }}>
+                        <p>Salmon Pink</p>
+                        <ul className="color_list">
+                            <li
+                                className="active"
+                                style={{ border: "1px solid #000", backgroundColor: filterList?.find(list => list?._id == Object.values(attributeData)?.filter(list => list != 'defaultValue')?.slice(-1)?.[0])?.swatch }}
+                            ></li>
+                            {/* <li style={{ backgroundColor: "#BEF3E0" }}></li>
                                 <li
                                     style={{ backgroundColor: "#fff", border: "1px solid #d2d2d2" }}
                                 ></li>
                                 <li style={{ backgroundColor: "#037A44" }}></li> */}
-                            </ul>
-                        </div>
-                        <button className="clear_btn" style={{marginTop: "10px"}} onClick={handleClose}>
-                            <span>Apply</span>
-                        </button>
-          </Modal.Body>
-        </Modal>
-      </>
+                        </ul>
+                    </div>
+                    <button className="clear_btn" style={{ marginTop: "10px" }} onClick={handleClose}>
+                        <span>Apply</span>
+                    </button>
+                </Modal.Body>
+            </Modal>
+        </>
     );
 }
-  
+
 
 const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedImage }) => {
     const [filterList, setFilterList] = useState([]);
@@ -212,16 +211,16 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
             <div className="product_filters">
                 <div className='product_filters_wrap'>
                     <div className="product_filters_wrap product_page_filtter">
-                        <Box 
-                            className='common_select_wrap' 
+                        <Box
+                            className='common_select_wrap'
                             onClick={handleShow}
                             sx={{
                                 display: "none",
-                                '@media (max-width: 768px)':{
+                                '@media (max-width: 768px)': {
                                     display: "block",
                                 }
                             }}
-                            >
+                        >
                             <MenuItem value="defaultValue" className="common_option_wrap">
                                 <div className="common_option">
                                     <p>
@@ -234,17 +233,16 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                         </Box>
 
                         {Object.keys(attributeList)?.map((item, index) => {
-                            console.log(attributeList, "attributeList", attributeData)
                             return (
                                 <>
                                     <Box
                                         className="common_select_wrap first_option"
                                         sx={{
-                                            '@media (max-width: 768px)':{
+                                            '@media (max-width: 768px)': {
                                                 display: 'none',
                                             }
                                         }}
-                                        >
+                                    >
                                         <FormControl>
                                             <Select
                                                 defaultValue='defaultValue'

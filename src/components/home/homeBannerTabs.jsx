@@ -178,7 +178,6 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, refetch }) => {
                   <Tab eventKey={index} key={item?._id} title={item?.name}>
                     <div className="tab_common_contain">
                       <div className="row">
-                        {console.log("singleCollection?.products", singleCollection?.products)}
                         {singleCollection?.products?.slice(0, 4)?.map((list, index) => {
                           return (
                             <div className="col-6">
@@ -227,33 +226,33 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, refetch }) => {
                                         </span>
                                       </div>
                                       <p style={{
-                                        display: "flex", 
+                                        display: "flex",
                                         justifyContent: "space-between",
                                         alignItems: "center",
-                                        }}>
-                                      <Box sx={{
-                                        '@media (max-width: 768px)':{
-                                          marginTop: "8px"
-                                        },
                                       }}>
-                                        {getNumberWithComma(list?.sale_price ?? 0)} 
-                                      </Box>  
-                                      <Box sx={{
-                                        display: "none",
-                                        '@media (max-width: 768px)':{
-                                          display: "block",
-                                        }
+                                        <Box sx={{
+                                          '@media (max-width: 768px)': {
+                                            marginTop: "8px"
+                                          },
                                         }}>
-                                      <SaveButton id={list?._id} isWishlist={list?.isWishlist} refetch={refetch} />
-                                      </Box>
+                                          {getNumberWithComma(list?.sale_price ?? 0)}
+                                        </Box>
+                                        <Box sx={{
+                                          display: "none",
+                                          '@media (max-width: 768px)': {
+                                            display: "block",
+                                          }
+                                        }}>
+                                          <SaveButton id={list?._id} isWishlist={list?.isWishlist} refetch={refetch} />
+                                        </Box>
                                       </p>
                                     </div>
                                     <Box sx={{
                                       display: "block",
-                                        '@media (max-width: 768px)':{
-                                          display: "none",
-                                        }
-                                      }}>
+                                      '@media (max-width: 768px)': {
+                                        display: "none",
+                                      }
+                                    }}>
                                       <SaveButton id={list?._id} isWishlist={list?.isWishlist} refetch={refetch} />
                                     </Box>
                                   </div>

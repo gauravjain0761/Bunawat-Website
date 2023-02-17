@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import "./allProduct.css";
 import category_1 from "../../assets/img/category/category_1.png"
 import ProductFilters from '../category/productFilters';
@@ -8,8 +8,9 @@ import FooterStrip from '../footer/footerStrip';
 import { getNumberWithComma } from '../../utils/utils';
 import SaveButton from '../common/save';
 
-const AllProductMenu = ({ data, singleData, setSelectedId, refetch }) => {
+const AllProductMenu = ({ data, singleData, setSelectedId, refetch, selectedIndex }) => {
     const { id } = useParams()
+    const history = useHistory();
     const [key, setKey] = useState(0);
     const [menuList, setMenuList] = React.useState(data ?? [])
     const [singleList, setSingleList] = React.useState(singleData ?? [])
@@ -20,10 +21,8 @@ const AllProductMenu = ({ data, singleData, setSelectedId, refetch }) => {
     }, [data, singleData]);
 
     useEffect(() => {
-        if (id) {
-            setKey(0)
-        }
-    }, [id]);
+        setKey(selectedIndex)
+    }, [selectedIndex]);
 
     const getWidthData = (length) => {
         let temp = []
@@ -98,7 +97,7 @@ const AllProductMenu = ({ data, singleData, setSelectedId, refetch }) => {
                                                                     <img src={list?.image} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "640px" : "560px"} />
                                                                 </Link>
                                                                 <div className="cloth_info_title">
-                                                                    <div className="summer_list_link_wrap mobile_summer_list_link_wrap">
+                                                                    <div style={{ cursor: 'pointer' }} className="summer_list_link_wrap mobile_summer_list_link_wrap" onClick={() => history.push(`/product/${list?._id}/${data?.[key]?.type ?? ""}`)}>
                                                                         <div className="summer_list_link">
                                                                             <p>{list?.name}</p>
                                                                             <span>

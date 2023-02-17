@@ -130,7 +130,10 @@ export const AllApiData = createApi({
             },
             invalidatesTags: ['Customer'],
         }),
+        getAttributeData: builder.query({
+            query: (id) => `attribute/getall`,
+        }),
     }),
 })
 
-export const { useSendOtpMutation, useOtpMatchMutation, useGetShopMenuDataQuery, useGetDatabyIdQuery, useGetProductQuery, useAddToCartMutation, useGetAllCartQuery, useRemoveCartItemMutation, useEditCartMutation, useAddOrderMutation, useOrderListQuery, useAddToWishlistMutation, useGetAllWishlistQuery, useRemoveWishlistMutation, useCustomerUpdateMutation, useGetCustomerDataQuery } = AllApiData
+export const { useSendOtpMutation, useOtpMatchMutation, useGetShopMenuDataQuery, useGetDatabyIdQuery, useGetProductQuery, useAddToCartMutation, useGetAllCartQuery, useRemoveCartItemMutation, useEditCartMutation, useAddOrderMutation, useOrderListQuery, useAddToWishlistMutation, useGetAllWishlistQuery, useRemoveWishlistMutation, useCustomerUpdateMutation, useGetCustomerDataQuery, useGetAttributeDataQuery } = AllApiData
