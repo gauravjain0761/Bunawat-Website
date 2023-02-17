@@ -5,6 +5,7 @@ import SwipeableViews from "react-swipeable-views";
 import ProductCard from "../../components/product/productCard";
 import ProductPageFilter from "../../components/product/ProductFilter";
 import { useGetProductQuery } from "../../services/api";
+import Storage from "../../services/storage";
 
 const Product = () => {
   const { id, type } = useParams()
@@ -78,6 +79,19 @@ const Product = () => {
       window.removeEventListener('resize', handleWindowResize);
     }
   }, []);
+
+  useEffect(() => {
+    let recentlyProduct = Storage.get("recentlyProduct") ? JSON.parse(Storage.get("recentlyProduct") ?? '[]') : [];
+    if (productList?.length > 0) {
+      if (recentlyProduct?.some(x => x?._id == productList?.[swipeableIndex]._id)) {
+        recentlyProduct = recentlyProduct?.filter(x => x?._id != productList?.[swipeableIndex]._id)
+        recentlyProduct = [productList?.find(x => x?._id == productList?.[swipeableIndex]._id), ...recentlyProduct]
+      } else {
+        recentlyProduct = [productList?.find(x => x?._id == productList?.[swipeableIndex]._id), ...recentlyProduct]
+      }
+    }
+    Storage.set("recentlyProduct", JSON.stringify(recentlyProduct))
+  }, [swipeableIndex, productList]);
 
   const getCurrentBottomData = (index) => {
     let bottomData = [...productBottomData];

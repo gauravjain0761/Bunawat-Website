@@ -1,36 +1,24 @@
-import React, { useState } from 'react'
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import { Link, useHistory } from "react-router-dom";
 import 'react-spring-bottom-sheet/dist/style.css';
 import { getNumberWithComma } from "../../utils/utils";
-
-import product_1 from "../../assets/img/product/product_1.png";
-import product_2 from "../../assets/img/product/product_2.png";
-import product_3 from "../../assets/img/product/product_3.png";
-import know_img from "../../assets/img/product/know_img.png";
-
-import cloth_3 from "../../assets/img/home/cloth_3.png";
-import cloth_4 from "../../assets/img/home/cloth_4.png";
-import cloth_5 from "../../assets/img/home/cloth_5.png";
-import cloth_6 from "../../assets/img/home/cloth_6.png";
-import cloth_7 from "../../assets/img/home/cloth_7.png";
-
-import recent_view_1 from "../../assets/img/product/recent/recent_view_1.png";
-import recent_view_2 from "../../assets/img/product/recent/recent_view_2.png";
-import recent_view_3 from "../../assets/img/product/recent/recent_view_3.png";
-import recent_view_4 from "../../assets/img/product/recent/recent_view_4.png";
-import recent_view_5 from "../../assets/img/product/recent/recent_view_5.png";
-import recent_view_6 from "../../assets/img/product/recent/recent_view_6.png";
 import WriteAReviews from '../reviews/WriteAReviews';
 import FooterStrip from '../footer/footerStrip';
 import ProductPageFilter from './ProductFilter';
 import SaveButton from '../common/save';
 import { Box } from '@mui/material';
+import Storage from '../../services/storage';
 
 
 const ProductBottomData = ({ product, productIndex, width, similarList, refetch, swipeableIndex, productList }) => {
-
     const [age, setAge] = useState("size");
+    const history = useHistory();
     const [showReviewsWrite, setShowReviewsWrite] = useState(false);
+    const [recentlyProduct, setRecentlyProduct] = useState(Storage.get("recentlyProduct") ? JSON.parse(Storage.get("recentlyProduct") ?? '[]') : []);
+
+    useEffect(() => {
+        setRecentlyProduct(Storage.get("recentlyProduct") ? JSON.parse(Storage.get("recentlyProduct") ?? '[]') : []);
+    }, [Storage.get("recentlyProduct")])
 
     const handleClose = () => setShowReviewsWrite(false);
     const handleShow = () => setShowReviewsWrite(true);
@@ -902,7 +890,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                     <div className="recemtly_inner">
                         <div className="sell_wrap">
                             <h3>Recently Seen</h3>
-                            <Link className="sell_link">
+                            {/* <Link className="sell_link">
                                 <span style={{ textTransform: "uppercase" }}>see all recents </span>
                                 <svg
                                     width="7"
@@ -936,91 +924,26 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                         </clipPath>
                                     </defs>
                                 </svg>
-                            </Link>
+                            </Link> */}
                         </div>
 
                         <div className="recently_col_wrap">
-                            <div className="row">
-                                <div className="col" style={{ paddingLeft: '2px', paddingRight: '2px' }}>
-                                    <div className="recent_view_product">
-                                        <img src={recent_view_1} alt="recent_view_img" />
+                            <div style={{
+                                display: 'flex',
+                                flexWrap: 'nowrap',
+                                width: '100%',
+                                gap: '20px',
+                                overflow: 'hidden',
+                                overflowX: 'auto'
+                            }}>
+                                {recentlyProduct?.slice(1)?.map(list => (
+                                    <div className="recent_view_product" onClick={() => history.push(`/product/${list?._id}/${list?.type}`)} style={{ cursor: 'pointer', width: '150px', height: '150px' }}>
+                                        <img src={list?.images?.[0]?.url} style={{ maxWidth: '150px' }} width="150px" height="100%" alt="recent_view_img" />
                                         <div className="recent_price">
-                                            <p>₹6,800</p>
+                                            <p>{getNumberWithComma(list?.sale_price ?? 0)}</p>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="col" style={{ paddingLeft: '2px', paddingRight: '2px' }}>
-                                    <div className="recent_view_product">
-                                        <img src={recent_view_2} alt="recent_view_img" />
-                                        <div className="recent_price">
-                                            <p>₹6,800</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col" style={{ paddingLeft: '2px', paddingRight: '2px' }}>
-                                    <div className="recent_view_product">
-                                        <img src={recent_view_3} alt="recent_view_img" />
-                                        <div className="recent_price">
-                                            <p>₹6,800</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col" style={{ paddingLeft: '2px', paddingRight: '2px' }}>
-                                    <div className="recent_view_product">
-                                        <img src={recent_view_4} alt="recent_view_img" />
-                                        <div className="recent_price">
-                                            <p>₹6,800</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col" style={{ paddingLeft: '2px', paddingRight: '2px' }}>
-                                    <div className="recent_view_product">
-                                        <img src={recent_view_5} alt="recent_view_img" />
-                                        <div className="recent_price">
-                                            <p>₹6,800</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col" style={{ paddingLeft: '2px', paddingRight: '2px' }}>
-                                    <div className="recent_view_product">
-                                        <img src={recent_view_6} alt="recent_view_img" />
-                                        <div className="recent_price">
-                                            <p>₹6,800</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col" style={{ paddingLeft: '2px', paddingRight: '2px' }}>
-                                    <div className="recent_view_product">
-                                        <img src={recent_view_1} alt="recent_view_img" />
-                                        <div className="recent_price">
-                                            <p>₹6,800</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col" style={{ paddingLeft: '2px', paddingRight: '2px' }}>
-                                    <div className="recent_view_product">
-                                        <img src={recent_view_2} alt="recent_view_img" />
-                                        <div className="recent_price">
-                                            <p>₹6,800</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col" style={{ paddingLeft: '2px', paddingRight: '2px' }}>
-                                    <div className="recent_view_product">
-                                        <img src={recent_view_3} alt="recent_view_img" />
-                                        <div className="recent_price">
-                                            <p>₹6,800</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col" style={{ paddingLeft: '2px', paddingRight: '2px' }}>
-                                    <div className="recent_view_product">
-                                        <img src={recent_view_4} alt="recent_view_img" />
-                                        <div className="recent_price">
-                                            <p>₹6,800</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
                         </div>
                     </div>
