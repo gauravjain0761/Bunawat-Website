@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import { CssBaseline, Divider, Stack } from '@mui/material';
+import { ClickAwayListener, CssBaseline, Divider, Stack } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { CustomPopOver } from './style';
 import { Link, useHistory, useLocation } from 'react-router-dom';
@@ -26,6 +26,7 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
+import NewCart from './cart_new';
 
 function Header() {
     const { data } = useGetShopMenuDataQuery()
@@ -41,6 +42,7 @@ function Header() {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [accountPopup, setAccountPopup] = React.useState(null);
     const [calendarPopup, setCalendarPopup] = React.useState(null);
+    const [isCart, setIsCart] = React.useState(false);
     const [cartPopup, setCartPopup] = React.useState(null);
     const [menuData, setMenuData] = React.useState({
         collection: [],
@@ -228,13 +230,12 @@ function Header() {
     const cartId = cart ? 'simple-popover' : undefined;
 
     return (
-        <Box sx={{
-
-        }}>
+        <>
             {/* <CssBaseline /> */}
             <AppBar component="nav" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
                 position='fixed' sx={{
                     boxShadow: 'none',
+                    zIndex: 99,
                     backgroundColor: getActiveHeader(scroll, hover, headerColor) || headerColor ? 'hsla(0,0%,100%,98%)' : "transparent",
                     backdropFilter: getActiveHeader(scroll, hover, headerColor) || headerColor ? 'blur(100px)' : 'none',
                     borderRadius: getActiveHeader(scroll, hover, headerColor) ? "4px" : "0px",
@@ -455,7 +456,8 @@ function Header() {
                             <Box>
                                 <Button
                                     aria-describedby={cart}
-                                    onClick={handleCartClick}
+                                    // onClick={handleCartClick}
+                                    onClick={() => setIsCart(true)}
                                     sx={{
                                         marginLeft: '10px',
                                         '@media (max-width: 768px)': {
@@ -522,7 +524,32 @@ function Header() {
                     </Toolbar>
                 </Container>
             </AppBar>
-        </Box>
+
+            <Box sx={{
+                background: 'rgba(0,0,0,.6)',
+                width: '100%',
+                height: '100vh',
+                position: 'fixed',
+                top: 0,
+                zIndex: 999,
+                display: 'flex',
+                justifyContent: 'flex-end',
+                overflow: 'hidden'
+            }} className={isCart ? 'active-cart' : 'inactive-cart'} >
+                {isCart ?
+                    <ClickAwayListener onClickAway={() => setIsCart(false)}>
+                        <Box sx={{
+                            background: 'white',
+                            width: { xs: '100%', sm: '400px' },
+                            height: { xs: '90vh', sm: '80vh' },
+                            margin: { xs: '60px 0 0 0', sm: '60px 25px 0 0' }
+                        }}>
+                            <NewCart data={cartData} activeHeader={getActiveHeader(scroll, hover, headerColor)} handleCartClose={handleCartClose} handleCheckout={handleCheckout} />
+                        </Box>
+                    </ClickAwayListener>
+                    : null}
+            </Box>
+        </>
     );
 }
 export default Header;

@@ -27,3 +27,13 @@
     color: #dc3545;
 
 }
+
+.active-cart {
+    right: 0 !important;
+    transition: .2s linear !important;
+}
+
+.inactive-cart {
+    right: -110% !important;
+    transition: .2s linear !important;
+}
