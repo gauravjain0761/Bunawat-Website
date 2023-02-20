@@ -504,7 +504,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                             ))}
                         </div>
 
-                        <Review />
+                        <Review id={product?._id} />
                     </div>
                 </div>
             </div>

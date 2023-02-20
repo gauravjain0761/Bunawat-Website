@@ -1,21 +1,84 @@
-import { Rating } from "@mui/material";
+import { Box, Rating } from "@mui/material";
 import React, { useState } from "react";
 import { Col, Modal, Row } from "react-bootstrap";
 import { AiOutlineInstagram } from "react-icons/ai";
+import { useAddProductReviewMutation } from "../../services/api";
+import { toast } from 'react-toastify';
+import { ApiPost } from "../../services/API/api";
 
-const WriteAReviews = ({ showReviewsWrite, handleClose }) => {
+const WriteAReviews = ({ showReviewsWrite, handleClose, id }) => {
+  const [addProductReview] = useAddProductReviewMutation(undefined, {})
+  const [imageLoading, setImageLoading] = useState(false);
   const [formData, setFormData] = useState({
     review: "",
     rating: 0,
-    image: []
+    images: []
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (formData?.review != "" && formData?.rating != 0) {
-
-      handleClose();
+      await addProductReview({ ...formData, product: id }).unwrap().then((data) => {
+        handleClose();
+      }).catch((error) => toast.error(error?.data?.message))
     }
   }
+
+
+  const handleImageUpload = async (event) => {
+    const filesData = new FormData();
+    Object.values(event?.target?.files).forEach((value) => {
+      console.log(value)
+      filesData.append(`file`, value);
+    });
+
+    const config = {
+      'Content-Type': 'multipart/form-data'
+    };
+
+    setImageLoading(true);
+    const images = formData?.images ?? []
+    await ApiPost("fileUpload/product", filesData, config)
+      .then((response) => {
+        if (response?.data) {
+          let ImagesData = [];
+          response?.data && response?.data?.forEach((element) => {
+            ImagesData.push(element?.Location)
+          })
+          setFormData({
+            ...formData, images: [...images, ...ImagesData]
+          });
+        }
+        setImageLoading(false)
+      })
+      .catch((error) => {
+        setImageLoading(false)
+        console.log("Error", error);
+      });
+  }
+
+  const handleDeleteImage = async (index) => {
+    // setImageLoading(true)
+    // await ApiPost('fileRmove', {
+    //   url: formData?.images?.[index]?.url,
+    //   type: 'Product'
+    // })
+    //   .then((response) => {
+    //     setImageLoading(false)
+    //     if (response?.data) {
+    //       let images = formData?.images ?? []
+    //       images = images?.filter((img, i) => i != index)
+    //       setFormData({ ...formData, image: images });
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     setImageLoading(false)
+    //     console.log("Error", error);
+    //   });
+    let images = formData?.images ?? []
+    images = images?.filter((img, i) => i != index)
+    setFormData({ ...formData, images });
+  }
+
 
   return (
     <>
@@ -23,8 +86,7 @@ const WriteAReviews = ({ showReviewsWrite, handleClose }) => {
         show={showReviewsWrite}
         onHide={handleClose}
         aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
+        centered>
         <Modal.Body className="review_body">
           <div className="login_wrap reviews_modal">
             <div className="review_title_wrap">
@@ -86,38 +148,62 @@ const WriteAReviews = ({ showReviewsWrite, handleClose }) => {
                   className="review_input_stars"
                 >
                   <Rating
-                          name="simple-controlled"
-                          value={formData?.rating}
-                          sx={{
-                            '& .MuiRating-icon': {
-                              color: '#2A3592',
-                              fontSize: "30px",
-                            },
-                            '& .MuiRating-iconFilled': {
-                              color: '#2A3592',
-                              fontSize: "30px",
-                            },
-                            '& .MuiRating-iconFocus': {
-                              fontSize: "30px",
-                            },
-                            '& .MuiRating-iconHover': {
-                              fontSize: "30px",
-                            },
-                          }}
-                          onChange={(event, newValue) => {
-                            setFormData({ ...formData, rating: newValue })
-                          }}
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            width: "200px",
-                            fontSize: "30px",
-                          }}
-                        />
+                    name="simple-controlled"
+                    value={formData?.rating}
+                    sx={{
+                      '& .MuiRating-icon': {
+                        color: '#2A3592',
+                        fontSize: "30px",
+                      },
+                      '& .MuiRating-iconFilled': {
+                        color: '#2A3592',
+                        fontSize: "30px",
+                      },
+                      '& .MuiRating-iconFocus': {
+                        fontSize: "30px",
+                      },
+                      '& .MuiRating-iconHover': {
+                        fontSize: "30px",
+                      },
+                    }}
+                    onChange={(event, newValue) => {
+                      setFormData({ ...formData, rating: newValue })
+                    }}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      width: "200px",
+                      fontSize: "30px",
+                    }}
+                  />
                 </div>
-                <div>
-                  {formData?.image?.map(list => (
-                    <img src={list} style={{ padding: '10px' }} alt='image' width="60px" height="60px" />
+                <Box sx={{
+                  display: 'flex',
+                  alignItems: 'center'
+                }}>
+                  {formData?.images?.map((list, index) => (
+                    <Box sx={{
+                      position: 'relative'
+                    }}>
+                      <img src={list} style={{ padding: '10px' }} alt='image' width="60px" height="60px" />
+                      <Box sx={{
+                        width: '15px',
+                        height: '15px',
+                        position: 'absolute',
+                        right: '5px',
+                        top: 0,
+                        cursor: 'pointer'
+                      }} onClick={() => {
+                        handleDeleteImage(index)
+                      }}>
+                        <svg style={{
+                          background: 'red',
+                          borderRadius: '50%',
+                        }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" class="w-6 h-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </Box>
+                    </Box>
                   ))}
                   <label style={{ cursor: 'pointer' }}>
                     <AiOutlineInstagram style={{ fontSize: "30px" }} />
@@ -125,12 +211,11 @@ const WriteAReviews = ({ showReviewsWrite, handleClose }) => {
                       type="file"
                       accept="image/png, image/gif, image/jpeg"
                       hidden
+                      multiple
                       onClick={(event) => { event.target.value = '' }}
-                      onChange={(e) => {
-                        setFormData({ ...formData, image: [...formData.image, URL.createObjectURL(e.target.files[0])] })
-                      }} />
+                      onChange={(e) => handleImageUpload(e)} />
                   </label>
-                </div>
+                </Box>
               </div>
             </div>
             <button className="btn focus_clear" type="button" onClick={handleSubmit}>

@@ -1,12 +1,20 @@
 import React from 'react'
 import { useState } from 'react';
+import { toast } from 'react-toastify';
+import Storage from '../../services/storage';
 import WriteAReviews from '../reviews/WriteAReviews';
 
-const Review = () => {
+const Review = ({ id }) => {
     const [showReviewsWrite, setShowReviewsWrite] = useState(false);
 
     const handleClose = () => setShowReviewsWrite(false);
-    const handleShow = () => setShowReviewsWrite(true);
+    const handleShow = () => {
+        if (Storage.isUserAuthenticated()) {
+            setShowReviewsWrite(true)
+        } else {
+            toast.error("Login required!")
+        }
+    };
 
     return (
         <>
@@ -118,7 +126,7 @@ const Review = () => {
                 </div>
             </div>
 
-            <WriteAReviews showReviewsWrite={showReviewsWrite} handleClose={handleClose} />
+            <WriteAReviews showReviewsWrite={showReviewsWrite} handleClose={handleClose} id={id} />
         </>
     )
 }
