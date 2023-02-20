@@ -86,18 +86,34 @@ const WriteAReviews = ({ showReviewsWrite, handleClose }) => {
                   className="review_input_stars"
                 >
                   <Rating
-                    name="simple-controlled"
-                    value={formData?.rating}
-                    onChange={(event, newValue) => {
-                      setFormData({ ...formData, rating: newValue })
-                    }}
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      width: "200px",
-                      fontSize: "30px",
-                    }}
-                  />
+                          name="simple-controlled"
+                          value={formData?.rating}
+                          sx={{
+                            '& .MuiRating-icon': {
+                              color: '#2A3592',
+                              fontSize: "30px",
+                            },
+                            '& .MuiRating-iconFilled': {
+                              color: '#2A3592',
+                              fontSize: "30px",
+                            },
+                            '& .MuiRating-iconFocus': {
+                              fontSize: "30px",
+                            },
+                            '& .MuiRating-iconHover': {
+                              fontSize: "30px",
+                            },
+                          }}
+                          onChange={(event, newValue) => {
+                            setFormData({ ...formData, rating: newValue })
+                          }}
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            width: "200px",
+                            fontSize: "30px",
+                          }}
+                        />
                 </div>
                 <div>
                   {formData?.image?.map(list => (
