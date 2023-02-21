@@ -16,13 +16,16 @@ import Storage from "../../services/storage";
 
 const Checkout = () => {
   const [addOrder] = useAddOrderMutation(undefined, {})
-  const { data: cartData, error, isLoading } = useGetAllCartQuery(undefined, { skip: !Storage.isUserAuthenticated() })
+  const { data, error, isLoading } = useGetAllCartQuery(undefined, { skip: !Storage.isUserAuthenticated() })
+  const [cartData, setCartData] = useState([]);
+  const [couponData, setCouponData] = useState({});
   const [showCoupon, setShowCoupon] = useState(false);
   const history = useHistory()
   const [showCodModal, setShowCodModal] = useState(false);
   const [formData, setFormData] = useState([]);
   const [formError, setFormError] = useState([]);
   const userData = useSelector(state => state?.user?.userData)
+  const [coupon, setCoupon] = useState("")
 
   const handleCloseCodModal = () => setShowCodModal(false);
   const handleShowCodModal = () => setShowCodModal(true);
@@ -30,6 +33,20 @@ const Checkout = () => {
   const handleClose = () => setShowCoupon(false);
   const handleShow = () => setShowCoupon(true);
 
+  useEffect(() => {
+    if (data) {
+      setCartData(data?.data?.map(list => {
+        const amount = list?.amount
+        return {
+          ...list,
+          price: amount,
+          amount: Number(amount) * Number(list?.qty)
+        }
+      }) ?? [])
+      setCouponData({})
+    }
+  }, [data])
+  console.log("cartData", cartData)
   useEffect(() => {
     if (Object.keys(userData ?? {})?.length > 0) {
       setFormData({
@@ -40,15 +57,19 @@ const Checkout = () => {
         email: userData?.email ?? "",
         phone: userData?.phone ?? "",
         pincode: userData?.pincode ?? "",
-        name: userData?.fname ?? "" + userData?.lname ?? "",
+        fname: userData?.fname ?? "",
+        lname: userData?.lname ?? "",
       })
     }
   }, [userData])
 
   const handleMakeOrder = async () => {
     let tempError = { ...formError }
-    if (formData?.name == "") {
-      tempError = { ...tempError, name: true }
+    if (formData?.fname == "") {
+      tempError = { ...tempError, fname: true }
+    }
+    if (formData?.lname == "") {
+      tempError = { ...tempError, lname: true }
     }
     if (formData?.email == "") {
       tempError = { ...tempError, email: true }
@@ -71,35 +92,33 @@ const Checkout = () => {
     if (formData?.state == "") {
       tempError = { ...tempError, state: true }
     }
-    if (tempError?.name || tempError?.email || tempError?.phone || tempError?.address_1 || tempError?.address_2 || tempError?.pincode || tempError?.city || tempError?.state) {
+    if (tempError?.fname || tempError?.lname || tempError?.email || tempError?.phone || tempError?.address_1 || tempError?.address_2 || tempError?.pincode || tempError?.city || tempError?.state) {
       setFormError(tempError)
     } else {
       await addOrder({
-        member: "63d0f81846f463e3757f19b6",
         user_type: userData?.user_type,
         user: userData?._id,
         billing_address: formData ?? {},
         isSame: true,
-        shipping_address: {},
+        shipping_address: formData ?? {},
         payment_mode: "COD",
-        total_items: cartData?.data?.length,
-        total_qty: cartData?.data?.reduce((total, list) => {
+        total_items: cartData?.length,
+        total_qty: cartData?.reduce((total, list) => {
           return total + Number(list?.qty)
         }, 0),
-        total_amount: cartData?.data?.reduce((total, list) => {
+        total_amount: cartData?.reduce((total, list) => {
           return total + (Number(list?.qty) * Number(list?.amount))
         }, 0),
-        items: cartData?.data?.map(list => ({
-          product: list?.product,
-          sku_id: list?.sku?._id,
-          sku: list?.sku?.sku,
-          price: list?.amount,
-          qty: list?.qty,
-          amount: list?.amount
+        items: (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.map(list => ({
+          ...list,
+          sku_id: list?.sku?._id
+        })) ?? [] : cartData?.map(list => ({
+          ...list,
+          sku_id: list?.sku?._id
         })) ?? [],
         gst_amount: 0,
-        discount_amount: 0,
-        discount_coupon: null
+        discount_amount: (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.reduce((t, x) => t + Number(x?.discounted_amount ?? 0), 0) ?? 0 : 0,
+        discount_coupon: couponData?.coupon_id
       }).unwrap().then((data) => {
         history.push("/userProfile")
       }).catch((error) => toast.error(error?.data?.message))
@@ -117,7 +136,7 @@ const Checkout = () => {
           <Row>
             <Col xs={12} md={5}>
 
-              <MakePayment handleMakeOrder={handleMakeOrder} cartData={cartData ?? []} />
+              <MakePayment handleMakeOrder={handleMakeOrder} cartData={cartData ?? []} couponData={couponData} setCouponData={setCouponData} coupon={coupon} setCoupon={setCoupon} />
 
               <div className="checkout_box" style={{ marginTop: "2rem" }} onClick={handleShow}>
                 <div
@@ -139,12 +158,12 @@ const Checkout = () => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <Box sx={{display: "flex", alignItems: 'center'}}>
-                    <Box sx={{marginRight: "10px"}}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="24" height="24" rx="12" fill="#2A3592"/>
-                    <path d="M16.0502 9.26001L10.5702 14.74L7.9502 12.12" stroke="white" stroke-width="1.7" stroke-miterlimit="10"/>
-                    </svg>
+                  <Box sx={{ display: "flex", alignItems: 'center' }}>
+                    <Box sx={{ marginRight: "10px" }}>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="24" height="24" rx="12" fill="#2A3592" />
+                        <path d="M16.0502 9.26001L10.5702 14.74L7.9502 12.12" stroke="white" stroke-width="1.7" stroke-miterlimit="10" />
+                      </svg>
                     </Box>
                     Use Store credit
                   </Box>
@@ -210,7 +229,7 @@ const Checkout = () => {
               <CheckoutForm formData={formData ?? {}} setFormData={setFormData} formError={formError} setFormError={setFormError} />
 
               <div className="checkout_box" style={{ marginTop: "1rem", padding: "0 1rem 1rem 1rem" }}>
-                <div className="checkout_box_heading" style={{padding: '2rem 2rem 1rem 1rem'}}>
+                <div className="checkout_box_heading" style={{ padding: '2rem 2rem 1rem 1rem' }}>
                   <img src="../img/shipping-options.png" alt="shipping-options" width="22" style={{ marginRight: "8px" }} />
                   Shipping Options
                 </div>
@@ -265,12 +284,12 @@ const Checkout = () => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <Box sx={{display: "flex", alignItems: 'center'}}>
-                    <Box sx={{marginRight: "10px"}}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="24" height="24" rx="12" fill="#2A3592"/>
-                    <path d="M16.0502 9.26001L10.5702 14.74L7.9502 12.12" stroke="white" stroke-width="1.7" stroke-miterlimit="10"/>
-                    </svg>
+                  <Box sx={{ display: "flex", alignItems: 'center' }}>
+                    <Box sx={{ marginRight: "10px" }}>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="24" height="24" rx="12" fill="#2A3592" />
+                        <path d="M16.0502 9.26001L10.5702 14.74L7.9502 12.12" stroke="white" stroke-width="1.7" stroke-miterlimit="10" />
+                      </svg>
                     </Box>
                     Use Store credit
                   </Box>
@@ -288,14 +307,14 @@ const Checkout = () => {
           </Row>
         </Container>
       </div>
-      <ApplyCouponModal showCoupon={showCoupon} handleClose={handleClose} />
+      <ApplyCouponModal showCoupon={showCoupon} handleClose={handleClose} cartData={cartData} couponData={couponData} setCouponData={setCouponData} coupon={coupon} setCoupon={setCoupon} setShowCoupon={setShowCoupon} />
       <CodConfirmationModal showCodModal={showCodModal} handleCloseCodModal={handleCloseCodModal} />
-      
-      <Box sx={{ 
+
+      <Box sx={{
         padding: "0rem 2rem",
         '@media (max-width: 768px)': {
-        padding: "1rem 2rem"
-        } 
+          padding: "1rem 2rem"
+        }
       }}>
         <FooterStrip />
       </Box>

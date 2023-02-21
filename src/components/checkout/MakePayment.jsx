@@ -1,7 +1,7 @@
 import React from "react";
 import { getNumberWithComma } from "../../utils/utils";
 
-const MakePayment = ({ handleMakeOrder, cartData }) => {
+const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData }) => {
   return (
     <>
       <div className="checkout_box">
@@ -15,19 +15,35 @@ const MakePayment = ({ handleMakeOrder, cartData }) => {
           />{" "}
           Review your order
         </div>
-        {cartData?.data?.length > 0 ? cartData?.data?.map((cart, index) => {
-          return (
-            <div className="checkout_box_list">
-              <div>
-                <h3>{cart?.sku?.product_name}</h3>
-                <span>{`${Object.values(cart?.sku?.varients ?? {})?.join(" • ")}`}</span>
+        {cartData?.length > 0 &&
+          (couponData?.data && couponData?.data?.length > 0) ?
+          couponData?.data?.map((cart, index) => {
+            return (
+              <div className="checkout_box_list">
+                <div>
+                  <h3>{cart?.sku?.product_name}</h3>
+                  <span>{`${Object.values(cart?.sku?.varients ?? {})?.join(" • ")}`}</span>
+                </div>
+                <div>
+                  <h3><s>{getNumberWithComma(Number(cart?.price) * Number(cart?.qty))}</s> {getNumberWithComma(Number(cart?.final_amount))}</h3>
+                </div>
               </div>
-              <div>
-                <h3>{getNumberWithComma(Number(cart?.amount) * Number(cart?.qty))}</h3>
+            )
+          })
+          :
+          cartData?.map((cart, index) => {
+            return (
+              <div className="checkout_box_list">
+                <div>
+                  <h3>{cart?.sku?.product_name}</h3>
+                  <span>{`${Object.values(cart?.sku?.varients ?? {})?.join(" • ")}`}</span>
+                </div>
+                <div>
+                  <h3>{getNumberWithComma(Number(cart?.price) * Number(cart?.qty))}</h3>
+                </div>
               </div>
-            </div>
-          )
-        }) : null}
+            )
+          })}
         <div className="checkout_box_list">
           <div>
             <h3>Regular Shipping</h3>
@@ -37,17 +53,19 @@ const MakePayment = ({ handleMakeOrder, cartData }) => {
             <h3>Free </h3>
           </div>
         </div>
-        <div className="checkout_box_list">
-          <div>
-            <h3>Coupon: BCLUB</h3>
-            <span>Get 10% off on all orders</span>
+        {couponData?.coupon &&
+          <div className="checkout_box_list">
+            <div>
+              <h3>Coupon: {couponData?.coupon}</h3>
+              {/* <span>Get 10% off on all orders</span> */}
+            </div>
+            <div>
+              <h3>
+                <i>- {(couponData?.data && couponData?.data?.length > 0) ? getNumberWithComma(couponData?.data?.reduce((t, x) => t + Number(x?.discounted_amount ?? 0), 0) ?? 0) : 0}</i>
+              </h3>
+            </div>
           </div>
-          <div>
-            <h3>
-              <i>-₹1,470</i>
-            </h3>
-          </div>
-        </div>
+        }
         <div className="checkout_box_footer" onClick={handleMakeOrder}>
           <div className="checkout_box_list">
             <div>
@@ -64,8 +82,10 @@ const MakePayment = ({ handleMakeOrder, cartData }) => {
                 >
                   {/* ₹18,700{" "} */}
                 </del>
-                {getNumberWithComma(Number(cartData?.data?.reduce((total, list) => {
-                  return total + (Number(list?.qty) * Number(list?.amount))
+                {(couponData?.data && couponData?.data?.length > 0) ? getNumberWithComma(Number(couponData?.data?.reduce((total, list) => {
+                  return total + ((Number(list?.qty) * Number(list?.price)) - Number(list?.discounted_amount ?? 0))
+                }, 0))) : getNumberWithComma(Number(cartData?.reduce((total, list) => {
+                  return total + (Number(list?.qty) * Number(list?.price))
                 }, 0)))}
               </h3>
             </div>

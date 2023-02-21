@@ -24,9 +24,15 @@ const CheckoutForm = ({ formData, setFormData, formError, setFormError }) => {
           <Form className="checkout_form">
             <Row>
               <Col>
-                <Form.Group controlId="validationCustom03">
-                  <Form.Control type="text" name="name" placeholder="Name" value={formData?.name ?? ''} onChange={handleChange} />
-                  {formError?.name ? <p className="error-text">name is required!</p> : null}
+                <Form.Group controlId="validationFormik01">
+                  <Form.Control type="text" name="fname" placeholder="First Name" value={formData?.fname ?? ''} onChange={handleChange} />
+                  {formError?.fname ? <p className="error-text">name is required!</p> : null}
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group controlId="validationFormik01">
+                  <Form.Control type="text" name="lname" placeholder="Last Name" value={formData?.lname ?? ''} onChange={handleChange} />
+                  {formError?.lname ? <p className="error-text">name is required!</p> : null}
                 </Form.Group>
               </Col>
             </Row>

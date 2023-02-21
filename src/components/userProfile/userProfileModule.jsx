@@ -28,7 +28,7 @@ const UserProfileModule = () => {
             </div>
             <h5 style={{ fontSize: '16px' }}>Total : {getNumberWithComma(Number(list?.items?.reduce((total, price) => {
               return total + (Number(price?.qty) * Number(price?.amount))
-            }, 0)))}</h5>
+            }, 0)) - Number(list?.discount_amount ?? 0))}</h5>
           </div>
           {list?.items?.map(item => (
             <div className="userProfileModule_box_list">

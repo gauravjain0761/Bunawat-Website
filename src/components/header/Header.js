@@ -210,8 +210,9 @@ function Header() {
     };
     const handleCheckout = () => {
         if (Storage.isUserAuthenticated()) {
-            history.push(`/checkout`);
+            setIsCart(false)
             setCartPopup(null);
+            history.push(`/checkout`);
         } else {
             toast.error("Login required!")
         }
