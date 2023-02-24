@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { getNumberWithComma } from "../../utils/utils";
 import SaveButton from "../common/save";
 
-const BestSellingSection = ({ singleData, keyVal, data, refetch }) => {
+const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedId }) => {
   const [singleList, setSingleList] = React.useState(singleData ?? [])
 
   useEffect(() => {
@@ -214,7 +214,7 @@ const BestSellingSection = ({ singleData, keyVal, data, refetch }) => {
                             </div>
                             <p>{getNumberWithComma(list?.sale_price ?? 0)} </p>
                           </div>
-                          <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={true} refetch={refetch} />
+                          <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={true} setSelectedId={setSelectedId} selectedId={selectedId} />
                         </div>
                       </div>
                     </div>

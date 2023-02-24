@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useGetDatabyIdQuery } from "../../services/api";
+import { toast } from "react-toastify";
+import { useGetDatabyIdWithFiltersMutation } from "../../services/api";
 import Footer from "../footer";
 import BestSellingSection from "./bestSellingSection";
 import HomeBannerTabs from "./homeBannerTabs";
@@ -11,21 +12,29 @@ const HomeTab = ({ menuData }) => {
         id: "",
         type: ""
     });
-    const { data: singleData, error, isLoading, refetch } = useGetDatabyIdQuery(selectedId, {
-        skip: selectedId?.id === ""
-    })
+    const [singleData, setSingleData] = React.useState({})
+    const [getDatabyIdWithFilters] = useGetDatabyIdWithFiltersMutation()
 
     useEffect(() => {
         setData(menuData ?? []);
         setSelectedId({
             id: menuData?.[0]?._id ?? "",
-            type: menuData?.[0]?.type ?? ""
+            type: menuData?.[0]?.type ?? "",
+            isRefresh: false
         })
     }, [menuData]);
 
+    useEffect(async () => {
+        if (selectedId?.id ?? "") {
+            await getDatabyIdWithFilters(selectedId).unwrap().then((responce) => {
+                setSingleData(responce?.data ?? {})
+            }).catch((error) => toast.error(error?.data?.message))
+        }
+    }, [selectedId])
+
     return (
         <>
-            <HomeBannerTabs data={data} singleData={singleData?.data} setSelectedId={setSelectedId} refetch={refetch} />
+            <HomeBannerTabs data={data} singleData={singleData} setSelectedId={setSelectedId} selectedId={selectedId} />
             <JoinTheClubSection />
             <Footer />
         </>

@@ -7,7 +7,7 @@ import BestSellingSection from "./bestSellingSection";
 import SaveButton from "../common/save";
 import { Box } from "@mui/material";
 
-const HomeBannerTabs = ({ data, singleData, setSelectedId, refetch }) => {
+const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
   const [key, setKey] = useState(0);
   const [menuList, setMenuList] = React.useState(data ?? [])
   const [singleCollection, setSingleCollection] = React.useState(singleData ?? [])
@@ -243,7 +243,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, refetch }) => {
                                             display: "block",
                                           }
                                         }}>
-                                          <SaveButton id={list?._id} isWishlist={list?.isWishlist} refetch={refetch} />
+                                          <SaveButton id={list?._id} isWishlist={list?.isWishlist} setSelectedId={setSelectedId} selectedId={selectedId} />
                                         </Box>
                                       </p>
                                     </div>
@@ -253,7 +253,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, refetch }) => {
                                         display: "none",
                                       }
                                     }}>
-                                      <SaveButton id={list?._id} isWishlist={list?.isWishlist} refetch={refetch} />
+                                      <SaveButton id={list?._id} isWishlist={list?.isWishlist} setSelectedId={setSelectedId} selectedId={selectedId} />
                                     </Box>
                                   </div>
                                 </div>
@@ -391,7 +391,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, refetch }) => {
         </div>
       </div>
 
-      <BestSellingSection data={data} singleData={singleData?.link_with_category_collection} keyVal={key} refetch={refetch} />
+      <BestSellingSection data={data} singleData={singleData?.link_with_category_collection} keyVal={key} setSelectedId={setSelectedId} selectedId={selectedId} />
     </>
   );
 };
