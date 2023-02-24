@@ -25,6 +25,15 @@ export const AllApiData = createApi({
             query: ({ id, type }) => `get_data_by_id/${id}?type=${type}`,
             providesTags: ['HomeData'],
         }),
+        getDatabyIdWithFilters: builder.mutation({
+            query({ id, type, ...payload }) {
+                return {
+                    url: `get_data_by_id/${id}?type=${type}`,
+                    method: 'POST',
+                    body: payload,
+                }
+            },
+        }),
         sendOtp: builder.mutation({
             query(body) {
                 return {
@@ -154,4 +163,4 @@ export const AllApiData = createApi({
     }),
 })
 
-export const { useSendOtpMutation, useOtpMatchMutation, useGetShopMenuDataQuery, useGetDatabyIdQuery, useGetProductQuery, useAddToCartMutation, useGetAllCartQuery, useRemoveCartItemMutation, useEditCartMutation, useAddOrderMutation, useOrderListQuery, useAddToWishlistMutation, useGetAllWishlistQuery, useRemoveWishlistMutation, useCustomerUpdateMutation, useGetCustomerDataQuery, useGetAttributeDataQuery, useAddProductReviewMutation, useCouponApplyMutation } = AllApiData
+export const { useSendOtpMutation, useOtpMatchMutation, useGetShopMenuDataQuery, useGetDatabyIdQuery, useGetProductQuery, useAddToCartMutation, useGetAllCartQuery, useRemoveCartItemMutation, useEditCartMutation, useAddOrderMutation, useOrderListQuery, useAddToWishlistMutation, useGetAllWishlistQuery, useRemoveWishlistMutation, useCustomerUpdateMutation, useGetCustomerDataQuery, useGetAttributeDataQuery, useAddProductReviewMutation, useCouponApplyMutation, useGetDatabyIdWithFiltersMutation } = AllApiData

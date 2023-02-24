@@ -3,19 +3,19 @@ import { toast } from 'react-toastify';
 import { useAddToWishlistMutation, useRemoveWishlistMutation } from '../../services/api';
 import Storage from '../../services/storage';
 
-const SaveButton = ({ id, isWishlist, isBlue = false, refetch }) => {
+const SaveButton = ({ id, isWishlist, isBlue = false, selectedId, setSelectedId }) => {
     const [addToWishlist] = useAddToWishlistMutation(undefined, {})
     const [removeWishlist] = useRemoveWishlistMutation(undefined, {})
 
     const addWishlist = async (id) => {
         await addToWishlist({ data: [id] }).unwrap().then((data) => {
-            refetch();
+            setSelectedId({ ...selectedId, isRefresh: !selectedId?.isRefresh })
         }).catch((error) => toast.error(error?.data?.message))
     };
 
     const removeToWishlist = async (id) => {
         await removeWishlist(id).unwrap().then((data) => {
-            refetch();
+            setSelectedId({ ...selectedId, isRefresh: !selectedId?.isRefresh })
         }).catch((error) => toast.error(error?.data?.message))
     };
 
