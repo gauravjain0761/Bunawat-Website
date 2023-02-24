@@ -1,52 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from "react-router-dom";
 import "./allProduct.css";
-import { useGetDatabyIdWithFiltersMutation } from '../../services/api';
+import category_1 from "../../assets/img/category/category_1.png"
+import category_2 from "../../assets/img/category/category_2.png"
+import category_3 from "../../assets/img/category/category_3.png"
+import category_4 from "../../assets/img/category/category_4.png"
+import ProductFilters from '../category/productFilters';
+import { Nav, Tab, Tabs } from 'react-bootstrap';
+import FooterStrip from '../footer/footerStrip';
+import DesignerWear from '../category/DesignerWear';
+import { useGetDatabyIdQuery, useGetShopMenuDataQuery } from '../../services/api';
 import AllProductMenu from './allProductMenu';
-import { toast } from 'react-toastify';
 
 const AllProductList = ({ menuData }) => {
     const { selected } = useParams()
     const [data, setData] = React.useState(menuData ?? [])
     const [selectedIndex, setSelectedIndex] = React.useState(0)
-    const [singleData, setSingleData] = React.useState({})
     const [selectedId, setSelectedId] = useState({
         id: "",
-        type: "",
-        sortBy: 1,
-        pricing: {
-            from: 0,
-            to: 0
-        },
-        atr: {}
+        type: ""
     });
-    const [getDatabyIdWithFilters] = useGetDatabyIdWithFiltersMutation()
-    // console.log('singleData', result)
+    const { data: singleData, error, isLoading, refetch } = useGetDatabyIdQuery(selectedId, {
+        skip: selectedId?.id === ""
+    })
+
     useEffect(() => {
         const findeIndex = menuData?.findIndex(x => x?.name == selected) == -1 ? 0 : menuData?.findIndex(x => x?.name == selected)
         setData(menuData ?? []);
         setSelectedId({
             id: menuData?.[findeIndex]?._id ?? "",
-            type: menuData?.[findeIndex]?.type ?? "",
-            sortBy: 1,
-            atr: {},
-            isRefresh: false
+            type: menuData?.[findeIndex]?.type ?? ""
         })
         setSelectedIndex(findeIndex)
-
     }, [menuData]);
-
-    useEffect(async () => {
-        if (selectedId?.id ?? "") {
-            await getDatabyIdWithFilters(selectedId).unwrap().then((responce) => {
-                setSingleData(responce?.data ?? {})
-            }).catch((error) => toast.error(error?.data?.message))
-        }
-    }, [selectedId])
 
     return (
         <>
-            <AllProductMenu data={data} singleData={singleData} selectedId={selectedId ?? {}} setSelectedId={setSelectedId} selectedIndex={selectedIndex} />
+            <AllProductMenu data={data} singleData={singleData?.data} setSelectedId={setSelectedId} refetch={refetch} selectedIndex={selectedIndex} />
         </>
     )
 }

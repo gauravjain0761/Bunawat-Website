@@ -8,7 +8,7 @@ import FooterStrip from '../footer/footerStrip';
 import { getNumberWithComma } from '../../utils/utils';
 import SaveButton from '../common/save';
 
-const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedIndex }) => {
+const AllProductMenu = ({ data, singleData, setSelectedId, refetch, selectedIndex }) => {
     const { id } = useParams()
     const history = useHistory();
     const [key, setKey] = useState(0);
@@ -79,7 +79,6 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                             onSelect={(k) => {
                                 setKey(k)
                                 setSelectedId({
-                                    ...selectedId,
                                     id: menuList?.[k]?._id ?? "",
                                     type: menuList?.[k]?.type ?? ""
                                 })
@@ -138,7 +137,7 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                                                         </div>
                                                                         <p>{getNumberWithComma(list?.sale_price ?? 0)}</p>
                                                                     </div>
-                                                                    <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={true} selectedId={selectedId} setSelectedId={setSelectedId} />
+                                                                    <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={true} refetch={refetch} />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -157,7 +156,7 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
             <div style={{ padding: "0rem 2rem" }}>
                 <FooterStrip />
             </div>
-            <ProductFilters singleData={singleData} selectedId={selectedId} setSelectedId={setSelectedId} />
+            <ProductFilters />
         </div>
     )
 }
