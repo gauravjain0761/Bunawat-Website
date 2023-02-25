@@ -28,8 +28,12 @@ const AllProductList = ({ menuData }) => {
         setSelectedId({
             id: menuData?.[findeIndex]?._id ?? "",
             type: menuData?.[findeIndex]?.type ?? "",
-            sortBy: 1,
+            sortBy: 0,
             atr: {},
+            pricing: {
+                from: 0,
+                to: 0
+            },
             isRefresh: false
         })
         setSelectedIndex(findeIndex)

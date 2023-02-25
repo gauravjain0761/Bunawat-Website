@@ -304,10 +304,10 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                     <div className="price_select_wrap_box_child_data">
                       <input type="text" placeholder="₹1000" value={selectedId?.pricing?.from ?? ''} onChange={(e) => {
                         const onlyNums = e.target.value.replace(/[^0-9]/g, '');
-                        setSelectedId({ ...selectedId, pricing: { from: onlyNums, ...selectedId?.pricing } })
+                        setSelectedId({ ...selectedId, pricing: { ...selectedId?.pricing, from: Number(onlyNums) } })
                       }} style={{ backgroundColor: "#f2f4ff" }} />
                       {selectedId?.pricing?.from &&
-                        <span onClick={() => setShowPrice(false)}>
+                        <span onClick={() => setSelectedId({ ...selectedId, pricing: { ...selectedId?.pricing, from: 0 } })}>
                           <TiDeleteOutline />
                         </span>
                       }
@@ -318,10 +318,10 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                     <div className="price_select_wrap_box_child_data">
                       <input type="text" value={selectedId?.pricing?.to ?? ''} onChange={(e) => {
                         const onlyNums = e.target.value.replace(/[^0-9]/g, '');
-                        setSelectedId({ ...selectedId, pricing: { to: onlyNums, ...selectedId?.pricing } })
+                        setSelectedId({ ...selectedId, pricing: { ...selectedId?.pricing, to: Number(onlyNums) } })
                       }} placeholder="₹3500" />
                       {selectedId?.pricing?.to &&
-                        <span onClick={() => setShowPrice(false)}>
+                        <span onClick={() => setSelectedId({ ...selectedId, pricing: { ...selectedId?.pricing, to: 0 } })}>
                           <TiDeleteOutline />
                         </span>
                       }
