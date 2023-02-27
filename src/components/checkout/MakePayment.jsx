@@ -53,6 +53,17 @@ const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData }) => 
             <h3>Free </h3>
           </div>
         </div>
+        <div className="checkout_box_list">
+          <div>
+            <h3>GST:</h3>
+            {/* <span>Get 10% off on all orders</span> */}
+          </div>
+          <div>
+            <h3>
+              <i>+ {(cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2)}</i>
+            </h3>
+          </div>
+        </div>
         {couponData?.coupon &&
           <div className="checkout_box_list">
             <div>
@@ -82,11 +93,7 @@ const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData }) => 
                 >
                   {/* ₹18,700{" "} */}
                 </del>
-                {(couponData?.data && couponData?.data?.length > 0) ? getNumberWithComma(Number(couponData?.data?.reduce((total, list) => {
-                  return total + ((Number(list?.qty) * Number(list?.price)) - Number(list?.discounted_amount ?? 0))
-                }, 0))) : getNumberWithComma(Number(cartData?.reduce((total, list) => {
-                  return total + (Number(list?.qty) * Number(list?.price))
-                }, 0)))}
+                {(cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0) ? getNumberWithComma(couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100))), 0) ?? 0) : getNumberWithComma(cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0)) ?? 0)}
               </h3>
             </div>
           </div>

@@ -27,7 +27,6 @@ const WriteAReviews = ({ showReviewsWrite, handleClose, id }) => {
   const handleImageUpload = async (event) => {
     const filesData = new FormData();
     Object.values(event?.target?.files).forEach((value) => {
-      console.log(value)
       filesData.append(`file`, value);
     });
 

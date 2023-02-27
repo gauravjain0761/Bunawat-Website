@@ -10,7 +10,6 @@ import { useCouponApplyMutation } from '../../services/api';
 const ApplyCouponModal = ({ showCoupon, handleClose, cartData, couponData, setCouponData, coupon, setCoupon, setShowCoupon }) => {
   const [couponApply] = useCouponApplyMutation(undefined, {})
   const userData = useSelector(state => state?.user?.userData)
-  console.log("couponData", couponData)
   const handleApplyCoupon = async () => {
     if (!coupon) {
       toast.error("Enter Coupon First!")

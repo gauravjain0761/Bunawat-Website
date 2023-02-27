@@ -42,7 +42,6 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
     } else {
       selectedAttributeList = { ...selectedAttributeList, [name]: [itemName] }
     }
-    console.log(selectedAttributeList)
     setSelectedAttribute(selectedAttributeList)
     setSelectedId({ ...selectedId, atr: selectedAttributeList })
   }

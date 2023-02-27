@@ -13,6 +13,7 @@ import { Box } from "@mui/system";
 import { useSelector } from "react-redux";
 import { useAddOrderMutation, useGetAllCartQuery } from "../../services/api";
 import Storage from "../../services/storage";
+import { DEFULT_STATE } from "../../constant/storage";
 
 const Checkout = () => {
   const [addOrder] = useAddOrderMutation(undefined, {})
@@ -46,7 +47,6 @@ const Checkout = () => {
       setCouponData({})
     }
   }, [data])
-  console.log("cartData", cartData)
   useEffect(() => {
     if (Object.keys(userData ?? {})?.length > 0) {
       setFormData({
@@ -106,9 +106,6 @@ const Checkout = () => {
         total_qty: cartData?.reduce((total, list) => {
           return total + Number(list?.qty)
         }, 0),
-        total_amount: cartData?.reduce((total, list) => {
-          return total + (Number(list?.qty) * Number(list?.amount))
-        }, 0),
         items: (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.map(list => ({
           ...list,
           sku_id: list?.sku?._id
@@ -116,9 +113,13 @@ const Checkout = () => {
           ...list,
           sku_id: list?.sku?._id
         })) ?? [],
-        gst_amount: 0,
+        total_amount: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0) ? (couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100))), 0) ?? 0) : (cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0)) ?? 0)?.toFixed(2),
         discount_amount: (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.reduce((t, x) => t + Number(x?.discounted_amount ?? 0), 0) ?? 0 : 0,
-        discount_coupon: couponData?.coupon_id
+        discount_coupon: couponData?.coupon_id,
+        gst_amount: (cartData?.length > 0 && (couponData && couponData?.length > 0) ? couponData?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2),
+        cgst_amount: userData?.state == DEFULT_STATE ? ((cartData?.length > 0 && (couponData && couponData?.length > 0) ? couponData?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2)) / 2 : 0,
+        sgst_amount: userData?.state == DEFULT_STATE ? ((cartData?.length > 0 && (couponData && couponData?.length > 0) ? couponData?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2)) / 2 : 0,
+        igst_amount: userData?.state == DEFULT_STATE ? 0 : (cartData?.length > 0 && (couponData && couponData?.length > 0) ? couponData?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2),
       }).unwrap().then((data) => {
         history.push("/userProfile")
       }).catch((error) => toast.error(error?.data?.message))

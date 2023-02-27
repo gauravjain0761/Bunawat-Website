@@ -140,7 +140,6 @@ const getHttpMemberOptions = (options, isAuth = false) => {
     if (isAuth) {
         headers['Authorization'] = Storage.getToken() ?? "";
     }
-    console.log("options.hasOwnProperty('Content-Type')", options.hasOwnProperty('Content-Type'))
     if (options.hasOwnProperty('Content-Type')) {
         headers['Content-Type'] = options['Content-Type'] ?? "";
     }

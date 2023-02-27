@@ -26,9 +26,7 @@ const UserProfileModule = () => {
                 <span style={{ paddingTop: '5px' }}>{moment(list?.createdAt).format("Do MMM YYYY")}</span>
               </h6>
             </div>
-            <h5 style={{ fontSize: '16px' }}>Total : {getNumberWithComma(Number(list?.items?.reduce((total, price) => {
-              return total + (Number(price?.qty) * Number(price?.amount))
-            }, 0)) - Number(list?.discount_amount ?? 0))}</h5>
+            <h5 style={{ fontSize: '16px' }}>Total : {getNumberWithComma(Number(list?.total_amount))}</h5>
           </div>
           {list?.items?.map(item => (
             <div className="userProfileModule_box_list">
@@ -37,7 +35,7 @@ const UserProfileModule = () => {
                 <span>{`${Object.values(item?.varients ?? {})?.join(" • ")}`}</span>
               </div>
               <div>
-                <h3>{getNumberWithComma(Number(item?.amount) * Number(item?.qty))} </h3>
+                <h3>{getNumberWithComma(Number(item?.price) * Number(item?.qty))} </h3>
               </div>
             </div>
           ))}
