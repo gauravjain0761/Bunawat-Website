@@ -20,6 +20,7 @@ import { useDispatch } from "react-redux";
 import { setCartCount } from "../redux/reducers/cart";
 import TrackOrder from "./trackOrder";
 import Login from "./logIn";
+import Demo from "./demo";
 
 
 export default function Index() {
@@ -34,6 +35,9 @@ export default function Index() {
         <>
             <Layout>
                 <Switch>
+                    <Route exact path={BASE_URL.BASE_URL + 'demo'}>
+                        <Demo />
+                    </Route>
                     <Route exact path={BASE_URL.BASE_URL}>
                         <Home />
                     </Route>
