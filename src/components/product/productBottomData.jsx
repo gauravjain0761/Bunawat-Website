@@ -508,104 +508,105 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                     </div>
                 </div>
             </div>
-            {similarList?.filter(x => x?._id != product?._id)?.length > 0 && <div className="cloth_wrap might_like_wrap">
-                <div className="container">
-                    <div className="might_like_inner">
-                        <p>You might like these too</p>
-                        <Link to="/">
-                            see similar
-                            <svg
-                                width="7"
-                                height="8"
-                                viewBox="0 0 7 8"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <g clipPath="url(#clip0_1201_3330)">
-                                    <path
-                                        d="M0.475098 1.19312H6.32691V7.04493"
-                                        stroke="#2A3592"
-                                        strokeWidth="1.7"
-                                        strokeMiterlimit="10"
-                                    />
-                                    <path
-                                        d="M0.475098 7.04493L6.32691 1.19312"
-                                        stroke="#2A3592"
-                                        strokeWidth="1.7"
-                                        strokeMiterlimit="10"
-                                    />
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_1201_3330">
-                                        <rect
-                                            width="7"
-                                            height="7"
-                                            fill="white"
-                                            transform="translate(0 0.52002)"
+            {product?.similar_products?.length > 0 &&
+                <div className="cloth_wrap might_like_wrap">
+                    <div className="container">
+                        <div className="might_like_inner">
+                            <p>You might like these too</p>
+                            <Link to="/">
+                                see similar
+                                <svg
+                                    width="7"
+                                    height="8"
+                                    viewBox="0 0 7 8"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <g clipPath="url(#clip0_1201_3330)">
+                                        <path
+                                            d="M0.475098 1.19312H6.32691V7.04493"
+                                            stroke="#2A3592"
+                                            strokeWidth="1.7"
+                                            strokeMiterlimit="10"
                                         />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                        </Link>
-                    </div>
-                    <div className="cloth_inner">
-                        <div className="row">
-                            {similarList?.filter(x => x?._id != product?._id)?.map((list, index) => (
-                                <div className={getClassWidth(index, similarList?.length)}>
-                                    <div className="cloth_deatils_wrap">
-                                        <Link to={`/product/${list?._id}/${list?.type}`} className="cloth_deatils_link">
-                                            <img src={list?.images?.[0]?.url} alt="cloth" />
-                                        </Link>
-                                        <div className="cloth_info_title">
-                                            <div className="summer_list_link_wrap mobile_summer_list_link_wrap">
-                                                <div className="summer_list_link">
-                                                    <p>{list?.name}</p>
-                                                    <span>
-                                                        <svg
-                                                            width="9"
-                                                            height="10"
-                                                            viewBox="0 0 9 10"
-                                                            fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                        >
-                                                            <g clipPath="url(#clip0_367_1219)">
-                                                                <path
-                                                                    d="M0.599976 1.42999H7.98998V8.81999"
-                                                                    stroke="#2A3592"
-                                                                    strokeWidth="1.7"
-                                                                    strokeMiterlimit="10"
-                                                                />
-                                                                <path
-                                                                    d="M0.599976 8.81999L7.98998 1.42999"
-                                                                    stroke="#2A3592"
-                                                                    strokeWidth="1.7"
-                                                                    strokeMiterlimit="10"
-                                                                />
-                                                            </g>
-                                                            <defs>
-                                                                <clipPath id="clip0_367_1219">
-                                                                    <rect
-                                                                        width="8.84"
-                                                                        height="8.84"
-                                                                        fill="white"
-                                                                        transform="translate(0 0.580017)"
+                                        <path
+                                            d="M0.475098 7.04493L6.32691 1.19312"
+                                            stroke="#2A3592"
+                                            strokeWidth="1.7"
+                                            strokeMiterlimit="10"
+                                        />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_1201_3330">
+                                            <rect
+                                                width="7"
+                                                height="7"
+                                                fill="white"
+                                                transform="translate(0 0.52002)"
+                                            />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </Link>
+                        </div>
+                        <div className="cloth_inner">
+                            <div className="row">
+                                {product?.similar_products?.map((list, index) => (
+                                    <div className={getClassWidth(index, similarList?.length)}>
+                                        <div className="cloth_deatils_wrap">
+                                            <Link to={`/product/${list?._id}/${list?.type}`} className="cloth_deatils_link">
+                                                <img src={list?.images?.[0]?.url} alt="cloth" />
+                                            </Link>
+                                            <div className="cloth_info_title">
+                                                <div className="summer_list_link_wrap mobile_summer_list_link_wrap">
+                                                    <div className="summer_list_link">
+                                                        <p>{list?.name}</p>
+                                                        <span>
+                                                            <svg
+                                                                width="9"
+                                                                height="10"
+                                                                viewBox="0 0 9 10"
+                                                                fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                            >
+                                                                <g clipPath="url(#clip0_367_1219)">
+                                                                    <path
+                                                                        d="M0.599976 1.42999H7.98998V8.81999"
+                                                                        stroke="#2A3592"
+                                                                        strokeWidth="1.7"
+                                                                        strokeMiterlimit="10"
                                                                     />
-                                                                </clipPath>
-                                                            </defs>
-                                                        </svg>
-                                                    </span>
+                                                                    <path
+                                                                        d="M0.599976 8.81999L7.98998 1.42999"
+                                                                        stroke="#2A3592"
+                                                                        strokeWidth="1.7"
+                                                                        strokeMiterlimit="10"
+                                                                    />
+                                                                </g>
+                                                                <defs>
+                                                                    <clipPath id="clip0_367_1219">
+                                                                        <rect
+                                                                            width="8.84"
+                                                                            height="8.84"
+                                                                            fill="white"
+                                                                            transform="translate(0 0.580017)"
+                                                                        />
+                                                                    </clipPath>
+                                                                </defs>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                    <p>{getNumberWithComma(list?.sale_price ?? 0)}</p>
                                                 </div>
-                                                <p>{getNumberWithComma(list?.sale_price ?? 0)}</p>
+                                                <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={true} refetch={refetch} />
                                             </div>
-                                            <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={true} refetch={refetch} />
                                         </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             }
 
             <Box className="know_wrap" sx={{ '@media (max-width: 768px)': { display: "none" } }}>

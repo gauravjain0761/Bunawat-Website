@@ -31,6 +31,7 @@ export default function Index() {
         dispatch(setCartCount(JSON.parse(Storage.get("cartData"))?.length ?? 0));
     }, [])
 
+    console.log("process.env.NODE_ENV", process.env)
     return (
         <>
             <Layout>

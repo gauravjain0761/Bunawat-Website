@@ -1,4 +1,4 @@
 export const API_ROUTES = {
-    BASE_URL: 'https://dev.bunawat.com:3000',
+    BASE_URL: process.env.REACT_APP_BE_URL,
     API_VERSION: '/api'
 }

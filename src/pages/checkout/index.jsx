@@ -11,12 +11,13 @@ import MakePayment from "../../components/checkout/MakePayment";
 import { toast } from 'react-toastify';
 import { Box } from "@mui/system";
 import { useSelector } from "react-redux";
-import { useAddOrderMutation, useGetAllCartQuery } from "../../services/api";
+import { useAddOrderMutation, useGetAllCartQuery, useMakePaymentMutation } from "../../services/api";
 import Storage from "../../services/storage";
 import { DEFULT_STATE } from "../../constant/storage";
 
 const Checkout = () => {
   const [addOrder] = useAddOrderMutation(undefined, {})
+  const [makePayment] = useMakePaymentMutation(undefined, {})
   const { data, error, isLoading } = useGetAllCartQuery(undefined, { skip: !Storage.isUserAuthenticated() })
   const [cartData, setCartData] = useState([]);
   const [couponData, setCouponData] = useState({});
@@ -101,7 +102,7 @@ const Checkout = () => {
         billing_address: formData ?? {},
         isSame: true,
         shipping_address: formData ?? {},
-        payment_mode: "COD",
+        payment_mode: "ONLINE",
         total_items: cartData?.length,
         total_qty: cartData?.reduce((total, list) => {
           return total + Number(list?.qty)
@@ -120,12 +121,21 @@ const Checkout = () => {
         cgst_amount: userData?.state == DEFULT_STATE ? ((cartData?.length > 0 && (couponData && couponData?.length > 0) ? couponData?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2)) / 2 : 0,
         sgst_amount: userData?.state == DEFULT_STATE ? ((cartData?.length > 0 && (couponData && couponData?.length > 0) ? couponData?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2)) / 2 : 0,
         igst_amount: userData?.state == DEFULT_STATE ? 0 : (cartData?.length > 0 && (couponData && couponData?.length > 0) ? couponData?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2),
-      }).unwrap().then((data) => {
-        history.push("/userProfile")
+      }).unwrap().then(async (responce) => {
+        if (responce?.data?.payment_mode == "ONLINE") {
+          await makePayment({
+            order_id: responce?.data?._id
+          }).unwrap().then((data) => {
+            if (data?.data?.order_info) {
+              var rzp1 = new window.Razorpay({ ...data?.data?.order_info, key: process.env.REACT_APP_RAZORPAY_KEY });
+              rzp1.open();
+            }
+          }).catch((error) => toast.error(error?.data?.message))
+        }
+        // history.push("/userProfile")
       }).catch((error) => toast.error(error?.data?.message))
     }
   }
-
   return (
     <>
       <div id="checkout">
