@@ -96,44 +96,55 @@ const Checkout = () => {
     if (tempError?.fname || tempError?.lname || tempError?.email || tempError?.phone || tempError?.address_1 || tempError?.address_2 || tempError?.pincode || tempError?.city || tempError?.state) {
       setFormError(tempError)
     } else {
-      await addOrder({
-        user_type: userData?.user_type,
-        user: userData?._id,
-        billing_address: formData ?? {},
-        isSame: true,
-        shipping_address: formData ?? {},
-        payment_mode: "ONLINE",
-        total_items: cartData?.length,
-        total_qty: cartData?.reduce((total, list) => {
-          return total + Number(list?.qty)
-        }, 0),
-        items: (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.map(list => ({
-          ...list,
-          sku_id: list?.sku?._id
-        })) ?? [] : cartData?.map(list => ({
-          ...list,
-          sku_id: list?.sku?._id
-        })) ?? [],
-        total_amount: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0) ? (couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100))), 0) ?? 0) : (cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0)) ?? 0)?.toFixed(2),
-        discount_amount: (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.reduce((t, x) => t + Number(x?.discounted_amount ?? 0), 0) ?? 0 : 0,
-        discount_coupon: couponData?.coupon_id,
-        gst_amount: (cartData?.length > 0 && (couponData && couponData?.length > 0) ? couponData?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2),
-        cgst_amount: userData?.state == DEFULT_STATE ? ((cartData?.length > 0 && (couponData && couponData?.length > 0) ? couponData?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2)) / 2 : 0,
-        sgst_amount: userData?.state == DEFULT_STATE ? ((cartData?.length > 0 && (couponData && couponData?.length > 0) ? couponData?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2)) / 2 : 0,
-        igst_amount: userData?.state == DEFULT_STATE ? 0 : (cartData?.length > 0 && (couponData && couponData?.length > 0) ? couponData?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2),
-      }).unwrap().then(async (responce) => {
-        if (responce?.data?.payment_mode == "ONLINE") {
-          await makePayment({
-            order_id: responce?.data?._id
-          }).unwrap().then((data) => {
-            if (data?.data?.order_info) {
-              var rzp1 = new window.Razorpay({ ...data?.data?.order_info, key: process.env.REACT_APP_RAZORPAY_KEY });
-              rzp1.open();
-            }
-          }).catch((error) => toast.error(error?.data?.message))
-        }
-        // history.push("/userProfile")
-      }).catch((error) => toast.error(error?.data?.message))
+      if (cartData?.length > 0) {
+        await addOrder({
+          user_type: userData?.user_type,
+          user: userData?._id,
+          billing_address: formData ?? {},
+          isSame: true,
+          shipping_address: formData ?? {},
+          payment_mode: "ONLINE",
+          total_items: cartData?.length,
+          total_qty: cartData?.reduce((total, list) => {
+            return total + Number(list?.qty)
+          }, 0),
+          items: (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.map(list => ({
+            ...list,
+            sku_id: list?.sku?._id
+          })) ?? [] : cartData?.map(list => ({
+            ...list,
+            sku_id: list?.sku?._id
+          })) ?? [],
+          total_amount: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0) ? (couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100))), 0) ?? 0) : (cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0)) ?? 0)?.toFixed(2),
+          discount_amount: (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.reduce((t, x) => t + Number(x?.discounted_amount ?? 0), 0) ?? 0 : 0,
+          discount_coupon: couponData?.coupon_id,
+          gst_amount: (cartData?.length > 0 && (couponData && couponData?.length > 0) ? couponData?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2),
+          cgst_amount: userData?.state == DEFULT_STATE ? ((cartData?.length > 0 && (couponData && couponData?.length > 0) ? couponData?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2)) / 2 : 0,
+          sgst_amount: userData?.state == DEFULT_STATE ? ((cartData?.length > 0 && (couponData && couponData?.length > 0) ? couponData?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2)) / 2 : 0,
+          igst_amount: userData?.state == DEFULT_STATE ? 0 : (cartData?.length > 0 && (couponData && couponData?.length > 0) ? couponData?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2),
+        }).unwrap().then(async (responce) => {
+          if (responce?.data?.payment_mode == "ONLINE") {
+            await makePayment({
+              order_id: responce?.data?._id
+            }).unwrap().then((data) => {
+              if (data?.data?.order_info) {
+                var rzp1 = new window.Razorpay({
+                  ...data?.data?.order_info, key: process.env.REACT_APP_RAZORPAY_KEY, handler: function (response) {
+                    console.log("==============Success==========")
+                    window?.location?.replace(window.location.origin + "/orderConfirmation")
+                  }
+                });
+                rzp1.open();
+                rzp1.on('payment.failed', function (response) {
+                  console.log("==============Fail==========")
+                  // window?.location?.replace(window.location.origin + "/orderConfirmation")
+                })
+              }
+            }).catch((error) => toast.error(error?.data?.message))
+          }
+          // history.push("/userProfile")
+        }).catch((error) => toast.error(error?.data?.message))
+      }
     }
   }
   return (

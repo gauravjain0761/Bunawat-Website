@@ -19,19 +19,25 @@ const SavedAddressModule = () => {
         address_1: userData?.data?.address_1 ?? "",
         address_2: userData?.data?.address_2 ?? "",
         city: userData?.data?.city ?? "",
+        city: userData?.data?.city ?? "",
         state: userData?.data?.state ?? "",
         email: userData?.data?.email ?? "",
         phone: userData?.data?.phone ?? "",
         pincode: userData?.data?.pincode ?? "",
-        name: userData?.data?.fname ?? "" + userData?.data?.lname ?? "",
+        fname: userData?.data?.fname ?? "",
+        lname: userData?.data?.lname ?? "",
+        district: userData?.data?.district ?? "",
       })
     }
   }, [userData])
 
   const handleUpdate = async () => {
     let tempError = { ...formError }
-    if (formData?.name == "") {
-      tempError = { ...tempError, name: true }
+    if (formData?.fname == "") {
+      tempError = { ...tempError, fname: true }
+    }
+    if (formData?.lname == "") {
+      tempError = { ...tempError, lname: true }
     }
     if (formData?.email == "") {
       tempError = { ...tempError, email: true }
@@ -51,10 +57,13 @@ const SavedAddressModule = () => {
     if (formData?.city == "") {
       tempError = { ...tempError, city: true }
     }
+    if (formData?.district == "") {
+      tempError = { ...tempError, district: true }
+    }
     if (formData?.state == "") {
       tempError = { ...tempError, state: true }
     }
-    if (tempError?.name || tempError?.email || tempError?.phone || tempError?.address_1 || tempError?.address_2 || tempError?.pincode || tempError?.city || tempError?.state) {
+    if (tempError?.fname || tempError?.lname || tempError?.email || tempError?.phone || tempError?.address_1 || tempError?.address_2 || tempError?.pincode || tempError?.city || tempError?.state || tempError?.district) {
       setFormError(tempError)
     } else {
       await customerUpdate(formData).unwrap().then((data) => {
@@ -85,8 +94,14 @@ const SavedAddressModule = () => {
             <Row>
               <Col>
                 <Form.Group controlId="validationFormik01">
-                  <Form.Control type="text" name="name" placeholder="Name" value={formData?.name ?? ''} onChange={handleChange} />
-                  {formError?.name ? <p className="error-text">name is required!</p> : null}
+                  <Form.Control type="text" name="fname" placeholder="First Name" value={formData?.fname ?? ''} onChange={handleChange} />
+                  {formError?.fname ? <p className="error-text">name is required!</p> : null}
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group controlId="validationFormik01">
+                  <Form.Control type="text" name="lname" placeholder="Last Name" value={formData?.lname ?? ''} onChange={handleChange} />
+                  {formError?.lname ? <p className="error-text">name is required!</p> : null}
                 </Form.Group>
               </Col>
             </Row>
@@ -97,7 +112,7 @@ const SavedAddressModule = () => {
                     <Form.Control
                       type="text"
                       name="phone"
-                      value={formData?.phone ?? ''} onChange={handleChange}
+                      value={formData?.phone ?? ''}
                       placeholder="Phone Number"
                       style={{ paddingLeft: "3rem" }}
                     />
@@ -115,7 +130,7 @@ const SavedAddressModule = () => {
                 </Form.Group>
               </Col>
             </Row>
-            <Row>
+            {/* <Row>
               <Col>
                 <Form.Group controlId="validationFormik01">
                   <div style={{ position: "relative" }}>
@@ -129,7 +144,7 @@ const SavedAddressModule = () => {
                   <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                 </Form.Group>
               </Col>
-            </Row>
+            </Row> */}
             <Row>
               <Col>
                 <Form.Group controlId="validationFormik01">
@@ -168,18 +183,24 @@ const SavedAddressModule = () => {
                   {formError?.pincode ? <p className="error-text">pincode is required!</p> : null}
                 </Form.Group>
               </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Group controlId="validationFormik01">
-                  <Form.Control type="text" name="city" placeholder="City" value={formData?.city ?? ''} onChange={handleChange} />
-                  {formError?.city ? <p className="error-text">city is required!</p> : null}
-                </Form.Group>
-              </Col>
               <Col>
                 <Form.Group controlId="validationFormik01">
                   <Form.Control type="text" name="state" placeholder="State" value={formData?.state ?? ''} onChange={handleChange} />
                   {formError?.state ? <p className="error-text">state is required!</p> : null}
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Group controlId="validationFormik01">
+                  <Form.Control type="text" name="district" placeholder="District" value={formData?.district ?? ''} onChange={handleChange} />
+                  {formError?.district ? <p className="error-text">district is required!</p> : null}
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group controlId="validationFormik01">
+                  <Form.Control type="text" name="city" placeholder="City" value={formData?.city ?? ''} onChange={handleChange} />
+                  {formError?.city ? <p className="error-text">city is required!</p> : null}
                 </Form.Group>
               </Col>
             </Row>
