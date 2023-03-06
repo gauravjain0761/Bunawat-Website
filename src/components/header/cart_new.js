@@ -278,20 +278,23 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
                 {wishlistData?.data?.length > 0 ?
                     <div className='row'>
                         {wishlistData?.data?.map((list) => (
-                            <div className={wishlistData?.data?.length < 2 ? 'col-12' : 'col-6'}>
+                            <div className={'col-6'}>
                                 <div className='saved_img_information'>
                                     <div className="save_item_img">
-                                        <Link to={`/product/${list?.product}`} onClick={handleCartClose}>
-                                            <img src={saved_1} alt="saved img" />
+                                        <Link to={`/product/${list?.product?._id}`} onClick={handleCartClose}>
+                                            <img src={list?.product?.image} style={{
+                                                width: '195px',
+                                                height: '230px'
+                                            }} alt="saved img" />
                                         </Link>
                                     </div>
                                     <div className='cart_price_wrapper'>
                                         <div className='d-flex align-items-center price_of_cart_wrap'>
-                                            <span>₹2,000 </span>
-                                            <s>₹2,600</s>
+                                            <span>{getNumberWithComma(list?.product?.sale_price)}</span>
+                                            {/* <s>₹2,600</s> */}
                                         </div>
                                         <button className='plus_cart' onClick={() => {
-                                            history.push(`/product/${list?.product}`)
+                                            history.push(`/product/${list?.product?._id}`)
                                             handleCartClose();
                                         }}>
                                             <svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">

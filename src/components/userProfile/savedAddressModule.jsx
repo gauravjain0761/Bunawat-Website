@@ -67,6 +67,7 @@ const SavedAddressModule = () => {
       setFormError(tempError)
     } else {
       await customerUpdate(formData).unwrap().then((data) => {
+        toast.success("Change data successfully!")
       }).catch((error) => toast.error(error?.data?.message))
     }
   }
