@@ -3,10 +3,16 @@
         max-width: 530px;
     }
 }
-@media (min-width: 1200px){
-.container, .container-lg, .container-md, .container-sm, .container-xl {
-    max-width: 1300px;
-}
+
+@media (min-width: 1200px) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl {
+        max-width: 1300px;
+    }
 }
 
 @media (min-width: 1400px) {
@@ -184,7 +190,7 @@
         font-size: 20px;
         margin-top: 22px;
     }
-    
+
 
     .stock_info h3 {
         font-size: 12px;
@@ -400,6 +406,7 @@
         margin-bottom: 5px;
         display: none;
     }
+
     .summer_list_link {
         margin-bottom: 5px;
         justify-content: space-between;
@@ -429,7 +436,7 @@
 
     .cloth_wrap .cloth_deatils_link img {
         width: 100%;
-        object-fit: cover;
+        object-fit: fill;
         object-position: center;
     }
 
@@ -555,9 +562,11 @@
         padding: 50px;
         align-items: flex-start;
     }
+
     .star_content>p {
         text-align: left;
     }
+
     .female_details {
         text-align: left;
     }
@@ -624,13 +633,15 @@
     .summer_list_link_wrap {
         margin-bottom: 0px;
     }
-    .mobile_summer_list_link_wrap{
+
+    .mobile_summer_list_link_wrap {
         margin-bottom: -8px !important;
     }
-    .mobile_summer_list_link_wrap p{
+
+    .mobile_summer_list_link_wrap p {
         font-family: Newhero10;
     }
-    
+
     /* .mobile_save_wrap{
        margin-bottom: 10px;
     } */
@@ -769,7 +780,7 @@
     .cloth_deatils_wrap a::after {
         height: 150px;
     }
-     
+
     .product_info_right_section_wrap .slaman_link {
         display: flex;
         width: 100%;
@@ -929,28 +940,35 @@
 }
 
 @media screen and (max-width: 768px) {
-    .display_none_in_mobile{
+    .display_none_in_mobile {
         display: none;
     }
+
     .card_fixed .tab-content {
         height: calc(80vh - 10px);
     }
+
     .footer_header_wrap ul li p {
         margin-bottom: 12px;
     }
+
     .footer_header_wrap ul li span {
         margin-bottom: 12px;
     }
+
     .social_media_wrap p {
         margin-left: 0rem;
     }
+
     .color_list li {
         width: 26px;
         height: 26px;
     }
+
     .footer_blog_section {
         padding: 0px 0;
     }
+
     .eventsClubBox_second_top_premium_btn {
         padding: 0 6px;
     }

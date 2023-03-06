@@ -5,6 +5,7 @@ import { getNumberWithComma } from "../../utils/utils";
 import WriteAReviews from '../reviews/WriteAReviews';
 import FooterStrip from '../footer/footerStrip';
 import ProductPageFilter from './ProductFilter';
+import parse from 'html-react-parser';
 import SaveButton from '../common/save';
 import { Box } from '@mui/material';
 import Storage from '../../services/storage';
@@ -58,11 +59,8 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                     <SaveButton id={product?._id} isWishlist={product?.isWishlist} isBlue={true} refetch={refetch} />
                                 </div>
                                 <div className="common_product_details">
-                                    <div>Gold embroidered</div>
-                                    <div>Lycra & cotton fabric</div>
-                                    <div>Slim fit with flared bottom</div>
-                                    <div>Made in Udaipur</div>
-                                    <div>
+                                    <div>{parse(product?.description)}</div>
+                                    <div style={{ marginTop: '25px' }}>
                                         Club members get <span>10% off. </span>
                                         <Link to="" className="product_link">
                                             Join
