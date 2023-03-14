@@ -36,9 +36,9 @@ export default function Index() {
         <>
             <Layout>
                 <Switch>
-                    <Route exact path={BASE_URL.BASE_URL + 'demo'}>
+                    {/* <Route exact path={BASE_URL.BASE_URL + 'demo'}>
                         <Demo />
-                    </Route>
+                    </Route> */}
                     <Route exact path={BASE_URL.BASE_URL}>
                         <Home />
                     </Route>
