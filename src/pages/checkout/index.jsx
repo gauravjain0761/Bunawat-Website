@@ -20,6 +20,7 @@ const Checkout = () => {
   const [makePayment] = useMakePaymentMutation(undefined, {})
   const { data, error, isLoading } = useGetAllCartQuery(undefined, { skip: !Storage.isUserAuthenticated() })
   const [cartData, setCartData] = useState([]);
+  const [paymentMode, setPaymentMode] = useState('online');
   const [couponData, setCouponData] = useState({});
   const [showCoupon, setShowCoupon] = useState(false);
   const history = useHistory()
@@ -103,7 +104,7 @@ const Checkout = () => {
           billing_address: formData ?? {},
           isSame: true,
           shipping_address: formData ?? {},
-          payment_mode: "ONLINE",
+          payment_mode: paymentMode?.toUpperCase() ?? "ONLINE",
           total_items: cartData?.length,
           total_qty: cartData?.reduce((total, list) => {
             return total + Number(list?.qty)
@@ -141,6 +142,8 @@ const Checkout = () => {
                 })
               }
             }).catch((error) => toast.error(error?.data?.message))
+          } else {
+            history.push("/orderConfirmation/" + responce?.data?._id)
           }
           // history.push("/userProfile")
         }).catch((error) => toast.error(error?.data?.message))
@@ -204,27 +207,27 @@ const Checkout = () => {
                   <img src="../img/shipping-options.png" alt="shipping-options" width="22" style={{ marginRight: "8px" }} />
                   Shipping Options
                 </div>
-                <div className="checkout_box_list" style={{ background: "#EDF0FF", borderRadius: "4px", paddingTop: "1rem", cursor: "pointer" }}>
+                <div className="checkout_box_list" onClick={() => setPaymentMode("online")} style={paymentMode == "online" ? { background: "#EDF0FF", borderRadius: "4px", paddingTop: "1rem", cursor: "pointer" } : { cursor: "pointer" }}>
                   <div>
-                    <h3 style={{ color: "#2A3592" }}>Regular Shipping</h3>
-                    <span style={{ color: "#2A3592" }}>Delivers 17—20th June</span>
+                    <h3 style={paymentMode == "online" ? { color: "#2A3592" } : {}}>Online</h3>
+                    <span style={paymentMode == "online" ? { color: "#2A3592" } : {}}>Delivers in 3-5 days</span>
                   </div>
                   <div>
-                    <h3 style={{ color: "#2A3592" }}>Free </h3>
-                  </div>
-                </div>
-
-                <div className="checkout_box_list" onClick={handleShowCodModal} style={{ cursor: "pointer" }}>
-                  <div>
-                    <h3>Cash on Delivery</h3>
-                    <span>Delivers 17—20th June</span>
-                  </div>
-                  <div>
-                    <h3>₹100 </h3>
+                    <h3 style={paymentMode == "online" ? { color: "#2A3592" } : {}}>Free </h3>
                   </div>
                 </div>
 
-                <div className="checkout_box_list" style={{ cursor: "pointer" }}>
+                <div className="checkout_box_list" onClick={() => setPaymentMode("cod")} style={paymentMode == "cod" ? { background: "#EDF0FF", borderRadius: "4px", paddingTop: "1rem", cursor: "pointer" } : { cursor: "pointer" }}>
+                  <div>
+                    <h3 style={paymentMode == "cod" ? { color: "#2A3592" } : {}}>Cash on Delivery</h3>
+                    <span style={paymentMode == "cod" ? { color: "#2A3592" } : {}}>Delivers in 3-5 days</span>
+                  </div>
+                  <div>
+                    <h3 style={paymentMode == "cod" ? { color: "#2A3592" } : {}}>₹100 </h3>
+                  </div>
+                </div>
+
+                {/* <div className="checkout_box_list" style={{ cursor: "pointer" }}>
                   <div>
                     <h3>Expedited Shipping</h3>
                     <span>Delivers Monday</span>
@@ -232,7 +235,7 @@ const Checkout = () => {
                   <div>
                     <h3>₹250 </h3>
                   </div>
-                </div>
+                </div> */}
               </div>
             </Col>
           </Row>

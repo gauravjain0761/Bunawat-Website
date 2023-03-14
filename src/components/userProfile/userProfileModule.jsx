@@ -3,16 +3,17 @@ import moment from "moment";
 import React from "react";
 import { AiOutlineCheck } from 'react-icons/ai';
 import { GoPrimitiveDot } from 'react-icons/go';
+import { useHistory } from "react-router-dom";
 import { useOrderListQuery } from "../../services/api";
 import { getNumberWithComma } from "../../utils/utils";
 
 const UserProfileModule = () => {
-
+  const history = useHistory()
   const { data: orderData, error, isLoading } = useOrderListQuery()
   return (
     <>
       {orderData?.data?.map(list => (
-        <div className="userProfileModule_box" style={{ marginBottom: "1rem" }}>
+        <div className="userProfileModule_box" style={{ marginBottom: "1rem", cursor: 'pointer' }} onClick={() => history.push(`/orderConfirmation/${list?._id}`)}>
           <div className="userProfileModule_box_heading">
             <div>
               <h6>

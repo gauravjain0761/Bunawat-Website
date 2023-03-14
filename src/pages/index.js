@@ -75,6 +75,10 @@ export default function Index() {
                         <OrderConfirmation />
                     </Route>
 
+                    <Route exact path={BASE_URL.BASE_URL + `orderConfirmation/:id`}>
+                        <OrderConfirmation />
+                    </Route>
+
                     <Route exact path={BASE_URL.BASE_URL + `userProfile`}>
                         <UserProfile />
                     </Route>
