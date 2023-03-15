@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import { BottomSheet } from 'react-spring-bottom-sheet'
@@ -9,6 +9,8 @@ import product_slider from "../../assets/img/product/slider_img.png";
 import ProductBottomData from './productBottomData';
 import SaveButton from '../common/save';
 import { Box } from '@mui/material';
+import { ApiGet } from '../../services/API/api';
+import { toast } from 'react-toastify';
 
 const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, productBottomData, width, refetch, swipeableIndex, productList }) => {
     const settings = {
@@ -22,6 +24,21 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
         vertical: true,
         verticalSwiping: true,
     };
+    const [pincode, setPincode] = useState("");
+
+    useEffect(async () => {
+        if (pincode?.length == 6) {
+            await ApiGet(`check_availability/${pincode}`)
+                .then((res) => {
+                    toast.success(res?.message ?? "");
+                })
+                .catch((error) => {
+                    console.log(error)
+                    toast.error(error?.error ?? "");
+                });
+        }
+    }, [pincode])
+
     return (
         <div className="product_page">
             <div className="product_slider_section">
@@ -176,7 +193,12 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                     </li>
                                     <li>
                                         <div className="pin_code_weap">
-                                            <input type="text" placeholder="PIN Code" />
+                                            <input type="text" placeholder="PIN Code" value={pincode} onChange={(e) => {
+                                                const onlyNums = e.target.value.replace(/[^0-9]/g, '');
+                                                if (onlyNums.length <= 6) {
+                                                    setPincode(onlyNums)
+                                                }
+                                            }} />
                                             <div className="edit_icon">
                                                 <svg
                                                     width="9"

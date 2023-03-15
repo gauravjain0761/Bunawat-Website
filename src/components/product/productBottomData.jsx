@@ -10,12 +10,28 @@ import SaveButton from '../common/save';
 import { Box } from '@mui/material';
 import Storage from '../../services/storage';
 import Review from '../reviews/review';
+import { ApiGet } from '../../services/API/api';
+import { toast } from 'react-toastify';
 
 
 const ProductBottomData = ({ product, productIndex, width, similarList, refetch, swipeableIndex, productList }) => {
     const [age, setAge] = useState("size");
     const history = useHistory();
     const [recentlyProduct, setRecentlyProduct] = useState(Storage.get("recentlyProduct") ? JSON.parse(Storage.get("recentlyProduct") ?? '[]') : []);
+    const [pincode, setPincode] = useState("");
+
+    useEffect(async () => {
+        if (pincode?.length == 6) {
+            await ApiGet(`check_availability/${pincode}`)
+                .then((res) => {
+                    toast.success(res?.message ?? "");
+                })
+                .catch((error) => {
+                    console.log(error)
+                    toast.error(error?.error ?? "");
+                });
+        }
+    }, [pincode])
 
     useEffect(() => {
         setRecentlyProduct(Storage.get("recentlyProduct") ? JSON.parse(Storage.get("recentlyProduct") ?? '[]') : []);
@@ -202,7 +218,12 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                         </li>
                                         <li>
                                             <div className="pin_code_weap">
-                                                <input type="text" placeholder="PIN Code" />
+                                                <input type="text" placeholder="PIN Code" value={pincode} onChange={(e) => {
+                                                    const onlyNums = e.target.value.replace(/[^0-9]/g, '');
+                                                    if (onlyNums.length <= 6) {
+                                                        setPincode(onlyNums)
+                                                    }
+                                                }} />
                                                 <div className="edit_icon">
                                                     <svg
                                                         width="9"
