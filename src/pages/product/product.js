@@ -15,6 +15,7 @@ const Product = () => {
   const [productList, setProductList] = useState([]);
   const [similarList, setSimilarList] = useState([]);
   const [productBottomData, setProductBottomData] = useState([]);
+  const [lastSkuData, setLastSkuData] = useState({});
   const [width, setWidth] = useState(window.innerWidth);
   const handleWindowResize = () => {
     setWidth(window.innerWidth);
@@ -106,14 +107,14 @@ const Product = () => {
       <SwipeableViews containerStyle={{ height: '100%' }} enableMouseEvents index={swipeableIndex} disabled={swipeableDisable} onChangeIndex={(index) => getCurrentBottomData(index)} >
         {productList?.map((data, index) => {
           return (
-            <ProductCard key={data?._id} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} width={width} refetch={refetch} productList={productList} swipeableIndex={swipeableIndex} />
+            <ProductCard key={data?._id} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} width={width} refetch={refetch} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} />
           )
         })}
       </SwipeableViews>
       {(width < 768) ?
         null
         :
-        <ProductPageFilter selectedImage={productList?.[swipeableIndex]?.images?.[0]?.url ?? ""} selectedProduct={productList?.[swipeableIndex] ?? {}} filters={productList?.[swipeableIndex]?.skus ?? []} swipeableIndex={swipeableIndex ?? 0} />
+        <ProductPageFilter selectedImage={productList?.[swipeableIndex]?.images?.[0]?.url ?? ""} selectedProduct={productList?.[swipeableIndex] ?? {}} filters={productList?.[swipeableIndex]?.skus ?? []} swipeableIndex={swipeableIndex ?? 0} setLastSkuData={setLastSkuData} />
       }
     </>
   );

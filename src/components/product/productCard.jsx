@@ -12,7 +12,7 @@ import { Box } from '@mui/material';
 import { ApiGet } from '../../services/API/api';
 import { toast } from 'react-toastify';
 
-const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, productBottomData, width, refetch, swipeableIndex, productList }) => {
+const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, productBottomData, width, refetch, swipeableIndex, productList, lastSkuData }) => {
     const settings = {
         dots: true,
         infinite: false,
@@ -38,7 +38,6 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                 });
         }
     }, [pincode])
-
     return (
         <div className="product_page">
             <div className="product_slider_section">
@@ -485,21 +484,40 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                 <li style={{ backgroundColor: "#037A44" }}></li>
                             </ul>
                         </Box>
-                        <div>
-                            <Slider {...settings} className="product_slider">
-                                {[...product?.images, ...product?.videos?.slice(3, 4)]?.map(list => (
-                                    <div>
-                                        {list?.type == "VIDEO" ?
-                                            <video loop autoPlay muted height='800px'>
-                                                <source src={list?.url} type="video/mp4" />
-                                            </video>
-                                            :
-                                            <img src={list?.url} alt="slider" width='100%' height='800px' />
-                                        }
-                                    </div>
-                                ))}
-                            </Slider>
-                        </div>
+                        {console.log(lastSkuData?.images)}
+                        {lastSkuData?.images?.length > 0 ?
+                            <div>
+                                <Slider {...settings} className="product_slider">
+                                    {lastSkuData?.images?.map(list => (
+                                        <div>
+                                            {list?.type == "VIDEO" ?
+                                                <video loop autoPlay muted height='800px'>
+                                                    <source src={list?.url} type="video/mp4" />
+                                                </video>
+                                                :
+                                                <img src={list?.url} alt="slider" width='100%' height='800px' />
+                                            }
+                                        </div>
+                                    ))}
+                                </Slider>
+                            </div>
+                            :
+                            <div>
+                                <Slider {...settings} className="product_slider">
+                                    {[...product?.images, ...product?.videos?.slice(3, 4)]?.map(list => (
+                                        <div>
+                                            {list?.type == "VIDEO" ?
+                                                <video loop autoPlay muted height='800px'>
+                                                    <source src={list?.url} type="video/mp4" />
+                                                </video>
+                                                :
+                                                <img src={list?.url} alt="slider" width='100%' height='800px' />
+                                            }
+                                        </div>
+                                    ))}
+                                </Slider>
+                            </div>
+                        }
                     </Box>
                 </div>
             </div>

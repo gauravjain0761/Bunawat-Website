@@ -121,7 +121,7 @@ export const SelectModal = ({ showSelect, handleClose, attributeList, attributeD
 }
 
 
-const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedImage }) => {
+const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedImage, setLastSkuData }) => {
     const [filterList, setFilterList] = useState([]);
     const [attributeList, setAttributeList] = useState([]);
     const [attributeData, setAttributeData] = useState({});
@@ -148,11 +148,11 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
             })
             tempAttributeData = { ...tempAttributeData, [val]: 'defaultValue' }
         })
-        console.log(tempAttributeList, "tempAttributeData", tempAttributeData)
         setAttributeData(tempAttributeData);
         setAttributeList(tempAttributeList);
         setFilterList(temp)
     }, [filters, swipeableIndex])
+
 
     const handleAdd = async () => {
         const selectedData = filterList?.find(list => list?._id == Object.values(attributeData)?.filter(list => list != 'defaultValue')?.slice(-1)?.[0]) ?? {}
@@ -236,7 +236,6 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                         </Box>
 
                         {Object.keys(attributeList)?.map((item, index) => {
-                            console.log(attributeList?.[item]?.filter(list => Object.values(attributeList)?.[index - 1]), "--------", attributeList?.[item]?.filter(list => Object.values(attributeList)?.[index - 1]?.filter(x => x?.label == Object.values(attributeList)?.[index - 1]?.find(list => list?.value == attributeData[Object.keys(attributeList)?.[index - 1]])?.label)?.map(x => x?.value)?.includes(list?.value)))
                             return (
                                 <>
                                     <Box
@@ -261,6 +260,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                                         }
                                                     });
                                                     setAttributeData(newData)
+                                                    setLastSkuData(filterList?.find(list => list?._id == Object.values(newData)?.filter(list => list != 'defaultValue')?.slice(-1)?.[0]))
                                                 }}
                                                 inputProps={{ "aria-label": "Without label" }}>
                                                 <MenuItem value="defaultValue" className="common_option_wrap">
