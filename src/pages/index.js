@@ -20,8 +20,9 @@ import { useDispatch } from "react-redux";
 import { setCartCount } from "../redux/reducers/cart";
 import TrackOrder from "./trackOrder";
 import Login from "./logIn";
-import Demo from "./demo";
-
+import { onMessage } from "firebase/messaging";
+import { messaging } from "../firebase";
+import { toast } from "react-toastify";
 
 export default function Index() {
     const dispatch = useDispatch();
@@ -31,7 +32,15 @@ export default function Index() {
         dispatch(setCartCount(JSON.parse(Storage.get("cartData"))?.length ?? 0));
     }, [])
 
-    console.log("process.env.NODE_ENV", process.env)
+
+
+    useEffect(() => {
+        onMessage(messaging, message => {
+            console.log("tu mensaje:", message);
+            toast.success(message.notification.title);
+        })
+    }, []);
+
     return (
         <>
             <Layout>

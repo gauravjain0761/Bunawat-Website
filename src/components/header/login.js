@@ -2,12 +2,13 @@ import React from 'react'
 import { toast } from 'react-toastify';
 import ReactInputVerificationCode from "react-input-verification-code";
 import { Box, Menu, MenuItem, MenuList } from '@mui/material';
-import { AllApiData, useAddToCartMutation, useOtpMatchMutation, useSendOtpMutation } from '../../services/api';
+import { AllApiData, useAddToCartMutation, useDeviceTokenMutation, useLogoutDeviceTokenMutation, useOtpMatchMutation, useSendOtpMutation } from '../../services/api';
 import { STORAGE_KEY } from '../../constant/storage';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import Storage from '../../services/storage';
 import { useDispatch } from 'react-redux';
 import { logout, setUserData } from '../../redux/reducers/user';
+import { getNotifyToken } from '../../firebase';
 
 const Login = ({ activeHeader, handleAccountClose }) => {
     const [sendOtp] = useSendOtpMutation(undefined, {})
@@ -16,6 +17,8 @@ const Login = ({ activeHeader, handleAccountClose }) => {
     const location = useLocation()
     const [otpMatch, { isLoading, isError, error }] = useOtpMatchMutation(undefined, {})
     const [addToCart] = useAddToCartMutation()
+    const [deviceToken] = useDeviceTokenMutation()
+    const [logoutDeviceToken] = useLogoutDeviceTokenMutation()
     const [otpverify, setOtpverify] = React.useState(false);
     const [loginData, setLoginData] = React.useState({
         phone: '9782649915',
@@ -30,6 +33,13 @@ const Login = ({ activeHeader, handleAccountClose }) => {
 
     const handleLogin = async () => {
         await otpMatch({ ...loginData, otp: Number(loginData.otp) }).unwrap().then(async (data) => {
+            getNotifyToken().then(async (token) => {
+                await deviceToken({
+                    token,
+                    type: "WEB"
+                }).unwrap().then((data) => {
+                }).catch((error) => toast.error(error?.data?.message))
+            }).catch(error => console.log("error notify"));
             handleAccountClose()
             Storage.set(STORAGE_KEY.token, data?.data?.auth_token)
             dispatch(setUserData(data?.data));
@@ -51,9 +61,25 @@ const Login = ({ activeHeader, handleAccountClose }) => {
                 }).catch((error) => toast.error(error?.data?.message))
             }
             history.push("/userProfile")
-            window.location.reload(true)
+            // window.location.reload(true)
         }).catch((error) => toast.error(error?.data?.message))
     };
+
+    const handleLogout = async () => {
+        await logoutDeviceToken({
+            type: "WEB"
+        }).unwrap().then((data) => {
+            handleAccountClose()
+            dispatch(logout());
+            dispatch(AllApiData.util.resetApiState());
+            Storage.remove(STORAGE_KEY.token)
+            if (location?.pathname == "/") {
+                window.location.reload(true)
+            } else {
+                history.push("/")
+            }
+        }).catch((error) => toast.error(error?.data?.message))
+    }
 
     return (
         <>
@@ -79,17 +105,7 @@ const Login = ({ activeHeader, handleAccountClose }) => {
                                 My Account
                             </MenuItem>
                         </Link>
-                        <MenuItem onClick={() => {
-                            handleAccountClose()
-                            dispatch(logout());
-                            dispatch(AllApiData.util.resetApiState());
-                            Storage.remove(STORAGE_KEY.token)
-                            if (location?.pathname == "/") {
-                                window.location.reload(true)
-                            } else {
-                                history.push("/")
-                            }
-                        }} sx={{
+                        <MenuItem onClick={handleLogout} sx={{
                             fontSize: "18px",
                             color: "#000",
                             fontWeight: "600",
