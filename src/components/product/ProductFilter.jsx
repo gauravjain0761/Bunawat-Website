@@ -142,10 +142,13 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
         uniqKey.filter(list => list != 'qty').map(val => {
             temp.map((list) => {
                 let value = tempAttributeList?.[val] ?? []
-                tempAttributeList = { ...tempAttributeList, [val]: [...value, { value: list?._id, label: list?.varients?.[val] }] }
+                if (!!list?.varients?.[val]) {
+                    tempAttributeList = { ...tempAttributeList, [val]: [...value, { value: list?._id, label: list?.varients?.[val] }] }
+                }
             })
             tempAttributeData = { ...tempAttributeData, [val]: 'defaultValue' }
         })
+        console.log(tempAttributeList, "tempAttributeData", tempAttributeData)
         setAttributeData(tempAttributeData);
         setAttributeList(tempAttributeList);
         setFilterList(temp)
@@ -233,6 +236,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                         </Box>
 
                         {Object.keys(attributeList)?.map((item, index) => {
+                            console.log(attributeList?.[item]?.filter(list => Object.values(attributeList)?.[index - 1]), "--------", attributeList?.[item]?.filter(list => Object.values(attributeList)?.[index - 1]?.filter(x => x?.label == Object.values(attributeList)?.[index - 1]?.find(list => list?.value == attributeData[Object.keys(attributeList)?.[index - 1]])?.label)?.map(x => x?.value)?.includes(list?.value)))
                             return (
                                 <>
                                     <Box
