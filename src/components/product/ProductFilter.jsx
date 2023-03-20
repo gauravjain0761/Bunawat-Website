@@ -136,7 +136,8 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
 
     useEffect(() => {
         let temp = [...filters] ?? []
-        let uniqKey = _.uniq(temp.map((list) => Object.keys(list.varients))?.flat()).map((list, index) => list)
+        let uniqKey = _.uniq(temp?.map((list) => Object.keys(list?.varients ?? {}))?.flat())?.map((list, index) => list) ?? []
+        console.log(uniqKey, "temptemptemp", temp)
         let tempAttributeList = {};
         let tempAttributeData = {};
         uniqKey.filter(list => list != 'qty').map(val => {

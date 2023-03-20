@@ -116,7 +116,7 @@ const Checkout = () => {
             ...list,
             sku_id: list?.sku?._id
           })) ?? [],
-          total_amount: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0) ? (couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100))), 0) ?? 0) : (cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0)) ?? 0)?.toFixed(2),
+          total_amount: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0) ? (paymentMode == "cod" ? (couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100))), 0) + 100) : (couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100))), 0)) ?? 0) : (paymentMode == "cod" ? (cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) + 100) : (cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0))) ?? 0)?.toFixed(2),
           discount_amount: (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.reduce((t, x) => t + Number(x?.discounted_amount ?? 0), 0) ?? 0 : 0,
           discount_coupon: couponData?.coupon_id,
           gst_amount: (cartData?.length > 0 && (couponData && couponData?.length > 0) ? couponData?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2),
@@ -161,7 +161,7 @@ const Checkout = () => {
           <Row>
             <Col xs={12} md={5}>
 
-              <MakePayment handleMakeOrder={handleMakeOrder} cartData={cartData ?? []} couponData={couponData} setCouponData={setCouponData} coupon={coupon} setCoupon={setCoupon} />
+              <MakePayment handleMakeOrder={handleMakeOrder} cartData={cartData ?? []} couponData={couponData} setCouponData={setCouponData} coupon={coupon} setCoupon={setCoupon} paymentMode={paymentMode} />
 
               <div className="checkout_box" style={{ marginTop: "2rem" }} onClick={handleShow}>
                 <div
@@ -258,31 +258,22 @@ const Checkout = () => {
                   <img src="../img/shipping-options.png" alt="shipping-options" width="22" style={{ marginRight: "8px" }} />
                   Shipping Options
                 </div>
-                <div className="checkout_box_list" style={{ background: "#EDF0FF", borderRadius: "4px", paddingTop: "1rem", cursor: "pointer" }}>
+                <div className="checkout_box_list" onClick={() => setPaymentMode("online")} style={paymentMode == "online" ? { background: "#EDF0FF", borderRadius: "4px", paddingTop: "1rem", cursor: "pointer" } : { cursor: "pointer" }}>
                   <div>
-                    <h3 style={{ color: "#2A3592" }}>Regular Shipping</h3>
-                    <span style={{ color: "#2A3592" }}>Delivers 17—20th June</span>
+                    <h3 style={paymentMode == "online" ? { color: "#2A3592" } : {}}>Regular Shipping</h3>
+                    <span style={paymentMode == "online" ? { color: "#2A3592" } : {}}>Delivers in 3-5 days</span>
                   </div>
                   <div>
-                    <h3 style={{ color: "#2A3592" }}>Free </h3>
-                  </div>
-                </div>
-                <div className="checkout_box_list" onClick={handleShowCodModal} style={{ cursor: "pointer" }}>
-                  <div>
-                    <h3>Cash on Delivery</h3>
-                    <span>Delivers 17—20th June</span>
-                  </div>
-                  <div>
-                    <h3>₹100 </h3>
+                    <h3 style={paymentMode == "online" ? { color: "#2A3592" } : {}}>Free </h3>
                   </div>
                 </div>
-                <div className="checkout_box_list" style={{ cursor: "pointer" }}>
+                <div className="checkout_box_list" onClick={() => setPaymentMode("cod")} style={paymentMode == "cod" ? { background: "#EDF0FF", borderRadius: "4px", paddingTop: "1rem", cursor: "pointer" } : { cursor: "pointer" }}>
                   <div>
-                    <h3>Expedited Shipping</h3>
-                    <span>Delivers Monday</span>
+                    <h3 style={paymentMode == "cod" ? { color: "#2A3592" } : {}}>Cash on Delivery</h3>
+                    <span style={paymentMode == "cod" ? { color: "#2A3592" } : {}}>Delivers 17—20th June</span>
                   </div>
                   <div>
-                    <h3>₹250 </h3>
+                    <h3 style={paymentMode == "cod" ? { color: "#2A3592" } : {}}>₹100 </h3>
                   </div>
                 </div>
               </div>
@@ -325,7 +316,7 @@ const Checkout = () => {
               </div>
 
               <Box sx={{ marginTop: "1rem" }}>
-                <MakePayment handleMakeOrder={handleMakeOrder} cartData={cartData ?? []} />
+                <MakePayment handleMakeOrder={handleMakeOrder} cartData={cartData ?? []} couponData={couponData} setCouponData={setCouponData} coupon={coupon} setCoupon={setCoupon} paymentMode={paymentMode} />
               </Box>
 
             </Col>

@@ -1,7 +1,7 @@
 import React from "react";
 import { getNumberWithComma } from "../../utils/utils";
 
-const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData }) => {
+const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData, paymentMode }) => {
   return (
     <>
       <div className="checkout_box">
@@ -77,6 +77,19 @@ const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData }) => 
             </div>
           </div>
         }
+        {paymentMode == "cod" &&
+          <div className="checkout_box_list">
+            <div>
+              <h3>Cod: </h3>
+              {/* <span>Get 10% off on all orders</span> */}
+            </div>
+            <div>
+              <h3>
+                <i>+ 100</i>
+              </h3>
+            </div>
+          </div>
+        }
         <div className="checkout_box_footer" onClick={handleMakeOrder}>
           <div className="checkout_box_list">
             <div>
@@ -93,7 +106,7 @@ const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData }) => 
                 >
                   {/* ₹18,700{" "} */}
                 </del>
-                {(cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0) ? getNumberWithComma(couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100))), 0) ?? 0) : getNumberWithComma(cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0)) ?? 0)}
+                {(cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0) ? getNumberWithComma(paymentMode == "cod" ? ((couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100))), 0)) + 100) : (couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100))), 0)) ?? 0) : getNumberWithComma(paymentMode == "cod" ? ((cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0)) + 100) : (cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0))) ?? 0)}
               </h3>
             </div>
           </div>
