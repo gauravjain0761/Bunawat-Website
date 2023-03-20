@@ -1353,6 +1353,10 @@ li.common_option_wrap {
 .card_img {
     width: 120px;
 }
+.card_img img{
+    width: 120px;
+    border-radius: 4px;
+}
 
 .cart_product_info h3 {
     font-size: 14px;
@@ -2166,8 +2170,8 @@ li.common_option_wrap {
 .login_info_wrap p {
     color: #70758A;
     font-size: 14px;
-    text-align: start;
-    margin: 0;
+    /* text-align: start; */
+    margin: 0 38px;
     font-weight: 400;
 }
 

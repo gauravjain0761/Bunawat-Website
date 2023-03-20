@@ -193,7 +193,7 @@
     text-align: center;
 }
 .eventsClubBox_first span{
-    font-weight: 600;
+    font-weight: 700;
     font-size: 10px;
     line-height: 24px;
     letter-spacing: 0.05em;
@@ -246,7 +246,7 @@
     margin-top: 20px;
 }
 .eventsClubBox_second_bottom .btn{
-    font-weight: 700;
+    font-weight: 800;
     font-size: 10px;
     line-height: 16px;
     letter-spacing: 0.02em;
@@ -273,7 +273,7 @@
     color: #2A3592 !important;
 }
 .eventsClubBox_first_premium span{
-    font-weight: 600;
+    font-weight: 700;
     font-size: 10px;
     line-height: 24px;
     letter-spacing: 0.05em;
@@ -289,7 +289,7 @@
 .eventsClubBox_second_premium{
     background: #4756D0;
     padding: 2rem !important;
-    /* border-radius: 4px 0 0 4px; */
+    border-radius: 0 4px 4px 0 !important; 
 }
 .eventsClubBox_second_premium span{
     font-weight: 600;
@@ -302,6 +302,7 @@
 .eventsClubBox_second_premium h3{
     font-family: NewScript-2;
     font-weight: 600;
+    font-style: normal;
     font-size: 18px;
     line-height: 26px;
     letter-spacing: -0.02em;

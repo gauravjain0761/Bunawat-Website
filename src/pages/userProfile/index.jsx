@@ -10,7 +10,7 @@ import { Box } from '@mui/material';
 import { useSelector } from 'react-redux';
 
 const UserProfile = () => {
-  const userData = useSelector(state => state?.user?.userData)
+  const userData = useSelector(state => state?.user?.userData);
   return (
     <>
       <div id='userProfile'>
@@ -27,7 +27,7 @@ const UserProfile = () => {
                     <Nav.Item>
                       <Link to="/userProfile">
                         <Nav.Link eventKey="userProfile" className='userProfile_menu_list'>
-                          <img src="../img/ordersshop.png" alt='ordersshop' height="20" style={{ marginRight: "8px" }} />
+                          <img src="../img/ordersshop.png" alt='ordersshop' height="20" style={{ marginRight: "12px" }} />
                           Orders & Shop
                         </Nav.Link>
                       </Link>
@@ -35,7 +35,7 @@ const UserProfile = () => {
                     <Nav.Item>
                       <Link to="/userProfile">
                         <Nav.Link eventKey="eventsClub" className='userProfile_menu_list'>
-                          <img src="../img/eventsclub.png" alt='eventsclub' height="20" style={{ marginRight: "8px" }} />
+                          <img src="../img/eventsclub.png" alt='eventsclub' height="20" style={{ marginRight: "12px" }} />
                           Events & Club
                         </Nav.Link>
                       </Link>
@@ -43,16 +43,16 @@ const UserProfile = () => {
                     <Nav.Item>
                       <Link to="/userProfile">
                         <Nav.Link eventKey="savedAddress" className='userProfile_menu_list'>
-                          <img src="../img/shippingto.png" alt='Saved Address' height="20" style={{ marginRight: "8px" }} />
+                          <img src="../img/shippingto.png" alt='Saved Address' height="20" style={{ marginRight: "12px" }} />
                           Saved Address
                         </Nav.Link>
                       </Link>
                     </Nav.Item>
                   </Nav>
 
-                  <div className='userProfile_menu_list_third'>
+                  <div className='userProfile_menu_list_third' style={{marginTop: "10px"}}>
                     <h6>
-                      <img src="../img/storecredit.png" alt='Store credit' height="20" style={{ marginRight: "8px" }} />
+                      <img src="../img/storecredit.png" alt='Store credit' height="20" style={{ marginRight: "12px" }} />
                       Store credit
                     </h6>
                     <h4>₹3,500 </h4>

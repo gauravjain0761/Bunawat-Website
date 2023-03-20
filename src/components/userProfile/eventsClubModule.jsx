@@ -22,7 +22,7 @@ const EventsClubModule = () => {
             <Col sm={9} xs={9}>
               <div className="eventsClubBox_second">
                 <div className="eventsClubBox_second_top">
-                  <span><GoPrimitiveDot />Event</span>
+                  <span><GoPrimitiveDot size={18} />Event</span>
                   <span style={{ color: "#9A9EB0" }}>Pune • 10:00 am</span>
                 </div>
                 <div>
@@ -56,7 +56,7 @@ const EventsClubModule = () => {
             </Col>
             <Col sm={9} xs={9} className="eventsClubBox_second_premium">
                 <div className="eventsClubBox_second_top_premium">
-                  <span className="eventsClubBox_second_top_premium_btn"> <GoPrimitiveDot /> Premium Event</span>
+                  <span className="eventsClubBox_second_top_premium_btn"> <GoPrimitiveDot size={18} /> Premium Event</span>
                   <span style={{ color: "#fff" }}>Pune  •  12:45 pm</span>
                 </div>
                 <div>
@@ -90,7 +90,7 @@ const EventsClubModule = () => {
             <Col sm={9} xs={9}>
               <div className="eventsClubBox_second">
                 <div className="eventsClubBox_second_top">
-                  <span style={{ color: "#4B84F2" }}><GoPrimitiveDot />Hangout</span>
+                  <span style={{ color: "#4B84F2" }}><GoPrimitiveDot size={18} />Hangout</span>
                   <span style={{ color: "#9A9EB0" }}>6:00 pm</span>
                 </div>
                 <div>
@@ -114,7 +114,7 @@ const EventsClubModule = () => {
             <Col sm={9} xs={9}>
               <div className="eventsClubBox_second">
                 <div className="eventsClubBox_second_top">
-                  <span style={{ color: "#F2C34B" }}> <GoPrimitiveDot /> Tutorial</span>
+                  <span style={{ color: "#F2C34B" }}> <GoPrimitiveDot size={18} /> Tutorial</span>
                   <span style={{ color: "#9A9EB0" }}>6:00 pm</span>
                 </div>
                 <div>
@@ -138,7 +138,7 @@ const EventsClubModule = () => {
             <Col sm={9} xs={9}>
               <div className="eventsClubBox_second">
                 <div className="eventsClubBox_second_top">
-                  <span style={{ color: "#FF6C6C" }}> <GoPrimitiveDot /> Workshop</span>
+                  <span style={{ color: "#FF6C6C" }}> <GoPrimitiveDot size={18} /> Workshop</span>
                   <span style={{ color: "#9A9EB0" }}>6:00 pm</span>
                 </div>
                 <div>

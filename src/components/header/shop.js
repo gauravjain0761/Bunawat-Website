@@ -56,7 +56,12 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
   const history = useHistory();
   return (
     <>
-      <Box sx={{ width: { md: "380px", sm: "100%" }, px: 2 }}>
+      <Box sx={{ 
+        width: { md: "380px", sm: "100%" }, 
+        px: 2,
+        // backgroundColor: '#ffffffe8',
+        // backdropFilter: 'blur(10px)', 
+        }}>
         <Box sx={{
           padding: '14px 0 0 0',
           borderBottom: "2px solid #000000",
@@ -135,7 +140,10 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
             );
           })}
       </Box>
-      <Box sx={{ width: { md: "380px", sm: "100%" }, px: 2 }}>
+      <Box sx={{ 
+        width: { md: "380px", sm: "100%" }, 
+        px: 2,
+        }}>
         {menuData.categories.map((item, index) => {
           return (
             <React.Fragment key={`categories-${index}`}>

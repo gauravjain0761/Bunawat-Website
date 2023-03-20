@@ -173,7 +173,7 @@ const Login = ({ activeHeader, handleAccountClose }) => {
                                         </svg>
                                     </button>
                                 </div>
-                                <div className="login_info_wrap">
+                                <div className="login_info_wrap" style={{textAlign: "center"}}>
                                     <p>If you don’t have an account, we’ll create one for you</p>
                                 </div>
                             </div>
@@ -184,7 +184,7 @@ const Login = ({ activeHeader, handleAccountClose }) => {
                                 <div className="login_title_wrap">
                                     <h3>One-time Password</h3>
                                     <h4>
-                                        Enter the OTP we sent to <span>+91 91283 61521</span>
+                                        Enter the OTP we sent to <span>+91 {loginData?.phone}</span>
                                     </h4>
                                 </div>
                                 <div className="login_input_wrap">
