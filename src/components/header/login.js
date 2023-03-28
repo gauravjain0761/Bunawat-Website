@@ -21,7 +21,7 @@ const Login = ({ activeHeader, handleAccountClose }) => {
     const [logoutDeviceToken] = useLogoutDeviceTokenMutation()
     const [otpverify, setOtpverify] = React.useState(false);
     const [loginData, setLoginData] = React.useState({
-        phone: '9782649915',
+        phone: '',
         otp: ''
     });
 
@@ -173,7 +173,7 @@ const Login = ({ activeHeader, handleAccountClose }) => {
                                         </svg>
                                     </button>
                                 </div>
-                                <div className="login_info_wrap" style={{textAlign: "center"}}>
+                                <div className="login_info_wrap" style={{ textAlign: "center" }}>
                                     <p>If you don’t have an account, we’ll create one for you</p>
                                 </div>
                             </div>

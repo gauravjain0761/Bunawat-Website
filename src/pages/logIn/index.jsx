@@ -18,7 +18,7 @@ const Login = () => {
     const [addToCart] = useAddToCartMutation()
     const [otpverify, setOtpverify] = React.useState(false);
     const [loginData, setLoginData] = React.useState({
-        phone: '9782649915',
+        phone: '',
         otp: ''
     });
 
