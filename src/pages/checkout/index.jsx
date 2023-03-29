@@ -199,10 +199,7 @@ const Checkout = () => {
               </div>
             </Col>
             <Col xs={12} md={7}>
-
-              <CheckoutForm formData={formData ?? {}} setFormData={setFormData} formError={formError} setFormError={setFormError} />
-
-              <div className="checkout_box" style={{ marginTop: "1rem", padding: "0 1rem 1rem 1rem" }}>
+              <div className="checkout_box" style={{ marginBottom: "1rem", padding: "0 1rem 1rem 1rem" }}>
                 <div className="checkout_box_heading">
                   <img src="../img/shipping-options.png" alt="shipping-options" width="22" style={{ marginRight: "8px" }} />
                   Shipping Options
@@ -223,7 +220,7 @@ const Checkout = () => {
                     <span style={paymentMode == "cod" ? { color: "#2A3592" } : {}}>Delivers in 3-5 days</span>
                   </div>
                   <div>
-                    <h3 style={paymentMode == "cod" ? { color: "#2A3592" } : {}}>₹100 </h3>
+                    <h3 style={paymentMode == "cod" ? { color: "#2A3592" } : {}}>₹ {(couponData?.data && couponData?.data?.length > 0) ? ((((couponData?.data?.reduce((t, x) => t + Number(x?.final_amount + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) >= 150) ? ((couponData?.data?.reduce((t, x) => t + Number(x?.final_amount + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) : 150) : ((((cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) >= 150) ? ((cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) : 150)} </h3>
                   </div>
                 </div>
 
@@ -237,6 +234,8 @@ const Checkout = () => {
                   </div>
                 </div> */}
               </div>
+
+              <CheckoutForm formData={formData ?? {}} setFormData={setFormData} formError={formError} setFormError={setFormError} />
             </Col>
           </Row>
         </Container>
