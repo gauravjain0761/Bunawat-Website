@@ -14,7 +14,6 @@ import { setCartCount } from '../../redux/reducers/cart';
 import { Modal } from "react-bootstrap";
 import { Box, Button } from '@mui/material';
 
-
 export const SelectModal = ({ showSelect, handleClose, attributeList, attributeData, setAttributeData, filterList }) => {
     return (
         <>
@@ -123,6 +122,7 @@ export const SelectModal = ({ showSelect, handleClose, attributeList, attributeD
 
 const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedImage, setLastSkuData }) => {
     const [filterList, setFilterList] = useState([]);
+    const [selectedData, setSelectedData] = useState({});
     const [attributeList, setAttributeList] = useState([]);
     const [attributeData, setAttributeData] = useState({});
     const [qty, setQty] = useState(1);
@@ -137,7 +137,6 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
     useEffect(() => {
         let temp = [...filters] ?? []
         let uniqKey = _.uniq(temp?.map((list) => Object.keys(list?.varients ?? {}))?.flat())?.map((list, index) => list) ?? []
-        console.log(uniqKey, "temptemptemp", temp)
         let tempAttributeList = {};
         let tempAttributeData = {};
         uniqKey.filter(list => list != 'qty').map(val => {
@@ -156,47 +155,52 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
 
 
     const handleAdd = async () => {
-        const selectedData = filterList?.find(list => list?._id == Object.values(attributeData)?.filter(list => list != 'defaultValue')?.slice(-1)?.[0]) ?? {}
-        const cartData = JSON.parse(Storage.get("cartData")) ?? []
-        if (Storage.isUserAuthenticated()) {
-            await addToCart({
-                cart: [{
-                    sku: selectedData?._id,
-                    product: selectedData?.product_id,
-                    qty,
-                    amount: selectedProduct?.sale_price
-                }]
-            }).unwrap().then(() => {
+        if ((selectedData?.size && selectedData?.size != "default")) {
+            const selectedFinalData = filterList?.find(list => list?._id == selectedData?.size) ?? {}
+            console.log("selectedData", selectedFinalData)
+            const cartData = JSON.parse(Storage.get("cartData")) ?? []
+            if (Storage.isUserAuthenticated()) {
+                await addToCart({
+                    cart: [{
+                        sku: selectedFinalData?._id,
+                        product: selectedFinalData?.product_id,
+                        qty,
+                        amount: selectedProduct?.sale_price
+                    }]
+                }).unwrap().then(() => {
+                    setIsCartAdd(true)
+                    setTimeout(() => {
+                        setIsCartAdd(false)
+                    }, 1000)
+                }).catch((error) => toast.error(error?.data?.message))
+            } else {
+                let finalData = [...cartData]
+                if (cartData?.some(x => x?.sku?._id == selectedFinalData?._id)) {
+                    let indexData = cartData?.findIndex(x => x?.sku?._id == selectedFinalData?._id)
+                    finalData[indexData] = { ...finalData[indexData], qty: finalData?.[indexData]?.qty + 1 }
+                } else {
+                    finalData = [...finalData, {
+                        sku: {
+                            _id: selectedFinalData?._id,
+                            product_name: selectedFinalData?.product_name,
+                            sku: selectedFinalData?.sku,
+                            varients: selectedFinalData?.varients,
+                        },
+                        image: selectedImage ?? '',
+                        product: selectedFinalData?.product_id,
+                        qty,
+                        amount: selectedProduct?.sale_price
+                    }]
+                }
+                Storage.set("cartData", JSON.stringify(finalData))
+                dispatch(setCartCount(finalData?.length))
                 setIsCartAdd(true)
                 setTimeout(() => {
                     setIsCartAdd(false)
                 }, 1000)
-            }).catch((error) => toast.error(error?.data?.message))
-        } else {
-            let finalData = [...cartData]
-            if (cartData?.some(x => x?.sku?._id == selectedData?._id)) {
-                let indexData = cartData?.findIndex(x => x?.sku?._id == selectedData?._id)
-                finalData[indexData] = { ...finalData[indexData], qty: finalData?.[indexData]?.qty + 1 }
-            } else {
-                finalData = [...finalData, {
-                    sku: {
-                        _id: selectedData?._id,
-                        product_name: selectedData?.product_name,
-                        sku: selectedData?.sku,
-                        varients: selectedData?.varients,
-                    },
-                    image: selectedImage ?? '',
-                    product: selectedData?.product_id,
-                    qty,
-                    amount: selectedProduct?.sale_price
-                }]
             }
-            Storage.set("cartData", JSON.stringify(finalData))
-            dispatch(setCartCount(finalData?.length))
-            setIsCartAdd(true)
-            setTimeout(() => {
-                setIsCartAdd(false)
-            }, 1000)
+        } else {
+            toast.error("Something went wrong!")
         }
     }
 
@@ -223,8 +227,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                 '@media (max-width: 768px)': {
                                     display: "block",
                                 }
-                            }}
-                        >
+                            }}>
                             <MenuItem value="defaultValue" className="common_option_wrap">
                                 <div className="common_option">
                                     <p>
@@ -235,8 +238,133 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                 </div>
                             </MenuItem>
                         </Box>
+                        <div className="common_select_wrap">
+                            <FormControl >
+                                <Select value={selectedData?.size ?? 'default'} onChange={(e) => {
+                                    setSelectedData({
+                                        ...selectedData,
+                                        size: e.target.value
+                                    })
+                                }}>
+                                    <MenuItem value="dummy" className="common_option_wrap" sx={{
+                                        pointerEvents: 'none'
+                                    }}>
+                                        <div className="common_option">
+                                            <p>
+                                                <div className="common_option">
+                                                    <span style={{ textTransform: "uppercase" }}>size — inches</span>
+                                                </div>
+                                            </p>
+                                            <div className="chet_size">
+                                                <span>Chest</span>
+                                                <span>Waist</span>
+                                                <span>Length</span>
+                                            </div>
+                                        </div>
+                                    </MenuItem>
+                                    <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "xtra small")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "xtra small"))}>
+                                        <div className="common_option">
+                                            <p>
+                                                <div className="common_option">
+                                                    <div className="d-flex align-items-center common_radio_btn">
+                                                        <span>XS - 30</span>
+                                                    </div>
+                                                </div>
+                                            </p>
+                                            <div className="chet_size chet_size_number">
+                                                <span>30</span>
+                                                <span>26</span>
+                                                <span>30</span>
+                                            </div>
+                                        </div>
+                                    </MenuItem>
+                                    <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "small (s)")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "small (s)"))}>
+                                        <div className="common_option">
+                                            <p>
+                                                <div className="common_option">
+                                                    <div className="d-flex align-items-center common_radio_btn">
+                                                        <span>S - 30</span>
+                                                    </div>
+                                                </div>
+                                            </p>
+                                            <div className="chet_size chet_size_number">
+                                                <span>32</span>
+                                                <span>28</span>
+                                                <span>32</span>
+                                            </div>
+                                        </div>
+                                    </MenuItem>
+                                    <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "Medium-(m)")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "Medium-(m)"))}>
+                                        <div className="common_option">
+                                            <p>
+                                                <div className="common_option">
+                                                    <div className="d-flex align-items-center common_radio_btn">
+                                                        <span>M - 30</span>
+                                                    </div>
+                                                </div>
+                                            </p>
+                                            <div className="chet_size chet_size_number">
+                                                <span>34</span>
+                                                <span>30</span>
+                                                <span>34</span>
+                                            </div>
+                                        </div>
+                                    </MenuItem>
+                                    <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "Large-(L)")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "Large-(L)"))}>
+                                        <div className="common_option">
+                                            <p>
+                                                <div className="common_option">
+                                                    <div className="d-flex align-items-center common_radio_btn">
+                                                        <span>L - 30</span>
+                                                    </div>
+                                                </div>
+                                            </p>
+                                            <div className="chet_size chet_size_number">
+                                                <span>36</span>
+                                                <span>32</span>
+                                                <span>36</span>
+                                            </div>
+                                        </div>
+                                    </MenuItem>
+                                    <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "xtra large")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "xtra large"))}>
+                                        <div className="common_option">
+                                            <p>
+                                                <div className="common_option">
+                                                    <div className="d-flex align-items-center common_radio_btn">
+                                                        <span>XL - 30</span>
+                                                    </div>
+                                                </div>
+                                            </p>
+                                            <div className="chet_size chet_size_number">
+                                                <span>38</span>
+                                                <span>34</span>
+                                                <span>38</span>
+                                            </div>
+                                        </div>
+                                    </MenuItem>
 
-                        {Object.keys(attributeList)?.map((item, index) => {
+                                    <MenuItem value='default' className="common_option_wrap" >
+                                        <div className="common_option">
+                                            <p>
+                                                <div className="common_option">
+                                                    <div className="d-flex align-items-center common_radio_btn">
+                                                        <span>Size: Select</span>
+                                                    </div>
+                                                </div>
+                                            </p>
+                                            {/* <Link to="/sizeGuide" style={{ color: "#2A3592" }}> */}
+                                            <div className="chet_size chet_size_number">
+                                                <span>
+                                                    check the Size guide <FiArrowUpRight />
+                                                </span>
+                                            </div>
+                                            {/* </Link> */}
+                                        </div>
+                                    </MenuItem>
+                                </Select>
+                            </FormControl>
+                        </div>
+                        {/* {Object.keys(attributeList)?.map((item, index) => {
                             return (
                                 <>
                                     <Box
@@ -311,7 +439,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                     </Box>
                                 </>
                             )
-                        })}
+                        })} */}
                         <div className='quantiy_wrapper' style={{
                             margin: '0 10px 0 10px'
                         }}>
@@ -367,7 +495,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                     </span>
                                 </button>
                                 :
-                                <button className={`clear_btn add_btn ${Object.values(attributeData)?.some(list => list == 'defaultValue') ? 'disabled-btn' : ''}`} disabled={Object.values(attributeData)?.some(list => list == 'defaultValue')} onClick={handleAdd}>
+                                <button className={`clear_btn add_btn ${(selectedData?.size && selectedData?.size != "default") ? '' : 'disabled-btn'}`} disabled={!((selectedData?.size && selectedData?.size != "default"))} onClick={handleAdd}>
                                     <span>Add</span>
                                     <span>
                                         {/* <s>₹5,200</s> ₹4,500 */}
@@ -379,12 +507,28 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                         </div>
                     </div>
                     <div className="slaman_link display_none_in_mobile">
-                        <p>Salmon Pink</p>
+                        {/* <p>Salmon Pink</p> */}
                         <ul className="color_list">
-                            <li
+                            {/* <li
                                 className="active"
                                 style={{ border: "1px solid #000", backgroundColor: filterList?.find(list => list?._id == Object.values(attributeData)?.filter(list => list != 'defaultValue')?.slice(-1)?.[0])?.swatch }}
-                            ></li>
+                            ></li> */}
+                            {/* {attributeList?.color?.map(color => ( */}
+                            {_.uniqBy(attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(attributeList?.color, x => x?.label)?.map(color => (
+                                <li
+                                    className="active"
+                                    onClick={() => {
+                                        setSelectedData({
+                                            ...selectedData,
+                                            color,
+                                            size: 'default'
+                                        })
+                                        setQty(1)
+                                        setLastSkuData(filterList?.find(list => list?._id == color?.value))
+                                    }}
+                                    style={{ border: "1px solid #000", backgroundColor: color?.label }}>
+                                </li>
+                            ))}
                             {/* <li style={{ backgroundColor: "#BEF3E0" }}></li>
                             <li
                                 style={{ backgroundColor: "#fff", border: "1px solid #d2d2d2" }}
