@@ -150,11 +150,11 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
         </div>
         <div className="best_sale_video">
           {singleList?.mediaType == "VIDEO" ?
-            <video loop autoPlay muted style={{ width: '100%', height: '100%' }}>
+            <video loop autoPlay muted style={{ width: '100%', height: '100%', objectFit: "fill" }}>
               <source src={singleList?.video} type="video/mp4" />
             </video>
             :
-            <img src={singleList?.image} alt="hero_image" style={{ width: '100%', height: '100%' }} />
+            <img src={singleList?.image} alt="hero_image" style={{ width: '100%', height: '100%', objectFit: "fill" }} />
           }
         </div>
       </div>
