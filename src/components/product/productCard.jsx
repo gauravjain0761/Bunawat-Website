@@ -484,7 +484,6 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                 <li style={{ backgroundColor: "#037A44" }}></li>
                             </ul>
                         </Box>
-                        {console.log(lastSkuData?.images)}
                         {lastSkuData?.images?.length > 0 ?
                             <div>
                                 <Slider {...settings} className="product_slider">
@@ -527,13 +526,13 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                 expandOnContentDrag
                 open={productBottomData[productIndex]}>
                 <div onMouseEnter={() => setSwipeableDisable(true)} onTouchStart={() => setSwipeableDisable(true)}>
-                    <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} productList={productList} swipeableIndex={swipeableIndex} />
+                    <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} />
                 </div>
             </BottomSheet>
                 :
                 <div style={{ position: 'relative' }}>
                     <div onMouseEnter={() => setSwipeableDisable(true)} onTouchStart={() => setSwipeableDisable(true)}>
-                        <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} />
+                        <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} lastSkuData={lastSkuData} />
                     </div>
                 </div>
             }

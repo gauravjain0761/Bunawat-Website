@@ -12,9 +12,10 @@ import Storage from '../../services/storage';
 import Review from '../reviews/review';
 import { ApiGet } from '../../services/API/api';
 import { toast } from 'react-toastify';
+import VideoComponent from './videoComponent';
 
 
-const ProductBottomData = ({ product, productIndex, width, similarList, refetch, swipeableIndex, productList }) => {
+const ProductBottomData = ({ product, productIndex, width, similarList, refetch, swipeableIndex, productList, lastSkuData }) => {
     const [age, setAge] = useState("size");
     const history = useHistory();
     const [recentlyProduct, setRecentlyProduct] = useState(Storage.get("recentlyProduct") ? JSON.parse(Storage.get("recentlyProduct") ?? '[]') : []);
@@ -492,35 +493,19 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                 <div className="container">
                     <div className="structured_fabric_inner">
                         <div className="row">
-                            {product?.videos?.slice(0, 3)?.map((list, index) => (
-                                <div className="col-md-4 col-sm-6">
-                                    <div className="structured_fabric_img">
-                                        <video loop autoPlay muted>
-                                            <source src={list?.url} type="video/mp4" />
-                                        </video>
-                                    </div>
-                                    <div className="product_left_details">
-                                        {index == 0 &&
-                                            <>
-                                                <p>Structured Fabric</p>
-                                                <span>Keeps its shape</span>
-                                            </>
-                                        }
-                                        {index == 1 &&
-                                            <>
-                                                <p>Quality Embroidery</p>
-                                                <span>Hand-made by artisans</span>
-                                            </>
-                                        }
-                                        {index == 2 &&
-                                            <>
-                                                <p>Pleated Pajama Pants</p>
-                                                <span>Pair it with</span>
-                                            </>
-                                        }
-                                    </div>
-                                </div>
-                            ))}
+                            {(lastSkuData?.videos?.length > 0) ?
+                                <>
+                                    {lastSkuData?.videos?.map((list, index) => (
+                                        <VideoComponent url={list?.url} index={index} />
+                                    ))}
+                                </>
+                                :
+                                <>
+                                    {product?.videos?.slice(0, 3)?.map((list, index) => (
+                                        <VideoComponent url={list?.url} index={index} />
+                                    ))}
+                                </>
+                            }
                         </div>
 
                         <Review id={product?._id} />

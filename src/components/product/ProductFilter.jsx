@@ -526,7 +526,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                         setQty(1)
                                         setLastSkuData(filterList?.find(list => list?._id == color?.value))
                                     }}
-                                    style={{ border: "1px solid #000", backgroundColor: color?.label }}>
+                                    style={{ border: (selectedData?.color?.value == color?.value) ? "3px solid #000" : ".5px solid #000", backgroundColor: color?.label }}>
                                 </li>
                             ))}
                             {/* <li style={{ backgroundColor: "#BEF3E0" }}></li>
