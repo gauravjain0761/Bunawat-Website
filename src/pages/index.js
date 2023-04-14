@@ -45,12 +45,12 @@ export default function Index() {
     };
 
     useEffect(() => {
-        // const tokenStorage = Storage.getToken();
-        // const decodedJwt = parseJwt(tokenStorage ?? '');
-        // if (!tokenStorage || (decodedJwt?.exp * 1000 < Date.now())) {
-        //     Storage.deauthenticateUser();
-        //     history.push('/');
-        // }
+        const tokenStorage = Storage.getToken();
+        const decodedJwt = parseJwt(tokenStorage ?? '');
+        if ((decodedJwt?.exp * 1000 < Date.now())) {
+            Storage.deauthenticateUser();
+            history.push('/');
+        }
     }, [location?.pathname]);
 
     useEffect(() => {

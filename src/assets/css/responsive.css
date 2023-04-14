@@ -438,6 +438,7 @@
         width: 100%;
         object-fit: fill;
         object-position: center;
+        height: 100% !important;
     }
 
     .cloth_wrap .cloth_inner .row {
@@ -935,7 +936,11 @@
 
 @media (max-width: 367px) {
     .cloth_wrap .cloth_inner .row>div {
-        height: 200px;
+        height: 266px;
+    }
+
+    .mobile_summer_list_link_wrap p {
+        font-size: 12px;
     }
 }
 

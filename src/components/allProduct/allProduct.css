@@ -23,8 +23,22 @@
      bottom: 70px;
      /* padding: 1rem; */
      background: #FFFFFF;
-     box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.1);
+     box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.4);
      border-radius: 4px;
+ }
+
+ .fix-hight-scroll {
+     max-height: 300px;
+     min-height: 56px;
+     overflow: hidden;
+     overflow-y: scroll;
+ }
+
+ .fix-hight-scroll-220 {
+     max-height: 220px;
+     min-height: 56px;
+     overflow: hidden;
+     overflow-y: scroll;
  }
 
  .size_wrapper_box {
@@ -242,31 +256,35 @@
      .product_filters_for_mobile {
          display: block !important;
      }
-     
+
      .cloth_inner .nav {
-        justify-content: flex-start;
-    }
+         justify-content: flex-start;
+     }
  }
 
-/* This is extra css for radio opacity isuse */
- input[type=checkbox], input[type=radio] {
-    box-sizing: border-box;
-    padding: 0;
-    opacity: 100%;
-}
+ /* This is extra css for radio opacity isuse */
+ input[type=checkbox],
+ input[type=radio] {
+     box-sizing: border-box;
+     padding: 0;
+     opacity: 100%;
+ }
 
-.common_option_wrap_bg {
-    background-color: #F2F4FF !important;
-    width: 300px !important;
-}
-.kind_common_option_wrap {
-    background-color: #F2F4FF !important;
-    width: 180px !important;
-}
-.size_common_option_wrap{
-    background-color: #F2F4FF !important;
-}
-.material_common_option_wrap{
-    background-color: #F2F4FF !important;
-    width: 160px !important;
-}
+ .common_option_wrap_bg {
+     background-color: #F2F4FF !important;
+     width: 300px !important;
+ }
+
+ .kind_common_option_wrap {
+     background-color: #F2F4FF !important;
+     width: 180px !important;
+ }
+
+ .size_common_option_wrap {
+     background-color: #F2F4FF !important;
+ }
+
+ .material_common_option_wrap {
+     background-color: #F2F4FF !important;
+     width: 160px !important;
+ }

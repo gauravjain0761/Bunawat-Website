@@ -14,7 +14,7 @@ import { setCartCount } from '../../redux/reducers/cart';
 import { Modal } from "react-bootstrap";
 import { Box, Button } from '@mui/material';
 
-export const SelectModal = ({ showSelect, handleClose, attributeList, attributeData, setAttributeData, filterList }) => {
+export const SelectModal = ({ showSelect, selectedData, handleClose, attributeList, attributeData, setAttributeData, filterList, setSelectedData, setQty, setLastSkuData }) => {
     return (
         <>
             <Modal
@@ -24,90 +24,150 @@ export const SelectModal = ({ showSelect, handleClose, attributeList, attributeD
                 centered
             >
                 <Modal.Body style={{ padding: "2rem 1rem" }}>
-                    {Object.keys(attributeList)?.map((item, index) => {
-                        return (
-                            <>
-                                <Box
-                                    className="common_select_wrap first_option"
-                                    sx={{ maxWidth: '100%', borderRight: 'none' }}
-                                >
-                                    <FormControl>
-                                        <Select
-                                            sx={{ backgroundColor: "#F2F4FF", width: "100%", marginBottom: "10px" }}
-                                            defaultValue='defaultValue'
-                                            value={attributeData?.[item]}
-                                            onChange={(e) => {
-                                                let newData = {}
-                                                Object.entries({ ...attributeData, [item]: e.target.value }).forEach(([key, value], i) => {
-                                                    if (index >= i) {
-                                                        newData = { ...newData, [key]: value }
-                                                    } else {
-                                                        newData = { ...newData, [key]: 'defaultValue' }
-                                                    }
-                                                });
-                                                setAttributeData(newData)
-                                            }}
-                                            inputProps={{ "aria-label": "Without label" }}>
-                                            <MenuItem value="defaultValue" className="common_option_wrap">
-                                                <div className="common_option">
-                                                    <p>
-                                                        <div className="common_option">
-                                                            <span style={{ textTransform: "capitalize" }}>Select {item}</span>
-                                                        </div>
-                                                    </p>
+                    <div className="common_select_wrap ">
+                        <FormControl >
+                            <Select value={selectedData?.size ?? 'default'} onChange={(e) => {
+                                setSelectedData({
+                                    ...selectedData,
+                                    size: e.target.value
+                                })
+                            }}>
+                                <MenuItem value="dummy" className="common_option_wrap" sx={{
+                                    pointerEvents: 'none'
+                                }}>
+                                    <div className="common_option">
+                                        <p>
+                                            <div className="common_option">
+                                                <span style={{ textTransform: "uppercase" }}>size — inches</span>
+                                            </div>
+                                        </p>
+                                        <div className="chet_size">
+                                            <span>Chest</span>
+                                            <span>Waist</span>
+                                            <span>Length</span>
+                                        </div>
+                                    </div>
+                                </MenuItem>
+                                <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "xtra small")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "xtra small"))}>
+                                    <div className="common_option">
+                                        <p>
+                                            <div className="common_option">
+                                                <div className="d-flex align-items-center common_radio_btn">
+                                                    <span>XS - 30</span>
                                                 </div>
-                                            </MenuItem>
-                                            {index == 0 ?
-                                                _.uniqBy(attributeList?.[item], x => x?.label)?.map((list) => {
-                                                    return (
-                                                        <MenuItem value={list?.value} className="common_option_wrap">
-                                                            <div className="common_option">
-                                                                <p>
-                                                                    <div className="common_option">
-                                                                        <div className="d-flex align-items-center common_radio_btn">
-                                                                            <span>{list?.label}</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </p>
-                                                            </div>
-                                                        </MenuItem>
-                                                    )
-                                                })
-                                                :
-                                                attributeList?.[item]?.filter(list => Object.values(attributeList)?.[index - 1]?.filter(x => x?.label == Object.values(attributeList)?.[index - 1]?.find(list => list?.value == attributeData[Object.keys(attributeList)?.[index - 1]])?.label)?.map(x => x?.value)?.includes(list?.value))?.map((list) => {
-                                                    return (
-                                                        <MenuItem value={list?.value} className="common_option_wrap">
-                                                            <div className="common_option">
-                                                                <p>
-                                                                    <div className="common_option">
-                                                                        <div className="d-flex align-items-center common_radio_btn">
-                                                                            <span>{list?.label}</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </p>
-                                                            </div>
-                                                        </MenuItem>
-                                                    )
-                                                })
-                                            }
-                                        </Select>
-                                    </FormControl>
-                                </Box>
-                            </>
-                        )
-                    })}
+                                            </div>
+                                        </p>
+                                        <div className="chet_size chet_size_number">
+                                            <span>30</span>
+                                            <span>26</span>
+                                            <span>30</span>
+                                        </div>
+                                    </div>
+                                </MenuItem>
+                                <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "small (s)")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "small (s)"))}>
+                                    <div className="common_option">
+                                        <p>
+                                            <div className="common_option">
+                                                <div className="d-flex align-items-center common_radio_btn">
+                                                    <span>S - 30</span>
+                                                </div>
+                                            </div>
+                                        </p>
+                                        <div className="chet_size chet_size_number">
+                                            <span>32</span>
+                                            <span>28</span>
+                                            <span>32</span>
+                                        </div>
+                                    </div>
+                                </MenuItem>
+                                <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "Medium-(m)")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "Medium-(m)"))}>
+                                    <div className="common_option">
+                                        <p>
+                                            <div className="common_option">
+                                                <div className="d-flex align-items-center common_radio_btn">
+                                                    <span>M - 30</span>
+                                                </div>
+                                            </div>
+                                        </p>
+                                        <div className="chet_size chet_size_number">
+                                            <span>34</span>
+                                            <span>30</span>
+                                            <span>34</span>
+                                        </div>
+                                    </div>
+                                </MenuItem>
+                                <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "Large-(L)")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "Large-(L)"))}>
+                                    <div className="common_option">
+                                        <p>
+                                            <div className="common_option">
+                                                <div className="d-flex align-items-center common_radio_btn">
+                                                    <span>L - 30</span>
+                                                </div>
+                                            </div>
+                                        </p>
+                                        <div className="chet_size chet_size_number">
+                                            <span>36</span>
+                                            <span>32</span>
+                                            <span>36</span>
+                                        </div>
+                                    </div>
+                                </MenuItem>
+                                <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "xtra large")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "xtra large"))}>
+                                    <div className="common_option">
+                                        <p>
+                                            <div className="common_option">
+                                                <div className="d-flex align-items-center common_radio_btn">
+                                                    <span>XL - 30</span>
+                                                </div>
+                                            </div>
+                                        </p>
+                                        <div className="chet_size chet_size_number">
+                                            <span>38</span>
+                                            <span>34</span>
+                                            <span>38</span>
+                                        </div>
+                                    </div>
+                                </MenuItem>
+
+                                <MenuItem value='default' className="common_option_wrap" >
+                                    <div className="common_option">
+                                        <p>
+                                            <div className="common_option">
+                                                <div className="d-flex align-items-center common_radio_btn">
+                                                    <span>Size: Select</span>
+                                                </div>
+                                            </div>
+                                        </p>
+                                        {/* <Link to="/sizeGuide" style={{ color: "#2A3592" }}> */}
+                                        <div className="chet_size chet_size_number">
+                                            <span>
+                                                check the Size guide <FiArrowUpRight />
+                                            </span>
+                                        </div>
+                                        {/* </Link> */}
+                                    </div>
+                                </MenuItem>
+                            </Select>
+                        </FormControl>
+                    </div>
                     <div className="slaman_link" style={{ marginTop: "2px", backgroundColor: "#F2F4FF", padding: "1rem" }}>
                         <p>Salmon Pink</p>
                         <ul className="color_list">
-                            <li
-                                className="active"
-                                style={{ border: "1px solid #000", backgroundColor: filterList?.find(list => list?._id == Object.values(attributeData)?.filter(list => list != 'defaultValue')?.slice(-1)?.[0])?.swatch }}
-                            ></li>
-                            {/* <li style={{ backgroundColor: "#BEF3E0" }}></li>
+                            {_.uniqBy(attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(attributeList?.color, x => x?.label)?.map(color => (
                                 <li
-                                    style={{ backgroundColor: "#fff", border: "1px solid #d2d2d2" }}
-                                ></li>
-                                <li style={{ backgroundColor: "#037A44" }}></li> */}
+                                    className="active"
+                                    onClick={() => {
+                                        setSelectedData({
+                                            ...selectedData,
+                                            color,
+                                            size: 'default'
+                                        })
+                                        setQty(1)
+                                        setLastSkuData(filterList?.find(list => list?._id == color?.value))
+                                    }}
+                                    style={{ border: (selectedData?.color?.value == color?.value) ? "3px solid #000" : ".5px solid #000", backgroundColor: color?.label }}>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                     <button className="clear_btn" style={{ marginTop: "10px" }} onClick={handleClose}>
@@ -238,7 +298,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                 </div>
                             </MenuItem>
                         </Box>
-                        <div className="common_select_wrap">
+                        <div className="common_select_wrap display_none_in_mobile">
                             <FormControl >
                                 <Select value={selectedData?.size ?? 'default'} onChange={(e) => {
                                     setSelectedData({
@@ -364,86 +424,9 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                 </Select>
                             </FormControl>
                         </div>
-                        {/* {Object.keys(attributeList)?.map((item, index) => {
-                            return (
-                                <>
-                                    <Box
-                                        className="common_select_wrap first_option"
-                                        sx={{
-                                            '@media (max-width: 768px)': {
-                                                display: 'none',
-                                            }
-                                        }}
-                                    >
-                                        <FormControl>
-                                            <Select
-                                                defaultValue='defaultValue'
-                                                value={attributeData?.[item]}
-                                                onChange={(e) => {
-                                                    let newData = {}
-                                                    Object.entries({ ...attributeData, [item]: e.target.value }).forEach(([key, value], i) => {
-                                                        if (index >= i) {
-                                                            newData = { ...newData, [key]: value }
-                                                        } else {
-                                                            newData = { ...newData, [key]: 'defaultValue' }
-                                                        }
-                                                    });
-                                                    setAttributeData(newData)
-                                                    setLastSkuData(filterList?.find(list => list?._id == Object.values(newData)?.filter(list => list != 'defaultValue')?.slice(-1)?.[0]))
-                                                }}
-                                                inputProps={{ "aria-label": "Without label" }}>
-                                                <MenuItem value="defaultValue" className="common_option_wrap">
-                                                    <div className="common_option">
-                                                        <p>
-                                                            <div className="common_option">
-                                                                <span style={{ textTransform: "capitalize" }}>Select {item}</span>
-                                                            </div>
-                                                        </p>
-                                                    </div>
-                                                </MenuItem>
-                                                {index == 0 ?
-                                                    _.uniqBy(attributeList?.[item], x => x?.label)?.map((list) => {
-                                                        return (
-                                                            <MenuItem value={list?.value} className="common_option_wrap">
-                                                                <div className="common_option">
-                                                                    <p>
-                                                                        <div className="common_option">
-                                                                            <div className="d-flex align-items-center common_radio_btn">
-                                                                                <span>{list?.label}</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </p>
-                                                                </div>
-                                                            </MenuItem>
-                                                        )
-                                                    })
-                                                    :
-                                                    attributeList?.[item]?.filter(list => Object.values(attributeList)?.[index - 1]?.filter(x => x?.label == Object.values(attributeList)?.[index - 1]?.find(list => list?.value == attributeData[Object.keys(attributeList)?.[index - 1]])?.label)?.map(x => x?.value)?.includes(list?.value))?.map((list) => {
-                                                        return (
-                                                            <MenuItem value={list?.value} className="common_option_wrap">
-                                                                <div className="common_option">
-                                                                    <p>
-                                                                        <div className="common_option">
-                                                                            <div className="d-flex align-items-center common_radio_btn">
-                                                                                <span>{list?.label}</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </p>
-                                                                </div>
-                                                            </MenuItem>
-                                                        )
-                                                    })
-                                                }
-                                            </Select>
-                                        </FormControl>
-                                    </Box>
-                                </>
-                            )
-                        })} */}
-                        <div className='quantiy_wrapper' style={{
+                        <div className='quantiy_wrapper display_none_in_mobile' style={{
                             margin: '0 10px 0 10px'
                         }}>
-                            {/* <p>Qty</p> */}
                             <div className='quantiy_inner'>
                                 <button type='button' className='common_btn' onClick={handleDecrement} >
                                     <svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -498,8 +481,6 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                 <button className={`clear_btn add_btn ${(selectedData?.size && selectedData?.size != "default") ? '' : 'disabled-btn'}`} disabled={!((selectedData?.size && selectedData?.size != "default"))} onClick={handleAdd}>
                                     <span>Add</span>
                                     <span>
-                                        {/* <s>₹5,200</s> ₹4,500 */}
-                                        {/* <s>{getNumberWithComma(selectedProduct?.cost_price ?? 0)}</s>  */}
                                         {getNumberWithComma(selectedProduct?.sale_price ?? 0)}
                                     </span>
                                 </button>
@@ -507,13 +488,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                         </div>
                     </div>
                     <div className="slaman_link display_none_in_mobile">
-                        {/* <p>Salmon Pink</p> */}
                         <ul className="color_list">
-                            {/* <li
-                                className="active"
-                                style={{ border: "1px solid #000", backgroundColor: filterList?.find(list => list?._id == Object.values(attributeData)?.filter(list => list != 'defaultValue')?.slice(-1)?.[0])?.swatch }}
-                            ></li> */}
-                            {/* {attributeList?.color?.map(color => ( */}
                             {_.uniqBy(attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(attributeList?.color, x => x?.label)?.map(color => (
                                 <li
                                     className="active"
@@ -529,17 +504,12 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                     style={{ border: (selectedData?.color?.value == color?.value) ? "3px solid #000" : ".5px solid #000", backgroundColor: color?.label }}>
                                 </li>
                             ))}
-                            {/* <li style={{ backgroundColor: "#BEF3E0" }}></li>
-                            <li
-                                style={{ backgroundColor: "#fff", border: "1px solid #d2d2d2" }}
-                            ></li>
-                            <li style={{ backgroundColor: "#037A44" }}></li> */}
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <SelectModal showSelect={showSelect} handleClose={handleClose} attributeList={attributeList} attributeData={attributeData} setAttributeData={setAttributeData} filterList={filterList} />
+            <SelectModal showSelect={showSelect} handleClose={handleClose} attributeList={attributeList} attributeData={attributeData} setAttributeData={setAttributeData} filterList={filterList} selectedData={selectedData} setSelectedData={setSelectedData} setQty={setQty} setLastSkuData={setLastSkuData} />
         </>
     );
 }

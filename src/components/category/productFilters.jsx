@@ -54,24 +54,28 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
             <FormControl>
               {showMostPopular &&
                 <div className="most_popular_wrapper_box">
-                  <MenuItem value="" className="common_option_wrap common_option_wrap_bg">
+                  {/* <MenuItem value="" className="common_option_wrap common_option_wrap_bg">
                     <div className="common_option">
                       <p className="common_option_p">Heavy Embroidery</p>
                       <span className="common_option_span">fanciest first</span>
                     </div>
-                  </MenuItem>
-                  <MenuItem value="" className="common_option_wrap">
+                  </MenuItem> */}
+                  <MenuItem onClick={() => {
+                    setSelectedId({ ...selectedId, sortBy: 0 })
+                  }} className="common_option_wrap">
                     <div className="common_option">
                       <p className="common_option_p">Newest</p>
                       <span className="common_option_span">minimal first</span>
                     </div>
                   </MenuItem>
-                  <MenuItem value="" className="common_option_wrap common_option_wrap_bg">
+                  {/* <MenuItem value="" className="common_option_wrap common_option_wrap_bg">
                     <div className="common_option">
                       <p className="common_option_p">Most Popular</p>
                     </div>
-                  </MenuItem>
-                  <MenuItem value="" className="common_option_wrap">
+                  </MenuItem> */}
+                  <MenuItem onClick={() => {
+                    setSelectedId({ ...selectedId, sortBy: 1 })
+                  }} className="common_option_wrap">
                     <div className="common_option">
                       <p className="common_option_p">Affordable</p>
                       <span className="common_option_span">
@@ -79,7 +83,9 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                       </span>
                     </div>
                   </MenuItem>
-                  <MenuItem value="" className="common_option_wrap common_option_wrap_bg">
+                  <MenuItem onClick={() => {
+                    setSelectedId({ ...selectedId, sortBy: 2 })
+                  }} className="common_option_wrap common_option_wrap_bg">
                     <div className="common_option">
                       <p className="common_option_p">Luxurious</p>
                       <span className="common_option_span">
@@ -139,7 +145,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
               </svg>
             </Box>
           </div>
-          <FilterModalForMobile showFilter={showFilter} handleClose={handleClose} />
+          <FilterModalForMobile showFilter={showFilter} handleClose={handleClose} setSelectedId={setSelectedId} selectedId={selectedId} attributeOpen={attributeOpen} attributeData={attributeData} handleSelectedAttribute={handleSelectedAttribute} selectedAttribute={selectedAttribute} setAttributeOpen={setAttributeOpen} setShowMostPopular={setShowMostPopular} setShowPrice={setShowPrice} showPrice={showPrice} />
         </div>
       </div>
 
@@ -229,7 +235,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
             <div className="common_select_wrap">
               <FormControl>
                 {attributeOpen[index] &&
-                  <div className="kind_garment_wrapper_box">
+                  <div className="kind_garment_wrapper_box fix-hight-scroll">
                     {list?.variants?.map((item, itemIndex) => (
                       <MenuItem className="common_option_wrap kind_common_option_wrap" sx={{ paddingLeft: "26px" }} onClick={() => handleSelectedAttribute(list?.slug, index, item?._id, itemIndex)}>
                         <div className="common_option">
@@ -366,7 +372,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
             </FormControl>
           </div>
 
-          <button className="apply_btn">
+          {/* <button className="apply_btn">
             <span>Apply</span>
           </button>
           <button className="clear_btn">
@@ -403,7 +409,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                 </clipPath>
               </defs>
             </svg>
-          </button>
+          </button> */}
         </div>
       </div>
     </>
