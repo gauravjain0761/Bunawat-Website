@@ -37,3 +37,14 @@
     right: -110% !important;
     transition: .2s linear !important;
 }
+
+
+.active-shop {
+    left: 0 !important;
+    transition: .2s linear !important;
+}
+
+.inactive-shop {
+    left: -110% !important;
+    transition: .2s linear !important;
+}

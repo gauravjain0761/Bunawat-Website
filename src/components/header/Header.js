@@ -27,6 +27,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import NewCart from './cart_new';
+import ShopNew from './shop';
 
 function Header() {
     const { data } = useGetShopMenuDataQuery()
@@ -43,7 +44,9 @@ function Header() {
     const [accountPopup, setAccountPopup] = React.useState(null);
     const [calendarPopup, setCalendarPopup] = React.useState(null);
     const [isCart, setIsCart] = React.useState(false);
+    const [isShop, setIsShop] = React.useState(false);
     const [cartPopup, setCartPopup] = React.useState(null);
+    const [sideOpen, setSideOpen] = React.useState(false);
     const [menuData, setMenuData] = React.useState({
         collection: [],
         categories: [],
@@ -162,6 +165,7 @@ function Header() {
     };
 
     const handleClose = () => {
+        setIsShop(false)
         setAnchorEl(null);
         setIsActive({ active: false, index: "" });
     };
@@ -260,7 +264,8 @@ function Header() {
                             <Box>
                                 <Button
                                     aria-describedby={id}
-                                    onClick={handleClick}
+                                    // onClick={handleClick}
+                                    onClick={() => setIsShop(true)}
                                     sx={{
                                         '&.MuiButton-root': {
                                             color: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : '#fff',
@@ -278,7 +283,33 @@ function Header() {
                                 >
                                     Shop
                                 </Button>
-                                <CustomPopOver
+
+                                <Box sx={{
+                                    background: 'rgba(0,0,0,.8)',
+                                    width: '100%',
+                                    height: '100vh',
+                                    position: 'fixed',
+                                    top: 0,
+                                    zIndex: 999,
+                                    display: 'flex',
+                                    justifyContent: 'flex-start',
+                                    overflow: 'hidden'
+                                }} className={isShop ? 'active-shop' : 'inactive-shop'} >
+                                    {isShop ?
+                                        <ClickAwayListener onClickAway={() => setIsShop(false)}>
+                                            <Box sx={{
+                                                background: '#ffffff99',
+                                                width: { xs: '100%', sm: sideOpen ? '720px' : '360px', transition: ' .2s linear ' },
+                                                height: { xs: '90vh', sm: '80vh' },
+                                                margin: { xs: '60px 0 0 0', sm: '60px 0 0 25px' }
+                                            }}>
+                                                <ShopNew sideOpen={sideOpen} setSideOpen={setSideOpen} menuData={menuData} handleClose={handleClose} handleActive={handleActive} />
+                                            </Box>
+                                        </ClickAwayListener>
+                                        : null}
+                                </Box>
+
+                                {/* <CustomPopOver
                                     id={id}
                                     open={open}
                                     anchorEl={anchorEl}
@@ -291,7 +322,7 @@ function Header() {
 
                                     <Shop menuData={menuData} handleClose={handleClose} handleActive={handleActive} />
 
-                                </CustomPopOver>
+                                </CustomPopOver> */}
                             </Box>
                             <Link to="/clubHome">
                                 <Button
