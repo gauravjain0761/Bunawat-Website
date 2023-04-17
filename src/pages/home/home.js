@@ -7,10 +7,11 @@ import BestSellingSection from '../../components/home/bestSellingSection';
 import HomeBannerTabs from '../../components/home/homeBannerTabs';
 import { useGetShopMenuDataQuery } from '../../services/api';
 import HomeTab from '../../components/home/homeTab';
+import { Box, CircularProgress } from '@mui/material';
 
 
 const Home = () => {
-    const { data, error, isLoading } = useGetShopMenuDataQuery()
+    const { data, isFetching, isLoading } = useGetShopMenuDataQuery()
 
     const collections = useMemo(() => {
         return data?.collections?.filter(list => list?.home_visibilty) ?? []
@@ -43,6 +44,7 @@ const Home = () => {
         }) ?? [];
         return categoryList ?? []
     }, [data]);
+
     return (
         <div className='home_page_wrap'>
             <HomeTab menuData={[...collections, ...categories]} />
