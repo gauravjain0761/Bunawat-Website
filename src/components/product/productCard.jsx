@@ -39,7 +39,9 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
         }
     }, [pincode])
     return (
-        <div className="product_page">
+        <Box className="product_page" sx={{
+            paddingTop: { xs: "40px", sm: '72px' }
+        }}>
             <div className="product_slider_section">
                 <div className="row">
                     {(width >= 768) ? (<div className="col-md-6 product_info_section_wrap" onMouseEnter={() => setSwipeableDisable(false)} onTouchStart={() => setSwipeableDisable(false)}>
@@ -49,7 +51,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                 <SaveButton id={product?._id} isWishlist={product?.isWishlist} isBlue={true} refetch={refetch} />
                             </div>
                             <div className="common_product_details">
-                                <div>{parse(product?.description)}</div>
+                                <div className='parse-description'>{parse(product?.description)}</div>
                                 <div style={{ marginTop: '25px' }}>
                                     Club members get <span>10% off. </span>
                                     <Link to="" className="product_link">
@@ -536,7 +538,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                     </div>
                 </div>
             }
-        </div>
+        </Box>
     )
 }
 

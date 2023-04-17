@@ -24,7 +24,9 @@ export const SelectModal = ({ showSelect, selectedData, handleClose, attributeLi
                 centered
             >
                 <Modal.Body style={{ padding: "2rem 1rem" }}>
-                    <div className="common_select_wrap ">
+                    <div className="common_select_wrap" style={{
+                        maxWidth: '100% '
+                    }}>
                         <FormControl >
                             <Select value={selectedData?.size ?? 'default'} onChange={(e) => {
                                 setSelectedData({

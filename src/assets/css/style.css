@@ -1353,7 +1353,8 @@ li.common_option_wrap {
 .card_img {
     width: 120px;
 }
-.card_img img{
+
+.card_img img {
     width: 120px;
     border-radius: 4px;
 }
@@ -1946,6 +1947,10 @@ li.common_option_wrap {
 
 .product_filters_wrap.product_page_filtter {
     max-width: 700px;
+}
+
+.parse-description p {
+    line-height: 24px;
 }
 
 .chet_size_1 {

@@ -76,7 +76,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                     <SaveButton id={product?._id} isWishlist={product?.isWishlist} isBlue={true} refetch={refetch} />
                                 </div>
                                 <div className="common_product_details">
-                                    <div>{parse(product?.description)}</div>
+                                    <div className='parse-description'>{parse(product?.description)}</div>
                                     <div style={{ marginTop: '25px' }}>
                                         Club members get <span>10% off. </span>
                                         <Link to="" className="product_link">
