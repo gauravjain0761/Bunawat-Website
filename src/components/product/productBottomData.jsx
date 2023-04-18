@@ -46,20 +46,47 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
     const getWidthData = (length) => {
         let temp = []
         for (let i = 0; i < length; i++) {
+            if (i % 10 == 3) {
+                temp.push(i)
+            }
             if (i % 10 == 4) {
                 temp.push(i)
             }
             if (i % 10 == 8) {
                 temp.push(i)
             }
+            if (i % 10 == 9) {
+                temp.push(i)
+            }
         }
         return temp
     }
 
+
+    const getHeightData = (length) => {
+        let temp = []
+        for (let i = 0; i < length; i++) {
+            if (i % 10 == 3) {
+                temp.push(i)
+            }
+            if (i % 10 == 4) {
+                temp.push(i)
+            }
+            if (i % 10 == 8) {
+                temp.push(i)
+            }
+            if (i % 10 == 9) {
+                temp.push(i)
+            }
+        }
+        return temp
+    }
+
+
     const getClassWidth = (index, length) => {
         const data = getWidthData(length)
         if (data.includes(index)) {
-            return "col-md-8"
+            return "col-md-6"
         }
         return "col-md-4"
     }
@@ -556,10 +583,10 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                         <div className="cloth_inner">
                             <div className="row">
                                 {product?.similar_products?.map((list, index) => (
-                                    <div className={getClassWidth(index, similarList?.length)}>
+                                    <div className={getClassWidth(index, product?.similar_products?.length)}>
                                         <div className="cloth_deatils_wrap">
                                             <Link to={`/product/${list?._id}/${list?.type}`} className="cloth_deatils_link">
-                                                <img src={list?.images?.[0]?.url} alt="cloth" />
+                                                <img src={list?.images?.[0]?.url} alt="cloth" width="100%" height={getHeightData(product?.similar_products?.length).includes(index) ? "640px" : "560px"} />
                                             </Link>
                                             <div className="cloth_info_title">
                                                 <div className="summer_list_link_wrap mobile_summer_list_link_wrap">

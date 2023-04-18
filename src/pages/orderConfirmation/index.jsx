@@ -5,6 +5,7 @@ import "./orderConfirmation.css";
 import FooterStrip from "../../components/footer/footerStrip";
 import ShippingStatus from '../../components/OrderConfirmation/shippingStatus';
 import { Box } from '@mui/material';
+import { BsCheckLg } from 'react-icons/bs';
 import { useGetOrderByIdQuery, useGetTrackOrderMutation } from '../../services/api';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
@@ -28,6 +29,7 @@ const OrderConfirmation = () => {
 
   return (
     <div id='ordercConfirmation'>
+      {/* <ShippingStatus /> */}
       <Container>
         {(orderData?.data?.order_status == "Pending" || orderData?.data?.order_status == "Processing") &&
           <>
@@ -203,6 +205,81 @@ const OrderConfirmation = () => {
               </div>
             </div>
           </div>
+        }
+        {orderData?.data?.order_status == "Delivered" &&
+          <>
+            <div>
+              <div className="ordercConfirmation_top">
+                <h3>Delivered</h3>
+                <p>
+                  We’ve delivered your order. Hope you love it! <br />
+                  <a href="#" className="shippingStatusLink">Write a Review</a>
+                </p>
+                <Link to="/orderConfirmation">
+                  <div className="ordercConfirmation_top_help">
+                    <p>Get help on whatsapp </p>
+                    <span>
+                      <svg
+                        width="9"
+                        height="10"
+                        viewBox="0 0 9 10"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g clipPath="url(#clip0_2_1592)">
+                          <path
+                            d="M0.600098 1.43018H7.9901V8.82018"
+                            stroke="#2A3592"
+                            strokeWidth="1.7"
+                            strokeMiterlimit="10"
+                          ></path>
+                          <path
+                            d="M0.600098 8.82018L7.9901 1.43018"
+                            stroke="#2A3592"
+                            strokeWidth="1.7"
+                            strokeMiterlimit="10"
+                          ></path>
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_2_1592">
+                            <rect
+                              width="8.84"
+                              height="8.84"
+                              fill="white"
+                              transform="translate(0 0.580078)"
+                            ></rect>
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </span>
+                  </div>
+                </Link>
+              </div>
+              <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+                <img src="../img/slider4.png" alt="slider4" width="540px" />
+              </div>
+            </div>
+
+            <div>
+              <div className="ordercConfirmation_top" style={{ marginBottom: "2rem" }}>
+                <div className="return_status_box" style={{ width: "60%" }}>
+                  <div className="return_status_box_list">
+                    <div>
+                      <h6>Bluedart</h6>
+                      <span><BsCheckLg /> Delivered to Pune, MH</span>
+                    </div>
+                    <div>
+                      <h6>AWB—91286431928456</h6>
+                    </div>
+                  </div>
+                  <div className='shiping_status_box_footer'>
+                    <h6>Return or Exchange</h6>
+                    <span>Eligible till 30th June</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
         }
         <div className="orderConfirmation_box" style={{ paddingBottom: "1rem" }}>
           <div className="orderConfirmation_box_heading">
