@@ -45,6 +45,15 @@ const Home = () => {
         return categoryList ?? []
     }, [data]);
 
+
+    if (isLoading || isFetching) return <Box sx={{
+        width: '100%',
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+    }}><CircularProgress /></Box>
+
     return (
         <div className='home_page_wrap'>
             <HomeTab menuData={[...collections, ...categories]} />

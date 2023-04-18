@@ -32,12 +32,13 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
               return (
                 <Tab eventKey={index} key={item?._id} title="">
                   <div className="common_home_banner">
+                    {console.log("singleCollection?.video", singleCollection?.video)}
                     {singleCollection?.mediaType == "VIDEO" ?
-                      <video loop autoPlay muted style={{ position: 'absolute', width: '100%' }}>
+                      singleCollection?.video ? <video key={singleCollection?.video + item?._id + index} loop autoPlay muted style={{ position: 'absolute', width: '100%' }}>
                         <source src={singleCollection?.video} type="video/mp4" />
-                      </video>
+                      </video> : null
                       :
-                      <img src={singleCollection?.image} alt="hero_image" style={{ position: 'absolute', width: '100%' }} />
+                      singleCollection?.image ? <img src={singleCollection?.image} alt="hero_image" style={{ position: 'absolute', width: '100%' }} /> : null
                     }
                     <div className="container">
                       <div className="home_banner_title">
@@ -261,7 +262,6 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                             </div>
                           )
                         })}
-
                       </div>
                     </div>
                   </Tab>

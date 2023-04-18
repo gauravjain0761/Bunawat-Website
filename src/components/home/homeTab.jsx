@@ -39,15 +39,6 @@ const HomeTab = ({ menuData }) => {
         }
     }, [selectedId])
 
-
-    if (isLoading || isFetching || loading) return <Box sx={{
-        width: '100%',
-        height: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-    }}><CircularProgress /></Box>
-
     return (
         <>
             <HomeBannerTabs data={data} singleData={singleData} setSelectedId={setSelectedId} selectedId={selectedId} />
