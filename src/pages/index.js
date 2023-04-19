@@ -99,9 +99,9 @@ export default function Index() {
                         <Checkout />
                     </Route>
 
-                    <Route exact path={BASE_URL.BASE_URL + `orderConfirmation`}>
+                    {/*  <Route exact path={BASE_URL.BASE_URL + `orderConfirmation`}>
                         <OrderConfirmation />
-                    </Route>
+                    </Route> */}
 
                     <Route exact path={BASE_URL.BASE_URL + `orderConfirmation/:id`}>
                         <OrderConfirmation />

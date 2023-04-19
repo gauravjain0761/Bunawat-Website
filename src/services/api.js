@@ -197,7 +197,16 @@ export const AllApiData = createApi({
                 }
             },
         }),
+        orderReturn: builder.mutation({
+            query({ id, ...body }) {
+                return {
+                    url: `order_return/${id}`,
+                    method: 'POST',
+                    body,
+                }
+            },
+        }),
     }),
 })
 
-export const { useSendOtpMutation, useOtpMatchMutation, useGetShopMenuDataQuery, useGetProductQuery, useAddToCartMutation, useGetAllCartQuery, useRemoveCartItemMutation, useEditCartMutation, useAddOrderMutation, useOrderListQuery, useAddToWishlistMutation, useGetAllWishlistQuery, useRemoveWishlistMutation, useCustomerUpdateMutation, useGetCustomerDataQuery, useGetAttributeDataQuery, useAddProductReviewMutation, useCouponApplyMutation, useGetDatabyIdWithFiltersMutation, useMakePaymentMutation, useGetTrackOrderMutation, useGetOrderByIdQuery, useDeviceTokenMutation, useLogoutDeviceTokenMutation } = AllApiData
+export const { useSendOtpMutation, useOtpMatchMutation, useGetShopMenuDataQuery, useGetProductQuery, useAddToCartMutation, useGetAllCartQuery, useRemoveCartItemMutation, useEditCartMutation, useAddOrderMutation, useOrderListQuery, useAddToWishlistMutation, useGetAllWishlistQuery, useRemoveWishlistMutation, useCustomerUpdateMutation, useGetCustomerDataQuery, useGetAttributeDataQuery, useAddProductReviewMutation, useCouponApplyMutation, useGetDatabyIdWithFiltersMutation, useMakePaymentMutation, useGetTrackOrderMutation, useGetOrderByIdQuery, useDeviceTokenMutation, useLogoutDeviceTokenMutation, useOrderReturnMutation } = AllApiData
