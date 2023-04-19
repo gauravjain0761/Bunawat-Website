@@ -293,7 +293,9 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
                                             <span>{getNumberWithComma(list?.product?.sale_price)}</span>
                                             {/* <s>₹2,600</s> */}
                                         </div>
-                                        <button className='plus_cart' onClick={() => {
+                                        {/* <button className='plus_cart' onClick={(e) => {
+                                            e.preventDefault();
+                                            e.stopPropagation();
                                             history.push(`/product/${list?.product?._id}`)
                                             handleCartClose();
                                         }}>
@@ -309,7 +311,7 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
                                                 </defs>
                                             </svg>
                                             <span>Cart</span>
-                                        </button>
+                                        </button> */}
                                     </div>
                                 </div>
                             </div>
