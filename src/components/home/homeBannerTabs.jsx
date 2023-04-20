@@ -32,7 +32,6 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
               return (
                 <Tab eventKey={index} key={item?._id} title="">
                   <div className="common_home_banner">
-                    {console.log("singleCollection?.video", singleCollection?.video)}
                     {singleCollection?.mediaType == "VIDEO" ?
                       singleCollection?.video ? <video key={singleCollection?.video + item?._id + index} loop autoPlay muted style={{ position: 'absolute', width: '100%', height: '100%', objectFit: 'fill' }}>
                         <source src={singleCollection?.video} type="video/mp4" />
@@ -137,7 +136,6 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                       </div>
                     </div>
                   </div>
-                  {/* <Link to="/category" className="banner_links"></Link> */}
                 </Tab>
               )
             })}
@@ -185,7 +183,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                               <Link to={`/product/${list?._id}/${menuList?.[key]?.type ?? ""}`}>
                                 <div className="common_tab_info">
                                   <div className="common_tab_img">
-                                    <img src={list?.image} alt="image" className="product_above_image" height="720px" width="100%" />
+                                    <img src={list?.image} alt="image" className="product_above_image" height="820px" width="100%" />
                                   </div>
                                   <div className=" common_tab_title">
                                     <div className="summer_list_link_wrap">

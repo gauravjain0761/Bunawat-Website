@@ -176,7 +176,7 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
                       <div className="cloth_deatils_wrap">
                         <div style={{ textAlign: "center", width: '100%', height: '100%' }}>
                           <Link to={`/product/${list?._id}/${data?.[keyVal]?.type ?? ""}`} className="cloth_deatils_link">
-                            <img src={list?.image} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "640px" : "560px"} />
+                            <img src={list?.image} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "820px" : "720px"} />
                           </Link>
                         </div>
                         <div className="cloth_info_title">
