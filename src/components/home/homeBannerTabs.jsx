@@ -179,12 +179,13 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                         {singleCollection?.products?.slice(0, 4)?.map((list, index) => {
                           return (
                             <>
-                              {(index == 0 || index == 2) ? <div className="col-1"></div> : null}
-                              <div className="col-5" style={index == 0 ? { marginTop: "30px" } : {}}>
+                              {/* {(index == 0 || index == 2) ? <div className="col-1"></div> : null} */}
+                              {/* <div className="col-5" style={index == 0 ? { marginTop: "30px" } : {}}> */}
+                              <div className="col-6">
                                 <Link to={`/product/${list?._id}/${menuList?.[key]?.type ?? ""}`}>
                                   <div className="common_tab_info">
                                     <div className="common_tab_img">
-                                      <img src={list?.image} alt="image" className="product_above_image" height="820px" width="100%" />
+                                      <img src={list?.image} alt="image" className="product_above_image" height="1020px" width="100%" />
                                     </div>
                                     <div className=" common_tab_title">
                                       <div className="summer_list_link_wrap">
@@ -259,7 +260,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                                   </div>
                                 </Link>
                               </div>
-                              {(index == 1 || index == 3) ? <div className="col-1"></div> : null}
+                              {/* {(index == 1 || index == 3) ? <div className="col-1"></div> : null} */}
                             </>
                           )
                         })}
