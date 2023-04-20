@@ -17,7 +17,6 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
     setSingleCollection(singleData)
   }, [data, singleData]);
 
-
   return (
     <>
       <div className="home_banner_wrap">
@@ -179,85 +178,89 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                       <div className="row">
                         {singleCollection?.products?.slice(0, 4)?.map((list, index) => {
                           return (
-                            <div className="col-6">
-                              <Link to={`/product/${list?._id}/${menuList?.[key]?.type ?? ""}`}>
-                                <div className="common_tab_info">
-                                  <div className="common_tab_img">
-                                    <img src={list?.image} alt="image" className="product_above_image" height="820px" width="100%" />
-                                  </div>
-                                  <div className=" common_tab_title">
-                                    <div className="summer_list_link_wrap">
-                                      <div className="summer_list_link">
-                                        <p>{list?.name}</p>
-                                        <span>
-                                          <svg
-                                            width="9"
-                                            height="10"
-                                            viewBox="0 0 9 10"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                          >
-                                            <g clipPath="url(#clip0_2_1592)">
-                                              <path
-                                                d="M0.600098 1.43018H7.9901V8.82018"
-                                                stroke="white"
-                                                strokeWidth="1.7"
-                                                strokeMiterlimit="10"
-                                              ></path>
-                                              <path
-                                                d="M0.600098 8.82018L7.9901 1.43018"
-                                                stroke="white"
-                                                strokeWidth="1.7"
-                                                strokeMiterlimit="10"
-                                              ></path>
-                                            </g>
-                                            <defs>
-                                              <clipPath id="clip0_2_1592">
-                                                <rect
-                                                  width="8.84"
-                                                  height="8.84"
-                                                  fill="white"
-                                                  transform="translate(0 0.580078)"
-                                                ></rect>
-                                              </clipPath>
-                                            </defs>
-                                          </svg>
-                                        </span>
-                                      </div>
-                                      <p style={{
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                        alignItems: "center",
-                                      }}>
-                                        <Box sx={{
-                                          '@media (max-width: 768px)': {
-                                            marginTop: "8px"
-                                          },
-                                        }}>
-                                          {getNumberWithComma(list?.sale_price ?? 0)}
-                                        </Box>
-                                        <Box sx={{
-                                          display: "none",
-                                          '@media (max-width: 768px)': {
-                                            display: "block",
-                                          }
-                                        }}>
-                                          <SaveButton id={list?._id} isWishlist={list?.isWishlist} setSelectedId={setSelectedId} selectedId={selectedId} />
-                                        </Box>
-                                      </p>
+                            <>
+                              {(index == 0 || index == 2) ? <div className="col-1"></div> : null}
+                              <div className="col-5" style={index == 0 ? { marginTop: "30px" } : {}}>
+                                <Link to={`/product/${list?._id}/${menuList?.[key]?.type ?? ""}`}>
+                                  <div className="common_tab_info">
+                                    <div className="common_tab_img">
+                                      <img src={list?.image} alt="image" className="product_above_image" height="820px" width="100%" />
                                     </div>
-                                    <Box sx={{
-                                      display: "block",
-                                      '@media (max-width: 768px)': {
-                                        display: "none",
-                                      }
-                                    }}>
-                                      <SaveButton id={list?._id} isWishlist={list?.isWishlist} setSelectedId={setSelectedId} selectedId={selectedId} />
-                                    </Box>
+                                    <div className=" common_tab_title">
+                                      <div className="summer_list_link_wrap">
+                                        <div className="summer_list_link">
+                                          <p>{list?.name}</p>
+                                          <span>
+                                            <svg
+                                              width="9"
+                                              height="10"
+                                              viewBox="0 0 9 10"
+                                              fill="none"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                              <g clipPath="url(#clip0_2_1592)">
+                                                <path
+                                                  d="M0.600098 1.43018H7.9901V8.82018"
+                                                  stroke="white"
+                                                  strokeWidth="1.7"
+                                                  strokeMiterlimit="10"
+                                                ></path>
+                                                <path
+                                                  d="M0.600098 8.82018L7.9901 1.43018"
+                                                  stroke="white"
+                                                  strokeWidth="1.7"
+                                                  strokeMiterlimit="10"
+                                                ></path>
+                                              </g>
+                                              <defs>
+                                                <clipPath id="clip0_2_1592">
+                                                  <rect
+                                                    width="8.84"
+                                                    height="8.84"
+                                                    fill="white"
+                                                    transform="translate(0 0.580078)"
+                                                  ></rect>
+                                                </clipPath>
+                                              </defs>
+                                            </svg>
+                                          </span>
+                                        </div>
+                                        <p style={{
+                                          display: "flex",
+                                          justifyContent: "space-between",
+                                          alignItems: "center",
+                                        }}>
+                                          <Box sx={{
+                                            '@media (max-width: 768px)': {
+                                              marginTop: "8px"
+                                            },
+                                          }}>
+                                            {getNumberWithComma(list?.sale_price ?? 0)}
+                                          </Box>
+                                          <Box sx={{
+                                            display: "none",
+                                            '@media (max-width: 768px)': {
+                                              display: "block",
+                                            }
+                                          }}>
+                                            <SaveButton id={list?._id} isWishlist={list?.isWishlist} setSelectedId={setSelectedId} selectedId={selectedId} />
+                                          </Box>
+                                        </p>
+                                      </div>
+                                      <Box sx={{
+                                        display: "block",
+                                        '@media (max-width: 768px)': {
+                                          display: "none",
+                                        }
+                                      }}>
+                                        <SaveButton id={list?._id} isWishlist={list?.isWishlist} setSelectedId={setSelectedId} selectedId={selectedId} />
+                                      </Box>
+                                    </div>
                                   </div>
-                                </div>
-                              </Link>
-                            </div>
+                                </Link>
+                              </div>
+                              {(index == 1 || index == 3) ? <div className="col-1"></div> : null}
+                            </>
                           )
                         })}
                       </div>
