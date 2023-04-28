@@ -290,25 +290,23 @@ const OrderConfirmation = () => {
                 </div>
 
                 <div>
-                  {orderData?.data?.delivery_partner == "OTHERS" &&
-                    <div className="ordercConfirmation_top" style={{ marginBottom: "2rem" }}>
-                      <div className="return_status_box" style={{ width: "60%" }}>
-                        <div className="return_status_box_list">
-                          <div>
-                            <h6>{orderData?.data?.delivery_name}</h6>
-                            <span><BsCheckLg /> Delivered to Pune, MH</span>
-                          </div>
-                          <div>
-                            <h6>{orderData?.data?.delivery_id}</h6>
-                          </div>
+                  <div className="ordercConfirmation_top" style={{ marginBottom: "2rem" }}>
+                    <div className="return_status_box" style={{ width: "60%" }}>
+                      <div className="return_status_box_list">
+                        <div>
+                          <h6>{orderData?.data?.delivery_name}</h6>
+                          <span><BsCheckLg /> Delivered to Pune, MH</span>
                         </div>
-                        <div className={`shiping_status_box_footer ${orderData?.data?.is_return_availalbe ? "" : "disable-shiping_status_box_footer"}`} onClick={handleShow}>
-                          <h6>Return or Exchange</h6>
-                          <span>Eligible till {moment(orderData?.data?.last_return_date).format("Do MMMM")}</span>
+                        <div>
+                          <h6>{orderData?.data?.delivery_id}</h6>
                         </div>
                       </div>
+                      <div className={`shiping_status_box_footer ${orderData?.data?.is_return_availalbe ? "" : "disable-shiping_status_box_footer"}`} onClick={handleShow}>
+                        <h6>Return or Exchange</h6>
+                        <span>Eligible till {moment(orderData?.data?.last_return_date).format("Do MMMM")}</span>
+                      </div>
                     </div>
-                  }
+                  </div>
                 </div>
               </>
             }
