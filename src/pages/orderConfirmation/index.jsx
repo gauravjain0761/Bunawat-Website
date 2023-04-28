@@ -26,7 +26,11 @@ const OrderConfirmation = () => {
   });
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    if (orderData?.data?.is_return_availalbe) {
+      setShow(true);
+    }
+  }
 
   useEffect(async () => {
     if (id) {
