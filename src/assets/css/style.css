@@ -1111,7 +1111,7 @@ body[main-sidebar="shopsidebar"] .shop_sidebar {
 .product_slider_height,
 .product_slider_video_height,
 .product_slider_img_height {
-    height: calc(100vh - 270px);
+    height: calc(100vh - 280px);
 }
 
 .product_info_section_wrap {
