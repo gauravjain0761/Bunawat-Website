@@ -523,13 +523,13 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                             {(lastSkuData?.videos?.length > 0) ?
                                 <>
                                     {lastSkuData?.videos?.map((list, index) => (
-                                        <VideoComponent url={list?.url} index={index} />
+                                        <VideoComponent url={list?.url} index={index} width={(width < 576)} />
                                     ))}
                                 </>
                                 :
                                 <>
                                     {product?.videos?.slice(0, 3)?.map((list, index) => (
-                                        <VideoComponent url={list?.url} index={index} />
+                                        <VideoComponent url={list?.url} index={index} width={(width < 576)} />
                                     ))}
                                 </>
                             }
