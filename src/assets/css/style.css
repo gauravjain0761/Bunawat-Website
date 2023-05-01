@@ -308,6 +308,12 @@ button {
     max-width: 200px;
 }
 
+.summer_list_link p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
 .summer_list_link p,
 .summer_list_link_wrap p {
     font-size: 14px;
@@ -316,7 +322,6 @@ button {
     margin-right: 10px;
     line-height: 16px;
     letter-spacing: -0.02em;
-
 }
 
 .summer_list_link_wrap>p {
@@ -1101,6 +1106,12 @@ body[main-sidebar="shopsidebar"] .shop_sidebar {
 
 .product_slider_section {
     width: 100%;
+}
+
+.product_slider_height,
+.product_slider_video_height,
+.product_slider_img_height {
+    height: calc(100vh - 244px);
 }
 
 .product_info_section_wrap {
