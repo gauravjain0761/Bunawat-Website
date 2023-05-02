@@ -6,7 +6,7 @@ const VideoComponent = ({ url, index, width }) => {
             <div className="structured_fabric_img">
                 <video key={url + index} loop autoPlay muted style={{
                     width: '100%',
-                    height: '340px',
+                    height: width ? '340px' : '560px',
                     objectFit: 'fill'
                 }}>
                     <source src={url} type="video/mp4" />

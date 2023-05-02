@@ -100,7 +100,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                             <div className="product_info_section">
                                 <div className="product_title_wrap">
                                     <h2>{product?.name}</h2>
-                                    <SaveButton id={product?._id} isWishlist={product?.isWishlist} isBlue={true} refetch={refetch} />
+                                    <SaveButton id={product?._id} isWishlist={product?.isWishlist} isBlue={true} refetch={refetch} isWhite={false} />
                                 </div>
                                 <div className="common_product_details">
                                     <div className='parse-description'>{parse(product?.description)}</div>
@@ -627,9 +627,9 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                                             </svg>
                                                         </span>
                                                     </div>
-                                                    <p>{getNumberWithComma(list?.sale_price ?? 0)}</p>
+                                                    <p className='summer_list_link_wrap_white'>{getNumberWithComma(list?.sale_price ?? 0)}</p>
                                                 </div>
-                                                <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={true} refetch={refetch} />
+                                                <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={false} refetch={refetch} />
                                             </div>
                                         </div>
                                     </div>
@@ -817,17 +817,17 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                         </div>
 
                         <div className="recently_col_wrap">
-                            <div style={{
+                            <div className="recently_col_wrap_scroll_hide" style={{
                                 display: 'flex',
                                 flexWrap: 'nowrap',
                                 width: '100%',
-                                gap: '20px',
+                                gap: '6px',
                                 overflow: 'hidden',
                                 overflowX: 'auto'
                             }}>
                                 {recentlyProduct?.slice(1)?.map(list => (
-                                    <div className="recent_view_product" onClick={() => history.push(`/product/${list?._id}/${list?.type}`)} style={{ cursor: 'pointer', width: '150px', height: '150px' }}>
-                                        <img src={list?.images?.[0]?.url} style={{ maxWidth: '150px' }} width="150px" height="100%" alt="recent_view_img" />
+                                    <div className="recent_view_product" onClick={() => history.push(`/product/${list?._id}/${list?.type}`)} style={{ cursor: 'pointer', width: '130px', height: '150px' }}>
+                                        <img src={list?.images?.[0]?.url} style={{ maxWidth: '130px', borderRadius: '4px' }} width="130px" height="100%" alt="recent_view_img" />
                                         <div className="recent_price">
                                             <p>{getNumberWithComma(list?.sale_price ?? 0)}</p>
                                         </div>

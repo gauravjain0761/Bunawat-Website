@@ -180,8 +180,8 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
                           </Link>
                         </div>
                         <div className="cloth_info_title">
-                          <div className="summer_list_link_wrap mobile_summer_list_link_wrap">
-                            <div className="summer_list_link">
+                          <div className="summer_list_link_wrap mobile_summer_list_link_wrap ">
+                            <div className="summer_list_link ">
                               <p className="textEllipsis">{list?.name}</p>
                               <span>
                                 <svg
@@ -218,9 +218,9 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
                                 </svg>
                               </span>
                             </div>
-                            <p>{getNumberWithComma(list?.sale_price ?? 0)} </p>
+                            <p className="textEllipsis summer_list_link_wrap_white">{getNumberWithComma(list?.sale_price ?? 0)} </p>
                           </div>
-                          <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={true} setSelectedId={setSelectedId} selectedId={selectedId} />
+                          <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={false} setSelectedId={setSelectedId} selectedId={selectedId} />
                         </div>
                       </div>
                     </div>

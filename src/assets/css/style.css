@@ -547,7 +547,7 @@ button {
     justify-content: space-between;
     width: 100%;
     /* pointer-events: none; */
-    background: linear-gradient(180deg, rgba(247, 247, 247, 0) 0%, rgba(247, 247, 247, 0.9) 80.21%);
+    /* background: linear-gradient(180deg, rgba(247, 247, 247, 0) 0%, rgba(247, 247, 247, 0.9) 80.21%); */
     border-radius: 4px;
 }
 
@@ -596,10 +596,24 @@ button {
     fill: #2A3990;
 }
 
+/* .save_wrap_blue svg {
+    fill: #2A3990;
+} */
+
 .cloth_info_title .summer_list_link p,
 .cloth_info_title .summer_list_link_wrap p {
     color: #2A3592;
 }
+
+
+.summer_list_link_wrap_white {
+    color: #fff !important;
+}
+
+/* 
+.save_wrap_blue_text p {
+    color: #2A3592;
+} */
 
 .cloth_deatils_wrap a {
     position: relative;
@@ -615,7 +629,7 @@ button {
     position: absolute;
     left: 0px;
     bottom: 0px;
-    background: linear-gradient(180deg, rgba(247, 247, 247, 0) 0%, rgba(247, 247, 247, 0.9) 80.21%);
+    /* background: linear-gradient(180deg, rgba(247, 247, 247, 0) 0%, rgba(247, 247, 247, 0.9) 80.21%); */
     /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
     border-radius: 4px;
 }
@@ -1940,6 +1954,15 @@ li.common_option_wrap {
 
 .recently_col_wrap {
     margin-top: 16px;
+}
+
+.recently_col_wrap_scroll_hide::-webkit-scrollbar {
+    display: none;
+}
+
+.recently_col_wrap_scroll_hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .recent_view_product {

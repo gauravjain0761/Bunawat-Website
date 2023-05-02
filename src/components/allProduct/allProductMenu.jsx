@@ -105,8 +105,8 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                                                 </Link>
                                                                 <div className="cloth_info_title">
                                                                     <div style={{ cursor: 'pointer' }} className="summer_list_link_wrap mobile_summer_list_link_wrap" onClick={() => history.push(`/product/${list?._id}/${data?.[key]?.type ?? ""}`)}>
-                                                                        <div className="summer_list_link">
-                                                                            <p>{list?.name}</p>
+                                                                        <div className="summer_list_link ">
+                                                                            <p >{list?.name}</p>
                                                                             <span>
                                                                                 <svg
                                                                                     width="9"
@@ -142,9 +142,9 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                                                                 </svg>
                                                                             </span>
                                                                         </div>
-                                                                        <p>{getNumberWithComma(list?.sale_price ?? 0)}</p>
+                                                                        <p className='summer_list_link_wrap_white'>{getNumberWithComma(list?.sale_price ?? 0)}</p>
                                                                     </div>
-                                                                    <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={true} selectedId={selectedId} setSelectedId={setSelectedId} />
+                                                                    <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={false} selectedId={selectedId} setSelectedId={setSelectedId} />
                                                                 </div>
                                                             </div>
                                                         </div>

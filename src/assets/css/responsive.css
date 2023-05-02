@@ -367,6 +367,15 @@
         height: 100%;
     }
 
+    .tab_section_wrap .nav-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab_section_wrap .nav-tabs {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
     .tab_section_wrap .nav-tabs {
         flex-wrap: unset;
         overflow-x: auto;
@@ -450,7 +459,7 @@
     }
 
     .cloth_inner .row>div:nth-child(n+3) {
-        margin-top: 38px;
+        /* margin-top: 38px; */
     }
 
     .cloth_wrap .cloth_inner .row>div {
@@ -886,7 +895,7 @@
     }
 
     .structured_fabric_inner .row>div:nth-child(n+2) {
-        margin-top: 20px;
+        /* margin-top: 20px; */
     }
 
     .know_inner p {
