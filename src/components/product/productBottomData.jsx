@@ -523,13 +523,13 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                             {(lastSkuData?.videos?.length > 0) ?
                                 <>
                                     {lastSkuData?.videos?.map((list, index) => (
-                                        <VideoComponent url={list?.url} index={index} width={(width < 576)} />
+                                        <VideoComponent url={list?.url} key={index} index={index} width={(width < 576)} />
                                     ))}
                                 </>
                                 :
                                 <>
                                     {product?.videos?.slice(0, 3)?.map((list, index) => (
-                                        <VideoComponent url={list?.url} index={index} width={(width < 576)} />
+                                        <VideoComponent url={list?.url} key={index} index={index} width={(width < 576)} />
                                     ))}
                                 </>
                             }
@@ -591,7 +591,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                             <div className="cloth_info_title">
                                                 <div className="summer_list_link_wrap mobile_summer_list_link_wrap">
                                                     <div className="summer_list_link">
-                                                        <p>{list?.name}</p>
+                                                        <p className='summer_list_link_wrap_white'>{list?.name}</p>
                                                         <span>
                                                             <svg
                                                                 width="9"
@@ -603,13 +603,13 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                                                 <g clipPath="url(#clip0_367_1219)">
                                                                     <path
                                                                         d="M0.599976 1.42999H7.98998V8.81999"
-                                                                        stroke="#2A3592"
+                                                                        stroke="#fff"
                                                                         strokeWidth="1.7"
                                                                         strokeMiterlimit="10"
                                                                     />
                                                                     <path
                                                                         d="M0.599976 8.81999L7.98998 1.42999"
-                                                                        stroke="#2A3592"
+                                                                        stroke="#fff"
                                                                         strokeWidth="1.7"
                                                                         strokeMiterlimit="10"
                                                                     />

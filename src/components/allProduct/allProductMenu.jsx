@@ -106,7 +106,7 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                                                 <div className="cloth_info_title">
                                                                     <div style={{ cursor: 'pointer' }} className="summer_list_link_wrap mobile_summer_list_link_wrap" onClick={() => history.push(`/product/${list?._id}/${data?.[key]?.type ?? ""}`)}>
                                                                         <div className="summer_list_link ">
-                                                                            <p >{list?.name}</p>
+                                                                            <p className='summer_list_link_wrap_white'>{list?.name}</p>
                                                                             <span>
                                                                                 <svg
                                                                                     width="9"
@@ -118,13 +118,13 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                                                                     <g clipPath="url(#clip0_367_1219)">
                                                                                         <path
                                                                                             d="M0.599976 1.42999H7.98998V8.81999"
-                                                                                            stroke="#2A3592"
+                                                                                            stroke="#fff"
                                                                                             strokeWidth="1.7"
                                                                                             strokeMiterlimit="10"
                                                                                         />
                                                                                         <path
                                                                                             d="M0.599976 8.81999L7.98998 1.42999"
-                                                                                            stroke="#2A3592"
+                                                                                            stroke="#fff"
                                                                                             strokeWidth="1.7"
                                                                                             strokeMiterlimit="10"
                                                                                         />

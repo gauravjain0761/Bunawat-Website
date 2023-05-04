@@ -1125,7 +1125,13 @@ body[main-sidebar="shopsidebar"] .shop_sidebar {
 .product_slider_height,
 .product_slider_video_height,
 .product_slider_img_height {
-    height: 80vh;
+    height: 912px;
+}
+
+.aaaaaaaaaaaaaaaaa {
+    transform: none !important;
+    transition: none !important;
+    --rsbs-overlay-translate-y: 0 !important
 }
 
 .product_info_section_wrap {

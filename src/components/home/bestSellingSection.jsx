@@ -182,7 +182,7 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
                         <div className="cloth_info_title">
                           <div className="summer_list_link_wrap mobile_summer_list_link_wrap ">
                             <div className="summer_list_link ">
-                              <p className="textEllipsis">{list?.name}</p>
+                              <p className="textEllipsis summer_list_link_wrap_white">{list?.name}</p>
                               <span>
                                 <svg
                                   width="9"
@@ -194,13 +194,13 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
                                   <g clipPath="url(#clip0_367_1219)">
                                     <path
                                       d="M0.599976 1.42999H7.98998V8.81999"
-                                      stroke="#2A3592"
+                                      stroke="#fff"
                                       strokeWidth="1.7"
                                       strokeMiterlimit="10"
                                     />
                                     <path
                                       d="M0.599976 8.81999L7.98998 1.42999"
-                                      stroke="#2A3592"
+                                      stroke="#fff"
                                       strokeWidth="1.7"
                                       strokeMiterlimit="10"
                                     />
@@ -218,7 +218,7 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
                                 </svg>
                               </span>
                             </div>
-                            <p className="textEllipsis summer_list_link_wrap_white">{getNumberWithComma(list?.sale_price ?? 0)} </p>
+                            <p className=" summer_list_link_wrap_white">{getNumberWithComma(list?.sale_price ?? 0)} </p>
                           </div>
                           <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={false} setSelectedId={setSelectedId} selectedId={selectedId} />
                         </div>
