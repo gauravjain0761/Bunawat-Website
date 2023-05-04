@@ -1128,10 +1128,11 @@ body[main-sidebar="shopsidebar"] .shop_sidebar {
     height: 912px;
 }
 
-.aaaaaaaaaaaaaaaaa {
+.bottom-sheet-transition {
     transform: none !important;
     transition: none !important;
-    --rsbs-overlay-translate-y: 0 !important
+    transition-duration: .2s !important;
+    --rsbs-overlay-translate-y: 0 !important;
 }
 
 .product_info_section_wrap {

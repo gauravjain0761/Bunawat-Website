@@ -537,7 +537,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                 skipInitialTransition={true}
                 snapPoints={({ minHeight, maxHeight }) => [changeSizeSheet ? (maxHeight - 56) : 200, maxHeight - 56]}
                 expandOnContentDrag
-                className='aaaaaaaaaaaaaaaaa'
+                className='bottom-sheet-transition'
                 scrollLocking
                 onSpringCancel={async (event) => {
                     if (event.type === 'SNAP') {
