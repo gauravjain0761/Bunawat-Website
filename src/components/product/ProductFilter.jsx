@@ -215,6 +215,17 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
         setFilterList(temp)
     }, [filters, swipeableIndex])
 
+    useEffect(() => {
+        const data = _.uniqBy(attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(attributeList?.color, x => x?.label)
+        setSelectedData({
+            ...selectedData,
+            color: data?.[0],
+            size: 'default'
+        })
+        setQty(1)
+        setLastSkuData(filterList?.find(list => list?._id == data?.[0]?.value) ?? {})
+    }, [attributeList, filterList, swipeableIndex])
+
 
     const handleAdd = async () => {
         if ((selectedData?.size && selectedData?.size != "default")) {

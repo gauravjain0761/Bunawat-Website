@@ -15,7 +15,7 @@ import { toast } from 'react-toastify';
 import VideoComponent from './videoComponent';
 
 
-const ProductBottomData = ({ product, productIndex, width, similarList, refetch, swipeableIndex, productList, lastSkuData }) => {
+const ProductBottomData = ({ product, productIndex, width, similarList, refetch, swipeableIndex, productList, lastSkuData, setLastSkuData }) => {
     const [age, setAge] = useState("size");
     const history = useHistory();
     const [recentlyProduct, setRecentlyProduct] = useState(Storage.get("recentlyProduct") ? JSON.parse(Storage.get("recentlyProduct") ?? '[]') : []);
@@ -849,7 +849,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
             </Box>
 
             {(width < 768) ?
-                <ProductPageFilter selectedImage={productList?.[swipeableIndex]?.images?.[0]?.url ?? ""} selectedProduct={productList?.[swipeableIndex] ?? {}} filters={productList?.[swipeableIndex]?.skus ?? []} swipeableIndex={swipeableIndex ?? 0} />
+                <ProductPageFilter selectedImage={productList?.[swipeableIndex]?.images?.[0]?.url ?? ""} selectedProduct={productList?.[swipeableIndex] ?? {}} filters={productList?.[swipeableIndex]?.skus ?? []} swipeableIndex={swipeableIndex ?? 0} setLastSkuData={setLastSkuData} />
                 :
                 null}
         </div>

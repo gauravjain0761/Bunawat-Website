@@ -4,15 +4,15 @@ import Slider from "react-slick";
 import { BottomSheet } from 'react-spring-bottom-sheet'
 import 'react-spring-bottom-sheet/dist/style.css'
 import parse from 'html-react-parser';
-
-import product_slider from "../../assets/img/product/slider_img.png";
 import ProductBottomData from './productBottomData';
 import SaveButton from '../common/save';
 import { Box } from '@mui/material';
 import { ApiGet } from '../../services/API/api';
 import { toast } from 'react-toastify';
 
-const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, productBottomData, width, refetch, swipeableIndex, productList, lastSkuData }) => {
+const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, productBottomData, width, refetch, swipeableIndex, productList, lastSkuData, setLastSkuData }) => {
+
+    const [changeSizeSheet, setChangeSizeSheet] = useState(false);
     const settings = {
         dots: true,
         infinite: false,
@@ -23,6 +23,11 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
         adaptiveHeight: true,
         vertical: true,
         verticalSwiping: true,
+        beforeChange: (current, next) => {
+            if ((current > 1 && next > 1) && (current == next)) {
+                setChangeSizeSheet(true)
+            }
+        },
     };
     const [pincode, setPincode] = useState("");
 
@@ -38,6 +43,11 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                 });
         }
     }, [pincode])
+
+    useEffect(() => {
+        setChangeSizeSheet(false);
+    }, [swipeableIndex])
+
     return (
         <Box className="product_page" sx={{
             paddingTop: { xs: "40px", sm: '72px' }
@@ -492,11 +502,11 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                     {lastSkuData?.images?.map(list => (
                                         <div>
                                             {list?.type == "VIDEO" ?
-                                                <video loop autoPlay muted height='800px'>
+                                                <video loop autoPlay muted className='product_slider_video_height'>
                                                     <source src={list?.url} type="video/mp4" />
                                                 </video>
                                                 :
-                                                <img src={list?.url} alt="slider" width='100%' height='800px' />
+                                                <img src={list?.url} className='product_slider_img_height' alt="slider" width='100%' />
                                             }
                                         </div>
                                     ))}
@@ -524,17 +534,24 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
             </div>
             {(width < 768) ? <BottomSheet
                 blocking={false}
-                snapPoints={({ minHeight, maxHeight }) => [200, maxHeight - 44]}
+                skipInitialTransition={true}
+                snapPoints={({ minHeight, maxHeight }) => [changeSizeSheet ? (maxHeight - 56) : 200, maxHeight - 56]}
                 expandOnContentDrag
+                scrollLocking
+                onSpringCancel={async (event) => {
+                    if (event.type === 'SNAP') {
+                        setChangeSizeSheet(false)
+                    }
+                }}
                 open={productBottomData[productIndex]}>
                 <div onMouseEnter={() => setSwipeableDisable(true)} onTouchStart={() => setSwipeableDisable(true)}>
-                    <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} />
+                    <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} />
                 </div>
             </BottomSheet>
                 :
                 <div style={{ position: 'relative' }}>
                     <div onMouseEnter={() => setSwipeableDisable(true)} onTouchStart={() => setSwipeableDisable(true)}>
-                        <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} lastSkuData={lastSkuData} />
+                        <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} />
                     </div>
                 </div>
             }
