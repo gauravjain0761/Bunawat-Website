@@ -1,3 +1,8 @@
+@font-face {
+    font-family: New Spirit;
+    src: url("/src/assets/fonts/New Spirit/New Spirit Medium.otf");
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 5px;
