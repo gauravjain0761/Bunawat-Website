@@ -107,7 +107,7 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
               fontSize: "24px",
               fontWeight: 600,
               letterSpacing: "-.02em",
-              fontFamily: "Imported",
+              fontFamily: "Newspirit",
               cursor: "pointer",
             }}
           >
@@ -129,7 +129,7 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                     fontSize: "24px",
                     fontWeight: 600,
                     letterSpacing: "-.02em",
-                    fontFamily: "Imported",
+                    fontFamily: "Newspirit",
                     cursor: "pointer",
                   }}
                 >
@@ -169,7 +169,7 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                         fontSize: "24px",
                         fontWeight: 600,
                         letterSpacing: "-.02em",
-                        fontFamily: "Imported",
+                        fontFamily: "Newspirit",
                       }}
                     >
                       {item.name}
@@ -278,7 +278,7 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                                     fontSize: "24px",
                                     fontWeight: 600,
                                     letterSpacing: "-.02em",
-                                    fontFamily: "Imported",
+                                    fontFamily: "Newspirit",
                                   }}
                                 >
                                   {subcategory.name}
@@ -379,7 +379,7 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                                             fontSize: "24px",
                                             fontWeight: 600,
                                             letterSpacing: "-.02em",
-                                            fontFamily: "Imported",
+                                            fontFamily: "Newspirit",
                                           }}
                                         >
                                           {category.name}

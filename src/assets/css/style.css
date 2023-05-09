@@ -1,38 +1,65 @@
 /*********************  Default-CSS  *********************/
-
 @font-face {
-    font-family: Imported;
-    src: url("../fonts/New Spirit/New Spirit Medium.otf");
+    font-family: Newspirit;
+    src: url("../fonts/New Spirit/new-spirit-4.otf");
 }
 
 @font-face {
-    font-family: NewScript-2;
-    src: url("../fonts/New Spirit/New Spirit Medium.otf");
+    font-family: Newspirit;
+    font-weight: 300;
+    src: url("../fonts/New Spirit/new-spirit-1.otf");
+}
+
+@font-face {
+    font-family: Newspirit;
+    font-weight: 400;
+    src: url("../fonts/New Spirit/new-spirit-2.otf");
+}
+
+@font-face {
+    font-family: Newspirit;
+    font-weight: 500;
+    src: url("../fonts/New Spirit/new-spirit-3.otf");
+}
+
+@font-face {
+    font-family: Newspirit;
+    font-weight: 600;
+    src: url("../fonts/New Spirit/new-spirit-4.otf");
+}
+
+@font-face {
+    font-family: Newspirit;
+    font-weight: 700;
+    src: url("../fonts/New Spirit/new-spirit-5.otf");
 }
 
 @font-face {
     font-family: Newhero;
-    src: url(../fonts/newHero/new-hero-10.otf);
+    src: url("../fonts/New Hero/new-hero-10.otf");
 }
 
 @font-face {
-    font-family: Newhero6;
-    src: url(../fonts/newHero/new-hero-6.otf);
+    font-family: Newhero;
+    font-weight: 400;
+    src: url("../fonts/New Hero/new-hero-13.otf");
 }
 
 @font-face {
-    font-family: Newhero10;
-    src: url(../fonts/newHero/new-hero-10.otf);
+    font-family: Newhero;
+    font-weight: 500;
+    src: url("../fonts/New Hero/new-hero-14.otf");
 }
 
 @font-face {
-    font-family: Newhero9;
-    src: url(../fonts/newHero/new-hero-9.otf);
+    font-family: Newhero;
+    font-weight: 700;
+    src: url("../fonts/New Hero/new-hero-3.otf");
 }
 
 body {
     /* font-family: 'Montserrat', sans-serif; */
-    font-family: Newhero6;
+    font-family: Newhero;
     margin: 0;
     line-height: 1.5;
     font-size: 18px;
@@ -109,15 +136,15 @@ body h1,
 body h2,
 body h3,
 body h4 {
-    font-family: Newhero10;
+    font-family: Newhero;
 }
 
 body h5 {
-    font-family: Newhero10;
+    font-family: Newhero;
 }
 
 body h6 {
-    font-family: Newhero10;
+    font-family: Newhero;
 }
 
 p {
@@ -287,7 +314,7 @@ button {
 
 .common_title {
     font-size: 48px;
-    font-family: Imported;
+    font-family: Newspirit;
     font-style: normal;
     line-height: 56px;
     font-weight: 600;
@@ -317,7 +344,7 @@ button {
 .summer_list_link p,
 .summer_list_link_wrap p {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     color: #fff;
     margin-right: 10px;
     line-height: 16px;
@@ -352,7 +379,7 @@ button {
     background-color: unset;
     font-size: 14px;
     font-weight: 600;
-    font-family: Newhero10;
+    font-family: Newhero;
     color: #000000;
     letter-spacing: -0.02em;
     line-height: 24px;
@@ -386,7 +413,7 @@ button {
     font-weight: 600;
     margin-top: 2px;
     line-height: 0px;
-    font-family: Newhero10;
+    font-family: Newhero;
     letter-spacing: -0.02em;
 }
 
@@ -497,7 +524,7 @@ button {
 }
 
 .shop_hald_info h3 {
-    font-family: Imported;
+    font-family: Newspirit;
     font-weight: 600;
     font-size: 32px;
     color: #000000;
@@ -793,7 +820,7 @@ button {
     line-height: 24px;
     letter-spacing: -0.02em;
     font-weight: 600;
-    font-family: Newhero10;
+    font-family: Newhero;
 }
 
 .new_text {
@@ -869,7 +896,7 @@ button {
 }
 
 .cloth_title_wrap h2 {
-    font-family: NewScript-2;
+    font-family: Newspirit;
     font-weight: 300 !important;
     font-size: 48px;
     color: #000;
@@ -974,7 +1001,7 @@ button {
 }
 
 .common_sidebar_link span {
-    font-family: Imported;
+    font-family: Newspirit;
     font-size: 24px;
     font-weight: 600;
     color: #000;
@@ -1219,7 +1246,7 @@ li.common_option_wrap {
     font-size: 14px;
     color: #2A3592;
     font-weight: 600;
-    font-family: Newhero10;
+    font-family: Newhero;
     letter-spacing: -0.02em;
 }
 
@@ -1665,7 +1692,7 @@ li.common_option_wrap {
     color: #000;
     font-weight: 600;
     font-size: 14px;
-    font-family: Newhero10;
+    font-family: Newhero;
     letter-spacing: -0.02em;
 }
 
@@ -1677,7 +1704,7 @@ li.common_option_wrap {
     text-transform: uppercase;
     display: flex;
     align-items: center;
-    font-family: Newhero10;
+    font-family: Newhero;
     letter-spacing: -0.02em;
 }
 
@@ -1736,7 +1763,7 @@ li.common_option_wrap {
     font-size: 24px;
     font-weight: 600;
     color: #2A3592;
-    font-family: NewScript-2;
+    font-family: Newspirit;
     letter-spacing: -0.02em;
 }
 
@@ -1862,7 +1889,7 @@ li.common_option_wrap {
 }
 
 .pin_code_weap input {
-    font-family: Newhero10;
+    font-family: Newhero;
     width: 100%;
     height: 40px;
     border: 2px solid #2A3592;
@@ -1945,7 +1972,7 @@ li.common_option_wrap {
 .sell_wrap h3 {
     font-size: 14px;
     font-weight: 600;
-    font-family: Newhero10;
+    font-family: Newhero;
     margin-bottom: -4px;
     letter-spacing: -0.02em;
 }
@@ -1955,7 +1982,7 @@ li.common_option_wrap {
     font-size: 11px;
     font-weight: 700;
     margin-right: 5px;
-    font-family: Newhero10;
+    font-family: Newhero;
     letter-spacing: -0.02em;
 }
 
@@ -2033,7 +2060,7 @@ li.common_option_wrap {
     font-weight: 600;
     letter-spacing: -0.02em;
     text-transform: capitalize;
-    font-family: Newhero10;
+    font-family: Newhero;
 }
 
 .color_list {
@@ -2376,7 +2403,7 @@ li.common_option_wrap {
     font-weight: 600;
     font-size: 18px;
     line-height: 1.44;
-    font-family: NewScript-2;
+    font-family: Newspirit;
     margin-bottom: 10px;
 }
 

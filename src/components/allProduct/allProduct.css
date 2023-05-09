@@ -209,11 +209,11 @@
 
 
  .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
-     font-family: Newhero10 !important;
+     font-family: Newhero !important;
  }
 
  .MuiSelect-root {
-     font-family: Newhero10 !important;
+     font-family: Newhero !important;
  }
 
  .category_cloth_deatils_wrap a::after {
@@ -229,7 +229,7 @@
  .MuiPopover-paper {
      /* top: auto !important; */
      /* bottom: 80px !important; */
-     font-family: Newhero10 !important;
+     font-family: Newhero !important;
  }
 
  .product_margin {

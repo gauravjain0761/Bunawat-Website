@@ -1,9 +1,10 @@
-#clubHome{
+#clubHome {
     background-color: #eaebf0;
     /* height: 100vh; */
     padding: 8rem 0 0 0;
 }
-.clubHome_top{
+
+.clubHome_top {
     align-items: flex-end;
     background-image: url(../../assets/img/clubHome/club_bg.png);
     background-position: 50%;
@@ -14,8 +15,9 @@
     position: relative;
     width: 100%;
 }
-.clubHome_top_text span{
-    font-family: Newhero6;
+
+.clubHome_top_text span {
+    font-family: Newhero;
     font-weight: 400;
     font-size: 12px;
     line-height: 24px;
@@ -23,8 +25,9 @@
     text-transform: uppercase;
     color: #FFFFFF;
 }
-.clubHome_top_text h3{
-    font-family: Imported;
+
+.clubHome_top_text h3 {
+    font-family: Newspirit;
     font-weight: 600;
     font-size: 48px;
     line-height: 56px;
@@ -32,8 +35,9 @@
     color: #FFFFFF;
     margin-bottom: 10px;
 }
-.clubHome_top_text p{
-    font-family: Newhero6;
+
+.clubHome_top_text p {
+    font-family: Newhero;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
@@ -41,8 +45,9 @@
     color: #FFFFFF;
     margin-bottom: 10px;
 }
-.clubHome_top_text h6{
-    font-family: Newhero6;
+
+.clubHome_top_text h6 {
+    font-family: Newhero;
     font-weight: 700;
     font-size: 14px;
     line-height: 16px;
@@ -50,13 +55,15 @@
     margin-bottom: 20px;
     margin-top: 14px;
 }
-.clubHome_top_text_btn{
+
+.clubHome_top_text_btn {
     margin-top: 14px;
 }
-.clubHome_top_text_btn .btn{
-    font-family: Newhero6;
+
+.clubHome_top_text_btn .btn {
+    font-family: Newhero;
     padding: 1rem 1.4rem;
-    font-weight: 700; 
+    font-weight: 700;
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 0.02em;
@@ -65,18 +72,21 @@
     border-radius: 2px;
     border: 1px solid #fff;
 }
-.clubHome_top_text_btn span{
+
+.clubHome_top_text_btn span {
     margin-left: 20px;
     font-weight: 700;
     font-size: 12px;
     line-height: 16px;
     color: #FFFFFF;
- }
- .clubHome_menu{
+}
+
+.clubHome_menu {
     padding: 1rem 0;
     background-color: #fff;
- }
- .clubHome_menu .btn{
+}
+
+.clubHome_menu .btn {
     font-family: Newhero;
     font-weight: 600;
     font-size: 14px;
@@ -84,35 +94,41 @@
     letter-spacing: -0.02em;
     color: #000000;
     border: none;
- }
- .clubHome_menu .btn:focus{
+}
+
+.clubHome_menu .btn:focus {
     border: none;
     box-shadow: none;
- }
- .clubHome_menu .active{
-    border-bottom: 2px solid #000000;
- }
+}
 
- /* clubModule */
- .clubModule{
+.clubHome_menu .active {
+    border-bottom: 2px solid #000000;
+}
+
+/* clubModule */
+.clubModule {
     background: #1C1F2D;
     padding: 3rem 0 0 0;
- }
- .clubModule_top{
+}
+
+.clubModule_top {
     width: 60%;
     margin: auto;
- }
- @media only screen and (max-width: 668px) {
-    .clubModule_top{
+}
+
+@media only screen and (max-width: 668px) {
+    .clubModule_top {
         width: 90%;
         margin: auto;
-     }
-  }
- .clubModule_top .club-logo{
+    }
+}
+
+.clubModule_top .club-logo {
     text-align: center;
- }
- .clubModule_top_text h5{
-    font-family: NewScript-2;
+}
+
+.clubModule_top_text h5 {
+    font-family: Newspirit;
     font-weight: 400;
     font-size: 32px;
     line-height: 44px;
@@ -123,8 +139,9 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     /* text-fill-color: transparent; */
- }
- .clubModule_top_text p{
+}
+
+.clubModule_top_text p {
     font-weight: 400;
     font-size: 16px;
     line-height: 28px;
@@ -132,18 +149,20 @@
     letter-spacing: -0.02em;
     color: #FFF3D2;
     margin-top: 1rem;
- }
- .clubModule_top .tel_number{
+}
+
+.clubModule_top .tel_number {
     justify-content: center;
     padding: 1rem 0;
- }
+}
 
- .eventsClubBox_first_workshop {
+.eventsClubBox_first_workshop {
     background: #FF6C6C;
     padding: 2rem !important;
     border-radius: 4px 0 0 4px;
     text-align: center;
 }
+
 .eventsClubBox_first_workshop span {
     font-weight: 600;
     font-size: 10px;
@@ -152,6 +171,7 @@
     text-transform: uppercase;
     color: #FFFFFF;
 }
+
 .eventsClubBox_first_workshop h4 {
     font-weight: 300;
     font-size: 30px;
@@ -159,14 +179,14 @@
     color: #FFFFFF;
 }
 
-.clubModule_whatsapp{ 
+.clubModule_whatsapp {
     background: #363A4F;
     border-radius: 4px;
     padding: 4rem 2rem;
     margin-top: 1rem;
 }
 
-.clubModule_whatsapp .clubModule_whatsapp_text h6{ 
+.clubModule_whatsapp .clubModule_whatsapp_text h6 {
     font-weight: 600;
     font-size: 10px;
     line-height: 14px;
@@ -174,7 +194,8 @@
     text-transform: uppercase;
     color: #FFFFFF;
 }
-.clubModule_whatsapp .clubModule_whatsapp_text p{ 
+
+.clubModule_whatsapp .clubModule_whatsapp_text p {
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
@@ -182,7 +203,8 @@
     color: #FFFFFF;
     margin-top: 12px;
 }
-.clubModule_whatsapp .clubModule_whatsapp_text .btn{ 
+
+.clubModule_whatsapp .clubModule_whatsapp_text .btn {
     font-size: 10px;
     line-height: 16px;
     letter-spacing: 0.02em;
@@ -195,18 +217,21 @@
     justify-content: space-between;
     width: 166px;
 }
-.clubModule_whatsapp .clubModule_whatsapp_text .btn:hover{ 
+
+.clubModule_whatsapp .clubModule_whatsapp_text .btn:hover {
     background-color: #363A4F;
 }
- 
-.professionals_section{
+
+.professionals_section {
     padding: 4rem 0;
 }
-.professionals_section .professionals_section_heading{
+
+.professionals_section .professionals_section_heading {
     margin-bottom: 3rem;
 }
-.professionals_section .professionals_section_heading h3{
-    font-family: NewScript-2;
+
+.professionals_section .professionals_section_heading h3 {
+    font-family: Newspirit;
     font-weight: 400;
     font-size: 32px;
     line-height: 40px;
@@ -217,7 +242,8 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
-.professionals_section_card1{
+
+.professionals_section_card1 {
     background-image: url(../../assets/img//clubHome/professionals-card.png);
     background-repeat: no-repeat;
     padding: 1rem;
@@ -225,12 +251,14 @@
     border-radius: 10px;
     border: 2px solid #1c1f2d;
 }
-.professionals_section_card_text{
+
+.professionals_section_card_text {
     margin-top: 14rem;
     width: 14rem;
     text-shadow: 0px 0px 64px #000000;
 }
-.professionals_section_card_text h6{
+
+.professionals_section_card_text h6 {
     font-weight: 600;
     font-size: 10px;
     line-height: 20px;
@@ -238,47 +266,55 @@
     text-transform: uppercase;
     color: #FFFFFF;
 }
-.professionals_section_card_text p{
+
+.professionals_section_card_text p {
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
     color: #FFFFFF;
     margin-top: 0.7rem;
 }
-.professionals_section_card_text span{
+
+.professionals_section_card_text span {
     font-weight: 400;
     font-size: 12px;
-    line-height: 18px; 
+    line-height: 18px;
     color: #FFFFFF;
     margin-top: 0.7rem;
 }
-.professionals_section_footer{
+
+.professionals_section_footer {
     width: 60%;
     margin: auto;
     padding: 3rem 0;
- }
- @media only screen and (max-width: 668px) {
-    .professionals_section_footer{
+}
+
+@media only screen and (max-width: 668px) {
+    .professionals_section_footer {
         width: 90%;
         margin: auto;
         padding: 3rem 0rem 0rem 0rem;
-     }
-     .professionals_section {
+    }
+
+    .professionals_section {
         padding: 4rem 0 0 0;
     }
-     .professionals_section_card_text{
+
+    .professionals_section_card_text {
         width: auto;
     }
-  }
-.professionals_section_footer p{
+}
+
+.professionals_section_footer p {
     font-weight: 400;
     font-size: 16px;
     line-height: 28px;
     text-align: center;
     letter-spacing: -0.02em;
     color: #FFF3D2;
- }
- .professionals_section_footer .reviewspage_box_top_link{
+}
+
+.professionals_section_footer .reviewspage_box_top_link {
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
@@ -289,21 +325,23 @@
     width: fit-content;
     cursor: pointer;
     border-bottom: 2px solid #fff;
- }
+}
 
- .professionals_section_footer_join{
+.professionals_section_footer_join {
     background: #0E111D;
     border-radius: 16px;
     padding: 4rem;
     margin: 7rem 0 2rem 0;
- }
- .professionals_section_footer_join .professionals_section_footer_join_text {
+}
+
+.professionals_section_footer_join .professionals_section_footer_join_text {
     padding-top: 1rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
- }
- .professionals_section_footer_join .professionals_section_footer_join_text h6{
+}
+
+.professionals_section_footer_join .professionals_section_footer_join_text h6 {
     font-weight: 600;
     font-size: 14px;
     line-height: 14px;
@@ -315,7 +353,8 @@
     background-clip: text;
     margin-bottom: 1px;
 }
-.professionals_section_footer_join .professionals_section_footer_join_text span{
+
+.professionals_section_footer_join .professionals_section_footer_join_text span {
     font-weight: 400;
     font-size: 14px;
     line-height: 18px;
@@ -325,7 +364,7 @@
     background-clip: text;
 }
 
-.professionals_section_footer_join .btn{
+.professionals_section_footer_join .btn {
     font-weight: 600;
     font-size: 12px;
     line-height: 24px;
@@ -340,26 +379,30 @@
     border: 2px solid #ffed4f;
     border-radius: 0;
 }
-.professionals_section_footer_join .btn:hover{
+
+.professionals_section_footer_join .btn:hover {
     border: 2px solid #ffed4f;
 }
 
-.clubHome_top_text_mobile{
+.clubHome_top_text_mobile {
     display: none;
- }
+}
 
 @media only screen and (max-width: 668px) {
-    .clubHome_top_text{
+    .clubHome_top_text {
         display: none;
-     }
-     .clubModule_top_text p {
+    }
+
+    .clubModule_top_text p {
         font-size: 14px;
         line-height: 24px;
-     }
-     .clubHome_top_text_mobile{
+    }
+
+    .clubHome_top_text_mobile {
         display: block;
-     }
-     .clubHome_top_text_mobile .clubHome_top_text_btn {
+    }
+
+    .clubHome_top_text_mobile .clubHome_top_text_btn {
         margin-top: 18px;
         border-top: 1px solid #fff;
         padding-top: 16px;
@@ -367,38 +410,48 @@
         align-items: center;
         justify-content: space-between;
     }
+
     .clubHome_top_text h3 {
         font-size: 32px;
     }
+
     .clubHome_top_text p {
         font-size: 14px;
     }
+
     .clubHome_menu .btn {
         font-size: 12px;
         padding: 0;
     }
+
     .eventsClubBox_first_workshop {
         padding: 1rem !important;
     }
+
     .eventsClubBox_second {
         padding: 1rem 0rem !important;
     }
+
     .eventsClubBox_second_bottom {
         align-items: center;
     }
+
     .professionals_section_footer_join {
         padding: 2.6rem 0.4rem 3.6rem 0.8rem;
         border-radius: 0px;
         margin: 7rem -32px 0rem -30px;
     }
+
     .professionals_section_footer_join .btn {
         margin-top: 10px;
         padding: 0.6rem 1.3rem;
     }
+
     .professionals_section_footer_join .professionals_section_footer_join_text h6 {
         font-size: 10px;
     }
+
     .professionals_section_footer_join .professionals_section_footer_join_text span {
         font-size: 12px;
     }
-  }
+}

@@ -1,13 +1,15 @@
-#reviews{
+#reviews {
     background-color: #eaebf0;
     padding: 8rem 0;
 }
-.reviewspage_heading{
+
+.reviewspage_heading {
     text-align: center;
     margin-bottom: 2rem;
 }
-.reviewspage_heading h3{
-    font-family: NewScript-2;
+
+.reviewspage_heading h3 {
+    font-family: Newspirit;
     font-weight: 600;
     font-size: 24px;
     line-height: 30px;
@@ -15,7 +17,8 @@
     letter-spacing: -0.02em;
     color: #000000;
 }
-.reviewspage_heading p{
+
+.reviewspage_heading p {
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
@@ -24,39 +27,45 @@
     color: #70758A;
     margin-top: 6px;
 }
-.reviewspage_box{
+
+.reviewspage_box {
     background: #FFFFFF;
     border-radius: 4px;
     padding-bottom: 1rem;
     margin-top: 6px;
 }
-.reviewspage_box_top{
+
+.reviewspage_box_top {
     padding: 2rem;
     display: flex;
     justify-content: space-between;
 }
-.reviewspage_box_top h6{
+
+.reviewspage_box_top h6 {
     font-weight: 600;
     font-size: 14px;
     line-height: 24px;
     letter-spacing: -0.02em;
     color: #000000;
 }
-.reviewspage_box_top p{
+
+.reviewspage_box_top p {
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
     letter-spacing: -0.02em;
     color: #9A9EB0;
 }
-.reviewspage_box_top_link{
+
+.reviewspage_box_top_link {
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
     letter-spacing: -0.02em;
     color: #2A3592;
 }
-.reviewspage_box_text h5{
+
+.reviewspage_box_text h5 {
     font-weight: 300;
     font-size: 16px;
     line-height: 28px;
@@ -65,13 +74,15 @@
     padding: 2rem;
     border-top: 1px solid rgb(231, 231, 231);
 }
-.reviewspage_box_audio{
+
+.reviewspage_box_audio {
     background: #EDF0FF;
     border-radius: 4px;
     padding: 1rem;
     margin: 0 1rem;
 }
-.reviewspage_box_whatsapp p{
+
+.reviewspage_box_whatsapp p {
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
@@ -80,17 +91,19 @@
     padding: 0.6rem 1rem;
 }
 
-.reviewspage_writeReviews{
+.reviewspage_writeReviews {
     width: 40%;
     margin: 3rem auto;
 }
+
 @media only screen and (max-width: 668px) {
-    .reviewspage_writeReviews{
+    .reviewspage_writeReviews {
         width: 100%;
         margin: 3rem auto;
     }
-  }
-.reviewspage_writeReviews .reviewspage_writeReviews_btn{
+}
+
+.reviewspage_writeReviews .reviewspage_writeReviews_btn {
     cursor: pointer;
     background: #2A3592;
     padding: 2rem 2rem 1.5rem 2rem;
@@ -99,7 +112,8 @@
     display: flex;
     justify-content: space-between;
 }
-.reviewspage_writeReviews .reviewspage_writeReviews_btn h6{
+
+.reviewspage_writeReviews .reviewspage_writeReviews_btn h6 {
     font-weight: 600;
     font-size: 14px;
     line-height: 24px;
@@ -108,17 +122,18 @@
     color: #FFFFFF;
 }
 
-.reviews_modal .btn{
+.reviews_modal .btn {
     background: #2A3592;
     padding: 1rem;
     width: 100%;
     border-radius: 0 0 0.8rem 0.8rem;
 }
-.reviews_modal .btn:active{
+
+.reviews_modal .btn:active {
     background: #2A3592 !important;
 }
 
-.reviews_modal .btn span{
+.reviews_modal .btn span {
     font-weight: 600;
     font-size: 14px;
     line-height: 24px;
@@ -133,6 +148,7 @@
     border-radius: 0.8rem !important;
     border: none;
 }
+
 .modal-body {
     border-radius: 0.8rem;
 }

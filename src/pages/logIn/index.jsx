@@ -73,7 +73,7 @@ const Login = () => {
                                     color: "#000",
                                     fontWeight: "600",
                                     background: "#fff",
-                                    fontFamily: 'Newhero10',
+                                    fontFamily: 'Newhero',
                                     borderBottom: "1px solid #c5c5c5",
                                 }}>
                                 My Account
@@ -90,7 +90,7 @@ const Login = () => {
                             color: "#000",
                             fontWeight: "600",
                             backgroundColor: "#fff !important",
-                            fontFamily: 'Newhero10',
+                            fontFamily: 'Newhero',
                         }}>
                             Logout
                         </MenuItem>
@@ -103,7 +103,7 @@ const Login = () => {
                         {otpverify ? null : (
                             <div className="login_wrap">
                                 <div className="login_title_wrap">
-                                    <h3 style={{ fontFamily: "NewScript-2" }}>Login to your Account</h3>
+                                    <h3 style={{ fontFamily: "Newspirit" }}>Login to your Account</h3>
                                     <Typography
                                         sx={{
                                             fontFamily: "Newhero",

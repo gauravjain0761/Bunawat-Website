@@ -1,12 +1,14 @@
-#userProfile{
+#userProfile {
     background-color: #eaebf0;
     padding: 8rem 0;
 }
-.userProfile_man{
+
+.userProfile_man {
     padding: 2rem;
 }
-.userProfile_man h3{
-    font-family: NewScript-2;
+
+.userProfile_man h3 {
+    font-family: Newspirit;
     font-weight: 600;
     font-size: 24px;
     line-height: 30px;
@@ -14,19 +16,23 @@
     color: #000000;
     margin-bottom: 14px;
 }
-.userProfile_man p{
+
+.userProfile_man p {
     font-weight: 300;
     font-size: 14px;
     line-height: 24px;
     letter-spacing: -0.02em;
     color: #70758A;
 }
-.userProfile_menu .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+
+.userProfile_menu .nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
     color: #0c0c0c;
     background-color: #ffffff !important;
     padding: 2rem;
     box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.15);
 }
+
 .userProfile_menu .nav-pills .nav-link {
     background: none;
     padding: 2rem;
@@ -35,7 +41,7 @@
     border-radius: 0.25rem;
 }
 
-.userProfile_menu_list{
+.userProfile_menu_list {
     background: #FFFFFF;
     box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
@@ -48,10 +54,12 @@
     color: #000000;
     margin-bottom: 4px;
 }
-.userProfile_menu_list:hover{
+
+.userProfile_menu_list:hover {
     color: #000000 !important;
 }
-.userProfile_menu_list_third{
+
+.userProfile_menu_list_third {
     padding: 2rem 2rem 1.4rem 2rem;
     background: #d6d8e1;
     border-radius: 4px;
@@ -59,7 +67,8 @@
     justify-content: space-between;
     align-items: center;
 }
-.userProfile_menu_list_third h6{
+
+.userProfile_menu_list_third h6 {
     font-weight: 600;
     font-size: 10px;
     line-height: 16px;
@@ -67,7 +76,8 @@
     text-transform: uppercase;
     color: #000000;
 }
-.userProfile_menu_list_third h4{
+
+.userProfile_menu_list_third h4 {
     font-weight: 600;
     font-size: 24px;
     line-height: 16px;
@@ -76,26 +86,29 @@
 }
 
 
-.userProfileModule_box{
+.userProfileModule_box {
     background: #FFFFFF;
     box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
 }
-.userProfileModule_box_heading{
+
+.userProfileModule_box_heading {
     display: flex;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 2rem 2rem 1rem 2rem;
 }
-.userProfileModule_box_heading h6{
+
+.userProfileModule_box_heading h6 {
     font-weight: 600;
     font-size: 10px;
     line-height: 16px;
     letter-spacing: 0.05em;
     text-transform: uppercase;
 }
-.userProfileModule_box_heading span{
+
+.userProfileModule_box_heading span {
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
@@ -103,12 +116,13 @@
     color: #9A9EB0;
 }
 
-.userProfileModule_box_list{
+.userProfileModule_box_list {
     padding: 0.6rem 2rem;
     display: flex;
     justify-content: space-between;
 }
-.userProfileModule_box_list h3{
+
+.userProfileModule_box_list h3 {
     font-weight: 600;
     font-size: 14px;
     line-height: 20px;
@@ -116,21 +130,24 @@
     color: #000000;
     margin-bottom: 0;
 }
-.userProfileModule_box_list span{
+
+.userProfileModule_box_list span {
     font-weight: 400;
     font-size: 12px;
     line-height: 12px;
     letter-spacing: -0.02em;
     color: #9A9EB0;
 }
-.userProfileModule_box_list_last{
+
+.userProfileModule_box_list_last {
     padding: 2rem;
     display: flex;
     justify-content: space-between;
     background-color: #F7F8FF;
     border-radius: 0 0 4px 4px;
 }
-.userProfileModule_box_list_last h6{
+
+.userProfileModule_box_list_last h6 {
     font-weight: 600;
     font-size: 14px;
     line-height: 18px;
@@ -138,14 +155,16 @@
     color: #000000;
     margin: 0px;
 }
-.userProfileModule_box_list_last span{
+
+.userProfileModule_box_list_last span {
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
     letter-spacing: -0.02em;
     color: #9A9EB0;
 }
-.userProfileModule_box_list_last .orderconfirmed_img{
+
+.userProfileModule_box_list_last .orderconfirmed_img {
     background-color: #fff;
     border-radius: 50%;
     border: 2px solid #D4D8E8;
@@ -156,7 +175,8 @@
     justify-content: center;
     margin-right: 10px;
 }
-.userProfileModule_box_list_last_track{
+
+.userProfileModule_box_list_last_track {
     font-weight: 600;
     font-size: 12px;
     line-height: 16px;
@@ -166,33 +186,37 @@
     display: flex;
     justify-content: flex-end;
 }
-.userProfileModule_box_list_last_track span{
+
+.userProfileModule_box_list_last_track span {
     margin-left: 6px;
 }
-.userProfileModule_olderorders{
+
+.userProfileModule_olderorders {
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 0.02em;
-    text-transform: uppercase; 
+    text-transform: uppercase;
     color: #9A9EB0;
     margin: 3rem 0;
 }
 
 /* eventsClubBox css */
-.eventsClubBox{
+.eventsClubBox {
     background: #FFFFFF;
     box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
     margin-top: 2px;
 }
-.eventsClubBox_first{
+
+.eventsClubBox_first {
     background: #37CE73;
     padding: 2rem;
     border-radius: 4px 0 0 4px;
     text-align: center;
 }
-.eventsClubBox_first span{
+
+.eventsClubBox_first span {
     font-weight: 700;
     font-size: 10px;
     line-height: 24px;
@@ -200,18 +224,21 @@
     text-transform: uppercase;
     color: #FFFFFF;
 }
-.eventsClubBox_first h4{
+
+.eventsClubBox_first h4 {
     font-weight: 300;
     font-size: 30px;
     line-height: 42px;
     color: #FFFFFF;
 }
-.eventsClubBox_second{
+
+.eventsClubBox_second {
     background: #fff;
     padding: 2rem !important;
     /* border-radius: 4px 0 0 4px; */
 }
-.eventsClubBox_second span{
+
+.eventsClubBox_second span {
     font-weight: 600;
     font-size: 10px;
     line-height: 24px;
@@ -219,8 +246,9 @@
     text-transform: uppercase;
     color: #37CE73;
 }
-.eventsClubBox_second h3{
-    font-family: NewScript-2;
+
+.eventsClubBox_second h3 {
+    font-family: Newspirit;
     font-weight: 600;
     font-size: 18px;
     line-height: 26px;
@@ -228,7 +256,8 @@
     color: #000000;
     margin-top: 14px;
 }
-.eventsClubBox_second p{
+
+.eventsClubBox_second p {
     margin-top: 10px;
     font-weight: 300;
     font-size: 14px;
@@ -236,16 +265,19 @@
     letter-spacing: 0.02em;
     color: #000000;
 }
-.eventsClubBox_second_top{
+
+.eventsClubBox_second_top {
     display: flex;
     justify-content: space-between;
 }
-.eventsClubBox_second_bottom{
+
+.eventsClubBox_second_bottom {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
-.eventsClubBox_second_bottom .btn{
+
+.eventsClubBox_second_bottom .btn {
     font-weight: 800;
     font-size: 10px;
     line-height: 16px;
@@ -255,24 +287,27 @@
     border: 2px solid #2A3592;
     border-radius: 0;
 }
-.eventsClubBox_second_bottom .btn:hover{
+
+.eventsClubBox_second_bottom .btn:hover {
     background-color: #2A3592;
     border: 2px solid #2A3592;
 }
 
 
-.eventsClubBox_first_premium{
+.eventsClubBox_first_premium {
     background: linear-gradient(203.8deg, #FFF33B 7.4%, #FFE762 17.43%, #FFDF7F 26.55%, #FEDA6A 28.37%, #FED348 32.02%, #FDCE2E 35.67%, #FDCA1B 39.31%, #FDC70F 42.96%, #FDC70C 47.52%, #FFD580 77.61%, #FFD877 78.52%, #FFE45D 83.08%, #FFEC4A 88.55%, #FFF13E 93.11%, #FFF33B 98.58%), #4B84F2;
     padding: 2rem !important;
     border-radius: 4px 0 0 4px;
     text-align: center;
 }
-.eventsClubBox_second_top_premium_btn{
+
+.eventsClubBox_second_top_premium_btn {
     background: linear-gradient(203.8deg, #FFF33B 7.4%, #FFE762 17.43%, #FFDF7F 26.55%, #FEDA6A 28.37%, #FED348 32.02%, #FDCE2E 35.67%, #FDCA1B 39.31%, #FDC70F 42.96%, #FDC70C 47.52%, #FFD580 77.61%, #FFD877 78.52%, #FFE45D 83.08%, #FFEC4A 88.55%, #FFF13E 93.11%, #FFF33B 98.58%), #4B84F2;
     padding: 6px 24px;
     color: #2A3592 !important;
 }
-.eventsClubBox_first_premium span{
+
+.eventsClubBox_first_premium span {
     font-weight: 700;
     font-size: 10px;
     line-height: 24px;
@@ -280,18 +315,21 @@
     text-transform: uppercase;
     color: #2A3592;
 }
-.eventsClubBox_first_premium h4{
+
+.eventsClubBox_first_premium h4 {
     font-weight: 300;
     font-size: 30px;
     line-height: 42px;
     color: #2A3592;
 }
-.eventsClubBox_second_premium{
+
+.eventsClubBox_second_premium {
     background: #4756D0;
     padding: 2rem !important;
-    border-radius: 0 4px 4px 0 !important; 
+    border-radius: 0 4px 4px 0 !important;
 }
-.eventsClubBox_second_premium span{
+
+.eventsClubBox_second_premium span {
     font-weight: 600;
     font-size: 10px;
     line-height: 24px;
@@ -299,8 +337,9 @@
     text-transform: uppercase;
     color: #37CE73;
 }
-.eventsClubBox_second_premium h3{
-    font-family: NewScript-2;
+
+.eventsClubBox_second_premium h3 {
+    font-family: Newspirit;
     font-weight: 600;
     font-style: normal;
     font-size: 18px;
@@ -309,7 +348,8 @@
     color: #fff;
     margin-top: 14px;
 }
-.eventsClubBox_second_premium p{
+
+.eventsClubBox_second_premium p {
     margin-top: 10px;
     font-weight: 300;
     font-size: 14px;
@@ -317,16 +357,19 @@
     letter-spacing: 0.02em;
     color: #fff;
 }
-.eventsClubBox_second_top_premium{
+
+.eventsClubBox_second_top_premium {
     display: flex;
     justify-content: space-between;
 }
-.eventsClubBox_second_bottom_premium{
+
+.eventsClubBox_second_bottom_premium {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
-.eventsClubBox_second_bottom_premium .btn{
+
+.eventsClubBox_second_bottom_premium .btn {
     font-weight: 700;
     font-size: 10px;
     line-height: 16px;
@@ -336,26 +379,28 @@
     border: 2px solid #fff;
     border-radius: 0;
 }
-.eventsClubBox_second_bottom_premium .btn:hover{
+
+.eventsClubBox_second_bottom_premium .btn:hover {
     background-color: #fff;
     border: 2px solid #fff;
     color: #2A3592;
 }
 
 /* Saved Address Module */
-.savedAddressModule_btn{
-  background: #2A3592 !important;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 24px;  
-  letter-spacing: 0.02em;
-  color: #fff;
-  padding: 1rem !important;
-  display: flex !important;
-  border: none;
-  justify-content: space-between;
+.savedAddressModule_btn {
+    background: #2A3592 !important;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    color: #fff;
+    padding: 1rem !important;
+    display: flex !important;
+    border: none;
+    justify-content: space-between;
 }
-.savedAddressModule_bottom{
+
+.savedAddressModule_bottom {
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
@@ -365,24 +410,29 @@
     margin-top: 3rem;
 }
 
-.userProfile_mobile{
+.userProfile_mobile {
     display: none;
 }
+
 /* for responsive */
 @media only screen and (max-width: 668px) {
-    .userProfile_desktop{
+    .userProfile_desktop {
         display: none;
     }
-    .userProfile_mobile{
+
+    .userProfile_mobile {
         display: block;
     }
+
     .userProfile_mobile .userProfile_man {
         padding: 2rem;
         text-align: center;
     }
+
     .userProfile_mobile .userProfile_menu .nav-pills .nav-link {
         background: #d7d8db;
     }
+
     .userProfile_mobile .userProfile_menu_list_third {
         padding: 2rem 2rem 1.6rem 2rem;
         background: #2A3592;
@@ -391,35 +441,45 @@
         justify-content: space-between;
         margin-bottom: 1rem;
     }
+
     .userProfile_mobile .userProfile_menu_list_third h6 {
         color: #ffffff;
     }
+
     .userProfile_mobile .userProfile_menu_list_third h4 {
         color: #ffffff;
     }
+
     .userProfile_mobile .userProfileModule_box_heading {
         padding: 1rem 1rem 0rem 1rem;
     }
+
     .userProfile_mobile .userProfileModule_box_list {
         padding: 0.6rem 1rem;
     }
+
     .userProfile_mobile .userProfileModule_box_list h3 {
         font-size: 14px;
     }
+
     .userProfile_mobile .userProfileModule_box_list span {
         font-size: 10px;
     }
+
     .userProfile_mobile .userProfileModule_box_list_last {
         padding: 1rem;
     }
-    .userProfile_mobile .userProfileModule_box_list_last h3{
+
+    .userProfile_mobile .userProfileModule_box_list_last h3 {
         font-size: 14px;
     }
+
     .userProfile_mobile .userProfileModule_box_list_last .orderconfirmed_img {
         width: 50px;
         height: 50px;
     }
+
     .userProfile_mobile .eventsClubBox_second_premium {
         padding: 1rem !important;
     }
-  }
+}

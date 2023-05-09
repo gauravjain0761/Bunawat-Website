@@ -99,7 +99,7 @@ const Login = ({ activeHeader, handleAccountClose }) => {
                                     color: "#000",
                                     fontWeight: "600",
                                     background: "#fff",
-                                    fontFamily: 'Newhero10',
+                                    fontFamily: 'Newhero',
                                     borderBottom: "1px solid #c5c5c5",
                                 }}>
                                 My Account
@@ -110,7 +110,7 @@ const Login = ({ activeHeader, handleAccountClose }) => {
                             color: "#000",
                             fontWeight: "600",
                             backgroundColor: "#fff !important",
-                            fontFamily: 'Newhero10',
+                            fontFamily: 'Newhero',
                         }}>
                             Logout
                         </MenuItem>
