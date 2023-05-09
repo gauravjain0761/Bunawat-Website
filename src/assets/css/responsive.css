@@ -382,8 +382,8 @@
         overflow-y: hidden;
         padding-bottom: 15px;
         padding-left: 12px;
-        margin-left: -12px;
-        margin-right: -14px;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     .tab_section_wrap .nav-tabs .nav-link {
@@ -398,7 +398,7 @@
     }
 
     .tab_common_contain {
-        margin-top: 40px;
+        margin-top: 15px;
     }
 
     .common_tab_title {
@@ -440,7 +440,7 @@
     .cloth_wrap .cloth_inner .row>div:nth-child(5n) {
         flex: 0 0 100%;
         max-width: 100%;
-        height: 400px;
+        height: 480px;
     }
 
     .cloth_wrap .cloth_deatils_link img {
@@ -451,15 +451,15 @@
     }
 
     .cloth_wrap .cloth_inner .row {
-        margin: 0 -10px;
+        margin: 0 -5px;
     }
 
     .cloth_wrap .cloth_inner .row>div {
-        padding: 0 10px;
+        padding: 0 2px;
     }
 
     .cloth_inner .row>div:nth-child(n+3) {
-        /* margin-top: 38px; */
+        margin-top: 4px;
     }
 
     .cloth_wrap .cloth_inner .row>div {
@@ -478,7 +478,7 @@
     }
 
     .footer_header_wrap ul li {
-        width: 33.33%;
+        width: 50%;
         margin-bottom: 15px;
     }
 
@@ -550,7 +550,7 @@
     }
 
     .might_like_wrap .cloth_inner .row>div:nth-child(n+3) {
-        margin-top: 24px;
+        margin-top: 4px;
     }
 
     .common_select_wrap {
@@ -588,7 +588,7 @@
     }
 
     .might_like_wrap.cloth_wrap {
-        padding: 32px 0 80px 0;
+        padding: 32px 0 8px 0;
     }
 
     .common_title,
@@ -755,17 +755,22 @@
     }
 
     .category_page_wrapper {
-        padding: 130px 0 50px;
+        padding: 106px 0 50px;
     }
 
     .cloth_title_wrap h2,
     .cloth_title_wrap h2 p {
         font-size: 26px;
         text-align: center;
+        font-size: 44px !important;
+        font-style: normal;
+        font-weight: 300;
+        color: #000000;
+        line-height: 60px !important;
     }
 
     .cloth_wrap {
-        padding: 50px 0;
+        padding: 8px 0;
     }
 
     .cloth_title_wrap h2 p {
@@ -844,11 +849,11 @@
     }
 
     .tab_common_contain .row>div {
-        padding: 0 5px;
+        padding: 0 2px;
     }
 
     .tab_common_contain .row>div:nth-child(n+3) {
-        margin-top: 10px;
+        margin-top: 4px;
     }
 
     .summer_list_link p,

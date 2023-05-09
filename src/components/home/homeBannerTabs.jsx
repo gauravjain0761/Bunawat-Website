@@ -32,11 +32,11 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                 <Tab eventKey={index} key={item?._id} title="">
                   <div className="common_home_banner">
                     {singleCollection?.mediaType == "VIDEO" ?
-                      singleCollection?.video ? <video key={singleCollection?.video + item?._id + index} loop autoPlay muted style={{ position: 'absolute', width: '100%', height: '100%', objectFit: 'fill' }}>
+                      (singleCollection?.video ? <video key={singleCollection?.video + item?._id + index} loop autoPlay muted style={{ position: 'absolute', width: '100%', height: '100%', objectFit: 'fill' }}>
                         <source src={singleCollection?.video} type="video/mp4" />
-                      </video> : null
+                      </video> : null)
                       :
-                      singleCollection?.image ? <img src={singleCollection?.image} alt="hero_image" style={{ position: 'absolute', width: '100%' }} /> : null
+                      (singleCollection?.image ? <img src={singleCollection?.image} alt="hero_image" style={{ position: 'absolute', width: '100%' }} /> : null)
                     }
                     <div className="container">
                       <div className="home_banner_title">
@@ -145,6 +145,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
       <div
         className="tab_section_wrap"
         style={{
+          padding: "26px 0px",
           backgroundColor:
             (key == 0 || key == 4)
               ? "#FFDD66"
@@ -157,7 +158,10 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                     : "#FFDD66",
         }}
       >
-        <div className="container">
+        <div className="container" style={{
+          paddingRight: "8px",
+          paddingLeft: "8px"
+        }}>
           <div className="tab_section_inner">
             <Tabs
               id="controlled-tab-example"

@@ -156,23 +156,28 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
         </div>
         <div className="best_sale_video">
           {singleList?.mediaType == "VIDEO" ?
-            <video loop autoPlay muted style={{ width: '100%', height: '100%', objectFit: "fill" }}>
-              <source src={singleList?.video} type="video/mp4" />
-            </video>
+            (singleList?.video ?
+              <video loop autoPlay muted style={{ width: '100%', height: '100%', objectFit: "fill" }}>
+                <source src={singleList?.video} type="video/mp4" />
+              </video>
+              : null)
             :
-            <img src={singleList?.image} alt="hero_image" style={{ width: '100%', height: '100%', objectFit: "fill" }} />
+            (singleList?.image ? <img src={singleList?.image} alt="hero_image" style={{ width: '100%', height: '100%', objectFit: "fill" }} /> : null)
           }
         </div>
       </div>
 
       <div className="cloth_wrap">
-        <div className="container">
+        <div className="container" style={{
+          paddingRight: "8px",
+          paddingLeft: "8px"
+        }}>
           <div className="cloth_inner">
             <div className="row">
               {singleList?.products?.map((list, index) => {
                 return (
                   <>
-                    <div className={getClassWidth(index, singleList?.products?.length)} style={{ paddingRight: "5px", paddingLeft: "5px" }}>
+                    <div className={getClassWidth(index, singleList?.products?.length)} >
                       <div className="cloth_deatils_wrap">
                         <div style={{ textAlign: "center", width: '100%', height: '100%' }}>
                           <Link to={`/product/${list?._id}/${data?.[keyVal]?.type ?? ""}`} className="cloth_deatils_link">

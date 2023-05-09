@@ -74,7 +74,10 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
 
         <div className='category_page_wrapper'>
             <div className='cloth_wrap pt-0 tab_section_wrap'>
-                <div className='container'>
+                <div className='container' style={{
+                    paddingRight: "8px",
+                    paddingLeft: "8px"
+                }}>
                     <div className="cloth_inner">
                         <div className='cloth_title_wrap' style={{ marginBottom: "1rem" }}>
                             <h2><sapn className="limited_edition">Limited Edition</sapn>&nbsp; pieces by adept designers</h2>
@@ -98,7 +101,7 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                             {singleList?.products?.map((list, index) => {
                                                 return (
                                                     <>
-                                                        <div className={getClassWidth(index, singleList?.products?.length)} style={{ paddingRight: "6px", paddingLeft: "6px" }}>
+                                                        <div className={getClassWidth(index, singleList?.products?.length)} >
                                                             <div className="cloth_deatils_wrap category_cloth_deatils_wrap">
                                                                 <Link to={`/product/${list?._id}/${data?.[key]?.type ?? ""}`} className="cloth_deatils_link">
                                                                     <img src={list?.image} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "720px" : "560px"} />

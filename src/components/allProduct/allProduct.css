@@ -177,8 +177,11 @@
      }
 
      .cloth_title_wrap h2 .limited_edition {
-         font-size: 36px !important;
+         font-size: 44px !important;
          margin-left: -8px;
+         font-style: normal;
+         font-weight: 300;
+         color: #000000;
      }
 
      .cloth_title_wrap h2 {

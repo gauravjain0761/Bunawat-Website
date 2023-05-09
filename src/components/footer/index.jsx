@@ -7,7 +7,7 @@ function Footer() {
     <div className="footer_blog_section">
       <div className="container">
         <div className="footer_blog_inner">
-        
+
           <FooterStrip />
 
           <div className="blog_details_wrap">
@@ -144,10 +144,10 @@ function Footer() {
 
                 <div className="blog_info">
                   <h3>KEEP IN MIND WHILE SHOPPING ONLINE</h3>
-                    <p>
-                      Here are some amazing tips for you to keep in mind while
-                      shopping online:
-                    </p>
+                  <p>
+                    Here are some amazing tips for you to keep in mind while
+                    shopping online:
+                  </p>
                   <ul>
                     <li>
                       Before you make a purchasing decision just make sure you
@@ -167,11 +167,11 @@ function Footer() {
 
                 <div className="blog_info">
                   <h3>FREQUENTLY ASKED QUESTIONS</h3>
-                    <p>
-                      As weddings are lined up, we need a lot of Indian wedding
-                      dresses to go with the occasions. Here are some amazing
-                      tips to know your personal style –{" "}
-                    </p>
+                  <p>
+                    As weddings are lined up, we need a lot of Indian wedding
+                    dresses to go with the occasions. Here are some amazing
+                    tips to know your personal style –{" "}
+                  </p>
                   <ul>
                     <li>
                       A good quality fabric is the most important factor to
@@ -223,7 +223,9 @@ function Footer() {
             </div>
           </div>
 
-          <Link className="footer_logo">
+          <Link className="footer_logo" style={{
+            marginBottom: '20px'
+          }}>
             <svg
               width="120"
               height="43"

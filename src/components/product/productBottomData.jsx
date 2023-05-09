@@ -541,7 +541,10 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
             </div>
             {product?.similar_products?.length > 0 &&
                 <div className="cloth_wrap might_like_wrap">
-                    <div className="container">
+                    <div className="container" style={{
+                        paddingRight: "8px",
+                        paddingLeft: "8px"
+                    }}>
                         <div className="might_like_inner">
                             <p>You might like these too</p>
                             <Link to="/">
@@ -810,7 +813,10 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
             </Box>
 
             {recentlyProduct?.slice(1)?.length > 0 ? <div className="recemtly_wrap">
-                <div className="container">
+                <div className="container" style={{
+                    paddingRight: "8px",
+                    paddingLeft: "8px"
+                }}>
                     <div className="recemtly_inner">
                         <div className="sell_wrap">
                             <h3>Recently Seen</h3>
@@ -821,7 +827,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                 display: 'flex',
                                 flexWrap: 'nowrap',
                                 width: '100%',
-                                gap: '6px',
+                                gap: '4px',
                                 overflow: 'hidden',
                                 overflowX: 'auto'
                             }}>
