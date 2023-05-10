@@ -449,7 +449,7 @@ button {
 }
 
 .tab_common_contain {
-    margin-top: 50px;
+    margin-top: 56px;
 }
 
 .bunavat_wrapper {
@@ -463,7 +463,7 @@ button {
 }
 
 .tab_common_contain .row>div:nth-child(n + 3) {
-    margin-top: 30px;
+    margin-top: 32px;
 }
 
 .tab_section_inner .fade {
@@ -515,7 +515,7 @@ button {
 }
 
 .shop_hald_wrap {
-    padding: 50px 0;
+    padding: 64px 0;
 }
 
 .shop_hald_inner {
@@ -663,11 +663,11 @@ button {
 }
 
 .cloth_wrap {
-    padding: 65px 0 65px;
+    padding: 64px 0 96px 0;
 }
 
 .cloth_inner .row>div:nth-child(n+3) {
-    margin-top: 12px;
+    margin-top: 16px;
 }
 
 .join_the_club_wrap {
@@ -805,7 +805,7 @@ button {
 }
 
 .footer_blog_section {
-    padding: 40px 0;
+    padding: 38px 0;
 }
 
 .footer_header_wrap ul,
@@ -893,7 +893,7 @@ button {
 
 
 .category_page_wrapper {
-    padding: 180px 0 100px
+    padding: 188px 0 108px
 }
 
 .cloth_title_wrap h2 {
@@ -902,7 +902,7 @@ button {
     font-size: 48px;
     color: #000;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 38px;
     /* display: flex; */
     /* align-items: center; */
     /* justify-content: center; */
@@ -1564,7 +1564,7 @@ li.common_option_wrap {
 }
 
 .structured_fabric_wrapper {
-    padding: 65px 0;
+    padding: 64px 0;
 }
 
 .product_slider_section,
@@ -1617,7 +1617,7 @@ li.common_option_wrap {
 }
 
 .star_content {
-    padding: 98px 0 40px;
+    padding: 104px 0 106px 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1679,14 +1679,14 @@ li.common_option_wrap {
 }
 
 .might_like_wrap.cloth_wrap {
-    padding: 66px 0;
+    padding: 96px 0;
     background: #F4F4F4;
 }
 
 .might_like_inner {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 15px;
+    margin-bottom: 32px;
 }
 
 .might_like_inner p {
@@ -1718,7 +1718,7 @@ li.common_option_wrap {
 }
 
 .might_like_wrap .cloth_inner .row>div:nth-child(n+4) {
-    margin-top: 24px;
+    margin-top: 16px;
 }
 
 .product_slider_section .row {
@@ -1988,7 +1988,7 @@ li.common_option_wrap {
 }
 
 .recently_col_wrap {
-    margin-top: 16px;
+    margin-top: 32px;
 }
 
 .recently_col_wrap_scroll_hide::-webkit-scrollbar {

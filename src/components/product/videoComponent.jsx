@@ -2,7 +2,7 @@ import React from 'react'
 
 const VideoComponent = ({ url, index, width }) => {
     return (
-        <div className="col-md-4 col-sm-6" style={width ? (index == 0 ? { paddingRight: '58px' } : (index == 2 ? { paddingLeft: '58px' } : {})) : {}}>
+        <div className="col-md-4 col-sm-6" style={width ? (index == 0 ? { paddingRight: '58px' } : (index == 2 ? { paddingLeft: '58px' } : {})) : { padding: "0px 8px 0px 8px" }}>
             <div className="structured_fabric_img">
                 <video key={url + index} loop autoPlay muted style={{
                     width: '100%',

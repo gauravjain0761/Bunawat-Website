@@ -145,7 +145,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
       <div
         className="tab_section_wrap"
         style={{
-          padding: "26px 0px",
+          padding: "24px 0px 0px 0px",
           backgroundColor:
             (key == 0 || key == 4)
               ? "#FFDD66"

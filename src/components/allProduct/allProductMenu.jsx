@@ -101,7 +101,7 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                             {singleList?.products?.map((list, index) => {
                                                 return (
                                                     <>
-                                                        <div className={getClassWidth(index, singleList?.products?.length)} >
+                                                        <div className={getClassWidth(index, singleList?.products?.length)} style={{ padding: "0px 8px 0px 8px" }}>
                                                             <div className="cloth_deatils_wrap category_cloth_deatils_wrap">
                                                                 <Link to={`/product/${list?._id}/${data?.[key]?.type ?? ""}`} className="cloth_deatils_link">
                                                                     <img src={list?.image} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "720px" : "560px"} />
@@ -163,7 +163,7 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                     </div>
                 </div>
             </div>
-            <div style={{ padding: "0rem 2rem" }}>
+            <div className='container' style={{ padding: "0rem 2rem" }}>
                 <FooterStrip />
             </div>
             <ProductFilters singleData={singleData} selectedId={selectedId} setSelectedId={setSelectedId} />
