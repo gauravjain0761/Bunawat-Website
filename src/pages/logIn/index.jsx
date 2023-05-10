@@ -17,6 +17,7 @@ const Login = () => {
     const [otpMatch, { isLoading, isError, error }] = useOtpMatchMutation(undefined, {})
     const [addToCart] = useAddToCartMutation()
     const [otpverify, setOtpverify] = React.useState(false);
+    const [errorMessage, setErrorMessage] = React.useState("");
     const [loginData, setLoginData] = React.useState({
         phone: '',
         otp: ''
@@ -24,9 +25,13 @@ const Login = () => {
 
 
     const handleSendOtp = async () => {
-        await sendOtp({ phone: loginData?.phone ?? "" }).unwrap().then((data) => {
-            setOtpverify(true)
-        }).catch((error) => toast.error(error?.data?.message))
+        if (loginData?.phone == "") {
+            setErrorMessage("Enter phone number")
+        } else {
+            await sendOtp({ phone: loginData?.phone ?? "" }).unwrap().then((data) => {
+                setOtpverify(true)
+            }).catch((error) => setErrorMessage(error?.data?.message))
+        }
     };
 
     const handleLogin = async () => {
@@ -99,7 +104,7 @@ const Login = () => {
                 </>
                 :
                 <>
-                    <Box sx={{ p: 4.3 }} className="body_width">
+                    <Box className="body_width_mobile">
                         {otpverify ? null : (
                             <div className="login_wrap">
                                 <div className="login_title_wrap">
@@ -121,6 +126,7 @@ const Login = () => {
                                     <div className="login_input_inner">
                                         <input type="text" value={loginData?.phone} onChange={(e) => {
                                             const onlyNums = e.target.value.replace(/[^0-9]/g, '');
+                                            setErrorMessage(null)
                                             if (onlyNums.length < 10) {
                                                 setLoginData({ ...loginData, phone: onlyNums });
                                             } else if (onlyNums.length === 10) {
@@ -129,6 +135,11 @@ const Login = () => {
                                         }} placeholder="Phone Number" />
                                         <span>+91</span>
                                     </div>
+                                    <p style={{
+                                        color: 'red',
+                                        paddingTop: '4px',
+                                        height: '28px'
+                                    }}>{!!errorMessage ? errorMessage : null}</p>
                                     <button type="button" onClick={handleSendOtp}>
                                         <span>Send OTP</span>
                                         <svg
@@ -185,7 +196,7 @@ const Login = () => {
                                 <div className="login_title_wrap">
                                     <h3>One-time Password</h3>
                                     <h4>
-                                        Enter the OTP we sent to <span>+91 91283 61521</span>
+                                        Enter the OTP we sent to <span>+91 {loginData?.phone}</span>
                                     </h4>
                                 </div>
                                 <div className="login_input_wrap">

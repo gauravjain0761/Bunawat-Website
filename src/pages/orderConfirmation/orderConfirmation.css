@@ -4,6 +4,13 @@
     padding: 8rem 0 0 0;
 }
 
+.text-ellipsis-width {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 260px;
+}
+
 .ordercConfirmation_top h3 {
     font-family: Newspirit;
     font-weight: 600;
@@ -43,26 +50,36 @@
 
 .orderConfirmation_box_second {
     padding-top: 2rem;
-    width: 60%;
+    width: 600px;
     margin: auto;
 }
 
 .orderConfirmation_box {
-    width: 60%;
+    width: 600px;
+    padding: 24px;
     margin: auto;
     background: #FFFFFF;
     box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
 }
 
+.footer-conteiner {
+    padding: 38px 64px;
+    background: #fff
+}
+
 @media (max-width: 767px) {
+    .footer-conteiner {
+        padding: 38px 24px;
+    }
+
     .orderConfirmation_box {
-        width: 80%;
+        width: 100%;
         margin: auto;
     }
 
     .orderConfirmation_box_second {
-        width: 80%;
+        width: 100%;
         margin: auto;
     }
 }
@@ -72,7 +89,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 2rem 1rem 2rem;
+    /* padding: 2rem 2rem 1rem 2rem; */
 }
 
 .orderConfirmation_box_heading h6 {
@@ -92,7 +109,8 @@
 }
 
 .orderConfirmation_box_list {
-    padding: 0.6rem 2rem;
+    /* padding: 0.6rem 2rem; */
+    padding: 24px 0 0 0;
     display: flex;
     justify-content: space-between;
 }
@@ -280,7 +298,7 @@
     }
 
     .orderConfirmation_box_list h3 {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     .orderConfirmation_box_list span {
@@ -317,4 +335,17 @@
 .shippingStatusLink:hover {
     color: #2A3592;
     border-bottom: 1px solid #2A3592;
+}
+
+
+@media only screen and (max-width: 576px) {
+    .text-ellipsis-width {
+        width: 220px;
+    }
+}
+
+@media only screen and (max-width: 430px) {
+    .text-ellipsis-width {
+        width: 150px;
+    }
 }

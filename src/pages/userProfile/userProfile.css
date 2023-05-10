@@ -1,6 +1,13 @@
 #userProfile {
     background-color: #eaebf0;
-    padding: 8rem 0;
+    padding: 120px 0 48px 0;
+}
+
+.text-ellipsis-width {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 260px;
 }
 
 .userProfile_man {
@@ -29,13 +36,13 @@
 .nav-pills .show>.nav-link {
     color: #0c0c0c;
     background-color: #ffffff !important;
-    padding: 2rem;
+    padding: 26px;
     box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.15);
 }
 
 .userProfile_menu .nav-pills .nav-link {
     background: none;
-    padding: 2rem;
+    padding: 26px;
     box-shadow: none;
     border: 0;
     border-radius: 0.25rem;
@@ -90,6 +97,7 @@
     background: #FFFFFF;
     box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
+    padding: 24px;
 }
 
 .userProfileModule_box_heading {
@@ -97,7 +105,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 2rem 1rem 2rem;
+    /* padding: 2rem 2rem 1rem 2rem; */
 }
 
 .userProfileModule_box_heading h6 {
@@ -117,7 +125,8 @@
 }
 
 .userProfileModule_box_list {
-    padding: 0.6rem 2rem;
+    /* padding: 0.6rem 2rem; */
+    padding: 24px 0 0 0;
     display: flex;
     justify-content: space-between;
 }
@@ -140,7 +149,8 @@
 }
 
 .userProfileModule_box_list_last {
-    padding: 2rem;
+    /* padding: 2rem; */
+    padding: 24px 0 0 0;
     display: flex;
     justify-content: space-between;
     background-color: #F7F8FF;
@@ -434,7 +444,7 @@
     }
 
     .userProfile_mobile .userProfile_menu_list_third {
-        padding: 2rem 2rem 1.6rem 2rem;
+        padding: 30px 24px 20px 24px;
         background: #2A3592;
         border-radius: 4px;
         display: flex;
@@ -451,11 +461,11 @@
     }
 
     .userProfile_mobile .userProfileModule_box_heading {
-        padding: 1rem 1rem 0rem 1rem;
+        /* padding: 1rem 1rem 0rem 1rem; */
     }
 
     .userProfile_mobile .userProfileModule_box_list {
-        padding: 0.6rem 1rem;
+        /* padding: 24px 0 0 0; */
     }
 
     .userProfile_mobile .userProfileModule_box_list h3 {
@@ -467,7 +477,7 @@
     }
 
     .userProfile_mobile .userProfileModule_box_list_last {
-        padding: 1rem;
+        /* padding: 1rem; */
     }
 
     .userProfile_mobile .userProfileModule_box_list_last h3 {
@@ -481,5 +491,30 @@
 
     .userProfile_mobile .eventsClubBox_second_premium {
         padding: 1rem !important;
+    }
+}
+
+
+@media only screen and (max-width: 992px) {
+    .userProfile_desktop {
+        max-width: 900px !important;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .userProfileModule_box {
+        margin-top: 24px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .text-ellipsis-width {
+        width: 220px;
+    }
+}
+
+@media only screen and (max-width: 430px) {
+    .text-ellipsis-width {
+        width: 150px;
     }
 }

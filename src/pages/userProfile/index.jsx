@@ -19,7 +19,7 @@ const UserProfile = () => {
             <Row>
               <Col xs={12} md={5}>
                 <div className='userProfile_man'>
-                  <h3>Hello {userData?.fname ?? "" + userData?.lname ?? ""}</h3>
+                  <h3>Hello {userData?.fname ?? "User!"}</h3>
                   <p>This is your space. Track events & orders and update your saved details from here.</p>
                 </div>
                 <div className='userProfile_menu'>
@@ -50,7 +50,7 @@ const UserProfile = () => {
                     </Nav.Item>
                   </Nav>
 
-                  <div className='userProfile_menu_list_third' style={{marginTop: "10px"}}>
+                  <div className='userProfile_menu_list_third' style={{ marginTop: "10px" }}>
                     <h6>
                       <img src="../img/storecredit.png" alt='Store credit' height="20" style={{ marginRight: "12px" }} />
                       Store credit
@@ -88,7 +88,7 @@ const UserProfile = () => {
             <Row>
               <Col xs={12} md={5}>
                 <div className='userProfile_man'>
-                  <h3>Hello Jemma</h3>
+                  <h3>Hello {userData?.fname ?? "User!"}</h3>
                   <p>This is your space. Track events & orders and update your saved details from here.</p>
                 </div>
                 <div className='userProfile_menu'>

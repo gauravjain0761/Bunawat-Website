@@ -2137,6 +2137,11 @@ li.common_option_wrap {
     width: 400px;
 }
 
+.body_width_mobile {
+    width: 100%;
+    padding: 0px 16px 0px 16px;
+}
+
 .login_body {
     padding: 72px;
     background: rgb(223, 227, 232);
@@ -2221,7 +2226,7 @@ li.common_option_wrap {
 }
 
 .login_input_wrap button {
-    margin-top: 15px;
+    margin-top: 16px;
     background-color: #2A3592;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
@@ -2242,7 +2247,7 @@ li.common_option_wrap {
 }
 
 .login_input_wrap {
-    margin: 30px 0;
+    margin: 32px 0;
 }
 
 .login_info_wrap p {

@@ -433,8 +433,8 @@ const OrderConfirmation = () => {
               {orderData?.data?.items?.map(item => (
                 <div className="orderConfirmation_box_list">
                   <div>
-                    <h3>{item?.product_name}</h3>
-                    <span>{`${Object.values(item?.varients ?? {})?.join(" • ")}`}</span>
+                    <h3 className='text-ellipsis-width'>{item?.product_name}</h3>
+                    <span className='text-ellipsis-width' style={{ display: 'block' }}>{`${Object.values(item?.varients ?? {})?.join(" • ")}`}</span>
                   </div>
                   <div>
                     <h3>{getNumberWithComma(Number(item?.price) * Number(item?.qty))}</h3>
@@ -473,7 +473,7 @@ const OrderConfirmation = () => {
             </div>
 
             <div className="orderConfirmation_box_second" style={{ paddingBottom: "1rem" }}>
-              <div className="orderConfirmation_box_heading">
+              <div className="orderConfirmation_box_heading" style={{ padding: "0.6rem 2rem" }}>
                 <div>
                   <h6>
                     <img src="../img/shippingto.png" alt="shippingto" width="22" style={{ marginRight: "8px" }} />
@@ -551,13 +551,7 @@ const OrderConfirmation = () => {
             </div>
           </Container>
           {/* <ShippingStatus /> */}
-          <Box style={{
-            padding: "0rem 2rem",
-            background: "#fff",
-            '@media (max-width: 768px)': {
-              padding: "1rem 2rem"
-            }
-          }}>
+          <Box className="footer-conteiner">
             <FooterStrip />
           </Box>
 
