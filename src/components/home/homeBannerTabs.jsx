@@ -5,14 +5,16 @@ import { Link } from "react-router-dom";
 import { getNumberWithComma } from "../../utils/utils";
 import BestSellingSection from "./bestSellingSection";
 import SaveButton from "../common/save";
-import { Box } from "@mui/material";
+import { Box, Skeleton } from "@mui/material";
 
 const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
   const [key, setKey] = useState(0);
   const [menuList, setMenuList] = React.useState(data ?? [])
   const [singleCollection, setSingleCollection] = React.useState(singleData ?? [])
+  const [loading, setLoading] = React.useState(true)
 
   useEffect(() => {
+    setLoading(false)
     setMenuList(data ?? []);
     setSingleCollection(singleData)
   }, [data, singleData]);
@@ -167,6 +169,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
               id="controlled-tab-example"
               activeKey={key}
               onSelect={(k) => {
+                setLoading(true);
                 setKey(k)
                 setSelectedId({
                   id: menuList?.[k]?._id ?? "",
@@ -178,93 +181,112 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
               {menuList.map((item, index) => {
                 return (
                   <Tab eventKey={index} key={item?._id} title={item?.name}>
-                    <div className="tab_common_contain">
+                    <div className={`tab_common_contain ${key == index ? "activeOpecity" : "inActiveOpecity"}`}>
                       <div className="row">
-                        {singleCollection?.products?.slice(0, 4)?.map((list, index) => {
+                        {singleCollection?.products?.slice(0, 4)?.map((list) => {
                           return (
                             <>
-                              {/* {(index == 0 || index == 2) ? <div className="col-1"></div> : null} */}
-                              {/* <div className="col-5" style={index == 0 ? { marginTop: "30px" } : {}}> */}
-                              <div className="col-6">
-                                <Link to={`/product/${list?._id}/${menuList?.[key]?.type ?? ""}`}>
-                                  <div className="common_tab_info">
-                                    <div className="common_tab_img">
-                                      <img src={list?.image} alt="image" className="product_above_image" height="1020px" width="100%" />
-                                    </div>
-                                    <div className=" common_tab_title">
-                                      <div className="summer_list_link_wrap">
-                                        <div className="summer_list_link">
-                                          <p>{list?.name}</p>
-                                          <span>
-                                            <svg
-                                              width="9"
-                                              height="10"
-                                              viewBox="0 0 9 10"
-                                              fill="none"
-                                              xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                              <g clipPath="url(#clip0_2_1592)">
-                                                <path
-                                                  d="M0.600098 1.43018H7.9901V8.82018"
-                                                  stroke="white"
-                                                  strokeWidth="1.7"
-                                                  strokeMiterlimit="10"
-                                                ></path>
-                                                <path
-                                                  d="M0.600098 8.82018L7.9901 1.43018"
-                                                  stroke="white"
-                                                  strokeWidth="1.7"
-                                                  strokeMiterlimit="10"
-                                                ></path>
-                                              </g>
-                                              <defs>
-                                                <clipPath id="clip0_2_1592">
-                                                  <rect
-                                                    width="8.84"
-                                                    height="8.84"
-                                                    fill="white"
-                                                    transform="translate(0 0.580078)"
-                                                  ></rect>
-                                                </clipPath>
-                                              </defs>
-                                            </svg>
-                                          </span>
-                                        </div>
-                                        <p style={{
-                                          display: "flex",
-                                          justifyContent: "space-between",
-                                          alignItems: "center",
-                                        }}>
-                                          <Box sx={{
-                                            '@media (max-width: 768px)': {
-                                              marginTop: "8px"
-                                            },
-                                          }}>
-                                            {getNumberWithComma(list?.sale_price ?? 0)}
-                                          </Box>
-                                          <Box sx={{
-                                            display: "none",
-                                            '@media (max-width: 768px)': {
-                                              display: "block",
-                                            }
-                                          }}>
-                                            <SaveButton id={list?._id} isWishlist={list?.isWishlist} setSelectedId={setSelectedId} selectedId={selectedId} />
-                                          </Box>
-                                        </p>
+                              {loading ?
+                                <div className={`col-6 `}>
+                                  <Link to={`/product/${list?._id}/${menuList?.[key]?.type ?? ""}`}>
+                                    <div className="common_tab_info">
+                                      <div className="common_tab_img">
+                                        <Skeleton animation="wave" sx={{
+                                          bgcolor: (key == 0 || key == 4)
+                                            ? "#FFDD6690"
+                                            : (key == 1 || key == 5)
+                                              ? "#C2D8E390"
+                                              : (key == 2 || key == 6)
+                                                ? "#E3B9AB90"
+                                                : (key == 3 || key == 7)
+                                                  ? "#B5321D90"
+                                                  : "#FFDD6690",
+                                        }} variant="rounded" className="product_above_image" width="100%" height="1020px" />
                                       </div>
-                                      <Box sx={{
-                                        display: "block",
-                                        '@media (max-width: 768px)': {
-                                          display: "none",
-                                        }
-                                      }}>
-                                        <SaveButton id={list?._id} isWishlist={list?.isWishlist} setSelectedId={setSelectedId} selectedId={selectedId} />
-                                      </Box>
                                     </div>
-                                  </div>
-                                </Link>
-                              </div>
-                              {/* {(index == 1 || index == 3) ? <div className="col-1"></div> : null} */}
+                                  </Link>
+                                </div>
+                                :
+                                <div className={`col-6 `}>
+                                  <Link to={`/product/${list?._id}/${menuList?.[key]?.type ?? ""}`}>
+                                    <div className="common_tab_info">
+                                      <div className="common_tab_img">
+                                        <img src={list?.image} alt="image" className="product_above_image" height="1020px" width="100%" />
+                                      </div>
+                                      <div className=" common_tab_title">
+                                        <div className="summer_list_link_wrap">
+                                          <div className="summer_list_link">
+                                            <p>{list?.name}</p>
+                                            <span>
+                                              <svg
+                                                width="9"
+                                                height="10"
+                                                viewBox="0 0 9 10"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                              >
+                                                <g clipPath="url(#clip0_2_1592)">
+                                                  <path
+                                                    d="M0.600098 1.43018H7.9901V8.82018"
+                                                    stroke="white"
+                                                    strokeWidth="1.7"
+                                                    strokeMiterlimit="10"
+                                                  ></path>
+                                                  <path
+                                                    d="M0.600098 8.82018L7.9901 1.43018"
+                                                    stroke="white"
+                                                    strokeWidth="1.7"
+                                                    strokeMiterlimit="10"
+                                                  ></path>
+                                                </g>
+                                                <defs>
+                                                  <clipPath id="clip0_2_1592">
+                                                    <rect
+                                                      width="8.84"
+                                                      height="8.84"
+                                                      fill="white"
+                                                      transform="translate(0 0.580078)"
+                                                    ></rect>
+                                                  </clipPath>
+                                                </defs>
+                                              </svg>
+                                            </span>
+                                          </div>
+                                          <p style={{
+                                            display: "flex",
+                                            justifyContent: "space-between",
+                                            alignItems: "center",
+                                          }}>
+                                            <Box sx={{
+                                              '@media (max-width: 768px)': {
+                                                marginTop: "8px"
+                                              },
+                                            }}>
+                                              {getNumberWithComma(list?.sale_price ?? 0)}
+                                            </Box>
+                                            <Box sx={{
+                                              display: "none",
+                                              '@media (max-width: 768px)': {
+                                                display: "block",
+                                              }
+                                            }}>
+                                              <SaveButton id={list?._id} isWishlist={list?.isWishlist} setSelectedId={setSelectedId} selectedId={selectedId} />
+                                            </Box>
+                                          </p>
+                                        </div>
+                                        <Box sx={{
+                                          display: "block",
+                                          '@media (max-width: 768px)': {
+                                            display: "none",
+                                          }
+                                        }}>
+                                          <SaveButton id={list?._id} isWishlist={list?.isWishlist} setSelectedId={setSelectedId} selectedId={selectedId} />
+                                        </Box>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </div>
+                              }
                             </>
                           )
                         })}

@@ -365,7 +365,7 @@
     }
 
     .common_home_banner {
-        height: 80vh;
+        height: 45vh;
     }
 
     .common_home_banner img {
@@ -840,7 +840,7 @@
     .common_title,
     .home_banner_title h2,
     .join_the_club_inner h2 {
-        font-size: 32px;
+        font-size: 28px;
         line-height: 40px;
     }
 

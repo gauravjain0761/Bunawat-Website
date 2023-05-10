@@ -256,7 +256,7 @@ button {
 .common_home_banner .container {
     position: relative;
     z-index: 1;
-    padding: 65px 20px;
+    padding: 65px 20px 40px 20px;
 }
 
 .common_home_banner::after {
@@ -467,7 +467,7 @@ button {
 }
 
 .tab_section_inner .fade {
-    transition: opacity .30s linear;
+    transition: opacity 2s ease-in-out;
 }
 
 .home_banner_inner .tab_section.nav {
@@ -2608,4 +2608,13 @@ li.common_option_wrap {
     .mobile_footer_strip_menu {
         display: block;
     }
+}
+
+.tab_section_inner .tab-content .inActiveOpecity {
+    opacity: 0;
+}
+
+.tab_section_inner .tab-content .active .activeOpecity {
+    opacity: 1;
+    transition: opacity 2s ease-in-out;
 }

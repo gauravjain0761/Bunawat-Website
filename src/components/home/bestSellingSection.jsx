@@ -5,7 +5,7 @@ import SaveButton from "../common/save";
 
 const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedId }) => {
   const [singleList, setSingleList] = React.useState(singleData ?? [])
-
+  console.log("singleList", singleList)
   useEffect(() => {
     setSingleList(singleData ?? []);
   }, [singleData]);
@@ -64,7 +64,7 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
             <h2 className="common_title">{singleList?.title}</h2>
             <div className="summer_list">
               {singleList?.linked_product?.length > 0 &&
-                singleList?.linked_product.map(list => (
+                singleList?.linked_product.map((list) => (
                   <div className="summer_list_link_wrap" key={list?._id}>
                     <Link to={`/product/${list?._id}/${data?.[keyVal]?.type ?? ""}`}>
                       <div className="summer_list_link">
@@ -157,7 +157,7 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
         <div className="best_sale_video">
           {singleList?.mediaType == "VIDEO" ?
             (singleList?.video ?
-              <video loop autoPlay muted style={{ width: '100%', height: '100%', objectFit: "fill" }}>
+              <video loop key={singleList?.video + singleList?._id} autoPlay muted style={{ width: '100%', height: '100%', objectFit: "fill" }}>
                 <source src={singleList?.video} type="video/mp4" />
               </video>
               : null)
