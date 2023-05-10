@@ -1689,6 +1689,10 @@ li.common_option_wrap {
     margin-bottom: 32px;
 }
 
+.fix-padding-might_like_inner {
+    padding: '0px 8px 0px 8px'
+}
+
 .might_like_inner p {
     color: #000;
     font-weight: 600;

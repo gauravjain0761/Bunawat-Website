@@ -586,7 +586,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                         <div className="cloth_inner">
                             <div className="row">
                                 {product?.similar_products?.map((list, index) => (
-                                    <div className={getClassWidth(index, product?.similar_products?.length)} style={{ padding: '0px 8px 0px 8px' }}>
+                                    <div className={`fix-padding-might_like_inner ${getClassWidth(index, product?.similar_products?.length)}`}>
                                         <div className="cloth_deatils_wrap">
                                             <Link to={`/product/${list?._id}/${list?.type}`} className="cloth_deatils_link">
                                                 <img src={list?.images?.[0]?.url} alt="cloth" width="100%" height={getHeightData(product?.similar_products?.length).includes(index) ? "640px" : "560px"} />

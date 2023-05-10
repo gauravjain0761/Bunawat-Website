@@ -238,6 +238,11 @@
 }
 
 @media (max-width: 991px) {
+
+    .fix-padding-might_like_inner {
+        padding: '0px 2px 0px 2px'
+    }
+
     .product_below_image {
         height: 266px !important;
     }
