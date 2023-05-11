@@ -547,7 +547,7 @@
     }
 
     .product_info_right_section_wrap>div {
-        padding: 0 0;
+        margin: 0 0;
     }
 
     .structured_fabric_inner .row>div:nth-child(n+3) {
@@ -572,7 +572,7 @@
     .product_slider_height,
     .product_slider_video_height,
     .product_slider_img_height {
-        height: calc(100vh - 242px);
+        height: 66vh;
     }
 
     .product_filters {
@@ -795,7 +795,7 @@
     }
 
     .product_info_right_section_wrap>div {
-        padding: 15px 0;
+        margin: 15px 0 0 0;
     }
 
     .product_page .product_info_section_wrap {

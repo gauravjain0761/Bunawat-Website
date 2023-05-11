@@ -854,10 +854,10 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                 <FooterStrip />
             </Box>
 
-            {(width < 768) ?
+            {/* {(width < 768) ?
                 <ProductPageFilter selectedImage={productList?.[swipeableIndex]?.images?.[0]?.url ?? ""} selectedProduct={productList?.[swipeableIndex] ?? {}} filters={productList?.[swipeableIndex]?.skus ?? []} swipeableIndex={swipeableIndex ?? 0} setLastSkuData={setLastSkuData} />
                 :
-                null}
+                null} */}
         </div>
     )
 }

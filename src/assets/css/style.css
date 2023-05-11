@@ -1747,9 +1747,13 @@ li.common_option_wrap {
     background-color: #ebeaed;
 }
 
+.slick-dots li {
+    margin: 2px 5px;
+}
+
 .product_slider .slick-dots li button:before {
-    width: 8px;
-    height: 8px;
+    width: 12px;
+    height: 12px;
     content: '';
     background-color: black;
     -webkit-font-smoothing: antialiased;
