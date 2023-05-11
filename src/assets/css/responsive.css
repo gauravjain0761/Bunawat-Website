@@ -815,15 +815,17 @@
         position: absolute;
         bottom: 188px;
         z-index: 999;
-        display: none !important;
+        display: none;
     }
 
     .product_filters .slaman_link {
         display: none;
     }
 
-    .product_filters .visible-slaman_link {
+    .visible-slaman_link {
         display: flex !important;
+        bottom: 0 !important;
+        justify-content: flex-end !important;
     }
 
     .common_select_wrap {

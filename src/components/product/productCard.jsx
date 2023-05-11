@@ -9,6 +9,7 @@ import SaveButton from '../common/save';
 import { Box } from '@mui/material';
 import { ApiGet } from '../../services/API/api';
 import { toast } from 'react-toastify';
+import _ from 'lodash';
 
 const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, productBottomData, width, refetch, swipeableIndex, productList, lastSkuData, setLastSkuData }) => {
     const settings = {
@@ -20,7 +21,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
         arrows: false,
         adaptiveHeight: true,
         vertical: true,
-        verticalSwiping: false,
+        verticalSwiping: true,
     };
     const [pincode, setPincode] = useState("");
 
@@ -43,7 +44,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
             overflowY: "auto"
         }}>
             <Box className="product_page" sx={{
-                paddingTop: { xs: "40px", sm: '72px' }
+                paddingTop: { xs: "50px", sm: '72px' }
             }}>
                 <div className="product_slider_section">
                     <div className="row">
@@ -473,7 +474,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                             sx={{ position: "relative" }}
                         >
                             <Box className="slaman_link visible-slaman_link" >
-                                <p>Salmon Pink</p>
+                                {/* <p>Salmon Pink</p> */}
                                 <ul className="color_list">
                                     <li
                                         className="active"
@@ -488,6 +489,23 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                     ></li>
                                     <li style={{ backgroundColor: "#037A44" }}></li>
                                 </ul>
+                                {/* <ul className="color_list">
+                                    {_.uniqBy(attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(attributeList?.color, x => x?.label)?.map(color => (
+                                        <li
+                                            className="active"
+                                            onClick={() => {
+                                                setSelectedData({
+                                                    ...selectedData,
+                                                    color,
+                                                    size: 'default'
+                                                })
+                                                setQty(1)
+                                                setLastSkuData(filterList?.find(list => list?._id == color?.value))
+                                            }}
+                                            style={{ border: (selectedData?.color?.value == color?.value) ? "3px solid #000" : ".5px solid #000", backgroundColor: color?.label }}>
+                                        </li>
+                                    ))}
+                                </ul> */}
                             </Box>
                             {((lastSkuData?.images?.length > 0) && (productIndex == swipeableIndex)) ?
                                 <div className='product_slider_height'>

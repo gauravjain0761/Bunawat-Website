@@ -105,7 +105,7 @@ const Product = () => {
   return (
     <>
       <SwipeableViews animateHeight containerStyle={{ height: '100%' }} enableMouseEvents index={swipeableIndex} disabled={swipeableDisable} onChangeIndex={(index) => getCurrentBottomData(index)} >
-        {productList?.slice(0, 2)?.map((data, index) => {
+        {productList?.map((data, index) => {
           return (
             <ProductCard key={data?._id} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} width={width} refetch={refetch} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} setLastSkuData={setLastSkuData} />
           )
