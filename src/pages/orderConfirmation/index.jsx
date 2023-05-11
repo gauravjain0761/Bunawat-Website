@@ -437,10 +437,37 @@ const OrderConfirmation = () => {
                     <span className='text-ellipsis-width' style={{ display: 'block' }}>{`${Object.values(item?.varients ?? {})?.join(" • ")}`}</span>
                   </div>
                   <div>
-                    <h3>{getNumberWithComma(Number(item?.price) * Number(item?.qty))}</h3>
+                    <h3>{getNumberWithComma(Number(item?.amount) * Number(item?.qty))}</h3>
                   </div>
                 </div>
               ))}
+              <div className="orderConfirmation_box_list">
+                <div>
+                  <h3 className='text-ellipsis-width'>Regular Shipping</h3>
+                  {/* <span className='text-ellipsis-width' style={{ display: 'block' }}>Delivers 17—20th June</span> */}
+                </div>
+                <div>
+                  <h3>{orderData?.data?.payment_mode == "COD" ? getNumberWithComma(((Number(orderData?.data?.total_amount)) - (Number(orderData?.data?.items?.reduce((t, x) => x?.amount + t, 0)) + Number(orderData?.data?.gst_amount)))) : "Free"} </h3>
+                </div>
+              </div>
+              <div className="orderConfirmation_box_list">
+                <div>
+                  <h3 className='text-ellipsis-width'>GST</h3>
+                </div>
+                <div>
+                  <h3>{getNumberWithComma(Number(orderData?.data?.gst_amount ?? 0))} </h3>
+                </div>
+              </div>
+              <div className="orderConfirmation_box_list">
+                <div>
+                  <h3 className='text-ellipsis-width'>Coupon: {orderData?.data?.discount_coupon?.code}</h3>
+                  {/* <span className='text-ellipsis-width' style={{ display: 'block' }}>Delivers 17—20th June</span> */}
+                </div>
+                <div>
+                  <h3>{getNumberWithComma(Number(orderData?.data?.discount_amount))} </h3>
+                </div>
+              </div>
+
               <div className="orderConfirmation_box_list">
                 <div>
                   <h3

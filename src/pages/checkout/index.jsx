@@ -133,7 +133,7 @@ const Checkout = () => {
                 var rzp1 = new window.Razorpay({
                   ...data?.data?.order_info, key: process.env.REACT_APP_RAZORPAY_KEY, handler: function (response) {
                     console.log("==============Success==========")
-                    window?.location?.replace(window.location.origin + "/orderConfirmation")
+                    window?.location?.replace(window.location.origin + `/orderConfirmation/${responce?.data?._id}`)
                   }
                 });
                 rzp1.open();
