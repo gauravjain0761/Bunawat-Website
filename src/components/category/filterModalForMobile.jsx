@@ -115,7 +115,7 @@ const FilterModalForMobile = ({ showFilter, handleClose, setSelectedId, selected
             }}>
               <FormControl>
                 {showPrice && (
-                  <div className="price_select_wrap_box">
+                  <div className="price_select_wrap_box price_select_wrap_box_mobile">
                     <Box className="price_select_wrap_box_child" sx={{ background: "#F2F4FF" }}>
                       <h6>From</h6>
                       <div className="price_select_wrap_box_child_data">

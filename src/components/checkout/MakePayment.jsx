@@ -44,7 +44,7 @@ const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData, payme
               </div>
             )
           })}
-        <div className="checkout_box_list">
+        {/* <div className="checkout_box_list">
           <div>
             <h3>Regular Shipping</h3>
             <span>Delivers 17—20th June</span>
@@ -52,15 +52,15 @@ const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData, payme
           <div>
             <h3>Free </h3>
           </div>
-        </div>
+        </div> */}
         <div className="checkout_box_list">
           <div>
-            <h3>GST:</h3>
+            <h3>GST</h3>
             {/* <span>Get 10% off on all orders</span> */}
           </div>
           <div>
             <h3>
-              <i>+ {(cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2)}</i>
+              <i>+ {getNumberWithComma(Number((cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2)))}</i>
             </h3>
           </div>
         </div>
@@ -72,7 +72,7 @@ const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData, payme
             </div>
             <div>
               <h3>
-                <i>- {(couponData?.data && couponData?.data?.length > 0) ? getNumberWithComma(couponData?.data?.reduce((t, x) => t + Number(x?.discounted_amount ?? 0), 0) ?? 0) : 0}</i>
+                <i>- {getNumberWithComma(Number((couponData?.data && couponData?.data?.length > 0) ? getNumberWithComma(couponData?.data?.reduce((t, x) => t + Number(x?.discounted_amount ?? 0), 0) ?? 0) : 0))}</i>
               </h3>
             </div>
           </div>
@@ -80,12 +80,12 @@ const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData, payme
         {paymentMode == "cod" &&
           <div className="checkout_box_list">
             <div>
-              <h3>Cod: </h3>
+              <h3>Cod </h3>
               {/* <span>Get 10% off on all orders</span> */}
             </div>
             <div>
               <h3>
-                <i>+ {(couponData?.data && couponData?.data?.length > 0) ? ((((couponData?.data?.reduce((t, x) => t + Number(x?.final_amount + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) >= 150) ? ((couponData?.data?.reduce((t, x) => t + Number(x?.final_amount + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) : 150) : ((((cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) >= 150) ? ((cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) : 150)}</i>
+                <i>+ {getNumberWithComma(Number((couponData?.data && couponData?.data?.length > 0) ? ((((couponData?.data?.reduce((t, x) => t + Number(x?.final_amount + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) >= 150) ? ((couponData?.data?.reduce((t, x) => t + Number(x?.final_amount + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) : 150) : ((((cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) >= 150) ? ((cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) : 150)))}</i>
               </h3>
             </div>
           </div>

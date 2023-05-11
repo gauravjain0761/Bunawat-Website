@@ -1737,7 +1737,7 @@ li.common_option_wrap {
     z-index: 6;
     display: flex !important;
     flex-direction: column;
-    padding-left: 20px;
+    padding: 0px 20px;
 }
 
 .product_slider .slick-slide div {
