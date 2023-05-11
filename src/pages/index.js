@@ -24,6 +24,7 @@ import { onMessage } from "firebase/messaging";
 import { messaging } from "../firebase";
 import { toast } from "react-toastify";
 import { AllApiData } from "../services/api";
+import ProdileEdit from "./userProfile/edit";
 
 export default function Index() {
     const dispatch = useDispatch();
@@ -109,6 +110,10 @@ export default function Index() {
 
                     <Route exact path={BASE_URL.BASE_URL + `userProfile`}>
                         <UserProfile />
+                    </Route>
+
+                    <Route exact path={BASE_URL.BASE_URL + `userProfile/edit`}>
+                        <ProdileEdit />
                     </Route>
 
                     <Route exact path={BASE_URL.BASE_URL + `reviews`}>

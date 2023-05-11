@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./userProfile.css";
 import { Col, Container, Nav, Row, Tab } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import EventsClubModule from '../../components/userProfile/eventsClubModule';
 import SavedAddressModule from '../../components/userProfile/savedAddressModule';
 import UserProfileModule from '../../components/userProfile/userProfileModule';
 import FooterStrip from "../../components/footer/footerStrip";
-import { Box } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const UserProfile = () => {
   const userData = useSelector(state => state?.user?.userData);
+  const [expanded, setExpanded] = useState(false)
+  const history = useHistory();
   return (
     <>
       <div id='userProfile'>
@@ -128,12 +131,64 @@ const UserProfile = () => {
                     </div>
 
                     <Nav.Item style={{ marginBottom: "1rem" }}>
-                      <Link to="/userProfile">
-                        <Nav.Link eventKey="savedAddress" className='userProfile_menu_list'>
-                          <img src="../img/shippingto.png" alt='Saved Address' height="20" style={{ marginRight: "8px" }} />
-                          Saved Address
-                        </Nav.Link>
-                      </Link>
+                      <Accordion sx={{
+                        "& .Mui-expanded": {
+                          transform: 'none !important'
+                        }
+                      }} expanded={expanded} onChange={() => setExpanded(!expanded)}>
+                        <AccordionSummary
+                          expandIcon={expanded ? <img src="/img/profile_edit.svg" onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            history.push("/userProfile/edit");
+                          }} alt="icon" /> : <ExpandMoreIcon />}
+                          aria-controls="panel2bh-content"
+                          id="panel2bh-header"
+                        >
+                          <Typography sx={{
+                            width: '66%',
+                            flexShrink: 0,
+                            fontFamily: "NewHero",
+                            fontStyle: " normal",
+                            fontWeight: " 600",
+                            fontSize: " 10px",
+                            color: "#000000",
+                            padding: '14px 0px'
+                          }}>   <img src="../img/shippingto.png" alt='Saved Address' height="20" style={{ marginRight: "8px" }} /> Saved Address</Typography>
+                          {/* <Typography sx={{ color: 'text.secondary' }}>
+            You are currently not an owner
+          </Typography> */}
+                        </AccordionSummary>
+                        <AccordionDetails sx={{
+                          marginTop: '-10px'
+                        }}>
+                          <Typography sx={{
+                            fontFamily: "NewHero",
+                            fontStyle: " normal",
+                            fontWeight: " 600",
+                            fontSize: " 14px",
+                            color: "#000000",
+                          }}>{userData?.fname} {userData?.lname}</Typography>
+                          <Typography sx={{
+                            fontFamily: "NewHero",
+                            fontStyle: " normal",
+                            fontWeight: "400",
+                            fontSize: " 14px",
+                            color: "#000000",
+                            mt: 1
+                          }}>{userData?.address_1}<br />{userData?.address_2}</Typography>
+                          <Typography sx={{
+                            fontFamily: "NewHero",
+                            fontStyle: " normal",
+                            fontWeight: "400",
+                            fontSize: " 14px",
+                            color: "#000000",
+                            mt: 1
+                          }}>{userData?.phone ? `+91 ${userData?.phone}` : ''}</Typography>
+                        </AccordionDetails>
+                      </Accordion>
+                      {/* <img src="../img/shippingto.png" alt='Saved Address' height="20" style={{ marginRight: "8px" }} />
+                          Saved Address */}
                     </Nav.Item>
                   </Nav>
 
@@ -156,7 +211,7 @@ const UserProfile = () => {
             </Row>
           </Tab.Container>
         </Container>
-      </div>
+      </div >
       <Box sx={{
         padding: "0rem 2rem",
         background: "#fff",
