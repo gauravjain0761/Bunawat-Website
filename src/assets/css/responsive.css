@@ -547,7 +547,7 @@
     }
 
     .product_info_right_section_wrap>div {
-        margin: 0 0;
+        margin: 0;
     }
 
     .structured_fabric_inner .row>div:nth-child(n+3) {
@@ -572,7 +572,7 @@
     .product_slider_height,
     .product_slider_video_height,
     .product_slider_img_height {
-        height: 66vh;
+        height: 60vh;
     }
 
     .product_filters {
@@ -795,7 +795,7 @@
     }
 
     .product_info_right_section_wrap>div {
-        margin: 15px 0 0 0;
+        margin: 0;
     }
 
     .product_page .product_info_section_wrap {
@@ -820,6 +820,10 @@
 
     .product_filters .slaman_link {
         display: none;
+    }
+
+    .product_filters .visible-slaman_link {
+        display: flex !important;
     }
 
     .common_select_wrap {

@@ -472,7 +472,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                             onTouchStart={() => setSwipeableDisable(false)}
                             sx={{ position: "relative" }}
                         >
-                            <Box className="slaman_link">
+                            <Box className="slaman_link visible-slaman_link" >
                                 <p>Salmon Pink</p>
                                 <ul className="color_list">
                                     <li
