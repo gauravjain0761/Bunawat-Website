@@ -20,7 +20,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
         arrows: false,
         adaptiveHeight: true,
         vertical: true,
-        verticalSwiping: true,
+        verticalSwiping: false,
     };
     const [pincode, setPincode] = useState("");
 
