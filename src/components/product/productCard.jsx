@@ -589,8 +589,8 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                     <img src="/img/product_view.svg" alt="icon" />
                 </Box>
                 {(width < 768) ?
-                    <div onMouseEnter={() => setSwipeableDisable(true)} onTouchStart={() => setSwipeableDisable(true)}>
-                        <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} />
+                    <div >
+                        <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} setSwipeableDisable={setSwipeableDisable} />
                     </div>
                     :
                     <div style={{ position: 'relative' }}>
