@@ -585,7 +585,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                     width: '100%',
                     paddingTop: '16px'
                 }}>
-                    <img src="/img/product_view.svg" alt="icon" />s
+                    <img src="/img/product_view.svg" alt="icon" />
                 </Box>
                 {(width < 768) ?
                     <div onMouseEnter={() => setSwipeableDisable(true)} onTouchStart={() => setSwipeableDisable(true)}>
