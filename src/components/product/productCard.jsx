@@ -11,7 +11,7 @@ import { ApiGet } from '../../services/API/api';
 import { toast } from 'react-toastify';
 import _ from 'lodash';
 
-const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, productBottomData, width, refetch, swipeableIndex, productList, lastSkuData, setLastSkuData }) => {
+const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, productBottomData, width, refetch, swipeableIndex, productList, lastSkuData, setLastSkuData, filters, setQty, selectedData, setSelectedData }) => {
     const settings = {
         dots: true,
         infinite: false,
@@ -24,6 +24,36 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
         verticalSwiping: true,
     };
     const [pincode, setPincode] = useState("");
+    const [filterList, setFilterList] = useState([]);
+    const [attributeList, setAttributeList] = useState([]);
+
+    useEffect(() => {
+        let temp = [...filters] ?? []
+        let uniqKey = _.uniq(temp?.map((list) => Object.keys(list?.varients ?? {}))?.flat())?.map((list, index) => list) ?? []
+        let tempAttributeList = {};
+        let tempAttributeData = {};
+        uniqKey.filter(list => list != 'qty').map(val => {
+            temp.map((list) => {
+                let value = tempAttributeList?.[val] ?? []
+                if (!!list?.varients?.[val]) {
+                    tempAttributeList = { ...tempAttributeList, [val]: [...value, { value: list?._id, label: list?.varients?.[val] }] }
+                }
+            })
+            tempAttributeData = { ...tempAttributeData, [val]: 'defaultValue' }
+        })
+        setAttributeList(tempAttributeList);
+        setFilterList(temp)
+    }, [filters, swipeableIndex])
+
+    useEffect(() => {
+        const data = _.uniqBy(attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(attributeList?.color, x => x?.label)
+        setSelectedData({
+            ...selectedData,
+            color: data?.[0],
+            size: 'default'
+        })
+        setLastSkuData(filterList?.find(list => list?._id == data?.[0]?.value) ?? {})
+    }, [attributeList, filterList, swipeableIndex])
 
     useEffect(async () => {
         if (pincode?.length == 6) {
@@ -42,7 +72,8 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
         <div style={{
             maxHeight: "100vh",
             overflowY: "auto"
-        }}>
+        }} >
+            <div ></div>
             <Box className="product_page" sx={{
                 paddingTop: { xs: "50px", sm: '72px' }
             }}>
@@ -475,7 +506,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                         >
                             <Box className="slaman_link visible-slaman_link" >
                                 {/* <p>Salmon Pink</p> */}
-                                <ul className="color_list">
+                                {/* <ul className="color_list">
                                     <li
                                         className="active"
                                         style={{ backgroundColor: "#F7DACE" }}
@@ -488,8 +519,8 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                         }}
                                     ></li>
                                     <li style={{ backgroundColor: "#037A44" }}></li>
-                                </ul>
-                                {/* <ul className="color_list">
+                                </ul> */}
+                                <ul className="color_list">
                                     {_.uniqBy(attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(attributeList?.color, x => x?.label)?.map(color => (
                                         <li
                                             className="active"
@@ -505,7 +536,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                             style={{ border: (selectedData?.color?.value == color?.value) ? "3px solid #000" : ".5px solid #000", backgroundColor: color?.label }}>
                                         </li>
                                     ))}
-                                </ul> */}
+                                </ul>
                             </Box>
                             {((lastSkuData?.images?.length > 0) && (productIndex == swipeableIndex)) ?
                                 <div className='product_slider_height'>
@@ -554,7 +585,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                     width: '100%',
                     paddingTop: '16px'
                 }}>
-                    <img src="/img/product_view.svg" alt="icon" />
+                    <img src="/img/product_view.svg" alt="icon" />s
                 </Box>
                 {(width < 768) ?
                     <div onMouseEnter={() => setSwipeableDisable(true)} onTouchStart={() => setSwipeableDisable(true)}>

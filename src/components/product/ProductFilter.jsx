@@ -14,7 +14,7 @@ import { setCartCount } from '../../redux/reducers/cart';
 import { Modal } from "react-bootstrap";
 import { Box, Button } from '@mui/material';
 
-export const SelectModal = ({ showSelect, selectedData, handleClose, attributeList, attributeData, setAttributeData, filterList, setSelectedData, setQty, setLastSkuData }) => {
+export const SelectModal = ({ showSelect, selectedData, handleClose, attributeList, attributeData, setAttributeData, filterList, setSelectedData, setQty, setLastSkuData, }) => {
     return (
         <>
             <Modal
@@ -182,12 +182,10 @@ export const SelectModal = ({ showSelect, selectedData, handleClose, attributeLi
 }
 
 
-const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedImage, setLastSkuData }) => {
+const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedImage, setLastSkuData, qty, setQty, selectedData, setSelectedData }) => {
     const [filterList, setFilterList] = useState([]);
-    const [selectedData, setSelectedData] = useState({});
     const [attributeList, setAttributeList] = useState([]);
     const [attributeData, setAttributeData] = useState({});
-    const [qty, setQty] = useState(1);
     const [isCartAdd, setIsCartAdd] = useState(false);
     const [addToCart, { isLoading }] = useAddToCartMutation()
     const dispatch = useDispatch()
