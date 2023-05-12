@@ -26,6 +26,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
     const [pincode, setPincode] = useState("");
     const [filterList, setFilterList] = useState([]);
     const [attributeList, setAttributeList] = useState([]);
+    const [scrollActive, setScrollActive] = useState(false);
 
     useEffect(() => {
         let temp = [...productList?.[swipeableIndex]?.skus ?? []] ?? []
@@ -71,15 +72,21 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
     return (
         <div style={{
             maxHeight: "100vh",
-            overflowY: "auto"
+            overflowY: scrollActive ? "auto" : "hidden"
         }} >
             <div ></div>
             <Box className="product_page" sx={{
-                paddingTop: { xs: "50px", sm: '72px' }
+                paddingTop: { xs: "60px", sm: '72px' }
             }}>
                 <div className="product_slider_section">
                     <div className="row">
-                        {(width >= 768) ? (<div className="col-md-6 product_info_section_wrap" onMouseEnter={() => setSwipeableDisable(false)} onTouchStart={() => setSwipeableDisable(false)}>
+                        {(width >= 768) ? (<div className="col-md-6 product_info_section_wrap" onMouseEnter={() => {
+                            setSwipeableDisable(false)
+                            setScrollActive(true)
+                        }} onTouchStart={() => {
+                            setScrollActive(true)
+                            setSwipeableDisable(false)
+                        }}>
                             <div className="product_info_section">
                                 <div className="product_title_wrap">
                                     <h2>{product?.name}</h2>
@@ -522,24 +529,26 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                 </ul> */}
                                 <ul className="color_list">
                                     {_.uniqBy(attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(attributeList?.color, x => x?.label)?.map((color, index) => (
-                                        <li
-                                            className="active"
-                                            key={color + index}
-                                            onClick={() => {
-                                                setSelectedData({
-                                                    ...selectedData,
-                                                    color,
-                                                    size: 'default'
-                                                })
-                                                setQty(1)
-                                                setLastSkuData(filterList?.find(list => list?._id == color?.value))
-                                            }}
-                                            style={{ border: (selectedData?.color?.value == color?.value) ? "3px solid #000" : ".5px solid #000", backgroundColor: color?.label }}>
-                                        </li>
+                                        <>
+                                            <li
+                                                className="active"
+                                                key={color + index}
+                                                onClick={() => {
+                                                    setSelectedData({
+                                                        ...selectedData,
+                                                        color,
+                                                        size: 'default'
+                                                    })
+                                                    setQty(1)
+                                                    setLastSkuData(filterList?.find(list => list?._id == color?.value))
+                                                }}
+                                                style={{ border: (selectedData?.color?.value == color?.value) ? "3px solid #000" : ".5px solid #000", backgroundColor: color?.label }}>
+                                            </li>
+                                        </>
                                     ))}
                                 </ul>
                             </Box>
-                            {((lastSkuData?.images?.length > 0) && (productIndex == swipeableIndex)) ?
+                            {/* {((lastSkuData?.images?.length > 0) && (productIndex == swipeableIndex)) ?
                                 <div className='product_slider_height'>
                                     <Slider {...settings} className="product_slider">
                                         {lastSkuData?.images?.map((list, index) => (
@@ -555,23 +564,23 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                         ))}
                                     </Slider>
                                 </div>
-                                :
-                                <div className='product_slider_height'>
-                                    <Slider {...settings} className="product_slider">
-                                        {[...product?.images, ...product?.videos?.slice(3, 4)]?.map((list, index) => (
-                                            <div>
-                                                {list?.type == "VIDEO" ?
-                                                    <video loop key={list?.url + index + list?._id} autoPlay className='product_slider_video_height' muted>
-                                                        <source src={list?.url} type="video/mp4" />
-                                                    </video>
-                                                    :
-                                                    <img src={list?.url} key={list?.url + index + list?._id} className='product_slider_img_height' alt="slider" width='100%' />
-                                                }
-                                            </div>
-                                        ))}
-                                    </Slider>
-                                </div>
-                            }
+                                : */}
+                            <div className='product_slider_height' onMouseEnter={() => setScrollActive(false)} onTouchStart={() => setScrollActive(false)}>
+                                <Slider {...settings} className="product_slider">
+                                    {[...product?.images, ...product?.videos?.slice(3, 4)]?.map((list, index) => (
+                                        <div>
+                                            {list?.type == "VIDEO" ?
+                                                <video loop key={list?.url + index + list?._id} autoPlay className='product_slider_video_height' muted>
+                                                    <source src={list?.url} type="video/mp4" />
+                                                </video>
+                                                :
+                                                <img src={list?.url} key={list?.url + index + list?._id} className='product_slider_img_height' alt="slider" width='100%' />
+                                            }
+                                        </div>
+                                    ))}
+                                </Slider>
+                            </div>
+                            {/* } */}
                         </Box>
                     </div>
                 </div>
@@ -589,11 +598,11 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                     <img src="/img/product_view.svg" alt="icon" />
                 </Box>
                 {(width < 768) ?
-                    <div >
+                    <div onMouseEnter={() => setScrollActive(true)} onTouchStart={() => setScrollActive(true)}>
                         <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} setSwipeableDisable={setSwipeableDisable} />
                     </div>
                     :
-                    <div style={{ position: 'relative' }}>
+                    <div style={{ position: 'relative' }} onMouseEnter={() => setScrollActive(true)} onTouchStart={() => setScrollActive(true)}>
                         <div onMouseEnter={() => setSwipeableDisable(true)} onTouchStart={() => setSwipeableDisable(true)}>
                             <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} />
                         </div>
