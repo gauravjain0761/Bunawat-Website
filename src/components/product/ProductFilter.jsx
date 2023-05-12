@@ -222,7 +222,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
             size: 'default'
         })
         setQty(1)
-        setLastSkuData(filterList?.find(list => list?._id == data?.[0]?.value) ?? {})
+        // setLastSkuData(filterList?.find(list => list?._id == data?.[0]?.value) ?? {})
     }, [attributeList, filterList, swipeableIndex])
 
 

@@ -53,7 +53,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
             color: data?.[0],
             size: 'default'
         })
-        setLastSkuData(filterList?.find(list => list?._id == data?.[0]?.value) ?? {})
+        // setLastSkuData(filterList?.find(list => list?._id == data?.[0]?.value) ?? {})
     }, [attributeList, filterList, swipeableIndex])
 
     useEffect(async () => {
@@ -548,7 +548,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                     ))}
                                 </ul>
                             </Box>
-                            {/* {((lastSkuData?.images?.length > 0) && (productIndex == swipeableIndex)) ?
+                            {((lastSkuData?.images?.length > 0) && (productIndex == swipeableIndex)) ?
                                 <div className='product_slider_height'>
                                     <Slider {...settings} className="product_slider">
                                         {lastSkuData?.images?.map((list, index) => (
@@ -558,29 +558,45 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                                         <source src={list?.url} type="video/mp4" />
                                                     </video>
                                                     :
-                                                    <img src={list?.url} key={list?.url + index + list?._id} className='product_slider_img_height' alt="slider" width='100%' />
+                                                    <picture key={list?.url + index + list?._id}>
+                                                        <source srcSet={`${list?.url}`} media="(max-width: 500px)" />
+                                                        <img
+                                                            className="logo__apple"
+                                                            srcSet={`${list?.url}`}
+                                                            alt="Full Logo"
+                                                            src={list?.url} />
+                                                    </picture>
+                                                    // <img src={list?.url} key={list?.url + index + list?._id} className='product_slider_img_height' alt="slider" width='100%' />
                                                 }
                                             </div>
                                         ))}
                                     </Slider>
                                 </div>
-                                : */}
-                            <div className='product_slider_height' onMouseEnter={() => setScrollActive(false)} onTouchStart={() => setScrollActive(false)}>
-                                <Slider {...settings} className="product_slider">
-                                    {[...product?.images, ...product?.videos?.slice(3, 4)]?.map((list, index) => (
-                                        <div>
-                                            {list?.type == "VIDEO" ?
-                                                <video loop key={list?.url + index + list?._id} autoPlay className='product_slider_video_height' muted>
-                                                    <source src={list?.url} type="video/mp4" />
-                                                </video>
-                                                :
-                                                <img src={list?.url} key={list?.url + index + list?._id} className='product_slider_img_height' alt="slider" width='100%' />
-                                            }
-                                        </div>
-                                    ))}
-                                </Slider>
-                            </div>
-                            {/* } */}
+                                :
+                                <div className='product_slider_height' onMouseEnter={() => setScrollActive(false)} onTouchStart={() => setScrollActive(false)}>
+                                    <Slider {...settings} className="product_slider">
+                                        {[...product?.images, ...product?.videos?.slice(3, 4)]?.map((list, index) => (
+                                            <div>
+                                                {list?.type == "VIDEO" ?
+                                                    <video loop key={list?.url + index + list?._id} autoPlay className='product_slider_video_height' muted>
+                                                        <source src={list?.url} type="video/mp4" />
+                                                    </video>
+                                                    :
+                                                    <picture key={list?.url + index + list?._id}>
+                                                        <source srcSet={`${list?.url}`} media="(max-width: 500px)" />
+                                                        <img
+                                                            className="logo__apple"
+                                                            srcSet={`${list?.url}`}
+                                                            alt="Full Logo"
+                                                            src={list?.url} />
+                                                    </picture>
+                                                    // <img src={list?.url} key={list?.url + index + list?._id} className='product_slider_img_height' alt="slider" width='100%' />
+                                                }
+                                            </div>
+                                        ))}
+                                    </Slider>
+                                </div>
+                            }
                         </Box>
                     </div>
                 </div>
