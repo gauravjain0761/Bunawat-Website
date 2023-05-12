@@ -155,8 +155,9 @@ export const SelectModal = ({ showSelect, selectedData, handleClose, attributeLi
                     <div className="slaman_link" style={{ marginTop: "2px", backgroundColor: "#F2F4FF", padding: "1rem" }}>
                         <p>Salmon Pink</p>
                         <ul className="color_list">
-                            {_.uniqBy(attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(attributeList?.color, x => x?.label)?.map(color => (
+                            {_.uniqBy(attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(attributeList?.color, x => x?.label)?.map((color, index) => (
                                 <li
+                                    key={color + index}
                                     className="active"
                                     onClick={() => {
                                         setSelectedData({
@@ -500,9 +501,10 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                     </div>
                     <div className="slaman_link display_none_in_mobile">
                         <ul className="color_list">
-                            {_.uniqBy(attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(attributeList?.color, x => x?.label)?.map(color => (
+                            {_.uniqBy(attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(attributeList?.color, x => x?.label)?.map((color, index) => (
                                 <li
                                     className="active"
+                                    key={color + index}
                                     onClick={() => {
                                         setSelectedData({
                                             ...selectedData,

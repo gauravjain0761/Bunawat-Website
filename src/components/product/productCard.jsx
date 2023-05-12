@@ -521,9 +521,10 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                     <li style={{ backgroundColor: "#037A44" }}></li>
                                 </ul> */}
                                 <ul className="color_list">
-                                    {_.uniqBy(attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(attributeList?.color, x => x?.label)?.map(color => (
+                                    {_.uniqBy(attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(attributeList?.color, x => x?.label)?.map((color, index) => (
                                         <li
                                             className="active"
+                                            key={color + index}
                                             onClick={() => {
                                                 setSelectedData({
                                                     ...selectedData,
