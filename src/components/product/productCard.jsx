@@ -28,7 +28,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
     const [attributeList, setAttributeList] = useState([]);
 
     useEffect(() => {
-        let temp = [...filters] ?? []
+        let temp = [...productList?.[swipeableIndex]?.skus ?? []] ?? []
         let uniqKey = _.uniq(temp?.map((list) => Object.keys(list?.varients ?? {}))?.flat())?.map((list, index) => list) ?? []
         let tempAttributeList = {};
         let tempAttributeData = {};
@@ -43,7 +43,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
         })
         setAttributeList(tempAttributeList);
         setFilterList(temp)
-    }, [filters, swipeableIndex])
+    }, [swipeableIndex])
 
     useEffect(() => {
         const data = _.uniqBy(attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(attributeList?.color, x => x?.label)
