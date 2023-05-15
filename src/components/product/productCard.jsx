@@ -607,14 +607,16 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                     width: '100%',
                     height: '25px',
                     opacity: 0
-                }} id="scoll-top"></div>
+                }} id={`#scoll-top`}></div>
                 <Box sx={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     width: '100%',
                 }}>
-                    <a href="#scoll-top"><img src="/img/product_view.svg" alt="icon" /></a>
+                    {/* <a href={`#scoll-top`}> */}
+                    <img src="/img/product_view.svg" alt="icon" />
+                    {/* </a> */}
                 </Box>
                 {(width < 768) ?
                     <div onMouseEnter={() => setScrollActive(true)} onTouchStart={() => setScrollActive(true)}>

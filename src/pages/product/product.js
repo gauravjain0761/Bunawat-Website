@@ -45,11 +45,11 @@ const Product = () => {
   }, [loadingProduct, hasMoreProduct])
 
   useEffect(() => {
-    setSwipeableIndex(0)
     setProductFilter({ ...productFilter, page: 1, id })
   }, [id])
 
   useEffect(() => {
+    setSwipeableIndex(0)
     setProductList(getAllProduct ?? [])
   }, [getAllProduct])
 
