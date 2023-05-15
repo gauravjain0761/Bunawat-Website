@@ -9,14 +9,14 @@ const TrackOrder = () => {
   return (
     <>
       <Box className="trackorder_page">
-        <Box 
-        sx={{
+        <Box
+          sx={{
             width: "40%",
             margin: "auto",
-            '@media (max-width: 768px)':{
-                width: "90%"
+            '@media (max-width: 768px)': {
+              width: "90%"
             }
-        }}
+          }}
         >
           {otpverify ? null : (
             <div className="login_wrap">
@@ -73,19 +73,19 @@ const TrackOrder = () => {
                   </svg>
                 </button>
                 <Box>
-                    <Typography
+                  <Typography
                     sx={{
-                        fontWeight: '400',
-                        fontSize: '14px',
-                        lineHeight: '20px',
-                        textAlign: 'center',
-                        letterSpacing: '-0.02em',
-                        color: '#70758A',
-                        marginTop: "30px",
-                        textAlign: "center",
+                      fontWeight: '400',
+                      fontSize: '14px',
+                      lineHeight: '20px',
+                      textAlign: 'center',
+                      letterSpacing: '-0.02em',
+                      color: '#70758A',
+                      marginTop: "30px",
+                      textAlign: "center",
                     }}>
                     If you don’t have an account, we’ll <br />create one for you
-                    </Typography>
+                  </Typography>
                 </Box>
               </div>
             </div>
@@ -107,19 +107,19 @@ const TrackOrder = () => {
                   <span>Track Order</span>
                   <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_2226_9290)">
-                    <path d="M3.28961 1.55994H12.5596C13.9096 1.55994 14.9996 2.64994 14.9996 3.99994V17.4399H0.849609V3.99994C0.849609 2.64994 1.93961 1.55994 3.28961 1.55994Z" fill="#2A3592" stroke="white" stroke-width="1.7" stroke-miterlimit="10"/>
-                    <path d="M23.1502 17.4299H12.0102L12.0102 10.0099C12.0102 8.36993 13.3402 7.03993 14.9802 7.03993L20.1902 7.03993C21.8302 7.03993 23.1602 8.36993 23.1602 10.0099V17.4299H23.1502Z" fill="#2A3592" stroke="white" stroke-width="1.7" stroke-miterlimit="10"/>
-                    <path d="M6.00977 20.4399C7.66662 20.4399 9.00977 19.0968 9.00977 17.4399C9.00977 15.7831 7.66662 14.4399 6.00977 14.4399C4.35291 14.4399 3.00977 15.7831 3.00977 17.4399C3.00977 19.0968 4.35291 20.4399 6.00977 20.4399Z" fill="#2A3592" stroke="white" stroke-width="1.7" stroke-miterlimit="10"/>
-                    <path d="M18.0098 20.4399C19.6666 20.4399 21.0098 19.0968 21.0098 17.4399C21.0098 15.7831 19.6666 14.4399 18.0098 14.4399C16.3529 14.4399 15.0098 15.7831 15.0098 17.4399C15.0098 19.0968 16.3529 20.4399 18.0098 20.4399Z" fill="#2A3592" stroke="white" stroke-width="1.7" stroke-miterlimit="10"/>
-                    <path d="M15.3503 7.04993H3.57031" stroke="white" stroke-width="1.7" stroke-miterlimit="10"/>
-                    <path d="M12.0103 10.9399H3.57031" stroke="white" stroke-width="1.7" stroke-miterlimit="10"/>
+                      <path d="M3.28961 1.55994H12.5596C13.9096 1.55994 14.9996 2.64994 14.9996 3.99994V17.4399H0.849609V3.99994C0.849609 2.64994 1.93961 1.55994 3.28961 1.55994Z" fill="#2A3592" stroke="white" strokeWidth="1.7" strokeMiterlimit="10" />
+                      <path d="M23.1502 17.4299H12.0102L12.0102 10.0099C12.0102 8.36993 13.3402 7.03993 14.9802 7.03993L20.1902 7.03993C21.8302 7.03993 23.1602 8.36993 23.1602 10.0099V17.4299H23.1502Z" fill="#2A3592" stroke="white" strokeWidth="1.7" strokeMiterlimit="10" />
+                      <path d="M6.00977 20.4399C7.66662 20.4399 9.00977 19.0968 9.00977 17.4399C9.00977 15.7831 7.66662 14.4399 6.00977 14.4399C4.35291 14.4399 3.00977 15.7831 3.00977 17.4399C3.00977 19.0968 4.35291 20.4399 6.00977 20.4399Z" fill="#2A3592" stroke="white" strokeWidth="1.7" strokeMiterlimit="10" />
+                      <path d="M18.0098 20.4399C19.6666 20.4399 21.0098 19.0968 21.0098 17.4399C21.0098 15.7831 19.6666 14.4399 18.0098 14.4399C16.3529 14.4399 15.0098 15.7831 15.0098 17.4399C15.0098 19.0968 16.3529 20.4399 18.0098 20.4399Z" fill="#2A3592" stroke="white" strokeWidth="1.7" strokeMiterlimit="10" />
+                      <path d="M15.3503 7.04993H3.57031" stroke="white" strokeWidth="1.7" strokeMiterlimit="10" />
+                      <path d="M12.0103 10.9399H3.57031" stroke="white" strokeWidth="1.7" strokeMiterlimit="10" />
                     </g>
                     <defs>
-                    <clipPath id="clip0_2226_9290">
-                    <rect width="24" height="20.58" fill="white" transform="translate(0 0.709961)"/>
-                    </clipPath>
+                      <clipPath id="clip0_2226_9290">
+                        <rect width="24" height="20.58" fill="white" transform="translate(0 0.709961)" />
+                      </clipPath>
                     </defs>
-                    </svg>
+                  </svg>
 
                 </button>
               </div>

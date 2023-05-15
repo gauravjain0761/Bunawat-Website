@@ -148,11 +148,11 @@ const Product = () => {
         {productList?.map((data, index) => {
           if (productList.length === swipeableIndex + 1) {
             return (
-              <ProductCard key={data?._id + index} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} refetch={refetchData} width={width} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} setLastSkuData={setLastSkuData} filters={productList?.[swipeableIndex]?.skus ?? []} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} lastCardElementRef={lastCardElementRefProject} />
+              <ProductCard key={data?._id + index + swipeableIndex} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} refetch={refetchData} width={width} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} setLastSkuData={setLastSkuData} filters={productList?.[swipeableIndex]?.skus ?? []} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} lastCardElementRef={lastCardElementRefProject} />
             )
           } else {
             return (
-              <ProductCard key={data?._id + index} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} refetch={refetchData} width={width} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} setLastSkuData={setLastSkuData} filters={productList?.[swipeableIndex]?.skus ?? []} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} />
+              <ProductCard key={data?._id + index + (swipeableIndex + 1)} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} refetch={refetchData} width={width} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} setLastSkuData={setLastSkuData} filters={productList?.[swipeableIndex]?.skus ?? []} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} />
             )
           }
         })}

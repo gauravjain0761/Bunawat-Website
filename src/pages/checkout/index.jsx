@@ -188,7 +188,7 @@ const Checkout = () => {
                     <Box sx={{ marginRight: "10px" }}>
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="24" height="24" rx="12" fill="#2A3592" />
-                        <path d="M16.0502 9.26001L10.5702 14.74L7.9502 12.12" stroke="white" stroke-width="1.7" stroke-miterlimit="10" />
+                        <path d="M16.0502 9.26001L10.5702 14.74L7.9502 12.12" stroke="white" strokeWidth="1.7" strokeMiterlimit="10" />
                       </svg>
                     </Box>
                     Use Store credit
@@ -304,7 +304,7 @@ const Checkout = () => {
                     <Box sx={{ marginRight: "10px" }}>
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="24" height="24" rx="12" fill="#2A3592" />
-                        <path d="M16.0502 9.26001L10.5702 14.74L7.9502 12.12" stroke="white" stroke-width="1.7" stroke-miterlimit="10" />
+                        <path d="M16.0502 9.26001L10.5702 14.74L7.9502 12.12" stroke="white" strokeWidth="1.7" strokeMiterlimit="10" />
                       </svg>
                     </Box>
                     Use Store credit

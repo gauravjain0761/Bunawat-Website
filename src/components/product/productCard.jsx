@@ -530,22 +530,20 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                 </ul> */}
                                 <ul className="color_list">
                                     {_.uniqBy(product?.attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(product?.attributeList?.color, x => x?.label)?.map((color, index) => (
-                                        <>
-                                            <li
-                                                className="active"
-                                                key={color + index}
-                                                onClick={() => {
-                                                    setSelectedData({
-                                                        ...selectedData,
-                                                        color,
-                                                        size: 'default'
-                                                    })
-                                                    setQty(1)
-                                                    setLastSkuData(product?.filterList?.find(list => list?._id == color?.value))
-                                                }}
-                                                style={{ border: (selectedData?.color?.value == color?.value) ? "3px solid #000" : ".5px solid #000", backgroundColor: color?.label }}>
-                                            </li>
-                                        </>
+                                        <li
+                                            className="active"
+                                            key={color + index}
+                                            onClick={() => {
+                                                setSelectedData({
+                                                    ...selectedData,
+                                                    color,
+                                                    size: 'default'
+                                                })
+                                                setQty(1)
+                                                setLastSkuData(product?.filterList?.find(list => list?._id == color?.value))
+                                            }}
+                                            style={{ border: (selectedData?.color?.value == color?.value) ? "3px solid #000" : ".5px solid #000", backgroundColor: color?.label }}>
+                                        </li>
                                     ))}
                                 </ul>
                             </Box>
@@ -553,7 +551,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                 <div className='product_slider_height '>
                                     <Slider {...settings} className="product_slider">
                                         {lastSkuData?.images?.map((list, index) => (
-                                            <div>
+                                            <div key={list?.url + index + list?._id} >
                                                 {list?.type == "VIDEO" ?
                                                     <video loop playsInline autoPlay key={list?.url + index + list?._id} muted className='product_slider_video_height'>
                                                         <source src={list?.url} type="video/mp4" />
@@ -577,7 +575,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                 <div className='product_slider_height ' onMouseEnter={() => setScrollActive(false)} onTouchStart={() => setScrollActive(false)}>
                                     <Slider {...settings} className="product_slider">
                                         {[...product?.images, ...product?.videos?.slice(3, 4)]?.map((list, index) => (
-                                            <div>
+                                            <div key={list?.url + index + list?._id}>
                                                 {list?.type == "VIDEO" ?
                                                     <video loop playsInline key={list?.url + index + list?._id} autoPlay className='product_slider_video_height' muted>
                                                         <source src={list?.url} type="video/mp4" />

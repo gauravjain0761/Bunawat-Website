@@ -587,7 +587,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                             <div className="cloth_inner">
                                 <div className="row">
                                     {product?.similar_products?.map((list, index) => (
-                                        <div className={`fix-padding-might_like_inner ${getClassWidth(index, product?.similar_products?.length)}`}>
+                                        <div key={list?._id + index} className={`fix-padding-might_like_inner ${getClassWidth(index, product?.similar_products?.length)}`}>
                                             <div className="cloth_deatils_wrap">
                                                 <Link to={`/product/${list?._id}`} className="cloth_deatils_link">
                                                     <img src={list?.images?.[0]?.url} alt="cloth" width="100%" height={getHeightData(product?.similar_products?.length).includes(index) ? "640px" : "560px"} />
@@ -648,7 +648,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                     <div className="container">
                         <div className="know_inner">
                             <svg width="83" height="83" viewBox="0 0 83 83" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M41.5 81.4708C63.5642 81.4708 81.4508 63.5842 81.4508 41.52C81.4508 19.4558 63.5642 1.56921 41.5 1.56921C19.4358 1.56921 1.54919 19.4558 1.54919 41.52C1.54919 63.5842 19.4358 81.4708 41.5 81.4708Z" stroke="white" stroke-width="2.5" stroke-miterlimit="10" />
+                                <path d="M41.5 81.4708C63.5642 81.4708 81.4508 63.5842 81.4508 41.52C81.4508 19.4558 63.5642 1.56921 41.5 1.56921C19.4358 1.56921 1.54919 19.4558 1.54919 41.52C1.54919 63.5842 19.4358 81.4708 41.5 81.4708Z" stroke="white" strokeWidth="2.5" strokeMiterlimit="10" />
                                 <path d="M46.1313 12.3569L44.8092 8.94073L46.246 9.20057L47.0026 11.3404H47.0331L48.4775 9.60562L49.8379 9.85017L47.4152 12.5861L47.0561 14.5579L45.7798 14.3286L46.139 12.3569H46.1313Z" fill="white" />
                                 <path d="M51.542 10.4004L54.706 11.6003L54.2933 12.6855L52.3521 11.9518L52.0464 12.7466L53.8042 13.4115L53.4297 14.405L51.6719 13.7401L51.3586 14.5731L53.2998 15.3068L52.8871 16.392L49.7231 15.1921L51.542 10.3928V10.4004Z" fill="white" />
                                 <path d="M56.9528 18.7076L57.205 17.5307L55.6612 16.583L54.7365 17.3473L53.5825 16.6365L57.8699 13.2433L59.1614 14.0305L58.1144 19.4031L56.9528 18.6923V18.7076ZM56.5095 15.8647L57.4572 16.4455L57.8164 14.7871L56.5019 15.8647H56.5095Z" fill="white" />
@@ -681,8 +681,8 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                 <path d="M26.6739 18.4708C25.4664 19.2885 23.8539 19.0745 22.9521 17.7447C22.0503 16.4073 22.4554 14.833 23.6629 14.0153C24.152 13.6867 24.6181 13.5644 25.0461 13.5032L25.7645 14.5655C25.2677 14.5655 24.878 14.6496 24.4653 14.9247C23.7698 15.3909 23.5482 16.2698 24.045 17.0034C24.5341 17.7371 25.4359 17.867 26.1313 17.3932C26.544 17.1181 26.7504 16.7665 26.9338 16.2927L27.6598 17.3703C27.4458 17.7447 27.163 18.1268 26.6663 18.4631L26.6739 18.4708Z" fill="white" />
                                 <path d="M26.7427 12.3492L29.8378 10.9736L30.3116 12.0359L28.4163 12.8842L28.7603 13.6637L30.4798 12.8994L30.9078 13.87L29.1882 14.6343L29.5551 15.452L31.4504 14.6037L31.9242 15.666L28.829 17.0416L26.7427 12.3568V12.3492Z" fill="white" />
                                 <path d="M37.8011 10.7367C38.3132 10.6756 38.7717 11.0347 38.8328 11.5468C38.894 12.0588 38.5348 12.5174 38.0227 12.5785C37.5107 12.6396 37.0522 12.2804 36.991 11.7684C36.9299 11.2564 37.2891 10.7978 37.8011 10.7367Z" fill="white" />
-                                <path d="M54.0411 35.8341C54.0411 32.6939 51.4954 30.1482 48.3552 30.1482C45.215 30.1482 42.6693 32.6939 42.6693 35.8341V47.2135C42.6693 50.3538 45.215 52.8994 48.3552 52.8994C51.4954 52.8994 54.0411 50.3538 54.0411 47.2135V35.8341Z" stroke="white" stroke-width="2.5" stroke-miterlimit="10" />
-                                <path d="M36.2956 52.3033V30.1482L25.902 47.2059H38.4048" stroke="white" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="round" />
+                                <path d="M54.0411 35.8341C54.0411 32.6939 51.4954 30.1482 48.3552 30.1482C45.215 30.1482 42.6693 32.6939 42.6693 35.8341V47.2135C42.6693 50.3538 45.215 52.8994 48.3552 52.8994C51.4954 52.8994 54.0411 50.3538 54.0411 47.2135V35.8341Z" stroke="white" strokeWidth="2.5" strokeMiterlimit="10" />
+                                <path d="M36.2956 52.3033V30.1482L25.902 47.2059H38.4048" stroke="white" strokeWidth="2.5" strokeLinecap="square" strokeLinejoin="round" />
                             </svg>
                             <p>
                                 Estd. 1977 ~ Bunawat is curated by the team at our legacy store,
@@ -731,7 +731,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                     <div className="container">
                         <div className="know_inner">
                             <svg width="160" height="160" viewBox="0 0 109 109" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M54.3402 107.2C83.2468 107.2 106.68 83.7666 106.68 54.86C106.68 25.9534 83.2468 2.52003 54.3402 2.52003C25.4336 2.52003 2.0002 25.9534 2.0002 54.86C2.0002 83.7666 25.4336 107.2 54.3402 107.2Z" fill="#2A3592" stroke="white" stroke-width="3.4" stroke-miterlimit="10" />
+                                <path d="M54.3402 107.2C83.2468 107.2 106.68 83.7666 106.68 54.86C106.68 25.9534 83.2468 2.52003 54.3402 2.52003C25.4336 2.52003 2.0002 25.9534 2.0002 54.86C2.0002 83.7666 25.4336 107.2 54.3402 107.2Z" fill="#2A3592" stroke="white" strokeWidth="3.4" strokeMiterlimit="10" />
                                 <path d="M60.3999 16.7L58.6699 12.23L60.5499 12.57L61.5399 15.37H61.5799L63.4699 13.1L65.2499 13.42L62.0799 17L61.6099 19.58L59.9399 19.28L60.4099 16.7H60.3999Z" fill="white" />
                                 <path d="M67.4796 14.1401L71.6196 15.7101L71.0796 17.1301L68.5396 16.1701L68.1396 17.2101L70.4396 18.0801L69.9496 19.3801L67.6496 18.5101L67.2396 19.6001L69.7796 20.5601L69.2396 21.9801L65.0996 20.4101L67.4796 14.1301V14.1401Z" fill="white" />
                                 <path d="M74.5604 25.01L74.8904 23.47L72.8704 22.23L71.6604 23.23L70.1504 22.3L75.7604 17.86L77.4504 18.89L76.0804 25.92L74.5604 24.99V25.01ZM73.9804 21.29L75.2204 22.05L75.6904 19.88L73.9704 21.29H73.9804Z" fill="white" />
@@ -764,8 +764,8 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                 <path d="M34.9397 24.7C33.3597 25.77 31.2497 25.49 30.0697 23.75C28.8897 22 29.4197 19.94 30.9997 18.87C31.6397 18.44 32.2497 18.28 32.8097 18.2L33.7497 19.59C33.0997 19.59 32.5897 19.7 32.0497 20.06C31.1397 20.67 30.8497 21.82 31.4997 22.78C32.1397 23.74 33.3197 23.91 34.2297 23.29C34.7697 22.93 35.0397 22.47 35.2797 21.85L36.2297 23.26C35.9497 23.75 35.5797 24.25 34.9297 24.69L34.9397 24.7Z" fill="white" />
                                 <path d="M35.0303 16.69L39.0803 14.89L39.7003 16.28L37.2203 17.39L37.6703 18.41L39.9203 17.41L40.4803 18.68L38.2303 19.68L38.7103 20.75L41.1903 19.64L41.8103 21.03L37.7603 22.83L35.0303 16.7V16.69Z" fill="white" />
                                 <path d="M49.5005 14.58C50.1705 14.5 50.7705 14.97 50.8505 15.64C50.9305 16.31 50.4605 16.91 49.7905 16.99C49.1205 17.07 48.5205 16.6 48.4405 15.93C48.3605 15.26 48.8305 14.66 49.5005 14.58Z" fill="white" />
-                                <path d="M70.7501 47.42C70.7501 43.311 67.4191 39.98 63.3101 39.98C59.2011 39.98 55.8701 43.311 55.8701 47.42V62.31C55.8701 66.419 59.2011 69.75 63.3101 69.75C67.4191 69.75 70.7501 66.419 70.7501 62.31V47.42Z" stroke="white" stroke-width="3.4" stroke-miterlimit="10" />
-                                <path d="M47.5297 68.97V39.98L33.9297 62.3H50.2897" stroke="white" stroke-width="3.4" stroke-linecap="square" stroke-linejoin="round" />
+                                <path d="M70.7501 47.42C70.7501 43.311 67.4191 39.98 63.3101 39.98C59.2011 39.98 55.8701 43.311 55.8701 47.42V62.31C55.8701 66.419 59.2011 69.75 63.3101 69.75C67.4191 69.75 70.7501 66.419 70.7501 62.31V47.42Z" stroke="white" strokeWidth="3.4" strokeMiterlimit="10" />
+                                <path d="M47.5297 68.97V39.98L33.9297 62.3H50.2897" stroke="white" strokeWidth="3.4" strokeLinecap="square" strokeLinejoin="round" />
                             </svg>
                             <p>
                                 Estd. 1977<br /> Bunawat is curated by the team at our legacy store,
@@ -832,8 +832,8 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                     overflow: 'hidden',
                                     overflowX: 'auto'
                                 }}>
-                                    {recentlyProduct?.slice(1)?.map(list => (
-                                        <div className="recent_view_product" onClick={() => history.push(`/product/${list?._id}`)} style={{ cursor: 'pointer', width: '130px', height: '150px' }}>
+                                    {recentlyProduct?.slice(1)?.map((list, index) => (
+                                        <div className="recent_view_product" key={list?._id + index} onClick={() => history.push(`/product/${list?._id}`)} style={{ cursor: 'pointer', width: '130px', height: '150px' }}>
                                             <img src={list?.images?.[0]?.url} style={{ maxWidth: '130px', borderRadius: '4px' }} width="130px" height="100%" alt="recent_view_img" />
                                             <div className="recent_price">
                                                 <p>{getNumberWithComma(list?.sale_price ?? 0)}</p>
