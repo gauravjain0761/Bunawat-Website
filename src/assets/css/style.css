@@ -57,6 +57,13 @@
     src: url("../fonts/New Hero/new-hero-3.otf");
 }
 
+*,
+html,
+body {
+
+    scroll-behavior: smooth !important;
+}
+
 body {
     /* font-family: 'Montserrat', sans-serif; */
     font-family: Newhero;

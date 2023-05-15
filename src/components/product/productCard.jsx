@@ -11,7 +11,7 @@ import { ApiGet } from '../../services/API/api';
 import { toast } from 'react-toastify';
 import _ from 'lodash';
 
-const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, productBottomData, width, refetch, swipeableIndex, productList, lastSkuData, setLastSkuData, filters, setQty, selectedData, setSelectedData }) => {
+const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, productBottomData, width, refetch, swipeableIndex, productList, lastSkuData, setLastSkuData, filters, setQty, selectedData, setSelectedData, lastCardElementRef }) => {
     const settings = {
         dots: true,
         infinite: false,
@@ -73,8 +73,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
         <div style={{
             maxHeight: "100vh",
             overflowY: scrollActive ? "auto" : "hidden"
-        }} >
-            <div ></div>
+        }} ref={!lastCardElementRef ? null : lastCardElementRef}>
             <Box className="product_page" sx={{
                 paddingTop: { xs: "60px", sm: '72px' }
             }}>
@@ -558,12 +557,12 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                                         <source src={list?.url} type="video/mp4" />
                                                     </video>
                                                     :
-                                                    <picture key={list?.url + index + list?._id}>
-                                                        <source srcSet={`${list?.url}`} media="(max-width: 500px)" />
+                                                    <picture className='product_slider_img_height' key={list?.url + index + list?._id}>
+                                                        <source className='product_slider_img_height' srcSet={`${list?.url}`} media="(max-width: 500px)" />
                                                         <img
-                                                            className="logo__apple"
                                                             srcSet={`${list?.url}`}
                                                             alt="Full Logo"
+                                                            className='product_slider_img_height'
                                                             src={list?.url} />
                                                     </picture>
                                                     // <img src={list?.url} key={list?.url + index + list?._id} className='product_slider_img_height' alt="slider" width='100%' />
@@ -582,11 +581,11 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                                         <source src={list?.url} type="video/mp4" />
                                                     </video>
                                                     :
-                                                    <picture key={list?.url + index + list?._id}>
-                                                        <source srcSet={`${list?.url}`} media="(max-width: 500px)" />
+                                                    <picture className='product_slider_img_height' key={list?.url + index + list?._id}>
+                                                        <source className='product_slider_img_height' srcSet={`${list?.url}`} media="(max-width: 500px)" />
                                                         <img
-                                                            className="logo__apple"
                                                             srcSet={`${list?.url}`}
+                                                            className='product_slider_img_height'
                                                             alt="Full Logo"
                                                             src={list?.url} />
                                                     </picture>
@@ -604,14 +603,18 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                     width: '100%',
                     border: '1px solid #2A3592'
                 }}></Box>
+                <div style={{
+                    width: '100%',
+                    height: '25px',
+                    opacity: 0
+                }} id="scoll-top"></div>
                 <Box sx={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     width: '100%',
-                    paddingTop: '16px'
                 }}>
-                    <img src="/img/product_view.svg" alt="icon" />
+                    <a href="#scoll-top"><img src="/img/product_view.svg" alt="icon" /></a>
                 </Box>
                 {(width < 768) ?
                     <div onMouseEnter={() => setScrollActive(true)} onTouchStart={() => setScrollActive(true)}>
