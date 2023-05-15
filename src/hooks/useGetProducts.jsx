@@ -36,7 +36,7 @@ export default function useProjectData(productFilter) {
         setLoading(true)
         setError(false)
         getProjectData();
-    }, [productFilter?.page])
+    }, [productFilter?.page, productFilter?.id, productFilter?.isRefresh])
 
     return { loadingProduct, errorProduct, getAllProduct, hasMoreProduct }
 }

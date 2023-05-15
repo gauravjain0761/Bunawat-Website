@@ -589,7 +589,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                     {product?.similar_products?.map((list, index) => (
                                         <div className={`fix-padding-might_like_inner ${getClassWidth(index, product?.similar_products?.length)}`}>
                                             <div className="cloth_deatils_wrap">
-                                                <Link to={`/product/${list?._id}/${list?.type}`} className="cloth_deatils_link">
+                                                <Link to={`/product/${list?._id}`} className="cloth_deatils_link">
                                                     <img src={list?.images?.[0]?.url} alt="cloth" width="100%" height={getHeightData(product?.similar_products?.length).includes(index) ? "640px" : "560px"} />
                                                 </Link>
                                                 <div className="cloth_info_title">
@@ -833,7 +833,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                     overflowX: 'auto'
                                 }}>
                                     {recentlyProduct?.slice(1)?.map(list => (
-                                        <div className="recent_view_product" onClick={() => history.push(`/product/${list?._id}/${list?.type}`)} style={{ cursor: 'pointer', width: '130px', height: '150px' }}>
+                                        <div className="recent_view_product" onClick={() => history.push(`/product/${list?._id}`)} style={{ cursor: 'pointer', width: '130px', height: '150px' }}>
                                             <img src={list?.images?.[0]?.url} style={{ maxWidth: '130px', borderRadius: '4px' }} width="130px" height="100%" alt="recent_view_img" />
                                             <div className="recent_price">
                                                 <p>{getNumberWithComma(list?.sale_price ?? 0)}</p>
