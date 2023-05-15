@@ -554,7 +554,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                         {lastSkuData?.images?.map((list, index) => (
                                             <div key={list?.url + index + list?._id} >
                                                 {list?.type == "VIDEO" ?
-                                                    <video loop playsInline autoPlay key={list?.url + index + list?._id} muted className='product_slider_video_height'>
+                                                    <video loop autoPlay key={list?.url + index + list?._id} muted className='product_slider_video_height'>
                                                         <source src={list?.url} type="video/mp4" />
                                                     </video>
                                                     :
@@ -578,7 +578,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                         {[...product?.images, ...product?.videos?.slice(3, 4)]?.map((list, index) => (
                                             <div key={list?.url + index + list?._id}>
                                                 {list?.type == "VIDEO" ?
-                                                    <video loop playsInline key={list?.url + index + list?._id} autoPlay className='product_slider_video_height' muted>
+                                                    <video loop key={list?.url + index + list?._id} autoPlay className='product_slider_video_height' muted>
                                                         <source src={list?.url} type="video/mp4" />
                                                     </video>
                                                     :
