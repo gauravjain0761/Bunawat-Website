@@ -45,11 +45,11 @@ const Product = () => {
   }, [loadingProduct, hasMoreProduct])
 
   useEffect(() => {
+    setSwipeableIndex(0)
     setProductFilter({ ...productFilter, page: 1, id })
   }, [id])
 
   useEffect(() => {
-    setSwipeableIndex(0)
     setProductList(getAllProduct ?? [])
   }, [getAllProduct])
 
@@ -142,14 +142,6 @@ const Product = () => {
     setProductBottomData(bottomData)
   }
 
-  if (loadingProduct) return <Box sx={{
-    width: '100%',
-    height: '100vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }}><CircularProgress /></Box>
-
   return (
     <>
       <SwipeableViews containerStyle={{ height: '100%' }} enableMouseEvents index={swipeableIndex} disabled={swipeableDisable} onChangeIndex={(index) => getCurrentBottomData(index)} >
@@ -165,7 +157,7 @@ const Product = () => {
           }
         })}
       </SwipeableViews>
-      {/* <ProductPageFilter selectedImage={productList?.[swipeableIndex]?.images?.[0]?.url ?? ""} selectedProduct={productList?.[swipeableIndex] ?? {}} filters={productList?.[swipeableIndex]?.skus ?? []} swipeableIndex={swipeableIndex ?? 0} setLastSkuData={setLastSkuData} qty={qty} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} /> */}
+      <ProductPageFilter selectedImage={productList?.[swipeableIndex]?.images?.[0]?.url ?? ""} selectedProduct={productList?.[swipeableIndex] ?? {}} filters={productList?.[swipeableIndex]?.skus ?? []} swipeableIndex={swipeableIndex ?? 0} setLastSkuData={setLastSkuData} qty={qty} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} />
     </>
   );
 };

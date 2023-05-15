@@ -14,7 +14,7 @@ import { setCartCount } from '../../redux/reducers/cart';
 import { Modal } from "react-bootstrap";
 import { Box, Button } from '@mui/material';
 
-export const SelectModal = ({ showSelect, selectedData, handleClose, attributeList, attributeData, setAttributeData, filterList, setSelectedData, setQty, setLastSkuData, }) => {
+export const SelectModal = ({ showSelect, selectedData, handleClose, attributeList, attributeData, filterList, setSelectedData, setQty, setLastSkuData, }) => {
     return (
         <>
             <Modal
@@ -184,9 +184,9 @@ export const SelectModal = ({ showSelect, selectedData, handleClose, attributeLi
 
 
 const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedImage, setLastSkuData, qty, setQty, selectedData, setSelectedData }) => {
-    const [filterList, setFilterList] = useState([]);
-    const [attributeList, setAttributeList] = useState([]);
-    const [attributeData, setAttributeData] = useState({});
+    // const [filterList, setFilterList] = useState([]);
+    // const [attributeList, setAttributeList] = useState([]);
+    // const [attributeData, setAttributeData] = useState({});
     const [isCartAdd, setIsCartAdd] = useState(false);
     const [addToCart, { isLoading }] = useAddToCartMutation()
     const dispatch = useDispatch()
@@ -195,27 +195,27 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
     const handleClose = () => setShowSelect(false);
     const handleShow = () => setShowSelect(true);
 
-    useEffect(() => {
-        let temp = [...filters] ?? []
-        let uniqKey = _.uniq(temp?.map((list) => Object.keys(list?.varients ?? {}))?.flat())?.map((list, index) => list) ?? []
-        let tempAttributeList = {};
-        let tempAttributeData = {};
-        uniqKey.filter(list => list != 'qty').map(val => {
-            temp.map((list) => {
-                let value = tempAttributeList?.[val] ?? []
-                if (!!list?.varients?.[val]) {
-                    tempAttributeList = { ...tempAttributeList, [val]: [...value, { value: list?._id, label: list?.varients?.[val] }] }
-                }
-            })
-            tempAttributeData = { ...tempAttributeData, [val]: 'defaultValue' }
-        })
-        setAttributeData(tempAttributeData);
-        setAttributeList(tempAttributeList);
-        setFilterList(temp)
-    }, [filters, swipeableIndex])
+    // useEffect(() => {
+    //     let temp = [...filters] ?? []
+    //     let uniqKey = _.uniq(temp?.map((list) => Object.keys(list?.varients ?? {}))?.flat())?.map((list, index) => list) ?? []
+    //     let tempAttributeList = {};
+    //     let tempAttributeData = {};
+    //     uniqKey.filter(list => list != 'qty').map(val => {
+    //         temp.map((list) => {
+    //             let value = tempAttributeList?.[val] ?? []
+    //             if (!!list?.varients?.[val]) {
+    //                 tempAttributeList = { ...tempAttributeList, [val]: [...value, { value: list?._id, label: list?.varients?.[val] }] }
+    //             }
+    //         })
+    //         tempAttributeData = { ...tempAttributeData, [val]: 'defaultValue' }
+    //     })
+    //     setAttributeData(tempAttributeData);
+    //     setAttributeList(tempAttributeList);
+    //     setFilterList(temp)
+    // }, [filters, swipeableIndex])
 
     useEffect(() => {
-        const data = _.uniqBy(attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(attributeList?.color, x => x?.label)
+        const data = _.uniqBy(selectedProduct?.attributeList?.color, x => x?.label)?.length > 0 ? _.uniqBy(selectedProduct?.attributeList?.color, x => x?.label) : []
         setSelectedData({
             ...selectedData,
             color: data?.[0],
@@ -223,12 +223,12 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
         })
         setQty(1)
         // setLastSkuData(filterList?.find(list => list?._id == data?.[0]?.value) ?? {})
-    }, [attributeList, filterList, swipeableIndex])
+    }, [selectedProduct?.attributeList, selectedProduct?.filterList, swipeableIndex])
 
 
     const handleAdd = async () => {
         if ((selectedData?.size && selectedData?.size != "default")) {
-            const selectedFinalData = filterList?.find(list => list?._id == selectedData?.size) ?? {}
+            const selectedFinalData = selectedProduct?.filterList?.find(list => list?._id == selectedData?.size) ?? {}
             console.log("selectedData", selectedFinalData)
             const cartData = JSON.parse(Storage.get("cartData")) ?? []
             if (Storage.isUserAuthenticated()) {
@@ -334,7 +334,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                             </div>
                                         </div>
                                     </MenuItem>
-                                    <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "xtra small")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "xtra small"))}>
+                                    <MenuItem value={selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "xtra small")?.value} className="common_option_wrap" disabled={!(selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "xtra small"))}>
                                         <div className="common_option">
                                             <p>
                                                 <div className="common_option">
@@ -350,7 +350,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                             </div>
                                         </div>
                                     </MenuItem>
-                                    <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "small (s)")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "small (s)"))}>
+                                    <MenuItem value={selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "small (s)")?.value} className="common_option_wrap" disabled={!(selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "small (s)"))}>
                                         <div className="common_option">
                                             <p>
                                                 <div className="common_option">
@@ -366,7 +366,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                             </div>
                                         </div>
                                     </MenuItem>
-                                    <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "Medium-(m)")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "Medium-(m)"))}>
+                                    <MenuItem value={selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "Medium-(m)")?.value} className="common_option_wrap" disabled={!(selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "Medium-(m)"))}>
                                         <div className="common_option">
                                             <p>
                                                 <div className="common_option">
@@ -382,7 +382,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                             </div>
                                         </div>
                                     </MenuItem>
-                                    <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "Large-(L)")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "Large-(L)"))}>
+                                    <MenuItem value={selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "Large-(L)")?.value} className="common_option_wrap" disabled={!(selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "Large-(L)"))}>
                                         <div className="common_option">
                                             <p>
                                                 <div className="common_option">
@@ -398,7 +398,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                             </div>
                                         </div>
                                     </MenuItem>
-                                    <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "xtra large")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "xtra large"))}>
+                                    <MenuItem value={selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "xtra large")?.value} className="common_option_wrap" disabled={!(selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "xtra large"))}>
                                         <div className="common_option">
                                             <p>
                                                 <div className="common_option">
@@ -501,7 +501,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                     </div>
                     <div className="slaman_link display_none_in_mobile">
                         <ul className="color_list">
-                            {_.uniqBy(attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(attributeList?.color, x => x?.label)?.map((color, index) => (
+                            {_.uniqBy(selectedProduct?.attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(selectedProduct?.attributeList?.color, x => x?.label)?.map((color, index) => (
                                 <li
                                     className="active"
                                     key={color + index}
@@ -512,7 +512,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                             size: 'default'
                                         })
                                         setQty(1)
-                                        setLastSkuData(filterList?.find(list => list?._id == color?.value))
+                                        setLastSkuData(selectedProduct?.filterList?.find(list => list?._id == color?.value))
                                     }}
                                     style={{ border: (selectedData?.color?.value == color?.value) ? "3px solid #000" : ".5px solid #000", backgroundColor: color?.label }}>
                                 </li>
@@ -522,7 +522,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                 </div>
             </div>
 
-            <SelectModal showSelect={showSelect} handleClose={handleClose} attributeList={attributeList} attributeData={attributeData} setAttributeData={setAttributeData} filterList={filterList} selectedData={selectedData} setSelectedData={setSelectedData} setQty={setQty} setLastSkuData={setLastSkuData} />
+            <SelectModal showSelect={showSelect} handleClose={handleClose} attributeList={selectedProduct?.attributeList} attributeData={selectedProduct?.attributeData} filterList={selectedProduct?.filterList} selectedData={selectedData} setSelectedData={setSelectedData} setQty={setQty} setLastSkuData={setLastSkuData} />
         </>
     );
 }

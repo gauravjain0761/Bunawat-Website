@@ -24,37 +24,39 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
         verticalSwiping: true,
     };
     const [pincode, setPincode] = useState("");
-    const [filterList, setFilterList] = useState([]);
-    const [attributeList, setAttributeList] = useState([]);
+    // const [filterList, setFilterList] = useState([]);
+    // const [attributeList, setAttributeList] = useState([]);
     const [scrollActive, setScrollActive] = useState(false);
 
-    useEffect(() => {
-        let temp = [...productList?.[swipeableIndex]?.skus ?? []] ?? []
-        let uniqKey = _.uniq(temp?.map((list) => Object.keys(list?.varients ?? {}))?.flat())?.map((list, index) => list) ?? []
-        let tempAttributeList = {};
-        let tempAttributeData = {};
-        uniqKey.filter(list => list != 'qty').map(val => {
-            temp.map((list) => {
-                let value = tempAttributeList?.[val] ?? []
-                if (!!list?.varients?.[val]) {
-                    tempAttributeList = { ...tempAttributeList, [val]: [...value, { value: list?._id, label: list?.varients?.[val] }] }
-                }
-            })
-            tempAttributeData = { ...tempAttributeData, [val]: 'defaultValue' }
-        })
-        setAttributeList(tempAttributeList);
-        setFilterList(temp)
-    }, [swipeableIndex])
+    // useEffect(() => {
+    //     let temp = [...productList?.[swipeableIndex]?.skus ?? []] ?? []
+    //     let uniqKey = _.uniq(temp?.map((list) => Object.keys(list?.varients ?? {}))?.flat())?.map((list, index) => list) ?? []
+    //     let tempAttributeList = {};
+    //     let tempAttributeData = {};
+    //     uniqKey.filter(list => list != 'qty').map(val => {
+    //         temp.map((list) => {
+    //             let value = tempAttributeList?.[val] ?? []
+    //             if (!!list?.varients?.[val]) {
+    //                 tempAttributeList = { ...tempAttributeList, [val]: [...value, { value: list?._id, label: list?.varients?.[val] }] }
+    //             }
+    //         })
+    //         tempAttributeData = { ...tempAttributeData, [val]: 'defaultValue' }
+    //     })
+    //     setAttributeList(tempAttributeList);
+    //     setFilterList(temp)
+    // }, [swipeableIndex])
 
     useEffect(() => {
-        const data = _.uniqBy(attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(attributeList?.color, x => x?.label)
-        setSelectedData({
-            ...selectedData,
-            color: data?.[0],
-            size: 'default'
-        })
-        // setLastSkuData(filterList?.find(list => list?._id == data?.[0]?.value) ?? {})
-    }, [attributeList, filterList, swipeableIndex])
+        if (productIndex == swipeableIndex) {
+            const data = _.uniqBy(product?.attributeList?.color, x => x?.label)?.length > 0 ? _.uniqBy(product?.attributeList?.color, x => x?.label) : []
+            setSelectedData({
+                ...selectedData,
+                color: data?.[0],
+                size: 'default'
+            })
+            setLastSkuData(product?.filterList?.find(list => list?._id == data?.[0]?.value) ?? {})
+        }
+    }, [product?.attributeList, product?.filterList, swipeableIndex])
 
     useEffect(async () => {
         if (pincode?.length == 6) {
@@ -527,7 +529,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                     <li style={{ backgroundColor: "#037A44" }}></li>
                                 </ul> */}
                                 <ul className="color_list">
-                                    {_.uniqBy(attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(attributeList?.color, x => x?.label)?.map((color, index) => (
+                                    {_.uniqBy(product?.attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(product?.attributeList?.color, x => x?.label)?.map((color, index) => (
                                         <>
                                             <li
                                                 className="active"
@@ -539,7 +541,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                                         size: 'default'
                                                     })
                                                     setQty(1)
-                                                    setLastSkuData(filterList?.find(list => list?._id == color?.value))
+                                                    setLastSkuData(product?.filterList?.find(list => list?._id == color?.value))
                                                 }}
                                                 style={{ border: (selectedData?.color?.value == color?.value) ? "3px solid #000" : ".5px solid #000", backgroundColor: color?.label }}>
                                             </li>
@@ -548,12 +550,12 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                 </ul>
                             </Box>
                             {((lastSkuData?.images?.length > 0) && (productIndex == swipeableIndex)) ?
-                                <div className='product_slider_height'>
+                                <div className='product_slider_height '>
                                     <Slider {...settings} className="product_slider">
                                         {lastSkuData?.images?.map((list, index) => (
                                             <div>
                                                 {list?.type == "VIDEO" ?
-                                                    <video loop autoPlay key={list?.url + index + list?._id} muted className='product_slider_video_height'>
+                                                    <video loop playsInline autoPlay key={list?.url + index + list?._id} muted className='product_slider_video_height'>
                                                         <source src={list?.url} type="video/mp4" />
                                                     </video>
                                                     :
@@ -572,12 +574,12 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                     </Slider>
                                 </div>
                                 :
-                                <div className='product_slider_height' onMouseEnter={() => setScrollActive(false)} onTouchStart={() => setScrollActive(false)}>
+                                <div className='product_slider_height ' onMouseEnter={() => setScrollActive(false)} onTouchStart={() => setScrollActive(false)}>
                                     <Slider {...settings} className="product_slider">
                                         {[...product?.images, ...product?.videos?.slice(3, 4)]?.map((list, index) => (
                                             <div>
                                                 {list?.type == "VIDEO" ?
-                                                    <video loop key={list?.url + index + list?._id} autoPlay className='product_slider_video_height' muted>
+                                                    <video loop playsInline key={list?.url + index + list?._id} autoPlay className='product_slider_video_height' muted>
                                                         <source src={list?.url} type="video/mp4" />
                                                     </video>
                                                     :
