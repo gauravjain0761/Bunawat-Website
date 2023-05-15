@@ -24,7 +24,7 @@ const Product = () => {
   const [productFilter, setProductFilter] = useState({
     page: 1,
     id,
-    limit: 5,
+    limit: 3,
     isRefresh: false
   })
   const observer = useRef()
