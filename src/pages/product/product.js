@@ -23,7 +23,7 @@ const Product = () => {
   const [productFilter, setProductFilter] = useState({
     page: 1,
     id,
-    limit: 4
+    limit: 5
   })
   const observer = useRef()
 
@@ -137,8 +137,7 @@ const Product = () => {
     <>
       <SwipeableViews containerStyle={{ height: '100%' }} enableMouseEvents index={swipeableIndex} disabled={swipeableDisable} onChangeIndex={(index) => getCurrentBottomData(index)} >
         {productList?.map((data, index) => {
-          console.log(productList.length - 2, swipeableIndex)
-          if ((productList.length - 2) === swipeableIndex) {
+          if (productList.length === swipeableIndex + 1) {
             return (
               <ProductCard key={data?._id + index} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} width={width} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} setLastSkuData={setLastSkuData} filters={productList?.[swipeableIndex]?.skus ?? []} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} lastCardElementRef={lastCardElementRefProject} />
             )
