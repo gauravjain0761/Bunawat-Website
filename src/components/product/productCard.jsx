@@ -548,7 +548,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                 </ul>
                             </Box>
                             {((lastSkuData?.images?.length > 0) && (productIndex == swipeableIndex)) ?
-                                <div className='product_slider_height '>
+                                <div className='product_slider_height ' onMouseEnter={() => setScrollActive(false)} onTouchStart={() => setScrollActive(false)}>
                                     <Slider {...settings} className="product_slider">
                                         {lastSkuData?.images?.map((list, index) => (
                                             <div key={list?.url + index + list?._id} >
