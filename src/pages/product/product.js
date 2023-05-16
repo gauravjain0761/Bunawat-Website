@@ -26,7 +26,7 @@ const Product = () => {
   const [productFilter, setProductFilter] = useState({
     page: 1,
     id,
-    limit: 3,
+    limit: 4,
     isRefresh: false
   })
   const observer = useRef()
@@ -38,6 +38,7 @@ const Product = () => {
     slidesToScroll: 1,
     beforeChange: (currentSlide, nextSlide) => {
       console.log(currentSlide, nextSlide)
+      setLastSkuData({})
       setSwipeableIndex(nextSlide)
     }
   };
