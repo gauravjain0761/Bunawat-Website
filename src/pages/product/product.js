@@ -50,7 +50,8 @@ const Product = () => {
   }, [id])
 
   useEffect(() => {
-    setProductList(getAllProduct ?? [])
+    let temproduct = getAllProduct?.length > 0 ? [...getAllProduct] : []
+    setProductList(temproduct ?? [])
   }, [getAllProduct])
 
   const refetchData = () => {
@@ -144,7 +145,7 @@ const Product = () => {
 
   return (
     <>
-      <SwipeableViews containerStyle={{ height: '100%' }} enableMouseEvents index={swipeableIndex} disabled={swipeableDisable} onChangeIndex={(index) => getCurrentBottomData(index)} >
+      <SwipeableViews disableLazyLoading={true} containerStyle={{ height: '100%' }} enableMouseEvents index={swipeableIndex} disabled={swipeableDisable} onChangeIndex={(index) => getCurrentBottomData(index)} >
         {productList?.map((data, index) => {
           if (productList.length === swipeableIndex + 1) {
             return (
@@ -157,7 +158,7 @@ const Product = () => {
           }
         })}
       </SwipeableViews>
-      {/* <ProductPageFilter selectedImage={productList?.[swipeableIndex]?.images?.[0]?.url ?? ""} selectedProduct={productList?.[swipeableIndex] ?? {}} filters={productList?.[swipeableIndex]?.skus ?? []} swipeableIndex={swipeableIndex ?? 0} setLastSkuData={setLastSkuData} qty={qty} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} /> */}
+      <ProductPageFilter selectedImage={productList?.[swipeableIndex]?.images?.[0]?.url ?? ""} selectedProduct={productList?.[swipeableIndex] ?? {}} filters={productList?.[swipeableIndex]?.skus ?? []} swipeableIndex={swipeableIndex ?? 0} setLastSkuData={setLastSkuData} qty={qty} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} />
     </>
   );
 };
