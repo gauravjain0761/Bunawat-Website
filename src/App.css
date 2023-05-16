@@ -8,6 +8,10 @@ body {
     scroll-behavior: smooth;
 }
 
+.product-slider-full {
+    overflow-x: hidden;
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 0px;

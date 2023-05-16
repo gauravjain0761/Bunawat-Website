@@ -74,7 +74,8 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
     return (
         <div style={{
             maxHeight: "95vh",
-            overflowY: "auto"
+            width: '100%',
+            overflowY: "auto",
             // overflowY: scrollActive ? "auto" : "hidden"
         }} ref={!lastCardElementRef ? null : lastCardElementRef}>
             <Box className="product_page" sx={{
