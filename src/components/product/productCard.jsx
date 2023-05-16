@@ -554,9 +554,12 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                         {lastSkuData?.images?.map((list, index) => (
                                             <div key={list?.url + index + list?._id} >
                                                 {list?.type == "VIDEO" ?
-                                                    <video loop autoPlay key={list?.url + index + list?._id} muted className='product_slider_video_height'>
-                                                        <source src={list?.url} type="video/mp4" />
+                                                    <video key={list?.url + index + list?._id} autoPlay playsInline preload="true" src={list?.url} loop muted className='product_slider_video_height'>
+                                                        <source src={list?.url} type="video/mp4"></source>
                                                     </video>
+                                                    // <video loop autoPlay key={list?.url + index + list?._id} muted className='product_slider_video_height'>
+                                                    //     <source src={list?.url} type="video/mp4" />
+                                                    // </video>
                                                     :
                                                     <picture className='product_slider_img_height' key={list?.url + index + list?._id}>
                                                         <source className='product_slider_img_height' srcSet={`${list?.url}`} media="(max-width: 500px)" />
@@ -578,9 +581,12 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                         {[...product?.images, ...product?.videos?.slice(3, 4)]?.map((list, index) => (
                                             <div key={list?.url + index + list?._id}>
                                                 {list?.type == "VIDEO" ?
-                                                    <video loop key={list?.url + index + list?._id} autoPlay className='product_slider_video_height' muted>
-                                                        <source src={list?.url} type="video/mp4" />
+                                                    <video key={list?.url + index + list?._id} autoPlay playsInline preload="true" src={list?.url} loop muted className='product_slider_video_height'>
+                                                        <source src={list?.url} type="video/mp4"></source>
                                                     </video>
+                                                    // <video loop key={list?.url + index + list?._id} autoPlay className='product_slider_video_height' muted>
+                                                    //     <source src={list?.url} type="video/mp4" />
+                                                    // </video>
                                                     :
                                                     <picture className='product_slider_img_height' key={list?.url + index + list?._id}>
                                                         <source className='product_slider_img_height' srcSet={`${list?.url}`} media="(max-width: 500px)" />

@@ -157,9 +157,12 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
         <div className="best_sale_video">
           {singleList?.mediaType == "VIDEO" ?
             (singleList?.video ?
-              <video loop key={singleList?.video + singleList?._id} autoPlay muted style={{ width: '100%', height: '100%', objectFit: "fill" }}>
-                <source src={singleList?.video} type="video/mp4" />
+              <video key={singleList?.video + singleList?._id} autoPlay playsInline preload="true" src={singleList?.video} loop muted style={{ width: '100%', height: '100%', objectFit: "fill" }}>
+                <source src={singleList?.video} type="video/mp4"></source>
               </video>
+              // <video loop key={singleList?.video + singleList?._id} autoPlay muted style={{ width: '100%', height: '100%', objectFit: "fill" }}>
+              //   <source src={singleList?.video} type="video/mp4" />
+              // </video>
               : null)
             :
             (singleList?.image ? <img src={singleList?.image} alt="hero_image" style={{ width: '100%', height: '100%', objectFit: "fill" }} /> : null)
