@@ -46,17 +46,17 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
     //     setFilterList(temp)
     // }, [swipeableIndex])
 
-    useEffect(() => {
-        if (productIndex == swipeableIndex) {
-            const data = _.uniqBy(product?.attributeList?.color, x => x?.label)?.length > 0 ? _.uniqBy(product?.attributeList?.color, x => x?.label) : []
-            setSelectedData({
-                ...selectedData,
-                color: data?.[0],
-                size: 'default'
-            })
-            setLastSkuData(product?.filterList?.find(list => list?._id == data?.[0]?.value) ?? {})
-        }
-    }, [product?.attributeList, product?.filterList, swipeableIndex])
+    // useEffect(() => {
+    //     if (productIndex == swipeableIndex) {
+    //         const data = _.uniqBy(product?.attributeList?.color, x => x?.label)?.length > 0 ? _.uniqBy(product?.attributeList?.color, x => x?.label) : []
+    //         setSelectedData({
+    //             ...selectedData,
+    //             color: data?.[0],
+    //             size: 'default'
+    //         })
+    //         setLastSkuData(product?.filterList?.find(list => list?._id == data?.[0]?.value) ?? {})
+    //     }
+    // }, [product?.attributeList, product?.filterList, swipeableIndex])
 
     useEffect(async () => {
         if (pincode?.length == 6) {
