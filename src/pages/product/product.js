@@ -35,6 +35,7 @@ const Product = () => {
     infinite: false,
     speed: 500,
     slidesToShow: 1,
+    swipe: !swipeableDisable,
     slidesToScroll: 1,
     beforeChange: (currentSlide, nextSlide) => {
       console.log(currentSlide, nextSlide)
