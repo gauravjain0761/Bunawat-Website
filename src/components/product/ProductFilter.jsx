@@ -214,16 +214,16 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
     //     setFilterList(temp)
     // }, [filters, swipeableIndex])
 
-    useEffect(() => {
-        const data = _.uniqBy(selectedProduct?.attributeList?.color, x => x?.label)?.length > 0 ? _.uniqBy(selectedProduct?.attributeList?.color, x => x?.label) : []
-        setSelectedData({
-            ...selectedData,
-            color: data?.[0],
-            size: 'default'
-        })
-        setQty(1)
-        // setLastSkuData(filterList?.find(list => list?._id == data?.[0]?.value) ?? {})
-    }, [selectedProduct?.attributeList, selectedProduct?.filterList, swipeableIndex])
+    // useEffect(() => {
+    //     const data = _.uniqBy(selectedProduct?.attributeList?.color, x => x?.label)?.length > 0 ? _.uniqBy(selectedProduct?.attributeList?.color, x => x?.label) : []
+    //     setSelectedData({
+    //         ...selectedData,
+    //         color: data?.[0],
+    //         size: 'default'
+    //     })
+    //     setQty(1)
+    //     // setLastSkuData(filterList?.find(list => list?._id == data?.[0]?.value) ?? {})
+    // }, [selectedProduct?.attributeList, selectedProduct?.filterList, swipeableIndex])
 
 
     const handleAdd = async () => {
