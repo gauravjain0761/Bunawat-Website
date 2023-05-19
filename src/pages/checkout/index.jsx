@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 import { useAddOrderMutation, useGetAllCartQuery, useMakePaymentMutation } from "../../services/api";
 import Storage from "../../services/storage";
 import { DEFULT_STATE } from "../../constant/storage";
+import { getNumberWithComma } from "../../utils/utils";
 
 const Checkout = () => {
   const [addOrder] = useAddOrderMutation(undefined, {})
@@ -64,6 +65,63 @@ const Checkout = () => {
       })
     }
   }, [userData])
+
+  const coutinLogicWithCoupon = (arr) => {
+    const couponData = (Number((arr?.data && arr?.data?.length > 0) ? (arr?.data?.reduce((t, x) => t + Number(x?.discounted_amount ?? 0), 0) ?? 0) : 0))
+    const totalAmount = (arr?.data?.reduce((t, x) => t + Number(x?.final_amount), 0)) ?? 0
+    const gstAmount = arr?.data?.reduce((t, x) => t + ((Number(x?.price) > 1000) ?
+      (Number(x?.final_amount) - ((Number(x?.final_amount) * 100) / 112))
+      :
+      (Number(x?.final_amount) - ((Number(x?.final_amount) * 100) / 105))), 0)
+    if (paymentMode == "cod") {
+      const codData = ((arr?.data?.reduce((t, x) => t + Number(x?.final_amount), 0) * 2) / 100) ?? 0
+      const finalTotal = (totalAmount + ((codData >= 150) ? codData : 150))
+      const finalCOD = ((codData >= 150) ? codData : 150)
+      const checkCodPR = arr?.data?.some((x) => (Number(x?.price) > 1000))
+      const codGST = (finalCOD - ((finalCOD * 100) / (checkCodPR ? 112 : 105)))
+      const finalGST = (gstAmount + codGST)
+      return {
+        total: finalTotal?.toFixed(2),
+        codData: finalCOD,
+        couponData,
+        gst_amount: finalGST?.toFixed(2)
+      }
+    } else {
+      return {
+        total: totalAmount?.toFixed(2),
+        codData: 0,
+        couponData,
+        gst_amount: gstAmount?.toFixed(2)
+      }
+    }
+  }
+
+  const coutinLogicWithoutCoupon = (arr) => {
+    const totalAmount = (arr?.reduce((t, x) => t + Number(x?.amount), 0)) ?? 0
+    const gstAmount = arr?.reduce((t, x) => t + ((Number(x?.price) > 1000) ?
+      (Number(x?.amount) - ((Number(x?.amount) * 100) / 112))
+      :
+      (Number(x?.amount) - ((Number(x?.amount) * 100) / 105))), 0)
+    if (paymentMode == "cod") {
+      const codData = ((arr?.reduce((t, x) => t + Number(x?.amount), 0) * 2) / 100) ?? 0
+      const finalTotal = (totalAmount + ((codData >= 150) ? codData : 150))
+      const finalCOD = ((codData >= 150) ? codData : 150)
+      const checkCodPR = arr?.some((x) => (Number(x?.price) > 1000))
+      const codGST = (finalCOD - ((finalCOD * 100) / (checkCodPR ? 112 : 105)))
+      const finalGST = (gstAmount + codGST)
+      return {
+        total: finalTotal?.toFixed(2),
+        codData: finalCOD?.toFixed(2),
+        gst_amount: finalGST?.toFixed(2)
+      }
+    } else {
+      return {
+        total: totalAmount?.toFixed(2),
+        codData: 0,
+        gst_amount: gstAmount?.toFixed(2)
+      }
+    }
+  }
 
   const handleMakeOrder = async () => {
     let tempError = { ...formError }
@@ -117,13 +175,37 @@ const Checkout = () => {
             sku_id: list?.sku?._id
           })) ?? [],
           gst_available: false,
-          total_amount: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0) ? (paymentMode == "cod" ? (couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100))), 0) + (((((couponData?.data?.reduce((t, x) => t + Number(x?.final_amount + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) >= 150) ? ((couponData?.data?.reduce((t, x) => t + Number(x?.final_amount + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) : 150))) : (couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100))), 0)) ?? 0) : (paymentMode == "cod" ? (cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) + (((((cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) >= 150) ? ((cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) : 150))) : (cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0))) ?? 0)?.toFixed(2),
+          total_amount: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ?
+            (coutinLogicWithCoupon(couponData)?.total ?? 0)
+            :
+            (coutinLogicWithoutCoupon(cartData)?.total ?? 0),
+
           discount_amount: (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.reduce((t, x) => t + Number(x?.discounted_amount ?? 0), 0) ?? 0 : 0,
+
           discount_coupon: couponData?.coupon_id,
-          gst_amount: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2),
-          cgst_amount: userData?.state == DEFULT_STATE ? ((cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2)) / 2 : 0,
-          sgst_amount: userData?.state == DEFULT_STATE ? ((cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2)) / 2 : 0,
-          igst_amount: userData?.state == DEFULT_STATE ? 0 : (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2),
+
+          gst_amount: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ?
+            (coutinLogicWithCoupon(couponData)?.gst_amount ?? 0)
+            :
+            (coutinLogicWithoutCoupon(cartData)?.gst_amount ?? 0),
+
+
+          cgst_amount: userData?.state == DEFULT_STATE ? ((cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ?
+            (coutinLogicWithCoupon(couponData)?.gst_amount ?? 0)
+            :
+            (coutinLogicWithoutCoupon(cartData)?.gst_amount ?? 0)) / 2 : 0,
+
+
+          sgst_amount: userData?.state == DEFULT_STATE ? ((cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ?
+            (coutinLogicWithCoupon(couponData)?.gst_amount ?? 0)
+            :
+            (coutinLogicWithoutCoupon(cartData)?.gst_amount ?? 0)) / 2 : 0,
+
+          igst_amount: userData?.state == DEFULT_STATE ? 0 : (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ?
+            (coutinLogicWithCoupon(couponData)?.gst_amount ?? 0)
+            :
+            (coutinLogicWithoutCoupon(cartData)?.gst_amount ?? 0),
+
         }).unwrap().then(async (responce) => {
           if (responce?.data?.payment_mode == "ONLINE") {
             await makePayment({
@@ -162,7 +244,7 @@ const Checkout = () => {
           <Row>
             <Col xs={12} md={5}>
 
-              <MakePayment handleMakeOrder={handleMakeOrder} cartData={cartData ?? []} couponData={couponData} setCouponData={setCouponData} coupon={coupon} setCoupon={setCoupon} paymentMode={paymentMode} />
+              <MakePayment handleMakeOrder={handleMakeOrder} cartData={cartData ?? []} couponData={couponData} setCouponData={setCouponData} coupon={coupon} setCoupon={setCoupon} paymentMode={paymentMode} coutinLogicWithCoupon={coutinLogicWithCoupon} coutinLogicWithoutCoupon={coutinLogicWithoutCoupon} />
 
               <div className="checkout_box" style={{ marginTop: "2rem" }} onClick={handleShow}>
                 <div
@@ -221,7 +303,10 @@ const Checkout = () => {
                     <span style={paymentMode == "cod" ? { color: "#2A3592" } : {}}>Delivers in 3-5 days</span>
                   </div>
                   <div>
-                    <h3 style={paymentMode == "cod" ? { color: "#2A3592" } : {}}>₹ {(couponData?.data && couponData?.data?.length > 0) ? ((((couponData?.data?.reduce((t, x) => t + Number(x?.final_amount + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) >= 150) ? ((couponData?.data?.reduce((t, x) => t + Number(x?.final_amount + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) : 150) : ((((cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) >= 150) ? ((cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) : 150)} </h3>
+                    <h3 style={paymentMode == "cod" ? { color: "#2A3592" } : {}}>{(couponData?.data && couponData?.data?.length > 0) ?
+                      getNumberWithComma(((((couponData?.data?.reduce((t, x) => t + Number(x?.final_amount), 0) * 2) / 100) >= 150) ? ((couponData?.data?.reduce((t, x) => t + Number(x?.final_amount), 0) * 2) / 100) : 150))
+                      :
+                      getNumberWithComma(((((cartData?.reduce((t, x) => t + Number(x?.amount), 0) * 2) / 100) >= 150) ? ((cartData?.reduce((t, x) => t + Number(x?.amount), 0) * 2) / 100) : 150))} </h3>
                   </div>
                 </div>
 
@@ -316,7 +401,7 @@ const Checkout = () => {
               </div>
 
               <Box sx={{ marginTop: "1rem" }}>
-                <MakePayment handleMakeOrder={handleMakeOrder} cartData={cartData ?? []} couponData={couponData} setCouponData={setCouponData} coupon={coupon} setCoupon={setCoupon} paymentMode={paymentMode} />
+                <MakePayment handleMakeOrder={handleMakeOrder} cartData={cartData ?? []} couponData={couponData} setCouponData={setCouponData} coupon={coupon} setCoupon={setCoupon} paymentMode={paymentMode} coutinLogicWithCoupon={coutinLogicWithCoupon} coutinLogicWithoutCoupon={coutinLogicWithoutCoupon} />
               </Box>
 
             </Col>

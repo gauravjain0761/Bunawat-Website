@@ -1,7 +1,8 @@
 import React from "react";
 import { getNumberWithComma } from "../../utils/utils";
 
-const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData, paymentMode }) => {
+const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData, paymentMode, coutinLogicWithCoupon, coutinLogicWithoutCoupon }) => {
+
   return (
     <>
       <div className="checkout_box">
@@ -53,17 +54,16 @@ const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData, payme
             <h3>Free </h3>
           </div>
         </div> */}
-        <div className="checkout_box_list">
+        {/* <div className="checkout_box_list">
           <div>
             <h3>GST</h3>
-            {/* <span>Get 10% off on all orders</span> */}
           </div>
           <div>
             <h3>
               <i>+ {getNumberWithComma(Number((cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0) : cartData?.reduce((t, x) => t + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100), 0))?.toFixed(2)))}</i>
             </h3>
           </div>
-        </div>
+        </div> */}
         {couponData?.coupon &&
           <div className="checkout_box_list">
             <div>
@@ -72,7 +72,7 @@ const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData, payme
             </div>
             <div>
               <h3>
-                <i>- {getNumberWithComma(Number((couponData?.data && couponData?.data?.length > 0) ? getNumberWithComma(couponData?.data?.reduce((t, x) => t + Number(x?.discounted_amount ?? 0), 0) ?? 0) : 0))}</i>
+                <i>- {getNumberWithComma(coutinLogicWithCoupon(couponData)?.couponData ?? 0)}</i>
               </h3>
             </div>
           </div>
@@ -85,7 +85,11 @@ const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData, payme
             </div>
             <div>
               <h3>
-                <i>+ {getNumberWithComma(Number((couponData?.data && couponData?.data?.length > 0) ? ((((couponData?.data?.reduce((t, x) => t + Number(x?.final_amount + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) >= 150) ? ((couponData?.data?.reduce((t, x) => t + Number(x?.final_amount + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) : 150) : ((((cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) >= 150) ? ((cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) : 150)))}</i>
+                <i>+ {(couponData?.data && couponData?.data?.length > 0) ?
+                  getNumberWithComma(coutinLogicWithCoupon(couponData)?.codData ?? 0)
+                  :
+                  getNumberWithComma(coutinLogicWithoutCoupon(cartData)?.codData ?? 0)
+                }</i>
               </h3>
             </div>
           </div>
@@ -106,7 +110,12 @@ const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData, payme
                 >
                   {/* ₹18,700{" "} */}
                 </del>
-                {(cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0) ? getNumberWithComma(paymentMode == "cod" ? ((couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100))), 0)) + ((((couponData?.data?.reduce((t, x) => t + Number(x?.final_amount + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) >= 150) ? ((couponData?.data?.reduce((t, x) => t + Number(x?.final_amount + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) : 150)) : (couponData?.data?.reduce((t, x) => t + ((Number(x?.final_amount) + ((Number(x?.final_amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100))), 0)) ?? 0) : getNumberWithComma(paymentMode == "cod" ? ((cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0)) + ((((cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) >= 150) ? ((cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0) * 2) / 100) : 150)) : (cartData?.reduce((t, x) => t + Number(x?.amount + ((Number(x?.amount) * (Number(x?.price) > 1000 ? 12 : 5)) / 100)), 0))) ?? 0)}
+                {(couponData?.data && couponData?.data?.length > 0) ?
+                  getNumberWithComma(coutinLogicWithCoupon(couponData)?.total ?? 0)
+                  :
+                  getNumberWithComma(coutinLogicWithoutCoupon(cartData)?.total ?? 0)
+
+                }
               </h3>
             </div>
           </div>
