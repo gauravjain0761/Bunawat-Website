@@ -152,7 +152,7 @@ export const SelectModal = ({ showSelect, selectedData, handleClose, attributeLi
                             </Select>
                         </FormControl>
                     </div>
-                    <div className="slaman_link" style={{ marginTop: "2px", backgroundColor: "#F2F4FF", padding: "1rem" }}>
+                    {/* <div className="slaman_link" style={{ marginTop: "2px", backgroundColor: "#F2F4FF", padding: "1rem" }}>
                         <p>Salmon Pink</p>
                         <ul className="color_list">
                             {_.uniqBy(attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(attributeList?.color, x => x?.label)?.map((color, index) => (
@@ -172,7 +172,7 @@ export const SelectModal = ({ showSelect, selectedData, handleClose, attributeLi
                                 </li>
                             ))}
                         </ul>
-                    </div>
+                    </div> */}
                     <button className="clear_btn" style={{ marginTop: "10px" }} onClick={handleClose}>
                         <span>Apply</span>
                     </button>
