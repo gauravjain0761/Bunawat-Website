@@ -190,16 +190,16 @@ const Checkout = () => {
             (coutinLogicWithoutCoupon(cartData)?.gst_amount ?? 0),
 
 
-          cgst_amount: userData?.state == DEFULT_STATE ? ((cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ?
+          cgst_amount: userData?.state == DEFULT_STATE ? (((cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ?
             (coutinLogicWithCoupon(couponData)?.gst_amount ?? 0)
             :
-            (coutinLogicWithoutCoupon(cartData)?.gst_amount ?? 0)) / 2 : 0,
+            (coutinLogicWithoutCoupon(cartData)?.gst_amount ?? 0)) / 2) : 0,
 
 
-          sgst_amount: userData?.state == DEFULT_STATE ? ((cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ?
+          sgst_amount: userData?.state == DEFULT_STATE ? (((cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ?
             (coutinLogicWithCoupon(couponData)?.gst_amount ?? 0)
             :
-            (coutinLogicWithoutCoupon(cartData)?.gst_amount ?? 0)) / 2 : 0,
+            (coutinLogicWithoutCoupon(cartData)?.gst_amount ?? 0)) / 2) : 0,
 
           igst_amount: userData?.state == DEFULT_STATE ? 0 : (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ?
             (coutinLogicWithCoupon(couponData)?.gst_amount ?? 0)
