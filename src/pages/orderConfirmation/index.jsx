@@ -437,7 +437,7 @@ const OrderConfirmation = () => {
                     <span className='text-ellipsis-width' style={{ display: 'block' }}>{`${Object.values(item?.varients ?? {})?.join(" • ")}`}</span>
                   </div>
                   <div>
-                    <h3>{getNumberWithComma(Number(item?.amount) * Number(item?.qty))}</h3>
+                    <h3>{getNumberWithComma(Number(item?.price) * Number(item?.qty))}</h3>
                   </div>
                 </div>
               ))}
