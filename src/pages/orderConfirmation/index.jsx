@@ -447,17 +447,18 @@ const OrderConfirmation = () => {
                   {/* <span className='text-ellipsis-width' style={{ display: 'block' }}>Delivers 17—20th June</span> */}
                 </div>
                 <div>
-                  <h3>{orderData?.data?.payment_mode == "COD" ? getNumberWithComma(((Number(orderData?.data?.total_amount)) - (Number(orderData?.data?.items?.reduce((t, x) => x?.amount + t, 0)) + Number(orderData?.data?.gst_amount)))) : "Free"} </h3>
+                  {/* <h3>{orderData?.data?.payment_mode == "COD" ? getNumberWithComma(((Number(orderData?.data?.total_amount)) - (Number(orderData?.data?.items?.reduce((t, x) => x?.amount + t, 0)) + Number(orderData?.data?.gst_amount)))) : "Free"} </h3> */}
+                  <h3>{orderData?.data?.payment_mode == "COD" ? getNumberWithComma((((((orderData?.data?.items?.reduce((t, x) => t + Number(x?.amount), 0) * 2) / 100) ?? 0) >= 150) ? (((orderData?.data?.items?.reduce((t, x) => t + Number(x?.amount), 0) * 2) / 100) ?? 0) : 150)) : "Free"} </h3>
                 </div>
               </div>
-              <div className="orderConfirmation_box_list">
+              {/* <div className="orderConfirmation_box_list">
                 <div>
                   <h3 className='text-ellipsis-width'>GST</h3>
                 </div>
                 <div>
                   <h3>{getNumberWithComma(Number(orderData?.data?.gst_amount ?? 0))} </h3>
                 </div>
-              </div>
+              </div> */}
               <div className="orderConfirmation_box_list">
                 <div>
                   <h3 className='text-ellipsis-width'>Coupon: {orderData?.data?.discount_coupon?.code}</h3>
