@@ -10,6 +10,7 @@ import { Box } from '@mui/material';
 import { ApiGet } from '../../services/API/api';
 import { toast } from 'react-toastify';
 import _ from 'lodash';
+import Storage from '../../services/storage';
 
 const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, productBottomData, width, refetch, swipeableIndex, productList, lastSkuData, setLastSkuData, filters, setQty, selectedData, setSelectedData, lastCardElementRef }) => {
     const settings = {
@@ -27,6 +28,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
     // const [filterList, setFilterList] = useState([]);
     // const [attributeList, setAttributeList] = useState([]);
     const [scrollActive, setScrollActive] = useState(false);
+    const [showAnimation, setShowAnimation] = useState(!Storage.get("disableAnimation"));
 
     // useEffect(() => {
     //     let temp = [...productList?.[swipeableIndex]?.skus ?? []] ?? []
@@ -71,12 +73,20 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
         }
     }, [pincode])
 
+    useEffect(async () => {
+        setTimeout(() => {
+            setShowAnimation(false)
+            Storage.set("disableAnimation", true)
+        }, 5000)
+    }, [])
+
     return (
         <div style={{
             maxHeight: "95vh",
             width: '100%',
+            position: "relative",
             overflowY: "auto",
-            // overflowY: scrollActive ? "auto" : "hidden"
+            overflowY: scrollActive ? "auto" : "hidden"
         }} ref={!lastCardElementRef ? null : lastCardElementRef}>
             <Box className="product_page" sx={{
                 paddingTop: { xs: "60px", sm: '72px' }
@@ -622,9 +632,9 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                     justifyContent: 'center',
                     width: '100%',
                 }}>
-                    {/* <a href={`#scoll-top`}> */}
-                    <img src="/img/product_view.svg" alt="icon" />
-                    {/* </a> */}
+                    <a href={`#scoll-top`}>
+                        <img src="/img/product_view.svg" alt="icon" />
+                    </a>
                 </Box>
                 {(width < 768) ?
                     <div onMouseEnter={() => setScrollActive(true)} onTouchStart={() => setScrollActive(true)}>
@@ -662,6 +672,12 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                 </div>
             } */}
             </Box>
+
+            {((productIndex == 0) && showAnimation) ?
+                <Box className="animation-swiper">
+                    <img src="/swiper.gif" alt="animation" />
+                </Box>
+                : null}
         </div>
     )
 }
