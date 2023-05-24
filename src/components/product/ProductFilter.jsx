@@ -297,7 +297,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                             sx={{
                                 display: "none",
                                 '@media (max-width: 768px)': {
-                                    display: "block",
+                                    display: "none",
                                 }
                             }}>
                             <MenuItem value="defaultValue" className="common_option_wrap">
@@ -310,7 +310,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                 </div>
                             </MenuItem>
                         </Box>
-                        <div className="common_select_wrap display_none_in_mobile">
+                        <div className="common_select_wrap">
                             <FormControl >
                                 <Select value={selectedData?.size ?? 'default'} onChange={(e) => {
                                     setSelectedData({
@@ -426,9 +426,9 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                             </p>
                                             {/* <Link to="/sizeGuide" style={{ color: "#2A3592" }}> */}
                                             <div className="chet_size chet_size_number">
-                                                <span>
+                                                {/* <span>
                                                     check the Size guide <FiArrowUpRight />
-                                                </span>
+                                                </span> */}
                                             </div>
                                             {/* </Link> */}
                                         </div>

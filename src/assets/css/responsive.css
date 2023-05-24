@@ -1010,3 +1010,28 @@
         padding: 0 6px;
     }
 }
+
+@media (max-width: 400px) {
+
+    .common_option,
+    .color_wrapper p {
+        font-size: 12px;
+        color: #2A3592;
+        font-weight: 600;
+        font-family: Newhero;
+        letter-spacing: -0.02em;
+    }
+
+
+    .chet_size span {
+        margin-left: 12px;
+    }
+
+    .chet_size_number span {
+        margin-left: 24px !important;
+    }
+
+    .MuiMenu-root .MuiPaper-root {
+        width: 100%;
+    }
+}
