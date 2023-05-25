@@ -1157,10 +1157,17 @@ body[main-sidebar="shopsidebar"] .shop_sidebar {
     width: 100%;
 }
 
+.product_slider_height_container {
+    height: 912px;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
 .product_slider_height,
 .product_slider_video_height,
 .product_slider_img_height {
-    height: 912px;
+    height: fit-content;
     width: 100%;
 }
 
