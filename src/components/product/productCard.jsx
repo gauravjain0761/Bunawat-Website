@@ -77,7 +77,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
         setTimeout(() => {
             setShowAnimation(false)
             Storage.set("disableAnimation", true)
-        }, 5000)
+        }, 3000)
     }, [])
 
     return (
@@ -86,8 +86,9 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
             width: '100%',
             position: "relative",
             overflowY: "auto",
-            // overflowY: scrollActive ? "auto" : "hidden"
+            overflowY: scrollActive ? "auto" : "hidden"
         }} ref={!lastCardElementRef ? null : lastCardElementRef}>
+            {console.log("scrollActivescrollActive", scrollActive)}
             <Box className="product_page" sx={{
                 paddingTop: { xs: "60px", sm: '72px' }
             }}>
@@ -439,7 +440,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                                 </div>
                                             </div>
                                         </li>
-                                        <li>
+                                        {/* <li>
                                             <div className="stock_main_wrap">
                                                 <div className="stock_title_wrap">
                                                     <svg
@@ -510,7 +511,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                                     <p>EMI available over ₹3,000</p>
                                                 </div>
                                             </div>
-                                        </li>
+                                        </li> */}
                                     </ul>
                                 </div>
                             </div>

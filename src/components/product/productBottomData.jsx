@@ -436,7 +436,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                                 </div>
                                             </div>
                                         </li>
-                                        <li>
+                                        {/* <li>
                                             <div className="stock_main_wrap">
                                                 <div className="stock_title_wrap">
                                                     <svg
@@ -507,7 +507,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                                     <p>EMI available over ₹3,000</p>
                                                 </div>
                                             </div>
-                                        </li>
+                                        </li> */}
                                     </ul>
                                 </div>
                             </div>
