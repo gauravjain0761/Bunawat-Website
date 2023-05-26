@@ -1,5 +1,7 @@
+import { Autocomplete, TextField } from "@mui/material";
 import React from "react";
 import { Col, Form, Row } from "react-bootstrap";
+import { Country, State, City } from "country-state-city";
 
 const CheckoutForm = ({ formData, setFormData, formError, setFormError }) => {
 
@@ -142,10 +144,42 @@ const CheckoutForm = ({ formData, setFormData, formError, setFormError }) => {
                 </Form.Group>
               </Col>
               <Col>
-                <Form.Group controlId="validationFormik01">
+                {console.log("formData", formData)}
+                {/* <Form.Group controlId="validationFormik01">
                   <Form.Control type="text" name="state" placeholder="State" value={formData?.state ?? ''} onChange={handleChange} />
                   {formError?.state ? <p className="error-text">state is required!</p> : null}
-                </Form.Group>
+                </Form.Group> */}
+                <Autocomplete
+                  sx={{
+                    ".MuiInputBase-root": {
+                      backgroundColor: "#fff",
+                    },
+                    ".MuiInputBase-root:hover": {
+                      backgroundColor: "#fff",
+                      border: 'nonwe'
+                    },
+                    ".MuiFilledInput-root": {
+                      paddingBottom: "4px"
+                    }
+                  }}
+                  fullWidth
+                  multiple={false}
+                  value={formData?.state ?? null}
+                  name="state"
+                  onChange={(event, newValue) => {
+                    setFormData({ ...formData, state: newValue });
+                  }}
+                  options={State?.getStatesOfCountry("IN")?.map(x => x?.name)}
+                  filterSelectedOptions
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="State"
+                      variant="filled"
+                    />
+                  )}
+                />
+                {formError?.state ? <p className="error-text">state is required!</p> : null}
               </Col>
             </Row>
 
