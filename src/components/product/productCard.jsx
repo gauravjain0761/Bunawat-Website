@@ -562,7 +562,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                             {((lastSkuData?.images?.length > 0) && (productIndex == swipeableIndex)) ?
                                 <div className='product_slider_height_container ' onMouseEnter={() => setScrollActive(false)} onTouchStart={() => setScrollActive(false)}>
                                     {lastSkuData?.images?.map((list, index) => (
-                                        <div key={list?.url + index + list?._id}>
+                                        <div key={list?.url + index + list?._id} className='product_slider_height'>
                                             {list?.type == "VIDEO" ?
                                                 <video key={list?.url + index + list?._id} autoPlay playsInline preload="true" src={list?.url} loop muted className='product_slider_video_height'>
                                                     <source src={list?.url} type="video/mp4"></source>
@@ -587,7 +587,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                 :
                                 <div className='product_slider_height_container ' onMouseEnter={() => setScrollActive(false)} onTouchStart={() => setScrollActive(false)}>
                                     {[...product?.images, ...product?.videos?.slice(3, 4)]?.map((list, index) => (
-                                        <div key={list?.url + index + list?._id}>
+                                        <div key={list?.url + index + list?._id} className='product_slider_height'>
                                             {list?.type == "VIDEO" ?
                                                 <video key={list?.url + index + list?._id} autoPlay playsInline preload="true" src={list?.url} loop muted className='product_slider_video_height'>
                                                     <source src={list?.url} type="video/mp4"></source>

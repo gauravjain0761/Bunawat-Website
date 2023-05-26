@@ -144,7 +144,6 @@ const CheckoutForm = ({ formData, setFormData, formError, setFormError }) => {
                 </Form.Group>
               </Col>
               <Col>
-                {console.log("formData", formData)}
                 {/* <Form.Group controlId="validationFormik01">
                   <Form.Control type="text" name="state" placeholder="State" value={formData?.state ?? ''} onChange={handleChange} />
                   {formError?.state ? <p className="error-text">state is required!</p> : null}

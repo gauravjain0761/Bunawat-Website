@@ -577,7 +577,7 @@
     .product_slider_height,
     .product_slider_video_height,
     .product_slider_img_height {
-        height: fit-content;
+        height: 100%;
         width: 100%;
     }
 
