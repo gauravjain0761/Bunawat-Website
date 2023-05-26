@@ -450,8 +450,8 @@
 
     .cloth_wrap .cloth_deatils_link img {
         width: 100%;
-        object-fit: fill;
-        object-position: center;
+        object-fit: cover;
+        object-position: 50% 0%;
         height: 100% !important;
     }
 

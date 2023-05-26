@@ -16,12 +16,12 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
       if (i % 10 == 0) {
         temp.push(i)
       }
-      if (i % 10 == 1) {
-        temp.push(i)
-      }
-      if (i % 10 == 5) {
-        temp.push(i)
-      }
+      // if (i % 10 == 1) {
+      //   temp.push(i)
+      // }
+      // if (i % 10 == 5) {
+      //   temp.push(i)
+      // }
       if (i % 10 == 6) {
         temp.push(i)
       }
@@ -51,7 +51,7 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
   const getClassWidth = (index, length) => {
     const data = getWidthData(length)
     if (data.includes(index)) {
-      return "col-md-6"
+      return "col-md-8"
     }
     return "col-md-4"
   }
