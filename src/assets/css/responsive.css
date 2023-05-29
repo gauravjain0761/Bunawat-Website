@@ -596,8 +596,16 @@
         width: 100%;
     }
 
+    .pin_code_weap_ok {
+        right: 0;
+    }
+
     .product_filters {
+        height: auto;
         padding: 0px 0px;
+        width: 100%;
+        border-radius: 0px;
+        bottom: 0px;
     }
 
     .star_content {
@@ -863,7 +871,7 @@
     }
 
     .recemtly_wrap {
-        padding: 32px 0 0;
+        padding: 40px 0 0;
     }
 }
 
@@ -953,7 +961,7 @@
     }
 
     .recently_col_wrap {
-        margin-top: 25px;
+        margin-top: 32px;
     }
 }
 

@@ -238,7 +238,7 @@ function Header() {
                     boxShadow: 'none',
                     zIndex: 99,
                     fontFamily: "Newhero !important",
-                    backgroundColor: getActiveHeader(scroll, hover, headerColor) || headerColor ? 'hsla(0,0%,100%,98%)' : "transparent",
+                    backgroundColor: getActiveHeader(scroll, hover, headerColor) || headerColor ? '#ffffff90' : "transparent",
                     backdropFilter: getActiveHeader(scroll, hover, headerColor) || headerColor ? 'blur(100px)' : 'none',
                     borderRadius: getActiveHeader(scroll, hover, headerColor) ? "4px" : "0px",
                     top: getActiveHeader(scroll, hover, headerColor) ? "8px" : "8px",

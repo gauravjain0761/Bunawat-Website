@@ -25,6 +25,8 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
         verticalSwiping: true,
     };
     const [pincode, setPincode] = useState("");
+    const [pincodeValid, setPincodeValid] = useState(null);
+    const [pincodeValidMsg, setPincodeValidMsg] = useState(null);
     // const [filterList, setFilterList] = useState([]);
     // const [attributeList, setAttributeList] = useState([]);
     const [scrollActive, setScrollActive] = useState(false);
@@ -60,18 +62,32 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
     //     }
     // }, [product?.attributeList, product?.filterList, swipeableIndex])
 
-    useEffect(async () => {
-        if (pincode?.length == 6) {
-            await ApiGet(`check_availability/${pincode}`)
+    // useEffect(async () => {
+    //     if (pincode?.length == 6) {
+    //         await ApiGet(`check_availability/${pincode}`)
+    //             .then((res) => {
+    //                 toast.success(res?.message ?? "");
+    //             })
+    //             .catch((error) => {
+    //                 console.log(error)
+    //                 toast.error(error?.error ?? "");
+    //             });
+    //     }
+    // }, [pincode])
+
+    const handlePincode = async (code) => {
+        if (code?.length == 6) {
+            await ApiGet(`check_availability/${code}`)
                 .then((res) => {
-                    toast.success(res?.message ?? "");
+                    setPincodeValid(true);
+                    setPincodeValidMsg("Serviceable..")
                 })
                 .catch((error) => {
-                    console.log(error)
-                    toast.error(error?.error ?? "");
+                    setPincodeValidMsg("Not Serviceable..")
+                    setPincodeValid(true);
                 });
         }
-    }, [pincode])
+    }
 
     useEffect(async () => {
         setTimeout(() => {
@@ -82,10 +98,10 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
 
     return (
         <div style={{
-            maxHeight: "95vh",
+            maxHeight: "100vh",
+            height: '-webkit-fill-available',
             width: '100%',
             position: "relative",
-            overflowY: "auto",
             overflowY: scrollActive ? "auto" : "hidden"
         }} ref={!lastCardElementRef ? null : lastCardElementRef}>
             <Box className="product_page" sx={{
@@ -243,7 +259,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                                 </div>
                                                 <div className="stock_info">
                                                     <h3>In Stock</h3>
-                                                    <p>Ships in 24 hours</p>
+                                                    <p>{pincodeValid ? pincodeValidMsg : " Ships in 24 hours"}</p>
                                                 </div>
                                             </div>
                                         </li>
@@ -253,6 +269,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                                     const onlyNums = e.target.value.replace(/[^0-9]/g, '');
                                                     if (onlyNums.length <= 6) {
                                                         setPincode(onlyNums)
+                                                        setPincodeValid(false)
                                                     }
                                                 }} />
                                                 <div className="edit_icon">
@@ -289,6 +306,11 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                                         </defs>
                                                     </svg>
                                                 </div>
+                                                {pincode?.length > 0 ?
+                                                    <div onClick={() => handlePincode(pincode)} className="pin_code_weap_ok">
+                                                        OK
+                                                    </div>
+                                                    : null}
                                             </div>
                                         </li>
                                         <li>
@@ -677,16 +699,18 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                     height: '25px',
                     opacity: 0
                 }} id={`#scoll-top`}></div>
-                <Box sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '100%',
-                }}>
-                    <a href={`#scoll-top`}>
-                        <img src="/img/product_view.svg" alt="icon" />
-                    </a>
-                </Box>
+                {(width < 768) ?
+                    <Box sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '100%',
+                    }}>
+                        <a href={`#scoll-top`}>
+                            <img src="/img/product_view.svg" alt="icon" />
+                        </a>
+                    </Box>
+                    : null}
                 {(width < 768) ?
                     <div onMouseEnter={() => setScrollActive(true)} onTouchStart={() => setScrollActive(true)}>
                         <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} setSwipeableDisable={setSwipeableDisable} />

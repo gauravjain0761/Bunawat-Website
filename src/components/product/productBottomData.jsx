@@ -20,19 +20,8 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
     const history = useHistory();
     const [recentlyProduct, setRecentlyProduct] = useState(Storage.get("recentlyProduct") ? JSON.parse(Storage.get("recentlyProduct") ?? '[]') : []);
     const [pincode, setPincode] = useState("");
-
-    useEffect(async () => {
-        if (pincode?.length == 6) {
-            await ApiGet(`check_availability/${pincode}`)
-                .then((res) => {
-                    toast.success(res?.message ?? "");
-                })
-                .catch((error) => {
-                    console.log(error)
-                    toast.error(error?.error ?? "");
-                });
-        }
-    }, [pincode])
+    const [pincodeValid, setPincodeValid] = useState(null);
+    const [pincodeValidMsg, setPincodeValidMsg] = useState(null);
 
     useEffect(() => {
         setRecentlyProduct(Storage.get("recentlyProduct") ? JSON.parse(Storage.get("recentlyProduct") ?? '[]') : []);
@@ -49,12 +38,12 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
             if (i % 10 == 3) {
                 temp.push(i)
             }
-            if (i % 10 == 4) {
-                temp.push(i)
-            }
-            if (i % 10 == 8) {
-                temp.push(i)
-            }
+            // if (i % 10 == 4) {
+            //     temp.push(i)
+            // }
+            // if (i % 10 == 8) {
+            //     temp.push(i)
+            // }
             if (i % 10 == 9) {
                 temp.push(i)
             }
@@ -86,9 +75,23 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
     const getClassWidth = (index, length) => {
         const data = getWidthData(length)
         if (data.includes(index)) {
-            return "col-md-6"
+            return "col-md-8"
         }
         return "col-md-4"
+    }
+
+    const handlePincode = async (code) => {
+        if (code?.length == 6) {
+            await ApiGet(`check_availability/${code}`)
+                .then((res) => {
+                    setPincodeValid(true);
+                    setPincodeValidMsg("Serviceable..")
+                })
+                .catch((error) => {
+                    setPincodeValidMsg("Not Serviceable..")
+                    setPincodeValid(true);
+                });
+        }
     }
 
     return (
@@ -240,7 +243,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                                 </div>
                                                 <div className="stock_info">
                                                     <h3>In Stock</h3>
-                                                    <p>Ships in 24 hours</p>
+                                                    <p>{pincodeValid ? pincodeValidMsg : " Ships in 24 hours"}</p>
                                                 </div>
                                             </div>
                                         </li>
@@ -250,6 +253,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                                     const onlyNums = e.target.value.replace(/[^0-9]/g, '');
                                                     if (onlyNums.length <= 6) {
                                                         setPincode(onlyNums)
+                                                        setPincodeValid(false)
                                                     }
                                                 }} />
                                                 <div className="edit_icon">
@@ -286,6 +290,11 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                                         </defs>
                                                     </svg>
                                                 </div>
+                                                {pincode?.length > 0 ?
+                                                    <div onClick={() => handlePincode(pincode)} className="pin_code_weap_ok">
+                                                        OK
+                                                    </div>
+                                                    : null}
                                             </div>
                                         </li>
                                         <li>

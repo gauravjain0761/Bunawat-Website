@@ -43,7 +43,7 @@ const SaveButton = ({ id, isWishlist, isBlue = false, selectedId, setSelectedId,
                         toast.error("Login required!")
                     }
                 }}>
-                    <p>Save</p>
+                    <p>{isWishlist ? "Saved" : "Save"}</p>
                     <svg
                         width="20"
                         height="18"
@@ -73,7 +73,7 @@ const SaveButton = ({ id, isWishlist, isBlue = false, selectedId, setSelectedId,
                         toast.error("Login required!")
                     }
                 }}>
-                    <p>Save</p>
+                    <p>{isWishlist ? "Saved" : "Save"}</p>
                     <svg
                         width="20"
                         height="18"
