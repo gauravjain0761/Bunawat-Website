@@ -166,10 +166,14 @@
     }
 
     .join_the_club_inner p {
-        margin: 15px 0 20px;
+        margin: 12px 0 20px;
     }
 
     .tel_number_wrap input {
+        font-size: 16px;
+    }
+
+    .join_btn {
         font-size: 16px;
     }
 
@@ -427,7 +431,7 @@
     }
 
     .shop_hald_info h3 {
-        font-size: 22px;
+        font-size: 24px;
         line-height: 28px;
     }
 
@@ -484,7 +488,7 @@
 
     .footer_header_wrap ul li {
         width: 50%;
-        margin-bottom: 15px;
+        margin-bottom: 0px;
     }
 
     .footer_header_wrap ul li+li {
@@ -568,6 +572,17 @@
 }
 
 @media (max-width: 767px) {
+
+
+    .summer_list_link_wrap_changes {
+        color: #fff !important;
+    }
+
+
+    .cloth_info_title_changes {
+        /* background: linear-gradient(180deg, rgba(247, 247, 247, 0) 0%, rgba(247, 247, 247, 0.9) 80.21%); */
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    }
 
     .product_slider_height_container {
         height: 62vh;
@@ -654,7 +669,7 @@
     }
 
     .shop_hald_wrap {
-        padding: 30px 0;
+        padding: 32px 0 55px 24px;
     }
 
     .summer_list_link_wrap {
@@ -678,21 +693,26 @@
     }
 
     .footer_blog_inner {
-        padding: 0px 0 80px;
+        padding: 0px 0 56px;
     }
 
     .footer_logo {
         right: 50%;
+        display: none;
         transform: translateX(50%);
     }
 
     .join_the_club_wrap {
-        padding: 400px 0 50px;
+        padding: 364px 0 64px;
     }
 
     .tel_number_wrap input,
     .join_btn {
         height: 50px;
+    }
+
+    .join_the_club_padding {
+        padding: 0 24px;
     }
 
     .tel_number {
@@ -852,7 +872,7 @@
     .common_title,
     .home_banner_title h2,
     .join_the_club_inner h2 {
-        font-size: 28px;
+        font-size: 32px;
         line-height: 40px;
     }
 
@@ -875,7 +895,15 @@
 
     .summer_list_link p,
     .summer_list_link_wrap p {
+        font-size: 12px;
+    }
+
+    .summer_list_link .big-font {
         font-size: 14px;
+    }
+
+    .summer_list_link_wrap p {
+        font-size: 12px;
     }
 
     .common_tab_title {
@@ -991,7 +1019,7 @@
     }
 
     .footer_header_wrap ul li p {
-        margin-bottom: 12px;
+        margin-bottom: 20px;
     }
 
     .footer_header_wrap ul li span {

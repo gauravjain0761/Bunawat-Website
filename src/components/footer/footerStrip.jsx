@@ -11,7 +11,7 @@ const FooterStrip = () => {
         className="footer_header_wrap_srip"
         sx={{
           '@media (max-width: 768px)': {
-            marginTop: "30px",
+            marginTop: "38px",
           }
         }}>
         <div className="footer_header_wrap">

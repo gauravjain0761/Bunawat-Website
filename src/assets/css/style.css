@@ -552,7 +552,7 @@ button {
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
-    margin-top: 6px;
+    margin-top: 0px;
     letter-spacing: -0.02em;
 }
 
@@ -587,8 +587,12 @@ button {
     justify-content: space-between;
     width: 100%;
     /* pointer-events: none; */
-    background: linear-gradient(180deg, rgba(247, 247, 247, 0) 0%, rgba(247, 247, 247, 0.9) 80.21%);
     border-radius: 4px;
+}
+
+.cloth_info_title_changes {
+    background: linear-gradient(180deg, rgba(247, 247, 247, 0) 0%, rgba(247, 247, 247, 0.9) 80.21%);
+    /* background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%); */
 }
 
 .cloth_deatils_wrap {
@@ -650,6 +654,10 @@ button {
     color: #fff !important;
 }
 
+.summer_list_link_wrap_changes {
+    color: #2A3592 !important;
+}
+
 /* 
 .save_wrap_blue_text p {
     color: #2A3592;
@@ -708,7 +716,7 @@ button {
 .tel_number {
     display: flex;
     align-items: center;
-    margin-bottom: 48px;
+    margin-bottom: 0px !important;
 }
 
 .tel_number_wrap {
@@ -2614,12 +2622,12 @@ li.common_option_wrap {
 
 .footer_header_wrap_srip {
     background-color: #fff;
-    padding: 1rem 0;
+    padding: 0 0;
 }
 
 
 .footer_blog_inner .blog_details_wrap {
-    border-top: 1px solid #e7e7e7;
+    /* border-top: 1px solid #e7e7e7; */
     margin-top: 1rem;
 }
 

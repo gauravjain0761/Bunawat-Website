@@ -1,11 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getNumberWithComma } from "../../utils/utils";
 import SaveButton from "../common/save";
 
 const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedId }) => {
+  const [width, setWidth] = useState(window?.innerWidth);
   const [singleList, setSingleList] = React.useState(singleData ?? [])
-  console.log("singleList", singleList)
+
+  const handleWindowResize = () => {
+    setWidth(window?.innerWidth);
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowResize);
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    }
+  }, []);
+
   useEffect(() => {
     setSingleList(singleData ?? []);
   }, [singleData]);
@@ -68,7 +80,7 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
                   <div className="summer_list_link_wrap" key={list?._id}>
                     <Link to={`/product/${list?._id}/${data?.[keyVal]?.type ?? ""}`}>
                       <div className="summer_list_link">
-                        <p>{list?.name}</p>
+                        <p className="big-font">{list?.name}</p>
                         <span>
                           <svg
                             width="9"
@@ -112,7 +124,7 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
               <div className="summer_list_link_wrap">
                 <Link to={`/allProductList/${singleList?.title}`}>
                   <div className="summer_list_link">
-                    <p>Shop all {singleList?.title}</p>
+                    <p className="big-font">Shop all {singleList?.title}</p>
                     <span>
                       <svg
                         width="9"
@@ -184,13 +196,13 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
                       <div className="cloth_deatils_wrap">
                         <div style={{ textAlign: "center", width: '100%', height: '100%' }}>
                           <Link to={`/product/${list?._id}/${data?.[keyVal]?.type ?? ""}`} className="cloth_deatils_link">
-                            <img src={list?.image} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "1020px" : "720px"} />
+                            <img src={list?.image} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "640px" : "560px"} />
                           </Link>
                         </div>
-                        <div className="cloth_info_title">
+                        <div className="cloth_info_title cloth_info_title_changes">
                           <div className="summer_list_link_wrap mobile_summer_list_link_wrap ">
                             <div className="summer_list_link ">
-                              <p className="textEllipsis summer_list_link_wrap_white">{list?.name}</p>
+                              <p className="textEllipsis summer_list_link_wrap_white summer_list_link_wrap_changes">{list?.name}</p>
                               <span>
                                 <svg
                                   width="9"
@@ -202,13 +214,13 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
                                   <g clipPath="url(#clip0_367_1219)">
                                     <path
                                       d="M0.599976 1.42999H7.98998V8.81999"
-                                      stroke="#fff"
+                                      stroke={(width >= 768) ? "#2A3592" : "#fff"}
                                       strokeWidth="1.7"
                                       strokeMiterlimit="10"
                                     />
                                     <path
                                       d="M0.599976 8.81999L7.98998 1.42999"
-                                      stroke="#fff"
+                                      stroke={(width >= 768) ? "#2A3592" : "#fff"}
                                       strokeWidth="1.7"
                                       strokeMiterlimit="10"
                                     />
@@ -218,7 +230,7 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
                                       <rect
                                         width="8.84"
                                         height="8.84"
-                                        fill="white"
+                                        fill={(width >= 768) ? "#2A3592" : "#fff"}
                                         transform="translate(0 0.580017)"
                                       />
                                     </clipPath>
@@ -226,9 +238,9 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
                                 </svg>
                               </span>
                             </div>
-                            <p className=" summer_list_link_wrap_white">{getNumberWithComma(list?.sale_price ?? 0)} </p>
+                            <p className=" summer_list_link_wrap_white summer_list_link_wrap_changes">{getNumberWithComma(list?.sale_price ?? 0)} </p>
                           </div>
-                          <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={false} setSelectedId={setSelectedId} selectedId={selectedId} />
+                          <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={(width >= 768)} setSelectedId={setSelectedId} selectedId={selectedId} />
                         </div>
                       </div>
                     </div>

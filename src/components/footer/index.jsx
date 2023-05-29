@@ -5,7 +5,9 @@ import FooterStrip from "./footerStrip";
 function Footer() {
   return (
     <div className="footer_blog_section">
-      <div className="container">
+      <div className="container" style={{
+        padding: "0px 24px 0px 24px"
+      }}>
         <div className="footer_blog_inner">
 
           <FooterStrip />

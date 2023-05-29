@@ -54,7 +54,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                               <div className="summer_list_link_wrap" key={list?._id}>
                                 <Link to={`/product/${list?._id}/${menuList?.[key]?.type ?? ""}`}>
                                   <div className="summer_list_link">
-                                    <p>{list?.name}</p>
+                                    <p className="big-font">{list?.name}</p>
                                     <span>
                                       <svg
                                         width="9"
@@ -91,7 +91,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                                     </span>
                                   </div>
                                 </Link>
-                                <p>{getNumberWithComma(list?.sale_price ?? 0)}</p>
+                                <p >{getNumberWithComma(list?.sale_price ?? 0)}</p>
                               </div>
                             ))
 
@@ -99,7 +99,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                           <div className="summer_list_link_wrap">
                             <Link to={`/allProductList/${item?.name}`}>
                               <div className="summer_list_link">
-                                <p>Shop all  {singleCollection?.title}</p>
+                                <p className="big-font">Shop all  {singleCollection?.title}</p>
                                 <span>
                                   <svg
                                     width="9"
@@ -152,7 +152,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
       <div
         className="tab_section_wrap"
         style={{
-          padding: "24px 0px 0px 0px",
+          padding: "22px 0px 0px 0px",
           backgroundColor:
             (key == 0 || key == 4)
               ? "#FFDD66"
@@ -166,10 +166,10 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
         }}
       >
         <div className="container" style={{
-          paddingRight: "8px",
-          paddingLeft: "8px"
+          paddingRight: "0px",
+          paddingLeft: "0px"
         }}>
-          <div className="tab_section_inner">
+          <div className="tab_section_inner" >
             <Tabs
               id="controlled-tab-example"
               activeKey={key}
@@ -186,7 +186,10 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
               {menuList.map((item, index) => {
                 return (
                   <Tab eventKey={index} key={item?._id} title={item?.name}>
-                    <div className={`tab_common_contain ${key == index ? "activeOpecity" : "inActiveOpecity"}`}>
+                    <div className={`tab_common_contain ${key == index ? "activeOpecity" : "inActiveOpecity"}`} style={{
+                      paddingRight: "8px",
+                      paddingLeft: "8px"
+                    }}>
                       <div className="row">
                         {singleCollection?.products?.slice(0, 4)?.map((list) => {
                           return (
@@ -206,7 +209,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                                                 : (key == 3 || key == 7)
                                                   ? "#B5321D90"
                                                   : "#FFDD6690",
-                                        }} variant="rounded" className="product_above_image" width="100%" height="1020px" />
+                                        }} variant="rounded" className="product_above_image" width="100%" height="640px" />
                                       </div>
                                     </div>
                                   </Link>
@@ -216,7 +219,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                                   <Link to={`/product/${list?._id}/${menuList?.[key]?.type ?? ""}`}>
                                     <div className="common_tab_info">
                                       <div className="common_tab_img">
-                                        <img src={list?.image} alt="image" className="product_above_image" height="1020px" width="100%" />
+                                        <img src={list?.image} alt="image" className="product_above_image" height="640px" width="100%" />
                                       </div>
                                       <div className=" common_tab_title">
                                         <div className="summer_list_link_wrap">

@@ -237,6 +237,7 @@ function Header() {
                 position='fixed' sx={{
                     boxShadow: 'none',
                     zIndex: 99,
+                    fontFamily: "Newhero !important",
                     backgroundColor: getActiveHeader(scroll, hover, headerColor) || headerColor ? 'hsla(0,0%,100%,98%)' : "transparent",
                     backdropFilter: getActiveHeader(scroll, hover, headerColor) || headerColor ? 'blur(100px)' : 'none',
                     borderRadius: getActiveHeader(scroll, hover, headerColor) ? "4px" : "0px",
@@ -256,12 +257,13 @@ function Header() {
                 }}>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
-                        <Box sx={{ justifyContent: "space-between", display: { xs: 'flex', md: 'flex' } }}>
+                        <Box sx={{ fontFamily: "Newhero !important", justifyContent: "space-between", display: { xs: 'flex', md: 'flex' } }}>
                             <Box>
                                 <Button
                                     aria-describedby={id}
                                     onClick={handleClick}
                                     sx={{
+                                        fontFamily: "Newhero !important",
                                         '&.MuiButton-root': {
                                             color: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : '#fff',
                                             fontWeight: 600,
@@ -298,6 +300,7 @@ function Header() {
                                     aria-describedby={id}
                                     // onClick={handleClick}
                                     sx={{
+                                        fontFamily: "Newhero !important",
                                         '&.MuiButton-root': {
                                             color: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : '#fff',
                                             fontWeight: 600,
@@ -321,6 +324,7 @@ function Header() {
                                     aria-describedby={id}
                                     // onClick={handleClick}
                                     sx={{
+                                        fontFamily: "Newhero !important",
                                         '&.MuiButton-root': {
                                             color: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : '#fff',
                                             fontWeight: 600,
@@ -542,7 +546,7 @@ function Header() {
                         <Box sx={{
                             background: 'white',
                             width: { xs: '100%', sm: '400px' },
-                            height: { xs: '90vh', sm: '80vh' },
+                            height: { xs: '-webkit-fill-available', sm: '80vh' },
                             margin: { xs: '60px 0 0 0', sm: '60px 25px 0 0' }
                         }}>
                             <NewCart data={cartData} activeHeader={getActiveHeader(scroll, hover, headerColor)} handleCartClose={handleCartClose} handleCheckout={handleCheckout} />
