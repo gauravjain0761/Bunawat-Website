@@ -1952,7 +1952,7 @@ li.common_option_wrap {
     color: #2A3592;
     font-weight: bold;
     max-width: 230px;
-    background-color: #F4F4F4;
+    background-color: #fff;
 }
 
 .pin_code_weap input::placeholder {
