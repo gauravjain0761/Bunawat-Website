@@ -9,11 +9,23 @@ import { getNumberWithComma } from '../../utils/utils';
 import SaveButton from '../common/save';
 
 const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedIndex }) => {
+    const [width, setWidth] = useState(window?.innerWidth);
     const { id } = useParams()
     const history = useHistory();
     const [key, setKey] = useState(0);
     const [menuList, setMenuList] = React.useState(data ?? [])
     const [singleList, setSingleList] = React.useState(singleData ?? [])
+
+    const handleWindowResize = () => {
+        setWidth(window?.innerWidth);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowResize);
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        }
+    }, []);
 
     useEffect(() => {
         setMenuList(data ?? []);
@@ -106,10 +118,10 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                                                 <Link to={`/product/${list?._id}/${data?.[key]?.type ?? ""}`} className="cloth_deatils_link">
                                                                     <img src={list?.image} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "720px" : "560px"} />
                                                                 </Link>
-                                                                <div className="cloth_info_title">
+                                                                <div className="cloth_info_title cloth_info_title_changes">
                                                                     <div style={{ cursor: 'pointer' }} className="summer_list_link_wrap mobile_summer_list_link_wrap" onClick={() => history.push(`/product/${list?._id}/${data?.[key]?.type ?? ""}`)}>
                                                                         <div className="summer_list_link ">
-                                                                            <p className='summer_list_link_wrap_white'>{list?.name}</p>
+                                                                            <p className='summer_list_link_wrap_white summer_list_link_wrap_changes'>{list?.name}</p>
                                                                             <span>
                                                                                 <svg
                                                                                     width="9"
@@ -121,13 +133,13 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                                                                     <g clipPath="url(#clip0_367_1219)">
                                                                                         <path
                                                                                             d="M0.599976 1.42999H7.98998V8.81999"
-                                                                                            stroke="#fff"
+                                                                                            stroke={(width >= 768) ? "#2A3592" : "#fff"}
                                                                                             strokeWidth="1.7"
                                                                                             strokeMiterlimit="10"
                                                                                         />
                                                                                         <path
                                                                                             d="M0.599976 8.81999L7.98998 1.42999"
-                                                                                            stroke="#fff"
+                                                                                            stroke={(width >= 768) ? "#2A3592" : "#fff"}
                                                                                             strokeWidth="1.7"
                                                                                             strokeMiterlimit="10"
                                                                                         />
@@ -145,9 +157,9 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                                                                 </svg>
                                                                             </span>
                                                                         </div>
-                                                                        <p className='summer_list_link_wrap_white'>{getNumberWithComma(list?.sale_price ?? 0)}</p>
+                                                                        <p className='summer_list_link_wrap_white summer_list_link_wrap_changes'>{getNumberWithComma(list?.sale_price ?? 0)}</p>
                                                                     </div>
-                                                                    <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={false} selectedId={selectedId} setSelectedId={setSelectedId} />
+                                                                    <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={(width >= 768)} selectedId={selectedId} setSelectedId={setSelectedId} />
                                                                 </div>
                                                             </div>
                                                         </div>

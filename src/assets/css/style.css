@@ -1235,12 +1235,13 @@ body[main-sidebar="shopsidebar"] .shop_sidebar {
 
 .product_filters_change {
     position: fixed;
-    left: 0px;
-    right: 0px;
+    width: 98%;
     margin-left: auto;
     margin-right: auto;
-    bottom: 0px;
-    width: 99%;
+    border-radius: 10px;
+    left: 0px;
+    right: 0px;
+    bottom: 14px;
 }
 
 .product_filters_wrap {

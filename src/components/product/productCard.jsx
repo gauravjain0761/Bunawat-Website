@@ -719,7 +719,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                     :
                     <div style={{ position: 'relative' }} onMouseEnter={() => setScrollActive(true)} onTouchStart={() => setScrollActive(true)}>
                         <div onMouseEnter={() => setSwipeableDisable(true)} onTouchStart={() => setSwipeableDisable(true)}>
-                            <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} />
+                            <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} setSwipeableDisable={setSwipeableDisable} />
                         </div>
                     </div>
                 }

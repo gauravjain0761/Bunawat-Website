@@ -159,7 +159,7 @@ const Product = () => {
   }
 
   return (
-    <>
+    <Box>
       <Slider {...settings} className="product-slider-full">
         {productList?.map((data, index) => {
           if (productList.length === swipeableIndex + 1) {
@@ -188,7 +188,7 @@ const Product = () => {
         })}
       </SwipeableViews>
       <ProductPageFilter selectedImage={productList?.[swipeableIndex]?.images?.[0]?.url ?? ""} selectedProduct={productList?.[swipeableIndex] ?? {}} filters={productList?.[swipeableIndex]?.skus ?? []} swipeableIndex={swipeableIndex ?? 0} setLastSkuData={setLastSkuData} qty={qty} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} /> */}
-    </>
+    </Box>
   );
 };
 

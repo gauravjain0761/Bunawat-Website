@@ -598,9 +598,11 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                     {product?.similar_products?.map((list, index) => (
                                         <div key={list?._id + index} className={`fix-padding-might_like_inner ${getClassWidth(index, product?.similar_products?.length)}`}>
                                             <div className="cloth_deatils_wrap">
-                                                <Link to={`/product/${list?._id}`} className="cloth_deatils_link">
+                                                <Box onClick={() => {
+                                                    history?.push(`/product/${list?._id}`)
+                                                }} className="cloth_deatils_link">
                                                     <img src={list?.images?.[0]?.url} alt="cloth" width="100%" height={getHeightData(product?.similar_products?.length).includes(index) ? "640px" : "560px"} />
-                                                </Link>
+                                                </Box>
                                                 <div className="cloth_info_title">
                                                     <div className="summer_list_link_wrap mobile_summer_list_link_wrap">
                                                         <div className="summer_list_link">

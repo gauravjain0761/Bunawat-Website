@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
-import { Box, FormControl, FormControlLabel, MenuItem, NativeSelect, Radio, RadioGroup } from "@mui/material";
+import { Box, Checkbox, FormControl, FormControlLabel, MenuItem, NativeSelect, Radio, RadioGroup } from "@mui/material";
 import { Button, ButtonGroup, Typography } from "@mui/material";
 import { TiDeleteOutline } from "react-icons/ti";
 import { useGetAttributeDataQuery } from "../../services/api";
@@ -51,7 +51,7 @@ const FilterModalForMobile = ({ showFilter, handleClose, setSelectedId, selected
                               <div className="d-flex align-items-center common_radio_btn">
                                 <FormControl>
                                   <FormControlLabel
-                                    control={<Radio
+                                    control={<Checkbox
                                       checked={selectedAttribute?.[list?.slug]?.includes(item?._id) ?? false}
                                       sx={{
                                         color: "#2a3592",

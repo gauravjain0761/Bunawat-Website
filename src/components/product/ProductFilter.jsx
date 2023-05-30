@@ -292,30 +292,21 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
             <div className="product_filters">
                 <div className='product_filters_wrap'>
                     <div className="product_filters_wrap product_page_filtter">
-                        <Box
-                            className='common_select_wrap'
-                            onClick={handleShow}
-                            sx={{
-                                display: "none",
-                                '@media (max-width: 768px)': {
-                                    display: "none",
-                                }
-                            }}>
-                            <MenuItem value="defaultValue" className="common_option_wrap">
-                                <div className="common_option">
-                                    <p>
-                                        <div className="common_option">
-                                            <span style={{ textTransform: "capitalize" }}>Select Variant</span>
-                                        </div>
-                                    </p>
-                                </div>
-                            </MenuItem>
-                        </Box>
                         <div className="common_select_wrap">
-                            <FormControl >
+                            <FormControl>
                                 <Select sx={{
                                     ".MuiPaper-root": {
-                                        bottom: 0
+                                        bottom: "86px",
+                                        boxShadow: "none",
+                                        top: "auto"
+                                    },
+                                    '@media (max-width: 768px)': {
+                                        left: "0",
+                                        right: "0",
+                                        width: "100%",
+                                        minWidth: " 100%",
+                                        bottom: "0",
+                                        top: "auto"
                                     }
                                 }} value={selectedData?.size ?? 'default'} onChange={(e) => {
                                     setSelectedData({

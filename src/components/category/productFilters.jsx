@@ -6,7 +6,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import { Box } from "@mui/system";
-import { Button, ButtonGroup, Typography } from "@mui/material";
+import { Button, ButtonGroup, Checkbox, ClickAwayListener, Typography } from "@mui/material";
 import { TiDeleteOutline } from "react-icons/ti";
 import FilterModalForMobile from "./filterModalForMobile";
 import { useGetAttributeDataQuery } from "../../services/api";
@@ -16,6 +16,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
   const [attributeData, setAttributeData] = useState([]);
   const [showPrice, setShowPrice] = useState(false);
   const [showMostPopular, setShowMostPopular] = useState(false);
+  const [showMostPopularMobile, setShowMostPopularMobile] = useState(false);
   const [showKindGarment, setShowKindGarment] = useState(false);
   const [attributeOpen, setAttributeOpen] = useState([]);
   const [selectedAttribute, setSelectedAttribute] = useState({});
@@ -52,55 +53,50 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
         <div className="product_filters_wrap">
           <div className="common_select_wrap">
             <FormControl>
-              {showMostPopular &&
-                <div className="most_popular_wrapper_box">
-                  {/* <MenuItem value="" className="common_option_wrap common_option_wrap_bg">
-                    <div className="common_option">
-                      <p className="common_option_p">Heavy Embroidery</p>
-                      <span className="common_option_span">fanciest first</span>
-                    </div>
-                  </MenuItem> */}
-                  <MenuItem onClick={() => {
-                    setSelectedId({ ...selectedId, sortBy: 0 })
-                  }} className="common_option_wrap">
-                    <div className="common_option">
-                      <p className="common_option_p">Newest</p>
-                      <span className="common_option_span">minimal first</span>
-                    </div>
-                  </MenuItem>
-                  {/* <MenuItem value="" className="common_option_wrap common_option_wrap_bg">
-                    <div className="common_option">
-                      <p className="common_option_p">Most Popular</p>
-                    </div>
-                  </MenuItem> */}
-                  <MenuItem onClick={() => {
-                    setSelectedId({ ...selectedId, sortBy: 1 })
-                  }} className="common_option_wrap">
-                    <div className="common_option">
-                      <p className="common_option_p">Affordable</p>
-                      <span className="common_option_span">
-                        Lowest Price First
-                      </span>
-                    </div>
-                  </MenuItem>
-                  <MenuItem onClick={() => {
-                    setSelectedId({ ...selectedId, sortBy: 2 })
-                  }} className="common_option_wrap common_option_wrap_bg">
-                    <div className="common_option">
-                      <p className="common_option_p">Luxurious</p>
-                      <span className="common_option_span">
-                        {" "}
-                        Highest Price first
-                      </span>
-                    </div>
-                  </MenuItem>
-                </div>
+              {showMostPopularMobile &&
+                <ClickAwayListener onClickAway={() => setShowMostPopularMobile(false)}>
+                  <div className="most_popular_wrapper_box">
+                    <MenuItem onClick={() => {
+                      setSelectedId({ ...selectedId, sortBy: 0 })
+                      setShowMostPopularMobile(false)
+                    }} className="common_option_wrap">
+                      <div className="common_option">
+                        <p className="common_option_p">Newest</p>
+                        <span className="common_option_span">minimal first</span>
+                      </div>
+                    </MenuItem>
+                    <MenuItem onClick={() => {
+                      setSelectedId({ ...selectedId, sortBy: 1 })
+                      setShowMostPopularMobile(false)
+                    }} className="common_option_wrap">
+                      <div className="common_option">
+                        <p className="common_option_p">Affordable</p>
+                        <span className="common_option_span">
+                          Lowest Price First
+                        </span>
+                      </div>
+                    </MenuItem>
+                    <MenuItem onClick={() => {
+                      setSelectedId({ ...selectedId, sortBy: 2 })
+                      setShowMostPopularMobile(false)
+                    }} className="common_option_wrap common_option_wrap_bg">
+                      <div className="common_option">
+                        <p className="common_option_p">Luxurious</p>
+                        <span className="common_option_span">
+                          {" "}
+                          Highest Price first
+                        </span>
+                      </div>
+                    </MenuItem>
+                  </div>
+                </ClickAwayListener>
               }
               <MenuItem onClick={() => {
-                if (showMostPopular) {
-                  setShowMostPopular(false)
+                if (showMostPopularMobile) {
+                  setShowMostPopularMobile(false)
                 } else {
-                  setShowMostPopular(true)
+                  setShowMostPopularMobile(true)
+                  setShowMostPopular(false)
                   setShowPrice(false)
                   let attributeOpenList = [...attributeOpen];
                   attributeOpenList = attributeOpenList?.map(x => false)
@@ -110,7 +106,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                 <div className="common_option">
                   <p className="common_option_p">Most Popular</p>
                   <svg
-                    style={{ rotate: showMostPopular ? "0deg" : "180deg" }}
+                    style={{ rotate: showMostPopularMobile ? "0deg" : "180deg" }}
                     width="10"
                     height="7"
                     viewBox="0 0 10 7"
@@ -155,48 +151,50 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
           <div className="common_select_wrap">
             <FormControl>
               {showMostPopular &&
-                <div className="most_popular_wrapper_box">
-                  {/* <MenuItem value="" className="common_option_wrap common_option_wrap_bg">
+                <ClickAwayListener onClickAway={() => setShowMostPopular(false)}>
+                  <div className="most_popular_wrapper_box">
+                    {/* <MenuItem value="" className="common_option_wrap common_option_wrap_bg">
                     <div className="common_option">
                       <p className="common_option_p">Heavy Embroidery</p>
                       <span className="common_option_span">fanciest first</span>
                     </div>
                   </MenuItem> */}
-                  <MenuItem onClick={() => {
-                    setSelectedId({ ...selectedId, sortBy: 0 })
-                  }} className="common_option_wrap">
-                    <div className="common_option">
-                      <p className="common_option_p">Newest</p>
-                      <span className="common_option_span">minimal first</span>
-                    </div>
-                  </MenuItem>
-                  {/* <MenuItem value="" className="common_option_wrap common_option_wrap_bg">
+                    <MenuItem onClick={() => {
+                      setSelectedId({ ...selectedId, sortBy: 0 })
+                    }} className="common_option_wrap">
+                      <div className="common_option">
+                        <p className="common_option_p">Newest</p>
+                        <span className="common_option_span">minimal first</span>
+                      </div>
+                    </MenuItem>
+                    {/* <MenuItem value="" className="common_option_wrap common_option_wrap_bg">
                     <div className="common_option">
                       <p className="common_option_p">Most Popular</p>
                     </div>
                   </MenuItem> */}
-                  <MenuItem onClick={() => {
-                    setSelectedId({ ...selectedId, sortBy: 1 })
-                  }} className="common_option_wrap">
-                    <div className="common_option">
-                      <p className="common_option_p">Affordable</p>
-                      <span className="common_option_span">
-                        Lowest Price First
-                      </span>
-                    </div>
-                  </MenuItem>
-                  <MenuItem onClick={() => {
-                    setSelectedId({ ...selectedId, sortBy: 2 })
-                  }} className="common_option_wrap common_option_wrap_bg">
-                    <div className="common_option">
-                      <p className="common_option_p">Luxurious</p>
-                      <span className="common_option_span">
-                        {" "}
-                        Highest Price first
-                      </span>
-                    </div>
-                  </MenuItem>
-                </div>
+                    <MenuItem onClick={() => {
+                      setSelectedId({ ...selectedId, sortBy: 1 })
+                    }} className="common_option_wrap">
+                      <div className="common_option">
+                        <p className="common_option_p">Affordable</p>
+                        <span className="common_option_span">
+                          Lowest Price First
+                        </span>
+                      </div>
+                    </MenuItem>
+                    <MenuItem onClick={() => {
+                      setSelectedId({ ...selectedId, sortBy: 2 })
+                    }} className="common_option_wrap common_option_wrap_bg">
+                      <div className="common_option">
+                        <p className="common_option_p">Luxurious</p>
+                        <span className="common_option_span">
+                          {" "}
+                          Highest Price first
+                        </span>
+                      </div>
+                    </MenuItem>
+                  </div>
+                </ClickAwayListener>
               }
               <MenuItem onClick={() => {
                 if (showMostPopular) {
@@ -240,19 +238,17 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                       <MenuItem className="common_option_wrap kind_common_option_wrap" sx={{ paddingLeft: "26px" }} onClick={() => handleSelectedAttribute(list?.slug, index, item?._id, itemIndex)}>
                         <div className="common_option">
                           <div className="d-flex align-items-center common_radio_btn">
-                            <FormControl>
-                              <FormControlLabel
-                                control={<Radio
-                                  checked={selectedAttribute?.[list?.slug]?.includes(item?._id) ?? false}
-                                  sx={{
+                            <FormControlLabel
+                              control={<Checkbox
+                                checked={selectedAttribute?.[list?.slug]?.includes(item?._id) ?? false}
+                                sx={{
+                                  color: "#2a3592",
+                                  '&.Mui-checked': {
                                     color: "#2a3592",
-                                    '&.Mui-checked': {
-                                      color: "#2a3592",
-                                    },
-                                  }}
-                                />}
-                              />
-                            </FormControl>
+                                  },
+                                }}
+                              />}
+                            />
                             <span>{item?.name}</span>
                           </div>
                         </div>
@@ -303,36 +299,38 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
           <div className="common_select_wrap">
             <FormControl>
               {showPrice && (
-                <div className="price_select_wrap_box">
-                  <Box className="price_select_wrap_box_child" sx={{ background: "#F2F4FF" }}>
-                    <h6>From</h6>
-                    <div className="price_select_wrap_box_child_data">
-                      <input type="text" placeholder="₹1000" value={selectedId?.pricing?.from ?? ''} onChange={(e) => {
-                        const onlyNums = e.target.value.replace(/[^0-9]/g, '');
-                        setSelectedId({ ...selectedId, pricing: { ...selectedId?.pricing, from: Number(onlyNums) } })
-                      }} style={{ backgroundColor: "#f2f4ff" }} />
-                      {selectedId?.pricing?.from &&
-                        <span onClick={() => setSelectedId({ ...selectedId, pricing: { ...selectedId?.pricing, from: 0 } })}>
-                          <TiDeleteOutline />
-                        </span>
-                      }
-                    </div>
-                  </Box>
-                  <div className="price_select_wrap_box_child">
-                    <h6>To</h6>
-                    <div className="price_select_wrap_box_child_data">
-                      <input type="text" value={selectedId?.pricing?.to ?? ''} onChange={(e) => {
-                        const onlyNums = e.target.value.replace(/[^0-9]/g, '');
-                        setSelectedId({ ...selectedId, pricing: { ...selectedId?.pricing, to: Number(onlyNums) } })
-                      }} placeholder="₹3500" />
-                      {selectedId?.pricing?.to &&
-                        <span onClick={() => setSelectedId({ ...selectedId, pricing: { ...selectedId?.pricing, to: 0 } })}>
-                          <TiDeleteOutline />
-                        </span>
-                      }
+                <ClickAwayListener onClickAway={() => setShowPrice(false)}>
+                  <div className="price_select_wrap_box">
+                    <Box className="price_select_wrap_box_child" sx={{ background: "#F2F4FF" }}>
+                      <h6>From</h6>
+                      <div className="price_select_wrap_box_child_data">
+                        <input type="text" placeholder="₹1000" value={selectedId?.pricing?.from ?? ''} onChange={(e) => {
+                          const onlyNums = e.target.value.replace(/[^0-9]/g, '');
+                          setSelectedId({ ...selectedId, pricing: { ...selectedId?.pricing, from: Number(onlyNums) } })
+                        }} style={{ backgroundColor: "#f2f4ff" }} />
+                        {selectedId?.pricing?.from &&
+                          <span onClick={() => setSelectedId({ ...selectedId, pricing: { ...selectedId?.pricing, from: 0 } })}>
+                            <TiDeleteOutline />
+                          </span>
+                        }
+                      </div>
+                    </Box>
+                    <div className="price_select_wrap_box_child">
+                      <h6>To</h6>
+                      <div className="price_select_wrap_box_child_data">
+                        <input type="text" value={selectedId?.pricing?.to ?? ''} onChange={(e) => {
+                          const onlyNums = e.target.value.replace(/[^0-9]/g, '');
+                          setSelectedId({ ...selectedId, pricing: { ...selectedId?.pricing, to: Number(onlyNums) } })
+                        }} placeholder="₹3500" />
+                        {selectedId?.pricing?.to &&
+                          <span onClick={() => setSelectedId({ ...selectedId, pricing: { ...selectedId?.pricing, to: 0 } })}>
+                            <TiDeleteOutline />
+                          </span>
+                        }
+                      </div>
                     </div>
                   </div>
-                </div>
+                </ClickAwayListener>
               )}
 
               <MenuItem onClick={() => {
