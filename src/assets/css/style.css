@@ -1447,11 +1447,12 @@ li.common_option_wrap {
     padding: 25px 12px 25px 30px;
     display: flex;
     align-items: center;
+    gap: 24px;
 }
 
 .cart_product_info {
-    margin-left: 25px;
-    width: 60%;
+    margin-left: 0px;
+    width: calc(100% - 144px);
 }
 
 .card_img {

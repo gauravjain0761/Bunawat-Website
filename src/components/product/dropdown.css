@@ -1,0 +1,20 @@
+.MuiPopover-root .MuiPaper-root {
+    bottom: 86px !important;
+    box-shadow: none !important;
+    top: auto !important;
+}
+
+@media (max-width: 767px) {
+    .MuiPopover-root .MuiPaper-root {
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        min-width: 100% !important;
+        bottom: 0 !important;
+        top: auto !important;
+    }
+
+    .common_select_wrap .chet_size_number {
+        display: none;
+    }
+}

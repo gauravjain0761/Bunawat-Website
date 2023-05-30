@@ -115,7 +115,7 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
                     borderBottom: key === "cart" ? '4px solid #2a3592' : '4px solid #eee'
                 }} onClick={() => setKey('cart')}>
                     <Box sx={{
-                        padding: '8px 16px'
+                        padding: '16px 24px'
                     }}>
                         Cart
                     </Box>
@@ -129,7 +129,7 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
                     borderBottom: key === "saved" ? '4px solid #2a3592' : '4px solid #eee'
                 }} onClick={() => setKey('saved')}>
                     <Box sx={{
-                        padding: '8px 16px',
+                        padding: '16px 24px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between'
@@ -184,11 +184,11 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
                     {cartList?.length > 0 ? cartList?.map((cart, index) => {
                         return (
                             <Box className='cart_information' sx={{
-                                padding: '12px !important'
+                                padding: '24px 24px 16px 24px !important'
                             }}>
                                 <div className="card_img">
                                     <Link to="/product" onClick={handleCartClose} >
-                                        <img src={cart?.image} alt="cart" height='180px' />
+                                        <img src={cart?.image} alt="cart" width="120px" height='180px' />
                                     </Link>
                                 </div>
                                 <div className="cart_product_info">
@@ -226,7 +226,7 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
                                         </div>
                                     </div>
                                     <div className='remove_cart_block'>
-                                        <p>{getNumberWithComma(cart?.amount)} </p>
+                                        <p>{getNumberWithComma(Number(cart?.amount) * Number(cart?.qty))} </p>
                                         <button type='button' className='remove_btn' onClick={() => handleRemove(index, cart?._id)}>
                                             <svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <g clipPath="url(#clip0_160_1450)">

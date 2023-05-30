@@ -940,7 +940,7 @@
     }
 
     .card_img {
-        width: 100px;
+        width: 120px;
     }
 
     .quantiy_wrapper {
@@ -948,8 +948,8 @@
     }
 
     .cart_product_info {
-        margin-left: 15px;
-        width: 66%;
+        margin-left: 0px;
+        width: calc(100% - 144px);
     }
 
     .product_page .product_info_section_wrap {

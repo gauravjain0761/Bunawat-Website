@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux';
 import { setCartCount } from '../../redux/reducers/cart';
 import { Modal } from "react-bootstrap";
 import { Box, Button } from '@mui/material';
+import "./dropdown.css"
 
 export const SelectModal = ({ showSelect, selectedData, handleClose, attributeList, attributeData, filterList, setSelectedData, setQty, setLastSkuData, }) => {
     return (
@@ -312,7 +313,11 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                         </Box>
                         <div className="common_select_wrap">
                             <FormControl >
-                                <Select value={selectedData?.size ?? 'default'} onChange={(e) => {
+                                <Select sx={{
+                                    ".MuiPaper-root": {
+                                        bottom: 0
+                                    }
+                                }} value={selectedData?.size ?? 'default'} onChange={(e) => {
                                     setSelectedData({
                                         ...selectedData,
                                         size: e.target.value
