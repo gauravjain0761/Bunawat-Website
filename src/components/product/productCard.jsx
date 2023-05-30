@@ -11,6 +11,7 @@ import { ApiGet } from '../../services/API/api';
 import { toast } from 'react-toastify';
 import _ from 'lodash';
 import Storage from '../../services/storage';
+import { getOS } from '../../utils/utils';
 
 const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, productBottomData, width, refetch, swipeableIndex, productList, lastSkuData, setLastSkuData, filters, setQty, selectedData, setSelectedData, lastCardElementRef }) => {
     const settings = {
@@ -29,7 +30,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
     const [pincodeValidMsg, setPincodeValidMsg] = useState(null);
     // const [filterList, setFilterList] = useState([]);
     // const [attributeList, setAttributeList] = useState([]);
-    const [scrollActive, setScrollActive] = useState(false);
+    const [scrollActive, setScrollActive] = useState(true);
     const [showAnimation, setShowAnimation] = useState(!Storage.get("disableAnimation"));
 
     // useEffect(() => {
@@ -582,7 +583,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                 </ul>
                             </Box>
                             {((lastSkuData?.images?.length > 0) && (productIndex == swipeableIndex)) ?
-                                <div className='product_slider_height_container ' onMouseEnter={() => setScrollActive(false)} onTouchStart={() => setScrollActive(false)}>
+                                <div className={getOS() == 'iOS' ? "product_slider_height_container_ios" : 'product_slider_height_container'} onMouseEnter={() => setScrollActive(false)} onTouchStart={() => setScrollActive(false)}>
                                     {lastSkuData?.images?.map((list, index) => (
                                         <div key={list?.url + index + list?._id} className='product_slider_height'>
                                             {list?.type == "VIDEO" ?
@@ -607,7 +608,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                     ))}
                                 </div>
                                 :
-                                <div className='product_slider_height_container ' onMouseEnter={() => setScrollActive(false)} onTouchStart={() => setScrollActive(false)}>
+                                <div className={getOS() == 'iOS' ? "product_slider_height_container_ios" : 'product_slider_height_container'} onMouseEnter={() => setScrollActive(false)} onTouchStart={() => setScrollActive(false)}>
                                     {[...product?.images, ...product?.videos?.slice(3, 4)]?.map((list, index) => (
                                         <div key={list?.url + index + list?._id} className='product_slider_height'>
                                             {list?.type == "VIDEO" ?

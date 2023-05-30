@@ -1182,6 +1182,13 @@ body[main-sidebar="shopsidebar"] .shop_sidebar {
     overflow-y: scroll;
 }
 
+.product_slider_height_container_ios {
+    height: calc(100vh - 150px);
+    width: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
 .product_slider_height,
 .product_slider_video_height,
 .product_slider_img_height {
