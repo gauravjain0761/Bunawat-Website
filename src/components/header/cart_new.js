@@ -175,7 +175,9 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
                 overflow: 'hidden',
                 overflowY: 'auto',
                 position: 'relative',
-                background: "white"
+                background: "white",
+                minHeight: 'calc(100% - 112px)',
+                maxHeight: 'calc(100% - 112px)'
             }}>
                 <>
                     {cartList?.length > 0 ? cartList?.map((cart, index) => {
