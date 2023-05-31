@@ -161,7 +161,7 @@ const Product = () => {
   return (
     <Box>
       <Slider {...settings} className="product-slider-full">
-        {[...productList?.[0]]?.map((data, index) => {
+        {productList?.map((data, index) => {
           if (productList.length === swipeableIndex + 1) {
             return (
               <ProductCard key={data?._id + index + swipeableIndex} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} refetch={refetchData} width={width} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} setLastSkuData={setLastSkuData} filters={productList?.[swipeableIndex]?.skus ?? []} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} lastCardElementRef={lastCardElementRefProject} />
@@ -173,7 +173,8 @@ const Product = () => {
           }
         })}
       </Slider>
-      <ProductPageFilter selectedImage={productList?.[swipeableIndex]?.images?.[0]?.url ?? ""} selectedProduct={productList?.[swipeableIndex] ?? {}} filters={productList?.[swipeableIndex]?.skus ?? []} swipeableIndex={swipeableIndex ?? 0} setLastSkuData={setLastSkuData} qty={qty} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} />
+      {/* <ProductCard productIndex={0} product={productList?.[0]} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} refetch={refetchData} width={width} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} setLastSkuData={setLastSkuData} filters={productList?.[swipeableIndex]?.skus ?? []} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} />
+      <ProductPageFilter selectedImage={productList?.[swipeableIndex]?.images?.[0]?.url ?? ""} selectedProduct={productList?.[swipeableIndex] ?? {}} filters={productList?.[swipeableIndex]?.skus ?? []} swipeableIndex={swipeableIndex ?? 0} setLastSkuData={setLastSkuData} qty={qty} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} /> */}
       {/* <SwipeableViews disableLazyLoading={true} containerStyle={{ height: '100%' }} enableMouseEvents index={swipeableIndex} disabled={swipeableDisable} onChangeIndex={(index) => getCurrentBottomData(index)} >
         {productList?.map((data, index) => {
           if (productList.length === swipeableIndex + 1) {
