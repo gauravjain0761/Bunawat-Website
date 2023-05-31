@@ -609,7 +609,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                 </div>
                                 : */}
                             <div className={getOS() == 'iOS' ? "product_slider_height_container_ios" : 'product_slider_height_container'} onMouseEnter={() => setScrollActive(false)} onTouchStart={() => setScrollActive(false)}>
-                                {[...product?.images?.slice(3, 4)]?.map((list, index) => (
+                                {[...product?.images, ...product?.videos?.slice(3, 4)]?.map((list, index) => (
                                     <div key={list?.url + index + list?._id} className='product_slider_height'>
                                         {list?.type == "VIDEO" ?
                                             <video key={list?.url + index + list?._id} autoPlay playsInline preload="true" src={list?.url} loop muted className='product_slider_video_height'>
@@ -632,7 +632,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                     </div>
                                 ))}
                             </div>
-                            // }
+                            {/* } */}
                             {/* {((lastSkuData?.images?.length > 0) && (productIndex == swipeableIndex)) ?
                                 <div className='product_slider_height ' onMouseEnter={() => setScrollActive(false)} onTouchStart={() => setScrollActive(false)}>
                                     <Slider {...settings} className="product_slider">
