@@ -2556,9 +2556,9 @@ li.common_option_wrap {
 }
 
 .checkout_btn {
-    position: fixed;
+    position: absolute;
     left: 0px;
-    bottom: 0px;
+    bottom: 60px;
     width: 100%;
     border: none;
     background-color: #2A3592;

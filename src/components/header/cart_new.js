@@ -179,7 +179,7 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
                 <Box sx={{
                     overflow: 'hidden',
                     overflowY: 'auto',
-                    height: '-webkit-fill-available'
+                    height: 'calc(100% - 120px)'
                 }}>
                     {cartList?.length > 0 ? cartList?.map((cart, index) => {
                         return (
