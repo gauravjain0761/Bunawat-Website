@@ -528,7 +528,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
             <div onMouseEnter={() => setSwipeableDisable(true)} onTouchStart={() => setSwipeableDisable(true)}>
                 <div className="structured_fabric_wrapper">
                     <div className="container">
-                        {/* <div className="structured_fabric_inner">
+                        <div className="structured_fabric_inner">
                             <div className="row">
                                 {(lastSkuData?.videos?.length > 0) ?
                                     <>
@@ -546,7 +546,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                             </div>
 
                             <Review id={product?._id} />
-                        </div> */}
+                        </div>
                     </div>
                 </div>
                 {product?.similar_products?.length > 0 &&
