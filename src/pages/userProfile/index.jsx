@@ -95,11 +95,16 @@ const UserProfile = () => {
                   <p>This is your space. Track events & orders and update your saved details from here.</p>
                 </div>
                 <div className='userProfile_menu'>
-                  <Nav variant="pills" className="flex-column">
+                  <Nav variant="pills" className="flex-column" style={{
+                    flexWrap: "nowrap",
+                    gap: '16px'
+                  }}>
                     {/* <Row>
                 <Col xs={6}> */}
                     <Box sx={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
-                      <Nav.Item>
+                      <Nav.Item style={{
+                        width: "100%",
+                      }}>
                         <Link to="/userProfile">
                           <Nav.Link eventKey="userProfile" className='userProfile_menu_list'>
                             <img src="../img/ordersshop.png" alt='ordersshop' height="20" style={{ marginRight: "8px" }} />
@@ -108,7 +113,9 @@ const UserProfile = () => {
                         </Link>
                       </Nav.Item>
 
-                      <Nav.Item>
+                      <Nav.Item style={{
+                        width: "100%",
+                      }}>
                         <Link to="/userProfile" style={{ background: "#E1E3EC" }}>
                           <Nav.Link eventKey="eventsClub" className='userProfile_menu_list'>
                             <img src="../img/eventsclub.png" alt='eventsclub' height="20" style={{ marginRight: "8px" }} />
