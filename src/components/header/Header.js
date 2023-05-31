@@ -546,7 +546,7 @@ function Header() {
                         <Box sx={{
                             background: 'white',
                             width: { xs: '100%', sm: '400px' },
-                            height: { xs: '-webkit-fill-available', sm: '80vh' },
+                            height: { xs: 'calc(100vh - 60px)', sm: '80vh' },
                             margin: { xs: '60px 0 0 0', sm: '60px 25px 0 0' }
                         }}>
                             <NewCart data={cartData} activeHeader={getActiveHeader(scroll, hover, headerColor)} handleCartClose={handleCartClose} handleCheckout={handleCheckout} />
