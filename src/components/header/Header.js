@@ -533,7 +533,7 @@ function Header() {
             <Box sx={{
                 background: 'rgba(0,0,0,.6)',
                 width: '100%',
-                height: '100vh',
+                height: '-webkit-fill-available',
                 position: 'fixed',
                 top: 0,
                 zIndex: 999,
@@ -546,7 +546,7 @@ function Header() {
                         <Box sx={{
                             background: 'white',
                             width: { xs: '100%', sm: '400px' },
-                            height: { xs: '-webkit-calc(100vh - 120px)', sm: '80vh' },
+                            height: '100%',
                             margin: { xs: '60px 0 0px 0', sm: '60px 25px 0 0' }
                         }}>
                             <NewCart data={cartData} activeHeader={getActiveHeader(scroll, hover, headerColor)} handleCartClose={handleCartClose} handleCheckout={handleCheckout} />

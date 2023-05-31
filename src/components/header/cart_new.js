@@ -171,7 +171,7 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
                 </Box>
             </Box>
             {key == 'cart' ? <Box className='cart_wrapper' sx={{
-                height: '100%',
+                height: 'calc(100% - 70px)',
                 overflow: 'hidden',
                 overflowY: 'auto',
                 position: 'relative'
