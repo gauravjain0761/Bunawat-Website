@@ -452,6 +452,10 @@
         height: 480px;
     }
 
+    .cloth_wrap .cloth_deatils_link {
+        height: 100%;
+    }
+
     .cloth_wrap .cloth_deatils_link img {
         width: 100%;
         object-fit: cover;
