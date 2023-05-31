@@ -172,8 +172,7 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
             </Box>
             {key == 'cart' ? <Box className='cart_wrapper' sx={{
                 height: '-webkit-fill-available',
-                overflow: 'hidden',
-                overflowY: 'auto',
+                overflow: 'auto',
                 position: 'relative',
                 background: "white",
                 minHeight: 'calc(100% - 112px)',
@@ -252,6 +251,7 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
                             justifyContent: 'center',
                             alignItems: 'center',
                             width: '100%',
+                            overflow: 'auto',
                             height: '100%'
                         }}>
                             <h3>Cart Empty</h3>
