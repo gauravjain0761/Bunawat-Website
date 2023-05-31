@@ -161,7 +161,7 @@ const Product = () => {
   return (
     <Box>
       <Slider {...settings} className="product-slider-full">
-        {productList?.map((data, index) => {
+        {[...productList?.[0]]?.map((data, index) => {
           if (productList.length === swipeableIndex + 1) {
             return (
               <ProductCard key={data?._id + index + swipeableIndex} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} refetch={refetchData} width={width} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} setLastSkuData={setLastSkuData} filters={productList?.[swipeableIndex]?.skus ?? []} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} lastCardElementRef={lastCardElementRefProject} />
