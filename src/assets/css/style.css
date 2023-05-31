@@ -2556,7 +2556,7 @@ li.common_option_wrap {
 }
 
 .checkout_btn {
-    position: sticky;
+    position: fixed;
     left: 0px;
     bottom: 0px;
     width: 100%;
