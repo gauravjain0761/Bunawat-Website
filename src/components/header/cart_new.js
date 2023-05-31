@@ -174,13 +174,10 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
                 height: '-webkit-fill-available',
                 overflow: 'hidden',
                 overflowY: 'auto',
-                position: 'relative'
+                position: 'relative',
+                background: "white"
             }}>
-                <Box sx={{
-                    overflow: 'hidden',
-                    overflowY: 'auto',
-                    height: 'calc(100% - 120px)'
-                }}>
+                <>
                     {cartList?.length > 0 ? cartList?.map((cart, index) => {
                         return (
                             <Box className='cart_information' sx={{
@@ -258,7 +255,7 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
                             <h3>Cart Empty</h3>
                         </div>
                     }
-                </Box>
+                </>
                 {cartList?.length > 0 ?
                     <button type="button" className="checkout_btn" onClick={handleCheckout}>
                         <span>Checkout</span>
