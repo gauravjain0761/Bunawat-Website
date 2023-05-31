@@ -529,7 +529,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                 <div className="structured_fabric_wrapper">
                     <div className="container">
                         <div className="structured_fabric_inner">
-                            <div className="row">
+                            {/* <div className="row">
                                 {(lastSkuData?.videos?.length > 0) ?
                                     <>
                                         {lastSkuData?.videos?.map((list, index) => (
@@ -543,7 +543,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                         ))}
                                     </>
                                 }
-                            </div>
+                            </div> */}
 
                             <Review id={product?._id} />
                         </div>
