@@ -343,7 +343,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
 
             <div className="shop_hald_wrap">
               <div className="shop_hald_inner">
-                <div className="shop_hald_info">
+                <div className="shop_hald_info new_shop_info">
                   <Link to="/" className="d-flex align-items-center">
                     <h3>Shop Haldi Gallery</h3>
                     <svg
@@ -369,6 +369,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                   </Link>
                   <p>64 Designs • Updated Monthly</p>
                 </div>
+                <div className="shop_second_section">
                 <div className="shop_hald_info">
                   <Link to="/" className="d-flex align-items-center">
                     <h3>Most Loved</h3>
@@ -420,6 +421,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                     </svg>
                   </Link>
                   <p>1,600+ Designs</p>
+                </div>
                 </div>
               </div>
             </div>

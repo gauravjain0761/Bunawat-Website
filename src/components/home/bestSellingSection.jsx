@@ -73,13 +73,17 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
       <div className="best_sallying_wrap common_home_banner haldi_gallery_wrao">
         <div className="container">
           <div className="home_banner_title">
-            <h2 className="common_title">{singleList?.title}</h2>
+            <h2 className="common_title"
+              style={{
+                fontFamily: "New Spirit"
+              }}
+            >{singleList?.title}</h2>
             <div className="summer_list">
               {singleList?.linked_product?.length > 0 &&
                 singleList?.linked_product.map((list) => (
                   <div className="summer_list_link_wrap" key={list?._id}>
                     <Link to={`/product/${list?._id}/${data?.[keyVal]?.type ?? ""}`}>
-                      <div className="summer_list_link">
+                      <div className="summer_list_link new_link">
                         <p className="big-font">{list?.name}</p>
                         <span>
                           <svg
@@ -123,7 +127,7 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
               }
               <div className="summer_list_link_wrap">
                 <Link to={`/allProductList/${singleList?.title}`}>
-                  <div className="summer_list_link">
+                  <div className="summer_list_link new_link">
                     <p className="big-font">Shop all {singleList?.title}</p>
                     <span>
                       <svg

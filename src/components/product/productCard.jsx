@@ -25,7 +25,9 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
         vertical: true,
         verticalSwiping: true,
     };
-    const [pincode, setPincode] = useState("");
+
+
+    const [pincode, setPincode] = useState(JSON.parse(Storage.get("userData"))?.pincode ?? "");
     const [pincodeValid, setPincodeValid] = useState(null);
     const [pincodeValidMsg, setPincodeValidMsg] = useState(null);
     // const [filterList, setFilterList] = useState([]);
@@ -126,7 +128,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                     <div className='parse-description'>{parse(product?.description)}</div>
                                     <div style={{ marginTop: '25px' }}>
                                         Club members get <span>10% off. </span>
-                                        <Link to="" className="product_link">
+                                        <Link to="" className="product_link new_product_link">
                                             Join
                                             <svg
                                                 width="12"
@@ -158,7 +160,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                         </Link>
                                     </div>
                                     <div className="produt_time_wrap">
-                                        <Link to="" className="product_link">
+                                        <Link to="" className="product_link new_product_link">
                                             Get help on Whatsapp
                                             <svg
                                                 width="12"
@@ -191,7 +193,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                         <p>10am—6pm</p>
                                     </div>
                                     <div className="produt_time_wrap">
-                                        <Link to="" className="product_link">
+                                        <Link to="" className="product_link new_product_link">
                                             See it live
                                             <svg
                                                 width="12"

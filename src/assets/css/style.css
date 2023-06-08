@@ -538,7 +538,7 @@ button {
 .shop_hald_inner {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
 .shop_hald_info h3 {
@@ -620,7 +620,7 @@ button {
 
 .save_wrap p {
     margin-right: 10px;
-    margin-top: 5px;
+    /* margin-top: 5px; */
     font-weight: 600;
     font-size: 14px;
     line-height: 16px;
@@ -1954,11 +1954,13 @@ li.common_option_wrap {
     color: #2A3592;
     font-weight: bold;
     max-width: 230px;
-    background-color: #fff;
+    background-color: transparent;
 }
+
 
 .pin_code_weap input::placeholder {
     color: #2A3592;
+    line-height: 40px;
 }
 
 .edit_icon {
@@ -2557,9 +2559,9 @@ li.common_option_wrap {
 
 .checkout_btn {
     position: fixed;
-    left: 0px;
+    /* left: 0px; */
     bottom: 0px;
-    width: 100%;
+    /* width: 100%; */
     border: none;
     background-color: #2A3592;
     height: 56px;
@@ -2567,7 +2569,10 @@ li.common_option_wrap {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+    width: 400px;
 }
+
+
 
 .checkout_btn span {
     color: #fff;
@@ -2699,4 +2704,30 @@ li.common_option_wrap {
 .tab_section_inner .tab-content .active .activeOpecity {
     opacity: 1;
     transition: opacity 2s ease-in-out;
+}
+
+.new_link .big-font {
+    font-family: 'New Hero' !important;
+    font-style: normal !important;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: -0.02em;
+}
+
+.shop_second_section {
+    padding: 0px;
+    margin-top: 0px;
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+    margin-left: auto;
+}
+
+.new_shop_info {
+    padding-left: 40px;
+}
+
+.new_product_link:hover {
+    color: #00008B;
 }
