@@ -242,7 +242,7 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
                                 </svg>
                               </span>
                             </div>
-                            <p className=" summer_list_link_wrap_white summer_list_link_wrap_changes">{getNumberWithComma(list?.sale_price ?? 0)} </p>
+                            <p className=" summer_list_link_wrap_white summer_list_link_wrap_changes new_price_status">{getNumberWithComma(list?.sale_price ?? 0)} </p>
                           </div>
                           <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={(width >= 768)} setSelectedId={setSelectedId} selectedId={selectedId} />
                         </div>

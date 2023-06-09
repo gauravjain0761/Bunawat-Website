@@ -56,12 +56,14 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
   const history = useHistory();
   return (
     <>
-      <Box sx={{
-        width: { md: "380px", sm: "100%" },
-        px: 2,
-        // backgroundColor: '#ffffffe8',
-        // backdropFilter: 'blur(10px)', 
-      }}>
+      <Box
+
+        sx={{
+          width: { md: "380px", sm: "100%" },
+          px: 2,
+          // backgroundColor: '#ffffffe8',
+          // backdropFilter: 'blur(10px)', 
+        }}>
         <Box sx={{
           padding: '14px 0 0 0',
           borderBottom: "2px solid #000000",
@@ -74,6 +76,25 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
+              sx={{
+                '@media (max-width: 768px)': {
+                  fontSize: "14px",
+                  lineHeight: "24px",
+                  width: "100%",
+                  '& .MuiInputBase-input': {
+                    padding: "8px 0px 8px 0px",
+                    paddingLeft: "24px",
+                    transition: "none",
+                    width: '100%',
+                    color: "#000000",
+                    fontStyle: "normal",
+                    fontWeight: "600",
+                    fontSize: "14px",
+                    lineHeight: "24px"
+                  }
+                }
+              }}
+
             />
           </Search>
           {/* <Typography 
@@ -131,6 +152,11 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                     letterSpacing: "-.02em",
                     fontFamily: "Newspirit",
                     cursor: "pointer",
+                    '@media (max-width: 768px)': {
+                      fontSize: "18px",
+                      lineHeight: "32px",
+
+                    }
                   }}
                 >
                   {item.name}
@@ -170,6 +196,10 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                         fontWeight: 600,
                         letterSpacing: "-.02em",
                         fontFamily: "Newspirit",
+                        '@media (max-width: 768px)': {
+                          fontSize: "18px",
+                          lineHeight: "32px",
+                        }
                       }}
                     >
                       {item.name}
@@ -178,7 +208,7 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                       <Typography>
                         <svg
                           width="22"
-                          height="25"
+                          height="23"
                           viewBox="0 0 22 25"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -407,6 +437,13 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
             display: 'none',
             '@media (max-width: 768px)': {
               display: "flex",
+              position: "fixed",
+              bottom: 0,
+              width: "100%",
+              padding: "28px 32px",
+              left: "0px",
+              background: "#FFFFFF",
+              boxShadow: '0px 0px 64px rgba(0, 0, 0, 0.1)'
             }
           }}
         >
@@ -445,13 +482,23 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                   letterSpacing: '-0.02em',
                   color: '#9A9EB0',
                   marginLeft: "10px",
+                  '@media (max-width: 768px)': {
+                    marginLeft: "18x",
+                  }
                 }}
               >
                 Workshops, events & deals
-                <FiberManualRecordIcon fontSize="14px" sx={{ color: "#5E9EFF", marginLeft: "6px" }} />
+                <FiberManualRecordIcon fontSize="14px" sx={{
+                  color: "#5E9EFF", marginLeft: "6px",
+                  '@media (max-width: 768px)': {
+                    marginLeft: "8px"
+                  }
+                }} />
               </Typography>
             </Box>
           </Link>
+
+
           <Box onClick={() => { handleClose(); history.push("/login"); }}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#clip0_7644_583)">
@@ -466,8 +513,8 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
               </defs>
             </svg>
           </Box>
-        </Box>
-      </Box>
+        </Box >
+      </Box >
     </>
   );
 };

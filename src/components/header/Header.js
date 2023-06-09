@@ -282,6 +282,7 @@ function Header() {
                                 </Button>
                                 <CustomPopOver
                                     id={id}
+                                    className='shop-popover'
                                     open={open}
                                     anchorEl={anchorEl}
                                     onClose={handleClose}

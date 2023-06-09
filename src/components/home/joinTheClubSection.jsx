@@ -11,7 +11,9 @@ const JoinTheClubSection = () => {
             <h2 className="common_title" style={{
               marginBottom: 0
             }}>Join the Club</h2>
-            <p>
+            <p
+              className="common_description_new"
+            >
               Professional Tutorials. Beauty Workshops. Special Deals. Be a part
               of Bunawat Club to get it all, free.
             </p>

@@ -252,7 +252,7 @@
         margin-left: 0;
     }
 
-    .new_shop_info{
+    .new_shop_info {
         padding-left: 0px;
     }
 }
@@ -267,9 +267,23 @@
         margin-left: 0;
     }
 
-    .new_shop_info{
+    .new_shop_info {
         padding-left: 0px;
     }
+
+    .common_home_banner .container {
+        padding: 65px 32px 48px 32px;
+    }
+
+    .tab_section_wrap .nav-tabs .nav-link {
+        margin-right: 16px;
+        padding: 0px 0px 0px 0px !important;
+    }
+
+    .tab_section_wrap .nav-tabs {
+        padding-left: 16px !important;
+    }
+
 }
 
 @media (max-width: 991px) {
@@ -397,6 +411,7 @@
     .summer_list_link p,
     .summer_list_link_wrap p {
         font-size: 14px;
+        margin-right: 8px;
     }
 
     .common_home_banner {
@@ -457,7 +472,7 @@
     }
 
     .summer_list_link {
-        margin-bottom: 5px;
+        margin-bottom: 4px;
         justify-content: space-between;
     }
 
@@ -679,7 +694,7 @@
 
     .summer_list div+div {
         margin-left: 0;
-        margin-top: 12px;
+        margin-top: 16px;
     }
 
     .tab_common_contain .row {
@@ -914,6 +929,33 @@
         padding: 40px 0 0;
     }
 }
+@media (max-width: 765px) {
+    .shop-popover .MuiPaper-root{
+        height: 100vh !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .space_info_shop {
+        padding-left: 20px;
+    }
+
+    .new_price_status {
+        font-style: normal;
+        font-weight: 600 !important;
+        font-size: 16px !important;
+        line-height: 16px !important;
+        text-shadow: 0px 0px 64px #000000 !important;
+        padding: 0 0 0 0 !important;
+    }
+
+    .common_description_new {
+        font-style: normal;
+        font-weight: 400 !important;
+        font-size: 16px !important;
+        line-height: 28px !important;
+    }
+}
 
 @media (max-width: 575px) {
 
@@ -952,6 +994,7 @@
 
     .summer_list_link_wrap p {
         font-size: 12px;
+        padding-top: 2px;
     }
 
     .common_tab_title {
@@ -959,8 +1002,18 @@
     }
 
     .social_media_wrap {
-        padding: 20px 20px 20px 0;
+        padding: 32px 20px 32px 0;
     }
+
+    .shop_hald_info h3 {
+        font-family: 'New Spirit';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 40px;
+    }
+
+
 
     .cloth_wrap .cloth_inner .row>div {
         height: 300px;
@@ -1093,7 +1146,7 @@
 }
 
 @media (max-width: 600px) {
-    .checkout_btn{
+    .checkout_btn {
         width: 100%;
     }
 }

@@ -91,7 +91,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                                     </span>
                                   </div>
                                 </Link>
-                                <p >{getNumberWithComma(list?.sale_price ?? 0)}</p>
+                                <p className="new_price">{getNumberWithComma(list?.sale_price ?? 0)}</p>
                               </div>
                             ))
 
@@ -265,11 +265,14 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                                             justifyContent: "space-between",
                                             alignItems: "center",
                                           }}>
-                                            <Box sx={{
+                                            <Box 
+                                            sx={{
                                               '@media (max-width: 768px)': {
-                                                marginTop: "8px"
+                                                paddingTop: "2px"
                                               },
-                                            }}>
+                                            }}
+                                            
+                                            >
                                               {getNumberWithComma(list?.sale_price ?? 0)}
                                             </Box>
                                             <Box sx={{
@@ -396,7 +399,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                   </Link>
                   <p>Our Favourite 100 Designs</p>
                 </div>
-                <div className="shop_hald_info">
+                <div className="shop_hald_info space_info_shop">
                   <Link to="/allProduct" className="d-flex align-items-center">
                     <h3>Shop All</h3>
                     <svg
