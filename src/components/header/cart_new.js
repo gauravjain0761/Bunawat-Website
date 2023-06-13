@@ -21,7 +21,7 @@ import { useDispatch } from 'react-redux';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { Box } from '@mui/material';
 
-const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
+const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout,isMobile=false}) => {
     const [key, setKey] = useState('cart');
     const [cartList, setCartList] = useState([]);
     const [removeCartItem] = useRemoveCartItemMutation()
@@ -170,13 +170,16 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
                     </Box>
                 </Box>
             </Box>
+
+            {console.log(isMobile,"isMobile")}
             {key == 'cart' ? <Box className='cart_wrapper' sx={{
                 height: '-webkit-fill-available',
                 overflow: 'auto',
                 position: 'relative',
                 background: "white",
                 minHeight: 'calc(100% - 112px)',
-                maxHeight: 'calc(100% - 112px)'
+                maxHeight: 'calc(100% - 112px)',
+                ...(isMobile && { height: 'calc(100vh - 112px)' })
             }}>
                 <>
                     {cartList?.length > 0 ? cartList?.map((cart, index) => {
@@ -272,7 +275,11 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
             {key == 'saved' ? <Box className='saved_wrapper' sx={{
                 overflow: 'hidden',
                 overflowY: 'auto',
-                height: 'calc(100% - 56px)'
+                ...(isMobile ? {
+                    height: 'calc(100vh - 100px)',
+                } : {
+                    height: 'calc(100% - 56px)'
+                })
             }}>
                 {wishlistData?.data?.length > 0 ?
                     <div className='row'>

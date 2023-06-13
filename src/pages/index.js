@@ -25,6 +25,7 @@ import { messaging } from "../firebase";
 import { toast } from "react-toastify";
 import { AllApiData } from "../services/api";
 import ProdileEdit from "./userProfile/edit";
+import Cart from "./product/cart";
 
 export default function Index() {
     const dispatch = useDispatch();
@@ -144,6 +145,12 @@ export default function Index() {
                     <Route exact path={BASE_URL.BASE_URL + "login"}>
                         <Login />
                     </Route>
+
+                    {/* // cart page */}
+                   <Route exact path={BASE_URL.BASE_URL + "cart"}>
+                        <Cart />
+                    </Route> 
+
 
                     <Route exact path={BASE_URL.BASE_URL + "*"}>
                         <ErrorPage />

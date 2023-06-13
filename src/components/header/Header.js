@@ -463,7 +463,10 @@ function Header() {
                                 <Button
                                     aria-describedby={cart}
                                     // onClick={handleCartClick}
-                                    onClick={() => setIsCart(true)}
+                                    // onClick={() => setIsCart(true)}
+                                    onClick={() =>
+                                        width < 768 ? history.push('/cart') : setIsCart(true)
+                                    }
                                     sx={{
                                         marginLeft: '10px',
                                         '@media (max-width: 768px)': {

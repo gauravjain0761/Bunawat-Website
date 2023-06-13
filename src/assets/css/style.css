@@ -1192,7 +1192,7 @@ body[main-sidebar="shopsidebar"] .shop_sidebar {
 .product_slider_height,
 .product_slider_video_height,
 .product_slider_img_height {
-    height: 100%;
+    height: calc(100vh - 150px);
     width: 100%;
 }
 
