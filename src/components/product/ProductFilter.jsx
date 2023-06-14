@@ -471,7 +471,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                         </div>
                         <div className="add_btn_wrap">
                             {isCartAdd ?
-                                <button className="clear_btn add_btn">
+                                <button className="clear_btn add_btn new_btn_add_cart">
                                     <span>Added to Cart</span>
                                     <span>
                                         <svg

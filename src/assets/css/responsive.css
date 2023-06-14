@@ -985,6 +985,10 @@
         color: #2A3592;
     }
 
+    .new_btn_add_cart{
+        background: #3D4DDA;
+    }
+
     .new_parse_description p {
         line-height: 40px;
     }
