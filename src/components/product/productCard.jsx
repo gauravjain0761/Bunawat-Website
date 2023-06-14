@@ -699,7 +699,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                 }}></Box>
                 <div onMouseEnter={() => setScrollActive(true)} onTouchStart={() => setScrollActive(true)} style={{
                     width: '100%',
-                    height: '25px',
+                    height: '16px',
                     opacity: 0
                 }} id={`#scoll-top`}></div>
                 {(width < 768) ?

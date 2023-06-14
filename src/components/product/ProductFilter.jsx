@@ -291,7 +291,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
         <>
             <div className="product_filters">
                 <div className='product_filters_wrap'>
-                    <div className="product_filters_wrap product_page_filtter">
+                    <div className="product_filters_wrap product_page_filtter new_filter_menu">
                         <div className="common_select_wrap">
                             <FormControl>
                                 <Select sx={{
@@ -307,6 +307,11 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                         minWidth: " 100%",
                                         bottom: "0",
                                         top: "auto"
+                                    },
+                                    '@media (max-width: 768px)': {
+                                        '.MuiSelect-select': {
+                                           paddingLeft:'24px'
+                                        },
                                     }
                                 }} value={selectedData?.size ?? 'default'} onChange={(e) => {
                                     setSelectedData({
@@ -415,18 +420,18 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                         <div className="common_option">
                                             <p>
                                                 <div className="common_option">
-                                                    <div className="d-flex align-items-center common_radio_btn">
+                                                    <div className="d-flex align-items-center common_radio_btn new_common_radio_btn">
                                                         <span>Size: Select</span>
                                                     </div>
                                                 </div>
                                             </p>
-                                            {/* <Link to="/sizeGuide" style={{ color: "#2A3592" }}> */}
+                                            <Link to="/sizeGuide" style={{ color: "#2A3592" }}>
                                             <div className="chet_size chet_size_number">
-                                                {/* <span>
+                                                <span>
                                                     check the Size guide <FiArrowUpRight />
-                                                </span> */}
+                                                </span>
                                             </div>
-                                            {/* </Link> */}
+                                            </Link>
                                         </div>
                                     </MenuItem>
                                 </Select>
@@ -486,7 +491,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                     </span>
                                 </button>
                                 :
-                                <button className={`clear_btn add_btn ${(selectedData?.size && selectedData?.size != "default") ? '' : 'disabled-btn'}`} disabled={!((selectedData?.size && selectedData?.size != "default"))} onClick={handleAdd}>
+                                <button className={`clear_btn add_btn ${(selectedData?.size && selectedData?.size != "default") ? '' : 'disabled-btn new_disabled'}`} disabled={!((selectedData?.size && selectedData?.size != "default"))} onClick={handleAdd}>
                                     <span>Add</span>
                                     <span>
                                         {getNumberWithComma(selectedProduct?.sale_price ?? 0)}

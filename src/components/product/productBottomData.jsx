@@ -101,13 +101,15 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                     <div className="row">
                         <div className="col-md-6 product_info_section_wrap" >
                             <div className="product_info_section">
-                                <div className="product_title_wrap" onMouseEnter={() => setSwipeableDisable(false)} onTouchStart={() => setSwipeableDisable(false)}>
+                                <div className="product_title_wrap new_product_title_wrap" onMouseEnter={() => setSwipeableDisable(false)} onTouchStart={() => setSwipeableDisable(false)}>
                                     <h2>{product?.name}</h2>
                                     {/* <SaveButton id={product?._id} isWishlist={product?.isWishlist} isBlue={true} refetch={refetch} isWhite={false} /> */}
                                 </div>
                                 <div className="common_product_details" onMouseEnter={() => setSwipeableDisable(true)} onTouchStart={() => setSwipeableDisable(true)}>
-                                    <div className='parse-description'>{parse(product?.description)}</div>
-                                    <div style={{ marginTop: '25px' }}>
+                                    <div className='parse-description new_parse_description'>{parse(product?.description)}</div>
+                                    <div style={{ marginTop: '25px' }}
+                                        className="new_product_price_wrap"
+                                    >
                                         Club members get <span>10% off. </span>
                                         <Link to="" className="product_link">
                                             Join

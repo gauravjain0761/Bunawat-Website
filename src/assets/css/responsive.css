@@ -640,14 +640,14 @@
     }
 
     .product_slider_height_container_ios {
-        height: 58vh;
+        height: calc(100vh - 241px);
         width: 100%;
     }
 
     .product_slider_height,
     .product_slider_video_height,
     .product_slider_img_height {
-        height: 58vh;
+        height: calc(100vh - 241px);
         width: 100%;
     }
 
@@ -929,8 +929,9 @@
         padding: 40px 0 0;
     }
 }
+
 @media (max-width: 765px) {
-    .shop-popover .MuiPaper-root{
+    .shop-popover .MuiPaper-root {
         height: 100vh !important;
     }
 }
@@ -954,6 +955,67 @@
         font-weight: 400 !important;
         font-size: 16px !important;
         line-height: 28px !important;
+    }
+
+    .add_btn_wrap {
+        width: 50%;
+    }
+
+    .new_common_radio_btn {
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    .new_filter_menu {
+        border-top: 1px solid #2A3592;
+        backdrop-filter: blur(100px);
+    }
+
+    .new_disabled {
+        background: rgba(42, 53, 146, 0.5);
+    }
+
+    .new_product_title_wrap h2 {
+        font-family: 'New Spirit';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 24px;
+        letter-spacing: -0.02em;
+        color: #2A3592;
+    }
+
+    .new_parse_description p {
+        line-height: 40px;
+    }
+
+    .new_product_price_wrap {
+        margin-top: 20px;
+    }
+
+    .product_left_details {
+        padding: 0 0 40px 40px;
+    }
+
+    .product_left_details p {
+        font-family: 'New Hero';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 16px;
+        letter-spacing: -0.02em;
+        color: #F2E7CB;
+        padding-bottom: 10px;
+    }
+
+    .product_left_details span {
+        font-family: 'New Hero';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        letter-spacing: -0.02em;
+        color: #F2E7CB;
     }
 }
 
