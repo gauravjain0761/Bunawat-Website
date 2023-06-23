@@ -26,6 +26,7 @@ const Product = () => {
   const [qty, setQty] = useState(1);
   const [selectedData, setSelectedData] = useState({});
   const [singleProduct, setSingleProduct] = useState({});
+  const [videoLoading, setVideoLoading] = useState(false);
   const [productFilter, setProductFilter] = useState({
     page: 1,
     id,
@@ -163,11 +164,13 @@ const Product = () => {
 
 
   const getProduct = async () => {
+    setVideoLoading(true)
     console.log("swipeableIndexswipeableIndex",swipeableIndex)
     if(productList?.[swipeableIndex]?._id){
         await ApiGet(`get_product_by_id/${productList?.[swipeableIndex]?._id}`)
         .then((res) => {
           setSingleProduct(res?.data);
+          setVideoLoading(false)
         })
         .catch((error) => {
             toast.error(error?.response?.data?.message);
@@ -185,11 +188,15 @@ useEffect(() => {
         {productList?.map((data, index) => {
           if (productList.length === swipeableIndex + 1) {
             return (
-              <ProductCard key={data?._id + index + swipeableIndex} singleProduct={singleProduct} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} refetch={refetchData} width={width} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} setLastSkuData={setLastSkuData} filters={productList?.[swipeableIndex]?.skus ?? []} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} lastCardElementRef={lastCardElementRefProject} />
+              <ProductCard key={data?._id + index + swipeableIndex}
+                videoLoading={videoLoading}
+              singleProduct={singleProduct} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} refetch={refetchData} width={width} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} setLastSkuData={setLastSkuData} filters={productList?.[swipeableIndex]?.skus ?? []} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} lastCardElementRef={lastCardElementRefProject} />
             )
           } else {
             return (
-              <ProductCard key={data?._id + index + (swipeableIndex + 1)} singleProduct={singleProduct} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} refetch={refetchData} width={width} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} setLastSkuData={setLastSkuData} filters={productList?.[swipeableIndex]?.skus ?? []} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} />
+              <ProductCard key={data?._id + index + (swipeableIndex + 1)} 
+              videoLoading={videoLoading}
+              singleProduct={singleProduct} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} refetch={refetchData} width={width} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} setLastSkuData={setLastSkuData} filters={productList?.[swipeableIndex]?.skus ?? []} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} />
             )
           }
         })}

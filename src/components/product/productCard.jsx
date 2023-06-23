@@ -13,7 +13,7 @@ import _ from 'lodash';
 import Storage from '../../services/storage';
 import { getOS } from '../../utils/utils';
 
-const ProductCard = ({ singleProduct,product, productIndex, similarList, setSwipeableDisable, productBottomData, width, refetch, swipeableIndex, productList, lastSkuData, setLastSkuData, filters, setQty, selectedData, setSelectedData, lastCardElementRef }) => {
+const ProductCard = ({ singleProduct,product, videoLoading,productIndex, similarList, setSwipeableDisable, productBottomData, width, refetch, swipeableIndex, productList, lastSkuData, setLastSkuData, filters, setQty, selectedData, setSelectedData, lastCardElementRef }) => {
     const settings = {
         dots: true,
         infinite: false,
@@ -718,6 +718,7 @@ const ProductCard = ({ singleProduct,product, productIndex, similarList, setSwip
                     <div onMouseEnter={() => setScrollActive(true)} onTouchStart={() => setScrollActive(true)}>
                         <ProductBottomData
                             productId={product?._id} singleProduct={singleProduct}
+                            videoLoading={videoLoading}
                             productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} setSwipeableDisable={setSwipeableDisable} />
                     </div>
                     :
@@ -725,6 +726,7 @@ const ProductCard = ({ singleProduct,product, productIndex, similarList, setSwip
                         <div onMouseEnter={() => setSwipeableDisable(true)} onTouchStart={() => setSwipeableDisable(true)}>
                             <ProductBottomData
                                 productId={product?._id} singleProduct={singleProduct}
+                                videoLoading={videoLoading}
                                 productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} setSwipeableDisable={setSwipeableDisable} />
                         </div>
                     </div>

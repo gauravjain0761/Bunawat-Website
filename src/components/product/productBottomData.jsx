@@ -7,7 +7,7 @@ import FooterStrip from '../footer/footerStrip';
 import ProductPageFilter from './ProductFilter';
 import parse from 'html-react-parser';
 import SaveButton from '../common/save';
-import { Box } from '@mui/material';
+import { Box, CircularProgress } from '@mui/material';
 import Storage from '../../services/storage';
 import Review from '../reviews/review';
 import { ApiGet } from '../../services/API/api';
@@ -15,8 +15,8 @@ import { toast } from 'react-toastify';
 import VideoComponent from './videoComponent';
 
 
-const ProductBottomData = ({ productId, singleProduct,productIndex, width, similarList, refetch, swipeableIndex, productList, lastSkuData, setLastSkuData, setSwipeableDisable }) => {
-    
+const ProductBottomData = ({ productId, videoLoading, singleProduct, productIndex, width, similarList, refetch, swipeableIndex, productList, lastSkuData, setLastSkuData, setSwipeableDisable }) => {
+
 
     const [age, setAge] = useState("size");
     const history = useHistory();
@@ -24,9 +24,9 @@ const ProductBottomData = ({ productId, singleProduct,productIndex, width, simil
     const [pincode, setPincode] = useState("");
     const [pincodeValid, setPincodeValid] = useState(null);
     const [pincodeValidMsg, setPincodeValidMsg] = useState(null);
-    const [product, setProduct] = useState(singleProduct??{});
-    
-   
+    const [product, setProduct] = useState(singleProduct ?? {});
+
+
     useEffect(() => {
         setProduct(singleProduct);
     }, [singleProduct])
@@ -540,18 +540,25 @@ const ProductBottomData = ({ productId, singleProduct,productIndex, width, simil
                     <div className="container">
                         <div className="structured_fabric_inner">
                             <div className="row">
-                                {(lastSkuData?.videos?.length > 0) ?
-                                    <>
-                                        {lastSkuData?.videos?.map((list, index) => (
-                                            <VideoComponent url={list?.url} key={index} index={index} width={(width < 576)} />
-                                        ))}
-                                    </>
-                                    :
-                                    <>
-                                        {product?.videos?.slice(0, 3)?.map((list, index) => (
-                                            <VideoComponent url={list?.url} key={index} index={index} width={(width < 576)} />
-                                        ))}
-                                    </>
+
+                                {
+                                    videoLoading ?
+                                        <div className="col-12">
+                                            <CircularProgress />
+                                        </div>
+                                        :
+                                        (lastSkuData?.videos?.length > 0) ?
+                                            <>
+                                                {lastSkuData?.videos?.map((list, index) => (
+                                                    <VideoComponent url={list?.url} key={index} index={index} width={(width < 576)} />
+                                                ))}
+                                            </>
+                                            :
+                                            <>
+                                                {product?.videos?.slice(0, 3)?.map((list, index) => (
+                                                    <VideoComponent url={list?.url} key={index} index={index} width={(width < 576)} />
+                                                ))}
+                                            </>
                                 }
                             </div>
 
