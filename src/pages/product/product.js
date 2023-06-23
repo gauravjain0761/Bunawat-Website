@@ -9,6 +9,8 @@ import Storage from "../../services/storage";
 import useProjectData from "../../hooks/useGetProducts";
 import { Box, CircularProgress } from "@mui/material";
 import Slider from "react-slick";
+import { ApiGet } from "../../services/API/api";
+import { toast } from "react-toastify";
 
 
 const Product = () => {
@@ -23,6 +25,7 @@ const Product = () => {
   const [width, setWidth] = useState(window.innerWidth);
   const [qty, setQty] = useState(1);
   const [selectedData, setSelectedData] = useState({});
+  const [singleProduct, setSingleProduct] = useState({});
   const [productFilter, setProductFilter] = useState({
     page: 1,
     id,
@@ -158,17 +161,35 @@ const Product = () => {
     setProductBottomData(bottomData)
   }
 
+
+  const getProduct = async () => {
+    console.log("swipeableIndexswipeableIndex",swipeableIndex)
+    if(productList?.[swipeableIndex]?._id){
+        await ApiGet(`get_product_by_id/${productList?.[swipeableIndex]?._id}`)
+        .then((res) => {
+          setSingleProduct(res?.data);
+        })
+        .catch((error) => {
+            toast.error(error?.response?.data?.message);
+        });
+    }
+}
+
+useEffect(() => {
+    getProduct();
+}, [productList,swipeableIndex])
+
   return (
     <Box>
       <Slider {...settings} className="product-slider-full">
         {productList?.map((data, index) => {
           if (productList.length === swipeableIndex + 1) {
             return (
-              <ProductCard key={data?._id + index + swipeableIndex} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} refetch={refetchData} width={width} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} setLastSkuData={setLastSkuData} filters={productList?.[swipeableIndex]?.skus ?? []} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} lastCardElementRef={lastCardElementRefProject} />
+              <ProductCard key={data?._id + index + swipeableIndex} singleProduct={singleProduct} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} refetch={refetchData} width={width} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} setLastSkuData={setLastSkuData} filters={productList?.[swipeableIndex]?.skus ?? []} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} lastCardElementRef={lastCardElementRefProject} />
             )
           } else {
             return (
-              <ProductCard key={data?._id + index + (swipeableIndex + 1)} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} refetch={refetchData} width={width} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} setLastSkuData={setLastSkuData} filters={productList?.[swipeableIndex]?.skus ?? []} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} />
+              <ProductCard key={data?._id + index + (swipeableIndex + 1)} singleProduct={singleProduct} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} refetch={refetchData} width={width} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} setLastSkuData={setLastSkuData} filters={productList?.[swipeableIndex]?.skus ?? []} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} />
             )
           }
         })}

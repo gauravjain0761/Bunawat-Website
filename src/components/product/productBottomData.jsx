@@ -15,7 +15,7 @@ import { toast } from 'react-toastify';
 import VideoComponent from './videoComponent';
 
 
-const ProductBottomData = ({ productId, productIndex, width, similarList, refetch, swipeableIndex, productList, lastSkuData, setLastSkuData, setSwipeableDisable }) => {
+const ProductBottomData = ({ productId, singleProduct,productIndex, width, similarList, refetch, swipeableIndex, productList, lastSkuData, setLastSkuData, setSwipeableDisable }) => {
     
 
     const [age, setAge] = useState("size");
@@ -24,23 +24,12 @@ const ProductBottomData = ({ productId, productIndex, width, similarList, refetc
     const [pincode, setPincode] = useState("");
     const [pincodeValid, setPincodeValid] = useState(null);
     const [pincodeValidMsg, setPincodeValidMsg] = useState(null);
-    const [product, setProduct] = useState({});
+    const [product, setProduct] = useState(singleProduct??{});
     
-    const getProduct = async () => {
-        if(productId){
-            await ApiGet(`get_product_by_id/${productId}`)
-            .then((res) => {
-                setProduct(res?.data);
-            })
-            .catch((error) => {
-                toast.error(error?.response?.data?.message);
-            });
-        }
-    }
-
+   
     useEffect(() => {
-        getProduct();
-    }, [productId])
+        setProduct(singleProduct);
+    }, [singleProduct])
 
     useEffect(() => {
         setRecentlyProduct(Storage.get("recentlyProduct") ? JSON.parse(Storage.get("recentlyProduct") ?? '[]') : []);
