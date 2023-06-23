@@ -971,12 +971,68 @@
         backdrop-filter: blur(100px);
     }
 
+    .border_add {
+        border-top: 1px solid #2A3592 !important;
+    }
+
+    .product_slider .slick-dots li button:before {
+        width: 8px;
+        height: 8px;
+    }
+
+    .new_close_btn {
+        height: 100%;
+        padding: 10px 0;
+        margin: 0;
+    }
+
+    .new_close_btn span {
+        margin: 0;
+    }
+
+    .filter_text {
+        font-size: 14px !important;
+        line-height: 24px !important;
+        font-weight: 600 !important;
+        letter-spacing: -2%;
+        padding: 16px 24px 16px 20px;
+        font-family:  'Newhero' !important;
+    }
+    .mob_border_line{
+        border-top: 1px solid #2A3592;
+    }
+
+    .tab_section_wrap .nav-tabs .nav-link{
+        font-size: 12px;
+        line-height: 24px;
+        font-weight: 600;
+    }
+
+    .subCategory_name{
+        font-size: 18px !important;
+        line-height: 32px !important;
+        font-weight: 600 !important;
+    }
+
+    .common_select_wrap_box_mob{
+        padding: 0 0 0 0 !important;
+    }
+
+    .optional-text{
+        font-size: 12px !important;
+        line-height: 16px !important;
+        top : 21px !important;
+    }
+
+    .city-select{
+        background: #F7F8FF;
+    }
     .new_disabled {
         background: rgba(42, 53, 146, 0.5);
     }
 
     .new_product_title_wrap h2 {
-        font-family: 'New Spirit';
+        /* font-family: 'New Spirit'; */
         font-style: normal;
         font-weight: 600;
         font-size: 24px;
@@ -985,7 +1041,7 @@
         color: #2A3592;
     }
 
-    .new_btn_add_cart{
+    .new_btn_add_cart {
         background: #3D4DDA;
     }
 
@@ -1002,7 +1058,7 @@
     }
 
     .product_left_details p {
-        font-family: 'New Hero';
+        /* font-family: 'New Hero'; */
         font-style: normal;
         font-weight: 400;
         font-size: 20px;
@@ -1013,7 +1069,6 @@
     }
 
     .product_left_details span {
-        font-family: 'New Hero';
         font-style: normal;
         font-weight: 400;
         font-size: 14px;
@@ -1021,6 +1076,11 @@
         letter-spacing: -0.02em;
         color: #F2E7CB;
     }
+
+    /* .active-size {
+        font-size: 14px;
+        line-height: 24px;
+    } */
 }
 
 @media (max-width: 575px) {

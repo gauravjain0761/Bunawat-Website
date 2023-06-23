@@ -2194,7 +2194,7 @@ li.common_option_wrap {
     min-height: 100%;
     position: relative;
     display: flex;
-    height: 56px;
+    height: 60px;
 }
 
 .add_btn_wrap .clear_btn.add_btn {
@@ -2731,4 +2731,13 @@ li.common_option_wrap {
 
 .new_product_link:hover {
     color: #00008B;
+}
+
+
+.size-menu{
+    display:none;
+}
+
+.MuiSelect-select .size-menu{
+    display:block;
 }

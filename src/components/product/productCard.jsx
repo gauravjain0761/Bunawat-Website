@@ -101,7 +101,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
 
     return (
         <div style={{
-            maxHeight: "100vh",
+            // maxHeight: "100vh",
             height: '-webkit-fill-available',
             width: '100%',
             position: "relative",

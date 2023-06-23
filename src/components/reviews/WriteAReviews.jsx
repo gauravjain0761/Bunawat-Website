@@ -19,6 +19,7 @@ const WriteAReviews = ({ showReviewsWrite, handleClose, id }) => {
     if (formData?.review != "" && formData?.rating != 0) {
       await addProductReview({ ...formData, product: id }).unwrap().then((data) => {
         handleClose();
+        toast.success("Review Added Successfully")
       }).catch((error) => toast.error(error?.data?.message))
     }
   }

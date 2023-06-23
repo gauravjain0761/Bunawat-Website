@@ -66,10 +66,7 @@ const Login = ({ activeHeader, handleAccountClose }) => {
     };
 
     const handleLogout = async () => {
-        await logoutDeviceToken({
-            type: "WEB"
-        }).unwrap().then((data) => {
-            handleAccountClose()
+        handleAccountClose()
             dispatch(logout());
             dispatch(AllApiData.util.resetApiState());
             Storage.remove(STORAGE_KEY.token)
@@ -78,7 +75,13 @@ const Login = ({ activeHeader, handleAccountClose }) => {
             } else {
                 history.push("/")
             }
-        }).catch((error) => toast.error(error?.data?.message))
+        await logoutDeviceToken({
+            type: "WEB"
+        }).unwrap().then((data) => {
+            
+        }).catch((error) => {
+
+        })
     }
 
     return (

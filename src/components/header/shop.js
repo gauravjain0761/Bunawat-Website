@@ -303,6 +303,7 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                                 }
                               >
                                 <Typography
+                                  className="subCategory_name"
                                   sx={{
                                     py: 1.5,
                                     fontSize: "24px",

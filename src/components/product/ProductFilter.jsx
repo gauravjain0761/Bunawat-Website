@@ -230,7 +230,6 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
     const handleAdd = async () => {
         if ((selectedData?.size && selectedData?.size != "default")) {
             const selectedFinalData = selectedProduct?.filterList?.find(list => list?._id == selectedData?.size) ?? {}
-            console.log("selectedData", selectedFinalData)
             const cartData = JSON.parse(Storage.get("cartData")) ?? []
             if (Storage.isUserAuthenticated()) {
                 await addToCart({
@@ -310,7 +309,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                     },
                                     '@media (max-width: 768px)': {
                                         '.MuiSelect-select': {
-                                           paddingLeft:'24px'
+                                            paddingLeft: '24px'
                                         },
                                     }
                                 }} value={selectedData?.size ?? 'default'} onChange={(e) => {
@@ -339,7 +338,8 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                         <div className="common_option">
                                             <p>
                                                 <div className="common_option">
-                                                    <div className="d-flex align-items-center common_radio_btn">
+                                                    <div className="d-flex align-items-center common_radio_btn new_common_radio_btn">
+                                                        <span className='size-menu'>Size : </span> &nbsp;
                                                         <span>XS - 30</span>
                                                     </div>
                                                 </div>
@@ -355,7 +355,8 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                         <div className="common_option">
                                             <p>
                                                 <div className="common_option">
-                                                    <div className="d-flex align-items-center common_radio_btn">
+                                                    <div className="d-flex align-items-center common_radio_btn new_common_radio_btn">
+                                                        <span className='size-menu'>Size : </span> &nbsp;
                                                         <span>S - 30</span>
                                                     </div>
                                                 </div>
@@ -371,7 +372,8 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                         <div className="common_option">
                                             <p>
                                                 <div className="common_option">
-                                                    <div className="d-flex align-items-center common_radio_btn">
+                                                    <div className="d-flex align-items-center common_radio_btn new_common_radio_btn">
+                                                        <span className='size-menu'>Size : </span> &nbsp;
                                                         <span>M - 30</span>
                                                     </div>
                                                 </div>
@@ -387,7 +389,8 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                         <div className="common_option">
                                             <p>
                                                 <div className="common_option">
-                                                    <div className="d-flex align-items-center common_radio_btn">
+                                                    <div className="d-flex align-items-center common_radio_btn new_common_radio_btn">
+                                                        <span className='size-menu'>Size : </span> &nbsp;
                                                         <span>L - 30</span>
                                                     </div>
                                                 </div>
@@ -403,7 +406,8 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                         <div className="common_option">
                                             <p>
                                                 <div className="common_option">
-                                                    <div className="d-flex align-items-center common_radio_btn">
+                                                    <div className="d-flex align-items-center common_radio_btn new_common_radio_btn">
+                                                        <span className='size-menu'>Size : </span> &nbsp;
                                                         <span>XL - 30</span>
                                                     </div>
                                                 </div>
@@ -416,7 +420,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                         </div>
                                     </MenuItem>
 
-                                    <MenuItem value='default' className="common_option_wrap" >
+                                    <MenuItem value='default' className="common_option_wrap border_add" >
                                         <div className="common_option">
                                             <p>
                                                 <div className="common_option">
@@ -426,11 +430,11 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                                                 </div>
                                             </p>
                                             <Link to="/sizeGuide" style={{ color: "#2A3592" }}>
-                                            <div className="chet_size chet_size_number">
-                                                <span>
-                                                    check the Size guide <FiArrowUpRight />
-                                                </span>
-                                            </div>
+                                                <div className="chet_size chet_size_number">
+                                                    <span>
+                                                        check the Size guide <FiArrowUpRight />
+                                                    </span>
+                                                </div>
                                             </Link>
                                         </div>
                                     </MenuItem>

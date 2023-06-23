@@ -80,7 +80,7 @@ const CheckoutForm = ({ formData, setFormData, formError, setFormError }) => {
                     <Form.Control
                       type="text"
                       name="compony"
-                      placeholder="Compony"
+                      placeholder="Company"
                     />
                     <span
                       style={{
@@ -90,6 +90,8 @@ const CheckoutForm = ({ formData, setFormData, formError, setFormError }) => {
                         color: "#2A3592",
                         fontSize: "16px",
                       }}
+
+                      className="optional-text"
                     >
                       Optional
                     </span>
@@ -138,8 +140,11 @@ const CheckoutForm = ({ formData, setFormData, formError, setFormError }) => {
             </Row>
             <Row>
               <Col>
-                <Form.Group controlId="validationFormik01">
-                  <Form.Control type="text" name="city" placeholder="City" value={formData?.city ?? ''} onChange={handleChange} />
+                <Form.Group controlId="validationFormik01"
+                >
+                  <Form.Control 
+                  className="city-select"
+                  type="text" name="city" placeholder="City" value={formData?.city ?? ''} onChange={handleChange} />
                   {formError?.city ? <p className="error-text">city is required!</p> : null}
                 </Form.Group>
               </Col>
@@ -159,6 +164,11 @@ const CheckoutForm = ({ formData, setFormData, formError, setFormError }) => {
                     },
                     ".MuiFilledInput-root": {
                       paddingBottom: "4px"
+                    },
+                    '@media (max-width: 500px)': {
+                      ".MuiInputBase-root": {
+                        backgroundColor: "#F7F8FF",
+                      }
                     }
                   }}
                   fullWidth

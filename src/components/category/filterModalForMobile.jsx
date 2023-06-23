@@ -174,7 +174,7 @@ const FilterModalForMobile = ({ showFilter, handleClose, setSelectedId, selected
               </FormControl>
             </div>
 
-            <button className="apply_btn" onClick={handleClose}>
+            <button className="apply_btn new_close_btn" onClick={handleClose}>
               <span>Close</span>
             </button>
             {/*  <button className="clear_btn" onClick={handleClose}>

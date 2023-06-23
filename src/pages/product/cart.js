@@ -5,6 +5,7 @@ import { useGetAllCartQuery } from "../../services/api";
 import Storage from "../../services/storage";
 import { he } from "date-fns/locale";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 const Cart = () => {
@@ -26,6 +27,14 @@ const Cart = () => {
     // }
     return false
   }
+
+  const handleCheckout = () => {
+    if (Storage.isUserAuthenticated()) {
+        history.push(`/checkout`);
+    } else {
+        toast.error("Login required!")
+    }
+};
 
 
 
@@ -53,7 +62,7 @@ const Cart = () => {
 
       </div>
       <div>
-        <NewCart data={cartData} activeHeader={false} handleCartClose={() => { }} handleCheckout={() => { }} isMobile={true}/>
+        <NewCart data={cartData} activeHeader={false} handleCartClose={() => { }} handleCheckout={handleCheckout} isMobile={true}/>
       </div>
     </div>
   );

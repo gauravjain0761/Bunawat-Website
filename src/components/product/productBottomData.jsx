@@ -846,7 +846,13 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                     overflowX: 'auto'
                                 }}>
                                     {recentlyProduct?.slice(1)?.map((list, index) => (
-                                        <div className="recent_view_product" key={list?._id + index} onClick={() => history.push(`/product/${list?._id}`)} style={{ cursor: 'pointer', width: '130px', height: '150px' }}>
+                                        <div className="recent_view_product" key={list?._id + index} onClick={() => {
+                                            history.push(`/product/${list?._id}`);
+                                          }} style={{
+                                                cursor: 'pointer', width: '130px', height: '150px'
+                                            }}
+
+                                        >
                                             <img src={list?.images?.[0]?.url} style={{ maxWidth: '130px', borderRadius: '4px' }} width="130px" height="100%" alt="recent_view_img" />
                                             <div className="recent_price">
                                                 <p>{getNumberWithComma(list?.sale_price ?? 0)}</p>
