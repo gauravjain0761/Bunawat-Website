@@ -15,13 +15,32 @@ import { toast } from 'react-toastify';
 import VideoComponent from './videoComponent';
 
 
-const ProductBottomData = ({ product, productIndex, width, similarList, refetch, swipeableIndex, productList, lastSkuData, setLastSkuData, setSwipeableDisable }) => {
+const ProductBottomData = ({ productId, productIndex, width, similarList, refetch, swipeableIndex, productList, lastSkuData, setLastSkuData, setSwipeableDisable }) => {
+    
+
     const [age, setAge] = useState("size");
     const history = useHistory();
     const [recentlyProduct, setRecentlyProduct] = useState(Storage.get("recentlyProduct") ? JSON.parse(Storage.get("recentlyProduct") ?? '[]') : []);
     const [pincode, setPincode] = useState("");
     const [pincodeValid, setPincodeValid] = useState(null);
     const [pincodeValidMsg, setPincodeValidMsg] = useState(null);
+    const [product, setProduct] = useState({});
+    
+    const getProduct = async () => {
+        if(productId){
+            await ApiGet(`get_product_by_id/${productId}`)
+            .then((res) => {
+                setProduct(res?.data);
+            })
+            .catch((error) => {
+                toast.error(error?.response?.data?.message);
+            });
+        }
+    }
+
+    useEffect(() => {
+        getProduct();
+    }, [productId])
 
     useEffect(() => {
         setRecentlyProduct(Storage.get("recentlyProduct") ? JSON.parse(Storage.get("recentlyProduct") ?? '[]') : []);
@@ -106,7 +125,7 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                     {/* <SaveButton id={product?._id} isWishlist={product?.isWishlist} isBlue={true} refetch={refetch} isWhite={false} /> */}
                                 </div>
                                 <div className="common_product_details" onMouseEnter={() => setSwipeableDisable(true)} onTouchStart={() => setSwipeableDisable(true)}>
-                                    <div className='parse-description new_parse_description'>{parse(product?.description)}</div>
+                                    <div className='parse-description new_parse_description'>{parse(product?.description ?? "")}</div>
                                     <div style={{ marginTop: '25px' }}
                                         className="new_product_price_wrap"
                                     >
@@ -848,9 +867,9 @@ const ProductBottomData = ({ product, productIndex, width, similarList, refetch,
                                     {recentlyProduct?.slice(1)?.map((list, index) => (
                                         <div className="recent_view_product" key={list?._id + index} onClick={() => {
                                             history.push(`/product/${list?._id}`);
-                                          }} style={{
-                                                cursor: 'pointer', width: '130px', height: '150px'
-                                            }}
+                                        }} style={{
+                                            cursor: 'pointer', width: '130px', height: '150px'
+                                        }}
 
                                         >
                                             <img src={list?.images?.[0]?.url} style={{ maxWidth: '130px', borderRadius: '4px' }} width="130px" height="100%" alt="recent_view_img" />

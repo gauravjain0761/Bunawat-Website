@@ -101,7 +101,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
 
     return (
         <div style={{
-            // maxHeight: "100vh",
+            maxHeight: "100vh",
             height: '-webkit-fill-available',
             width: '100%',
             position: "relative",
@@ -125,7 +125,7 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                                     <SaveButton id={product?._id} isWishlist={product?.isWishlist} isBlue={true} refetch={refetch} />
                                 </div>
                                 <div className="common_product_details">
-                                    <div className='parse-description'>{parse(product?.description)}</div>
+                                    <div className='parse-description'>{parse(product?.description ?? "")}</div>
                                     <div style={{ marginTop: '25px' }}>
                                         Club members get <span>10% off. </span>
                                         <Link to="" className="product_link new_product_link">
@@ -716,12 +716,16 @@ const ProductCard = ({ product, productIndex, similarList, setSwipeableDisable, 
                     : null}
                 {(width < 768) ?
                     <div onMouseEnter={() => setScrollActive(true)} onTouchStart={() => setScrollActive(true)}>
-                        <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} setSwipeableDisable={setSwipeableDisable} />
+                        <ProductBottomData
+                            productId={product?._id}
+                            productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} setSwipeableDisable={setSwipeableDisable} />
                     </div>
                     :
                     <div style={{ position: 'relative' }} onMouseEnter={() => setScrollActive(true)} onTouchStart={() => setScrollActive(true)}>
                         <div onMouseEnter={() => setSwipeableDisable(true)} onTouchStart={() => setSwipeableDisable(true)}>
-                            <ProductBottomData product={product} productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} setSwipeableDisable={setSwipeableDisable} />
+                            <ProductBottomData
+                                productId={product?._id}
+                                productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} setSwipeableDisable={setSwipeableDisable} />
                         </div>
                     </div>
                 }
