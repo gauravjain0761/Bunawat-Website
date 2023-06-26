@@ -294,7 +294,7 @@
 
  .common_option_wrap_bg {
      background-color: #F2F4FF !important;
-     width: 300px !important;
+     /* width: 300px !important; */
  }
 
  .kind_common_option_wrap {

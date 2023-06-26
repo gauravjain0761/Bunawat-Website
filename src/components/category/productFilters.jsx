@@ -58,7 +58,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
             <FormControl>
               {showMostPopularMobile &&
                 <ClickAwayListener onClickAway={() => setShowMostPopularMobile(false)}>
-                  <div className="most_popular_wrapper_box">
+                  <div className="most_popular_wrapper_box new_most_popular_wrapper_box_mob">
                     <MenuItem onClick={() => {
                       setSelectedId({ ...selectedId, sortBy: 0 })
                       setShowMostPopularMobile(false)
@@ -108,7 +108,8 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
               }} className="common_option_wrap">
                 <div className="common_option">
                   <p className="common_option_p">Most Popular</p>
-                  <svg
+                  {
+                    !showMostPopularMobile &&<svg
                     style={{ rotate: showMostPopularMobile ? "0deg" : "180deg" }}
                     width="10"
                     height="7"
@@ -123,31 +124,61 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                       strokeMiterlimit="10"
                     />
                   </svg>
+                  }
+                  
                 </div>
               </MenuItem>
             </FormControl>
           </div>
-          <div className="common_select_wrap">
-            <Box onClick={handleShow}
-              className="common_select_wrap_box_mob"
-              sx={{
-                backgroundColor: "#2A3592",
-                padding: "10px 20px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                cursor: "pointer",
-              }}>
-              <Typography 
-                className="filter_text"
-              variant="h6" sx={{ color: "#fff" }}>Filters</Typography>
-              {/* <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9.70391 9.03V10.5C10.1139 10.1 10.7339 9.81 11.4639 9.81C12.2639 9.81 12.6839 10.2 12.6839 10.69C12.6839 11.2 12.2539 11.59 11.2939 11.59H10.5239V12.83H11.4639C12.3939 12.83 12.8639 13.22 12.8639 13.76C12.8639 14.34 12.2839 14.72 11.4739 14.72C10.6939 14.72 10.0339 14.4 9.55391 13.89V15.48C10.1539 15.94 10.9139 16.17 11.7339 16.17C13.5339 16.17 14.5039 15.08 14.5039 13.94C14.5039 13.02 13.9239 12.39 13.2439 12.13V12.1C13.8839 11.77 14.2739 11.18 14.2739 10.43C14.2739 9.34 13.3939 8.37 11.7639 8.37C10.9139 8.37 10.1839 8.64 9.70391 9.03Z" fill="#9DA8FF" />
-                <rect x="0.85" y="0.85" width="22.3" height="22.3" rx="11.15" stroke="#9DA8FF" strokeWidth="1.7" />
-              </svg> */}
-            </Box>
-          </div>
-          <FilterModalForMobile showFilter={showFilter} handleClose={handleClose} setSelectedId={setSelectedId} selectedId={selectedId} attributeOpen={attributeOpen} attributeData={attributeData} handleSelectedAttribute={handleSelectedAttribute} selectedAttribute={selectedAttribute} setAttributeOpen={setAttributeOpen} setShowMostPopular={setShowMostPopular} setShowPrice={setShowPrice} showPrice={showPrice} />
+          {
+            showMostPopularMobile ?
+              (
+                <>
+                  <div className="common_select_wrap">
+                    <Box
+                      className="common_select_wrap_box_mob"
+                      sx={{
+                        // backgroundColor: "#2A3592",
+                        padding: "10px 20px",
+                        display: "flex",
+                        justifyContent: "end",
+                      }}>
+                      <Typography
+                        // className="filter_text"
+                        variant="h6" sx={{ color: "#2A3592",
+                          fontSize: "10px",
+                          fontWeight: "600",
+                          lineHeight: "16px",
+                          fontFamily: "Newhero",
+                          paddingRight : "16px"
+                        }}>PICK A SORT ORDER</Typography>
+                    </Box>
+                  </div>
+                </>
+              ) :
+              <>
+                <div className="common_select_wrap">
+                  <Box onClick={handleShow}
+                    className="common_select_wrap_box_mob"
+                    sx={{
+                      backgroundColor: "#2A3592",
+                      padding: "10px 20px",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      cursor: "pointer",
+                    }}>
+                    <Typography
+                      className="filter_text"
+                      variant="h6" sx={{ color: "#fff" }}>Filters</Typography>
+                  </Box>
+                </div>
+                <FilterModalForMobile showFilter={showFilter} handleClose={handleClose} setSelectedId={setSelectedId} selectedId={selectedId} attributeOpen={attributeOpen} attributeData={attributeData} handleSelectedAttribute={handleSelectedAttribute} selectedAttribute={selectedAttribute} setAttributeOpen={setAttributeOpen} setShowMostPopular={setShowMostPopular} setShowPrice={setShowPrice} showPrice={showPrice} />
+              </>
+
+          }
+
+
         </div>
       </div>
 

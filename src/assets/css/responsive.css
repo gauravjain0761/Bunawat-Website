@@ -1077,6 +1077,11 @@
         color: #F2E7CB;
     }
 
+    .new_most_popular_wrapper_box_mob{
+        width: 100%;
+        position: fixed;
+    }
+
     /* .active-size {
         font-size: 14px;
         line-height: 24px;

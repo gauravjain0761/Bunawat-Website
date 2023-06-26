@@ -111,7 +111,7 @@ const ProductBottomData = ({ productId, videoLoading, singleProduct, productInde
                             <div className="product_info_section">
                                 <div className="product_title_wrap new_product_title_wrap" onMouseEnter={() => setSwipeableDisable(false)} onTouchStart={() => setSwipeableDisable(false)}>
                                     <h2>{product?.name}</h2>
-                                    {/* <SaveButton id={product?._id} isWishlist={product?.isWishlist} isBlue={true} refetch={refetch} isWhite={false} /> */}
+                                    <SaveButton id={product?._id} isWishlist={product?.isWishlist} isBlue={true} refetch={refetch} isWhite={false} />
                                 </div>
                                 <div className="common_product_details" onMouseEnter={() => setSwipeableDisable(true)} onTouchStart={() => setSwipeableDisable(true)}>
                                     <div className='parse-description new_parse_description'>{parse(product?.description ?? "")}</div>

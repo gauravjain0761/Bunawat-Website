@@ -5,6 +5,10 @@ import "./style.css";
 
 const TrackOrder = () => {
   const [otpverify, setOtpverify] = useState(false);
+  const [orderDetails, setOrderDetails] = useState({
+    orderNumber: "",
+    phoneNumber: "",
+  });
 
   return (
     <>
@@ -29,15 +33,32 @@ const TrackOrder = () => {
                   <input
                     type="text"
                     placeholder="Order Number"
+                    value={orderDetails?.orderNumber}
+                    onChange={(e) =>
+                      setOrderDetails({
+                        ...orderDetails,
+                        orderNumber: e.target.value,
+                      })
+                    }
                     style={{ padding: "10px 15px 10px 15px" }}
                   />
                   <a href="#">Check your order email</a>
                 </div>
                 <div className="login_input_inner">
-                  <input type="text" placeholder="Phone Number" />
+                  <input type="text" placeholder="Phone Number"
+                    value={orderDetails?.phoneNumber}
+                    onChange={(e) =>
+                      setOrderDetails({
+                        ...orderDetails,
+                        phoneNumber: e.target.value,
+                      })
+                    }
+                  />
                   <span>+91</span>
                 </div>
-                <button type="button" onClick={() => setOtpverify(true)}>
+                <button type="button"
+                  disabled={orderDetails.orderNumber === "" || orderDetails.phoneNumber === ""}
+                  onClick={() => setOtpverify(true)}>
                   <span>Send OTP</span>
                   <svg
                     width="9"
@@ -101,7 +122,9 @@ const TrackOrder = () => {
               </div>
               <div className="login_input_wrap">
                 <div className="login_input_inner">
-                  <ReactInputVerificationCode onChange={console.log} />
+                  <ReactInputVerificationCode onChange={
+                    (e) => console.log(e) 
+                  } />
                 </div>
                 <button type="button">
                   <span>Track Order</span>
