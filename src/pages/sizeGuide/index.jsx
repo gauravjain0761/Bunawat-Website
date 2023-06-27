@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import "./sizeguide.css";
 import FooterStrip from "../../components/footer/footerStrip";
 import { Box } from '@mui/material';
+import NewFooter from '../../components/newFooter/footerStrip';
 
 const SizeGuide = () => {
     const size = [
@@ -53,13 +54,17 @@ const SizeGuide = () => {
   return (
     <>
       <div className='sizeguide_page'>
-        <div className='sizeguide_page_top'>
+        <div className='sizeguide_page_top new_sizeguide_page_top'>
             <h6> Size Guide</h6>
-            <p>Use these measurements to find a fit</p>
-            <Link to="/sizeGuide">How to measure?</Link>
+            <p
+                className='sizeguide_page_top_text'
+            >Use these measurements to find a fit</p>
+            <Link to="/sizeGuide"
+                className='sizeguide_page_top_link'
+            >How to measure?</Link>
         </div>
 
-        <div className='sigeGuide_page_table'>
+        <div className='sigeGuide_page_table new_sigeGuide_page_table'>
         <Table striped bordered hover>
             <thead>
                 <tr>
@@ -140,7 +145,7 @@ const SizeGuide = () => {
         padding: "1rem 2rem"
         }
     }}>
-      <FooterStrip />
+      <NewFooter />
     </Box>
     </>
   );

@@ -6,6 +6,7 @@ import { VscDeviceCamera } from 'react-icons/vsc';
 import { Link } from 'react-router-dom';
 import FooterStrip from '../../components/footer/footerStrip';
 import ClearIcon from '@mui/icons-material/Clear';
+import NewFooter from '../../components/newFooter/footerStrip';
 
 
 const Returns = () => {
@@ -237,7 +238,7 @@ const Returns = () => {
           padding: "1rem 2rem"
         }
       }}>
-        <FooterStrip />
+        <NewFooter />
       </Box>
     </>
   );

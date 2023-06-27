@@ -536,6 +536,14 @@
         width: 100%;
     }
 
+    .new_footer_header_wrap{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding : 0;
+        padding-bottom: 20px;
+    }
+
     .footer_header_wrap ul li {
         width: 50%;
         margin-bottom: 0px;

@@ -15,6 +15,7 @@ import { useAddOrderMutation, useGetAllCartQuery, useMakePaymentMutation } from 
 import Storage from "../../services/storage";
 import { DEFULT_STATE } from "../../constant/storage";
 import { getNumberWithComma } from "../../utils/utils";
+import NewFooter from "../../components/newFooter/footerStrip";
 
 const Checkout = () => {
   const [addOrder] = useAddOrderMutation(undefined, {})
@@ -282,6 +283,9 @@ const Checkout = () => {
               </div>
             </Col>
             <Col xs={12} md={7}>
+
+            <CheckoutForm formData={formData ?? {}} setFormData={setFormData} formError={formError} setFormError={setFormError} />
+
               <div className="checkout_box" style={{ marginBottom: "1rem", padding: "0 1rem 1rem 1rem" }}>
                 <div className="checkout_box_heading">
                   <img src="../img/shipping-options.png" alt="shipping-options" width="22" style={{ marginRight: "8px" }} />
@@ -321,7 +325,6 @@ const Checkout = () => {
                 </div> */}
               </div>
 
-              <CheckoutForm formData={formData ?? {}} setFormData={setFormData} formError={formError} setFormError={setFormError} />
             </Col>
           </Row>
         </Container>
@@ -417,7 +420,7 @@ const Checkout = () => {
           padding: "1rem 2rem"
         }
       }}>
-        <FooterStrip />
+        <NewFooter />
       </Box>
     </>
   );

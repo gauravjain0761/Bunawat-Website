@@ -121,7 +121,7 @@ const ProductCard = ({ singleProduct,product, videoLoading,productIndex, similar
                         }}>
                             <div className="product_info_section">
                                 <div className="product_title_wrap">
-                                    <h2>{product?.name}</h2>
+                                    <h2>{product?.name?.split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')}</h2>
                                     <SaveButton id={product?._id} isWishlist={product?.isWishlist} isBlue={true} refetch={refetch} />
                                 </div>
                                 <div className="common_product_details">
@@ -637,7 +637,8 @@ const ProductCard = ({ singleProduct,product, videoLoading,productIndex, similar
                             } */}
                             {((lastSkuData?.images?.length > 0) && (productIndex == swipeableIndex)) ?
                                 <div className={getOS() == 'iOS' ? "product_slider_height_container_ios" : 'product_slider_height_container'} onMouseEnter={() => setScrollActive(false)} onTouchStart={() => setScrollActive(false)}>
-                                    <Slider {...settings} className="product_slider">
+                                    <Slider {...settings} className="product_slider"
+                                    >
                                         {lastSkuData?.images?.map((list, index) => (
                                             <div key={list?.url + index + list?._id} className='product_slider_height'>
                                                 {list?.type == "VIDEO" ?
@@ -664,7 +665,8 @@ const ProductCard = ({ singleProduct,product, videoLoading,productIndex, similar
                                 </div>
                                 :
                                 <div className={getOS() == 'iOS' ? "product_slider_height_container_ios" : 'product_slider_height_container'} onMouseEnter={() => setScrollActive(false)} onTouchStart={() => setScrollActive(false)}>
-                                    <Slider {...settings} className="product_slider">
+                                    <Slider {...settings} className="product_slider"
+                                    >
                                         {[...product?.images, ...product?.videos?.slice(3, 4)]?.map((list, index) => (
                                             <div key={list?.url + index + list?._id}>
                                                 {list?.type == "VIDEO" ?

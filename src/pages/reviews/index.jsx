@@ -10,6 +10,7 @@ import VolumeUp from "@mui/icons-material/VolumeUp";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
 import FooterStrip from "../../components/footer/footerStrip";
 import WriteAReviews from "../../components/reviews/WriteAReviews";
+import NewFooter from "../../components/newFooter/footerStrip";
 
 const Reviews = () => {
   const [value, setValue] = useState(2);
@@ -233,7 +234,7 @@ const Reviews = () => {
         padding: "1rem 2rem"
       }
       }}>
-      <FooterStrip />
+      <NewFooter />
     </Box>
     </>
   );

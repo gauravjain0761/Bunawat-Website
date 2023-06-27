@@ -9,6 +9,7 @@ import FooterStrip from "../../components/footer/footerStrip";
 import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import NewFooter from '../../components/newFooter/footerStrip';
 
 const UserProfile = () => {
   const userData = useSelector(state => state?.user?.userData);
@@ -226,7 +227,7 @@ const UserProfile = () => {
           padding: "1rem 2rem"
         }
       }}>
-        <FooterStrip />
+        <NewFooter />
       </Box>
     </>
   );

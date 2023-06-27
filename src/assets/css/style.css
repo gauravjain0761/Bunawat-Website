@@ -827,6 +827,14 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-bottom: 30px;
+}
+
+.new_footer_header_wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding : 38px 64px;
 }
 
 .footer_blog_section {
@@ -2740,4 +2748,14 @@ li.common_option_wrap {
 
 .MuiSelect-select .size-menu{
     display:block;
+}  
+
+.new_sizeguide_page_top p{
+    margin-bottom: 20px;
+}
+
+.new_sizeguide_page_top a{
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 16px;
 }

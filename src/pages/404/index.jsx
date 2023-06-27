@@ -4,6 +4,7 @@ import { Button, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import FooterStrip from '../../components/footer/footerStrip';
 import "./errorPage.css";
+import NewFooter from '../../components/newFooter/footerStrip';
 
 const ErrorPage = () => {
   return (
@@ -29,7 +30,7 @@ const ErrorPage = () => {
         padding: "1rem 2rem"
         } 
       }}>
-        <FooterStrip />
+        <NewFooter />
       </Box>
     </>
   );

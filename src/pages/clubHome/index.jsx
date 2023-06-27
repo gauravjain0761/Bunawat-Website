@@ -5,6 +5,7 @@ import ClubModule from "../../components/clubHome/clubModule";
 import "./clubHome.css";
 import FooterStrip from "../../components/footer/footerStrip";
 import { Box } from "@mui/material";
+import NewFooter from "../../components/newFooter/footerStrip";
 
 const ClubHome = () => {
   return (
@@ -237,7 +238,7 @@ const ClubHome = () => {
         padding: "1rem 2rem"
         } 
       }}>
-        <FooterStrip />
+        <NewFooter />
       </Box>
     </>
   );
