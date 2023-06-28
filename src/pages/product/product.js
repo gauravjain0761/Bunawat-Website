@@ -11,6 +11,7 @@ import { Box, CircularProgress } from "@mui/material";
 import Slider from "react-slick";
 import { ApiGet } from "../../services/API/api";
 import { toast } from "react-toastify";
+import ProductBottomData from "../../components/product/productBottomData";
 
 
 const Product = () => {
@@ -66,6 +67,7 @@ const Product = () => {
   useEffect(() => {
     setSwipeableIndex(0)
     setProductFilter({ ...productFilter, page: 1, id })
+    getProduct(id)
   }, [id])
 
   useEffect(() => {
@@ -163,40 +165,41 @@ const Product = () => {
   }
 
 
-  const getProduct = async () => {
+  const getProduct = async (id) => {
     setVideoLoading(true)
-    console.log("swipeableIndexswipeableIndex",swipeableIndex)
-    if(productList?.[swipeableIndex]?._id){
-        await ApiGet(`get_product_by_id/${productList?.[swipeableIndex]?._id}`)
+    if (id) {
+      await ApiGet(`get_product_by_id/${id}`)
         .then((res) => {
           setSingleProduct(res?.data);
           setVideoLoading(false)
         })
         .catch((error) => {
-            toast.error(error?.response?.data?.message);
+          toast.error(error?.response?.data?.message);
         });
     }
-}
+  }
 
-useEffect(() => {
-    getProduct();
-}, [productList,swipeableIndex])
+  useEffect(() => {
+    getProduct(productList?.[swipeableIndex]?._id);
+  }, [productList, swipeableIndex])
 
   return (
-    <Box>
+    <Box
+      className="product-slider"
+    >
       <Slider {...settings} className="product-slider-full">
         {productList?.map((data, index) => {
           if (productList.length === swipeableIndex + 1) {
             return (
               <ProductCard key={data?._id + index + swipeableIndex}
                 videoLoading={videoLoading}
-              singleProduct={singleProduct} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} refetch={refetchData} width={width} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} setLastSkuData={setLastSkuData} filters={productList?.[swipeableIndex]?.skus ?? []} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} lastCardElementRef={lastCardElementRefProject} />
+                singleProduct={singleProduct} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} refetch={refetchData} width={width} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} setLastSkuData={setLastSkuData} filters={productList?.[swipeableIndex]?.skus ?? []} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} lastCardElementRef={lastCardElementRefProject} />
             )
           } else {
             return (
-              <ProductCard key={data?._id + index + (swipeableIndex + 1)} 
-              videoLoading={videoLoading}
-              singleProduct={singleProduct} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} refetch={refetchData} width={width} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} setLastSkuData={setLastSkuData} filters={productList?.[swipeableIndex]?.skus ?? []} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} />
+              <ProductCard key={data?._id + index + (swipeableIndex + 1)}
+                videoLoading={videoLoading}
+                singleProduct={singleProduct} productIndex={index} product={data} similarList={similarList ?? []} setSwipeableDisable={setSwipeableDisable} productBottomData={productBottomData} refetch={refetchData} width={width} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData ?? {}} setLastSkuData={setLastSkuData} filters={productList?.[swipeableIndex]?.skus ?? []} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} />
             )
           }
         })}
@@ -214,7 +217,28 @@ useEffect(() => {
           }
         })}
       </SwipeableViews>*/}
-      <ProductPageFilter selectedImage={productList?.[swipeableIndex]?.images?.[0]?.url ?? ""} selectedProduct={productList?.[swipeableIndex] ?? {}} filters={productList?.[swipeableIndex]?.skus ?? []} swipeableIndex={swipeableIndex ?? 0} setLastSkuData={setLastSkuData} qty={qty} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} /> 
+
+      {(width < 768) ?
+        <div >
+          <ProductBottomData
+             singleProduct={singleProduct}
+            videoLoading={videoLoading}
+             width={width} similarList={similarList} refetch={refetchData} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} setSwipeableDisable={setSwipeableDisable} />
+        </div>
+        :
+        <div style={{ position: 'relative' }} >
+          <div >
+            <ProductBottomData
+               singleProduct={singleProduct}
+              videoLoading={videoLoading}
+               width={width} similarList={similarList} refetch={refetchData} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} setSwipeableDisable={setSwipeableDisable} />
+          </div>
+        </div>
+      }
+
+
+
+      <ProductPageFilter selectedImage={productList?.[swipeableIndex]?.images?.[0]?.url ?? ""} selectedProduct={productList?.[swipeableIndex] ?? {}} filters={productList?.[swipeableIndex]?.skus ?? []} swipeableIndex={swipeableIndex ?? 0} setLastSkuData={setLastSkuData} qty={qty} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} />
     </Box>
   );
 };

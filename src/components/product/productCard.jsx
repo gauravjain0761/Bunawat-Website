@@ -13,7 +13,7 @@ import _ from 'lodash';
 import Storage from '../../services/storage';
 import { getOS } from '../../utils/utils';
 
-const ProductCard = ({ singleProduct,product, videoLoading,productIndex, similarList, setSwipeableDisable, productBottomData, width, refetch, swipeableIndex, productList, lastSkuData, setLastSkuData, filters, setQty, selectedData, setSelectedData, lastCardElementRef }) => {
+const ProductCard = ({ singleProduct, product, videoLoading, productIndex, similarList, setSwipeableDisable, productBottomData, width, refetch, swipeableIndex, productList, lastSkuData, setLastSkuData, filters, setQty, selectedData, setSelectedData, lastCardElementRef }) => {
     const settings = {
         dots: true,
         infinite: false,
@@ -121,11 +121,11 @@ const ProductCard = ({ singleProduct,product, videoLoading,productIndex, similar
                         }}>
                             <div className="product_info_section">
                                 <div className="product_title_wrap">
-                                    <h2>{product?.name?.split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')}</h2>
-                                    <SaveButton id={product?._id} isWishlist={product?.isWishlist} isBlue={true} refetch={refetch} />
+                                    <h2>{singleProduct?.name?.split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')}</h2>
+                                    <SaveButton id={singleProduct?._id} isWishlist={singleProduct?.isWishlist} isBlue={true} refetch={refetch} />
                                 </div>
                                 <div className="common_product_details">
-                                    <div className='parse-description'>{parse(product?.description ?? "")}</div>
+                                    <div className='parse-description'>{parse(singleProduct?.description ?? "")}</div>
                                     <div style={{ marginTop: '25px' }}>
                                         Club members get <span>10% off. </span>
                                         <Link to="" className="product_link new_product_link">
@@ -667,28 +667,32 @@ const ProductCard = ({ singleProduct,product, videoLoading,productIndex, similar
                                 <div className={getOS() == 'iOS' ? "product_slider_height_container_ios" : 'product_slider_height_container'} onMouseEnter={() => setScrollActive(false)} onTouchStart={() => setScrollActive(false)}>
                                     <Slider {...settings} className="product_slider"
                                     >
-                                        {[...product?.images, ...product?.videos?.slice(3, 4)]?.map((list, index) => (
-                                            <div key={list?.url + index + list?._id}>
-                                                {list?.type == "VIDEO" ?
-                                                    <video key={list?.url + index + list?._id} autoPlay playsInline preload="true" src={list?.url} loop muted className='product_slider_video_height'>
-                                                        <source src={list?.url} type="video/mp4"></source>
-                                                    </video>
-                                                    // <video loop key={list?.url + index + list?._id} autoPlay className='product_slider_video_height' muted>
-                                                    //     <source src={list?.url} type="video/mp4" />
-                                                    // </video>
-                                                    :
-                                                    <picture className='product_slider_img_height' key={list?.url + index + list?._id}>
-                                                        <source className='product_slider_img_height' srcSet={`${list?.url}`} media="(max-width: 500px)" />
-                                                        <img
-                                                            srcSet={`${list?.url}`}
-                                                            className='product_slider_img_height'
-                                                            alt="Full Logo"
-                                                            src={list?.url} />
-                                                    </picture>
-                                                    // <img src={list?.url} key={list?.url + index + list?._id} className='product_slider_img_height' alt="slider" width='100%' />
-                                                }
-                                            </div>
-                                        ))}
+                                        {
+                                            singleProduct?.images?.length > 0 && (
+                                                [...singleProduct?.images, ...singleProduct?.videos?.slice(3, 4)]?.map((list, index) => (
+                                                    <div key={list?.url + index + list?._id}>
+                                                        {list?.type == "VIDEO" ?
+                                                            <video key={list?.url + index + list?._id} autoPlay playsInline preload="true" src={list?.url} loop muted className='product_slider_video_height'>
+                                                                <source src={list?.url} type="video/mp4"></source>
+                                                            </video>
+                                                            // <video loop key={list?.url + index + list?._id} autoPlay className='product_slider_video_height' muted>
+                                                            //     <source src={list?.url} type="video/mp4" />
+                                                            // </video>
+                                                            :
+                                                            <picture className='product_slider_img_height' key={list?.url + index + list?._id}>
+                                                                <source className='product_slider_img_height' srcSet={`${list?.url}`} media="(max-width: 500px)" />
+                                                                <img
+                                                                    srcSet={`${list?.url}`}
+                                                                    className='product_slider_img_height'
+                                                                    alt="Full Logo"
+                                                                    src={list?.url} />
+                                                            </picture>
+                                                            // <img src={list?.url} key={list?.url + index + list?._id} className='product_slider_img_height' alt="slider" width='100%' />
+                                                        }
+                                                    </div>
+                                                ))
+                                            )
+                                        }
                                     </Slider>
                                 </div>
                             }
@@ -704,7 +708,7 @@ const ProductCard = ({ singleProduct,product, videoLoading,productIndex, similar
                     height: '16px',
                     opacity: 0
                 }} id={`#scoll-top`}></div>
-                {(width < 768) ?
+                {/* {(width < 768) ?
                     <Box onMouseEnter={() => setScrollActive(true)} onTouchStart={() => setScrollActive(true)} sx={{
                         display: 'flex',
                         alignItems: 'center',
@@ -732,7 +736,7 @@ const ProductCard = ({ singleProduct,product, videoLoading,productIndex, similar
                                 productIndex={productIndex} width={width} similarList={similarList} refetch={refetch} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} setSwipeableDisable={setSwipeableDisable} />
                         </div>
                     </div>
-                }
+                } */}
                 {/* {(width < 768) ? <BottomSheet
                 blocking={false}
                 skipInitialTransition={true}
