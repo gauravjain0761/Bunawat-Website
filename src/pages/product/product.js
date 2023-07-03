@@ -34,6 +34,7 @@ const Product = () => {
     limit: 2,
     isRefresh: false
   })
+
   const observer = useRef()
   const settings = {
     dots: false,
@@ -82,6 +83,7 @@ const Product = () => {
     setWidth(window.innerWidth);
   }
 
+ 
   // useEffect(() => {
   //   let collection_product = data?.data?.collection_product ?? []
   //   if (collection_product?.length > 0) {
@@ -223,7 +225,8 @@ const Product = () => {
           <ProductBottomData
              singleProduct={singleProduct}
             videoLoading={videoLoading}
-             width={width} similarList={similarList} refetch={refetchData} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} setSwipeableDisable={setSwipeableDisable} />
+             width={width} similarList={similarList} refetch={refetchData} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} setSwipeableDisable={setSwipeableDisable} 
+             />
         </div>
         :
         <div style={{ position: 'relative' }} >
@@ -231,14 +234,16 @@ const Product = () => {
             <ProductBottomData
                singleProduct={singleProduct}
               videoLoading={videoLoading}
-               width={width} similarList={similarList} refetch={refetchData} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} setSwipeableDisable={setSwipeableDisable} />
+               width={width} similarList={similarList} refetch={refetchData} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} setSwipeableDisable={setSwipeableDisable} 
+               />
           </div>
         </div>
       }
 
 
 
-      <ProductPageFilter selectedImage={productList?.[swipeableIndex]?.images?.[0]?.url ?? ""} selectedProduct={productList?.[swipeableIndex] ?? {}} filters={productList?.[swipeableIndex]?.skus ?? []} swipeableIndex={swipeableIndex ?? 0} setLastSkuData={setLastSkuData} qty={qty} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} />
+      <ProductPageFilter selectedImage={productList?.[swipeableIndex]?.images?.[0]?.url ?? ""} selectedProduct={productList?.[swipeableIndex] ?? {}} filters={productList?.[swipeableIndex]?.skus ?? []} swipeableIndex={swipeableIndex ?? 0} setLastSkuData={setLastSkuData} qty={qty} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} 
+      />
     </Box>
   );
 };

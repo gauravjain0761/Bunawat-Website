@@ -445,6 +445,7 @@ button {
     border-radius: 4px;
 }
 
+
 .tab_section_inner {
     position: relative;
 }
@@ -692,7 +693,7 @@ button {
 }
 
 .cloth_inner .row>div:nth-child(n+3) {
-    margin-top: 16px;
+    margin-top: 30px;
 }
 
 .join_the_club_wrap {
@@ -830,11 +831,11 @@ button {
     padding-bottom: 30px;
 }
 
-.new_footer_header_wrap{
+.new_footer_header_wrap {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding : 38px 64px;
+    padding: 38px 64px;
 }
 
 .footer_blog_section {
@@ -2173,6 +2174,19 @@ li.common_option_wrap {
     margin-left: 12px;
 }
 
+.active_color_name {
+    text-align: center;
+    font-size: 14px;
+    font-family: NewHero;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: -0.28px;
+    color: #2A3592;
+    display: flex;
+    margin-right: 24px;
+}
+
 .color_list li.active::after {
     content: ' ';
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -2742,20 +2756,21 @@ li.common_option_wrap {
 }
 
 
-.size-menu{
-    display:none;
+.size-menu {
+    display: none;
 }
 
-.MuiSelect-select .size-menu{
-    display:block;
-}  
+.MuiSelect-select .size-menu {
+    display: block;
+}
 
-.new_sizeguide_page_top p{
+.new_sizeguide_page_top p {
     margin-bottom: 20px;
 }
 
-.new_sizeguide_page_top a{
+.new_sizeguide_page_top a {
     font-size: 10px;
     font-weight: 700;
     line-height: 16px;
 }
+

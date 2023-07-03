@@ -243,7 +243,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                     setIsCartAdd(true)
                     setTimeout(() => {
                         setIsCartAdd(false)
-                    }, 1000)
+                    }, 2000)
                 }).catch((error) => toast.error(error?.data?.message))
             } else {
                 let finalData = [...cartData]
@@ -269,7 +269,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                 setIsCartAdd(true)
                 setTimeout(() => {
                     setIsCartAdd(false)
-                }, 1000)
+                }, 2000)
             }
         } else {
             toast.error("Something went wrong!")
@@ -288,7 +288,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
 
     return (
         <>
-            <div className="product_filters">
+            <div className="product_filters fad_out_product_filters">
                 <div className='product_filters_wrap'>
                     <div className="product_filters_wrap product_page_filtter new_filter_menu">
                         <div className="common_select_wrap">
@@ -506,6 +506,17 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                     </div>
                     <div className="slaman_link display_none_in_mobile">
                         <ul className="color_list">
+                            {
+                                selectedData?.color?.label && (
+                                    <div
+                                        className="active_color_name"
+                                    >
+                                        <span className="color_name">
+                                            {selectedData?.color?.label}
+                                        </span>
+                                    </div>
+                                )
+                            }
                             {_.uniqBy(selectedProduct?.attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(selectedProduct?.attributeList?.color, x => x?.label)?.map((color, index) => (
                                 <li
                                     className="active"

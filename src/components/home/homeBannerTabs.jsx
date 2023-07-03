@@ -218,8 +218,12 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                                 <div className={`col-6 `}>
                                   <Link to={`/product/${list?._id}/${menuList?.[key]?.type ?? ""}`}>
                                     <div className="common_tab_info">
-                                      <div className="common_tab_img">
-                                        <img src={list?.image} alt="image" className="product_above_image" height="640px" width="100%" />
+                                      <div className="common_tab_img new_common_tab_img">
+                                        <img src={list?.image} alt="image" className="product_above_image" height="640px" width="100%" 
+                                          style={{
+                                            boxShadow: `0px 32px 32px 0px ${key == 0 ? "#EDBC3E" : key == 1 ? "#C2D8E3" : key == 2 ? "#E3B9AB" : key == 3 ? "#B5321D" : key == 4 ? "#FFDD66" : key == 5 ? "#C2D8E3" : key == 6 ? "#E3B9AB" : key == 7 ? "#B5321D" : "#FFDD66" }`
+                                          }}
+                                        />
                                       </div>
                                       <div className=" common_tab_title">
                                         <div className="summer_list_link_wrap">
