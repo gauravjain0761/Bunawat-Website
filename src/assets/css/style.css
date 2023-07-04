@@ -2774,3 +2774,23 @@ li.common_option_wrap {
     line-height: 16px;
 }
 
+.web_hide_option {
+    display: none !important;
+}
+
+.sell_wrap a {
+    font-size: 10px;
+    font-family: NewHero;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #2A3592;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.02em;
+}
+
+.sell_wrap a svg{
+    margin-left: 10px;
+}

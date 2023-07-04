@@ -26,6 +26,15 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
         verticalSwiping: true,
     };
 
+    const [imageData, setImageData] = useState([]);
+
+    useEffect(() => {
+        const skuData = singleProduct?.skus;
+        const skuImages = skuData?.find(list => list?.varients?.color == selectedData?.color?.label && list?.images?.length > 0)?.images ?? [];
+        setImageData(skuImages?.length > 0 ? skuImages : singleProduct?.images ?? []);
+       
+    }, [singleProduct,selectedData])
+
 
     const [pincode, setPincode] = useState(JSON.parse(Storage.get("userData"))?.pincode ?? "");
     const [pincodeValid, setPincodeValid] = useState(null);
@@ -668,8 +677,8 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
                                     <Slider {...settings} className="product_slider"
                                     >
                                         {
-                                            singleProduct?.images?.length > 0 && (
-                                                [...singleProduct?.images, ...singleProduct?.videos?.slice(3, 4)]?.map((list, index) => (
+                                            imageData?.length > 0 && (
+                                                [...imageData]?.map((list, index) => (
                                                     <div key={list?.url + index + list?._id}>
                                                         {list?.type == "VIDEO" ?
                                                             <video key={list?.url + index + list?._id} autoPlay playsInline preload="true" src={list?.url} loop muted className='product_slider_video_height'>
