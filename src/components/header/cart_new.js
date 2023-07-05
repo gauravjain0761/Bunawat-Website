@@ -291,7 +291,11 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout,isMobile=
                                 <div className='saved_img_information'>
                                     <div className="save_item_img">
                                         <Link to={`/product/${list?.product?._id}`} onClick={handleCartClose}>
-                                            <img src={list?.product?.image} style={{
+                                            <img 
+                                            src={
+                                                list?.product?.sku_data?.find((item)=> item?.images?.length > 0)?.images[0]?.url || list?.product?.image
+                                            }
+                                            style={{
                                                 width: '195px',
                                                 height: '230px'
                                             }} alt="saved img" />

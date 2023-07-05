@@ -196,6 +196,8 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
     const handleClose = () => setShowSelect(false);
     const handleShow = () => setShowSelect(true);
 
+    console.log(singleProduct,"singleProduct")
+
     // useEffect(() => {
     //     let temp = [...filters] ?? []
     //     let uniqKey = _.uniq(temp?.map((list) => Object.keys(list?.varients ?? {}))?.flat())?.map((list, index) => list) ?? []
@@ -514,7 +516,7 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
                     </div>
                     <div className="slaman_link display_none_in_mobile">
                         <ul className="color_list">
-                            {
+                            {/* {
                                 selectedData?.color?.label && (
                                     <div
                                         className="active_color_name"
@@ -524,6 +526,10 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
                                         </span>
                                     </div>
                                 )
+                            } */}
+
+                            {
+                                console.log("selectedData?.color?.label", selectedProduct)
                             }
                             {_.uniqBy(selectedProduct?.attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(selectedProduct?.attributeList?.color, x => x?.label)?.map((color, index) => (
                                 <li
