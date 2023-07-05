@@ -187,9 +187,12 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout,isMobile=
                             <Box className='cart_information' sx={{
                                 padding: '24px 24px 16px 24px !important'
                             }}>
+                               
                                 <div className="card_img">
                                     <Link to="/product" onClick={handleCartClose} >
-                                        <img src={cart?.image} alt="cart" width="120px" height='180px' />
+                                        <img src={
+                                            cart?.sku?.images?.length > 0 ? cart?.sku?.images[0]?.url : cart?.image
+                                        } alt="cart" width="120px" height='180px' />
                                     </Link>
                                 </div>
                                 <div className="cart_product_info">

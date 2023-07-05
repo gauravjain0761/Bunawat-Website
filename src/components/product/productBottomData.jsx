@@ -25,6 +25,7 @@ const ProductBottomData = ({ productId, videoLoading, singleProduct, productInde
     const [pincodeValid, setPincodeValid] = useState(null);
     const [pincodeValidMsg, setPincodeValidMsg] = useState(null);
     const [product, setProduct] = useState(singleProduct ?? {});
+    
 
 
     useEffect(() => {
@@ -620,9 +621,9 @@ const ProductBottomData = ({ productId, videoLoading, singleProduct, productInde
                                                 }} className="cloth_deatils_link">
                                                     <img src={list?.images?.[0]?.url} alt="cloth" width="100%" height={getHeightData(product?.similar_products?.length).includes(index) ? "640px" : "560px"} />
                                                 </Box>
-                                                <div className="cloth_info_title">
+                                                <div className="cloth_info_title new_cloth_info_title">
                                                     <div className="summer_list_link_wrap mobile_summer_list_link_wrap">
-                                                        <div className="summer_list_link">
+                                                        <div className="summer_list_link new_product_summer_list_link">
                                                             <p className='summer_list_link_wrap_white'>{list?.name}</p>
                                                             <span>
                                                                 <svg
@@ -635,13 +636,14 @@ const ProductBottomData = ({ productId, videoLoading, singleProduct, productInde
                                                                     <g clipPath="url(#clip0_367_1219)">
                                                                         <path
                                                                             d="M0.599976 1.42999H7.98998V8.81999"
-                                                                            stroke="#fff"
+                                                                            // stroke="#2A3592"
                                                                             strokeWidth="1.7"
+                                                                            stroke={(width >= 768) ? "#2A3592" : "#fff"}
                                                                             strokeMiterlimit="10"
                                                                         />
                                                                         <path
                                                                             d="M0.599976 8.81999L7.98998 1.42999"
-                                                                            stroke="#fff"
+                                                                            stroke={(width >= 768) ? "#2A3592" : "#fff"}
                                                                             strokeWidth="1.7"
                                                                             strokeMiterlimit="10"
                                                                         />
@@ -659,9 +661,15 @@ const ProductBottomData = ({ productId, videoLoading, singleProduct, productInde
                                                                 </svg>
                                                             </span>
                                                         </div>
-                                                        <p className='summer_list_link_wrap_white'>{getNumberWithComma(list?.sale_price ?? 0)}</p>
+                                                        <p className='summer_list_link_wrap_white'
+                                                             style={{
+                                                                ...(width < 768) && {
+                                                                    color : "#fff",
+                                                                }
+                                                            }}
+                                                        >{getNumberWithComma(list?.sale_price ?? 0)}</p>
                                                     </div>
-                                                    <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={false} refetch={refetch} />
+                                                    <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={(width >= 768)} refetch={refetch} />
                                                 </div>
                                             </div>
                                         </div>
