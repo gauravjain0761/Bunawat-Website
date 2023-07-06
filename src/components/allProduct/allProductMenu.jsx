@@ -116,7 +116,9 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                                         <div className={`fix-padding-might_like_inner ${getClassWidth(index, singleList?.products?.length)}`} >
                                                             <div className="cloth_deatils_wrap category_cloth_deatils_wrap">
                                                                 <Link to={`/product/${list?._id}/${data?.[key]?.type ?? ""}`} className="cloth_deatils_link">
-                                                                    <img src={list?.image} alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "720px" : "560px"} />
+                                                                    <img src={
+                                                                       list?.sku_data?.find((item)=> item?.images?.length > 0)?.images[0]?.url || list?.image
+                                                                    } alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "720px" : "560px"} />
                                                                 </Link>
                                                                 <div className="cloth_info_title cloth_info_title_changes">
                                                                     <div style={{ cursor: 'pointer' }} className="summer_list_link_wrap mobile_summer_list_link_wrap" onClick={() => history.push(`/product/${list?._id}/${data?.[key]?.type ?? ""}`)}>

@@ -27,6 +27,7 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
     };
 
     const [imageData, setImageData] = useState([]);
+    const [swatchColorList, setSwatchColorList] = useState([]);
 
     useEffect(() => {
         const skuData = singleProduct?.skus;
@@ -36,7 +37,32 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
             top: 0,
             behavior: "smooth"
         })
-    }, [singleProduct,selectedData])
+
+        let swatchColorList = skuData?.map((data) => {
+            return {
+                color: data?.varients?.color,
+                lable: data?.swatch,
+                value: data?._id
+            }
+        })
+
+        const newSwatchColorList = []
+
+        for (const colorList of swatchColorList) {
+            if (!colorList?.lable) {
+                continue
+            }
+            const existingColor = newSwatchColorList.find(
+                (list) => list.color === colorList.color
+            );
+            if (!existingColor) {
+                newSwatchColorList.push(colorList);
+            }
+        }
+
+        setSwatchColorList(newSwatchColorList)
+
+    }, [singleProduct, selectedData])
 
 
     const [pincode, setPincode] = useState(JSON.parse(Storage.get("userData"))?.pincode ?? "");
@@ -578,7 +604,7 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
                                     <li style={{ backgroundColor: "#037A44" }}></li>
                                 </ul> */}
                                 <ul className="color_list">
-                                    {_.uniqBy(product?.attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(product?.attributeList?.color, x => x?.label)?.map((color, index) => (
+                                    {/* {_.uniqBy(product?.attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(product?.attributeList?.color, x => x?.label)?.map((color, index) => (
                                         <li
                                             className="active"
                                             key={color + index}
@@ -593,6 +619,27 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
                                             }}
                                             style={{ border: (selectedData?.color?.value == color?.value) ? "3px solid #000" : ".5px solid #000", backgroundColor: color?.label }}>
                                         </li>
+                                    ))} */}
+                                    {swatchColorList?.length > 0 && swatchColorList?.map((data, index) => (
+                                        <>
+                                            <li
+                                                className="active"
+                                                key={data?.color + index}
+                                                onClick={() => {
+                                                    setSelectedData({
+                                                        ...selectedData,
+                                                        color: {
+                                                            label: data?.color,
+                                                            value: data?.value
+                                                        },
+                                                        size: 'default'
+                                                    })
+                                                    setQty(1)
+                                                   setLastSkuData(product?.filterList?.find(list => list?._id == data?.value))
+                                                }}
+                                                style={{ border: (selectedData?.color?.value == data?.value) ? "3px solid #000" : ".5px solid #000", background: data?.lable }}>
+                                            </li>
+                                        </>
                                     ))}
                                 </ul>
                             </Box>
