@@ -11,7 +11,31 @@ export default function useProjectData(productFilter) {
 
     const getList = (skus) => {
         let temp = [...skus ?? []] ?? []
+
         let uniqKey = _.uniq(temp?.map((list) => Object.keys(list?.varients ?? {}))?.flat())?.map((list, index) => list) ?? []
+
+        let swatchColorList = temp?.map((data) => {
+            return {
+                color: data?.varients?.color,
+                lable: data?.swatch,
+                value: data?._id
+            }
+        })
+
+        const newSwatchColorList = []
+
+        for (const colorList of swatchColorList) {
+            if (!colorList?.lable) {
+                continue
+            }
+            const existingColor = newSwatchColorList.find(
+                (list) => list.color === colorList.color
+            );
+            if (!existingColor) {
+                newSwatchColorList.push(colorList);
+            }
+        }
+
         let tempAttributeList = {};
         let tempAttributeData = {};
         let tempLastSkuData = {};
@@ -30,7 +54,8 @@ export default function useProjectData(productFilter) {
             attributeList: tempAttributeList,
             attributeData: tempAttributeData,
             filterList: temp,
-            lastSkuData: tempLastSkuData
+            lastSkuData: tempLastSkuData,
+            swatchColorList: newSwatchColorList ?? []
         }
     }
 
@@ -48,12 +73,17 @@ export default function useProjectData(productFilter) {
                         attributeData: getList(list?.skus ?? [])?.attributeData,
                         filterList: getList(list?.skus ?? [])?.filterList,
                         lastSkuData: getList(list?.skus ?? [])?.lastSkuData,
+                        swatchColorList: getList(list?.skus ?? [])?.swatchColorList,
                     }
                 })
                 setGetAllProject((product) => {
                     if (productFilter.page == 1) {
                         return (
-                            [{ ...response?.data?.product, attributeList: getList(response?.data?.product?.skus ?? [])?.attributeList, filterList: getList(response?.data?.product?.skus ?? [])?.filterList, attributeData: getList(response?.data?.product?.skus ?? [])?.attributeData, lastSkuData: getList(response?.data?.product?.skus ?? [])?.lastSkuData }, ...productAll]
+                            [{
+                                ...response?.data?.product, attributeList: getList(response?.data?.product?.skus ?? [])?.attributeList, filterList: getList(response?.data?.product?.skus ?? [])?.filterList, attributeData: getList(response?.data?.product?.skus ?? [])?.attributeData
+                                , swatchColorList: getList(response?.data?.product?.skus ?? [])?.swatchColorList
+                                , lastSkuData: getList(response?.data?.product?.skus ?? [])?.lastSkuData
+                            }, ...productAll]
                         )
                     }
                     return (

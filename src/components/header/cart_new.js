@@ -61,6 +61,11 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout,isMobile=
     const handleIncrement = async (index) => {
         let temp = [...cartList]
         if (Storage.isUserAuthenticated()) {
+            // check if stock is available
+            if (temp[index].qty + 1 > temp[index]?.sku?.inStock_qty) {
+                toast.error('Stock not available')
+                return
+            }
             await editCart({ id: temp[index]?._id, qty: temp[index].qty + 1 }).unwrap().then((data) => {
             }).catch((error) => toast.error(error?.data?.message))
         } else {

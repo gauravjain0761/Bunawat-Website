@@ -196,8 +196,6 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
     const handleClose = () => setShowSelect(false);
     const handleShow = () => setShowSelect(true);
 
-    console.log(singleProduct,"singleProduct")
-
     // useEffect(() => {
     //     let temp = [...filters] ?? []
     //     let uniqKey = _.uniq(temp?.map((list) => Object.keys(list?.varients ?? {}))?.flat())?.map((list, index) => list) ?? []
@@ -279,12 +277,23 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
     }
 
     const handleIncrement = async () => {
-        setQty(qty + 1)
+        if (selectedData?.size && selectedData?.size != "default") {
+            const selectedFinalData = selectedProduct?.filterList?.find(list => list?._id == selectedData?.size) ?? {}
+            if (qty < selectedFinalData?.inStock_qty) {
+                setQty(qty + 1)
+            } else {
+                toast.error("Product out of stock")
+            }
+        } else {
+            toast.error("Please select size")
+        }
     }
 
     const handleDecrement = async () => {
-        if (qty > 1) {
+        if (qty > 1 && selectedData?.size && selectedData?.size != "default") {
             setQty(qty - 1)
+        } else if (selectedData?.size && selectedData?.size == "default") {
+            toast.error("Please select size")
         }
     }
 
@@ -339,7 +348,7 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
                                         </div>
                                     </MenuItem>
                                     {/* <MenuItem value={selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "xtra small")?.value} className="common_option_wrap" disabled={!(selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "xtra small"))}> */}
-                                    <MenuItem value={singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "xtra small" && list?.isActive == true)?._id} className="common_option_wrap" disabled={!(singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "xtra small" && list?.isActive == true))}>
+                                    {/* <MenuItem value={singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "xtra small" && list?.isActive == true)?._id} className="common_option_wrap" disabled={!(singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "xtra small" && list?.isActive == true))}>
                                         <div className="common_option">
                                             <p>
                                                 <div className="common_option">
@@ -355,7 +364,7 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
                                                 <span>30</span>
                                             </div>
                                         </div>
-                                    </MenuItem>
+                                    </MenuItem> */}
                                     {/* <MenuItem value={selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "small (s)")?.value} className="common_option_wrap" disabled={!(selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "small (s)"))}> */}
                                     <MenuItem value={singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "small (s)" && list?.isActive == true)?._id} className="common_option_wrap" disabled={!(singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "small (s)" && list?.isActive == true))}>
                                         <div className="common_option">
@@ -427,6 +436,23 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
                                                 <span>38</span>
                                                 <span>34</span>
                                                 <span>38</span>
+                                            </div>
+                                        </div>
+                                    </MenuItem>
+                                    <MenuItem value={singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "Plus Size (XXL)" && list?.isActive == true)?._id} className="common_option_wrap" disabled={!(singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "Plus Size (XXL)" && list?.isActive == true))}>
+                                        <div className="common_option">
+                                            <p>
+                                                <div className="common_option">
+                                                    <div className="d-flex align-items-center common_radio_btn new_common_radio_btn">
+                                                        <span className='size-menu'>Size : </span> &nbsp;
+                                                        <span>XXL - 30</span>
+                                                    </div>
+                                                </div>
+                                            </p>
+                                            <div className="chet_size chet_size_number">
+                                                <span>40</span>
+                                                <span>36</span>
+                                                <span>40</span>
                                             </div>
                                         </div>
                                     </MenuItem>
@@ -528,10 +554,8 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
                                 )
                             } */}
 
-                            {
-                                console.log("selectedData?.color?.label", selectedProduct)
-                            }
-                            {_.uniqBy(selectedProduct?.attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(selectedProduct?.attributeList?.color, x => x?.label)?.map((color, index) => (
+
+                            {/* {_.uniqBy(selectedProduct?.attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(selectedProduct?.attributeList?.color, x => x?.label)?.map((color, index) => (
                                 <li
                                     className="active"
                                     key={color + index}
@@ -546,6 +570,31 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
                                     }}
                                     style={{ border: (selectedData?.color?.value == color?.value) ? "3px solid #000" : ".5px solid #000", backgroundColor: color?.label }}>
                                 </li>
+                            ))} */}
+
+                            {
+                                console.log("selectedProduct?.swatchColorList", selectedProduct)
+                            }
+                            {selectedProduct?.swatchColorList?.length > 0 && selectedProduct?.swatchColorList?.map((data, index) => (
+                                <>
+                                <li
+                                    className="active"
+                                    key={data?.color + index}
+                                    onClick={() => {
+                                        setSelectedData({
+                                            ...selectedData,
+                                            color : {
+                                                label : data?.color,
+                                                value : data?.value
+                                            },
+                                            size: 'default'
+                                        })
+                                        setQty(1)
+                                        setLastSkuData(selectedProduct?.filterList?.find(list => list?._id == data?.value))
+                                    }}
+                                    style={{border: (selectedData?.color?.value == data?.value) ? "3px solid #000" : ".5px solid #000", background: data?.lable }}>
+                                </li>
+                                </>
                             ))}
                         </ul>
                     </div>
