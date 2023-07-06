@@ -32,7 +32,10 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
         const skuData = singleProduct?.skus;
         const skuImages = skuData?.find(list => list?.varients?.color == selectedData?.color?.label && list?.images?.length > 0)?.images ?? [];
         setImageData(skuImages?.length > 0 ? skuImages : singleProduct?.images ?? []);
-       
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
     }, [singleProduct,selectedData])
 
 

@@ -571,10 +571,6 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
                                     style={{ border: (selectedData?.color?.value == color?.value) ? "3px solid #000" : ".5px solid #000", backgroundColor: color?.label }}>
                                 </li>
                             ))} */}
-
-                            {
-                                console.log("selectedProduct?.swatchColorList", selectedProduct)
-                            }
                             {selectedProduct?.swatchColorList?.length > 0 && selectedProduct?.swatchColorList?.map((data, index) => (
                                 <>
                                 <li
