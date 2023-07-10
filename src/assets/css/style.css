@@ -2805,7 +2805,7 @@ li.common_option_wrap {
 }
 
 .product_info_right_section_wrap ::-webkit-scrollbar {
-    width: 5px;
+    width: 7px;
 }
 
 /* Handle */

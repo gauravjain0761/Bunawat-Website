@@ -296,7 +296,8 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                                     subcategory?.parentId,
                                     subIndex,
                                     "3",
-                                    subcategory.categories.length > 0,
+                                    // subcategory.categories.length > 0,
+                                    false,
                                     true,
                                     subcategory.name
                                   )
@@ -314,7 +315,7 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                                 >
                                   {subcategory.name}
                                 </Typography>
-                                {subcategory.categories.length > 0 && (
+                                {/* {subcategory.categories.length > 0 && (
                                   <Typography>
                                     <svg
                                       width="22"
@@ -337,7 +338,7 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                                       />
                                     </svg>
                                   </Typography>
-                                )}
+                                )} */}
                               </Stack>
                               <Divider sx={{ borderWidth: "1px" }} />
                             </Box>
