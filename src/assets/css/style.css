@@ -2803,3 +2803,12 @@ li.common_option_wrap {
 .sell_wrap a svg{
     margin-left: 10px;
 }
+
+.product_info_right_section_wrap ::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Handle */
+.product_info_right_section_wrap ::-webkit-scrollbar-thumb {
+    background: #2A3592;
+}

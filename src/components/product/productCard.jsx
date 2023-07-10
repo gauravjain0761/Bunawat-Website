@@ -38,7 +38,7 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
             behavior: "smooth"
         })
 
-        let swatchColorList = skuData?.map((data) => {
+        let swatchColorListData = skuData?.map((data) => {
             return {
                 color: data?.varients?.color,
                 lable: data?.swatch,
@@ -48,22 +48,23 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
 
         const newSwatchColorList = []
 
-        for (const colorList of swatchColorList) {
-            if (!colorList?.lable) {
-                continue
-            }
-            const existingColor = newSwatchColorList.find(
-                (list) => list.color === colorList.color
-            );
-            if (!existingColor) {
-                newSwatchColorList.push(colorList);
+        if(swatchColorListData?.length > 0){
+            for (const colorList of swatchColorListData) {
+                if (!colorList?.lable) {
+                    continue
+                }
+                const existingColor = newSwatchColorList.find(
+                    (list) => list.color === colorList.color
+                );
+                if (!existingColor) {
+                    newSwatchColorList.push(colorList);
+                }
             }
         }
 
         setSwatchColorList(newSwatchColorList)
 
     }, [singleProduct, selectedData])
-
 
     const [pincode, setPincode] = useState(JSON.parse(Storage.get("userData"))?.pincode ?? "");
     const [pincodeValid, setPincodeValid] = useState(null);
@@ -643,7 +644,7 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
                                     ))}
                                 </ul>
                             </Box>
-                            {/* {((lastSkuData?.images?.length > 0) && (productIndex == swipeableIndex)) ?
+                            {((lastSkuData?.images?.length > 0) && (productIndex == swipeableIndex)) ?
                                 <div className={getOS() == 'iOS' ? "product_slider_height_container_ios" : 'product_slider_height_container'} onMouseEnter={() => setScrollActive(false)} onTouchStart={() => setScrollActive(false)}>
                                     {lastSkuData?.images?.map((list, index) => (
                                         <div key={list?.url + index + list?._id} className='product_slider_height'>
@@ -693,8 +694,8 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
                                         </div>
                                     ))}
                                 </div>
-                            } */}
-                            {((lastSkuData?.images?.length > 0) && (productIndex == swipeableIndex)) ?
+                            }
+                            {/* {((lastSkuData?.images?.length > 0) && (productIndex == swipeableIndex)) ?
                                 <div className={getOS() == 'iOS' ? "product_slider_height_container_ios" : 'product_slider_height_container'} onMouseEnter={() => setScrollActive(false)} onTouchStart={() => setScrollActive(false)}>
                                     <Slider {...settings} className="product_slider"
                                     >
@@ -727,8 +728,8 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
                                     <Slider {...settings} className="product_slider"
                                     >
                                         {
-                                            imageData?.length > 0 && (
-                                                [...imageData]?.map((list, index) => (
+                                            product?.images?.length > 0 && (
+                                                [...product?.images]?.map((list, index) => (
                                                     <div key={list?.url + index + list?._id}>
                                                         {list?.type == "VIDEO" ?
                                                             <video key={list?.url + index + list?._id} autoPlay playsInline preload="true" src={list?.url} loop muted className='product_slider_video_height'>
@@ -754,7 +755,7 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
                                         }
                                     </Slider>
                                 </div>
-                            }
+                            } */}
                         </Box>
                     </div>
                 </div>
