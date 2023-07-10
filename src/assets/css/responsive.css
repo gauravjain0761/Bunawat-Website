@@ -659,7 +659,8 @@
     .product_slider_height,
     .product_slider_video_height,
     .product_slider_img_height {
-        height: calc(100vh - 241px);
+        /* height: calc(100vh - 241px); */
+        height: 100vh;
         width: 100%;
     }
 
