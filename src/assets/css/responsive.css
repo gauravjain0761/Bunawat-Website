@@ -941,10 +941,10 @@
     .recemtly_wrap {
         padding: 40px 0 0;
     }
-
+/* 
     .web_hide_option {
         display: flex !important;
-    }
+    } */
 }
 
 @media (max-width: 765px) {

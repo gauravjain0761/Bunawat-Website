@@ -5,6 +5,7 @@ import { AiOutlineInstagram } from "react-icons/ai";
 import { useAddProductReviewMutation } from "../../services/api";
 import { toast } from 'react-toastify';
 import { ApiPost } from "../../services/API/api";
+import framIcon from "../../assets/img/home/Frame.png";
 
 const WriteAReviews = ({ showReviewsWrite, handleClose, id }) => {
   const [addProductReview] = useAddProductReviewMutation(undefined, {})
@@ -206,7 +207,20 @@ const WriteAReviews = ({ showReviewsWrite, handleClose, id }) => {
                     </Box>
                   ))}
                   <label style={{ cursor: 'pointer' }}>
-                    <AiOutlineInstagram style={{ fontSize: "30px" }} />
+                    {/* <AiOutlineInstagram style={{ fontSize: "30px" }} /> */}
+                    {/* <img src={framIcon} alt='framIcon' style={{ width: '30px', height: '30px' }} /> */}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="24" viewBox="0 0 23 24" fill="none">
+                      <g clip-path="url(#clip0_9234_3446)">
+                        <path d="M11.76 17.14C14.5987 17.14 16.9 14.8387 16.9 12C16.9 9.16124 14.5987 6.85999 11.76 6.85999C8.92125 6.85999 6.62 9.16124 6.62 12C6.62 14.8387 8.92125 17.14 11.76 17.14Z" stroke="#2A3592" stroke-width="1.7" stroke-miterlimit="10" />
+                        <path d="M18.3 7.32007C19.1284 7.32007 19.8 6.6485 19.8 5.82007C19.8 4.99164 19.1284 4.32007 18.3 4.32007C17.4716 4.32007 16.8 4.99164 16.8 5.82007C16.8 6.6485 17.4716 7.32007 18.3 7.32007Z" fill="#2A3592" />
+                        <path d="M20.15 1.60999H3.37C2.26543 1.60999 1.37 2.50541 1.37 3.60998V20.39C1.37 21.4946 2.26542 22.39 3.36999 22.39H20.15C21.2546 22.39 22.15 21.4946 22.15 20.39V3.60999C22.15 2.50542 21.2546 1.60999 20.15 1.60999Z" stroke="#2A3592" stroke-width="1.7" stroke-miterlimit="10" />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_9234_3446">
+                          <rect width="22.48" height="22.48" fill="white" transform="translate(0.52002 0.76001)" />
+                        </clipPath>
+                      </defs>
+                    </svg>
                     <input
                       type="file"
                       accept="image/png, image/gif, image/jpeg"

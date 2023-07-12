@@ -96,6 +96,23 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
               }}
 
             />
+
+            {/* // ADVANCED option show right side */}
+            <Typography
+              sx={{
+                fontWeight: '800',
+                fontSize: '10px',
+                lineHeight: '24px',
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+                color: '#2A3592',
+                position: 'absolute',
+                right: '0px',
+                top: '7px',
+              }}>
+              Advanced
+            </Typography>
+
           </Search>
           {/* <Typography 
            sx={{

@@ -32,15 +32,29 @@ const Cart = () => {
     if (Storage.isUserAuthenticated()) {
         history.push(`/checkout`);
     } else {
-        toast.error("Login required!")
+        // toast.error("Login required!")
+        history.push(`/login`);
     }
 };
 
 
 
   return (
-    <div className="cart-container">
-      <div className="cart-close-btn">
+    <div className="cart-container"
+      style={{
+        paddingTop: "40px",
+      }}
+    >
+      <div className="cart-close-btn"
+        style={{
+          position: "absolute",
+          top: "0px",
+          right: "0px",
+          zIndex: "9999",
+          padding: "10px",
+          cursor: "pointer",
+        }}
+      >
 
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
           style={{
@@ -61,7 +75,12 @@ const Cart = () => {
         </svg>
 
       </div>
-      <div>
+      <div
+        style={{
+         marginBottom: "50px",
+        }}
+        className="cart-container-inner"
+      >
         <NewCart data={cartData} activeHeader={false} handleCartClose={() => { }} handleCheckout={handleCheckout} isMobile={true}/>
       </div>
     </div>
