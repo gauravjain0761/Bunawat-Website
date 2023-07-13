@@ -207,6 +207,7 @@ function Header() {
 
     const handleCartClose = () => {
         setCartPopup(null);
+        setIsCart(false)
     };
     const handleCheckout = () => {
         if (Storage.isUserAuthenticated()) {
@@ -296,7 +297,7 @@ function Header() {
 
                                 </CustomPopOver>
                             </Box>
-                            <Link to="/clubHome">
+                            <a href="#join_the_club">
                                 <Button
                                     aria-describedby={id}
                                     // onClick={handleClick}
@@ -319,7 +320,7 @@ function Header() {
                                 >
                                     Club
                                 </Button>
-                            </Link>
+                            </a>
                             <Link to="/reviews">
                                 <Button
                                     aria-describedby={id}
@@ -409,7 +410,7 @@ function Header() {
                                     </CustomPopOver>
                                 }
                             </Box>
-                            <Box>
+                            {/* <Box>
                                 <IconButton
                                     aria-describedby={calendarId}
                                     sx={{
@@ -458,7 +459,7 @@ function Header() {
                                 >
                                     <Calendar getActiveHeader={getActiveHeader} scroll={scroll} hover={hover} headerColor={headerColor} />
                                 </CustomPopOver>
-                            </Box>
+                            </Box> */}
                             <Box>
                                 <Button
                                     aria-describedby={cart}

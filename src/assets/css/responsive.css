@@ -652,8 +652,9 @@
     }
    
     .product_slider_height_container_ios {
-        height: calc(100vh - 241px);
-        width: 100%;
+        /* height: calc(100vh - 241px); */
+        height: 62vh;
+        width: 97%;
     }
 
     .product_slider_height,

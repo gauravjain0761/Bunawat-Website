@@ -1,11 +1,30 @@
 import { Box } from "@mui/material";
 import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { ApiPost } from "../../services/API/api";
 
 const JoinTheClubSection = () => {
+  const [mobileNumber, setMobileNumber] = useState("");
+
+  const handleJoin = async () => {
+    if (!mobileNumber || mobileNumber.length < 10) {
+      toast.error("Please enter valid mobile number");
+      return;
+    }
+
+    await ApiPost("join_club/create", { mobile_number: mobileNumber }).then((data) => {
+      toast.success("Successfully joined the club");
+      setMobileNumber("");
+    }).catch((err) => {
+      toast.error(err?.error);
+    })
+  }
+
   return (
     <>
-      <div className="join_the_club_wrap">
+      <div className="join_the_club_wrap" id="join_the_club">
         <div className="container join_the_club_padding">
           <div className="join_the_club_inner">
             <h2 className="common_title" style={{
@@ -20,13 +39,21 @@ const JoinTheClubSection = () => {
             <div className="tel_number">
               <div className="tel_number_wrap">
                 <span>+91</span>
-                <input type="text" placeholder="Phone Number" />
+                <input 
+                  type="number"
+                  placeholder="Phone Number"
+                  className="tel_number_input"
+                  value={mobileNumber}
+                  onChange={(e) => setMobileNumber(e.target.value)}
+                />
               </div>
-              <button type="button" className="join_btn">
+              <button type="button" className="join_btn"
+                onClick={handleJoin}
+              >
                 Join
               </button>
             </div>
-            <Box sx={{
+            {/* <Box sx={{
               marginTop: "48px",
               // '@media (max-width: 768px)': {
               //   marginTop: "48px",
@@ -67,7 +94,7 @@ const JoinTheClubSection = () => {
                   </defs>
                 </svg>
               </Link>
-            </Box>
+            </Box> */}
           </div>
         </div>
       </div>

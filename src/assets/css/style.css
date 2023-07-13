@@ -1195,7 +1195,7 @@ body[main-sidebar="shopsidebar"] .shop_sidebar {
 
 .product_slider_height_container {
     height: calc(100vh - 150px);
-    width: 100%;
+    width: 98.5%;
     overflow: hidden;
     overflow-y: scroll;
 }
@@ -2811,4 +2811,10 @@ li.common_option_wrap {
 /* Handle */
 .product_info_right_section_wrap ::-webkit-scrollbar-thumb {
     background: #2A3592;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
