@@ -22,33 +22,33 @@ const NewFooter = () => {
               </Link>
             </li>
             <li className="mobile_footer_strip_menu">
-              <Link to="/clubHome" className="d-flex align-items-center">
-                <p>Bunawat Club</p>
+              <Link to="/reviews" className="d-flex align-items-center">
+                <p>Bunawat Review</p>
               </Link>
             </li>
-            <li style={{ marginLeft: "0px" }}>
+            {/* <li style={{ marginLeft: "0px" }}>
               <Link to="/" className="d-flex align-items-center">
                 <p>Blog</p>
                 <span className="new_text">NEW</span>
               </Link>
-            </li>
+            </li> */}
             <li>
-              <Link to="/">
+              <Link to="/helpSupport">
                 <p>Help & Support</p>
               </Link>
             </li>
             <li>
-              <Link to="/returns">
+              <Link to="/returnTerm">
                 <p>Returns</p>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/">
                 <p>About</p>
               </Link>
-            </li>
+            </li> */}
             <li>
-              <Link to="/">
+              <Link to="/termsAndConditions">
                 <p>Terms</p>
               </Link>
             </li>

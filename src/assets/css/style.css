@@ -2818,3 +2818,84 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+.returnTerm_page {
+    max-width: 1000px;
+    margin: 150px auto;
+    padding: 20px;
+  }
+  
+  .help_page{
+      max-width: 1200px;
+      margin: 150px auto;
+      padding: 20px;
+  }
+  
+  .help_page .accordion_menu{
+      margin: 18px 0;
+  }
+
+
+  .returnTerm_page .accordion_menu{
+    margin: 18px 0;
+}
+
+  
+  .privacy-policy-container {
+    max-width: 1200px;
+    margin: 70px auto;
+    padding: 2rem;
+  }
+
+  .terms-container {
+    max-width: 1200px;
+    margin: 70px auto;
+    padding: 2rem;
+  }
+  
+  .privacy-policy-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .privacy-policy-content {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+
+  .gurnteed_image{
+      height: 61px;
+      width: 336px;
+  }
+  
+  .gurnteed_image_container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      margin-bottom: 50px;
+  }
+
+  .privacy-policy-content{
+    font-size: 14px;
+    line-height: 1.5;
+    color: #9A9EB0;
+  }
+  .terms-content {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #9A9EB0;
+  }
+ .terms-heading{
+    font-size: 24px;
+    font-weight: bold;
+    color: #70758A;
+ }
+
+ .privacy-policy-title{
+    font-size: 24px;
+    font-weight: bold;
+    color: #70758A;
+ }

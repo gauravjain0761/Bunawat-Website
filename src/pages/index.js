@@ -26,6 +26,10 @@ import { toast } from "react-toastify";
 import { AllApiData } from "../services/api";
 import ProdileEdit from "./userProfile/edit";
 import Cart from "./product/cart";
+import ReturnTerm from "./returnTerm";
+import PrivacyPolicy from "./privacyPolicy";
+import HelpSupport from "./helpSupport";
+import TermsAndConditions from "./termsAndConditions";
 
 export default function Index() {
     const dispatch = useDispatch();
@@ -134,6 +138,22 @@ export default function Index() {
                         <SizeGuide />
                     </Route>
 
+                    <Route exact path={BASE_URL.BASE_URL + "returnTerm"}>
+                        <ReturnTerm />
+                    </Route>
+
+                    <Route exact path={BASE_URL.BASE_URL + "privacyPolicy"}>
+                        <PrivacyPolicy />
+                    </Route>
+
+                    <Route exact path={BASE_URL.BASE_URL + "termsAndConditions"}>
+                        <TermsAndConditions />
+                    </Route>
+
+                    <Route exact path={BASE_URL.BASE_URL + "helpSupport"}>
+                        <HelpSupport />
+                    </Route>
+
                     <Route exact path={BASE_URL.BASE_URL + "paymentOptions"}>
                         <PaymentOptions />
                     </Route>
@@ -145,6 +165,7 @@ export default function Index() {
                     <Route exact path={BASE_URL.BASE_URL + "login"}>
                         <Login />
                     </Route>
+                    
 
                     {/* // cart page */}
                    <Route exact path={BASE_URL.BASE_URL + "cart"}>
