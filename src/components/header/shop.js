@@ -129,12 +129,14 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
            Advanced
            </Typography> */}
         </Box>
-        <Box sx={{
-          display: "none",
-          '@media (max-width: 768px)': {
-            display: "none",
-          }
-        }}>
+        <Box 
+        // sx={{
+        //   display: "none",
+        //   '@media (max-width: 768px)': {
+        //     display: "none",
+        //   }
+        // }}
+        >
           <Typography
             onClick={() => {
               history.push("/reviews");
@@ -147,6 +149,10 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
               letterSpacing: "-.02em",
               fontFamily: "Newspirit",
               cursor: "pointer",
+              '@media (max-width: 768px)': {
+                fontSize: "18px",
+                lineHeight: "32px",
+              }
             }}
           >
             Reviews

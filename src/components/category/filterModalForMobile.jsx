@@ -46,7 +46,15 @@ const FilterModalForMobile = ({ showFilter, handleClose, setSelectedId, selected
                         zIndex: 99
                       }}>
                         {list?.variants?.map((item, itemIndex) => (
-                          <MenuItem className="common_option_wrap kind_common_option_wrap" sx={{ paddingLeft: "26px" }} onClick={() => handleSelectedAttribute(list?.slug, index, item?._id, itemIndex)}>
+                          <MenuItem className="common_option_wrap kind_common_option_wrap" sx={{ paddingLeft: "26px" }} onClick={() => {
+                            handleSelectedAttribute(list?.slug, index, item?._id, itemIndex);
+                            if (attributeOpen[index]) {
+                              const attributeOpenList = [...attributeOpen];
+                              attributeOpenList[index] = false
+                              setAttributeOpen(attributeOpenList)
+                            }
+                          }
+                          }>
                             <div className="common_option">
                               <div className="d-flex align-items-center common_radio_btn">
                                 <FormControl>

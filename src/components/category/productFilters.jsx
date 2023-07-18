@@ -57,12 +57,18 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
           <div className="common_select_wrap">
             <FormControl>
               {showMostPopularMobile &&
-                <ClickAwayListener onClickAway={() => setShowMostPopularMobile(false)}>
+                <ClickAwayListener onClickAway={(e) => 
+                  {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    setShowMostPopularMobile(false);
+                  }
+                }>
                   <div className="most_popular_wrapper_box new_most_popular_wrapper_box_mob">
                     <MenuItem onClick={() => {
                       setSelectedId({ ...selectedId, sortBy: 0 })
                       setShowMostPopularMobile(false)
-                    }} className="common_option_wrap">
+                    }} className="common_option_wrap common_option_wrap_bg">
                       <div className="common_option">
                         <p className="common_option_p">Newest</p>
                         <span className="common_option_span">minimal first</span>

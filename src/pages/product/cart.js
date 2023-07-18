@@ -77,7 +77,7 @@ const Cart = () => {
       </div>
       <div
         style={{
-         marginBottom: "50px",
+         marginBottom: "60px",
         }}
         className="cart-container-inner"
       >
