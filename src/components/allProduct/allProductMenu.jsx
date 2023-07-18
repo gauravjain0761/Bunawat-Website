@@ -159,7 +159,7 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                                                                 </svg>
                                                                             </span>
                                                                         </div>
-                                                                        <p className='summer_list_link_wrap_white summer_list_link_wrap_changes'>{getNumberWithComma(list?.sale_price ?? 0)}</p>
+                                                                        <p className='summer_list_link_wrap_white summer_list_link_wrap_changes price_number_head'>{getNumberWithComma(list?.sale_price ?? 0)}</p>
                                                                     </div>
                                                                     <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={(width >= 768)} selectedId={selectedId} setSelectedId={setSelectedId} />
                                                                 </div>
@@ -168,7 +168,6 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                                     </>
                                                 )
                                             })}
-
                                         </div>
                                     </Tab>
                                 )

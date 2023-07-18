@@ -537,11 +537,11 @@
         width: 100%;
     }
 
-    .new_footer_header_wrap{
+    .new_footer_header_wrap {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding : 0;
+        padding: 0;
         padding-bottom: 20px;
     }
 
@@ -637,19 +637,19 @@
         color: #fff !important;
     }
 
-    .help_page{
-        margin: 80px auto;
-    }
-    
-    .returnTerm_page{
+    .help_page {
         margin: 80px auto;
     }
 
-    .accordion_title{
+    .returnTerm_page {
+        margin: 80px auto;
+    }
+
+    .accordion_title {
         font-size: 16px !important;
     }
 
-    .accordion_content{
+    .accordion_content {
         font-size: 14px !important;
     }
 
@@ -659,14 +659,15 @@
         background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
     }
 
-    .new_cloth_info_title{
-        background: transparent;   
+    .new_cloth_info_title {
+        background: transparent;
     }
+
     .product_slider_height_container {
         height: 62vh;
         width: 97%;
     }
-   
+
     .product_slider_height_container_ios {
         /* height: calc(100vh - 241px); */
         height: 62vh;
@@ -958,7 +959,31 @@
     .recemtly_wrap {
         padding: 40px 0 0;
     }
-/* 
+
+
+    .price_number_head {
+        font-size: 16px !important;
+        font-weight: 600 !important;
+        line-height: 16px !important;
+    }
+
+    .cloth_info_title{
+        padding: 16px;
+    }
+
+    .save_wrap p {
+        margin-top: 5px;
+    }
+
+    .userProfile_man h3 {
+        margin-bottom: 8px;
+    }
+
+    .userProfile_mobile .userProfile_man{
+        padding-bottom: 40px;
+    }
+
+    /* 
     .web_hide_option {
         display: flex !important;
     } */
@@ -1030,37 +1055,39 @@
         font-weight: 600 !important;
         letter-spacing: -2%;
         padding: 16px 24px 16px 20px;
-        font-family:  'Newhero' !important;
+        font-family: 'Newhero' !important;
     }
-    .mob_border_line{
+
+    .mob_border_line {
         border-top: 1px solid #2A3592;
     }
 
-    .tab_section_wrap .nav-tabs .nav-link{
+    .tab_section_wrap .nav-tabs .nav-link {
         font-size: 12px;
         line-height: 24px;
         font-weight: 600;
     }
 
-    .subCategory_name{
+    .subCategory_name {
         font-size: 18px !important;
         line-height: 32px !important;
         font-weight: 600 !important;
     }
 
-    .common_select_wrap_box_mob{
+    .common_select_wrap_box_mob {
         padding: 0 0 0 0 !important;
     }
 
-    .optional-text{
+    .optional-text {
         font-size: 12px !important;
         line-height: 16px !important;
-        top : 21px !important;
+        top: 21px !important;
     }
 
-    .city-select{
+    .city-select {
         background: #F7F8FF;
     }
+
     .new_disabled {
         background: rgba(42, 53, 146, 0.5);
     }
@@ -1111,7 +1138,7 @@
         color: #F2E7CB;
     }
 
-    .new_most_popular_wrapper_box_mob{
+    .new_most_popular_wrapper_box_mob {
         width: 100%;
         position: fixed;
     }
@@ -1226,7 +1253,7 @@
 @media (max-width: 400px) {
     .footer_header_wrap ul li {
         width: 50%;
-        margin-bottom: 10px;
+        /* margin-bottom: 10px; */
     }
 
     .account_info li+li {

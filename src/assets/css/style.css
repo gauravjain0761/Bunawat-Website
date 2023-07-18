@@ -1346,7 +1346,7 @@ li.common_option_wrap {
 }
 
 .common_select_wrap {
-    border-right: 1px solid #EBEAED;
+    /* border-right: 1px solid #EBEAED; */
 }
 
 .apply_btn {

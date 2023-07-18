@@ -108,7 +108,7 @@ const UserProfile = () => {
                       }}>
                         <Link to="/userProfile">
                           <Nav.Link eventKey="userProfile" className='userProfile_menu_list'>
-                            <img src="../img/ordersshop.png" alt='ordersshop' height="20" style={{ marginRight: "8px" }} />
+                            <img src="../img/ordersshop.png" alt='ordersshop' height="20" style={{ marginRight: "16px" }} />
                             Orders & Shop
                           </Nav.Link>
                         </Link>
@@ -118,8 +118,17 @@ const UserProfile = () => {
                         width: "100%",
                       }}>
                         <Link to="/userProfile" style={{ background: "#E1E3EC" }}>
-                          <Nav.Link eventKey="eventsClub" className='userProfile_menu_list'>
-                            <img src="../img/eventsclub.png" alt='eventsclub' height="20" style={{ marginRight: "8px" }} />
+                          <Nav.Link eventKey="eventsClub" className='userProfile_menu_list'
+                            style={{
+                              color: "#70758A",
+                              fontSize: "10px"
+                            }}
+                          >
+                            <img src="../img/eventsclub.png" alt='eventsclub' height="20"
+                              style={{
+                                marginRight: "16px",
+                              }}
+                            />
                             Events & Club
                           </Nav.Link>
                         </Link>

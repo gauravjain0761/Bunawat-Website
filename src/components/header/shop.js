@@ -1,7 +1,7 @@
 import React from "react";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { CssBaseline, Divider, Stack } from '@mui/material';
+import { CssBaseline, Divider, Rating, Stack } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import NorthEastIcon from '@mui/icons-material/NorthEast';
@@ -74,7 +74,7 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder="Search…"
+              placeholder="Search"
               inputProps={{ 'aria-label': 'search' }}
               sx={{
                 '@media (max-width: 768px)': {
@@ -82,7 +82,7 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                   lineHeight: "24px",
                   width: "100%",
                   '& .MuiInputBase-input': {
-                    padding: "8px 0px 8px 0px",
+                    padding: "8px 80px 8px 0px",
                     paddingLeft: "24px",
                     transition: "none",
                     width: '100%',
@@ -92,6 +92,11 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                     fontSize: "14px",
                     lineHeight: "24px"
                   }
+                },
+                '& .MuiInputBase-input::placeholder': {
+                  color: '#000000 !important',
+                  paddingLeft: "8px",
+                  fontWeight: "600",
                 }
               }}
 
@@ -129,36 +134,75 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
            Advanced
            </Typography> */}
         </Box>
-        <Box 
-        // sx={{
-        //   display: "none",
-        //   '@media (max-width: 768px)': {
-        //     display: "none",
-        //   }
-        // }}
-        >
-          <Typography
-            onClick={() => {
-              history.push("/reviews");
-              handleClose();
-            }}
-            sx={{
-              py: 2,
-              fontSize: "24px",
-              fontWeight: 600,
-              letterSpacing: "-.02em",
-              fontFamily: "Newspirit",
-              cursor: "pointer",
-              '@media (max-width: 768px)': {
-                fontSize: "18px",
-                lineHeight: "32px",
-              }
-            }}
+
+        {menuData.level === "1" && (
+          <Box
+          // sx={{
+          //   display: "none",
+          //   '@media (max-width: 768px)': {
+          //     display: "none",
+          //   }
+          // }}
           >
-            Reviews
-          </Typography>
-          <Divider sx={{ borderWidth: "1px" }} />
-        </Box>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                width: "100%",
+              }}
+            >
+              <Typography
+                onClick={() => {
+                  history.push("/reviews");
+                  handleClose();
+                }}
+                sx={{
+                  py: 2,
+                  fontSize: "24px",
+                  fontWeight: 600,
+                  letterSpacing: "-.02em",
+                  fontFamily: "Newspirit",
+                  cursor: "pointer",
+                  '@media (max-width: 768px)': {
+                    fontSize: "18px",
+                    lineHeight: "32px",
+                  }
+                }}
+              >
+                Reviews
+              </Typography>
+
+              <Box
+                sx={{
+                  borderRadius: "4px",
+                  background: "#FFF8E5",
+                  display: "flex",
+                  padding: "8px 10px",
+                  alignItems: "flexStart",
+                  gap: "10px"
+                }}
+              >
+                <Typography
+                  component="span"
+                  sx={{
+                    color: "#000",
+                    fontSize: "16px",
+                    fontWeight: "700",
+                    lineHeight: "12px",
+                    alignSelf: "center",
+                  }}
+                >
+                  512
+                </Typography>
+                <Rating name="read-only" value={5} readOnly />
+              </Box>
+            </Box>
+
+            <Divider sx={{ borderWidth: "1px" }} />
+          </Box>
+        )}
+
         {menuData.level == "1" &&
           menuData.collection.map((item, index) => {
             return (
@@ -188,7 +232,7 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
               </React.Fragment>
             );
           })}
-      </Box>
+      </Box >
       <Box sx={{
         width: { md: "380px", sm: "100%" },
         px: 2,

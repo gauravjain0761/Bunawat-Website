@@ -92,12 +92,15 @@
     color: #000000;
 }
 
+.userProfileModule_box_list_first_inner{
+    padding: 24px;
+}
+
 
 .userProfileModule_box {
     background: #FFFFFF;
     box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
-    padding: 24px;
 }
 
 .userProfileModule_box_heading {
@@ -150,7 +153,7 @@
 
 .userProfileModule_box_list_last {
     /* padding: 2rem; */
-    padding: 24px 0 0 0;
+    padding: 24px;
     display: flex;
     justify-content: space-between;
     background-color: #F7F8FF;
