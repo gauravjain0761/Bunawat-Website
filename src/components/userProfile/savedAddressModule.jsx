@@ -94,13 +94,17 @@ const SavedAddressModule = () => {
           <Form className="checkout_form">
             <Row>
               <Col>
-                <Form.Group controlId="validationFormik01">
+                <Form.Group controlId="validationFormik01"
+                  className="form_group_checkout"
+                >
                   <Form.Control type="text" name="fname" placeholder="First Name" value={formData?.fname ?? ''} onChange={handleChange} />
                   {formError?.fname ? <p className="error-text">Name is required!</p> : null}
                 </Form.Group>
               </Col>
               <Col>
-                <Form.Group controlId="validationFormik01">
+                <Form.Group controlId="validationFormik01"
+                  className="form_group_checkout"
+                >
                   <Form.Control type="text" name="lname" placeholder="Last Name" value={formData?.lname ?? ''} onChange={handleChange} />
                   {formError?.lname ? <p className="error-text">Name is required!</p> : null}
                 </Form.Group>
@@ -108,7 +112,9 @@ const SavedAddressModule = () => {
             </Row>
             <Row>
               <Col>
-                <Form.Group controlId="validationFormik01">
+                <Form.Group controlId="validationFormik01"
+                  className="form_group_checkout"
+                >
                   <div style={{ position: "relative" }}>
                     <Form.Control
                       type="text"
@@ -125,7 +131,9 @@ const SavedAddressModule = () => {
             </Row>
             <Row>
               <Col>
-                <Form.Group controlId="validationFormik01">
+                <Form.Group controlId="validationFormik01"
+                  className="form_group_checkout"
+                >
                   <Form.Control type="email" name="email" placeholder="Email" value={formData?.email ?? ''} onChange={handleChange} />
                   {formError?.email ? <p className="error-text">Email is required!</p> : null}
                 </Form.Group>
@@ -148,7 +156,9 @@ const SavedAddressModule = () => {
             </Row> */}
             <Row>
               <Col>
-                <Form.Group controlId="validationFormik01">
+                <Form.Group controlId="validationFormik01"
+                  className="form_group_checkout"
+                >
                   <Form.Control
                     type="text"
                     value={formData?.address_1 ?? ''} onChange={handleChange}
@@ -161,7 +171,10 @@ const SavedAddressModule = () => {
             </Row>
             <Row>
               <Col>
-                <Form.Group controlId="validationFormik01">
+                <Form.Group controlId="validationFormik01"
+                  className="form_group_checkout"
+                
+                >
                   <Form.Control
                     type="text"
                     value={formData?.address_2 ?? ''} onChange={handleChange}
@@ -174,7 +187,9 @@ const SavedAddressModule = () => {
             </Row>
             <Row>
               <Col>
-                <Form.Group controlId="validationFormik01">
+                <Form.Group controlId="validationFormik01"
+                  className="form_group_checkout"
+                >
                   <Form.Control
                     type="text"
                     value={formData?.pincode ?? ''} onChange={handleChange}
@@ -185,7 +200,9 @@ const SavedAddressModule = () => {
                 </Form.Group>
               </Col>
               <Col>
-                <Form.Group controlId="validationFormik01">
+                <Form.Group controlId="validationFormik01"
+                  className="form_group_checkout"
+                >
                   <Form.Control type="text" name="state" placeholder="State" value={formData?.state ?? ''} onChange={handleChange} />
                   {formError?.state ? <p className="error-text">State is required!</p> : null}
                 </Form.Group>
@@ -211,7 +228,7 @@ const SavedAddressModule = () => {
                 display: "grid",
               }}
             >
-              <Button onClick={handleUpdate} className="savedAddressModule_btn">
+              <Button onClick={handleUpdate} className="savedAddressModule_btn update_password_btn">
                 Update Address
                 <AiOutlineCheck />
               </Button>

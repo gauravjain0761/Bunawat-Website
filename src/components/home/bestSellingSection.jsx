@@ -166,7 +166,9 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
                     </span>
                   </div>
                 </Link>
-                <p>{singleList?.products?.length ?? 0} options </p>
+                <p
+                  className="option_count"
+                >{singleList?.products?.length ?? 0} options </p>
               </div>
             </div>
           </div>

@@ -29,11 +29,11 @@ const ReturnTerm = () => {
                             <br /><br />
                             Step 2 - Our team will get in action and start the process. We will arrange a return pickup in 2-3 days.
                             <br /><br />
-                            Step 3 – The order will reach back to us in 7 days.
+                            Step 3 - The order will reach back to us in 7 days.
                             <br /><br />
-                            Step 4 – The order will go under quality check.
+                            Step 4 - The order will go under quality check.
                             <br /><br />
-                            Step 5 – Once approved, you will receive store credits that you can use whenever you wish.
+                            Step 5 - Once approved, you will receive store credits that you can use whenever you wish.
                         </Typography>
                     </AccordionDetails>
                 </Accordion>

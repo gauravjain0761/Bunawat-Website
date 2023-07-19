@@ -194,7 +194,7 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout,isMobile=
                             }}>
                                
                                 <div className="card_img">
-                                    <Link to="/product" onClick={handleCartClose} >
+                                    <Link to={`/product/${cart?.product}`} onClick={handleCartClose} >
                                         <img src={
                                             cart?.sku?.images?.length > 0 ? cart?.sku?.images[0]?.url : cart?.image
                                         } alt="cart" width="120px" height='180px' />

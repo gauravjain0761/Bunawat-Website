@@ -473,7 +473,7 @@
     }
 
     .summer_list_link {
-        margin-bottom: 4px;
+        /* margin-bottom: 4px; */
         justify-content: space-between;
     }
 
@@ -967,7 +967,7 @@
         line-height: 16px !important;
     }
 
-    .cloth_info_title{
+    .cloth_info_title {
         padding: 16px;
     }
 
@@ -979,7 +979,7 @@
         margin-bottom: 8px;
     }
 
-    .userProfile_mobile .userProfile_man{
+    .userProfile_mobile .userProfile_man {
         padding-bottom: 40px;
     }
 
@@ -1189,12 +1189,20 @@
         padding-top: 2px;
     }
 
+    .summer_list_link_wrap .option_count {
+        padding-top: 4px;
+    }
+
     .common_tab_title {
         padding: 15px 10px 15px;
     }
 
     .social_media_wrap {
-        padding: 32px 20px 32px 0;
+        padding: 32px 0px 32px 0;
+    }
+
+    .error-text {
+        font-size: 12px;
     }
 
     .shop_hald_info h3 {
@@ -1205,6 +1213,23 @@
         line-height: 40px;
     }
 
+    .update_password_btn {
+        color: #FFF;
+        text-align: center;
+        font-family: 'NewHero';
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: -0.28px;
+        align-items: center;
+        padding: 20px 24px !important;
+        margin-top: 16px;
+    }
+
+    .form_group_checkout{
+        margin-bottom: 8px;
+    }
 
 
     .cloth_wrap .cloth_inner .row>div {

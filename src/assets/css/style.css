@@ -891,6 +891,7 @@ button {
 
 .blog_info {
     margin-top: 30px;
+    text-align: justify;
 }
 
 .blog_info h3 {

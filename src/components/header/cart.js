@@ -109,7 +109,7 @@ const Cart = ({ data, activeHeader, handleCartClose, handleCheckout }) => {
                             return (
                                 <div className='cart_information'>
                                     <div className="card_img">
-                                        <Link to="/product" onClick={handleCartClose} >
+                                        <Link to={`/product/${cart?.product}`} onClick={handleCartClose} >
                                             <img src={cart?.image} alt="cart" height='180px' />
                                         </Link>
                                     </div>

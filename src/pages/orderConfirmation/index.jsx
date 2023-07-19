@@ -420,7 +420,7 @@ const OrderConfirmation = () => {
                 </div>
               </div>
             }
-            <div className="orderConfirmation_box" style={{ paddingBottom: "1rem" }}>
+            <div className="orderConfirmation_box" style={{ paddingBottom: "24px" }}>
               <div className="orderConfirmation_box_heading">
                 <div>
                   <h6>
@@ -504,7 +504,7 @@ const OrderConfirmation = () => {
               <div className="orderConfirmation_box_heading" style={{ padding: "0.6rem 2rem" }}>
                 <div>
                   <h6>
-                    <img src="../img/shippingto.png" alt="shippingto" width="22" style={{ marginRight: "8px" }} />
+                    <img src="../img/shippingto.png" alt="shippingto" width="22" style={{ marginRight: "16px" }} />
                     Shipping to
                   </h6>
                 </div>
@@ -554,7 +554,7 @@ const OrderConfirmation = () => {
                     <div style={{ marginTop: "2rem" }}>
                       <Link to="/userProfile">
                         <h4>
-                          <img src="../img/allorders.png" alt="allorders" width="22" style={{ marginRight: "8px" }} />
+                          <img src="../img/allorders.png" alt="allorders" width="20" style={{ marginRight: "16px" }} />
                           All Orders
                         </h4>
                       </Link>

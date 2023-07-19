@@ -16,10 +16,14 @@ const PrivacyPolicy = () => {
 
             <div className="privacy-policy-container">
                 <h1 className="privacy-policy-title">Privacy Policy</h1>
-                <p className="privacy-policy-content">
-                    Aradhana Fashion Pvt Ltd
-                    recognises the importance of maintaining your privacy. We value your privacy and appreciate your trust in us. This Privacy Policy sets out how Aradhana Fashion Pvt Ltd uses and protects any information that you give Aradhana Fashion Pvt Ltd when you use this www.Afplstores.com or the Aradhana Fashion Pvt Ltd mobile application or any other digital medium and other offline sources of our Company. Aradhana Fashion Pvt Ltd is committed to ensure that your privacy is protected. Should we ask you to provide certain information by which you can be identified when using this website, then you can be assured that it will only be used in accordance with this Privacy Policy as it describes how we treat user information we collect from you, the policies and procedures on the collection, use, disclosure and protection of your information when you use our Aradhana Fashion Pvt Ltd Platform.
-                    This Privacy Policy applies to current and former visitors to our Aradhana Fashion Pvt Ltd Platform and to our online customers. By visiting and/or using our website, you agree to this Privacy Policy. Aradhana Fashion Pvt Ltd may change this policy from time to time by updating this page. You should check this page from time to time to ensure that you are happy with any changes.
+                <p className="privacy-policy-content"
+                    style={{
+                        textAlign: "justify",
+                    }}
+                >
+                    Aradhana Fashion Pvt Ltd <br />
+                    recognises the importance of maintaining your privacy. We value your privacy and appreciate your trust in us. This Privacy Policy sets out how Aradhana Fashion Pvt Ltd uses and protects any information that you give Aradhana Fashion Pvt Ltd when you use this www.Afplstores.com or the Aradhana Fashion Pvt Ltd mobile application or any other digital medium and other offline sources of our Company. Aradhana Fashion Pvt Ltd is committed to ensure that your privacy is protected. Should we ask you to provide certain information by which you can be identified when using this website, then you can be assured that it will only be used in accordance with this Privacy Policy as it describes how we treat user information we collect from you, the policies and procedures on the collection, use, disclosure and protection of your information when you use our Aradhana Fashion Pvt Ltd Platform. <br />
+                    This Privacy Policy applies to current and former visitors to our Aradhana Fashion Pvt Ltd Platform and to our online customers. By visiting and/or using our website, you agree to this Privacy Policy. Aradhana Fashion Pvt Ltd may change this policy from time to time by updating this page. You should check this page from time to time to ensure that you are happy with any changes.<br />
                     www.Afplstores.com is a property of Aradhana Fashion Pvt Ltd, Private Limited, established under laws of India, having its registered office at Private Limited, Maharashtra – 444601. <br /><br />
 
                     DEFINITIONS:<br />

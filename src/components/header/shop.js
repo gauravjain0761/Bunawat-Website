@@ -71,7 +71,18 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
         }}>
           <Search>
             <SearchIconWrapper>
-              <SearchIcon />
+              <SearchIcon
+                sx={{
+                  color: "#000000",
+                  fontSize: "26px",
+                  lineHeight: "24px",
+                  '@media (max-width: 768px)': {
+                    fontSize: "24px",
+                    lineHeight: "24px",
+                  }
+                }}
+
+              />
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search"
@@ -82,7 +93,7 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                   lineHeight: "24px",
                   width: "100%",
                   '& .MuiInputBase-input': {
-                    padding: "8px 80px 8px 0px",
+                    padding: "8px 80px 10px 0px",
                     paddingLeft: "24px",
                     transition: "none",
                     width: '100%',
@@ -307,14 +318,21 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                         <Stack
                           direction="row"
                           justifyContent="space-between"
-                          pb={0.5}
-                          pt={2}
+                          // pb={0.5}
+                          // pt={2}
+                          sx={{
+                            padding: "16px 0",
+                            alignItems: "center",
+                          }}
                         >
                           <Button
                             sx={{
                               fontSize: "14px !important",
                               textTransform: "capitalize",
                               fontWeight: 600,
+                              fontFamily: "NewHero",
+                              alignItems: "flex-start",
+                              padding: "0px !important",
                             }}
                             onClick={() =>
                               handleActive(item?.parentId, -1, "1")
@@ -334,6 +352,9 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                               textTransform: "capitalize",
                               fontWeight: 600,
                               color: "#000",
+                              fontFamily: "NewHero",
+                              alignItems: "flex-start",
+                              padding: "0px !important",
                             }}
                             // color="inherit"
                             startIcon={<NorthEastIcon />}
