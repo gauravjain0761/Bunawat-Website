@@ -9,3 +9,9 @@ export const getOS = () => {
     var i, os = ['Windows', 'Android', 'Unix', 'Mac', 'Linux', 'BlackBerry'];
     for (i = 0; i < os.length; i++) if (new RegExp(os[i], 'i').test(uA)) return os[i];
 }
+
+export const getFirstLetterCapital = (string) => {
+    return string?.split(' ').map(word => word?.charAt(0)?.toUpperCase() + word?.slice(1)?.toLowerCase())?.join(' ')
+}
+
+

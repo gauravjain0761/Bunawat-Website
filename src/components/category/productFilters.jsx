@@ -68,6 +68,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                     <MenuItem onClick={() => {
                       setSelectedId({ ...selectedId, sortBy: 0 })
                       setShowMostPopularMobile(false)
+                      window.scrollTo(0, 0)
                     }} className="common_option_wrap common_option_wrap_bg">
                       <div className="common_option">
                         <p className="common_option_p">Newest</p>
@@ -77,6 +78,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                     <MenuItem onClick={() => {
                       setSelectedId({ ...selectedId, sortBy: 1 })
                       setShowMostPopularMobile(false)
+                      window.scrollTo(0, 0)
                     }} className="common_option_wrap">
                       <div className="common_option">
                         <p className="common_option_p">Affordable</p>
@@ -88,6 +90,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                     <MenuItem onClick={() => {
                       setSelectedId({ ...selectedId, sortBy: 2 })
                       setShowMostPopularMobile(false)
+                      window.scrollTo(0, 0)
                     }} className="common_option_wrap common_option_wrap_bg">
                       <div className="common_option">
                         <p className="common_option_p">Luxurious</p>

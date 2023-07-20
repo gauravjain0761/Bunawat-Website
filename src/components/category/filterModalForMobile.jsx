@@ -4,6 +4,7 @@ import { Box, Checkbox, FormControl, FormControlLabel, MenuItem, NativeSelect, R
 import { Button, ButtonGroup, Typography } from "@mui/material";
 import { TiDeleteOutline } from "react-icons/ti";
 import { useGetAttributeDataQuery } from "../../services/api";
+import { getFirstLetterCapital } from "../../utils/utils";
 
 
 const FilterModalForMobile = ({ showFilter, handleClose, setSelectedId, selectedId, attributeOpen, attributeData, handleSelectedAttribute, selectedAttribute, setAttributeOpen, setShowMostPopular, setShowPrice, showPrice }) => {
@@ -70,7 +71,7 @@ const FilterModalForMobile = ({ showFilter, handleClose, setSelectedId, selected
                                     />}
                                   />
                                 </FormControl>
-                                <span>{item?.name}</span>
+                                <span>{getFirstLetterCapital(item?.name)}</span>
                               </div>
                             </div>
                           </MenuItem>
@@ -93,7 +94,7 @@ const FilterModalForMobile = ({ showFilter, handleClose, setSelectedId, selected
                       <div className="common_option">
                         <div className="d-flex align-items-center common_radio_btn">
                           <span style={{ marginRight: "3rem" }}>
-                            {list?.name}
+                            {getFirstLetterCapital(list?.name)}
                           </span>
                         </div>
                         <svg
