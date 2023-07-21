@@ -10,6 +10,7 @@ import { Button, ButtonGroup, Checkbox, ClickAwayListener, Typography } from "@m
 import { TiDeleteOutline } from "react-icons/ti";
 import FilterModalForMobile from "./filterModalForMobile";
 import { useGetAttributeDataQuery } from "../../services/api";
+import { getFirstLetterCapital } from "../../utils/utils";
 
 function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
   const { data, error, isLoading } = useGetAttributeDataQuery()
@@ -295,7 +296,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                                 }}
                               />}
                             />
-                            <span>{item?.name}</span>
+                            <span>{getFirstLetterCapital(item?.name)}</span>  
                           </div>
                         </div>
                       </MenuItem>
@@ -318,7 +319,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                   <div className="common_option">
                     <div className="d-flex align-items-center common_radio_btn">
                       <span style={{ marginRight: "3rem" }}>
-                        {list?.name}
+                        {getFirstLetterCapital(list?.name)}
                       </span>
                     </div>
                     <svg

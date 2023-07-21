@@ -11,6 +11,7 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+import { getFirstLetterCapital } from "../../utils/utils";
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -237,7 +238,7 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                     }
                   }}
                 >
-                  {item.name}
+                  {getFirstLetterCapital(item.name)}
                 </Typography>
                 <Divider sx={{ borderWidth: "1px" }} />
               </React.Fragment>
@@ -280,7 +281,7 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                         }
                       }}
                     >
-                      {item.name}
+                      {getFirstLetterCapital(item.name)}
                     </Typography>
                     {item.sub_cateogries.length > 0 && (
                       <Typography>
@@ -401,7 +402,7 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                                     fontFamily: "Newspirit",
                                   }}
                                 >
-                                  {subcategory.name}
+                                  {getFirstLetterCapital(subcategory.name)}
                                 </Typography>
                                 {/* {subcategory.categories.length > 0 && (
                                   <Typography>
@@ -502,7 +503,7 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                                             fontFamily: "Newspirit",
                                           }}
                                         >
-                                          {category.name}
+                                          {getFirstLetterCapital(category.name)}
                                         </Typography>
                                         <Divider sx={{ borderWidth: "1px" }} />
                                       </Box>
