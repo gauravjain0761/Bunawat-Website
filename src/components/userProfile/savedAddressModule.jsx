@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { AiOutlineCheck } from 'react-icons/ai';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useCustomerUpdateMutation, useGetCustomerDataQuery } from "../../services/api";
 import { toast } from 'react-toastify';
+import Storage from "../../services/storage";
+import { Link, useHistory, useParams } from "react-router-dom";
+
+
 
 const SavedAddressModule = () => {
+
   const [customerUpdate] = useCustomerUpdateMutation(undefined, {})
   const userItem = useSelector(state => state?.user?.userData)
   const { data: userData, error, isLoading } = useGetCustomerDataQuery(userItem?._id, { skip: !userItem?._id })
   const [formData, setFormData] = useState([]);
   const [formError, setFormError] = useState([]);
+
+  const history = useHistory()
 
   useEffect(() => {
     if (Object.keys(userData?.data ?? {})?.length > 0) {
@@ -67,7 +74,13 @@ const SavedAddressModule = () => {
       setFormError(tempError)
     } else {
       await customerUpdate(formData).unwrap().then((data) => {
-        toast.success("Profile updated successfully!")
+        toast.success("Profile updated successfully!");
+        // update user data in local storage
+
+        history.push(`/userProfile?name=${formData?.fname}`)
+
+        Storage.set("userData", JSON.stringify(userData?.data))
+        
       }).catch((error) => toast.error(error?.data?.message))
     }
   }

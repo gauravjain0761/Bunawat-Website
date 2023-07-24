@@ -15,6 +15,10 @@ const UserProfile = () => {
   const userData = useSelector(state => state?.user?.userData);
   const [expanded, setExpanded] = useState(false)
   const history = useHistory();
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const userName = urlParams.get('name');
+
   return (
     <>
       <div id='userProfile'>
@@ -23,7 +27,7 @@ const UserProfile = () => {
             <Row>
               <Col xs={12} md={5}>
                 <div className='userProfile_man'>
-                  <h3>Hello {userData?.fname ?? "User!"}</h3>
+                  <h3>Hello {(userName ?? userData?.fname) ?? "User!"}</h3>
                   <p>This is your space. Track events & orders and update your saved details from here.</p>
                 </div>
                 <div className='userProfile_menu'>
@@ -77,7 +81,8 @@ const UserProfile = () => {
                   </Tab.Pane>
                   <Tab.Pane eventKey="savedAddress">
                     <Container>
-                      <SavedAddressModule />
+                      <SavedAddressModule
+                      />
                     </Container>
                   </Tab.Pane>
                 </Tab.Content>

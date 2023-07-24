@@ -115,7 +115,7 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
             />
 
             {/* // ADVANCED option show right side */}
-            <Typography
+            {/* <Typography
               sx={{
                 fontWeight: '800',
                 fontSize: '10px',
@@ -128,7 +128,7 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
                 top: '7px',
               }}>
               Advanced
-            </Typography>
+            </Typography> */}
 
           </Search>
           {/* <Typography 

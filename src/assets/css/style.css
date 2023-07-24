@@ -2900,3 +2900,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-weight: bold;
     color: #70758A;
  }
+
+ .update_password_btn{
+    align-items: center;
+ }

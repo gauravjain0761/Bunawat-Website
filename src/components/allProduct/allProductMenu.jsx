@@ -5,7 +5,7 @@ import category_1 from "../../assets/img/category/category_1.png"
 import ProductFilters from '../category/productFilters';
 import { Nav, Tab, Tabs } from 'react-bootstrap';
 import FooterStrip from '../footer/footerStrip';
-import { getNumberWithComma } from '../../utils/utils';
+import { getFirstLetterCapital, getNumberWithComma } from '../../utils/utils';
 import SaveButton from '../common/save';
 
 const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedIndex }) => {
@@ -108,7 +108,7 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                             className="tab_section">
                             {menuList.map((item, index) => {
                                 return (
-                                    <Tab eventKey={index} key={item?._id} title={item?.name}>
+                                    <Tab eventKey={index} key={item?._id} title={getFirstLetterCapital(item?.name)}>
                                         <div className="row product_margin">
                                             {singleList?.products?.map((list, index) => {
                                                 return (

@@ -23,8 +23,8 @@ const Reviews = () => {
   const handleChange = (event, newValue) => {
     setValues(newValue);
   };
-
-  const reviewsData = [
+  
+  let reviewsData = [
     {
       name: "Aishwarya J.",
       city: "from Mumbai",
@@ -33,6 +33,7 @@ const Reviews = () => {
       message:
         "I ordered Bunawat for the first time and all my queries about the dress were solved so gracefully! Dispatched in time and I got it two days later.",
       audio: "",
+      value: 2,
     },
     {
       name: "Priya M.",
@@ -42,6 +43,7 @@ const Reviews = () => {
       message:
         "Super soft and comfortable. My order was delivered well within time. Looking forward to order more from you.",
       audio: "audio",
+      value: 3,
     },
     {
       name: "Nidhi U.",
@@ -51,8 +53,13 @@ const Reviews = () => {
       message:
         "My dress is really awesome. The fit is perfect, colour is so good and the zari work is elegant. Worth it!",
       audio: "audio",
+      value: 4,
     },
   ];
+
+  const [reviews, setReviews] = useState(reviewsData);
+
+ 
   return (
     <>
       <div id="reviews">
@@ -62,7 +69,7 @@ const Reviews = () => {
             <p>A collection of reviews by wonderful customers </p>
           </div>
           <Row>
-            {reviewsData.map((item, index) => {
+            {reviews.map((item, index) => {
               return (
                 <Col xs={12} md={4} key={index} style={{ height: "auto" }}>
                   <div className="reviewspage_box">
@@ -74,7 +81,7 @@ const Reviews = () => {
                       <div>
                         <Rating
                           name="simple-controlled"
-                          value={value}
+                          value={item?.value}
                           sx={{
                             '& .MuiRating-icon': {
                               color: '#2A3592',
@@ -92,7 +99,10 @@ const Reviews = () => {
                             },
                           }}
                           onChange={(event, newValue) => {
-                            setValue(newValue);
+                            // setValue(newValue);
+                            const newReviewsData = [...reviews];
+                            newReviewsData[index].value = newValue;
+                            setReviews(newReviewsData);
                           }}
                           style={{
                             display: "flex",
