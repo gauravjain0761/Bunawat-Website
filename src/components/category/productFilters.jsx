@@ -13,6 +13,8 @@ import { useGetAttributeDataQuery } from "../../services/api";
 import { getFirstLetterCapital } from "../../utils/utils";
 
 function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
+
+
   const { data, error, isLoading } = useGetAttributeDataQuery()
   const [attributeData, setAttributeData] = useState([]);
   const [showPrice, setShowPrice] = useState(false);
@@ -22,6 +24,10 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
   const [attributeOpen, setAttributeOpen] = useState([]);
   const [selectedAttribute, setSelectedAttribute] = useState({});
   const [showFilter, setShowFilter] = useState(false);
+  const [showSelectFilter, setShowSelectFilter] = useState("");
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const isMostLoved = urlParams.get('isMostLoved');
 
   const handleClose = () => {
     setShowFilter(false);
@@ -33,6 +39,11 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
     const finalData = data?.data?.filter(x => x?.isActive) ?? []
     setAttributeOpen(finalData?.map(x => false) ?? [])
     setAttributeData(finalData ?? [])
+    if(isMostLoved){
+      setSelectedId({ ...selectedId, sortBy: 3 })
+      setShowSelectFilter("Most Popular")
+    }
+
   }, [data])
 
   const handleSelectedAttribute = (name, index, itemName, itemIndex) => {
@@ -58,12 +69,11 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
           <div className="common_select_wrap">
             <FormControl>
               {showMostPopularMobile &&
-                <ClickAwayListener onClickAway={(e) => 
-                  {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    setShowMostPopularMobile(false);
-                  }
+                <ClickAwayListener onClickAway={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  setShowMostPopularMobile(false);
+                }
                 }>
                   <div className="most_popular_wrapper_box new_most_popular_wrapper_box_mob">
                     <MenuItem onClick={() => {
@@ -119,23 +129,23 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                 <div className="common_option">
                   <p className="common_option_p">Most Popular</p>
                   {
-                    !showMostPopularMobile &&<svg
-                    style={{ rotate: showMostPopularMobile ? "0deg" : "180deg" }}
-                    width="10"
-                    height="7"
-                    viewBox="0 0 10 7"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M1.51318 1L5.33436 5L9.16024 1"
-                      stroke="#2A3592"
-                      strokeWidth="1.7"
-                      strokeMiterlimit="10"
-                    />
-                  </svg>
+                    !showMostPopularMobile && <svg
+                      style={{ rotate: showMostPopularMobile ? "0deg" : "180deg" }}
+                      width="10"
+                      height="7"
+                      viewBox="0 0 10 7"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1.51318 1L5.33436 5L9.16024 1"
+                        stroke="#2A3592"
+                        strokeWidth="1.7"
+                        strokeMiterlimit="10"
+                      />
+                    </svg>
                   }
-                  
+
                 </div>
               </MenuItem>
             </FormControl>
@@ -155,12 +165,13 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                       }}>
                       <Typography
                         // className="filter_text"
-                        variant="h6" sx={{ color: "#2A3592",
+                        variant="h6" sx={{
+                          color: "#2A3592",
                           fontSize: "10px",
                           fontWeight: "600",
                           lineHeight: "16px",
                           fontFamily: "Newhero",
-                          paddingRight : "16px"
+                          paddingRight: "16px"
                         }}>PICK A SORT ORDER</Typography>
                     </Box>
                   </div>
@@ -208,6 +219,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                   </MenuItem> */}
                     <MenuItem onClick={() => {
                       setSelectedId({ ...selectedId, sortBy: 0 })
+                      setShowSelectFilter("Newest")
                     }} className="common_option_wrap">
                       <div className="common_option">
                         <p className="common_option_p">Newest</p>
@@ -221,6 +233,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                   </MenuItem> */}
                     <MenuItem onClick={() => {
                       setSelectedId({ ...selectedId, sortBy: 1 })
+                      setShowSelectFilter("Affordable")
                     }} className="common_option_wrap">
                       <div className="common_option">
                         <p className="common_option_p">Affordable</p>
@@ -231,13 +244,22 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                     </MenuItem>
                     <MenuItem onClick={() => {
                       setSelectedId({ ...selectedId, sortBy: 2 })
-                    }} className="common_option_wrap common_option_wrap_bg">
+                      setShowSelectFilter("Luxurious")
+                    }} className="common_option_wrap ">
                       <div className="common_option">
                         <p className="common_option_p">Luxurious</p>
                         <span className="common_option_span">
                           {" "}
                           Highest Price first
                         </span>
+                      </div>
+                    </MenuItem>
+                    <MenuItem onClick={() => {
+                      setSelectedId({ ...selectedId, sortBy: 3,  })
+                      setShowSelectFilter("Most Popular")
+                    }} className="common_option_wrap">
+                      <div className="common_option">
+                        <p className="common_option_p">Most Popular</p>
                       </div>
                     </MenuItem>
                   </div>
@@ -255,7 +277,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                 }
               }} className="common_option_wrap">
                 <div className="common_option">
-                  <p className="common_option_p">Most Popular</p>
+                  <p className="common_option_p"> {showSelectFilter ? showSelectFilter : "Filter" }</p>
                   <svg
                     style={{ rotate: showMostPopular ? "0deg" : "180deg" }}
                     width="10"
@@ -273,6 +295,17 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                   </svg>
                 </div>
               </MenuItem>
+
+              {/* <MenuItem onClick={() => {
+                      setSelectedId({ ...selectedId, sortBy: 1 })
+                    }} className="common_option_wrap">
+                      <div className="common_option">
+                        <p className="common_option_p">Affordable</p>
+                        <span className="common_option_span">
+                         Filter
+                        </span>
+                      </div>
+                    </MenuItem> */}
             </FormControl>
           </div>
 
@@ -296,7 +329,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                                 }}
                               />}
                             />
-                            <span>{getFirstLetterCapital(item?.name)}</span>  
+                            <span>{getFirstLetterCapital(item?.name)}</span>
                           </div>
                         </div>
                       </MenuItem>

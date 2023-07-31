@@ -134,7 +134,7 @@ function Header() {
     }
 
     const onChagewalletbar = (pathname) => {
-        var mypath = ["/allProduct", "/product", "/checkout", "/orderConfirmation", "/userProfile","/returnTerm","/privacyPolicy","/termsAndConditions", "/helpSupport","/reviews", "/404", "/returns", "/sizeGuide", "/paymentOptions", "/trackOrder", "/login"].some(x => pathname.startsWith(x))
+        var mypath = ["/allProduct", "/product", "/checkout", "/orderConfirmation", "/userProfile","/returnTerm","/privacyPolicy","/konwTheStory","/termsAndConditions", "/helpSupport","/reviews", "/404", "/returns", "/sizeGuide", "/paymentOptions", "/trackOrder", "/login"].some(x => pathname.startsWith(x))
         if (mypath) {
             setHeaderColor(true);
         }
@@ -297,7 +297,7 @@ function Header() {
 
                                 </CustomPopOver>
                             </Box>
-                            <a href="#join_the_club">
+                            {/* <a href="#join_the_club">
                                 <Button
                                     aria-describedby={id}
                                     // onClick={handleClick}
@@ -320,7 +320,7 @@ function Header() {
                                 >
                                     Club
                                 </Button>
-                            </a>
+                            </a> */}
                             <Link to="/reviews">
                                 <Button
                                     aria-describedby={id}

@@ -13,11 +13,14 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
   const [singleCollection, setSingleCollection] = React.useState(singleData ?? [])
   const [loading, setLoading] = React.useState(true);
   const [selectedMenu, setSelectedMenu] = React.useState(menuList?.[0]?.name ?? "")
+  const [totalProduct, setTotalProduct] = React.useState(0)
 
   useEffect(() => {
     setLoading(false)
     setMenuList(data ?? []);
     setSingleCollection(singleData)
+    setTotalProduct(data?.reduce((acc, item) => { return acc + item?.totalProducts ?? 0 } , 0) ?? 0)
+
   }, [data, singleData]);
 
   return (
@@ -385,7 +388,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                 </div>
                 <div className="shop_second_section">
                 <div className="shop_hald_info">
-                  <Link to="/" className="d-flex align-items-center">
+                  <Link to={`/allProduct/${selectedMenu}?isMostLoved=true`} className="d-flex align-items-center">
                     <h3>Most Loved</h3>
                     <svg
                       width="19"
@@ -411,7 +414,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                   <p>Our Favourite 100 Designs</p>
                 </div>
                 <div className="shop_hald_info space_info_shop">
-                  <Link to="/allProduct" className="d-flex align-items-center">
+                  <Link to={`/allProduct/${selectedMenu}`} className="d-flex align-items-center">
                     <h3>Shop All</h3>
                     <svg
                       width="19"
@@ -434,7 +437,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                       />
                     </svg>
                   </Link>
-                  <p>1,600+ Designs</p>
+                  <p>{totalProduct}+ Products</p>
                 </div>
                 </div>
               </div>

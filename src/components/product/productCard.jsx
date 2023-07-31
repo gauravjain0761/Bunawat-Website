@@ -77,6 +77,12 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
     const [scrollActive, setScrollActive] = useState(true);
     const [showAnimation, setShowAnimation] = useState(!Storage.get("disableAnimation"));
 
+   useEffect(() => {
+    if(pincode){
+        handlePincode(pincode)
+    }
+   }, [])
+
     // useEffect(() => {
     //     let temp = [...productList?.[swipeableIndex]?.skus ?? []] ?? []
     //     let uniqKey = _.uniq(temp?.map((list) => Object.keys(list?.varients ?? {}))?.flat())?.map((list, index) => list) ?? []
@@ -121,7 +127,7 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
     // }, [pincode])
 
     const handlePincode = async (code) => {
-        if (code?.length == 6) {
+        if (code) {
             await ApiGet(`check_availability/${code}`)
                 .then((res) => {
                     setPincodeValid(true);
@@ -304,7 +310,7 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
                                                 </div>
                                                 <div className="stock_info">
                                                     <h3>In Stock</h3>
-                                                    <p>{pincodeValid ? pincodeValidMsg : " Ships in 24 hours"}</p>
+                                                    <p>{pincodeValid ? pincodeValidMsg : "Please Enter Pincode"}</p>
                                                 </div>
                                             </div>
                                         </li>

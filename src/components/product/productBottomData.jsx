@@ -254,7 +254,7 @@ const ProductBottomData = ({ productId, videoLoading, singleProduct, productInde
                                                 </div>
                                                 <div className="stock_info">
                                                     <h3>In Stock</h3>
-                                                    <p>{pincodeValid ? pincodeValidMsg : " Ships in 24 hours"}</p>
+                                                    <p>{pincodeValid ? pincodeValidMsg : "Please Enter pincode"}</p>
                                                 </div>
                                             </div>
                                         </li>
@@ -726,7 +726,7 @@ const ProductBottomData = ({ productId, videoLoading, singleProduct, productInde
                             <p>
                                 Estd. 1977 ~ Bunawat is curated by the team at our legacy store,
                                 Aradhana.
-                                <Link to="/privacyPolicy" className="know_link">
+                                <Link to="/konwTheStory" className="know_link">
                                     Know the Story
                                     <svg
                                         width="11"
@@ -810,7 +810,7 @@ const ProductBottomData = ({ productId, videoLoading, singleProduct, productInde
                                 Estd. 1977<br /> Bunawat is curated by the team at our legacy store,
                                 Aradhana. <br />
                                 <Box sx={{ marginTop: "20px" }}>
-                                    <Link to="/privacyPolicy" className="know_link">
+                                    <Link to="/konwTheStory" className="know_link">
                                         Know the Story
                                         <svg
                                             width="11"

@@ -4,7 +4,8 @@ import AllProductList from '../../components/allProduct/allProduct';
 import { useParams } from 'react-router-dom';
 
 const AllProduct = () => {
-    const { id } = useParams()
+    const { id } = useParams();
+
     const { data, error, isLoading } = useGetShopMenuDataQuery()
 
     const collections = useMemo(() => {
@@ -49,7 +50,7 @@ const AllProduct = () => {
 
     return (
         <>
-            <AllProductList menuData={[...categories, ...collections]} />
+            <AllProductList menuData={[...categories, ...collections]} selectedMenu={id}/>
         </>
     )
 }

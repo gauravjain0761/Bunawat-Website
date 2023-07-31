@@ -5,7 +5,7 @@ import { useGetDatabyIdWithFiltersMutation } from '../../services/api';
 import AllProductMenu from './allProductMenu';
 import { toast } from 'react-toastify';
 
-const AllProductList = ({ menuData }) => {
+const AllProductList = ({ menuData,selectedMenu }) => {
     const { selected } = useParams()
     const [data, setData] = React.useState(menuData ?? [])
     const [selectedIndex, setSelectedIndex] = React.useState(0)
@@ -20,21 +20,25 @@ const AllProductList = ({ menuData }) => {
         },
         atr: {}
     });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const isMostLoved = urlParams.get('isMostLoved');
+
     const [getDatabyIdWithFilters] = useGetDatabyIdWithFiltersMutation()
     // console.log('singleData', result)
     useEffect(() => {
-        const findeIndex = menuData?.findIndex(x => x?.name == selected) == -1 ? 0 : menuData?.findIndex(x => x?.name == selected)
+        const findeIndex = menuData?.findIndex(x => x?.name == (selected ?? selectedMenu)) == -1 ? 0 : menuData?.findIndex(x => x?.name == (selected ?? selectedMenu))
         setData(menuData ?? []);
         setSelectedId({
             id: menuData?.[findeIndex]?._id ?? "",
             type: menuData?.[findeIndex]?.type ?? "",
-            sortBy: 0,
+            sortBy: isMostLoved ? 3 : 0,
             atr: {},
             pricing: {
                 from: 0,
                 to: 0
             },
-            isRefresh: false
+            isRefresh: false,
         })
         setSelectedIndex(findeIndex)
 

@@ -30,6 +30,7 @@ import ReturnTerm from "./returnTerm";
 import PrivacyPolicy from "./privacyPolicy";
 import HelpSupport from "./helpSupport";
 import TermsAndConditions from "./termsAndConditions";
+import KonwTheStory from "./konwTheStory";
 
 export default function Index() {
     const dispatch = useDispatch();
@@ -144,6 +145,10 @@ export default function Index() {
 
                     <Route exact path={BASE_URL.BASE_URL + "privacyPolicy"}>
                         <PrivacyPolicy />
+                    </Route>
+
+                    <Route exact path={BASE_URL.BASE_URL + "konwTheStory"}>
+                        <KonwTheStory />
                     </Route>
 
                     <Route exact path={BASE_URL.BASE_URL + "termsAndConditions"}>

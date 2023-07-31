@@ -39,7 +39,8 @@ const Reviews = () => {
       name: "Priya M.",
       city: "from Indore",
       product_name: "Synthetic Floral Print Sari",
-      product_image: "../img/reviews.png",
+      // product_image: "../img/reviews.png",
+      product_image: "",
       message:
         "Super soft and comfortable. My order was delivered well within time. Looking forward to order more from you.",
       audio: "audio",
