@@ -94,10 +94,10 @@ const ProductBottomData = ({ productId, videoLoading, singleProduct, productInde
             await ApiGet(`check_availability/${code}`)
                 .then((res) => {
                     setPincodeValid(true);
-                    setPincodeValidMsg("Serviceable..")
+                    setPincodeValidMsg("Ship in 3-5 working days")
                 })
                 .catch((error) => {
-                    setPincodeValidMsg("Not Serviceable..")
+                    setPincodeValidMsg("Ship in 12 working days")
                     setPincodeValid(true);
                 });
         }
@@ -116,7 +116,7 @@ const ProductBottomData = ({ productId, videoLoading, singleProduct, productInde
                                 </div>
                                 <div className="common_product_details" onMouseEnter={() => setSwipeableDisable(true)} onTouchStart={() => setSwipeableDisable(true)}>
                                     <div className='parse-description new_parse_description'>{parse(product?.description ?? "")}</div>
-                                    <div style={{ marginTop: '25px' }}
+                                    {/* <div style={{ marginTop: '25px' }}
                                         className="new_product_price_wrap"
                                     >
                                         Club members get <span>10% off. </span>
@@ -216,7 +216,7 @@ const ProductBottomData = ({ productId, videoLoading, singleProduct, productInde
                                             </svg>
                                         </Link>
                                         <p>Next slot at 4:15pm</p>
-                                    </div>
+                                    </div> */}
                                 </div>
 
                                 <div className="stock_list" onMouseEnter={() => setSwipeableDisable(true)} onTouchStart={() => setSwipeableDisable(true)}>
@@ -379,7 +379,10 @@ const ProductBottomData = ({ productId, videoLoading, singleProduct, productInde
                                             </div>
                                         </li>
                                         <li>
-                                            <div className="stock_main_wrap">
+                                            <div className="stock_main_wrap"
+                                                 style={{ cursor: 'pointer' }}
+                                                 onClick={() => history.push('/returnTerm')}
+                                            >
                                                 <div className="stock_title_wrap">
                                                     <svg
                                                         width="22"
@@ -403,7 +406,7 @@ const ProductBottomData = ({ productId, videoLoading, singleProduct, productInde
                                                     </svg>
                                                 </div>
                                                 <div className="stock_info">
-                                                    <h3>14-day return</h3>
+                                                    <h3>7-day return</h3>
                                                     <p>Get 100% store credit</p>
                                                 </div>
                                             </div>
@@ -563,7 +566,7 @@ const ProductBottomData = ({ productId, videoLoading, singleProduct, productInde
                                 }
                             </div>
 
-                            <Review id={product?._id} />
+                            {/* <Review id={product?._id} /> */}
                         </div>
                     </div>
                 </div>
@@ -723,7 +726,7 @@ const ProductBottomData = ({ productId, videoLoading, singleProduct, productInde
                             <p>
                                 Estd. 1977 ~ Bunawat is curated by the team at our legacy store,
                                 Aradhana.
-                                <Link to="/" className="know_link">
+                                <Link to="/privacyPolicy" className="know_link">
                                     Know the Story
                                     <svg
                                         width="11"
@@ -807,7 +810,7 @@ const ProductBottomData = ({ productId, videoLoading, singleProduct, productInde
                                 Estd. 1977<br /> Bunawat is curated by the team at our legacy store,
                                 Aradhana. <br />
                                 <Box sx={{ marginTop: "20px" }}>
-                                    <Link to="/" className="know_link">
+                                    <Link to="/privacyPolicy" className="know_link">
                                         Know the Story
                                         <svg
                                             width="11"

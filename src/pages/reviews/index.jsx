@@ -160,7 +160,7 @@ const Reviews = () => {
                     <div className="reviewspage_box_text">
                       <h5>{item.message}</h5>
                     </div>
-                    {item.audio ? (
+                    {/* {item.audio ? (
                       <div className="reviewspage_box_whatsapp">
                         <div className="reviewspage_box_audio">
                           <Stack
@@ -186,14 +186,14 @@ const Reviews = () => {
                       </div>
                     ) : (
                       ""
-                    )}
+                    )} */}
                   </div>
                 </Col>
               );
             })}
           </Row>
 
-          <div className="reviewspage_writeReviews" onClick={handleShow}>
+          {/* <div className="reviewspage_writeReviews" onClick={handleShow}>
             <div className="reviewspage_writeReviews_btn">
               <h6>Write a Review</h6>
               <svg
@@ -229,12 +229,12 @@ const Reviews = () => {
                 </defs>
               </svg>
             </div>
-          </div>
-          <WriteAReviews showReviewsWrite={showReviewsWrite} handleClose={handleClose}/>
+          </div> */}
+          {/* <WriteAReviews showReviewsWrite={showReviewsWrite} handleClose={handleClose}/>
           <div style={{textAlign: "center", fontSize: "14px", lineHeight: "20px"}}>
            Have questions about a product? <br />
            <a href="#" style={{color: "#2A3592", borderBottom: "1px solid #2a3592"}}>Talk to us on Whatsapp</a>
-          </div>
+          </div> */}
         </Container>
       </div>
     <Box sx={{

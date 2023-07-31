@@ -40,14 +40,14 @@ const UserProfile = () => {
                         </Nav.Link>
                       </Link>
                     </Nav.Item>
-                    <Nav.Item>
+                    {/* <Nav.Item>
                       <Link to="/userProfile">
                         <Nav.Link eventKey="eventsClub" className='userProfile_menu_list'>
                           <img src="../img/eventsclub.png" alt='eventsclub' height="20" style={{ marginRight: "12px" }} />
                           Events & Club
                         </Nav.Link>
                       </Link>
-                    </Nav.Item>
+                    </Nav.Item> */}
                     <Nav.Item>
                       <Link to="/userProfile">
                         <Nav.Link eventKey="savedAddress" className='userProfile_menu_list'>
@@ -118,7 +118,7 @@ const UserProfile = () => {
                           </Nav.Link>
                         </Link>
                       </Nav.Item>
-
+{/* 
                       <Nav.Item style={{
                         width: "100%",
                       }}>
@@ -137,7 +137,7 @@ const UserProfile = () => {
                             Events & Club
                           </Nav.Link>
                         </Link>
-                      </Nav.Item>
+                      </Nav.Item> */}
                     </Box>
                     {/* </Col> */}
                     {/* <Col xs={6}> */}

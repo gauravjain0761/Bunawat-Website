@@ -12,6 +12,7 @@ import { toast } from 'react-toastify';
 import _ from 'lodash';
 import Storage from '../../services/storage';
 import { getOS } from '../../utils/utils';
+import { useHistory } from 'react-router-dom';
 
 const ProductCard = ({ singleProduct, product, videoLoading, productIndex, similarList, setSwipeableDisable, productBottomData, width, refetch, swipeableIndex, productList, lastSkuData, setLastSkuData, filters, setQty, selectedData, setSelectedData, lastCardElementRef }) => {
     const settings = {
@@ -25,6 +26,8 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
         vertical: true,
         verticalSwiping: true,
     };
+
+    const history = useHistory();
 
     const [imageData, setImageData] = useState([]);
     const [swatchColorList, setSwatchColorList] = useState([]);
@@ -122,10 +125,10 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
             await ApiGet(`check_availability/${code}`)
                 .then((res) => {
                     setPincodeValid(true);
-                    setPincodeValidMsg("Serviceable..")
+                    setPincodeValidMsg("Ship in 3-5 working days")
                 })
                 .catch((error) => {
-                    setPincodeValidMsg("Not Serviceable..")
+                    setPincodeValidMsg("Ship in 12 working days")
                     setPincodeValid(true);
                 });
         }
@@ -165,7 +168,7 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
                                 </div>
                                 <div className="common_product_details">
                                     <div className='parse-description'>{parse(singleProduct?.description ?? "")}</div>
-                                    <div style={{ marginTop: '25px' }}>
+                                    {/* <div style={{ marginTop: '25px' }}>
                                         Club members get <span>10% off. </span>
                                         <Link to="" className="product_link new_product_link">
                                             Join
@@ -263,7 +266,7 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
                                             </svg>
                                         </Link>
                                         <p>Next slot at 4:15pm</p>
-                                    </div>
+                                    </div> */}
                                 </div>
 
                                 <div className="stock_list">
@@ -426,7 +429,10 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
                                             </div>
                                         </li>
                                         <li>
-                                            <div className="stock_main_wrap">
+                                            <div className="stock_main_wrap"
+                                                style={{ cursor: 'pointer' }}
+                                                onClick={() => history.push('/returnTerm')}
+                                            >
                                                 <div className="stock_title_wrap">
                                                     <svg
                                                         width="22"
@@ -450,7 +456,7 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
                                                     </svg>
                                                 </div>
                                                 <div className="stock_info">
-                                                    <h3>14-day return</h3>
+                                                    <h3>7-day return</h3>
                                                     <p>Get 100% store credit</p>
                                                 </div>
                                             </div>

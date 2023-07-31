@@ -15,7 +15,7 @@ const JoinTheClubSection = () => {
     }
 
     await ApiPost("join_club/create", { mobile_number: mobileNumber }).then((data) => {
-      toast.success("Successfully joined the club");
+      toast.success("Number has been added to wait list. We will contact you soon");
       setMobileNumber("");
     }).catch((err) => {
       toast.error(err?.error);

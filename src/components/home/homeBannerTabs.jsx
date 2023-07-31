@@ -11,7 +11,8 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
   const [key, setKey] = useState(0);
   const [menuList, setMenuList] = React.useState(data ?? [])
   const [singleCollection, setSingleCollection] = React.useState(singleData ?? [])
-  const [loading, setLoading] = React.useState(true)
+  const [loading, setLoading] = React.useState(true);
+  const [selectedMenu, setSelectedMenu] = React.useState(menuList?.[0]?.name ?? "")
 
   useEffect(() => {
     setLoading(false)
@@ -185,7 +186,11 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
             >
               {menuList.map((item, index) => {
                 return (
-                  <Tab eventKey={index} key={item?._id} title={item?.name}>
+                  <Tab eventKey={index} key={item?._id} title={item?.name}
+                    onEnter={() => {
+                      setSelectedMenu(item?.name)
+                    } } 
+                  >
                     <div className={`tab_common_contain ${key == index ? "activeOpecity" : "inActiveOpecity"}`} style={{
                       paddingRight: "8px",
                       paddingLeft: "8px"
@@ -314,7 +319,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
               }
               )}
             </Tabs>
-            <Link to="/allProduct" className="see_all_link">
+            <Link to={`/allProduct/${selectedMenu}`} className="see_all_link">
               <p>Shop All</p>
               <svg
                 width="9"
