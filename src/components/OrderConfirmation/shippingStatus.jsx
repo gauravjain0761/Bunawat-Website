@@ -313,7 +313,7 @@ const ShippingStatus = () => {
           <h3>Delivered</h3>
           <p>
             We’ve delivered your order. Hope you love it! <br />
-            <a href="#" className="shippingStatusLink">Write a Review</a>
+            {/* <a href="#" className="shippingStatusLink">Write a Review</a> */}
           </p>
           <Link to="/orderConfirmation">
             <div className="ordercConfirmation_top_help">

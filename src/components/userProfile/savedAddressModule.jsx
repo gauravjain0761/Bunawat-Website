@@ -9,7 +9,7 @@ import { Link, useHistory, useParams } from "react-router-dom";
 
 
 
-const SavedAddressModule = () => {
+const SavedAddressModule = ({handleUserChange}) => {
 
   const [customerUpdate] = useCustomerUpdateMutation(undefined, {})
   const userItem = useSelector(state => state?.user?.userData)
@@ -36,6 +36,7 @@ const SavedAddressModule = () => {
         district: userData?.data?.district ?? "",
       })
     }
+    handleUserChange(userData?.data?.fname)
   }, [userData])
 
   const handleUpdate = async () => {
@@ -77,7 +78,7 @@ const SavedAddressModule = () => {
         toast.success("Profile updated successfully!");
         // update user data in local storage
 
-        history.push(`/userProfile?name=${formData?.fname}`)
+        // history.push(`/userProfile?name=${formData?.fname}`)
 
         Storage.set("userData", JSON.stringify(userData?.data))
         

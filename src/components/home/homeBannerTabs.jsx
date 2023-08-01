@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { Link } from "react-router-dom";
-import { getNumberWithComma } from "../../utils/utils";
+import { getFirstLetterCapital, getNumberWithComma } from "../../utils/utils";
 import BestSellingSection from "./bestSellingSection";
 import SaveButton from "../common/save";
 import { Box, Skeleton } from "@mui/material";
@@ -20,8 +20,8 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
     setMenuList(data ?? []);
     setSingleCollection(singleData)
     setTotalProduct(data?.reduce((acc, item) => { return acc + item?.totalProducts ?? 0 } , 0) ?? 0)
-
   }, [data, singleData]);
+
 
   return (
     <>
@@ -361,8 +361,8 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
             <div className="shop_hald_wrap">
               <div className="shop_hald_inner">
                 <div className="shop_hald_info new_shop_info">
-                  <Link to="/" className="d-flex align-items-center">
-                    <h3>Shop Haldi Gallery</h3>
+                  <Link to={`/allProduct/${selectedMenu}`} className="d-flex align-items-center">
+                    <h3>Shop {getFirstLetterCapital(selectedMenu)}</h3>
                     <svg
                       width="19"
                       height="19"
@@ -384,7 +384,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                       />
                     </svg>
                   </Link>
-                  <p>64 Designs • Updated Monthly</p>
+                  <p>{ menuList?.find((item) => item?.name === selectedMenu)?.totalProducts ?? 0} Designs • Updated Monthly</p>
                 </div>
                 <div className="shop_second_section">
                 <div className="shop_hald_info">
@@ -437,7 +437,8 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
                       />
                     </svg>
                   </Link>
-                  <p>{totalProduct}+ Products</p>
+                  <p
+                  >{totalProduct}+ Products</p>
                 </div>
                 </div>
               </div>

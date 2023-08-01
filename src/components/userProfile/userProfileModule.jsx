@@ -31,9 +31,11 @@ const UserProfileModule = () => {
               {/* <h5 style={{ fontSize: '16px' }}>Total : {getNumberWithComma(Number(list?.total_amount))}</h5> */}
             </div>
             {list?.items?.map(item => (
+              
               <div className="userProfileModule_box_list">
                 <div>
-                  <h3 className="text-ellipsis-width">{item?.product_name}</h3>
+                  <h3 className="text-ellipsis-width">{item?.productDetails?.name}
+                  </h3>
                   <span className="text-ellipsis-width" style={{
                     display: "block"
                   }}>{`${Object.values(item?.varients ?? {})?.join(" • ")}`}</span>

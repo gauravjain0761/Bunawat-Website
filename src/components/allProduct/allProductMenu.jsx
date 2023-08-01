@@ -7,6 +7,7 @@ import { Nav, Tab, Tabs } from 'react-bootstrap';
 import FooterStrip from '../footer/footerStrip';
 import { getFirstLetterCapital, getNumberWithComma } from '../../utils/utils';
 import SaveButton from '../common/save';
+import bridalImage from "../../assets/img/product/bridal.png"
 
 const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedIndex }) => {
     const [width, setWidth] = useState(window?.innerWidth);
@@ -110,6 +111,26 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                 return (
                                     <Tab eventKey={index} key={item?._id} title={getFirstLetterCapital(item?.name)}>
                                         <div className="row product_margin">
+
+                                            {singleList?.products?.length == 0 && (
+                                                <div className="col-md-12">
+                                                    <div className="no_product_found"
+                                                        style={{
+                                                            display: "flex",
+                                                            justifyContent: "center",
+                                                            alignItems: "center",
+                                                            height: "100%",
+                                                            width: "100%",
+                                                            fontSize: "1.5rem",
+                                                            fontWeight: "bold",
+                                                            color: "#000000"
+                                                        }}
+                                                    >
+                                                        No product found
+                                                    </div>
+                                                </div>
+                                            )}
+                                            
                                             {singleList?.products?.map((list, index) => {
                                                 return (
                                                     <>
@@ -117,7 +138,7 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                                             <div className="cloth_deatils_wrap category_cloth_deatils_wrap">
                                                                 <Link to={`/product/${list?._id}/${data?.[key]?.type ?? ""}`} className="cloth_deatils_link">
                                                                     <img src={
-                                                                       list?.sku_data?.find((item)=> item?.images?.length > 0)?.images[0]?.url || list?.image
+                                                                        list?.sku_data?.find((item) => item?.images?.length > 0)?.images[0]?.url || list?.image
                                                                     } alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "720px" : "560px"} />
                                                                 </Link>
                                                                 <div className="cloth_info_title cloth_info_title_changes">
@@ -168,6 +189,18 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                                     </>
                                                 )
                                             })}
+
+                                            {
+                                                singleList?.products?.length > 0 && (
+                                                    <>
+                                                        <div className="fix-padding-might_like_inner col-md-4">
+                                                            <img src={bridalImage} alt="cloth" className="product_below_image" width="100%" height="auto" />
+                                                        </div>
+                                                    </>
+                                                )
+                                            }
+
+
                                         </div>
                                     </Tab>
                                 )

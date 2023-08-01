@@ -246,7 +246,7 @@ const OrderConfirmation = () => {
                     <h3>Delivered</h3>
                     <p>
                       We’ve delivered your order. Hope you love it! <br />
-                      <a href="#" className="shippingStatusLink">Write a Review</a>
+                      {/* <a href="#" className="shippingStatusLink">Write a Review</a> */}
                     </p>
                     <Link to="/userProfile">
                       <div className="ordercConfirmation_top_help">
@@ -299,7 +299,7 @@ const OrderConfirmation = () => {
                       <div className="return_status_box_list">
                         <div>
                           <h6>{orderData?.data?.delivery_name}</h6>
-                          <span><BsCheckLg /> Delivered to Pune, MH</span>
+                          <span><BsCheckLg /> Delivered to {orderData?.data?.shipping_address?.city},{ orderData?.data?.shipping_address?.state}</span>
                         </div>
                         <div>
                           <h6>{orderData?.data?.delivery_id}</h6>

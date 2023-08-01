@@ -16,8 +16,14 @@ const UserProfile = () => {
   const [expanded, setExpanded] = useState(false)
   const history = useHistory();
 
+  const [user , setUser] = useState(userData?.fname ?? "User!")
+
   const urlParams = new URLSearchParams(window.location.search);
   const userName = urlParams.get('name');
+
+  const handleUserChange = (name) => {
+    setUser(name)
+  }
 
   return (
     <>
@@ -27,7 +33,7 @@ const UserProfile = () => {
             <Row>
               <Col xs={12} md={5}>
                 <div className='userProfile_man'>
-                  <h3>Hello {(userName ?? userData?.fname) ?? "User!"}</h3>
+                  <h3>Hello {(user) ?? "User!"}</h3>
                   <p>This is your space. Track events & orders and update your saved details from here.</p>
                 </div>
                 <div className='userProfile_menu'>
@@ -82,6 +88,7 @@ const UserProfile = () => {
                   <Tab.Pane eventKey="savedAddress">
                     <Container>
                       <SavedAddressModule
+                        handleUserChange={handleUserChange}
                       />
                     </Container>
                   </Tab.Pane>
@@ -97,7 +104,7 @@ const UserProfile = () => {
             <Row>
               <Col xs={12} md={5}>
                 <div className='userProfile_man'>
-                  <h3>Hello {userData?.fname ?? "User!"}</h3>
+                  <h3>Hello {user ?? "User!"}</h3>
                   <p>This is your space. Track events & orders and update your saved details from here.</p>
                 </div>
                 <div className='userProfile_menu'>
@@ -226,7 +233,9 @@ const UserProfile = () => {
                     <EventsClubModule />
                   </Tab.Pane>
                   <Tab.Pane eventKey="savedAddress">
-                    <SavedAddressModule />
+                    <SavedAddressModule 
+                    handleUserChange={handleUserChange}
+                    />
                   </Tab.Pane>
                 </Tab.Content>
               </Col>

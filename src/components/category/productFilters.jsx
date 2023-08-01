@@ -14,7 +14,6 @@ import { getFirstLetterCapital } from "../../utils/utils";
 
 function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
 
-
   const { data, error, isLoading } = useGetAttributeDataQuery()
   const [attributeData, setAttributeData] = useState([]);
   const [showPrice, setShowPrice] = useState(false);
@@ -452,8 +451,16 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
 
           {/* <button className="apply_btn">
             <span>Apply</span>
-          </button>
-          <button className="clear_btn">
+          </button> */}
+          <button className="clear_btn"
+            onClick={() => {
+              setSelectedId({ ...selectedId, sortBy: 0, atr : {}  })
+              setSelectedAttribute({})
+              setShowSelectFilter("")
+              handleClose()
+            }}
+              
+          >
             <span>Clear</span>
             <svg
               width="8"
@@ -487,7 +494,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                 </clipPath>
               </defs>
             </svg>
-          </button> */}
+          </button>
         </div>
       </div>
     </>

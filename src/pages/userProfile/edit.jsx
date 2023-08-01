@@ -13,6 +13,14 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 const ProdileEdit = () => {
     const userData = useSelector(state => state?.user?.userData);
     const [expanded, setExpanded] = useState(false)
+
+  const [user , setUser] = useState(userData?.fname ?? "User!")
+
+
+    
+  const handleUserChange = (name) => {
+    setUser(name)
+  }
     return (
         <>
             <div id='userProfile'>
@@ -29,7 +37,9 @@ const ProdileEdit = () => {
                                 </div>
                             </Col>
                             <Col xs={12} md={7}>
-                                <SavedAddressModule />
+                                <SavedAddressModule 
+                                handleUserChange = {handleUserChange}
+                                />
                             </Col>
                         </Row>
                     </Tab.Container>
