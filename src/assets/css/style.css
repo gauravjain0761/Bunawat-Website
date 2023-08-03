@@ -1371,6 +1371,14 @@ li.common_option_wrap {
     font-weight: 600;
 }
 
+.updated_clear_btn{
+    padding : 26px 24px;
+    margin-top: -20px;
+    margin-bottom: -20px;
+    height: 100%;
+    align-items: center;
+}
+
 .disabled-btn {
     background-color: #2A359250;
 }

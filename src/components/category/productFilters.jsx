@@ -452,7 +452,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
           {/* <button className="apply_btn">
             <span>Apply</span>
           </button> */}
-          <button className="clear_btn"
+          <button className="clear_btn updated_clear_btn"
             onClick={() => {
               setSelectedId({ ...selectedId, sortBy: 0, atr : {}  })
               setSelectedAttribute({})

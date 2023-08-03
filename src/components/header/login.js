@@ -31,6 +31,13 @@ const Login = ({ activeHeader, handleAccountClose }) => {
         }).catch((error) => toast.error(error?.data?.message))
     };
 
+    const handleResendOtp = async () => {
+        await sendOtp({ phone: loginData?.phone ?? "" }).unwrap().then((data) => {
+            setOtpverify(true)
+            toast.success("OTP sent successfully")
+        }).catch((error) => toast.error(error?.data?.message))
+    };
+
     const handleLogin = async () => {
         await otpMatch({ ...loginData, otp: Number(loginData.otp) }).unwrap().then(async (data) => {
             getNotifyToken().then(async (token) => {
@@ -272,7 +279,9 @@ const Login = ({ activeHeader, handleAccountClose }) => {
                                         </svg>
                                         <span>Change number</span>
                                     </button>
-                                    <button className="resend_btn">
+                                    <button className="resend_btn"
+                                     onClick={handleResendOtp}
+                                    >
                                         <span>Resend OTP</span>
                                         <svg
                                             width="9"

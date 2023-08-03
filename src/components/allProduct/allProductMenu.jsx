@@ -16,6 +16,7 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
     const [key, setKey] = useState(0);
     const [menuList, setMenuList] = React.useState(data ?? [])
     const [singleList, setSingleList] = React.useState(singleData ?? [])
+    const [type, setType] = React.useState(data?.[0]?.type ?? "")
 
     const handleWindowResize = () => {
         setWidth(window?.innerWidth);
@@ -107,9 +108,13 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                 })
                             }}
                             className="tab_section">
+                               
                             {menuList.map((item, index) => {
                                 return (
-                                    <Tab eventKey={index} key={item?._id} title={getFirstLetterCapital(item?.name)}>
+                                    <Tab 
+                                    eventKey={index} key={item?._id} title={getFirstLetterCapital(item?.name)}
+                                        onEnter={() => { setType(item?.type) }}
+                                    >
                                         <div className="row product_margin">
 
                                             {singleList?.products?.length == 0 && (
@@ -189,12 +194,15 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                                     </>
                                                 )
                                             })}
-
                                             {
-                                                singleList?.products?.length > 0 && (
+                                                (singleList?.products?.length > 0 && type !== "COLLECTION") && (
                                                     <>
                                                         <div className="fix-padding-might_like_inner col-md-4">
-                                                            <img src={bridalImage} alt="cloth" className="product_below_image" width="100%" height="auto" />
+                                                            <img src={bridalImage} alt="cloth" className="product_below_image" width="100%" height="auto" 
+                                                                onClick={() => 
+                                                                    setKey(menuList?.findIndex((item) => item?.type == "COLLECTION") ?? 0)
+                                                                }  
+                                                            />
                                                         </div>
                                                     </>
                                                 )
