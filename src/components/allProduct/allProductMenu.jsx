@@ -17,6 +17,8 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
     const [menuList, setMenuList] = React.useState(data ?? [])
     const [singleList, setSingleList] = React.useState(singleData ?? [])
     const [type, setType] = React.useState(data?.[0]?.type ?? "")
+    const [collectionName, setCollectionName] = React.useState(data?.[0]?.name ?? "")
+    const [products, setProducts] = React.useState(singleData?.products ?? [])
 
     const handleWindowResize = () => {
         setWidth(window?.innerWidth);
@@ -29,9 +31,41 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
         }
     }, []);
 
+
     useEffect(() => {
         setMenuList(data ?? []);
         setSingleList(singleData)
+
+        const collections = singleData?.collections?.filter((item) => (item?.name !== collectionName && item?.image))?.map((ele) => {
+            return {
+                ...ele,
+                isCollection: true
+            }
+        })
+
+        let temp = singleData?.products?.length ? [...singleData?.products] : []
+        if (singleData?.products?.length == 0) {
+            temp = []
+        } else if (singleData?.products?.length == 1) {
+            console.log(collections[0])
+            temp = [...singleData?.products, collections[0]]
+        } else {
+
+            // for(let i=0; i<collections.length; i++) {
+            // const randomIndex = Math.floor(Math.random() * singleData?.products?.length) + 1
+            //     temp.splice(randomIndex + i, 0, collections[i])
+            // }
+
+            for (let i = 0; i < collections.length; i++) {
+                const randomIndex = Math.floor(Math.random() * (temp.length - 2)) + 1;
+                temp.splice(randomIndex, 0, collections[i]);
+            }
+            
+
+        }
+
+        setProducts(temp)
+      
     }, [data, singleData]);
 
     useEffect(() => {
@@ -108,16 +142,18 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                 })
                             }}
                             className="tab_section">
-
                             {menuList.map((item, index) => {
                                 return (
                                     <Tab
                                         eventKey={index} key={item?._id} title={getFirstLetterCapital(item?.name)}
-                                        onEnter={() => { setType(item?.type) }}
+                                        onEnter={() => {
+                                            setType(item?.type)
+                                            setCollectionName(item?.name)
+                                        }}
                                     >
                                         <div className="row product_margin">
 
-                                            {singleList?.products?.length == 0 && (
+                                            {products?.length == 0 && (
                                                 <div className="col-md-12">
                                                     <div className="no_product_found"
                                                         style={{
@@ -136,145 +172,236 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                                 </div>
                                             )}
 
-                                            {singleList?.products?.map((list, index) => {
-                                                return (
-                                                    <>
-                                                        <div className={`fix-padding-might_like_inner ${getClassWidth(index, singleList?.products?.length)}`} >
-                                                            <div className="cloth_deatils_wrap category_cloth_deatils_wrap">
-                                                                <Link to={`/product/${list?._id}/${data?.[key]?.type ?? ""}`} className="cloth_deatils_link">
-                                                                    <img src={
-                                                                        list?.sku_data?.find((item) => item?.images?.length > 0)?.images[0]?.url || list?.image
-                                                                    } alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "720px" : "560px"} />
-                                                                </Link>
-                                                                <div className="cloth_info_title cloth_info_title_changes">
-                                                                    <div style={{ cursor: 'pointer' }} className="summer_list_link_wrap mobile_summer_list_link_wrap" onClick={() => history.push(`/product/${list?._id}/${data?.[key]?.type ?? ""}`)}>
-                                                                        <div className="summer_list_link ">
-                                                                            <p className='summer_list_link_wrap_white summer_list_link_wrap_changes'>{list?.name}</p>
-                                                                            <span>
-                                                                                <svg
-                                                                                    width="9"
-                                                                                    height="10"
-                                                                                    viewBox="0 0 9 10"
-                                                                                    fill="none"
-                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                >
-                                                                                    <g clipPath="url(#clip0_367_1219)">
-                                                                                        <path
-                                                                                            d="M0.599976 1.42999H7.98998V8.81999"
-                                                                                            stroke={(width >= 768) ? "#2A3592" : "#fff"}
-                                                                                            strokeWidth="1.7"
-                                                                                            strokeMiterlimit="10"
-                                                                                        />
-                                                                                        <path
-                                                                                            d="M0.599976 8.81999L7.98998 1.42999"
-                                                                                            stroke={(width >= 768) ? "#2A3592" : "#fff"}
-                                                                                            strokeWidth="1.7"
-                                                                                            strokeMiterlimit="10"
-                                                                                        />
-                                                                                    </g>
-                                                                                    <defs>
-                                                                                        <clipPath id="clip0_367_1219">
-                                                                                            <rect
-                                                                                                width="8.84"
-                                                                                                height="8.84"
-                                                                                                fill="white"
-                                                                                                transform="translate(0 0.580017)"
+                                            {products?.map((list, index) => {
+                                                if (!list?.isCollection) {
+                                                    return (
+                                                        <>
+                                                            <div className={`fix-padding-might_like_inner ${getClassWidth(index, singleList?.products?.length)}`} >
+                                                                <div className="cloth_deatils_wrap category_cloth_deatils_wrap">
+                                                                    <Link to={`/product/${list?._id}/${data?.[key]?.type ?? ""}`} className="cloth_deatils_link">
+                                                                        <img src={
+                                                                            list?.sku_data?.find((item) => item?.images?.length > 0)?.images[0]?.url || list?.image
+                                                                        } alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "720px" : "560px"}
+                                                                        />
+                                                                    </Link>
+                                                                    <div className="cloth_info_title cloth_info_title_changes">
+                                                                        <div style={{ cursor: 'pointer' }} className="summer_list_link_wrap mobile_summer_list_link_wrap" onClick={() => history.push(`/product/${list?._id}/${data?.[key]?.type ?? ""}`)}>
+                                                                            <div className="summer_list_link ">
+                                                                                <p className='summer_list_link_wrap_white summer_list_link_wrap_changes'>{list?.name}</p>
+                                                                                <span>
+                                                                                    <svg
+                                                                                        width="9"
+                                                                                        height="10"
+                                                                                        viewBox="0 0 9 10"
+                                                                                        fill="none"
+                                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                                    >
+                                                                                        <g clipPath="url(#clip0_367_1219)">
+                                                                                            <path
+                                                                                                d="M0.599976 1.42999H7.98998V8.81999"
+                                                                                                stroke={(width >= 768) ? "#2A3592" : "#fff"}
+                                                                                                strokeWidth="1.7"
+                                                                                                strokeMiterlimit="10"
                                                                                             />
-                                                                                        </clipPath>
-                                                                                    </defs>
-                                                                                </svg>
-                                                                            </span>
+                                                                                            <path
+                                                                                                d="M0.599976 8.81999L7.98998 1.42999"
+                                                                                                stroke={(width >= 768) ? "#2A3592" : "#fff"}
+                                                                                                strokeWidth="1.7"
+                                                                                                strokeMiterlimit="10"
+                                                                                            />
+                                                                                        </g>
+                                                                                        <defs>
+                                                                                            <clipPath id="clip0_367_1219">
+                                                                                                <rect
+                                                                                                    width="8.84"
+                                                                                                    height="8.84"
+                                                                                                    fill="white"
+                                                                                                    transform="translate(0 0.580017)"
+                                                                                                />
+                                                                                            </clipPath>
+                                                                                        </defs>
+                                                                                    </svg>
+                                                                                </span>
+                                                                            </div>
+                                                                            <p className='summer_list_link_wrap_white summer_list_link_wrap_changes price_number_head'>{getNumberWithComma(list?.sale_price ?? 0)}</p>
                                                                         </div>
-                                                                        <p className='summer_list_link_wrap_white summer_list_link_wrap_changes price_number_head'>{getNumberWithComma(list?.sale_price ?? 0)}</p>
+                                                                        <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={(width >= 768)} selectedId={selectedId} setSelectedId={setSelectedId} />
                                                                     </div>
-                                                                    <SaveButton id={list?._id} isWishlist={list?.isWishlist} isBlue={(width >= 768)} selectedId={selectedId} setSelectedId={setSelectedId} />
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        {
-                                                            (list?.collections && list?.collections?.length > 0) && list?.collections.filter((item) => item?.image).map((collection, index) => {
-                                                                return (
-                                                                    <>
-                                                                        <div className="fix-padding-might_like_inner col-md-4">
-                                                                            <div className="cloth_deatils_wrap category_cloth_deatils_wrap">
-                                                                                <img src={
-                                                                                    collection?.image
-                                                                                }
-                                                                                    alt="cloth" className="product_below_image" width="100%"
-                                                                                    //  height={getHeightData(singleList?.products?.length).includes(index) ? "720px" : "560px"}
-                                                                                    height={"100%"}
-                                                                                />
-                                                                                <div className="collection_part">
-                                                                                    <div style={{ cursor: 'pointer' }} className="summer_list_link_wrap mobile_summer_list_link_wrap"
-                                                                                     onClick={() => {
-                                                                                        setKey(menuList?.findIndex((item) => item?.name == collection?.name) ?? 0)
-                                                                                        setSelectedId({
-                                                                                            ...selectedId,
-                                                                                            id: menuList?.[menuList?.findIndex((item) => item?.name == collection?.name) ?? 0]?._id ?? "",
-                                                                                            type: menuList?.[menuList?.findIndex((item) => item?.name == collection?.name) ?? 0]?.type ?? ""
-                                                                                        })
-                                                                                     }}
-                                                                                     >
-                                                                                        <p className='collection_name_head'>
-                                                                                            The {getFirstLetterCapital(collection?.name)} Collection
-                                                                                        </p>
-                                                                                        <div
-                                                                                            style={{
-                                                                                                display: "flex",
-                                                                                                justifyContent: "space-between",
-                                                                                                alignItems: "center",
-                                                                                                width: "100%"
-                                                                                            }}
-                                                                                        >
-                                                                                            <p className='collection_name_head_Unique'>
-                                                                                                Explore {list?.collection_products} Unique Design
+
+                                                        </>
+                                                    )
+                                                } else {
+                                                    return (
+                                                        <>
+                                                            <div className={`fix-padding-might_like_inner ${getClassWidth(index, singleList?.products?.length)}`} >
+                                                                <div className="cloth_deatils_wrap category_cloth_deatils_wrap">
+                                                                    <img src={
+                                                                        list?.image
+                                                                    }
+                                                                        alt="cloth" className="product_below_image" width="100%"
+                                                                        //  height={getHeightData(singleList?.products?.length).includes(index) ? "720px" : "560px"}
+                                                                        height={"100%"}
+                                                                    />
+                                                                    <div className="collection_part">
+                                                                        <div style={{ cursor: 'pointer' }} className="summer_list_link_wrap mobile_summer_list_link_wrap"
+                                                                            onClick={() => {
+                                                                                setKey(menuList?.findIndex((item) => item?.name == list?.name) ?? 0)
+                                                                                setSelectedId({
+                                                                                    ...selectedId,
+                                                                                    id: menuList?.[menuList?.findIndex((item) => item?.name == list?.name) ?? 0]?._id ?? "",
+                                                                                    type: menuList?.[menuList?.findIndex((item) => item?.name == list?.name) ?? 0]?.type ?? ""
+                                                                                })
+                                                                                window.scrollTo(0, 0)
+                                                                            }}
+                                                                        >
+                                                                            <p className='collection_name_head'>
+                                                                                The {getFirstLetterCapital(list?.name)} Collection
+                                                                            </p>
+                                                                            <div
+                                                                                style={{
+                                                                                    display: "flex",
+                                                                                    justifyContent: "space-between",
+                                                                                    alignItems: "center",
+                                                                                    width: "100%"
+                                                                                }}
+                                                                            >
+                                                                                <p className='collection_name_head_Unique'>
+                                                                                    Explore {list?.totalProducts} Unique Design
+                                                                                </p>
+                                                                                <span>
+                                                                                    <svg
+                                                                                        width="9"
+                                                                                        height="10"
+                                                                                        viewBox="0 0 9 10"
+                                                                                        fill="none"
+                                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                                    >
+                                                                                        <g clipPath="url(#clip0_367_1219)">
+                                                                                            <path
+                                                                                                d="M0.599976 1.42999H7.98998V8.81999"
+                                                                                                stroke={(width >= 768) ? "#fff" : "#fff"}
+                                                                                                strokeWidth="1.7"
+                                                                                                strokeMiterlimit="10"
+                                                                                            />
+                                                                                            <path
+                                                                                                d="M0.599976 8.81999L7.98998 1.42999"
+                                                                                                stroke={(width >= 768) ? "#fff" : "#fff"}
+                                                                                                strokeWidth="1.7"
+                                                                                                strokeMiterlimit="10"
+                                                                                            />
+                                                                                        </g>
+                                                                                        <defs>
+                                                                                            <clipPath id="clip0_367_1219">
+                                                                                                <rect
+                                                                                                    width="8.84"
+                                                                                                    height="8.84"
+                                                                                                    fill="white"
+                                                                                                    transform="translate(0 0.580017)"
+                                                                                                />
+                                                                                            </clipPath>
+                                                                                        </defs>
+                                                                                    </svg>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                            {/* {
+                                                                (list?.collections && list?.collections?.length > 0) && list?.collections.filter((item) => 
+                                                                ( item?.image && item?.name != collectionName)
+                                                                ).map((collection, index) => {
+    
+                                                                    return (
+                                                                        <>
+                                                                            <div className="fix-padding-might_like_inner col-md-4">
+                                                                                <div className="cloth_deatils_wrap category_cloth_deatils_wrap">
+                                                                                    <img src={
+                                                                                        collection?.image
+                                                                                    }
+                                                                                        alt="cloth" className="product_below_image" width="100%"
+                                                                                        //  height={getHeightData(singleList?.products?.length).includes(index) ? "720px" : "560px"}
+                                                                                        height={"100%"}
+                                                                                    />
+                                                                                    <div className="collection_part">
+                                                                                        <div style={{ cursor: 'pointer' }} className="summer_list_link_wrap mobile_summer_list_link_wrap"
+                                                                                         onClick={() => {
+                                                                                            setKey(menuList?.findIndex((item) => item?.name == collection?.name) ?? 0)
+                                                                                            setSelectedId({
+                                                                                                ...selectedId,
+                                                                                                id: menuList?.[menuList?.findIndex((item) => item?.name == collection?.name) ?? 0]?._id ?? "",
+                                                                                                type: menuList?.[menuList?.findIndex((item) => item?.name == collection?.name) ?? 0]?.type ?? ""
+                                                                                            })
+                                                                                            window.scrollTo(0, 0)
+                                                                                         }}
+                                                                                         >
+                                                                                            <p className='collection_name_head'>
+                                                                                                The {getFirstLetterCapital(collection?.name)} Collection
                                                                                             </p>
-                                                                                            <span>
-                                                                                                <svg
-                                                                                                    width="9"
-                                                                                                    height="10"
-                                                                                                    viewBox="0 0 9 10"
-                                                                                                    fill="none"
-                                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                                >
-                                                                                                    <g clipPath="url(#clip0_367_1219)">
-                                                                                                        <path
-                                                                                                            d="M0.599976 1.42999H7.98998V8.81999"
-                                                                                                            stroke={(width >= 768) ? "#fff" : "#fff"}
-                                                                                                            strokeWidth="1.7"
-                                                                                                            strokeMiterlimit="10"
-                                                                                                        />
-                                                                                                        <path
-                                                                                                            d="M0.599976 8.81999L7.98998 1.42999"
-                                                                                                            stroke={(width >= 768) ? "#fff" : "#fff"}
-                                                                                                            strokeWidth="1.7"
-                                                                                                            strokeMiterlimit="10"
-                                                                                                        />
-                                                                                                    </g>
-                                                                                                    <defs>
-                                                                                                        <clipPath id="clip0_367_1219">
-                                                                                                            <rect
-                                                                                                                width="8.84"
-                                                                                                                height="8.84"
-                                                                                                                fill="white"
-                                                                                                                transform="translate(0 0.580017)"
+                                                                                            <div
+                                                                                                style={{
+                                                                                                    display: "flex",
+                                                                                                    justifyContent: "space-between",
+                                                                                                    alignItems: "center",
+                                                                                                    width: "100%"
+                                                                                                }}
+                                                                                            >
+                                                                                                <p className='collection_name_head_Unique'>
+                                                                                                    Explore {list?.collection_products} Unique Design
+                                                                                                </p>
+                                                                                                <span>
+                                                                                                    <svg
+                                                                                                        width="9"
+                                                                                                        height="10"
+                                                                                                        viewBox="0 0 9 10"
+                                                                                                        fill="none"
+                                                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                                                    >
+                                                                                                        <g clipPath="url(#clip0_367_1219)">
+                                                                                                            <path
+                                                                                                                d="M0.599976 1.42999H7.98998V8.81999"
+                                                                                                                stroke={(width >= 768) ? "#fff" : "#fff"}
+                                                                                                                strokeWidth="1.7"
+                                                                                                                strokeMiterlimit="10"
                                                                                                             />
-                                                                                                        </clipPath>
-                                                                                                    </defs>
-                                                                                                </svg>
-                                                                                            </span>
+                                                                                                            <path
+                                                                                                                d="M0.599976 8.81999L7.98998 1.42999"
+                                                                                                                stroke={(width >= 768) ? "#fff" : "#fff"}
+                                                                                                                strokeWidth="1.7"
+                                                                                                                strokeMiterlimit="10"
+                                                                                                            />
+                                                                                                        </g>
+                                                                                                        <defs>
+                                                                                                            <clipPath id="clip0_367_1219">
+                                                                                                                <rect
+                                                                                                                    width="8.84"
+                                                                                                                    height="8.84"
+                                                                                                                    fill="white"
+                                                                                                                    transform="translate(0 0.580017)"
+                                                                                                                />
+                                                                                                            </clipPath>
+                                                                                                        </defs>
+                                                                                                    </svg>
+                                                                                                </span>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
+    
+                                                                        </>
+                                                                    )
+                                                                })
+                                                            } */}
+                                                        </>
+                                                    )
+                                                }
 
-                                                                    </>
-                                                                )
-                                                            })
-                                                        }
-                                                    </>
-                                                )
+
                                             })}
                                             {/* {
                                                 (singleList?.products?.length > 0) && (
@@ -303,7 +430,7 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                 <FooterStrip />
             </div>
             <ProductFilters singleData={singleData} selectedId={selectedId} setSelectedId={setSelectedId} />
-        </div>
+        </div >
     )
 }
 
