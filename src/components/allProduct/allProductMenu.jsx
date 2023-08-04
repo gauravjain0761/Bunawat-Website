@@ -108,11 +108,11 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                 })
                             }}
                             className="tab_section">
-                               
+
                             {menuList.map((item, index) => {
                                 return (
-                                    <Tab 
-                                    eventKey={index} key={item?._id} title={getFirstLetterCapital(item?.name)}
+                                    <Tab
+                                        eventKey={index} key={item?._id} title={getFirstLetterCapital(item?.name)}
                                         onEnter={() => { setType(item?.type) }}
                                     >
                                         <div className="row product_margin">
@@ -135,7 +135,7 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                                     </div>
                                                 </div>
                                             )}
-                                            
+
                                             {singleList?.products?.map((list, index) => {
                                                 return (
                                                     <>
@@ -191,22 +191,104 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        {
+                                                            (list?.collections && list?.collections?.length > 0) && list?.collections.filter((item) => item?.image).map((collection, index) => {
+                                                                return (
+                                                                    <>
+                                                                        <div className="fix-padding-might_like_inner col-md-4">
+                                                                            <div className="cloth_deatils_wrap category_cloth_deatils_wrap">
+                                                                                <img src={
+                                                                                    collection?.image
+                                                                                }
+                                                                                    alt="cloth" className="product_below_image" width="100%"
+                                                                                    //  height={getHeightData(singleList?.products?.length).includes(index) ? "720px" : "560px"}
+                                                                                    height={"100%"}
+                                                                                />
+                                                                                <div className="collection_part">
+                                                                                    <div style={{ cursor: 'pointer' }} className="summer_list_link_wrap mobile_summer_list_link_wrap"
+                                                                                     onClick={() => {
+                                                                                        setKey(menuList?.findIndex((item) => item?.name == collection?.name) ?? 0)
+                                                                                        setSelectedId({
+                                                                                            ...selectedId,
+                                                                                            id: menuList?.[menuList?.findIndex((item) => item?.name == collection?.name) ?? 0]?._id ?? "",
+                                                                                            type: menuList?.[menuList?.findIndex((item) => item?.name == collection?.name) ?? 0]?.type ?? ""
+                                                                                        })
+                                                                                     }}
+                                                                                     >
+                                                                                        <p className='collection_name_head'>
+                                                                                            The {getFirstLetterCapital(collection?.name)} Collection
+                                                                                        </p>
+                                                                                        <div
+                                                                                            style={{
+                                                                                                display: "flex",
+                                                                                                justifyContent: "space-between",
+                                                                                                alignItems: "center",
+                                                                                                width: "100%"
+                                                                                            }}
+                                                                                        >
+                                                                                            <p className='collection_name_head_Unique'>
+                                                                                                Explore {list?.collection_products} Unique Design
+                                                                                            </p>
+                                                                                            <span>
+                                                                                                <svg
+                                                                                                    width="9"
+                                                                                                    height="10"
+                                                                                                    viewBox="0 0 9 10"
+                                                                                                    fill="none"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                >
+                                                                                                    <g clipPath="url(#clip0_367_1219)">
+                                                                                                        <path
+                                                                                                            d="M0.599976 1.42999H7.98998V8.81999"
+                                                                                                            stroke={(width >= 768) ? "#fff" : "#fff"}
+                                                                                                            strokeWidth="1.7"
+                                                                                                            strokeMiterlimit="10"
+                                                                                                        />
+                                                                                                        <path
+                                                                                                            d="M0.599976 8.81999L7.98998 1.42999"
+                                                                                                            stroke={(width >= 768) ? "#fff" : "#fff"}
+                                                                                                            strokeWidth="1.7"
+                                                                                                            strokeMiterlimit="10"
+                                                                                                        />
+                                                                                                    </g>
+                                                                                                    <defs>
+                                                                                                        <clipPath id="clip0_367_1219">
+                                                                                                            <rect
+                                                                                                                width="8.84"
+                                                                                                                height="8.84"
+                                                                                                                fill="white"
+                                                                                                                transform="translate(0 0.580017)"
+                                                                                                            />
+                                                                                                        </clipPath>
+                                                                                                    </defs>
+                                                                                                </svg>
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </>
+                                                                )
+                                                            })
+                                                        }
                                                     </>
                                                 )
                                             })}
-                                            {
-                                                (singleList?.products?.length > 0 && type !== "COLLECTION") && (
+                                            {/* {
+                                                (singleList?.products?.length > 0) && (
                                                     <>
                                                         <div className="fix-padding-might_like_inner col-md-4">
-                                                            <img src={bridalImage} alt="cloth" className="product_below_image" width="100%" height="auto" 
-                                                                onClick={() => 
+                                                            <img src={bridalImage} alt="cloth" className="product_below_image" width="100%" height="auto"
+                                                                onClick={() =>
                                                                     setKey(menuList?.findIndex((item) => item?.type == "COLLECTION") ?? 0)
-                                                                }  
+                                                                }
                                                             />
                                                         </div>
                                                     </>
                                                 )
-                                            }
+                                            } */}
 
 
                                         </div>
