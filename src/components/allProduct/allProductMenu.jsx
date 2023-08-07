@@ -36,6 +36,13 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
         setMenuList(data ?? []);
         setSingleList(singleData)
 
+        let temp = singleData?.products?.length ? [...singleData?.products] : []
+
+        if(singleData?.collections?.length == 0){
+            setProducts(temp)
+            return
+        }
+
         const collections = singleData?.collections?.filter((item) => (item?.name !== collectionName && item?.image))?.map((ele) => {
             return {
                 ...ele,
@@ -43,25 +50,17 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
             }
         })
 
-        let temp = singleData?.products?.length ? [...singleData?.products] : []
         if (singleData?.products?.length == 0) {
             temp = []
         } else if (singleData?.products?.length == 1) {
-            console.log(collections[0])
             temp = [...singleData?.products, collections[0]]
         } else {
 
-            // for(let i=0; i<collections.length; i++) {
-            // const randomIndex = Math.floor(Math.random() * singleData?.products?.length) + 1
-            //     temp.splice(randomIndex + i, 0, collections[i])
-            // }
-
-            for (let i = 0; i < collections.length; i++) {
+            for (let i = 0; i < collections?.length; i++) {
                 const randomIndex = Math.floor(Math.random() * (temp.length - 2)) + 1;
                 temp.splice(randomIndex, 0, collections[i]);
             }
             
-
         }
 
         setProducts(temp)
