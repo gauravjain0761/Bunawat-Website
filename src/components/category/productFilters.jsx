@@ -390,7 +390,9 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
           <div className="common_select_wrap">
             <FormControl>
               {showPrice && (
-                <ClickAwayListener onClickAway={() => setShowPrice(false)}>
+                <ClickAwayListener 
+                // onClickAway={() => setShowPrice(false)}
+                >
                   <div className="price_select_wrap_box">
                     <Box className="price_select_wrap_box_child" sx={{ background: "#F2F4FF" }}>
                       <h6>From</h6>
