@@ -78,6 +78,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                     <MenuItem onClick={() => {
                       setSelectedId({ ...selectedId, sortBy: 0 })
                       setShowMostPopularMobile(false)
+                      setShowSelectFilter("Newest")
                       window.scrollTo(0, 0)
                     }} className="common_option_wrap common_option_wrap_bg">
                       <div className="common_option">
@@ -88,6 +89,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                     <MenuItem onClick={() => {
                       setSelectedId({ ...selectedId, sortBy: 1 })
                       setShowMostPopularMobile(false)
+                      setShowSelectFilter("Affordable")
                       window.scrollTo(0, 0)
                     }} className="common_option_wrap">
                       <div className="common_option">
@@ -100,6 +102,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                     <MenuItem onClick={() => {
                       setSelectedId({ ...selectedId, sortBy: 2 })
                       setShowMostPopularMobile(false)
+                      setShowSelectFilter("Luxurious")
                       window.scrollTo(0, 0)
                     }} className="common_option_wrap common_option_wrap_bg">
                       <div className="common_option">
@@ -108,6 +111,15 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                           {" "}
                           Highest Price first
                         </span>
+                      </div>
+                    </MenuItem>
+                    <MenuItem onClick={() => {
+                      setSelectedId({ ...selectedId, sortBy: 3,  })
+                      setShowSelectFilter("Most Popular")
+                      setShowMostPopularMobile(false)
+                    }} className="common_option_wrap">
+                      <div className="common_option">
+                        <p className="common_option_p">Most Popular</p>
                       </div>
                     </MenuItem>
                   </div>
@@ -126,7 +138,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                 }
               }} className="common_option_wrap">
                 <div className="common_option">
-                  <p className="common_option_p">Most Popular</p>
+                  <p className="common_option_p"> {showSelectFilter ? showSelectFilter : "Sort By"}</p>
                   {
                     !showMostPopularMobile && <svg
                       style={{ rotate: showMostPopularMobile ? "0deg" : "180deg" }}

@@ -312,6 +312,24 @@
      width: 160px !important;
  }
 
+
+
+ @media screen and (max-width: 768px) {
+    .no_product_found {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #000000;
+        flex : 1 1 100% !important;
+        max-width: 100% !important;
+        height: 180px !important;
+    }   
+ }
+
  @media screen and (max-width:374px) {
      .kind_common_option_wrap {
          background-color: #F2F4FF !important;

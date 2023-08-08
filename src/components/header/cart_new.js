@@ -14,7 +14,7 @@ import saved_7 from '../../assets/img/saved/saved_7.png';
 import { toast } from 'react-toastify';
 import saved_8 from '../../assets/img/saved/saved_8.png';
 import { useEditCartMutation, useGetAllCartQuery, useGetAllWishlistQuery, useRemoveCartItemMutation } from '../../services/api';
-import { getNumberWithComma } from '../../utils/utils';
+import { getFirstLetterCapital, getNumberWithComma } from '../../utils/utils';
 import Storage from '../../services/storage';
 import { setCartCount } from '../../redux/reducers/cart';
 import { useDispatch } from 'react-redux';
@@ -57,6 +57,23 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout,isMobile=
             }
         }
     }
+    
+    const handleCheckoutQtyCheck = () => {
+        const temp = [...cartList];
+        if (temp?.length > 0) {
+            const check = temp.find((list) => {
+                return list?.qty > list?.sku?.inStock_qty
+            })
+
+            if (!check) {
+                handleCheckout()
+            } else {
+                toast.error(`Available stock for ${getFirstLetterCapital(check?.sku?.varients?.color)} • ${getFirstLetterCapital(check?.sku?.varients?.material)} is ${check?.sku?.inStock_qty}`)
+            }
+        } else {
+            toast.error('Please add product to cart')
+        }
+    }
 
     const handleIncrement = async (index) => {
         let temp = [...cartList]
@@ -69,6 +86,7 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout,isMobile=
             await editCart({ id: temp[index]?._id, qty: temp[index].qty + 1 }).unwrap().then((data) => {
             }).catch((error) => toast.error(error?.data?.message))
         } else {
+
             temp[index] = { ...temp[index], qty: temp[index].qty + 1 }
             Storage.set('cartData', JSON.stringify(temp))
             dispatch(setCartCount(temp?.length))
@@ -176,7 +194,6 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout,isMobile=
                 </Box>
             </Box>
 
-            {console.log(isMobile,"isMobile")}
             {key == 'cart' ? <Box className='cart_wrapper' sx={{
                 height: '-webkit-fill-available',
                 overflow: 'auto',
@@ -270,7 +287,7 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout,isMobile=
                     }
                 </>
                 {cartList?.length > 0 ?
-                    <button type="button" className="checkout_btn" onClick={handleCheckout}>
+                    <button type="button" className="checkout_btn" onClick={()=>handleCheckoutQtyCheck()}>
                         <span>Checkout</span>
                         <span>
                             {/* <s>{getNumberWithComma(cartPrice?.total)}</s> */}

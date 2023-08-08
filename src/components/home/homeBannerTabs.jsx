@@ -19,7 +19,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
     setLoading(false)
     setMenuList(data ?? []);
     setSingleCollection(singleData)
-    setTotalProduct(data?.reduce((acc, item) => { return acc + item?.totalProducts ?? 0 } , 0) ?? 0)
+    setTotalProduct(data?.reduce((acc, item) => { return acc + (item?.totalProducts ?? 0) } , 0) ?? 0)
   }, [data, singleData]);
 
 

@@ -153,22 +153,11 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                         <div className="row product_margin">
 
                                             {products?.length == 0 && (
-                                                <div className="col-md-12">
-                                                    <div className="no_product_found"
-                                                        style={{
-                                                            display: "flex",
-                                                            justifyContent: "center",
-                                                            alignItems: "center",
-                                                            height: "100%",
-                                                            width: "100%",
-                                                            fontSize: "1.5rem",
-                                                            fontWeight: "bold",
-                                                            color: "#000000"
-                                                        }}
-                                                    >
+                                                // <div className="col-md-12">
+                                                    <div className="no_product_found">
                                                         No product found
                                                     </div>
-                                                </div>
+                                                // </div>
                                             )}
 
                                             {products?.map((list, index) => {
@@ -239,7 +228,7 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                                                     <img src={
                                                                         list?.image
                                                                     }
-                                                                        alt="cloth" className="product_below_image" width="100%"
+                                                                        alt="cloth" className="product_below_image_collection" width="100%"
                                                                         //  height={getHeightData(singleList?.products?.length).includes(index) ? "720px" : "560px"}
                                                                         height={"100%"}
                                                                     />

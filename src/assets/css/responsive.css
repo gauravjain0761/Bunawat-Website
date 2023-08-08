@@ -297,6 +297,10 @@
         height: 266px !important;
     }
 
+    .product_below_image_collection{
+        height: 100% !important;
+    }
+
     .product_above_image {
         height: 300px !important;
     }
