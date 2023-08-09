@@ -173,7 +173,7 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
                                     <SaveButton id={singleProduct?._id} isWishlist={singleProduct?.isWishlist} isBlue={true} refetch={refetch} />
                                 </div>
                                 <div className="common_product_details">
-                                    <div className='parse-description'>{parse(singleProduct?.description ?? "")}</div>
+                                    <div className='parse-description product_description_parse'>{parse(singleProduct?.description ?? "")}</div>
                                     {/* <div style={{ marginTop: '25px' }}>
                                         Club members get <span>10% off. </span>
                                         <Link to="" className="product_link new_product_link">
