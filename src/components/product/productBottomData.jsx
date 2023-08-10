@@ -220,7 +220,7 @@ const ProductBottomData = ({ productId, videoLoading, singleProduct, productInde
                                 </div>
 
                                 <div className="stock_list" onMouseEnter={() => setSwipeableDisable(true)} onTouchStart={() => setSwipeableDisable(true)}>
-                                    <ul>
+                                    <ul className="list_style_not_visible">
                                         <li>
                                             <div className="stock_main_wrap">
                                                 <div className="stock_title_wrap">

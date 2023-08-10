@@ -541,7 +541,7 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
                         </div>
                     </div>
                     <div className="slaman_link display_none_in_mobile">
-                        <ul className="color_list">
+                        <ul className="color_list list_style_not_visible">
                             {/* {
                                 selectedData?.color?.label && (
                                     <div

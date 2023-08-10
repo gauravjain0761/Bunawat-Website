@@ -14,7 +14,7 @@ const FooterStrip = () => {
           }
         }}>
         <div className="footer_header_wrap">
-          <ul>
+          <ul className="list_style_not_visible">
             <li className="mobile_footer_strip_menu">
               <Link to="/allProduct" className="d-flex align-items-center">
                 <p>Shop All</p>

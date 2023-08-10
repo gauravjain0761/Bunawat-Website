@@ -99,7 +99,7 @@ export const SelectModal = ({ showSelect, handleClose, attributeList, attributeD
                     })}
                     <div className="slaman_link" style={{ marginTop: "2px", backgroundColor: "#F2F4FF", padding: "1rem" }}>
                         <p>Salmon Pink</p>
-                        <ul className="color_list">
+                        <ul className="color_list list_style_not_visible">
                             <li
                                 className="active"
                                 style={{ border: "1px solid #000", backgroundColor: filterList?.find(list => list?._id == Object.values(attributeData)?.filter(list => list != 'defaultValue')?.slice(-1)?.[0])?.swatch }}
@@ -458,7 +458,7 @@ const ProductPageFilter = ({ filters, swipeableIndex, selectedProduct, selectedI
                     </div>
                     <div className="slaman_link display_none_in_mobile">
                         <p>Salmon Pink</p>
-                        <ul className="color_list">
+                        <ul className="color_list list_style_not_visible">
                             <li
                                 className="active"
                                 style={{ border: "1px solid #000", backgroundColor: filterList?.find(list => list?._id == Object.values(attributeData)?.filter(list => list != 'defaultValue')?.slice(-1)?.[0])?.swatch }}

@@ -150,7 +150,7 @@ function Footer() {
                     Here are some amazing tips for you to keep in mind while
                     shopping online:
                   </p>
-                  <ul>
+                  <ul className="list_style_not_visible">
                     <li>
                       Before you make a purchasing decision just make sure you
                       check your current wardrobe and identify your
@@ -174,7 +174,7 @@ function Footer() {
                     dresses to go with the occasions. Here are some amazing
                     tips to know your personal style –{" "}
                   </p>
-                  <ul>
+                  <ul className="list_style_not_visible">
                     <li>
                       A good quality fabric is the most important factor to
                       consider while selecting an ethnic wear, so always choose
@@ -204,7 +204,7 @@ function Footer() {
                     you a time limit to return or exchange your products in case
                     there is any problem.{" "}
                   </p>
-                  <ul>
+                  <ul className="list_style_not_visible">
                     <li>We offer great discounts and cashback.</li>
                     <li>
                       You can check the ratings and reviews of the products

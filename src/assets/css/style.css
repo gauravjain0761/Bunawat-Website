@@ -145,7 +145,7 @@ a:hover {
 
 ul,
 li {
-    list-style: none;
+    /* list-style: none; */
     padding: 0;
     margin: 0;
 }
@@ -2949,4 +2949,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 .product_description_parse{
     line-height: 26px !important;
+}
+
+.list_style_not_visible li {
+    list-style: none;
 }

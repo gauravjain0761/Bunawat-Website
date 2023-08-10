@@ -276,7 +276,7 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
                                 </div>
 
                                 <div className="stock_list">
-                                    <ul>
+                                    <ul className="list_style_not_visible">
                                         <li>
                                             <div className="stock_main_wrap">
                                                 <div className="stock_title_wrap">
@@ -616,7 +616,7 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
                                     ></li>
                                     <li style={{ backgroundColor: "#037A44" }}></li>
                                 </ul> */}
-                                <ul className="color_list">
+                                <ul className="color_list list_style_not_visible">
                                     {/* {_.uniqBy(product?.attributeList?.color, x => x?.label)?.length > 0 && _.uniqBy(product?.attributeList?.color, x => x?.label)?.map((color, index) => (
                                         <li
                                             className="active"
