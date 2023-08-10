@@ -681,8 +681,7 @@
     .product_slider_height,
     .product_slider_video_height,
     .product_slider_img_height {
-        /* height: calc(100vh - 241px); */
-        height: 100vh;
+        height: calc(100vh - 241px);
         width: 100%;
     }
 
@@ -1112,6 +1111,11 @@
 
     .new_parse_description p {
         line-height: 40px;
+    }
+
+    .new_parse_description ul{
+        line-height: 33px !important;
+        margin-left: 17px;
     }
 
     .new_product_price_wrap {

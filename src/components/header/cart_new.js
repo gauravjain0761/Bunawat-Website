@@ -218,7 +218,7 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout,isMobile=
                                     </Link>
                                 </div>
                                 <div className="cart_product_info">
-                                    <h3>{cart?.sku?.product_name}</h3>
+                                    <h3>{cart?.productDetails?.name}</h3>
                                     <p>{`${Object.values(cart?.sku?.varients ?? {})?.join(" • ")}`}</p>
                                     <div className='quantiy_wrapper'>
                                         <p>Qty</p>
