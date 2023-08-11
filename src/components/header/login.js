@@ -25,6 +25,8 @@ const Login = ({ activeHeader, handleAccountClose }) => {
         otp: ''
     });
 
+    console.log("otpverify", otpverify)
+
     const handleSendOtp = async () => {
         await sendOtp({ phone: loginData?.phone ?? "" }).unwrap().then((data) => {
             setOtpverify(true)

@@ -20,20 +20,20 @@ const VideoComponent = ({ url, index, width }) => {
             <div className="product_left_details" style={width ? (index == 2 ? { paddingLeft: '88px' } : {}) : {}}>
                 {index == 0 &&
                     <>
-                        <p>Structured Fabric</p>
-                        <span>Keeps its shape</span>
+                        <p>Elegant Design</p>
+                        <span>Wear on any Occasion</span>
                     </>
                 }
                 {index == 1 &&
                     <>
-                        <p>Quality Embroidery</p>
+                        <p>Beautiful Embroidery</p>
                         <span>Hand-made by artisans</span>
                     </>
                 }
                 {index == 2 &&
                     <>
-                        <p>Pleated Pajama Pants</p>
-                        <span>Pair it with</span>
+                        <p>Quality Fabric</p>
+                        <span>Flowy and Comfortable</span>
                     </>
                 }
             </div>

@@ -36,7 +36,7 @@ const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData, payme
             return (
               <div className="checkout_box_list">
                 <div>
-                  <h3>{cart?.sku?.product_name}</h3>
+                  <h3>{cart?.productDetails?.name}</h3>
                   <span>{`${Object.values(cart?.sku?.varients ?? {})?.join(" • ")}`}</span>
                 </div>
                 <div>

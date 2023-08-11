@@ -134,7 +134,7 @@ function Header() {
     }
 
     const onChagewalletbar = (pathname) => {
-        var mypath = ["/allProduct", "/product", "/checkout", "/orderConfirmation", "/userProfile","/returnTerm","/privacyPolicy","/konwTheStory","/termsAndConditions", "/helpSupport","/reviews", "/404", "/returns", "/sizeGuide", "/paymentOptions", "/trackOrder", "/login"].some(x => pathname.startsWith(x))
+        var mypath = ["/allProduct", "/product", "/checkout", "/orderConfirmation", "/userProfile", "/returnTerm", "/privacyPolicy", "/konwTheStory", "/termsAndConditions", "/helpSupport", "/reviews", "/404", "/returns", "/sizeGuide", "/paymentOptions", "/trackOrder", "/login"].some(x => pathname.startsWith(x))
         if (mypath) {
             setHeaderColor(true);
         }
@@ -475,10 +475,14 @@ function Header() {
                                         }
                                     }}
                                     endIcon={
-                                        <Box sx={{ borderRadius: "50%", width: "20px", height: "20px", background: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                                            <Typography sx={{ fontSize: "10px", fontWeight: 700, color: getActiveHeader(scroll, hover, headerColor) ? "#fff" : "#000000" }}>{countData}</Typography>
-                                        </Box>
-                                    }>
+                                        (countData > 0) ? (
+                                            <Box sx={{ borderRadius: "50%", width: "20px", height: "20px", background: getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                                <Typography sx={{ fontSize: "10px", fontWeight: 700, color: getActiveHeader(scroll, hover, headerColor) ? "#fff" : "#000000" }}>{countData}</Typography>
+                                            </Box>
+                                        ) : null
+                                    }
+
+                                >
                                     <svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clipPath="url(#clip0_6112_2688)">
                                             <path d="M20.1199 9.34985H3.14993L1.23993 22.7399H22.0199L20.1199 9.34985Z" stroke={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} strokeWidth="1.7" strokeMiterlimit="10" />
@@ -513,6 +517,26 @@ function Header() {
                                     <Cart data={cartData} activeHeader={getActiveHeader(scroll, hover, headerColor)} handleCartClose={handleCartClose} handleCheckout={handleCheckout} />
                                 </CustomPopOver>
                             </Box>
+
+                            {/* // favorite icon */}
+                            {/* <Box>
+                                <IconButton
+                                    // aria-describedby={favorite}
+                                    // onClick={handleFavoriteClick}
+                                    sx={{
+                                        marginLeft: '10px',
+                                        '@media (max-width: 768px)': {
+                                            marginLeft: '0px',
+                                        }
+                                    }}
+                                >
+                                    <svg width="23" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                                    </svg>
+                                </IconButton>
+                                
+                            </Box> */}
+
 
                             {/* <div className="common_select_wrap">
                                 <FormControl>

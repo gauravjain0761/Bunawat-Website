@@ -6,6 +6,18 @@ import Storage from '../../services/storage';
 const SaveButton = ({ id, isWishlist, isBlue = false, selectedId, setSelectedId, refetch }) => {
     const [addToWishlist] = useAddToWishlistMutation(undefined, {})
     const [removeWishlist] = useRemoveWishlistMutation(undefined, {})
+    const [width, setWidth] = React.useState(window.innerWidth);
+
+    const handleWindowResize = () => {
+        setWidth(window.innerWidth);
+    }
+
+    React.useEffect(() => {
+        window.addEventListener('resize', handleWindowResize);
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        }
+    }, []);
 
     const addWishlist = async (id) => {
         await addToWishlist({ data: [id] }).unwrap().then((data) => {
@@ -70,7 +82,9 @@ const SaveButton = ({ id, isWishlist, isBlue = false, selectedId, setSelectedId,
                             addWishlist(id)
                         }
                     } else {
-                        toast.error("Login required!")
+                        {(width < 768) ?
+                            window.location.href = "/login"
+                            :  toast.error("Login required!")}
                     }
                 }}>
                     <p>{isWishlist ? "Saved" : "Save"}</p>
