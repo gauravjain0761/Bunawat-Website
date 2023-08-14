@@ -128,7 +128,7 @@ const FilterModalForMobile = ({ showFilter, handleClose, setSelectedId, selected
                     <Box className="price_select_wrap_box_child" sx={{ background: "#F2F4FF" }}>
                       <h6>From</h6>
                       <div className="price_select_wrap_box_child_data">
-                        <input type="text" placeholder="₹1000" style={{ backgroundColor: "#f2f4ff" }} />
+                        <input type="number" placeholder="₹0" style={{ backgroundColor: "#f2f4ff" }} />
                         <span onClick={() => setShowPrice(false)}>
                           <TiDeleteOutline />
                         </span>
@@ -137,7 +137,7 @@ const FilterModalForMobile = ({ showFilter, handleClose, setSelectedId, selected
                     <div className="price_select_wrap_box_child">
                       <h6>To</h6>
                       <div className="price_select_wrap_box_child_data">
-                        <input type="text" placeholder="₹3500" />
+                        <input type="number" placeholder="₹0" />
                         <span onClick={() => setShowPrice(false)}>
                           <TiDeleteOutline />
                         </span>

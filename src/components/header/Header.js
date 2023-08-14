@@ -51,6 +51,9 @@ function Header() {
         selectedCategoriesIndex: -1,
         selectedSubCategoriesIndex: -1
     });
+
+    const [openKey, setOpenKey] = React.useState(null);
+
     const [width, setWidth] = React.useState(window.innerWidth);
     const handleWindowResize = () => {
         setWidth(window.innerWidth);
@@ -465,9 +468,10 @@ function Header() {
                                     aria-describedby={cart}
                                     // onClick={handleCartClick}
                                     // onClick={() => setIsCart(true)}
-                                    onClick={() =>
-                                        width < 768 ? history.push('/cart') : setIsCart(true)
-                                    }
+                                    onClick={() =>{
+                                        setOpenKey('cart')
+                                        width < 768 ? history.push(`/cart?openKey=cart`) : setIsCart(true);
+                                    }}
                                     sx={{
                                         marginLeft: '10px',
                                         '@media (max-width: 768px)': {
@@ -518,11 +522,14 @@ function Header() {
                                 </CustomPopOver>
                             </Box>
 
-                            {/* // favorite icon */}
-                            {/* <Box>
-                                <IconButton
+                            <Box>
+                                <Button
                                     // aria-describedby={favorite}
                                     // onClick={handleFavoriteClick}
+                                    onClick={() =>{
+                                        setOpenKey('saved')
+                                        width < 768 ? history.push(`/cart?openKey=saved`) : setIsCart(true);
+                                    }}
                                     sx={{
                                         marginLeft: '10px',
                                         '@media (max-width: 768px)': {
@@ -533,9 +540,8 @@ function Header() {
                                     <svg width="23" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke={getActiveHeader(scroll, hover, headerColor) ? "#2A3592" : "#fff"} class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                                     </svg>
-                                </IconButton>
-                                
-                            </Box> */}
+                                </Button>
+                            </Box>
 
 
                             {/* <div className="common_select_wrap">
@@ -578,7 +584,7 @@ function Header() {
                             height: '-webkit-fill-available',
                             margin: { xs: '60px 0 0px 0', sm: '60px 25px 0 0' }
                         }}>
-                            <NewCart data={cartData} activeHeader={getActiveHeader(scroll, hover, headerColor)} handleCartClose={handleCartClose} handleCheckout={handleCheckout} />
+                            <NewCart data={cartData} activeHeader={getActiveHeader(scroll, hover, headerColor)} handleCartClose={handleCartClose} handleCheckout={handleCheckout} openKey={openKey}/>
                         </Box>
                     </ClickAwayListener>
                     : null}

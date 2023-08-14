@@ -13,6 +13,9 @@ const Cart = () => {
 
   const history = useHistory();
 
+  const urlParams = new URLSearchParams(window.location.search);
+  const openKey = urlParams.get('openKey');
+
   const getActiveHeader = (scroll, hover, headerColor) => {
     if (scroll) {
       return true
@@ -81,7 +84,7 @@ const Cart = () => {
         }}
         className="cart-container-inner"
       >
-        <NewCart data={cartData} activeHeader={false} handleCartClose={() => { }} handleCheckout={handleCheckout} isMobile={true}/>
+        <NewCart data={cartData} activeHeader={false} handleCartClose={() => { }} handleCheckout={handleCheckout} isMobile={true} openKey={openKey}/>
       </div>
     </div>
   );

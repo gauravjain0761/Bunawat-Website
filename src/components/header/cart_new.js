@@ -21,8 +21,8 @@ import { useDispatch } from 'react-redux';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { Box } from '@mui/material';
 
-const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout,isMobile=false}) => {
-    const [key, setKey] = useState('cart');
+const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout,isMobile=false , openKey='cart'}) => {
+    const [key, setKey] = useState(openKey);
     const [cartList, setCartList] = useState([]);
     const [removeCartItem] = useRemoveCartItemMutation()
     const { data: wishlistData } = useGetAllWishlistQuery()

@@ -40,7 +40,8 @@ const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData, payme
                   <span>{`${Object.values(cart?.sku?.varients ?? {})?.join(" • ")}`}</span>
                 </div>
                 <div>
-                  <h3>{getNumberWithComma(Number(cart?.price) * Number(cart?.qty))}</h3>
+                  {/* <h3>{getNumberWithComma(Number(cart?.price) * Number(cart?.qty))}</h3> */}
+                  <h3>₹{(Number(cart?.price) * Number(cart?.qty))}</h3>
                 </div>
               </div>
             )

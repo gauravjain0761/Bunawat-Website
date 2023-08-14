@@ -8,6 +8,7 @@ import FooterStrip from '../footer/footerStrip';
 import { getFirstLetterCapital, getNumberWithComma } from '../../utils/utils';
 import SaveButton from '../common/save';
 import bridalImage from "../../assets/img/product/bridal.png"
+import { CircularProgress } from '@mui/material';
 
 const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedIndex }) => {
     const [width, setWidth] = useState(window?.innerWidth);
@@ -18,19 +19,23 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
     const [singleList, setSingleList] = React.useState(singleData ?? [])
     const [type, setType] = React.useState(data?.[0]?.type ?? "")
     const [collectionName, setCollectionName] = React.useState(data?.[0]?.name ?? "")
-    const [products, setProducts] = React.useState(singleData?.products ?? [])
+    const [products, setProducts] = React.useState(singleData?.products ?? []);
+    const [isLoading, setIsLoading] = React.useState(false);
 
     const handleWindowResize = () => {
         setWidth(window?.innerWidth);
     }
 
     useEffect(() => {
+        setIsLoading(true)
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 1500);
         window.addEventListener('resize', handleWindowResize);
         return () => {
             window.removeEventListener('resize', handleWindowResize);
         }
     }, []);
-
 
     useEffect(() => {
         setMenuList(data ?? []);
@@ -38,33 +43,32 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
 
         let temp = singleData?.products?.length ? [...singleData?.products] : []
 
-        if(singleData?.collections?.length == 0){
-            setProducts(temp)
-            return
-        }
-
-        const collections = singleData?.collections?.filter((item) => (item?.name !== collectionName && item?.image))?.map((ele) => {
-            return {
-                ...ele,
-                isCollection: true
-            }
-        })
-
-        if (singleData?.products?.length == 0) {
-            temp = []
-        } else if (singleData?.products?.length == 1) {
-            temp = [...singleData?.products, collections[0]]
+        if (singleData?.collections?.length == 0) {
+            setProducts(temp);
+            return;
         } else {
+            const collections = singleData?.collections?.filter((item) => (item?.name !== collectionName && item?.image))?.map((ele) => {
+                return {
+                    ...ele,
+                    isCollection: true
+                }
+            })
 
-            for (let i = 0; i < collections?.length; i++) {
-                const randomIndex = Math.floor(Math.random() * (temp.length - 2)) + 1;
-                temp.splice(randomIndex, 0, collections[i]);
+            if (singleData?.products?.length == 0) {
+                temp = []
+            } else if (singleData?.products?.length == 1) {
+                temp = [...singleData?.products, collections[0]]
+            } else {
+
+                for (let i = 0; i < collections?.length; i++) {
+                    const randomIndex = Math.floor(Math.random() * (temp.length - 2)) + 1;
+                    temp.splice(randomIndex, 0, collections[i]);
+                }
+
             }
-            
+            setProducts(temp)
         }
 
-        setProducts(temp)
-      
     }, [data, singleData]);
 
     useEffect(() => {
@@ -151,14 +155,13 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                         }}
                                     >
                                         <div className="row product_margin">
-
-                                            {products?.length == 0 && (
-                                                // <div className="col-md-12">
-                                                    <div className="no_product_found">
-                                                        No product found
+                                            {
+                                                isLoading && (
+                                                    <div className='loader_wrap_product'>
+                                                        <CircularProgress />
                                                     </div>
-                                                // </div>
-                                            )}
+                                                )
+                                            }
 
                                             {products?.map((list, index) => {
                                                 if (!list?.isCollection) {
@@ -391,6 +394,16 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
 
 
                                             })}
+
+                                            {(products?.length == 0 && !isLoading) && (
+                                                // <div className="col-md-12">
+                                                <div className="no_product_found">
+                                                    No product found
+                                                </div>
+                                                // </div>
+                                            )}
+
+
                                             {/* {
                                                 (singleList?.products?.length > 0) && (
                                                     <>
