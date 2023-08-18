@@ -170,6 +170,25 @@ export const AllApiData = createApi({
                 }
             },
         }),
+        onlinePayment: builder.mutation({
+            query(body) {
+                return {
+                    url: `online_payment`,
+                    method: 'POST',
+                    body,
+                }
+            },
+        }),
+        verifyOnlinePayment: builder.mutation({
+            query(body) {
+                return {
+                    url: `verify_online_payment`,
+                    method: 'POST',
+                    body,
+                }
+            },
+            invalidatesTags: ['Cart', 'Order'],
+        }),
         getTrackOrder: builder.mutation({
             query({ id }) {
                 return {
@@ -209,4 +228,4 @@ export const AllApiData = createApi({
     }),
 })
 
-export const { useSendOtpMutation, useOtpMatchMutation, useGetShopMenuDataQuery, useGetProductQuery, useAddToCartMutation, useGetAllCartQuery, useRemoveCartItemMutation, useEditCartMutation, useAddOrderMutation, useOrderListQuery, useAddToWishlistMutation, useGetAllWishlistQuery, useRemoveWishlistMutation, useCustomerUpdateMutation, useGetCustomerDataQuery, useGetAttributeDataQuery, useAddProductReviewMutation, useCouponApplyMutation, useGetDatabyIdWithFiltersMutation, useMakePaymentMutation, useGetTrackOrderMutation, useGetOrderByIdQuery, useDeviceTokenMutation, useLogoutDeviceTokenMutation, useOrderReturnMutation } = AllApiData
+export const { useSendOtpMutation, useOtpMatchMutation, useGetShopMenuDataQuery, useGetProductQuery, useAddToCartMutation, useGetAllCartQuery, useRemoveCartItemMutation, useEditCartMutation, useAddOrderMutation, useOrderListQuery, useAddToWishlistMutation, useGetAllWishlistQuery, useRemoveWishlistMutation, useCustomerUpdateMutation, useGetCustomerDataQuery, useGetAttributeDataQuery, useAddProductReviewMutation, useCouponApplyMutation, useGetDatabyIdWithFiltersMutation, useMakePaymentMutation,useOnlinePaymentMutation,useVerifyOnlinePaymentMutation, useGetTrackOrderMutation, useGetOrderByIdQuery, useDeviceTokenMutation, useLogoutDeviceTokenMutation, useOrderReturnMutation } = AllApiData

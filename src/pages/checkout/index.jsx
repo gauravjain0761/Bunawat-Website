@@ -11,7 +11,7 @@ import MakePayment from "../../components/checkout/MakePayment";
 import { toast } from 'react-toastify';
 import { Box } from "@mui/system";
 import { useSelector } from "react-redux";
-import { useAddOrderMutation, useGetAllCartQuery, useMakePaymentMutation } from "../../services/api";
+import { useAddOrderMutation, useGetAllCartQuery, useMakePaymentMutation, useOnlinePaymentMutation, useVerifyOnlinePaymentMutation } from "../../services/api";
 import Storage from "../../services/storage";
 import { DEFULT_STATE } from "../../constant/storage";
 import { getNumberWithComma } from "../../utils/utils";
@@ -20,6 +20,8 @@ import NewFooter from "../../components/newFooter/footerStrip";
 const Checkout = () => {
   const [addOrder] = useAddOrderMutation(undefined, {})
   const [makePayment] = useMakePaymentMutation(undefined, {})
+  const [onlinePayment] = useOnlinePaymentMutation(undefined, {})
+  const [verifyOnlinePayment] = useVerifyOnlinePaymentMutation(undefined, {})
   const { data, error, isLoading } = useGetAllCartQuery(undefined, { skip: !Storage.isUserAuthenticated() })
   const [cartData, setCartData] = useState([]);
   const [paymentMode, setPaymentMode] = useState('online');
@@ -156,7 +158,7 @@ const Checkout = () => {
     if (tempError?.fname || tempError?.lname || tempError?.email || tempError?.phone || tempError?.address_1 || tempError?.address_2 || tempError?.pincode || tempError?.city || tempError?.state) {
       setFormError(tempError)
     } else {
-      if (cartData?.length > 0) {
+      if (cartData?.length > 0 && paymentMode == "cod") {
         await addOrder({
           user_type: userData?.user_type,
           user: userData?._id,
@@ -208,29 +210,117 @@ const Checkout = () => {
             (coutinLogicWithoutCoupon(cartData)?.gst_amount ?? 0),
 
         }).unwrap().then(async (responce) => {
-          if (responce?.data?.payment_mode == "ONLINE") {
-            await makePayment({
-              order_id: responce?.data?._id
-            }).unwrap().then((data) => {
-              if (data?.data?.order_info) {
-                var rzp1 = new window.Razorpay({
-                  ...data?.data?.order_info, key: process.env.REACT_APP_RAZORPAY_KEY, handler: function (response) {
-                    console.log("==============Success==========")
-                    window?.location?.replace(window.location.origin + `/orderConfirmation/${responce?.data?._id}`)
-                  }
-                });
-                rzp1.open();
-                rzp1.on('payment.failed', function (response) {
-                  console.log("==============Fail==========")
-                  // window?.location?.replace(window.location.origin + "/orderConfirmation")
-                })
-              }
-            }).catch((error) => toast.error(error?.data?.message))
-          } else {
-            history.push("/orderConfirmation/" + responce?.data?._id)
-          }
+          history.push("/orderConfirmation/" + responce?.data?._id)
+
+          // if (responce?.data?.payment_mode == "ONLINE") {
+          //   await makePayment({
+          //     order_id: responce?.data?._id
+          //   }).unwrap().then((data) => {
+          //     if (data?.data?.order_info) {
+          //       var rzp1 = new window.Razorpay({
+          //         ...data?.data?.order_info, key: process.env.REACT_APP_RAZORPAY_KEY, handler: function (response) {
+          //           console.log("==============Success==========")
+          //           // callback url call
+          //           window?.location?.replace(window.location.origin + `/orderConfirmation/${responce?.data?._id}`)
+          //         }
+          //       });
+          //       rzp1.open();
+          //       rzp1.on('payment.failed', function (response) {
+          //         console.log("==============Fail==========")
+          //         // window?.location?.replace(window.location.origin + "/orderConfirmation")
+          //       })
+          //     }
+          //   }).catch((error) => toast.error(error?.data?.message))
+          // } else {
+          //   history.push("/orderConfirmation/" + responce?.data?._id)
+          // }
           // history.push("/userProfile")
         }).catch((error) => toast.error(error?.data?.message))
+
+      } else if (cartData?.length > 0 && paymentMode == "online") {
+
+        const orderPayload = {
+          user_type: userData?.user_type,
+          user: userData?._id,
+          billing_address: formData ?? {},
+          isSame: true,
+          shipping_address: formData ?? {},
+          payment_mode: paymentMode?.toUpperCase() ?? "ONLINE",
+          total_items: cartData?.length,
+          total_qty: cartData?.reduce((total, list) => {
+            return total + Number(list?.qty)
+          }, 0),
+          items: (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.map(list => ({
+            ...list,
+            sku_id: list?.sku?._id
+          })) ?? [] : cartData?.map(list => ({
+            ...list,
+            sku_id: list?.sku?._id
+          })) ?? [],
+          gst_available: false,
+          total_amount: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ?
+            (coutinLogicWithCoupon(couponData)?.total ?? 0)
+            :
+            (coutinLogicWithoutCoupon(cartData)?.total ?? 0),
+
+          discount_amount: (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.reduce((t, x) => t + Number(x?.discounted_amount ?? 0), 0) ?? 0 : 0,
+
+          discount_coupon: couponData?.coupon_id,
+
+          gst_amount: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ?
+            (coutinLogicWithCoupon(couponData)?.gst_amount ?? 0)
+            :
+            (coutinLogicWithoutCoupon(cartData)?.gst_amount ?? 0),
+
+
+          cgst_amount: userData?.state == DEFULT_STATE ? (((cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ?
+            (coutinLogicWithCoupon(couponData)?.gst_amount ?? 0)
+            :
+            (coutinLogicWithoutCoupon(cartData)?.gst_amount ?? 0)) / 2) : 0,
+
+
+          sgst_amount: userData?.state == DEFULT_STATE ? (((cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ?
+            (coutinLogicWithCoupon(couponData)?.gst_amount ?? 0)
+            :
+            (coutinLogicWithoutCoupon(cartData)?.gst_amount ?? 0)) / 2) : 0,
+
+          igst_amount: userData?.state == DEFULT_STATE ? 0 : (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ?
+            (coutinLogicWithCoupon(couponData)?.gst_amount ?? 0)
+            :
+            (coutinLogicWithoutCoupon(cartData)?.gst_amount ?? 0),
+
+        }
+        
+        await onlinePayment({amount : orderPayload?.total_amount}).unwrap().then(async (responce) => {
+
+          if (responce?.data) {
+            const rzp1 = new window.Razorpay({
+              ...responce?.data, key: process.env.REACT_APP_RAZORPAY_KEY, handler: function (response) {
+                if(response?.razorpay_payment_id){
+                  verifyOnlinePayment({
+                    ...response,
+                    orderPayload
+                  }).unwrap().then((data) => {
+                    if(data?.data?.data?._id){
+                      toast.success("Payment Successfull")
+                      history.push("/orderConfirmation/" + data?.data?.data?._id)
+                    } else {
+                      toast.error("Something went wrong")
+                    }
+
+                  }).catch((error) => toast.error(error?.data?.message))
+                }
+              }
+            });
+            rzp1.open();
+            rzp1.on('payment.failed', function (response) {
+              console.log("==============Fail==========")
+              toast.error("Payment Failed")
+            })
+          }
+          
+        }).catch((error) => toast.error(error?.data?.message))
+
       }
     }
   }
