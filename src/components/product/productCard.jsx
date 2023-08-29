@@ -44,7 +44,7 @@ const ProductCard = ({ singleProduct, product, videoLoading, productIndex, simil
         let swatchColorListData = skuData?.map((data) => {
             return {
                 color: data?.varients?.color,
-                lable: data?.swatch,
+                lable: data?.swatch ?? data?.varients?.color,
                 value: data?._id
             }
         })

@@ -17,7 +17,7 @@ export default function useProjectData(productFilter) {
         let swatchColorList = temp?.map((data) => {
             return {
                 color: data?.varients?.color,
-                lable: data?.swatch,
+                lable: data?.swatch ?? data?.varients?.color,
                 value: data?._id
             }
         })
@@ -25,7 +25,8 @@ export default function useProjectData(productFilter) {
         const newSwatchColorList = []
 
         for (const colorList of swatchColorList) {
-            if (!colorList?.lable) {
+            if (!colorList?.color) {
+            // if (!colorList?.lable) {
                 continue
             }
             const existingColor = newSwatchColorList.find(
@@ -50,12 +51,13 @@ export default function useProjectData(productFilter) {
         })
         const data = _.uniqBy(tempAttributeList?.color, x => x?.label)?.length > 0 ? _.uniqBy(tempAttributeList?.color, x => x?.label) : []
         tempLastSkuData = temp?.find(list => list?._id == data?.[0]?.value) ?? {}
+
         return {
             attributeList: tempAttributeList,
             attributeData: tempAttributeData,
             filterList: temp,
             lastSkuData: tempLastSkuData,
-            swatchColorList: newSwatchColorList ?? []
+            swatchColorList: newSwatchColorList.length > 0 ? newSwatchColorList : []
         }
     }
 
@@ -76,6 +78,7 @@ export default function useProjectData(productFilter) {
                         swatchColorList: getList(list?.skus ?? [])?.swatchColorList,
                     }
                 })
+
                 setGetAllProject((product) => {
                     if (productFilter.page == 1) {
                         return (
