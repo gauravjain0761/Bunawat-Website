@@ -291,11 +291,20 @@ const Checkout = () => {
 
         }
         
-        await onlinePayment({amount : orderPayload?.total_amount}).unwrap().then(async (responce) => {
+        await onlinePayment({amount : orderPayload?.total_amount , orderPayload }).unwrap().then(async (responce) => {
 
           if (responce?.data) {
+            const { message,...rest } = responce?.data;
+
+            // show toast
+            if(message?.length > 0) {
+              for(let i = 0; i < message?.length; i++) {
+                toast.success(message[i])
+              }
+            }
+
             const rzp1 = new window.Razorpay({
-              ...responce?.data, key: process.env.REACT_APP_RAZORPAY_KEY, handler: function (response) {
+              ...rest, handler: function (response) {
                 if(response?.razorpay_payment_id){
                   verifyOnlinePayment({
                     ...response,

@@ -67,7 +67,7 @@ export const SelectModal = ({ showSelect, selectedData, handleClose, attributeLi
                                         </div>
                                     </div>
                                 </MenuItem>
-                                <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "small (s)")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "small (s)"))}>
+                                <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "S")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "S"))}>
                                     <div className="common_option">
                                         <p>
                                             <div className="common_option">
@@ -83,7 +83,7 @@ export const SelectModal = ({ showSelect, selectedData, handleClose, attributeLi
                                         </div>
                                     </div>
                                 </MenuItem>
-                                <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "Medium-(m)")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "Medium-(m)"))}>
+                                <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "M")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "M"))}>
                                     <div className="common_option">
                                         <p>
                                             <div className="common_option">
@@ -99,7 +99,7 @@ export const SelectModal = ({ showSelect, selectedData, handleClose, attributeLi
                                         </div>
                                     </div>
                                 </MenuItem>
-                                <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "Large-(L)")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "Large-(L)"))}>
+                                <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "L")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "L"))}>
                                     <div className="common_option">
                                         <p>
                                             <div className="common_option">
@@ -115,7 +115,7 @@ export const SelectModal = ({ showSelect, selectedData, handleClose, attributeLi
                                         </div>
                                     </div>
                                 </MenuItem>
-                                <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "xtra large")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "xtra large"))}>
+                                <MenuItem value={attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "XL")?.value} className="common_option_wrap" disabled={!(attributeList?.size?.filter(size => attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "XL"))}>
                                     <div className="common_option">
                                         <p>
                                             <div className="common_option">
@@ -366,7 +366,7 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
                                         </div>
                                     </MenuItem> */}
                                     {/* <MenuItem value={selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "small (s)")?.value} className="common_option_wrap" disabled={!(selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "small (s)"))}> */}
-                                    <MenuItem value={singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "small (s)" && list?.isActive == true)?._id} className="common_option_wrap" disabled={!(singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "small (s)" && list?.isActive == true))}>
+                                    <MenuItem value={singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "S" && list?.isActive == true)?._id} className="common_option_wrap" disabled={!(singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "S" && list?.isActive == true))}>
                                         <div className="common_option">
                                             <p>
                                                 <div className="common_option">
@@ -384,7 +384,7 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
                                         </div>
                                     </MenuItem>
                                     {/* <MenuItem value={selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "Medium-(m)")?.value} className="common_option_wrap" disabled={!(selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "Medium-(m)"))}> */}
-                                    <MenuItem value={singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "Medium-(m)" && list?.isActive == true)?._id} className="common_option_wrap" disabled={!(singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "Medium-(m)" && list?.isActive == true))}>
+                                    <MenuItem value={singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "M" && list?.isActive == true)?._id} className="common_option_wrap" disabled={!(singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "M" && list?.isActive == true))}>
                                         <div className="common_option">
                                             <p>
                                                 <div className="common_option">
@@ -402,7 +402,7 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
                                         </div>
                                     </MenuItem>
                                     {/* <MenuItem value={selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "Large-(L)")?.value} className="common_option_wrap" disabled={!(selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "Large-(L)"))}> */}
-                                    <MenuItem value={singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "Large-(L)" && list?.isActive == true)?._id} className="common_option_wrap" disabled={!(singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "Large-(L)" && list?.isActive == true))}>
+                                    <MenuItem value={singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "L" && list?.isActive == true)?._id} className="common_option_wrap" disabled={!(singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "L" && list?.isActive == true))}>
                                         <div className="common_option">
                                             <p>
                                                 <div className="common_option">
@@ -421,7 +421,7 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
                                     </MenuItem>
 
                                     {/* <MenuItem value={selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.find(x => x?.label == "Extra Large (XL)")?.value} className="common_option_wrap" disabled={!(selectedProduct?.attributeList?.size?.filter(size => selectedProduct?.attributeList?.color?.filter(x => x?.label == selectedData?.color?.label)?.map(x => x?.value)?.includes(size?.value))?.some(x => x?.label == "Extra Large (XL)"))}> */}
-                                    <MenuItem value={singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "Extra Large (XL)" && list?.isActive == true)?._id} className="common_option_wrap" disabled={!(singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "Extra Large (XL)" && list?.isActive == true))}>
+                                    <MenuItem value={singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "XL" && list?.isActive == true)?._id} className="common_option_wrap" disabled={!(singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "XL" && list?.isActive == true))}>
 
                                         <div className="common_option">
                                             <p>
@@ -439,7 +439,7 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
                                             </div>
                                         </div>
                                     </MenuItem>
-                                    <MenuItem value={singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "Plus Size (XXL)" && list?.isActive == true)?._id} className="common_option_wrap" disabled={!(singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "Plus Size (XXL)" && list?.isActive == true))}>
+                                    <MenuItem value={singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "XXL" && list?.isActive == true)?._id} className="common_option_wrap" disabled={!(singleProduct?.skus?.find(list => list?.varients?.color == selectedData?.color?.label && list?.inStock_qty > 0 && list?.varients?.size == "XXL" && list?.isActive == true))}>
                                         <div className="common_option">
                                             <p>
                                                 <div className="common_option">
