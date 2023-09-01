@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import "./checkout.css";
 import FooterStrip from "../../components/footer/footerStrip";
 import ApplyCouponModal from "../../components/checkout/ApplyCouponModal";
-import { FormControlLabel, Radio } from "@mui/material";
+import { Checkbox, FormControlLabel, Radio } from "@mui/material";
 import CodConfirmationModal from "../../components/checkout/CodConfirmationModal";
 import CheckoutForm from "../../components/checkout/CheckoutForm";
 import MakePayment from "../../components/checkout/MakePayment";
@@ -32,13 +32,15 @@ const Checkout = () => {
   const [formData, setFormData] = useState([]);
   const [formError, setFormError] = useState([]);
   const userData = useSelector(state => state?.user?.userData)
-  const [coupon, setCoupon] = useState("")
+  const [coupon, setCoupon] = useState("");
+  
 
   const handleCloseCodModal = () => setShowCodModal(false);
   const handleShowCodModal = () => setShowCodModal(true);
 
   const handleClose = () => setShowCoupon(false);
   const handleShow = () => setShowCoupon(true);
+
 
   useEffect(() => {
     if (data) {
@@ -210,6 +212,16 @@ const Checkout = () => {
             (coutinLogicWithoutCoupon(cartData)?.gst_amount ?? 0),
 
         }).unwrap().then(async (responce) => {
+
+          const { message, ...rest } = responce?.data;
+
+          // show toast
+          if (message?.length > 0) {
+            for (let i = 0; i < message?.length; i++) {
+              toast.success(message[i])
+            }
+          }
+
           history.push("/orderConfirmation/" + responce?.data?._id)
 
           // if (responce?.data?.payment_mode == "ONLINE") {
@@ -290,27 +302,27 @@ const Checkout = () => {
             (coutinLogicWithoutCoupon(cartData)?.gst_amount ?? 0),
 
         }
-        
-        await onlinePayment({amount : orderPayload?.total_amount , orderPayload }).unwrap().then(async (responce) => {
+
+        await onlinePayment({ amount: orderPayload?.total_amount, orderPayload }).unwrap().then(async (responce) => {
 
           if (responce?.data) {
-            const { message,...rest } = responce?.data;
+            const { message, ...rest } = responce?.data;
 
             // show toast
-            if(message?.length > 0) {
-              for(let i = 0; i < message?.length; i++) {
+            if (message?.length > 0) {
+              for (let i = 0; i < message?.length; i++) {
                 toast.success(message[i])
               }
             }
 
             const rzp1 = new window.Razorpay({
               ...rest, handler: function (response) {
-                if(response?.razorpay_payment_id){
+                if (response?.razorpay_payment_id) {
                   verifyOnlinePayment({
                     ...response,
                     orderPayload
                   }).unwrap().then((data) => {
-                    if(data?.data?.data?._id){
+                    if (data?.data?.data?._id) {
                       toast.success("Payment Successfull")
                       history.push("/orderConfirmation/" + data?.data?.data?._id)
                     } else {
@@ -327,12 +339,14 @@ const Checkout = () => {
               toast.error("Payment Failed")
             })
           }
-          
+
         }).catch((error) => toast.error(error?.data?.message))
 
       }
     }
   }
+
+
   return (
     <>
       <div id="checkout">
@@ -368,11 +382,40 @@ const Checkout = () => {
                 >
                   <Box sx={{ display: "flex", alignItems: 'center' }}>
                     <Box sx={{ marginRight: "10px" }}>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="24" height="24" rx="12" fill="#2A3592" />
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect width="24" height="24" rx="12" fill="#2A3592"
+                          border="1px solid #2A3592"
+                        />
                         <path d="M16.0502 9.26001L10.5702 14.74L7.9502 12.12" stroke="white" strokeWidth="1.7" strokeMiterlimit="10" />
                       </svg>
+
+                      {/* <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.85" y="0.85" width="24" height="24" rx="12" fill="white" />
+                        <path d="M16.0502 9.26001L10.5702 14.74L7.9502 12.12" stroke="white" stroke-width="1.7" stroke-miterlimit="10" />
+                        <rect x="0.85" y="0.85" width="22.3" height="22.3" rx="11.15" stroke="#2A3592" stroke-width="1.7" />
+                      </svg> */}
+
                     </Box>
+
+
+                    {/* <Checkbox
+                      checked={true}
+                      // onChange={handleChange}
+                      name="checkedB"
+                      color="primary"
+                      style={{
+                        padding: "0",
+                        marginRight: "10px",
+                        // rouded checkbox
+                        "& .MuiSvgIcon-root": {
+                          borderRadius: "4px",
+                        },
+
+                        borderRadius: "4px",
+                      }}
+                    /> */}
+
                     Use Store credit
                   </Box>
                   <span style={{ fontWeight: "600", fontSize: "14px" }}>
@@ -383,7 +426,7 @@ const Checkout = () => {
             </Col>
             <Col xs={12} md={7}>
 
-            <CheckoutForm formData={formData ?? {}} setFormData={setFormData} formError={formError} setFormError={setFormError} />
+              <CheckoutForm formData={formData ?? {}} setFormData={setFormData} formError={formError} setFormError={setFormError} />
 
               <div className="checkout_box" style={{ marginBottom: "1rem", padding: "0 1rem 1rem 1rem" }}>
                 <div className="checkout_box_heading">
