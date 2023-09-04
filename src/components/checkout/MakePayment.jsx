@@ -1,7 +1,7 @@
 import React from "react";
 import { getNumberWithComma } from "../../utils/utils";
 
-const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData, paymentMode, coutinLogicWithCoupon, coutinLogicWithoutCoupon }) => {
+const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData, paymentMode, coutinLogicWithCoupon, coutinLogicWithoutCoupon,useStoreCredit,userBalance,walletData }) => {
 
   return (
     <>
@@ -95,6 +95,20 @@ const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData, payme
             </div>
           </div>
         }
+        {
+          useStoreCredit &&
+          <div className="checkout_box_list">
+            <div>
+              <h3>Use Store Credit </h3>
+            </div>
+            <div>
+              <h3>
+                <i>- {getNumberWithComma((walletData?.balance ?? 0)-(userBalance ?? 0))}</i>
+              </h3>
+            </div>
+          </div>
+        }
+
         <div className="checkout_box_footer" onClick={handleMakeOrder}>
           <div className="checkout_box_list">
             <div>
@@ -115,7 +129,6 @@ const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData, payme
                   getNumberWithComma(coutinLogicWithCoupon(couponData)?.total ?? 0)
                   :
                   getNumberWithComma(coutinLogicWithoutCoupon(cartData)?.total ?? 0)
-
                 }
               </h3>
             </div>
