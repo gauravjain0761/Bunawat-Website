@@ -56,7 +56,7 @@ const Checkout = () => {
   const handleClose = () => setShowCoupon(false);
   const handleShow = () => setShowCoupon(true);
 
- 
+
 
 
   useEffect(() => {
@@ -103,18 +103,21 @@ const Checkout = () => {
       const codGST = (finalCOD - ((finalCOD * 100) / (checkCodPR ? 112 : 105)))
       const finalGST = (gstAmount + codGST);
 
+      let total = finalTotal;
+
       if (useStoreCredit) {
-        if (walletData?.balance >= finalTotal) {
-          finalTotal = 0;
-          setUserBalance(walletData?.balance - finalTotal);
+        if (walletData?.balance >= total) {
+          total = 0;
+          setUserBalance(walletData?.balance - total);
         } else {
-          finalTotal = finalTotal - walletData?.balance
+          total = total - walletData?.balance
           setUserBalance(0);
         }
-      } 
+      }
 
       return {
         total: finalTotal?.toFixed(2),
+        totalAmount: total?.toFixed(2),
         codData: finalCOD,
         couponData,
         gst_amount: finalGST?.toFixed(2)
@@ -131,7 +134,8 @@ const Checkout = () => {
         }
       }
       return {
-        total: finalAmmount?.toFixed(2),
+        total: totalAmount?.toFixed(2),
+        totalAmount: finalAmmount?.toFixed(2),
         codData: 0,
         couponData,
         gst_amount: gstAmount?.toFixed(2)
@@ -152,18 +156,19 @@ const Checkout = () => {
       const checkCodPR = arr?.some((x) => (Number(x?.price) > 1000))
       const codGST = (finalCOD - ((finalCOD * 100) / (checkCodPR ? 112 : 105)))
       const finalGST = (gstAmount + codGST)
-
+      let total = finalTotal;
       if (useStoreCredit) {
-        if (walletData?.balance >= finalTotal) {
-          finalTotal = 0;
-          setUserBalance(walletData?.balance - finalTotal);
+        if (walletData?.balance >= total) {
+          total = 0;
+          setUserBalance(walletData?.balance - total);
         } else {
-          finalTotal = finalTotal - walletData?.balance
+          total = total - walletData?.balance
           setUserBalance(0);
         }
       }
       return {
         total: finalTotal?.toFixed(2),
+        totalAmount: total?.toFixed(2),
         codData: finalCOD?.toFixed(2),
         gst_amount: finalGST?.toFixed(2)
       }
@@ -179,7 +184,8 @@ const Checkout = () => {
         }
       }
       return {
-        total: finalAmount?.toFixed(2),
+        total: totalAmount?.toFixed(2),
+        totalAmount: finalAmount?.toFixed(2),
         codData: 0,
         gst_amount: gstAmount?.toFixed(2)
       }
@@ -242,6 +248,10 @@ const Checkout = () => {
             (coutinLogicWithCoupon(couponData)?.total ?? 0)
             :
             (coutinLogicWithoutCoupon(cartData)?.total ?? 0),
+          amount: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ?
+            (coutinLogicWithCoupon(couponData)?.totalAmount ?? 0)
+            :
+            (coutinLogicWithoutCoupon(cartData)?.totalAmount ?? 0),
           ...((useStoreCredit) && { usable_wallet_amount: walletData?.balance - userBalance }),
           discount_amount: (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.reduce((t, x) => t + Number(x?.discounted_amount ?? 0), 0) ?? 0 : 0,
 
@@ -332,6 +342,10 @@ const Checkout = () => {
             (coutinLogicWithCoupon(couponData)?.total ?? 0)
             :
             (coutinLogicWithoutCoupon(cartData)?.total ?? 0),
+          amount: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ?
+            (coutinLogicWithCoupon(couponData)?.totalAmount ?? 0)
+            :
+            (coutinLogicWithoutCoupon(cartData)?.totalAmount ?? 0),
           ...((useStoreCredit) && { usable_wallet_amount: walletData?.balance - userBalance }),
 
           discount_amount: (couponData?.data && couponData?.data?.length > 0) ? couponData?.data?.reduce((t, x) => t + Number(x?.discounted_amount ?? 0), 0) ?? 0 : 0,
@@ -362,7 +376,7 @@ const Checkout = () => {
 
         }
 
-        await onlinePayment({ amount: orderPayload?.total_amount, orderPayload }).unwrap().then(async (responce) => {
+        await onlinePayment({ amount: orderPayload?.amount, orderPayload }).unwrap().then(async (responce) => {
 
           if (responce?.data) {
             const { message, ...rest } = responce?.data;
@@ -417,8 +431,8 @@ const Checkout = () => {
           <Row>
             <Col xs={12} md={5}>
 
-              <MakePayment handleMakeOrder={handleMakeOrder} cartData={cartData ?? []} couponData={couponData} setCouponData={setCouponData} coupon={coupon} setCoupon={setCoupon} paymentMode={paymentMode} coutinLogicWithCoupon={coutinLogicWithCoupon} coutinLogicWithoutCoupon={coutinLogicWithoutCoupon} 
-                useStoreCredit={useStoreCredit}  userBalance={userBalance} walletData={walletData}
+              <MakePayment handleMakeOrder={handleMakeOrder} cartData={cartData ?? []} couponData={couponData} setCouponData={setCouponData} coupon={coupon} setCoupon={setCoupon} paymentMode={paymentMode} coutinLogicWithCoupon={coutinLogicWithCoupon} coutinLogicWithoutCoupon={coutinLogicWithoutCoupon}
+                useStoreCredit={useStoreCredit} userBalance={userBalance} walletData={walletData}
               />
 
               <div className="checkout_box" style={{ marginTop: "2rem" }} onClick={handleShow}>
@@ -587,21 +601,44 @@ const Checkout = () => {
                 >
                   <Box sx={{ display: "flex", alignItems: 'center' }}>
                     <Box sx={{ marginRight: "10px" }}>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="24" height="24" rx="12" fill="#2A3592" />
-                        <path d="M16.0502 9.26001L10.5702 14.74L7.9502 12.12" stroke="white" strokeWidth="1.7" strokeMiterlimit="10" />
-                      </svg>
+                      {
+                        useStoreCredit ?
+                          (<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            onClick={() => {
+                              setUseStoreCredit(!useStoreCredit)
+                              setUserBalance(walletData?.balance)
+                            }}
+                          >
+                            <rect width="24" height="24" rx="12" fill="#2A3592"
+                              border="1px solid #2A3592"
+                            />
+                            <path d="M16.0502 9.26001L10.5702 14.74L7.9502 12.12" stroke="white" strokeWidth="1.7" strokeMiterlimit="10" />
+                          </svg>) :
+                          (<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            onClick={() => {
+                              if (walletData?.balance > 0) {
+                                setUseStoreCredit(!useStoreCredit)
+                              }
+                            }}
+                          >
+                            <rect x="0.85" y="0.85" width="24" height="24" rx="12" fill="white" />
+                            <path d="M16.0502 9.26001L10.5702 14.74L7.9502 12.12" stroke="white" stroke-width="1.7" stroke-miterlimit="10" />
+                            <rect x="0.85" y="0.85" width="22.3" height="22.3" rx="11.15" stroke="#2A3592" stroke-width="1.7" />
+                          </svg>)
+                      }
                     </Box>
                     Use Store credit
                   </Box>
                   <span style={{ fontWeight: "600", fontSize: "14px" }}>
-                    ₹500{" "}
+                    {getNumberWithComma(userBalance)}
                   </span>
                 </div>
               </div>
 
               <Box sx={{ marginTop: "1rem" }}>
-                <MakePayment handleMakeOrder={handleMakeOrder} cartData={cartData ?? []} couponData={couponData} setCouponData={setCouponData} coupon={coupon} setCoupon={setCoupon} paymentMode={paymentMode} coutinLogicWithCoupon={coutinLogicWithCoupon} coutinLogicWithoutCoupon={coutinLogicWithoutCoupon} />
+                <MakePayment handleMakeOrder={handleMakeOrder} cartData={cartData ?? []} couponData={couponData} setCouponData={setCouponData} coupon={coupon} setCoupon={setCoupon} paymentMode={paymentMode} coutinLogicWithCoupon={coutinLogicWithCoupon} coutinLogicWithoutCoupon={coutinLogicWithoutCoupon}
+                  useStoreCredit={useStoreCredit} userBalance={userBalance} walletData={walletData}
+                />
               </Box>
 
             </Col>

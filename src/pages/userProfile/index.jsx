@@ -10,11 +10,14 @@ import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from '
 import { useSelector } from 'react-redux';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import NewFooter from '../../components/newFooter/footerStrip';
+import { ApiGet } from '../../services/API/api';
+import { getNumberWithComma } from '../../utils/utils';
 
 const UserProfile = () => {
   const userData = useSelector(state => state?.user?.userData);
   const [expanded, setExpanded] = useState(false)
   const history = useHistory();
+  const [userBalance, setUserBalance] = useState(0);
 
   const [user , setUser] = useState(userData?.fname ?? "User!")
 
@@ -24,6 +27,16 @@ const UserProfile = () => {
   const handleUserChange = (name) => {
     setUser(name)
   }
+
+  const getWalletData = async () => {
+    await ApiGet("/get_wallet_balance").then((res) => {
+      setUserBalance(res?.data?.balance ?? 0);
+    });
+  };
+
+  React.useEffect(() => {
+    getWalletData();
+  }, []);
 
   return (
     <>
@@ -69,7 +82,7 @@ const UserProfile = () => {
                       <img src="../img/storecredit.png" alt='Store credit' height="20" style={{ marginRight: "12px" }} />
                       Store credit
                     </h6>
-                    <h4>₹3,500 </h4>
+                    <h4>{getNumberWithComma(userBalance)}</h4>
                   </div>
                 </div>
               </Col>
@@ -156,7 +169,7 @@ const UserProfile = () => {
                         <img src="../img/storecredit.png" alt='Store credit' height="20" style={{ marginRight: "8px" }} />
                         Store credit
                       </h6>
-                      <h4>₹3,500 </h4>
+                      <h4>{getNumberWithComma(userBalance)}</h4>
                     </div>
 
                     <Nav.Item style={{ marginBottom: "1rem" }}>

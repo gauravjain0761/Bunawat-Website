@@ -126,9 +126,9 @@ const MakePayment = ({ handleMakeOrder, cartData, couponData, setFormData, payme
                   {/* ₹18,700{" "} */}
                 </del>
                 {(couponData?.data && couponData?.data?.length > 0) ?
-                  getNumberWithComma(coutinLogicWithCoupon(couponData)?.total ?? 0)
+                  getNumberWithComma(coutinLogicWithCoupon(couponData)?.totalAmount ?? 0)
                   :
-                  getNumberWithComma(coutinLogicWithoutCoupon(cartData)?.total ?? 0)
+                  getNumberWithComma(coutinLogicWithoutCoupon(cartData)?.totalAmount ?? 0)
                 }
               </h3>
             </div>

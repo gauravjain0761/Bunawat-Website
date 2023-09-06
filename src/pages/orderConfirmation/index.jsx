@@ -13,6 +13,7 @@ import moment from 'moment';
 import { getNumberWithComma } from '../../utils/utils';
 import { GoPrimitiveDot } from 'react-icons/go';
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const OrderConfirmation = () => {
   const { id } = useParams();
@@ -24,6 +25,8 @@ const OrderConfirmation = () => {
     reason: "",
     discription: ""
   });
+  const history = useHistory();
+
 
   const handleClose = () => setShow(false);
   const handleShow = () => {
@@ -49,7 +52,9 @@ const OrderConfirmation = () => {
       } else {
         await orderReturn({ id, ...returnData }).unwrap().then((responce) => {
           handleClose()
-          window?.location?.reload(true)
+          window?.location?.reload(true) 
+          // history.push(`/orderConfirmation/${id}`)
+
         }).catch((error) => toast.error(error?.data?.message))
       }
     } else {
