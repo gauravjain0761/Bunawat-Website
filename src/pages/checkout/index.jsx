@@ -376,11 +376,10 @@ const Checkout = () => {
 
         }
 
-        await onlinePayment({ amount: orderPayload?.amount, orderPayload }).unwrap().then(async (responce) => {
-
-          if (responce?.data) {
+        // if orderPayload?.amount == 0 then directly call make order api
+        if (orderPayload?.amount == 0) {
+          await addOrder(orderPayload).unwrap().then(async (responce) => {
             const { message, ...rest } = responce?.data;
-
             // show toast
             if (message?.length > 0) {
               for (let i = 0; i < message?.length; i++) {
@@ -388,32 +387,50 @@ const Checkout = () => {
               }
             }
 
-            const rzp1 = new window.Razorpay({
-              ...rest, handler: function (response) {
-                if (response?.razorpay_payment_id) {
-                  verifyOnlinePayment({
-                    ...response,
-                    orderPayload
-                  }).unwrap().then((data) => {
-                    if (data?.data?.data?._id) {
-                      toast.success("Payment Successfull")
-                      history.push("/orderConfirmation/" + data?.data?.data?._id)
-                    } else {
-                      toast.error("Something went wrong")
-                    }
+            history.push("/orderConfirmation/" + responce?.data?._id)
 
-                  }).catch((error) => toast.error(error?.data?.message))
+          }).catch((error) => toast.error(error?.data?.message))
+
+        } else {
+          await onlinePayment({ amount: orderPayload?.amount, orderPayload }).unwrap().then(async (responce) => {
+
+            if (responce?.data) {
+              const { message, ...rest } = responce?.data;
+
+              // show toast
+              if (message?.length > 0) {
+                for (let i = 0; i < message?.length; i++) {
+                  toast.success(message[i])
                 }
               }
-            });
-            rzp1.open();
-            rzp1.on('payment.failed', function (response) {
-              console.log("==============Fail==========")
-              toast.error("Payment Failed")
-            })
-          }
 
-        }).catch((error) => toast.error(error?.data?.message))
+              const rzp1 = new window.Razorpay({
+                ...rest, handler: function (response) {
+                  if (response?.razorpay_payment_id) {
+                    verifyOnlinePayment({
+                      ...response,
+                      orderPayload
+                    }).unwrap().then((data) => {
+                      if (data?.data?.data?._id) {
+                        toast.success("Payment Successfull")
+                        history.push("/orderConfirmation/" + data?.data?.data?._id)
+                      } else {
+                        toast.error("Something went wrong")
+                      }
+
+                    }).catch((error) => toast.error(error?.data?.message))
+                  }
+                }
+              });
+              rzp1.open();
+              rzp1.on('payment.failed', function (response) {
+                console.log("==============Fail==========")
+                toast.error("Payment Failed")
+              })
+            }
+
+          }).catch((error) => toast.error(error?.data?.message))
+        }
 
       }
     }
