@@ -101,7 +101,7 @@ const HomeBannerTabs = ({ data, singleData, setSelectedId, selectedId }) => {
 
                           }
                           <div className="summer_list_link_wrap">
-                            <Link to={`/allProductList/${item?.name}`}>
+                            <Link to={`/category/${item?.name}`}>
                               <div className="summer_list_link">
                                 <p className="big-font">Shop all  {singleCollection?.title}</p>
                                 <span>

@@ -131,7 +131,7 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                 }}>
                     <div className="cloth_inner">
                         <div className='cloth_title_wrap' style={{ marginBottom: "1rem" }}>
-                            <h2><sapn className="limited_edition">Limited Edition</sapn>&nbsp; pieces by adept designers</h2>
+                            <h2><sapn className="limited_edition">Limited Edition</sapn>&nbsp; Stylish, affordable designs</h2>
                         </div>
                         <Tabs
                             id="controlled-tab-example"

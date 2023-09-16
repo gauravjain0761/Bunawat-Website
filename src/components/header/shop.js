@@ -221,7 +221,7 @@ const Shop = ({ menuData, handleClose, handleActive }) => {
               <React.Fragment key={`collection-${index}`}>
                 <Typography
                   onClick={() => {
-                    history.push(`/allProductList/${item.name}`);
+                    history.push(`/category/${item.name}`);
                     handleClose();
                   }}
                   sx={{

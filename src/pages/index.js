@@ -78,7 +78,7 @@ export default function Index() {
                         <Home />
                     </Route>
 
-                    <Route exact path={BASE_URL.BASE_URL + `allProductList/:selected`}>
+                    <Route exact path={BASE_URL.BASE_URL + `category/:selected`}>
                         <AllProduct />
                     </Route>
 

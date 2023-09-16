@@ -24,6 +24,8 @@ const FilterModalForMobile = ({ showFilter, handleClose, setSelectedId, selected
     }
   }
 
+  const [open, setOpen] = useState(false);
+
   return (
     <>
       <Modal
@@ -123,8 +125,9 @@ const FilterModalForMobile = ({ showFilter, handleClose, setSelectedId, selected
               maxWidth: '100%'
             }}>
               <FormControl>
-                {showPrice && (
-                  <div className="price_select_wrap_box price_select_wrap_box_mobile">
+                {/* {showPrice && (
+                  <div className="price_select_wrap_box price_select_wrap_box_mobile"
+                  >
                     <Box className="price_select_wrap_box_child" sx={{ background: "#F2F4FF" }}>
                       <h6>From</h6>
                       <div className="price_select_wrap_box_child_data">
@@ -144,23 +147,80 @@ const FilterModalForMobile = ({ showFilter, handleClose, setSelectedId, selected
                       </div>
                     </div>
                   </div>
-                )}
+                )} */}
 
-                <MenuItem onClick={() => {
-                  if (showPrice) {
-                    setShowPrice(false)
-                  } else {
-                    setShowMostPopular(false)
-                    setShowPrice(true)
-                    let attributeOpenList = [...attributeOpen];
-                    attributeOpenList = attributeOpenList?.map(x => false)
-                    setAttributeOpen(attributeOpenList)
-                  }
+                {/* {showPrice &&
+                  // <ClickAwayListener onClickAway={() => setShowPrice(false)}>
+                    <div className="most_popular_wrapper_box">
+                      <MenuItem onClick={() => {
+                        setSelectedId({ ...selectedId, sortBy: 1 })
+                        // setShowSelectFilter("Affordable")
+                      }} className="common_option_wrap">
+                        <div className="common_option">
+                          <p className="common_option_p">Affordable</p>
+                          <span className="common_option_span">
+                            Lowest Price First
+                          </span>
+                        </div>
+                      </MenuItem>
+                      <MenuItem onClick={() => {
+                        setSelectedId({ ...selectedId, sortBy: 2 })
+                        // setShowSelectFilter("Luxurious")
+                      }} className="common_option_wrap ">
+                        <div className="common_option">
+                          <p className="common_option_p">Luxurious</p>
+                          <span className="common_option_span">
+                            {" "}
+                            Highest Price first
+                          </span>
+                        </div>
+                      </MenuItem>
+                    </div>
+                  // </ClickAwayListener>
+                } */}
+
+                {open && (
+                  <div className="price_select_wrap_box price_select_wrap_box_mobile">
+                    <div className="most_popular_wrapper_box new_most_popular_wrapper_box">
+                    <MenuItem onClick={() => {
+                      setSelectedId({ ...selectedId, sortBy: 0 })
+                      setOpen(false)
+                    }} className="common_option_wrap common_option_wrap_bg">
+                      <div className="common_option">
+                        <p className="common_option_p">Newest</p>
+                        <span className="common_option_span">minimal first</span>
+                      </div>
+                    </MenuItem>
+                    <MenuItem onClick={() => {
+                      setSelectedId({ ...selectedId, sortBy: 3, })
+                      setOpen(false)
+                    }} className="common_option_wrap">
+                      <div className="common_option">
+                        <p className="common_option_p">Most Popular</p>
+                      </div>
+                    </MenuItem>
+                  </div>
+                  </div>
+                )}
+                <MenuItem onClick={(e) => {
+                  setOpen(!open)
+                  // if (showPrice) {
+                  //   // setShowPrice(false)
+                  // } else {
+                  //   e.stopPropagation()
+                  //   e.preventDefault()
+                  //   // setShowMostPopular(false)
+                  //   // setShowPrice(true)
+                  //   setOpen(!open)
+                  //   // let attributeOpenList = [...attributeOpen];
+                  //   // attributeOpenList = attributeOpenList?.map(x => false)
+                  //   // setAttributeOpen(attributeOpenList)
+                  // }
                 }} className="common_option_wrap">
                   <div className="common_option">
                     <div className="d-flex align-items-center common_radio_btn">
                       <span style={{ marginRight: "3rem" }}>
-                        Price
+                        Sort By
                       </span>
                     </div>
                     <svg

@@ -18,6 +18,10 @@
      border-radius: 4px;
  }
 
+ .new_most_popular_wrapper_box{
+    bottom: 0px;
+ }
+
  .kind_garment_wrapper_box {
      position: absolute;
      left: 0px;

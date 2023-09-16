@@ -38,7 +38,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
     const finalData = data?.data?.filter(x => x?.isActive) ?? []
     setAttributeOpen(finalData?.map(x => false) ?? [])
     setAttributeData(finalData ?? [])
-    if(isMostLoved){
+    if (isMostLoved) {
       setSelectedId({ ...selectedId, sortBy: 3 })
       setShowSelectFilter("Most Popular")
     }
@@ -75,7 +75,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                 }
                 }>
                   <div className="most_popular_wrapper_box new_most_popular_wrapper_box_mob">
-                    <MenuItem onClick={() => {
+                    {/* <MenuItem onClick={() => {
                       setSelectedId({ ...selectedId, sortBy: 0 })
                       setShowMostPopularMobile(false)
                       setShowSelectFilter("Newest")
@@ -85,7 +85,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                         <p className="common_option_p">Newest</p>
                         <span className="common_option_span">minimal first</span>
                       </div>
-                    </MenuItem>
+                    </MenuItem> */}
                     <MenuItem onClick={() => {
                       setSelectedId({ ...selectedId, sortBy: 1 })
                       setShowMostPopularMobile(false)
@@ -113,15 +113,15 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                         </span>
                       </div>
                     </MenuItem>
-                    <MenuItem onClick={() => {
-                      setSelectedId({ ...selectedId, sortBy: 3,  })
+                    {/* <MenuItem onClick={() => {
+                      setSelectedId({ ...selectedId, sortBy: 3, })
                       setShowSelectFilter("Most Popular")
                       setShowMostPopularMobile(false)
                     }} className="common_option_wrap">
                       <div className="common_option">
                         <p className="common_option_p">Most Popular</p>
                       </div>
-                    </MenuItem>
+                    </MenuItem> */}
                   </div>
                 </ClickAwayListener>
               }
@@ -138,7 +138,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                 }
               }} className="common_option_wrap">
                 <div className="common_option">
-                  <p className="common_option_p"> {showSelectFilter ? showSelectFilter : "Sort By"}</p>
+                  <p className="common_option_p"> {showSelectFilter ? showSelectFilter : "Price"}</p>
                   {
                     !showMostPopularMobile && <svg
                       style={{ rotate: showMostPopularMobile ? "0deg" : "180deg" }}
@@ -219,32 +219,50 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
 
           <div className="common_select_wrap">
             <FormControl>
-              {showMostPopular &&
-                <ClickAwayListener onClickAway={() => setShowMostPopular(false)}>
-                  <div className="most_popular_wrapper_box">
-                    {/* <MenuItem value="" className="common_option_wrap common_option_wrap_bg">
-                    <div className="common_option">
-                      <p className="common_option_p">Heavy Embroidery</p>
-                      <span className="common_option_span">fanciest first</span>
-                    </div>
-                  </MenuItem> */}
-                    <MenuItem onClick={() => {
-                      setSelectedId({ ...selectedId, sortBy: 0 })
-                      setShowSelectFilter("Newest")
-                    }} className="common_option_wrap">
-                      <div className="common_option">
-                        <p className="common_option_p">Newest</p>
-                        <span className="common_option_span">minimal first</span>
+              {/* {showPrice && (
+                <ClickAwayListener 
+                // onClickAway={() => setShowPrice(false)}
+                >
+                  <div className="price_select_wrap_box">
+                    <Box className="price_select_wrap_box_child" sx={{ background: "#F2F4FF" }}>
+                      <h6>From</h6>
+                      <div className="price_select_wrap_box_child_data">
+                        <input type="text" placeholder="₹1000" value={selectedId?.pricing?.from ?? ''} onChange={(e) => {
+                          const onlyNums = e.target.value.replace(/[^0-9]/g, '');
+                          setSelectedId({ ...selectedId, pricing: { ...selectedId?.pricing, from: Number(onlyNums) } })
+                        }} style={{ backgroundColor: "#f2f4ff" }} />
+                        {selectedId?.pricing?.from &&
+                          <span onClick={() => setSelectedId({ ...selectedId, pricing: { ...selectedId?.pricing, from: 0 } })}>
+                            <TiDeleteOutline />
+                          </span>
+                        }
                       </div>
-                    </MenuItem>
-                    {/* <MenuItem value="" className="common_option_wrap common_option_wrap_bg">
-                    <div className="common_option">
-                      <p className="common_option_p">Most Popular</p>
+                    </Box>
+                    <div className="price_select_wrap_box_child">
+                      <h6>To</h6>
+                      <div className="price_select_wrap_box_child_data">
+                        <input type="text" value={selectedId?.pricing?.to ?? ''} onChange={(e) => {
+                          const onlyNums = e.target.value.replace(/[^0-9]/g, '');
+                          setSelectedId({ ...selectedId, pricing: { ...selectedId?.pricing, to: Number(onlyNums) } })
+                        }} placeholder="₹3500" />
+                        {selectedId?.pricing?.to &&
+                          <span onClick={() => setSelectedId({ ...selectedId, pricing: { ...selectedId?.pricing, to: 0 } })}>
+                            <TiDeleteOutline />
+                          </span>
+                        }
+                      </div>
                     </div>
-                  </MenuItem> */}
+                  </div>
+                </ClickAwayListener>
+              )} */}
+
+
+              {showPrice &&
+                <ClickAwayListener onClickAway={() => setShowPrice(false)}>
+                  <div className="most_popular_wrapper_box">
                     <MenuItem onClick={() => {
                       setSelectedId({ ...selectedId, sortBy: 1 })
-                      setShowSelectFilter("Affordable")
+                      // setShowSelectFilter("Affordable")
                     }} className="common_option_wrap">
                       <div className="common_option">
                         <p className="common_option_p">Affordable</p>
@@ -255,7 +273,7 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                     </MenuItem>
                     <MenuItem onClick={() => {
                       setSelectedId({ ...selectedId, sortBy: 2 })
-                      setShowSelectFilter("Luxurious")
+                      // setShowSelectFilter("Luxurious")
                     }} className="common_option_wrap ">
                       <div className="common_option">
                         <p className="common_option_p">Luxurious</p>
@@ -265,32 +283,29 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                         </span>
                       </div>
                     </MenuItem>
-                    <MenuItem onClick={() => {
-                      setSelectedId({ ...selectedId, sortBy: 3,  })
-                      setShowSelectFilter("Most Popular")
-                    }} className="common_option_wrap">
-                      <div className="common_option">
-                        <p className="common_option_p">Most Popular</p>
-                      </div>
-                    </MenuItem>
                   </div>
                 </ClickAwayListener>
               }
+
               <MenuItem onClick={() => {
-                if (showMostPopular) {
-                  setShowMostPopular(false)
-                } else {
-                  setShowMostPopular(true)
+                if (showPrice) {
                   setShowPrice(false)
+                } else {
+                  setShowMostPopular(false)
+                  setShowPrice(true)
                   let attributeOpenList = [...attributeOpen];
                   attributeOpenList = attributeOpenList?.map(x => false)
                   setAttributeOpen(attributeOpenList)
                 }
               }} className="common_option_wrap">
                 <div className="common_option">
-                  <p className="common_option_p"> {showSelectFilter ? showSelectFilter : "Filter" }</p>
+                  <div className="d-flex align-items-center common_radio_btn">
+                    <span style={{ marginRight: "3rem" }}>
+                      Price
+                    </span>
+                  </div>
                   <svg
-                    style={{ rotate: showMostPopular ? "0deg" : "180deg" }}
+                    style={{ rotate: showPrice ? "0deg" : "180deg" }}
                     width="10"
                     height="7"
                     viewBox="0 0 10 7"
@@ -306,17 +321,6 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                   </svg>
                 </div>
               </MenuItem>
-
-              {/* <MenuItem onClick={() => {
-                      setSelectedId({ ...selectedId, sortBy: 1 })
-                    }} className="common_option_wrap">
-                      <div className="common_option">
-                        <p className="common_option_p">Affordable</p>
-                        <span className="common_option_span">
-                         Filter
-                        </span>
-                      </div>
-                    </MenuItem> */}
             </FormControl>
           </div>
 
@@ -387,64 +391,82 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
             </div>
           ))}
 
+
+
           <div className="common_select_wrap">
             <FormControl>
-              {showPrice && (
-                <ClickAwayListener 
-                // onClickAway={() => setShowPrice(false)}
-                >
-                  <div className="price_select_wrap_box">
-                    <Box className="price_select_wrap_box_child" sx={{ background: "#F2F4FF" }}>
-                      <h6>From</h6>
-                      <div className="price_select_wrap_box_child_data">
-                        <input type="text" placeholder="₹1000" value={selectedId?.pricing?.from ?? ''} onChange={(e) => {
-                          const onlyNums = e.target.value.replace(/[^0-9]/g, '');
-                          setSelectedId({ ...selectedId, pricing: { ...selectedId?.pricing, from: Number(onlyNums) } })
-                        }} style={{ backgroundColor: "#f2f4ff" }} />
-                        {selectedId?.pricing?.from &&
-                          <span onClick={() => setSelectedId({ ...selectedId, pricing: { ...selectedId?.pricing, from: 0 } })}>
-                            <TiDeleteOutline />
-                          </span>
-                        }
-                      </div>
-                    </Box>
-                    <div className="price_select_wrap_box_child">
-                      <h6>To</h6>
-                      <div className="price_select_wrap_box_child_data">
-                        <input type="text" value={selectedId?.pricing?.to ?? ''} onChange={(e) => {
-                          const onlyNums = e.target.value.replace(/[^0-9]/g, '');
-                          setSelectedId({ ...selectedId, pricing: { ...selectedId?.pricing, to: Number(onlyNums) } })
-                        }} placeholder="₹3500" />
-                        {selectedId?.pricing?.to &&
-                          <span onClick={() => setSelectedId({ ...selectedId, pricing: { ...selectedId?.pricing, to: 0 } })}>
-                            <TiDeleteOutline />
-                          </span>
-                        }
-                      </div>
+              {showMostPopular &&
+                <ClickAwayListener onClickAway={() => setShowMostPopular(false)}>
+                  <div className="most_popular_wrapper_box">
+                    {/* <MenuItem value="" className="common_option_wrap common_option_wrap_bg">
+                    <div className="common_option">
+                      <p className="common_option_p">Heavy Embroidery</p>
+                      <span className="common_option_span">fanciest first</span>
                     </div>
+                  </MenuItem> */}
+                    <MenuItem onClick={() => {
+                      setSelectedId({ ...selectedId, sortBy: 0 })
+                      setShowSelectFilter("Newest")
+                    }} className="common_option_wrap">
+                      <div className="common_option">
+                        <p className="common_option_p">Newest</p>
+                        <span className="common_option_span">minimal first</span>
+                      </div>
+                    </MenuItem>
+                    {/* <MenuItem value="" className="common_option_wrap common_option_wrap_bg">
+                    <div className="common_option">
+                      <p className="common_option_p">Most Popular</p>
+                    </div>
+                  </MenuItem> */}
+                    {/* <MenuItem onClick={() => {
+                      setSelectedId({ ...selectedId, sortBy: 1 })
+                      setShowSelectFilter("Affordable")
+                    }} className="common_option_wrap">
+                      <div className="common_option">
+                        <p className="common_option_p">Affordable</p>
+                        <span className="common_option_span">
+                          Lowest Price First
+                        </span>
+                      </div>
+                    </MenuItem>
+                    <MenuItem onClick={() => {
+                      setSelectedId({ ...selectedId, sortBy: 2 })
+                      setShowSelectFilter("Luxurious")
+                    }} className="common_option_wrap ">
+                      <div className="common_option">
+                        <p className="common_option_p">Luxurious</p>
+                        <span className="common_option_span">
+                          {" "}
+                          Highest Price first
+                        </span>
+                      </div>
+                    </MenuItem> */}
+                    <MenuItem onClick={() => {
+                      setSelectedId({ ...selectedId, sortBy: 3, })
+                      setShowSelectFilter("Most Popular")
+                    }} className="common_option_wrap">
+                      <div className="common_option">
+                        <p className="common_option_p">Most Popular</p>
+                      </div>
+                    </MenuItem>
                   </div>
                 </ClickAwayListener>
-              )}
-
+              }
               <MenuItem onClick={() => {
-                if (showPrice) {
-                  setShowPrice(false)
-                } else {
+                if (showMostPopular) {
                   setShowMostPopular(false)
-                  setShowPrice(true)
+                } else {
+                  setShowMostPopular(true)
+                  setShowPrice(false)
                   let attributeOpenList = [...attributeOpen];
                   attributeOpenList = attributeOpenList?.map(x => false)
                   setAttributeOpen(attributeOpenList)
                 }
               }} className="common_option_wrap">
                 <div className="common_option">
-                  <div className="d-flex align-items-center common_radio_btn">
-                    <span style={{ marginRight: "3rem" }}>
-                      Price
-                    </span>
-                  </div>
+                  <p className="common_option_p"> {showSelectFilter ? showSelectFilter : "Sort"}</p>
                   <svg
-                    style={{ rotate: showPrice ? "0deg" : "180deg" }}
+                    style={{ rotate: showMostPopular ? "0deg" : "180deg" }}
                     width="10"
                     height="7"
                     viewBox="0 0 10 7"
@@ -460,6 +482,17 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
                   </svg>
                 </div>
               </MenuItem>
+
+              {/* <MenuItem onClick={() => {
+                      setSelectedId({ ...selectedId, sortBy: 1 })
+                    }} className="common_option_wrap">
+                      <div className="common_option">
+                        <p className="common_option_p">Affordable</p>
+                        <span className="common_option_span">
+                         Filter
+                        </span>
+                      </div>
+                    </MenuItem> */}
             </FormControl>
           </div>
 
@@ -468,12 +501,12 @@ function ProductFilters({ singleData, setSelectedId, selectedId, refetch }) {
           </button> */}
           <button className="clear_btn updated_clear_btn"
             onClick={() => {
-              setSelectedId({ ...selectedId, sortBy: 0, atr : {}  })
+              setSelectedId({ ...selectedId, sortBy: 0, atr: {} })
               setSelectedAttribute({})
               setShowSelectFilter("")
               handleClose()
             }}
-              
+
           >
             <span>Clear</span>
             <svg
