@@ -17,6 +17,7 @@ import { DEFULT_STATE } from "../../constant/storage";
 import { getNumberWithComma } from "../../utils/utils";
 import NewFooter from "../../components/newFooter/footerStrip";
 import { ApiGet } from "../../services/API/api";
+import ReactGA from 'react-ga';
 
 const Checkout = () => {
   const [addOrder] = useAddOrderMutation(undefined, {})
@@ -224,6 +225,16 @@ const Checkout = () => {
     if (tempError?.fname || tempError?.lname || tempError?.email || tempError?.phone || tempError?.address_1 || tempError?.address_2 || tempError?.pincode || tempError?.city || tempError?.state) {
       setFormError(tempError)
     } else {
+
+      // add GA event Purchase
+      ReactGA.event({
+        category: 'Purchase',
+        action: 'Purchase',
+        label: window.location.pathname,
+        value: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ? (coutinLogicWithCoupon(couponData)?.totalAmount ?? 0) : (coutinLogicWithoutCoupon(cartData)?.totalAmount ?? 0)
+      });
+
+
       if (cartData?.length > 0 && paymentMode == "cod") {
         await addOrder({
           user_type: userData?.user_type,
@@ -414,6 +425,21 @@ const Checkout = () => {
                       if (data?.data?.data?._id) {
                         toast.success("Payment Successfull")
                         history.push("/orderConfirmation/" + data?.data?.data?._id)
+
+                         // Track transaction with Google Analytics
+                          ReactGA.plugin.require('ecommerce');
+                          ReactGA.plugin.execute('ecommerce', 'addTransaction', {
+                            //generates transaction
+                            id:  data?.data?.data?._id, // Transaction ID. Required.
+                            affiliation: 'Bunawat',   // Affiliation or store name
+                            revenue: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ? (coutinLogicWithCoupon(couponData)?.totalAmount ?? 0) : (coutinLogicWithoutCoupon(cartData)?.totalAmount ?? 0),               // Grand Total
+                            shipping: 0,            // Shipping
+                            tax: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ? (coutinLogicWithCoupon(couponData)?.gst_amount ?? 0) : (coutinLogicWithoutCoupon(cartData)?.gst_amount ?? 0)                  // Tax
+                          });
+                          
+                          // Track transaction with Google Analytics
+                          ReactGA.plugin.execute('ecommerce', 'send');
+
                       } else {
                         toast.error("Something went wrong")
                       }

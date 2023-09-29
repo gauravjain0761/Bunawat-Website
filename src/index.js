@@ -11,6 +11,11 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
 import './assets/css/style.css';
 import './assets/css/responsive.css';
+// import TagManager from 'react-gtm-module';
+import ReactGA from 'react-ga';
+
+
+ReactGA.initialize('UA-179593414-1');
 
 let persistor = persistStore(store);
 

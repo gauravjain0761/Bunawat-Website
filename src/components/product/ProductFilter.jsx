@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux';
 import { setCartCount } from '../../redux/reducers/cart';
 import { Modal } from "react-bootstrap";
 import { Box, Button } from '@mui/material';
+import ReactGA from 'react-ga';
 import "./dropdown.css"
 
 export const SelectModal = ({ showSelect, selectedData, handleClose, attributeList, attributeData, filterList, setSelectedData, setQty, setLastSkuData, }) => {
@@ -229,6 +230,15 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
 
     const handleAdd = async () => {
         if ((selectedData?.size && selectedData?.size != "default")) {
+
+            // add GA event
+            ReactGA.event({
+                category: 'Add to Cart',
+                action: 'Add to Cart',
+                label: selectedProduct?.product_name,
+                value: selectedProduct?.sale_price
+            });
+
             const selectedFinalData = selectedProduct?.filterList?.find(list => list?._id == selectedData?.size) ?? {}
             const cartData = JSON.parse(Storage.get("cartData")) ?? []
             if (Storage.isUserAuthenticated()) {

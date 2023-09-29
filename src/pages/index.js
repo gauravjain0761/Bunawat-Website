@@ -31,6 +31,7 @@ import PrivacyPolicy from "./privacyPolicy";
 import HelpSupport from "./helpSupport";
 import TermsAndConditions from "./termsAndConditions";
 import KonwTheStory from "./konwTheStory";
+import ReactGA from 'react-ga';
 
 export default function Index() {
     const dispatch = useDispatch();
@@ -58,6 +59,9 @@ export default function Index() {
             Storage.deauthenticateUser();
             history.push('/');
         }
+
+        ReactGA.pageview(window.location.pathname);
+
     }, [location?.pathname]);
 
     useEffect(() => {
