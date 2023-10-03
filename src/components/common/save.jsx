@@ -20,6 +20,10 @@ const SaveButton = ({ id, isWishlist, isBlue = false, selectedId, setSelectedId,
     }, []);
 
     const addWishlist = async (id) => {
+     
+        // implement facebook pixel
+        window.fbq('track', 'AddToWishlist');
+
         await addToWishlist({ data: [id] }).unwrap().then((data) => {
             if (selectedId) {
                 setSelectedId({ ...selectedId, isRefresh: !selectedId?.isRefresh })
@@ -82,9 +86,11 @@ const SaveButton = ({ id, isWishlist, isBlue = false, selectedId, setSelectedId,
                             addWishlist(id)
                         }
                     } else {
-                        {(width < 768) ?
+                        {
+                            (width < 768) ?
                             window.location.href = "/login"
-                            :  toast.error("Login required!")}
+                            : toast.error("Login required!")
+                        }
                     }
                 }}>
                     <p>{isWishlist ? "Saved" : "Save"}</p>

@@ -234,6 +234,9 @@ const Checkout = () => {
         value: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ? (coutinLogicWithCoupon(couponData)?.totalAmount ?? 0) : (coutinLogicWithoutCoupon(cartData)?.totalAmount ?? 0)
       });
 
+      //add facebook event Purchase
+      window.fbq('track', 'Purchase', { currency: "INR", value: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ? (coutinLogicWithCoupon(couponData)?.totalAmount ?? 0) : (coutinLogicWithoutCoupon(cartData)?.totalAmount ?? 0), content_ids: cartData?.map(list => list?.sku?._id), content_type: "product" });
+
 
       if (cartData?.length > 0 && paymentMode == "cod") {
         await addOrder({
@@ -426,19 +429,19 @@ const Checkout = () => {
                         toast.success("Payment Successfull")
                         history.push("/orderConfirmation/" + data?.data?.data?._id)
 
-                         // Track transaction with Google Analytics
-                          ReactGA.plugin.require('ecommerce');
-                          ReactGA.plugin.execute('ecommerce', 'addTransaction', {
-                            //generates transaction
-                            id:  data?.data?.data?._id, // Transaction ID. Required.
-                            affiliation: 'Bunawat',   // Affiliation or store name
-                            revenue: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ? (coutinLogicWithCoupon(couponData)?.totalAmount ?? 0) : (coutinLogicWithoutCoupon(cartData)?.totalAmount ?? 0),               // Grand Total
-                            shipping: 0,            // Shipping
-                            tax: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ? (coutinLogicWithCoupon(couponData)?.gst_amount ?? 0) : (coutinLogicWithoutCoupon(cartData)?.gst_amount ?? 0)                  // Tax
-                          });
-                          
-                          // Track transaction with Google Analytics
-                          ReactGA.plugin.execute('ecommerce', 'send');
+                        // Track transaction with Google Analytics
+                        ReactGA.plugin.require('ecommerce');
+                        ReactGA.plugin.execute('ecommerce', 'addTransaction', {
+                          //generates transaction
+                          id: data?.data?.data?._id, // Transaction ID. Required.
+                          affiliation: 'Bunawat',   // Affiliation or store name
+                          revenue: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ? (coutinLogicWithCoupon(couponData)?.totalAmount ?? 0) : (coutinLogicWithoutCoupon(cartData)?.totalAmount ?? 0),               // Grand Total
+                          shipping: 0,            // Shipping
+                          tax: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ? (coutinLogicWithCoupon(couponData)?.gst_amount ?? 0) : (coutinLogicWithoutCoupon(cartData)?.gst_amount ?? 0)                  // Tax
+                        });
+
+                        // Track transaction with Google Analytics
+                        ReactGA.plugin.execute('ecommerce', 'send');
 
                       } else {
                         toast.error("Something went wrong")

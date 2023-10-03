@@ -208,6 +208,11 @@ function Header() {
         setCartPopup(event.currentTarget);
     };
 
+    const handleCartEvent = () => {
+        // add facebook pixel
+        window.fbq('trackCustom', 'ViewCart');
+    }
+
     const handleCartClose = () => {
         setCartPopup(null);
         setIsCart(false)
@@ -471,6 +476,7 @@ function Header() {
                                     onClick={() =>{
                                         setOpenKey('cart')
                                         width < 768 ? history.push(`/cart?openKey=cart`) : setIsCart(true);
+                                        handleCartEvent()
                                     }}
                                     sx={{
                                         marginLeft: '10px',

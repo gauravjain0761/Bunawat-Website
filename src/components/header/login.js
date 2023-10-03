@@ -41,6 +41,9 @@ const Login = ({ activeHeader, handleAccountClose }) => {
     };
 
     const handleLogin = async () => {
+        // add facebook pixel
+        window.fbq('track', 'CompleteRegistration');
+
         await otpMatch({ ...loginData, otp: Number(loginData.otp) }).unwrap().then(async (data) => {
             getNotifyToken().then(async (token) => {
                 await deviceToken({

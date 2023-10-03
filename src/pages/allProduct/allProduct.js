@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useGetShopMenuDataQuery } from '../../services/api';
 import AllProductList from '../../components/allProduct/allProduct';
 import { useParams } from 'react-router-dom';
@@ -7,6 +7,11 @@ const AllProduct = () => {
     const { id } = useParams();
 
     const { data, error, isLoading } = useGetShopMenuDataQuery()
+
+    // implement facebook pixel
+    useEffect(() => {
+        window.fbq('trackCustom', 'ViewCategory');
+    }, []);
 
     const collections = useMemo(() => {
         return data?.collections ?? []

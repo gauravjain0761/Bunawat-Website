@@ -239,6 +239,24 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
                 value: selectedProduct?.sale_price
             });
 
+            // implement facebook pixel
+            window.fbq('track', 'AddToCart', {
+                content_ids: selectedProduct?._id,
+                currency: "INR",
+                value: selectedProduct?.sale_price,
+                content_type: "product"
+            });
+
+            // implement Google Ads Conversion Tracking 
+            // window.gtag('event', 'conversion', {
+            //     send_to: 'AW-606398179/6Z6aCJ6X9PMBEJ3X1t4C',
+            //     value: selectedProduct?.sale_price,
+            //     currency: 'INR',
+            //     transaction_id: '',
+            // });
+
+
+
             const selectedFinalData = selectedProduct?.filterList?.find(list => list?._id == selectedData?.size) ?? {}
             const cartData = JSON.parse(Storage.get("cartData")) ?? []
             if (Storage.isUserAuthenticated()) {
@@ -583,23 +601,23 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
                             ))} */}
                             {selectedProduct?.swatchColorList?.length > 0 && selectedProduct?.swatchColorList?.map((data, index) => (
                                 <>
-                                <li
-                                    className="active"
-                                    key={data?.color + index}
-                                    onClick={() => {
-                                        setSelectedData({
-                                            ...selectedData,
-                                            color : {
-                                                label : data?.color,
-                                                value : data?.value
-                                            },
-                                            size: 'default'
-                                        })
-                                        setQty(1)
-                                        setLastSkuData(selectedProduct?.filterList?.find(list => list?._id == data?.value))
-                                    }}
-                                    style={{border: (selectedData?.color?.value == data?.value) ? "3px solid #000" : ".5px solid #000", background: data?.lable }}>
-                                </li>
+                                    <li
+                                        className="active"
+                                        key={data?.color + index}
+                                        onClick={() => {
+                                            setSelectedData({
+                                                ...selectedData,
+                                                color: {
+                                                    label: data?.color,
+                                                    value: data?.value
+                                                },
+                                                size: 'default'
+                                            })
+                                            setQty(1)
+                                            setLastSkuData(selectedProduct?.filterList?.find(list => list?._id == data?.value))
+                                        }}
+                                        style={{ border: (selectedData?.color?.value == data?.value) ? "3px solid #000" : ".5px solid #000", background: data?.lable }}>
+                                    </li>
                                 </>
                             ))}
                         </ul>

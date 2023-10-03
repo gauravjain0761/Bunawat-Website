@@ -72,6 +72,13 @@ const Product = () => {
   }, [id])
 
   useEffect(() => {
+    if (productList?.length > 0) {
+      window.fbq('track', 'ViewContent', { content_ids: id, currency: "INR", value: productList?.[swipeableIndex]?.skus?.[0]?.sale_price ?? 0, content_type: "product" });
+    }
+  }, [productList])
+
+
+  useEffect(() => {
     let temproduct = getAllProduct?.length > 0 ? [...getAllProduct] : []
     setProductList(temproduct ?? [])
   }, [getAllProduct])
@@ -83,7 +90,7 @@ const Product = () => {
     setWidth(window.innerWidth);
   }
 
- 
+
   // useEffect(() => {
   //   let collection_product = data?.data?.collection_product ?? []
   //   if (collection_product?.length > 0) {
@@ -223,27 +230,27 @@ const Product = () => {
       {(width < 768) ?
         <div >
           <ProductBottomData
-             singleProduct={singleProduct}
+            singleProduct={singleProduct}
             videoLoading={videoLoading}
-             width={width} similarList={similarList} refetch={refetchData} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} setSwipeableDisable={setSwipeableDisable} 
-             />
+            width={width} similarList={similarList} refetch={refetchData} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} setSwipeableDisable={setSwipeableDisable}
+          />
         </div>
         :
         <div style={{ position: 'relative' }} >
           <div >
             <ProductBottomData
-               singleProduct={singleProduct}
+              singleProduct={singleProduct}
               videoLoading={videoLoading}
-               width={width} similarList={similarList} refetch={refetchData} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} setSwipeableDisable={setSwipeableDisable} 
-               />
+              width={width} similarList={similarList} refetch={refetchData} productList={productList} swipeableIndex={swipeableIndex} lastSkuData={lastSkuData} setLastSkuData={setLastSkuData} setSwipeableDisable={setSwipeableDisable}
+            />
           </div>
         </div>
       }
 
 
 
-      <ProductPageFilter selectedImage={productList?.[swipeableIndex]?.images?.[0]?.url ?? ""} selectedProduct={productList?.[swipeableIndex] ?? {}} filters={productList?.[swipeableIndex]?.skus ?? []} swipeableIndex={swipeableIndex ?? 0} setLastSkuData={setLastSkuData} qty={qty} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData} 
-       singleProduct={singleProduct}
+      <ProductPageFilter selectedImage={productList?.[swipeableIndex]?.images?.[0]?.url ?? ""} selectedProduct={productList?.[swipeableIndex] ?? {}} filters={productList?.[swipeableIndex]?.skus ?? []} swipeableIndex={swipeableIndex ?? 0} setLastSkuData={setLastSkuData} qty={qty} setQty={setQty} selectedData={selectedData} setSelectedData={setSelectedData}
+        singleProduct={singleProduct}
       />
     </Box>
   );
