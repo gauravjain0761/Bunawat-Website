@@ -235,8 +235,10 @@ const Checkout = () => {
       });
 
       //add facebook event Purchase
-      window.fbq('track', 'Purchase', { currency: "INR", value: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ? (coutinLogicWithCoupon(couponData)?.totalAmount ?? 0) : (coutinLogicWithoutCoupon(cartData)?.totalAmount ?? 0), content_ids: cartData?.map(list => list?.sku?._id), content_type: "product" });
+      window.fbq('track', 'Purchase', { currency: "INR", value: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ? (coutinLogicWithCoupon(couponData)?.totalAmount ?? 0) : (coutinLogicWithoutCoupon(cartData)?.totalAmount ?? 0), content_ids: cartData?.map(list => list?.sku?._id), content_type: "product", ecomm_pagetype: "checkout" });
 
+      // add Google Ads Conversion Tracking
+      window.gtag('event', 'conversion', { 'send_to': 'AW-568502457/lca8CPWjzekBELnRio8C', 'value': (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ? (coutinLogicWithCoupon(couponData)?.totalAmount ?? 0) : (coutinLogicWithoutCoupon(cartData)?.totalAmount ?? 0), 'currency': 'INR', 'transaction_id': '' });
 
       if (cartData?.length > 0 && paymentMode == "cod") {
         await addOrder({
@@ -615,10 +617,13 @@ const Checkout = () => {
                 <div className="checkout_box_list" onClick={() => setPaymentMode("cod")} style={paymentMode == "cod" ? { background: "#EDF0FF", borderRadius: "4px", paddingTop: "1rem", cursor: "pointer" } : { cursor: "pointer" }}>
                   <div>
                     <h3 style={paymentMode == "cod" ? { color: "#2A3592" } : {}}>Cash on Delivery</h3>
-                    <span style={paymentMode == "cod" ? { color: "#2A3592" } : {}}>Delivers 17—20th June</span>
+                    {/* <span style={paymentMode == "cod" ? { color: "#2A3592" } : {}}>Delivers 17—20th June</span> */}
                   </div>
                   <div>
-                    <h3 style={paymentMode == "cod" ? { color: "#2A3592" } : {}}>₹100 </h3>
+                    <h3 style={{ color: "#2A3592" }}><i>+ {(couponData?.data && couponData?.data?.length > 0) ?
+                      getNumberWithComma(((((couponData?.data?.reduce((t, x) => t + Number(x?.final_amount), 0) * 2) / 100) >= 150) ? ((couponData?.data?.reduce((t, x) => t + Number(x?.final_amount), 0) * 2) / 100) : 150))
+                      :
+                      getNumberWithComma(((((cartData?.reduce((t, x) => t + Number(x?.amount), 0) * 2) / 100) >= 150) ? ((cartData?.reduce((t, x) => t + Number(x?.amount), 0) * 2) / 100) : 150))}</i> </h3>
                   </div>
                 </div>
               </div>

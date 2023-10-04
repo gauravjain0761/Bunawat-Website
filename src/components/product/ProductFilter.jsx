@@ -244,8 +244,22 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
                 content_ids: selectedProduct?._id,
                 currency: "INR",
                 value: selectedProduct?.sale_price,
+                ecomm_totalvalue : selectedProduct?.sale_price,
+                ecomm_pagetype : "product",
                 content_type: "product"
             });
+
+            // implemt Google Ads Conversion Tracking
+            window.gtag('event', 'conversion', {
+                send_to: 'AW-568502457/A-xvCKnDzekBELnRio8C',
+                value: selectedProduct?.sale_price,
+                currency: 'INR',
+                transaction_id: '',
+                value: selectedProduct?.sale_price,
+                ecomm_totalvalue : selectedProduct?.sale_price,
+                ecomm_pagetype : "product",
+            });
+
 
             // implement Google Ads Conversion Tracking 
             // window.gtag('event', 'conversion', {

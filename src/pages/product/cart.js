@@ -33,8 +33,6 @@ const Cart = () => {
 
   const handleCheckout = () => {
     if (Storage.isUserAuthenticated()) {
-        // add facebook pixel
-        window.fbq('track', 'InitiateCheckout');
         history.push(`/checkout`);
     } else {
         // toast.error("Login required!")

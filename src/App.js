@@ -9,6 +9,10 @@ import './App.css';
 const App = () => {
   const [state, setState] = useState({ theme: "dark" });
 
+  useEffect(() => {
+    window.fbq('track', 'PageView');
+  }, []);
+
   return (
     <>
       <BrowserRouter>

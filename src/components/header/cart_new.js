@@ -20,6 +20,8 @@ import { setCartCount } from '../../redux/reducers/cart';
 import { useDispatch } from 'react-redux';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { Box } from '@mui/material';
+import ReactGA from 'react-ga';
+
 
 const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout,isMobile=false , openKey='cart'}) => {
     const [key, setKey] = useState(openKey);
@@ -66,6 +68,13 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout,isMobile=
             })
 
             if (!check) {
+                window.fbq('track', 'InitiateCheckout');
+                ReactGA.event({
+                    category: 'Checkout',
+                    action: 'Checkout Initiated',
+                    label: 'Checkout Initiated',
+                }); 
+
                 handleCheckout()
             } else {
                 toast.error(`Available stock for ${getFirstLetterCapital(check?.sku?.varients?.color)} • ${getFirstLetterCapital(check?.sku?.varients?.material)} is ${check?.sku?.inStock_qty}`)

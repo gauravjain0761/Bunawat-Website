@@ -60,7 +60,6 @@ export default function Index() {
             history.push('/');
         }
 
-        ReactGA.pageview(window.location.pathname);
 
     }, [location?.pathname]);
 
@@ -69,6 +68,8 @@ export default function Index() {
             console.log("tu mensaje:", message);
             toast.success(message.notification.title);
         })
+
+        ReactGA.pageview(window.location.pathname);
     }, []);
 
     return (
