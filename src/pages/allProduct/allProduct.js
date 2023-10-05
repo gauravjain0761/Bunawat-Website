@@ -10,7 +10,12 @@ const AllProduct = () => {
 
     // implement facebook pixel
     useEffect(() => {
-        window.fbq('trackCustom', 'ViewCategory');
+        // window.fbq('trackCustom', 'ViewCategory');
+
+        // implement GTM
+        window.dataLayer.push({
+            'event': 'view_category',
+        });
     }, []);
 
     const collections = useMemo(() => {

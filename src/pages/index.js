@@ -69,7 +69,7 @@ export default function Index() {
             toast.success(message.notification.title);
         })
 
-        ReactGA.pageview(window.location.pathname);
+        // ReactGA.pageview(window.location.pathname);
     }, []);
 
     return (

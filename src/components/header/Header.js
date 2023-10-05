@@ -210,7 +210,7 @@ function Header() {
 
     const handleCartEvent = () => {
         // add facebook pixel
-        window.fbq('trackCustom', 'ViewCart');
+        // window.fbq('trackCustom', 'ViewCart');
     }
 
     const handleCartClose = () => {

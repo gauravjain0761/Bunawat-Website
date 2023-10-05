@@ -10,7 +10,9 @@ const App = () => {
   const [state, setState] = useState({ theme: "dark" });
 
   useEffect(() => {
-    window.fbq('track', 'PageView');
+    // window.fbq('track', 'PageView');
+    window.dataLayer.push({ event: 'pageview' });
+    
   }, []);
 
   return (

@@ -22,7 +22,7 @@ const SaveButton = ({ id, isWishlist, isBlue = false, selectedId, setSelectedId,
     const addWishlist = async (id) => {
      
         // implement facebook pixel
-        window.fbq('track', 'AddToWishlist');
+        // window.fbq('track', 'AddToWishlist');
 
         await addToWishlist({ data: [id] }).unwrap().then((data) => {
             if (selectedId) {

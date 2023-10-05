@@ -68,12 +68,18 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout,isMobile=
             })
 
             if (!check) {
-                window.fbq('track', 'InitiateCheckout');
-                ReactGA.event({
-                    category: 'Checkout',
-                    action: 'Checkout Initiated',
-                    label: 'Checkout Initiated',
-                }); 
+                // window.fbq('track', 'InitiateCheckout');
+                // ReactGA.event({
+                //     category: 'Checkout',
+                //     action: 'Checkout Initiated',
+                //     label: 'Checkout Initiated',
+                // }); 
+
+                // implement GTM trigger
+                window.dataLayer.push({
+                    'event': 'gtm4wp.checkoutStepEEC',
+                });
+
 
                 handleCheckout()
             } else {
@@ -145,7 +151,13 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout,isMobile=
                     cursor: 'pointer',
                     color: key === "cart" ? '#2a3592' : '#000',
                     borderBottom: key === "cart" ? '4px solid #2a3592' : '4px solid #eee'
-                }} onClick={() => setKey('cart')}>
+                }} onClick={() => {
+                    setKey('cart');
+                    // implement GTM Click - All Elements - Cart - Cart Icon Trigger
+                    window.dataLayer.push({
+                        'event': 'gtm4wp.click',
+                    });
+                }}>
                     <Box sx={{
                         padding: '16px 24px'
                     }}>
@@ -159,7 +171,12 @@ const NewCart = ({ data, activeHeader, handleCartClose, handleCheckout,isMobile=
                     cursor: 'pointer',
                     color: key === "saved" ? '#2a3592' : '#000',
                     borderBottom: key === "saved" ? '4px solid #2a3592' : '4px solid #eee'
-                }} onClick={() => setKey('saved')}>
+                }} onClick={() => {
+                    setKey('saved')
+                    window.dataLayer.push({
+                        'event': 'Wishlist',
+                    });
+                }}>
                     <Box sx={{
                         padding: '16px 24px',
                         display: 'flex',

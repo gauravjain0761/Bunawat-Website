@@ -73,18 +73,29 @@ const Product = () => {
 
   useEffect(() => {
     if (productList?.length > 0) {
-      window.fbq('track', 'ViewContent', { content_ids: id, currency: "INR", value: productList?.[swipeableIndex].sale_price ?? 0,ecomm_totalvalue:productList?.[swipeableIndex].sale_price ?? 0, content_type: "product",ecomm_pagetype : "product" });
+      // window.fbq('track', 'ViewContent', { content_ids: id, currency: "INR", value: productList?.[swipeableIndex].sale_price ?? 0,ecomm_totalvalue:productList?.[swipeableIndex].sale_price ?? 0, content_type: "product",ecomm_pagetype : "product" });
+
+      window.dataLayer.push({
+        'event': 'view_product',
+        'Content ID': productList?.[swipeableIndex]._id,
+        value : productList?.[swipeableIndex].sale_price ?? 0,
+        ecomm_totalvalue : productList?.[swipeableIndex].sale_price ?? 0,
+        content_type : "product",
+        ecomm_pagetype : "product",
+      });
+
+
     }
 
     // add Google Ads Conversion Tracking
-    if (productList?.length > 0) {
-      window.gtag('event', 'conversion', {
-        'send_to': 'AW-568502457/sAyOCJ_FzekBELnRio8C',
-        'value': productList?.[swipeableIndex].sale_price ?? 0,
-        'currency': 'INR',
-        'transaction_id': ''
-      });
-    }
+    // if (productList?.length > 0) {
+    //   window.gtag('event', 'conversion', {
+    //     'send_to': 'AW-568502457/sAyOCJ_FzekBELnRio8C',
+    //     'value': productList?.[swipeableIndex].sale_price ?? 0,
+    //     'currency': 'INR',
+    //     'transaction_id': ''
+    //   });
+    // }
   }, [productList])
 
 

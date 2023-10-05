@@ -232,33 +232,33 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
         if ((selectedData?.size && selectedData?.size != "default")) {
 
             // add GA event
-            ReactGA.event({
-                category: 'Add to Cart',
-                action: 'Add to Cart',
-                label: selectedProduct?.product_name,
-                value: selectedProduct?.sale_price
-            });
+            // ReactGA.event({
+            //     category: 'Add to Cart',
+            //     action: 'Add to Cart',
+            //     label: selectedProduct?.product_name,
+            //     value: selectedProduct?.sale_price
+            // });
 
-            // implement facebook pixel
-            window.fbq('track', 'AddToCart', {
-                content_ids: selectedProduct?._id,
-                currency: "INR",
-                value: selectedProduct?.sale_price,
-                ecomm_totalvalue : selectedProduct?.sale_price,
-                ecomm_pagetype : "product",
-                content_type: "product"
-            });
+            // // implement facebook pixel
+            // window.fbq('track', 'AddToCart', {
+            //     content_ids: selectedProduct?._id,
+            //     currency: "INR",
+            //     value: selectedProduct?.sale_price,
+            //     ecomm_totalvalue : selectedProduct?.sale_price,
+            //     ecomm_pagetype : "product",
+            //     content_type: "product"
+            // });
 
-            // implemt Google Ads Conversion Tracking
-            window.gtag('event', 'conversion', {
-                send_to: 'AW-568502457/A-xvCKnDzekBELnRio8C',
-                value: selectedProduct?.sale_price,
-                currency: 'INR',
-                transaction_id: '',
-                value: selectedProduct?.sale_price,
-                ecomm_totalvalue : selectedProduct?.sale_price,
-                ecomm_pagetype : "product",
-            });
+            // // implemt Google Ads Conversion Tracking
+            // window.gtag('event', 'conversion', {
+            //     send_to: 'AW-568502457/A-xvCKnDzekBELnRio8C',
+            //     value: selectedProduct?.sale_price,
+            //     currency: 'INR',
+            //     transaction_id: '',
+            //     value: selectedProduct?.sale_price,
+            //     ecomm_totalvalue : selectedProduct?.sale_price,
+            //     ecomm_pagetype : "product",
+            // });
 
 
             // implement Google Ads Conversion Tracking 
@@ -268,6 +268,15 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
             //     currency: 'INR',
             //     transaction_id: '',
             // });
+
+            // implement GTM trigger
+            window.dataLayer.push({
+                'event': 'gtm4wp.addProductToCartEEC',
+                ecomm_pagetype : "product",
+                ecomm_totalvalue : selectedProduct?.sale_price,
+                value : selectedProduct?.sale_price,
+                'Content ID': selectedProduct?._id,
+            });
 
 
 

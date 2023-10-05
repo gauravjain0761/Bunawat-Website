@@ -42,7 +42,13 @@ const Login = ({ activeHeader, handleAccountClose }) => {
 
     const handleLogin = async () => {
         // add facebook pixel
-        window.fbq('track', 'CompleteRegistration');
+        // window.fbq('track', 'CompleteRegistration');
+
+
+        // implement GTM Click - All Elements
+        window.dataLayer.push({
+            'event': 'Login',
+        });
 
         await otpMatch({ ...loginData, otp: Number(loginData.otp) }).unwrap().then(async (data) => {
             getNotifyToken().then(async (token) => {
