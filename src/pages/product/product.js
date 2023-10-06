@@ -74,17 +74,23 @@ const Product = () => {
   useEffect(() => {
     if (productList?.length > 0) {
       // window.fbq('track', 'ViewContent', { content_ids: id, currency: "INR", value: productList?.[swipeableIndex].sale_price ?? 0,ecomm_totalvalue:productList?.[swipeableIndex].sale_price ?? 0, content_type: "product",ecomm_pagetype : "product" });
-
-      window.dataLayer.push({
+      window?.dataLayer?.push({
         'event': 'view_product',
-        'Content ID': productList?.[swipeableIndex]._id,
-        value : productList?.[swipeableIndex].sale_price ?? 0,
-        ecomm_totalvalue : productList?.[swipeableIndex].sale_price ?? 0,
+        'Content ID': productList?.[swipeableIndex]?._id,
+        value : productList?.[swipeableIndex]?.sale_price ?? 0,
+        ecomm_totalvalue : productList?.[swipeableIndex]?.sale_price ?? 0,
         content_type : "product",
         ecomm_pagetype : "product",
+        ecommerce: {
+          'currencyCode': 'INR',
+          'purchase' : {
+              actionField: {
+                  id: productList?.[swipeableIndex]?._id,
+                  revenue: productList?.[swipeableIndex]?.sale_price ?? 0,
+              }
+          },
+      }
       });
-
-
     }
 
     // add Google Ads Conversion Tracking

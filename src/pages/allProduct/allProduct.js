@@ -11,7 +11,6 @@ const AllProduct = () => {
     // implement facebook pixel
     useEffect(() => {
         // window.fbq('trackCustom', 'ViewCategory');
-
         // implement GTM
         window.dataLayer.push({
             'event': 'view_category',
@@ -60,7 +59,7 @@ const AllProduct = () => {
 
     return (
         <>
-            <AllProductList menuData={[...categories, ...collections]} selectedMenu={id}/>
+            <AllProductList menuData={[...categories, ...collections]} selectedMenu={id} />
         </>
     )
 }

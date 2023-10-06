@@ -211,6 +211,10 @@ function Header() {
     const handleCartEvent = () => {
         // add facebook pixel
         // window.fbq('trackCustom', 'ViewCart');
+
+        window.dataLayer.push({
+            'event': 'gtm4wp.click',
+        });
     }
 
     const handleCartClose = () => {

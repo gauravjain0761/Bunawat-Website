@@ -248,6 +248,15 @@ const Checkout = () => {
         currency: 'INR',
         tax: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ? (coutinLogicWithCoupon(couponData)?.gst_amount ?? 0) : (coutinLogicWithoutCoupon(cartData)?.gst_amount ?? 0),
         shipping: 0,
+        ecommerce: {
+          'currencyCode': 'INR',
+          'purchase': {
+              actionField: {
+                  id: '',
+                  revenue: (cartData?.length > 0 && (couponData?.data && couponData?.data?.length > 0)) ? (coutinLogicWithCoupon(couponData)?.totalAmount ?? 0) : (coutinLogicWithoutCoupon(cartData)?.totalAmount ?? 0),
+              }
+          },
+      }
       });
 
 

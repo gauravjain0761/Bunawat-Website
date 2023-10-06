@@ -272,10 +272,19 @@ const ProductPageFilter = ({ filters, singleProduct, swipeableIndex, selectedPro
             // implement GTM trigger
             window.dataLayer.push({
                 'event': 'gtm4wp.addProductToCartEEC',
-                ecomm_pagetype : "product",
-                ecomm_totalvalue : selectedProduct?.sale_price,
-                value : selectedProduct?.sale_price,
+                ecomm_pagetype: "product",
+                ecomm_totalvalue: selectedProduct?.sale_price,
+                value: selectedProduct?.sale_price,
                 'Content ID': selectedProduct?._id,
+                ecommerce: {
+                    'currencyCode': 'INR',
+                    'purchase': {
+                        actionField: {
+                            id: selectedProduct?._id,
+                            revenue: selectedProduct?.sale_price,
+                        }
+                    },
+                }
             });
 
 
