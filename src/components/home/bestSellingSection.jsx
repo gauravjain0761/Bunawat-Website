@@ -17,7 +17,7 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
       window.removeEventListener('resize', handleWindowResize);
     }
   }, []);
-  
+
 
   useEffect(() => {
     setSingleList(singleData ?? []);
@@ -204,7 +204,8 @@ const BestSellingSection = ({ singleData, keyVal, data, selectedId, setSelectedI
                         <div style={{ textAlign: "center", width: '100%', height: '100%' }}>
                           <Link to={`/product/${list?._id}/${data?.[keyVal]?.type ?? ""}`} className="cloth_deatils_link">
                             <img src={
-                             list?.sku_data?.find((item) => item?.images?.length > 0)?.images[0]?.url ?? list?.image
+                              //  list?.sku_data?.find((item) => item?.images?.length > 0)?.images[0]?.url ?? list?.image
+                              list?.image
                             } alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "640px" : "560px"} />
                           </Link>
                         </div>

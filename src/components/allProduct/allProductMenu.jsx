@@ -172,6 +172,7 @@ const AllProductMenu = ({ data, singleData, selectedId, setSelectedId, selectedI
                                                                     <Link to={`/product/${list?._id}/${data?.[key]?.type ?? ""}`} className="cloth_deatils_link">
                                                                         <img src={
                                                                             list?.sku_data?.find((item) => item?.images?.length > 0)?.images[0]?.url || list?.image
+                                                                            // list?.image
                                                                         } alt="cloth" className="product_below_image" width="100%" height={getHeightData(singleList?.products?.length).includes(index) ? "720px" : "560px"}
                                                                         />
                                                                     </Link>
